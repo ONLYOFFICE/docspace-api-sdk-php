@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.TelegramApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.TelegramApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.AuditTrailDataApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.AuditTrailDataApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

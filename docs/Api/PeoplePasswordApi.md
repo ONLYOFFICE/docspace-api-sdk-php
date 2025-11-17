@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.PasswordApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.PasswordApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

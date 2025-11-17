@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.IPRestrictionsApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.IPRestrictionsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

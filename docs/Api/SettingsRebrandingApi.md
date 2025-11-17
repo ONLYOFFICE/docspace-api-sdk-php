@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.RebrandingApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.RebrandingApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

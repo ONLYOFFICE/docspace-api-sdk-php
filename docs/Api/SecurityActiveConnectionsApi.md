@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.ActiveConnectionsApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.ActiveConnectionsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

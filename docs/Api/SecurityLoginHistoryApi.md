@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.LoginHistoryApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.LoginHistoryApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

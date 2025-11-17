@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.WebhooksApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.WebhooksApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

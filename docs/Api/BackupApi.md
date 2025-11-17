@@ -1,4 +1,4 @@
-# OnlyOffice\DocSpaceApiSdk.OpenAPI\Client\Api.BackupApi
+# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.BackupApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
