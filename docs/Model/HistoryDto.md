@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** | The unique identifier for the file history entry. |
 **action** | [**\OpenAPI\Client\Model\HistoryAction**](HistoryAction.md) |  |
 **initiator** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  |
 **date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  |

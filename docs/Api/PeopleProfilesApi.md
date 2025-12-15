@@ -429,7 +429,7 @@ try {
 ## `getProfileByEmail()`
 
 ```php
-getProfileByEmail($email, $culture): \OpenAPI\Client\Model\EmployeeFullWrapper
+getProfileByEmail($email, $encemail, $culture): \OpenAPI\Client\Model\EmployeeFullWrapper
 ```
 
 Get a profile by user email
@@ -442,6 +442,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **email** | **string**| The user email address. | [optional] |
+| **encemail** | **string**| The user encrypted email address. | [optional] |
 | **culture** | **string**| Culture | [optional] |
 
 ### Return type
@@ -489,10 +490,11 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     $config
 );
 $email = Sydney_Roberts4@hotmail.com; // string | The user email address.
+$encemail = some text; // string | The user encrypted email address.
 $culture = some text; // string | Culture
 
 try {
-    $result = $apiInstance->getProfileByEmail($email, $culture);
+    $result = $apiInstance->getProfileByEmail($email, $encemail, $culture);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfilesApi->getProfileByEmail: ', $e->getMessage(), PHP_EOL;
@@ -1047,7 +1049,7 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
+$userid = 9079; // string | The user ID.
 $update_member_request_dto = new \OpenAPI\Client\Model\UpdateMemberRequestDto(); // \OpenAPI\Client\Model\UpdateMemberRequestDto | The request parameters for updating the user information.
 
 try {

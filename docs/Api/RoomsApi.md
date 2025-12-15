@@ -2686,7 +2686,7 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The room ID.
+$id = 9079; // int | The room ID.
 
 try {
     $result = $apiInstance->startRoomIndexExport($id);
@@ -3005,7 +3005,7 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The room ID.
+$id = 9079; // int | The room ID.
 $update_room_request = new \OpenAPI\Client\Model\UpdateRoomRequest(); // \OpenAPI\Client\Model\UpdateRoomRequest | The request parameters for updating a room.
 
 try {

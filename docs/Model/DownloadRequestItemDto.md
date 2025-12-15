@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **int** |  |
+**key** | [**\OpenAPI\Client\Model\DownloadRequestItemDtoKey**](DownloadRequestItemDtoKey.md) |  |
 **value** | **string** | The target format or conversion type for the file download. |
 **password** | **string** | The optional password for accessing protected files. | [optional]
 

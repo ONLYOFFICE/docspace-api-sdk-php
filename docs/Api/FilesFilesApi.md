@@ -38,7 +38,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**lockFile()**](FilesFilesApi.md#lockFile) | **PUT** /api/2.0/files/file/{fileId}/lock | Lock a file |
 | [**manageFormFilling()**](FilesFilesApi.md#manageFormFilling) | **PUT** /api/2.0/files/file/{fileId}/manageformfilling | Perform form filling action |
 | [**openEditFile()**](FilesFilesApi.md#openEditFile) | **GET** /api/2.0/files/file/{fileId}/openedit | Open a file configuration |
-| [**restoreFileVersion()**](FilesFilesApi.md#restoreFileVersion) | **GET** /api/2.0/files/file/{fileId}/restoreversion | Restore a file version |
+| [**restoreFileVersion()**](FilesFilesApi.md#restoreFileVersion) | **POST** /api/2.0/files/file/{fileId}/restoreversion | Restore a file version |
 | [**saveEditingFileFromForm()**](FilesFilesApi.md#saveEditingFileFromForm) | **PUT** /api/2.0/files/file/{fileId}/saveediting | Save file edits |
 | [**saveFileAsPdf()**](FilesFilesApi.md#saveFileAsPdf) | **POST** /api/2.0/files/file/{id}/saveaspdf | Save a file as PDF |
 | [**saveFormRoleMapping()**](FilesFilesApi.md#saveFormRoleMapping) | **POST** /api/2.0/files/file/{fileId}/formrolemapping | Save form role mapping |
@@ -3456,7 +3456,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
+$file_id = 9079; // int | The file ID.
 $favorite = true; // bool | Specifies if the file is marked as favorite or not.
 
 try {

@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** | The file entry title. | [optional]
 **access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) |  | [optional]
+**shared_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  | [optional]
+**owned_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  | [optional]
 **shared** | **bool** | Specifies if the file entry is shared via link or not. | [optional]
 **shared_for_user** | **bool** | Specifies if the file entry is shared for user or not. | [optional]
 **parent_shared** | **bool** | Indicates whether the parent entity is shared. | [optional]

@@ -531,7 +531,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiFilesFilesApi.md#restorefileversion"><strong>restoreFileVersion</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/files/file/{fileId}/restoreversion</td>
+        <td><strong>POST</strong> /api/2.0/files/file/{fileId}/restoreversion</td>
         <td>Restore a file version</td>
       </tr>
       <tr>
@@ -3096,9 +3096,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.Balance](docs/ModelBalance.md)
  - [OpenAPI\Client\Model.BalanceWrapper](docs/ModelBalanceWrapper.md)
  - [OpenAPI\Client\Model.BaseBatchRequestDto](docs/ModelBaseBatchRequestDto.md)
+ - [OpenAPI\Client\Model.BaseBatchRequestDtoAllOfFileIds](docs/ModelBaseBatchRequestDtoAllOfFileIds.md)
+ - [OpenAPI\Client\Model.BaseBatchRequestDtoAllOfFolderIds](docs/ModelBaseBatchRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.BaseStorageSettingsCdnStorageSettings](docs/ModelBaseStorageSettingsCdnStorageSettings.md)
  - [OpenAPI\Client\Model.BaseStorageSettingsStorageSettings](docs/ModelBaseStorageSettingsStorageSettings.md)
  - [OpenAPI\Client\Model.BatchRequestDto](docs/ModelBatchRequestDto.md)
+ - [OpenAPI\Client\Model.BatchRequestDtoAllOfDestFolderId](docs/ModelBatchRequestDtoAllOfDestFolderId.md)
+ - [OpenAPI\Client\Model.BatchRequestDtoAllOfFileIds](docs/ModelBatchRequestDtoAllOfFileIds.md)
+ - [OpenAPI\Client\Model.BatchRequestDtoAllOfFolderIds](docs/ModelBatchRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.BatchTagsRequestDto](docs/ModelBatchTagsRequestDto.md)
  - [OpenAPI\Client\Model.BooleanWrapper](docs/ModelBooleanWrapper.md)
  - [OpenAPI\Client\Model.CapabilitiesDto](docs/ModelCapabilitiesDto.md)
@@ -3141,12 +3146,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.CookieSettingsRequestsDto](docs/ModelCookieSettingsRequestsDto.md)
  - [OpenAPI\Client\Model.CookieSettingsWrapper](docs/ModelCookieSettingsWrapper.md)
  - [OpenAPI\Client\Model.CopyAsJsonElement](docs/ModelCopyAsJsonElement.md)
+ - [OpenAPI\Client\Model.CopyAsJsonElementDestFolderId](docs/ModelCopyAsJsonElementDestFolderId.md)
  - [OpenAPI\Client\Model.CoverRequestDto](docs/ModelCoverRequestDto.md)
  - [OpenAPI\Client\Model.CoversResultArrayWrapper](docs/ModelCoversResultArrayWrapper.md)
  - [OpenAPI\Client\Model.CoversResultDto](docs/ModelCoversResultDto.md)
  - [OpenAPI\Client\Model.CreateApiKeyRequestDto](docs/ModelCreateApiKeyRequestDto.md)
  - [OpenAPI\Client\Model.CreateClientRequest](docs/ModelCreateClientRequest.md)
  - [OpenAPI\Client\Model.CreateFileJsonElement](docs/ModelCreateFileJsonElement.md)
+ - [OpenAPI\Client\Model.CreateFileJsonElementTemplateId](docs/ModelCreateFileJsonElementTemplateId.md)
  - [OpenAPI\Client\Model.CreateFolder](docs/ModelCreateFolder.md)
  - [OpenAPI\Client\Model.CreateRoomFromTemplateDto](docs/ModelCreateRoomFromTemplateDto.md)
  - [OpenAPI\Client\Model.CreateRoomRequestDto](docs/ModelCreateRoomRequestDto.md)
@@ -3188,6 +3195,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.DeepLinkHandlingMode](docs/ModelDeepLinkHandlingMode.md)
  - [OpenAPI\Client\Model.Delete](docs/ModelDelete.md)
  - [OpenAPI\Client\Model.DeleteBatchRequestDto](docs/ModelDeleteBatchRequestDto.md)
+ - [OpenAPI\Client\Model.DeleteBatchRequestDtoAllOfFileIds](docs/ModelDeleteBatchRequestDtoAllOfFileIds.md)
+ - [OpenAPI\Client\Model.DeleteBatchRequestDtoAllOfFolderIds](docs/ModelDeleteBatchRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.DeleteFolder](docs/ModelDeleteFolder.md)
  - [OpenAPI\Client\Model.DeleteRoomRequest](docs/ModelDeleteRoomRequest.md)
  - [OpenAPI\Client\Model.DeleteVersionBatchRequestDto](docs/ModelDeleteVersionBatchRequestDto.md)
@@ -3201,9 +3210,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.DocumentConfigDto](docs/ModelDocumentConfigDto.md)
  - [OpenAPI\Client\Model.DoubleWrapper](docs/ModelDoubleWrapper.md)
  - [OpenAPI\Client\Model.DownloadRequestDto](docs/ModelDownloadRequestDto.md)
+ - [OpenAPI\Client\Model.DownloadRequestDtoAllOfFileIds](docs/ModelDownloadRequestDtoAllOfFileIds.md)
+ - [OpenAPI\Client\Model.DownloadRequestDtoAllOfFolderIds](docs/ModelDownloadRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.DownloadRequestItemDto](docs/ModelDownloadRequestItemDto.md)
+ - [OpenAPI\Client\Model.DownloadRequestItemDtoKey](docs/ModelDownloadRequestItemDtoKey.md)
  - [OpenAPI\Client\Model.DraftLocationInteger](docs/ModelDraftLocationInteger.md)
  - [OpenAPI\Client\Model.DuplicateRequestDto](docs/ModelDuplicateRequestDto.md)
+ - [OpenAPI\Client\Model.DuplicateRequestDtoAllOfFileIds](docs/ModelDuplicateRequestDtoAllOfFileIds.md)
+ - [OpenAPI\Client\Model.DuplicateRequestDtoAllOfFolderIds](docs/ModelDuplicateRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.EditHistoryArrayWrapper](docs/ModelEditHistoryArrayWrapper.md)
  - [OpenAPI\Client\Model.EditHistoryAuthor](docs/ModelEditHistoryAuthor.md)
  - [OpenAPI\Client\Model.EditHistoryChangesWrapper](docs/ModelEditHistoryChangesWrapper.md)
@@ -3441,6 +3455,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.QuotaDto](docs/ModelQuotaDto.md)
  - [OpenAPI\Client\Model.QuotaFilter](docs/ModelQuotaFilter.md)
  - [OpenAPI\Client\Model.QuotaSettingsRequestsDto](docs/ModelQuotaSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.QuotaSettingsRequestsDtoDefaultQuota](docs/ModelQuotaSettingsRequestsDtoDefaultQuota.md)
  - [OpenAPI\Client\Model.QuotaState](docs/ModelQuotaState.md)
  - [OpenAPI\Client\Model.QuotaWrapper](docs/ModelQuotaWrapper.md)
  - [OpenAPI\Client\Model.RecaptchaType](docs/ModelRecaptchaType.md)
@@ -3598,6 +3613,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.UpdateGroupRequest](docs/ModelUpdateGroupRequest.md)
  - [OpenAPI\Client\Model.UpdateMemberRequestDto](docs/ModelUpdateMemberRequestDto.md)
  - [OpenAPI\Client\Model.UpdateMembersQuotaRequestDto](docs/ModelUpdateMembersQuotaRequestDto.md)
+ - [OpenAPI\Client\Model.UpdateMembersQuotaRequestDtoQuota](docs/ModelUpdateMembersQuotaRequestDtoQuota.md)
  - [OpenAPI\Client\Model.UpdateMembersRequestDto](docs/ModelUpdateMembersRequestDto.md)
  - [OpenAPI\Client\Model.UpdatePhotoMemberRequest](docs/ModelUpdatePhotoMemberRequest.md)
  - [OpenAPI\Client\Model.UpdateRoomRequest](docs/ModelUpdateRoomRequest.md)

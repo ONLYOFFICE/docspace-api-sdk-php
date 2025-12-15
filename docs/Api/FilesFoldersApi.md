@@ -672,7 +672,7 @@ try {
 ## `getFolderByFolderId()`
 
 ```php
-getFolderByFolderId($folder_id, $user_id_or_group_id, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location): \OpenAPI\Client\Model\FolderContentIntegerWrapper
+getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location): \OpenAPI\Client\Model\FolderContentIntegerWrapper
 ```
 
 Get a folder by ID
@@ -686,6 +686,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int**| The folder ID. | |
 | **user_id_or_group_id** | **string**| The user or group ID. | [optional] |
+| **shared_by** | **string**| The identifier of the user who shared the folder or file. | [optional] |
 | **filter_type** | [**\OpenAPI\Client\Model\FilterType**](../Model/.md)| The filter type. | [optional] |
 | **room_id** | **int**| The room ID. | [optional] |
 | **exclude_subject** | **bool**| Specifies whether to exclude search by user or group ID. | [optional] |
@@ -724,6 +725,7 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
 );
 $folder_id = 9846; // int | The folder ID.
 $user_id_or_group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The user or group ID.
+$shared_by = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The identifier of the user who shared the folder or file.
 $filter_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\FilterType(); // \OpenAPI\Client\Model\FilterType | The filter type.
 $room_id = 9846; // int | The room ID.
 $exclude_subject = true; // bool | Specifies whether to exclude search by user or group ID.
@@ -740,7 +742,7 @@ $filter_value = some text; // string | The text value used as a filter parameter
 $location = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Location(); // \OpenAPI\Client\Model\Location | The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link.
 
 try {
-    $result = $apiInstance->getFolderByFolderId($folder_id, $user_id_or_group_id, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location);
+    $result = $apiInstance->getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FoldersApi->getFolderByFolderId: ', $e->getMessage(), PHP_EOL;

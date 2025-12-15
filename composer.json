@@ -1,7 +1,7 @@
 {
     "name": "OnlyOffice/DocSpaceApiSdk",
     "type": "library",
-    "version": "4.0.0",
+    "version": "3.6.0",
     "description": "A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API",
     "keywords": [
         "onlyoffice",

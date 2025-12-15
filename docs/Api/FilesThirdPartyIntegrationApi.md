@@ -97,7 +97,7 @@ try {
 ## `getAllProviders()`
 
 ```php
-getAllProviders(): \OpenAPI\Client\Model\ProviderArrayWrapper
+getAllProviders($excludewebdav): \OpenAPI\Client\Model\ProviderArrayWrapper
 ```
 
 Get all providers
@@ -107,7 +107,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **excludewebdav** | **bool**| Specifies whether WebDAV resources should be excluded from the result.. | [optional] |
 
 ### Return type
 
@@ -153,9 +155,10 @@ $apiInstance = new OpenAPI\Client\Api\ThirdPartyIntegrationApi(
     new GuzzleHttp\Client(),
     $config
 );
+$excludewebdav = true; // bool | Specifies whether WebDAV resources should be excluded from the result..
 
 try {
-    $result = $apiInstance->getAllProviders();
+    $result = $apiInstance->getAllProviders($excludewebdav);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ThirdPartyIntegrationApi->getAllProviders: ', $e->getMessage(), PHP_EOL;
