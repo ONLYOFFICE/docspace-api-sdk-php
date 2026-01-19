@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.GreetingSettingsApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.GreetingSettingsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

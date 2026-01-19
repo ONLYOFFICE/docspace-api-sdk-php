@@ -16,7 +16,7 @@
  */
 
 /**
- * OnlyOffice/DocSpaceApiSdk
+ * onlyoffice/docspace-api-sdk
  *
  * A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API
  *
@@ -60,6 +60,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static $openAPITypes = [
         'module' => 'string',
         'props' => 'array<string,string>',
+        'id' => 'string',
         'last_modified' => '\DateTime'
     ];
 
@@ -73,6 +74,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static $openAPIFormats = [
         'module' => null,
         'props' => null,
+        'id' => 'uuid',
         'last_modified' => 'date-time'
     ];
 
@@ -84,6 +86,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static array $openAPINullables = [
         'module' => true,
         'props' => true,
+        'id' => false,
         'last_modified' => false
     ];
 
@@ -175,6 +178,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static $attributeMap = [
         'module' => 'module',
         'props' => 'props',
+        'id' => 'id',
         'last_modified' => 'lastModified'
     ];
 
@@ -186,6 +190,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static $setters = [
         'module' => 'setModule',
         'props' => 'setProps',
+        'id' => 'setId',
         'last_modified' => 'setLastModified'
     ];
 
@@ -197,6 +202,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     protected static $getters = [
         'module' => 'getModule',
         'props' => 'getProps',
+        'id' => 'getId',
         'last_modified' => 'getLastModified'
     ];
 
@@ -259,6 +265,7 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
     {
         $this->setIfExists('module', $data ?? [], null);
         $this->setIfExists('props', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('last_modified', $data ?? [], null);
     }
 
@@ -368,6 +375,33 @@ class BaseStorageSettingsCdnStorageSettings implements ModelInterface, ArrayAcce
             }
         }
         $this->container['props'] = $props;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

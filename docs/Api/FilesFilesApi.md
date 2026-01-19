@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.FilesApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.FilesApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
@@ -2743,7 +2743,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The editing file ID from the request.
+$file_id = 9079; // int | The editing file ID from the request.
 $file_extension = 'file_extension_example'; // string | The editing file extension from the request.
 $download_uri = 'download_uri_example'; // string | The URI to download the editing file.
 $file = '/path/to/file.txt'; // \SplFileObject | The request file stream.
@@ -3456,7 +3456,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9079; // int | The file ID.
+$file_id = 9846; // int | The file ID.
 $favorite = true; // bool | Specifies if the file is marked as favorite or not.
 
 try {

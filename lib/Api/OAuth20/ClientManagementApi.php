@@ -16,7 +16,7 @@
  */
 
 /**
- * OnlyOffice/DocSpaceApiSdk
+ * onlyoffice/docspace-api-sdk
  *
  * A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API
  *

@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.BannersVisibilityApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.BannersVisibilityApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

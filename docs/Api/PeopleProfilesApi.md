@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.ProfilesApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.ProfilesApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
@@ -1049,7 +1049,7 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9079; // string | The user ID.
+$userid = 9846; // string | The user ID.
 $update_member_request_dto = new \OpenAPI\Client\Model\UpdateMemberRequestDto(); // \OpenAPI\Client\Model\UpdateMemberRequestDto | The request parameters for updating the user information.
 
 try {

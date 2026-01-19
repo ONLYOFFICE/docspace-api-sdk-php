@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.OperationsApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.OperationsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
@@ -546,7 +546,7 @@ $apiInstance = new OpenAPI\Client\Api\OperationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The session folder ID.
+$folder_id = 9079; // int | The session folder ID.
 $session_request = new \OpenAPI\Client\Model\SessionRequest(); // \OpenAPI\Client\Model\SessionRequest | The session parameters.
 
 try {
@@ -1063,7 +1063,7 @@ $apiInstance = new OpenAPI\Client\Api\OperationsApi(
     new GuzzleHttp\Client()
 );
 $operation_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\FileOperationType(); // \OpenAPI\Client\Model\FileOperationType | Specifies the type of file operation to be retrieved.
-$id = 9846; // string | The ID of the file operation.
+$id = 9079; // string | The ID of the file operation.
 
 try {
     $result = $apiInstance->getOperationStatusesByType($operation_type, $id);

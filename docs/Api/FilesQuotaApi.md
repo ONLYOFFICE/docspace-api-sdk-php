@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.QuotaApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.QuotaApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

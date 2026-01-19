@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.PaymentApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.PaymentApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

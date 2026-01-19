@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.EncryptionApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.EncryptionApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

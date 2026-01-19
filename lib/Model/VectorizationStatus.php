@@ -16,7 +16,7 @@
  */
 
 /**
- * OnlyOffice/DocSpaceApiSdk
+ * onlyoffice/docspace-api-sdk
  *
  * A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API
  *
@@ -34,6 +34,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * VectorizationStatus Class Doc Comment
  *
  * @category Class
+ * @description [0 - In Progress, 1 - Completed, 2 - Failed]
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,11 +44,20 @@ class VectorizationStatus
     /**
      * Possible values of this enum
      */
-    public const NUMBER_0 = 0;
+    /**
+     * In Progress
+     */
+    public const IN_PROGRESS = 0;
 
-    public const NUMBER_1 = 1;
+    /**
+     * Completed
+     */
+    public const COMPLETED = 1;
 
-    public const NUMBER_2 = 2;
+    /**
+     * Failed
+     */
+    public const FAILED = 2;
 
     /**
      * Gets allowable values of the enum
@@ -56,9 +66,9 @@ class VectorizationStatus
     public static function getAllowableEnumValues()
     {
         return [
-            self::NUMBER_0,
-            self::NUMBER_1,
-            self::NUMBER_2
+            self::IN_PROGRESS,
+            self::COMPLETED,
+            self::FAILED
         ];
     }
 }

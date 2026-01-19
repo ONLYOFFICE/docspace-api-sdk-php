@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk
+# onlyoffice/docspace-api-sdk
 
 The ONLYOFFICE DocSpace SDK for PHP is a library that provides tools for integrating and managing DocSpace features within your applications. It simplifies interaction with the DocSpace API by offering ready-to-use methods and models.
 
@@ -23,7 +23,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "OnlyOffice/DocSpaceApiSdk": "*@dev"
+    "onlyoffice/docspace-api-sdk": "*@dev"
   }
 }
 ```
@@ -36,7 +36,7 @@ Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/OnlyOffice/DocSpaceApiSdk/vendor/autoload.php');
+require_once('/path/to/onlyoffice/docspace-api-sdk/vendor/autoload.php');
 ```
 
 ## Getting Started
@@ -668,11 +668,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get primary external link</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiFilesFoldersApi.md#getfolderrecent"><strong>getFolderRecent</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/files/recent</td>
-        <td>Get the Recent section</td>
-      </tr>
-      <tr>
         <td><a href="docs/ApiFilesFoldersApi.md#getfolders"><strong>getFolders</strong></a></td>
         <td><strong>GET</strong> /api/2.0/files/{folderId}/subfolders</td>
         <td>Get subfolders</td>
@@ -694,7 +689,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiFilesFoldersApi.md#getrecentfolder"><strong>getRecentFolder</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/files/@recent</td>
+        <td><strong>GET</strong> /api/2.0/files/recent</td>
         <td>Get the Recent section</td>
       </tr>
       <tr>
@@ -1007,12 +1002,12 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       <tr>
         <td><a href="docs/ApiFilesSharingApi.md#getgroupsmemberswithfilesecurity"><strong>getGroupsMembersWithFileSecurity</strong></a></td>
         <td><strong>GET</strong> /api/2.0/files/file/{fileId}/group/{groupId}/share</td>
-        <td>Get group members with security information</td>
+        <td>Get file group members with security information</td>
       </tr>
       <tr>
         <td><a href="docs/ApiFilesSharingApi.md#getgroupsmemberswithfoldersecurity"><strong>getGroupsMembersWithFolderSecurity</strong></a></td>
         <td><strong>GET</strong> /api/2.0/files/folder/{folderId}/group/{groupId}/share</td>
-        <td>Get group members with security information</td>
+        <td>Get folder group members with security information</td>
       </tr>
       <tr>
         <td><a href="docs/ApiFilesSharingApi.md#getsecurityinfo"><strong>getSecurityInfo</strong></a></td>

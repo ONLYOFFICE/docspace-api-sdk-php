@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.ThirdPartyAccountsApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.ThirdPartyAccountsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

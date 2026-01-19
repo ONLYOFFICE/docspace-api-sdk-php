@@ -16,7 +16,7 @@
  */
 
 /**
- * OnlyOffice/DocSpaceApiSdk
+ * onlyoffice/docspace-api-sdk
  *
  * A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API
  *
@@ -1750,7 +1750,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurity
      *
-     * Get group members with security information
+     * Get file group members with security information
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
@@ -1775,7 +1775,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityWithHttpInfo
      *
-     * Get group members with security information
+     * Get file group members with security information
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
@@ -1867,7 +1867,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityAsync
      *
-     * Get group members with security information
+     * Get file group members with security information
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
@@ -1895,7 +1895,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityAsyncWithHttpInfo
      *
-     * Get group members with security information
+     * Get file group members with security information
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
@@ -2123,7 +2123,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurity
      *
-     * Get group members with security information
+     * Get folder group members with security information
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
@@ -2148,7 +2148,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityWithHttpInfo
      *
-     * Get group members with security information
+     * Get folder group members with security information
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
@@ -2240,7 +2240,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityAsync
      *
-     * Get group members with security information
+     * Get folder group members with security information
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
@@ -2268,7 +2268,7 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityAsyncWithHttpInfo
      *
-     * Get group members with security information
+     * Get folder group members with security information
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/

@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.FoldersApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.FoldersApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
@@ -18,12 +18,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getFolderLinks()**](FilesFoldersApi.md#getFolderLinks) | **GET** /api/2.0/files/folder/{id}/links | Get the folder links |
 | [**getFolderPath()**](FilesFoldersApi.md#getFolderPath) | **GET** /api/2.0/files/folder/{folderId}/path | Get the folder path |
 | [**getFolderPrimaryExternalLink()**](FilesFoldersApi.md#getFolderPrimaryExternalLink) | **GET** /api/2.0/files/folder/{id}/link | Get primary external link |
-| [**getFolderRecent()**](FilesFoldersApi.md#getFolderRecent) | **GET** /api/2.0/files/recent | Get the Recent section |
 | [**getFolders()**](FilesFoldersApi.md#getFolders) | **GET** /api/2.0/files/{folderId}/subfolders | Get subfolders |
 | [**getMyFolder()**](FilesFoldersApi.md#getMyFolder) | **GET** /api/2.0/files/@my | Get the My documents section |
 | [**getNewFolderItems()**](FilesFoldersApi.md#getNewFolderItems) | **GET** /api/2.0/files/{folderId}/news | Get new folder items |
 | [**getPrivacyFolder()**](FilesFoldersApi.md#getPrivacyFolder) | **GET** /api/2.0/files/@privacy | Get the Private Room section |
-| [**getRecentFolder()**](FilesFoldersApi.md#getRecentFolder) | **GET** /api/2.0/files/@recent | Get the Recent section |
+| [**getRecentFolder()**](FilesFoldersApi.md#getRecentFolder) | **GET** /api/2.0/files/recent | Get the Recent section |
 | [**getRootFolders()**](FilesFoldersApi.md#getRootFolders) | **GET** /api/2.0/files/@root | Get filtered sections |
 | [**getTrashFolder()**](FilesFoldersApi.md#getTrashFolder) | **GET** /api/2.0/files/@trash | Get the Trash section |
 | [**insertFile()**](FilesFoldersApi.md#insertFile) | **POST** /api/2.0/files/{folderId}/insert | Insert a file |
@@ -1112,106 +1111,6 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FoldersApi->getFolderPrimaryExternalLink: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getFolderRecent()`
-
-```php
-getFolderRecent($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value): \OpenAPI\Client\Model\FolderContentIntegerWrapper
-```
-
-Get the Recent section
-Returns the detailed list of files located in the Recent section.
-
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-recent/).
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **user_id_or_group_id** | **string**| The user or group ID. | [optional] |
-| **filter_type** | [**\OpenAPI\Client\Model\FilterType**](../Model/.md)| The filter type. | [optional] |
-| **exclude_subject** | **bool**| Specifies whether to exclude search by user or group ID. | [optional] |
-| **apply_filter_option** | [**\OpenAPI\Client\Model\ApplyFilterOption**](../Model/.md)| Specifies whether to return only files, only folders or all elements. | [optional] |
-| **search_area** | [**\OpenAPI\Client\Model\SearchArea**](../Model/.md)| The search area. | [optional] |
-| **extension** | [**string[]**](../Model/string.md)| Specifies whether to search for a specific file extension in the Recent folder. | [optional] |
-| **count** | **int**| The maximum number of items to return. | [optional] |
-| **start_index** | **int**| The starting position of the results to be returned in the query response. | [optional] |
-| **sort_by** | **string**| Specifies the sorting criteria for the folder request. | [optional] |
-| **sort_order** | [**\OpenAPI\Client\Model\SortOrder**](../Model/.md)| The order in which the results are sorted. | [optional] |
-| **filter_value** | **string**| The text used for filtering or searching folder contents. | [optional] |
-
-### Return type
-
-[**\OpenAPI\Client\Model\FolderContentIntegerWrapper**](../Model/FolderContentIntegerWrapper.md)
-
-### Authorization
-
-[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure HTTP basic authorization: Basic
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-// Configure OAuth2 access token for authorization: OAuth2
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure API key authorization: ApiKeyBearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
-
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
-
-// Configure Bearer (JWT) authorization: Bearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-
-$apiInstance = new OpenAPI\Client\Api\FoldersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$user_id_or_group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The user or group ID.
-$filter_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\FilterType(); // \OpenAPI\Client\Model\FilterType | The filter type.
-$exclude_subject = true; // bool | Specifies whether to exclude search by user or group ID.
-$apply_filter_option = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApplyFilterOption(); // \OpenAPI\Client\Model\ApplyFilterOption | Specifies whether to return only files, only folders or all elements.
-$search_area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SearchArea(); // \OpenAPI\Client\Model\SearchArea | The search area.
-$extension = .txt; // string[] | Specifies whether to search for a specific file extension in the Recent folder.
-$count = 1234; // int | The maximum number of items to return.
-$start_index = 1234; // int | The starting position of the results to be returned in the query response.
-$sort_by = some text; // string | Specifies the sorting criteria for the folder request.
-$sort_order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortOrder(); // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
-$filter_value = some text; // string | The text used for filtering or searching folder contents.
-
-try {
-    $result = $apiInstance->getFolderRecent($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling FoldersApi->getFolderRecent: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

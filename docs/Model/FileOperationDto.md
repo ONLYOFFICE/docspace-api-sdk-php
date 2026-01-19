@@ -13,6 +13,5 @@ Name | Type | Description | Notes
 **url** | **string** | The file operation URL. | [optional]
 **files** | [**\OpenAPI\Client\Model\FileEntryBaseDto[]**](FileEntryBaseDto.md) | The list of files of the file operation. | [optional]
 **folders** | [**\OpenAPI\Client\Model\FileEntryBaseDto[]**](FileEntryBaseDto.md) | The list of folders of the file operation. | [optional]
-**status** | [**\OpenAPI\Client\Model\DistributedTaskStatus**](DistributedTaskStatus.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

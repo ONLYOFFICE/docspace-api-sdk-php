@@ -1,4 +1,4 @@
-# OnlyOffice/DocSpaceApiSdk.OpenAPI\Client\Api.SMTPSettingsApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.SMTPSettingsApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 

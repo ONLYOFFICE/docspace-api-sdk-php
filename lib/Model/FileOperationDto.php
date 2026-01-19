@@ -16,7 +16,7 @@
  */
 
 /**
- * OnlyOffice/DocSpaceApiSdk
+ * onlyoffice/docspace-api-sdk
  *
  * A simple PHP SDK for integrating with the ONLYOFFICE DocSpace API
  *
@@ -67,8 +67,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => 'bool',
         'url' => 'string',
         'files' => '\OpenAPI\Client\Model\FileEntryBaseDto[]',
-        'folders' => '\OpenAPI\Client\Model\FileEntryBaseDto[]',
-        'status' => '\OpenAPI\Client\Model\DistributedTaskStatus'
+        'folders' => '\OpenAPI\Client\Model\FileEntryBaseDto[]'
     ];
 
     /**
@@ -87,8 +86,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => null,
         'url' => 'uri',
         'files' => null,
-        'folders' => null,
-        'status' => null
+        'folders' => null
     ];
 
     /**
@@ -105,8 +103,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => false,
         'url' => true,
         'files' => true,
-        'folders' => true,
-        'status' => false
+        'folders' => true
     ];
 
     /**
@@ -203,8 +200,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => 'finished',
         'url' => 'url',
         'files' => 'files',
-        'folders' => 'folders',
-        'status' => 'status'
+        'folders' => 'folders'
     ];
 
     /**
@@ -221,8 +217,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => 'setFinished',
         'url' => 'setUrl',
         'files' => 'setFiles',
-        'folders' => 'setFolders',
-        'status' => 'setStatus'
+        'folders' => 'setFolders'
     ];
 
     /**
@@ -239,8 +234,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'finished' => 'getFinished',
         'url' => 'getUrl',
         'files' => 'getFiles',
-        'folders' => 'getFolders',
-        'status' => 'getStatus'
+        'folders' => 'getFolders'
     ];
 
     /**
@@ -309,7 +303,6 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('files', $data ?? [], null);
         $this->setIfExists('folders', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -653,33 +646,6 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['folders'] = $folders;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \OpenAPI\Client\Model\DistributedTaskStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \OpenAPI\Client\Model\DistributedTaskStatus|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
 
         return $this;
     }
