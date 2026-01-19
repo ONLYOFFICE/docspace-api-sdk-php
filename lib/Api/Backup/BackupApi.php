@@ -27,7 +27,7 @@
  */
 
 
-namespace OpenAPI\Client\Api;
+namespace OpenAPI\Client\Api\Backup;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
