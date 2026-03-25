@@ -16,6 +16,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**externalShareSocialMedia()**](FilesSettingsApi.md#externalShareSocialMedia) | **PUT** /api/2.0/files/settings/externalsocialmedia | Change the external sharing ability on social networks |
 | [**forcesave()**](FilesSettingsApi.md#forcesave) | **PUT** /api/2.0/files/forcesave | Change the forcesaving ability |
 | [**getAutomaticallyCleanUp()**](FilesSettingsApi.md#getAutomaticallyCleanUp) | **GET** /api/2.0/files/settings/autocleanup | Get the trash bin auto-clearing setting |
+| [**getDefaultTemplates()**](FilesSettingsApi.md#getDefaultTemplates) | **GET** /api/2.0/files/settings/defaulttemplate | Get the default template setting |
 | [**getDocServiceUrl()**](FilesSettingsApi.md#getDocServiceUrl) | **GET** /api/2.0/files/docservice | Get the document service URL |
 | [**getFilesModule()**](FilesSettingsApi.md#getFilesModule) | **GET** /api/2.0/files/info | Get the Documents information |
 | [**getFilesSettings()**](FilesSettingsApi.md#getFilesSettings) | **GET** /api/2.0/files/settings | Get file settings |
@@ -24,10 +25,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**hideConfirmRoomLifetime()**](FilesSettingsApi.md#hideConfirmRoomLifetime) | **PUT** /api/2.0/files/hideconfirmroomlifetime | Hide confirmation dialog when changing room lifetime settings |
 | [**isAvailablePrivacyRoomSettings()**](FilesSettingsApi.md#isAvailablePrivacyRoomSettings) | **GET** /api/2.0/files/@privacy/available | Check the Private Room availability |
 | [**keepNewFileName()**](FilesSettingsApi.md#keepNewFileName) | **PUT** /api/2.0/files/keepnewfilename | Ask a new file name |
+| [**resetDefaultTemplate()**](FilesSettingsApi.md#resetDefaultTemplate) | **DELETE** /api/2.0/files/settings/defaulttemplate | Reset the default template setting |
+| [**setDefaultTemplate()**](FilesSettingsApi.md#setDefaultTemplate) | **PUT** /api/2.0/files/settings/defaulttemplate | Change the default template setting |
 | [**setOpenEditorInSameTab()**](FilesSettingsApi.md#setOpenEditorInSameTab) | **PUT** /api/2.0/files/settings/openeditorinsametab | Open document in the same browser tab |
+| [**setOrganizeRoomsGrouping()**](FilesSettingsApi.md#setOrganizeRoomsGrouping) | **PUT** /api/2.0/files/settings/organizegrouping | Organize rooms grouping |
 | [**storeForcesave()**](FilesSettingsApi.md#storeForcesave) | **PUT** /api/2.0/files/storeforcesave | Change the ability to store the forcesaved files |
 | [**storeOriginal()**](FilesSettingsApi.md#storeOriginal) | **PUT** /api/2.0/files/storeoriginal | Change the ability to upload original formats |
 | [**updateFileIfExist()**](FilesSettingsApi.md#updateFileIfExist) | **PUT** /api/2.0/files/updateifexist | Update a file version if it exists |
+| [**uploadDefaultTemplate()**](FilesSettingsApi.md#uploadDefaultTemplate) | **POST** /api/2.0/files/settings/defaulttemplate | Upload a file as the default template setting |
 
 
 ## `changeAccessToThirdparty()`
@@ -82,7 +87,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -164,7 +168,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -242,7 +245,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -324,7 +326,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -402,7 +403,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -484,7 +484,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -562,7 +561,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -644,7 +642,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -722,7 +719,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -804,7 +800,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -880,7 +875,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -959,7 +953,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -972,6 +965,82 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SettingsApi->getAutomaticallyCleanUp: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDefaultTemplates()`
+
+```php
+getDefaultTemplates(): \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper
+```
+
+Get the default template setting
+Returns the default template setting.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-default-templates/).
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\DefaultTemplateSettingsWrapper**](../Model/DefaultTemplateSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getDefaultTemplates();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->getDefaultTemplates: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1014,7 +1083,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1093,7 +1161,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1146,7 +1213,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1226,7 +1292,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1255,7 +1320,7 @@ try {
 ## `hideConfirmConvert()`
 
 ```php
-hideConfirmConvert($hide_confirm_convert_request_dto): \OpenAPI\Client\Model\ModuleWrapper
+hideConfirmConvert($hide_confirm_convert_request_dto): \OpenAPI\Client\Model\BooleanWrapper
 ```
 
 Hide the confirmation dialog when converting
@@ -1271,7 +1336,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ModuleWrapper**](../Model/ModuleWrapper.md)
+[**\OpenAPI\Client\Model\BooleanWrapper**](../Model/BooleanWrapper.md)
 
 ### Authorization
 
@@ -1304,7 +1369,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1386,7 +1450,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1462,7 +1525,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1543,7 +1605,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1557,6 +1618,164 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SettingsApi->keepNewFileName: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resetDefaultTemplate()`
+
+```php
+resetDefaultTemplate($default_template_settings_reset_request_dto): \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper
+```
+
+Reset the default template setting
+Resets the default template setting.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-default-template/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **default_template_settings_reset_request_dto** | [**\OpenAPI\Client\Model\DefaultTemplateSettingsResetRequestDto**](../Model/DefaultTemplateSettingsResetRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DefaultTemplateSettingsWrapper**](../Model/DefaultTemplateSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$default_template_settings_reset_request_dto = new \OpenAPI\Client\Model\DefaultTemplateSettingsResetRequestDto(); // \OpenAPI\Client\Model\DefaultTemplateSettingsResetRequestDto
+
+try {
+    $result = $apiInstance->resetDefaultTemplate($default_template_settings_reset_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->resetDefaultTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setDefaultTemplate()`
+
+```php
+setDefaultTemplate($default_template_settings_request_dto): \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper
+```
+
+Change the default template setting
+Changes the default template setting.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-default-template/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **default_template_settings_request_dto** | [**\OpenAPI\Client\Model\DefaultTemplateSettingsRequestDto**](../Model/DefaultTemplateSettingsRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DefaultTemplateSettingsWrapper**](../Model/DefaultTemplateSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$default_template_settings_request_dto = new \OpenAPI\Client\Model\DefaultTemplateSettingsRequestDto(); // \OpenAPI\Client\Model\DefaultTemplateSettingsRequestDto
+
+try {
+    $result = $apiInstance->setDefaultTemplate($default_template_settings_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->setDefaultTemplate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1623,7 +1842,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1637,6 +1855,85 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SettingsApi->setOpenEditorInSameTab: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setOrganizeRoomsGrouping()`
+
+```php
+setOrganizeRoomsGrouping($settings_request_dto): \OpenAPI\Client\Model\BooleanWrapper
+```
+
+Organize rooms grouping
+Changes the setting that allows the user to organize the grouping of rooms.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-organize-rooms-grouping/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **settings_request_dto** | [**\OpenAPI\Client\Model\SettingsRequestDto**](../Model/SettingsRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\BooleanWrapper**](../Model/BooleanWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$settings_request_dto = new \OpenAPI\Client\Model\SettingsRequestDto(); // \OpenAPI\Client\Model\SettingsRequestDto
+
+try {
+    $result = $apiInstance->setOrganizeRoomsGrouping($settings_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->setOrganizeRoomsGrouping: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1699,7 +1996,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1778,7 +2074,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
@@ -1860,7 +2155,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1880,6 +2174,87 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadDefaultTemplate()`
+
+```php
+uploadDefaultTemplate($file_extension, $file): \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper
+```
+
+Upload a file as the default template setting
+Uploads a file to use as the default template setting.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-default-template/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_extension** | **string**| File extension of a template to replace | |
+| **file** | **\SplFileObject****\SplFileObject**| File to replace template with | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DefaultTemplateSettingsWrapper**](../Model/DefaultTemplateSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_extension = .docx; // string | File extension of a template to replace
+$file = '/path/to/file.txt'; // \SplFileObject | File to replace template with
+
+try {
+    $result = $apiInstance->uploadDefaultTemplate($file_extension, $file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->uploadDefaultTemplate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

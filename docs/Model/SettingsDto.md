@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **limited_access_space** | **bool** | Specifies whether the access to the space management is limited or not. | [optional]
 **limited_access_dev_tools_for_users** | **bool** | Specifies whether the access to the Developer Tools is limited for users or not. | [optional]
 **display_banners** | **bool** | Specifies whether to display the promotional banners. | [optional]
+**ai_enabled** | **bool** | Specifies whether AI functionality (chat, agents, vectorization) is enabled for the current tenant.  When &#x60;false&#x60;, all AI features are disabled and the AI Agents folder is hidden. | [optional]
 **user_name_regex** | **string** | The user name validation regex. | [optional]
 **invitation_limit** | **int** | The maximum number of invitations to the portal. | [optional]
 **plugins** | [**\OpenAPI\Client\Model\PluginsDto**](PluginsDto.md) |  | [optional]
@@ -46,5 +47,7 @@ Name | Type | Description | Notes
 **max_image_upload_size** | **int** | The maximum image upload size. | [optional]
 **logo_text** | **string** | The white label logo text. | [optional]
 **external_resources** | [**\OpenAPI\Client\Model\CultureSpecificExternalResources**](CultureSpecificExternalResources.md) |  | [optional]
+**default_folder_type** | [**\OpenAPI\Client\Model\FolderType**](FolderType.md) |  | [optional]
+**external_db_enabled** | **bool** | Specifies if an external database is connected for storing form results. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

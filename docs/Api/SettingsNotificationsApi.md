@@ -63,7 +63,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\NotificationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -142,14 +141,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\NotificationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\NotificationType(); // \OpenAPI\Client\Model\NotificationType | The type of notification to query, specified in the route.
+$type = 0; // \OpenAPI\Client\Model\NotificationType | The type of notification to query, specified in the route.
 
 try {
     $result = $apiInstance->getNotificationSettings($type);
@@ -218,7 +216,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\NotificationsApi(
@@ -299,7 +296,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\NotificationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -377,7 +373,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\NotificationsApi(

@@ -71,7 +71,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -152,14 +151,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $members_request = new \OpenAPI\Client\Model\MembersRequest(); // \OpenAPI\Client\Model\MembersRequest | The member request.
 
 try {
@@ -233,14 +231,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 
 try {
     $result = $apiInstance->deleteGroup($id);
@@ -266,7 +263,7 @@ getGroup($id, $include_members): \OpenAPI\Client\Model\GroupWrapper
 ```
 
 Get a group
-Returns the detailed information about the selected group.   **Note**: This method returns full group information.
+Returns the detailed information about the selected group.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group/).
 
@@ -314,14 +311,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $include_members = true; // bool | Specifies whether to include the group members or not.
 
 try {
@@ -395,14 +391,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 
 try {
     $result = $apiInstance->getGroupByUserId($userid);
@@ -428,7 +423,7 @@ getGroups($user_id, $manager, $count, $start_index, $sort_by, $sort_order, $filt
 ```
 
 Get groups
-Returns the general information about all the groups, such as group ID and group manager.   **Note**: This method returns partial group information.
+Returns the general information about all the groups, such as group ID and group manager.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups/).
 
@@ -481,20 +476,19 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$user_id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The user ID.
-$manager = true; // bool | Specifies if the user is a manager or not.
-$count = 1234; // int | The number of records to retrieve.
-$start_index = 1234; // int | The starting index for paginated results.
-$sort_by = some text; // string | Specifies the property used to sort the query results.
-$sort_order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortOrder(); // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
-$filter_value = some text; // string | The text used for filtering or searching group data.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The user ID.
+$manager = false; // bool | Specifies if the user is a manager or not.
+$count = 25; // int | The number of records to retrieve.
+$start_index = 0; // int | The starting index for paginated results.
+$sort_by = displayName; // string | Specifies the property used to sort the query results.
+$sort_order = 0; // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
+$filter_value = John; // string | The text used for filtering or searching group data.
 
 try {
     $result = $apiInstance->getGroups($user_id, $manager, $count, $start_index, $sort_by, $sort_order, $filter_value);
@@ -568,15 +562,14 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$from_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID to move from.
-$to_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID to move to.
+$from_id = 00000000-0000-0000-0000-000000000000; // string | The group ID to move from.
+$to_id = 11111111-1111-1111-1111-111111111111; // string | The group ID to move to.
 
 try {
     $result = $apiInstance->moveMembersTo($from_id, $to_id);
@@ -650,14 +643,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $members_request = new \OpenAPI\Client\Model\MembersRequest(); // \OpenAPI\Client\Model\MembersRequest | The member request.
 
 try {
@@ -732,14 +724,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $set_manager_request = new \OpenAPI\Client\Model\SetManagerRequest(); // \OpenAPI\Client\Model\SetManagerRequest | The request for setting a group manager.
 
 try {
@@ -814,14 +805,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $members_request = new \OpenAPI\Client\Model\MembersRequest(); // \OpenAPI\Client\Model\MembersRequest | The member request.
 
 try {
@@ -896,14 +886,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\GroupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The group ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 $update_group_request = new \OpenAPI\Client\Model\UpdateGroupRequest(); // \OpenAPI\Client\Model\UpdateGroupRequest | The request for updating a group.
 
 try {

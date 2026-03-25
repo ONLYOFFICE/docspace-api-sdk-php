@@ -45,16 +45,15 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ThirdPartyAccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$invite_view = true; // bool | Specifies whether to return providers that are available for invitation links, i.e. the user can login or register through these providers.
-$settings_view = true; // bool | Specifies whether to display the provider settings in a pop-up window (true) or redirect them to the desktop application (false).
-$client_callback = some text; // string | The method that is called after authentication.
-$from_only = some text; // string | The provider name if a response is required only from this provider.
+$invite_view = false; // bool | Specifies whether to return providers that are available for invitation links, i.e. the user can login or register through these providers.
+$settings_view = false; // bool | Specifies whether to display the provider settings in a pop-up window (true) or redirect them to the desktop application (false).
+$client_callback = onAuthCallback; // string | The method that is called after authentication.
+$from_only = Google; // string | The provider name if a response is required only from this provider.
 
 try {
     $result = $apiInstance->getThirdPartyAuthProviders($invite_view, $settings_view, $client_callback, $from_only);
@@ -127,7 +126,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ThirdPartyAccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -182,7 +180,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\ThirdPartyAccountsApi(
@@ -263,14 +260,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ThirdPartyAccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$provider = some text; // string | The provider name.
+$provider = Google; // string | The provider name.
 
 try {
     $apiInstance->unlinkThirdPartyAccount($provider);

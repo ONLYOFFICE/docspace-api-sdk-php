@@ -49,7 +49,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
 
-
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -111,7 +110,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
-
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -176,7 +174,6 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
-
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -244,7 +241,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
 
-
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -310,7 +306,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
 
-
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -367,7 +362,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(

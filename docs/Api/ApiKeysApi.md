@@ -66,7 +66,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -146,14 +145,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$key_id = 'key_id_example'; // string | The API key ID.
+$key_id = 00000000-0000-0000-0000-000000000000; // string | The API key ID.
 
 try {
     $result = $apiInstance->deleteApiKey($key_id);
@@ -222,7 +220,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
@@ -301,7 +298,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -376,7 +372,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
@@ -458,14 +453,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\ApiKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$key_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The unique identifier of the API key to update.
+$key_id = 00000000-0000-0000-0000-000000000000; // string | The unique identifier of the API key to update.
 $update_api_key_request = new \OpenAPI\Client\Model\UpdateApiKeyRequest(); // \OpenAPI\Client\Model\UpdateApiKeyRequest | The request parameters for updating an existing API key.
 
 try {

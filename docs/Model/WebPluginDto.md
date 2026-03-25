@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **enabled** | **bool** | Specifies if the web plugin is enabled or not. |
 **system** | **bool** | Specifies if the web plugin is system or not. |
 **url** | **string** | The web plugin URL. |
+**css_url** | **string** | The web plugin css URL. |
 **settings** | **string** | The web plugin settings. |
+**name_locale** | **array<string,string>** | The web plugin localized name. | [optional]
+**description_locale** | **array<string,string>** | The web plugin localized description. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

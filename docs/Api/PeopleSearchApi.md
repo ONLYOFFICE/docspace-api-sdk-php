@@ -83,26 +83,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the account sharing settings from the response.
-$include_shared = true; // bool | Specifies whether to include the account sharing settings in the response.
-$invited_by_me = true; // bool | Specifies whether the user is invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The area of the account entries.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
-$count = 1234; // int | The number of items to retrieve in a request.
-$start_index = 1234; // int | The starting index for the query results.
-$filter_separator = some text; // string | Specifies the separator used in filter expressions.
-$filter_value = some text; // string | The text filter applied to the accounts search query.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the account sharing settings from the response.
+$include_shared = false; // bool | Specifies whether to include the account sharing settings in the response.
+$invited_by_me = false; // bool | Specifies whether the user is invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The area of the account entries.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
+$count = 25; // int | The number of items to retrieve in a request.
+$start_index = 0; // int | The starting index for the query results.
+$filter_separator = ,; // string | Specifies the separator used in filter expressions.
+$filter_value = John; // string | The text filter applied to the accounts search query.
 
 try {
     $result = $apiInstance->getAccountsEntriesWithFilesShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -187,26 +186,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the account sharing settings from the response.
-$include_shared = true; // bool | Specifies whether to include the account sharing settings in the response.
-$invited_by_me = true; // bool | Specifies whether the user is invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The area of the account entries.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
-$count = 1234; // int | The number of items to retrieve in a request.
-$start_index = 1234; // int | The starting index for the query results.
-$filter_separator = some text; // string | Specifies the separator used in filter expressions.
-$filter_value = some text; // string | The text filter applied to the accounts search query.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the account sharing settings from the response.
+$include_shared = false; // bool | Specifies whether to include the account sharing settings in the response.
+$invited_by_me = false; // bool | Specifies whether the user is invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The area of the account entries.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
+$count = 25; // int | The number of items to retrieve in a request.
+$start_index = 0; // int | The starting index for the query results.
+$filter_separator = ,; // string | Specifies the separator used in filter expressions.
+$filter_value = John; // string | The text filter applied to the accounts search query.
 
 try {
     $result = $apiInstance->getAccountsEntriesWithFoldersShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -291,26 +289,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the account sharing settings from the response.
-$include_shared = true; // bool | Specifies whether to include the account sharing settings in the response.
-$invited_by_me = true; // bool | Specifies whether the user is invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The area of the account entries.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
-$count = 1234; // int | The number of items to retrieve in a request.
-$start_index = 1234; // int | The starting index for the query results.
-$filter_separator = some text; // string | Specifies the separator used in filter expressions.
-$filter_value = some text; // string | The text filter applied to the accounts search query.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the account sharing settings from the response.
+$include_shared = false; // bool | Specifies whether to include the account sharing settings in the response.
+$invited_by_me = false; // bool | Specifies whether the user is invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The area of the account entries.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of the user types.
+$count = 25; // int | The number of items to retrieve in a request.
+$start_index = 0; // int | The starting index for the query results.
+$filter_separator = ,; // string | Specifies the separator used in filter expressions.
+$filter_value = John; // string | The text filter applied to the accounts search query.
 
 try {
     $result = $apiInstance->getAccountsEntriesWithRoomsShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -385,16 +382,15 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$query = some text; // string | The search query.
-$filter_by = some text; // string | Specifies a filter criteria for the user search query.
-$filter_value = some text; // string | The value used for filtering users, allowing additional constraints for the query.
+$query = John; // string | The search query.
+$filter_by = displayName; // string | Specifies a filter criteria for the user search query.
+$filter_value = John; // string | The value used for filtering users, allowing additional constraints for the query.
 
 try {
     $result = $apiInstance->getSearch($query, $filter_by, $filter_value);
@@ -486,33 +482,32 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$employee_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType(); // \OpenAPI\Client\Model\EmployeeType | The user type.
-$employee_types = array(56); // int[] | The list of user types.
-$is_administrator = true; // bool | Specifies if the user is an administrator or not.
-$payments = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Payments(); // \OpenAPI\Client\Model\Payments | The user payment status.
-$account_login_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AccountLoginType(); // \OpenAPI\Client\Model\AccountLoginType | The account login type.
-$quota_filter = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\QuotaFilter(); // \OpenAPI\Client\Model\QuotaFilter | The quota filter (All - 0, Default - 1, Custom - 2).
-$without_group = true; // bool | Specifies whether the user should be a member of a group or not.
-$exclude_group = true; // bool | Specifies whether the user should be a member of the group with the specified ID.
-$invited_by_me = true; // bool | Specifies whether the user is invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The filter area.
-$count = 1234; // int | The maximum number of items to be retrieved in the response.
-$start_index = 1234; // int | The zero-based index of the first item to be retrieved in a filtered result set.
-$sort_by = some text; // string | Specifies the property or field name by which the results should be sorted.
-$sort_order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortOrder(); // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
-$filter_separator = some text; // string | Represents the separator used to split filter criteria in query parameters.
-$filter_value = some text; // string | The search text used to filter results based on user input.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$group_id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$employee_type = 1; // \OpenAPI\Client\Model\EmployeeType | The user type.
+$employee_types = [1,2]; // int[] | The list of user types.
+$is_administrator = false; // bool | Specifies if the user is an administrator or not.
+$payments = 0; // \OpenAPI\Client\Model\Payments | The user payment status.
+$account_login_type = 0; // \OpenAPI\Client\Model\AccountLoginType | The account login type.
+$quota_filter = 0; // \OpenAPI\Client\Model\QuotaFilter | The quota filter (All - 0, Default - 1, Custom - 2).
+$without_group = false; // bool | Specifies whether the user should be a member of a group or not.
+$exclude_group = false; // bool | Specifies whether the user should be a member of the group with the specified ID.
+$invited_by_me = false; // bool | Specifies whether the user is invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The filter area.
+$count = 25; // int | The maximum number of items to be retrieved in the response.
+$start_index = 0; // int | The zero-based index of the first item to be retrieved in a filtered result set.
+$sort_by = displayName; // string | Specifies the property or field name by which the results should be sorted.
+$sort_order = 0; // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
+$filter_separator = ,; // string | Represents the separator used to split filter criteria in query parameters.
+$filter_value = John; // string | The search text used to filter results based on user input.
 
 try {
     $result = $apiInstance->getSimpleByFilter($employee_status, $group_id, $activation_status, $employee_type, $employee_types, $is_administrator, $payments, $account_login_type, $quota_filter, $without_group, $exclude_group, $invited_by_me, $inviter_id, $area, $count, $start_index, $sort_by, $sort_order, $filter_separator, $filter_value);
@@ -597,26 +592,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the user sharing settings or not.
-$include_shared = true; // bool | Specifies whether to include the user sharing settings or not.
-$invited_by_me = true; // bool | Specifies whether the user was invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The user area.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
-$count = 1234; // int | The maximum number of users to be retrieved in the request.
-$start_index = 1234; // int | The zero-based index of the first record to retrieve in a paged query.
-$filter_separator = some text; // string | The character or string used to separate multiple filter values in a filtering query.
-$filter_value = some text; // string | The filter text value used for searching or filtering user results.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the user sharing settings or not.
+$include_shared = false; // bool | Specifies whether to include the user sharing settings or not.
+$invited_by_me = false; // bool | Specifies whether the user was invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The user area.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
+$count = 25; // int | The maximum number of users to be retrieved in the request.
+$start_index = 0; // int | The zero-based index of the first record to retrieve in a paged query.
+$filter_separator = ,; // string | The character or string used to separate multiple filter values in a filtering query.
+$filter_value = John; // string | The filter text value used for searching or filtering user results.
 
 try {
     $result = $apiInstance->getUsersWithFilesShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -701,26 +695,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the user sharing settings or not.
-$include_shared = true; // bool | Specifies whether to include the user sharing settings or not.
-$invited_by_me = true; // bool | Specifies whether the user was invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The user area.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
-$count = 1234; // int | The maximum number of users to be retrieved in the request.
-$start_index = 1234; // int | The zero-based index of the first record to retrieve in a paged query.
-$filter_separator = some text; // string | The character or string used to separate multiple filter values in a filtering query.
-$filter_value = some text; // string | The filter text value used for searching or filtering user results.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the user sharing settings or not.
+$include_shared = false; // bool | Specifies whether to include the user sharing settings or not.
+$invited_by_me = false; // bool | Specifies whether the user was invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The user area.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
+$count = 25; // int | The maximum number of users to be retrieved in the request.
+$start_index = 0; // int | The zero-based index of the first record to retrieve in a paged query.
+$filter_separator = ,; // string | The character or string used to separate multiple filter values in a filtering query.
+$filter_value = John; // string | The filter text value used for searching or filtering user results.
 
 try {
     $result = $apiInstance->getUsersWithFoldersShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -805,26 +798,25 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The user ID.
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$exclude_shared = true; // bool | Specifies whether to exclude the user sharing settings or not.
-$include_shared = true; // bool | Specifies whether to include the user sharing settings or not.
-$invited_by_me = true; // bool | Specifies whether the user was invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The user area.
-$employee_types = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType()); // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
-$count = 1234; // int | The maximum number of users to be retrieved in the request.
-$start_index = 1234; // int | The zero-based index of the first record to retrieve in a paged query.
-$filter_separator = some text; // string | The character or string used to separate multiple filter values in a filtering query.
-$filter_value = some text; // string | The filter text value used for searching or filtering user results.
+$id = 56; // int | The user ID.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$exclude_shared = false; // bool | Specifies whether to exclude the user sharing settings or not.
+$include_shared = false; // bool | Specifies whether to include the user sharing settings or not.
+$invited_by_me = false; // bool | Specifies whether the user was invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The user area.
+$employee_types = [1,2]; // \OpenAPI\Client\Model\EmployeeType[] | The list of user types.
+$count = 25; // int | The maximum number of users to be retrieved in the request.
+$start_index = 0; // int | The zero-based index of the first record to retrieve in a paged query.
+$filter_separator = ,; // string | The character or string used to separate multiple filter values in a filtering query.
+$filter_value = John; // string | The filter text value used for searching or filtering user results.
 
 try {
     $result = $apiInstance->getUsersWithRoomShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value);
@@ -916,33 +908,32 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$employee_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID.
-$activation_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
-$employee_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType(); // \OpenAPI\Client\Model\EmployeeType | The user type.
-$employee_types = array(56); // int[] | The list of user types.
-$is_administrator = true; // bool | Specifies if the user is an administrator or not.
-$payments = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Payments(); // \OpenAPI\Client\Model\Payments | The user payment status.
-$account_login_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\AccountLoginType(); // \OpenAPI\Client\Model\AccountLoginType | The account login type.
-$quota_filter = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\QuotaFilter(); // \OpenAPI\Client\Model\QuotaFilter | The quota filter (All - 0, Default - 1, Custom - 2).
-$without_group = true; // bool | Specifies whether the user should be a member of a group or not.
-$exclude_group = true; // bool | Specifies whether the user should be a member of the group with the specified ID.
-$invited_by_me = true; // bool | Specifies whether the user is invited by the current user or not.
-$inviter_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The inviter ID.
-$area = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\Area(); // \OpenAPI\Client\Model\Area | The filter area.
-$count = 1234; // int | The maximum number of items to be retrieved in the response.
-$start_index = 1234; // int | The zero-based index of the first item to be retrieved in a filtered result set.
-$sort_by = some text; // string | Specifies the property or field name by which the results should be sorted.
-$sort_order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortOrder(); // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
-$filter_separator = some text; // string | Represents the separator used to split filter criteria in query parameters.
-$filter_value = some text; // string | The search text used to filter results based on user input.
+$employee_status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$group_id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
+$activation_status = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The user activation status.
+$employee_type = 1; // \OpenAPI\Client\Model\EmployeeType | The user type.
+$employee_types = [1,2]; // int[] | The list of user types.
+$is_administrator = false; // bool | Specifies if the user is an administrator or not.
+$payments = 0; // \OpenAPI\Client\Model\Payments | The user payment status.
+$account_login_type = 0; // \OpenAPI\Client\Model\AccountLoginType | The account login type.
+$quota_filter = 0; // \OpenAPI\Client\Model\QuotaFilter | The quota filter (All - 0, Default - 1, Custom - 2).
+$without_group = false; // bool | Specifies whether the user should be a member of a group or not.
+$exclude_group = false; // bool | Specifies whether the user should be a member of the group with the specified ID.
+$invited_by_me = false; // bool | Specifies whether the user is invited by the current user or not.
+$inviter_id = 00000000-0000-0000-0000-000000000000; // string | The inviter ID.
+$area = 0; // \OpenAPI\Client\Model\Area | The filter area.
+$count = 25; // int | The maximum number of items to be retrieved in the response.
+$start_index = 0; // int | The zero-based index of the first item to be retrieved in a filtered result set.
+$sort_by = displayName; // string | Specifies the property or field name by which the results should be sorted.
+$sort_order = 0; // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
+$filter_separator = ,; // string | Represents the separator used to split filter criteria in query parameters.
+$filter_value = John; // string | The search text used to filter results based on user input.
 
 try {
     $result = $apiInstance->searchUsersByExtendedFilter($employee_status, $group_id, $activation_status, $employee_type, $employee_types, $is_administrator, $payments, $account_login_type, $quota_filter, $without_group, $exclude_group, $invited_by_me, $inviter_id, $area, $count, $start_index, $sort_by, $sort_order, $filter_separator, $filter_value);
@@ -1015,14 +1006,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$query = some text; // string | The search query.
+$query = John; // string | The search query.
 
 try {
     $result = $apiInstance->searchUsersByQuery($query);
@@ -1098,17 +1088,16 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$query = some text; // string | The advanced search query.
-$filter_by = some text; // string | Specifies the criteria used to filter search results in advanced queries.
-$filter_value = some text; // string | The value used to filter the search query.
+$status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$query = John; // string | The advanced search query.
+$filter_by = displayName; // string | Specifies the criteria used to filter search results in advanced queries.
+$filter_value = John; // string | The value used to filter the search query.
 
 try {
     $result = $apiInstance->searchUsersByStatus($status, $query, $filter_by, $filter_value);

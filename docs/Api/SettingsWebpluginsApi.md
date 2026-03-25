@@ -65,14 +65,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebpluginsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$system = true; // bool | Specifies whether to load the system plugins or not.
+$system = false; // bool | Specifies whether to load the system plugins or not.
 
 try {
     $result = $apiInstance->addWebPluginFromFile($system);
@@ -145,14 +144,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebpluginsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$name = Winfield Upton; // string | The web plugin name.
+$name = example-plugin; // string | The web plugin name.
 
 try {
     $apiInstance->deleteWebPlugin($name);
@@ -224,14 +222,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebpluginsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$name = Winfield Upton; // string | The web plugin name.
+$name = example-plugin; // string | The web plugin name.
 
 try {
     $result = $apiInstance->getWebPlugin($name);
@@ -302,7 +299,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\WebpluginsApi(
@@ -385,14 +381,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebpluginsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$name = Winfield Upton; // string | The web plugin name.
+$name = example-plugin; // string | The web plugin name.
 $web_plugin_requests = new \OpenAPI\Client\Model\WebPluginRequests(); // \OpenAPI\Client\Model\WebPluginRequests | The configuration settings for the web plugin instance.
 
 try {

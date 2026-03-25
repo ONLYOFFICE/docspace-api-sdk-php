@@ -65,7 +65,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -153,23 +152,22 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$user_id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The ID of the user who triggered the audit event.
-$module_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\LocationType(); // \OpenAPI\Client\Model\LocationType | The location where the audit event occurred.
-$action_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ActionType(); // \OpenAPI\Client\Model\ActionType | The type of action performed in the audit event (e.g., Create, Update, Delete).
-$action = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\MessageAction(); // \OpenAPI\Client\Model\MessageAction | The specific action that occurred within the audit event.
-$entry_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EntryType(); // \OpenAPI\Client\Model\EntryType | The type of audit entry (e.g., Folder, User, File).
-$target = some text; // string | The target object affected by the audit event (e.g., document ID, user account).
-$from = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering audit events.
-$to = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering audit events.
-$count = 1234; // int | The maximum number of audit event records to retrieve.
-$start_index = 1234; // int | The index of the first audit event record to retrieve in a paged query.
+$user_id = 00000000-0000-0000-0000-000000000001; // string | The ID of the user who triggered the audit event.
+$module_type = Files; // \OpenAPI\Client\Model\LocationType | The location where the audit event occurred.
+$action_type = Create; // \OpenAPI\Client\Model\ActionType | The type of action performed in the audit event (e.g., Create, Update, Delete).
+$action = FileCreated; // \OpenAPI\Client\Model\MessageAction | The specific action that occurred within the audit event.
+$entry_type = File; // \OpenAPI\Client\Model\EntryType | The type of audit entry (e.g., Folder, User, File).
+$target = document.docx; // string | The target object affected by the audit event (e.g., document ID, user account).
+$from = 2024-01-01T00:00:00Z; // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering audit events.
+$to = 2024-01-31T23:59:59Z; // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering audit events.
+$count = 100; // int | The maximum number of audit event records to retrieve.
+$start_index = 0; // int | The index of the first audit event record to retrieve in a paged query.
 
 try {
     $result = $apiInstance->getAuditEventsByFilter($user_id, $module_type, $action_type, $action, $entry_type, $target, $from, $to, $count, $start_index);
@@ -240,7 +238,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -298,14 +295,13 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$product_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ProductType(); // \OpenAPI\Client\Model\ProductType | The type of product related to the audit trail.
-$module_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\LocationType(); // \OpenAPI\Client\Model\LocationType | The location associated with the audit trail.
+$product_type = Documents; // \OpenAPI\Client\Model\ProductType | The type of product related to the audit trail.
+$module_type = Files; // \OpenAPI\Client\Model\LocationType | The location associated with the audit trail.
 
 try {
     $result = $apiInstance->getAuditTrailMappers($product_type, $module_type);
@@ -352,7 +348,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
@@ -428,7 +423,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
@@ -507,7 +501,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(

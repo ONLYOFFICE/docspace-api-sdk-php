@@ -42,7 +42,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
 
-
 $apiInstance = new OpenAPI\Client\Api\ScopeManagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.

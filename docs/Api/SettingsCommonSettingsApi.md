@@ -16,11 +16,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getPortalSettings()**](SettingsCommonSettingsApi.md#getPortalSettings) | **GET** /api/2.0/settings | Get the portal settings |
 | [**getSocketSettings()**](SettingsCommonSettingsApi.md#getSocketSettings) | **GET** /api/2.0/settings/socket | Get the socket settings |
 | [**getSupportedCultures()**](SettingsCommonSettingsApi.md#getSupportedCultures) | **GET** /api/2.0/settings/cultures | Get supported languages |
+| [**getTenantAiAccessSettings()**](SettingsCommonSettingsApi.md#getTenantAiAccessSettings) | **GET** /api/2.0/settings/ai-access | Get the AI access settings for the portal |
 | [**getTenantUserInvitationSettings()**](SettingsCommonSettingsApi.md#getTenantUserInvitationSettings) | **GET** /api/2.0/settings/invitationsettings | Get the user invitation settings |
 | [**getTimeZones()**](SettingsCommonSettingsApi.md#getTimeZones) | **GET** /api/2.0/settings/timezones | Get time zones |
+| [**saveDefaultFolder()**](SettingsCommonSettingsApi.md#saveDefaultFolder) | **PUT** /api/2.0/settings/defaultfolder | Set the default folder |
 | [**saveDnsSettings()**](SettingsCommonSettingsApi.md#saveDnsSettings) | **PUT** /api/2.0/settings/dns | Save the DNS settings |
 | [**saveMailDomainSettings()**](SettingsCommonSettingsApi.md#saveMailDomainSettings) | **POST** /api/2.0/settings/maildomainsettings | Save the mail domain settings |
 | [**savePortalColorTheme()**](SettingsCommonSettingsApi.md#savePortalColorTheme) | **PUT** /api/2.0/settings/colortheme | Save a color theme |
+| [**setTenantAiAccessSettings()**](SettingsCommonSettingsApi.md#setTenantAiAccessSettings) | **POST** /api/2.0/settings/ai-access | Set the AI access for the portal |
 | [**updateEmailActivationSettings()**](SettingsCommonSettingsApi.md#updateEmailActivationSettings) | **PUT** /api/2.0/settings/emailactivation | Update the email activation settings |
 | [**updateInvitationSettings()**](SettingsCommonSettingsApi.md#updateInvitationSettings) | **PUT** /api/2.0/settings/invitationsettings | Update user invitation settings |
 
@@ -75,7 +78,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -153,7 +155,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -235,7 +236,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -315,14 +315,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The ID of the portal theme to delete.
+$id = 1; // int | The ID of the portal theme to delete.
 
 try {
     $result = $apiInstance->deletePortalColorTheme($id);
@@ -369,7 +368,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -447,7 +445,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -500,7 +497,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -576,7 +572,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -655,7 +650,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -710,7 +704,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -789,7 +782,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -844,7 +836,6 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -856,6 +847,82 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->getSupportedCultures: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTenantAiAccessSettings()`
+
+```php
+getTenantAiAccessSettings(): \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper
+```
+
+Get the AI access settings for the portal
+Returns the current portal-level AI access settings that control whether all AI functionality  (chat, agents, vectorization) is available for the portal. AI is enabled by default.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-ai-access-settings/).
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\TenantAiAccessSettingsWrapper**](../Model/TenantAiAccessSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getTenantAiAccessSettings();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommonSettingsApi->getTenantAiAccessSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -896,7 +963,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -974,7 +1040,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -993,6 +1058,85 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `saveDefaultFolder()`
+
+```php
+saveDefaultFolder($default_product_request_dto): \OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper
+```
+
+Set the default folder
+Sets the default folder.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/save-default-folder/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **default_product_request_dto** | [**\OpenAPI\Client\Model\DefaultProductRequestDto**](../Model/DefaultProductRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper**](../Model/StudioDefaultPageSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$default_product_request_dto = new \OpenAPI\Client\Model\DefaultProductRequestDto(); // \OpenAPI\Client\Model\DefaultProductRequestDto
+
+try {
+    $result = $apiInstance->saveDefaultFolder($default_product_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommonSettingsApi->saveDefaultFolder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1051,7 +1195,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -1133,7 +1276,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1213,7 +1355,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1227,6 +1368,85 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->savePortalColorTheme: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setTenantAiAccessSettings()`
+
+```php
+setTenantAiAccessSettings($tenant_ai_access_settings_dto): \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper
+```
+
+Set the AI access for the portal
+Updates the portal-level AI access settings. When AI is disabled, all AI features are turned off:  the AI Agents folder is hidden from root folder listings, AI status checks immediately return disabled,  and AI chat endpoints become inaccessible. Only users with the DocSpaceAdmin role  (EditPortalSettings permission) can change this setting.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **tenant_ai_access_settings_dto** | [**\OpenAPI\Client\Model\TenantAiAccessSettingsDto**](../Model/TenantAiAccessSettingsDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\TenantAiAccessSettingsWrapper**](../Model/TenantAiAccessSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$tenant_ai_access_settings_dto = new \OpenAPI\Client\Model\TenantAiAccessSettingsDto(); // \OpenAPI\Client\Model\TenantAiAccessSettingsDto
+
+try {
+    $result = $apiInstance->setTenantAiAccessSettings($tenant_ai_access_settings_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommonSettingsApi->setTenantAiAccessSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1291,7 +1511,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
@@ -1371,7 +1590,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(

@@ -61,7 +61,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\LoginHistoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -136,7 +135,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\LoginHistoryApi(
@@ -222,19 +220,18 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\LoginHistoryApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$user_id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The ID of the user whose login events are being queried.
-$action = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\MessageAction(); // \OpenAPI\Client\Model\MessageAction | The login-related action to filter events by.
-$from = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering login events.
-$to = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering login events.
-$count = 1234; // int | The number of login events to retrieve in the query.
-$start_index = 1234; // int | The starting index for fetching a subset of login events from the query results.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the user whose login events are being queried.
+$action = FileCreated; // \OpenAPI\Client\Model\MessageAction | The login-related action to filter events by.
+$from = 2024-01-15T10:30:00Z; // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering login events.
+$to = 2024-01-15T10:30:00Z; // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering login events.
+$count = 1; // int | The number of login events to retrieve in the query.
+$start_index = 1; // int | The starting index for fetching a subset of login events from the query results.
 
 try {
     $result = $apiInstance->getLoginEventsByFilter($user_id, $action, $from, $to, $count, $start_index);

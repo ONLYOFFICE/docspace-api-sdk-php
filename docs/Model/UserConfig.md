@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **name** | **string** | The full name of the user. | [optional]
 **image** | **string** | The path to the user&#39;s avatar. | [optional]
 **roles** | **string[]** | Roles | [optional]
-**customer_id** | **string** |  | [optional]
+**customer_id** | **string** | Customer identifier associated with the user. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

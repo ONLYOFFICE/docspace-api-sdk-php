@@ -45,7 +45,6 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -73,7 +72,7 @@ try {
 ## `authenticateMeFromBodyWithCode()`
 
 ```php
-authenticateMeFromBodyWithCode($code, $auth_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
+authenticateMeFromBodyWithCode($code, $auth_with_code_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
 ```
 
 Authenticate a user by code
@@ -86,7 +85,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **code** | **string**|  | |
-| **auth_requests_dto** | [**\OpenAPI\Client\Model\AuthRequestsDto**](../Model/AuthRequestsDto.md)|  | [optional] |
+| **auth_with_code_requests_dto** | [**\OpenAPI\Client\Model\AuthWithCodeRequestsDto**](../Model/AuthWithCodeRequestsDto.md)|  | [optional] |
 
 ### Return type
 
@@ -103,17 +102,16 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $code = 'code_example'; // string
-$auth_requests_dto = new \OpenAPI\Client\Model\AuthRequestsDto(); // \OpenAPI\Client\Model\AuthRequestsDto
+$auth_with_code_requests_dto = new \OpenAPI\Client\Model\AuthWithCodeRequestsDto(); // \OpenAPI\Client\Model\AuthWithCodeRequestsDto
 
 try {
-    $result = $apiInstance->authenticateMeFromBodyWithCode($code, $auth_requests_dto);
+    $result = $apiInstance->authenticateMeFromBodyWithCode($code, $auth_with_code_requests_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->authenticateMeFromBodyWithCode: ', $e->getMessage(), PHP_EOL;
@@ -159,7 +157,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
@@ -216,7 +213,6 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -268,7 +264,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
@@ -348,7 +343,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -404,7 +398,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(

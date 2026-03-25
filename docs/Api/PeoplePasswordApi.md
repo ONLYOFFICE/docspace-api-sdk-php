@@ -11,7 +11,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `changeUserPassword()`
 
 ```php
-changeUserPassword($userid, $member_base_request_dto): \OpenAPI\Client\Model\EmployeeFullWrapper
+changeUserPassword($userid, $change_password_request): \OpenAPI\Client\Model\EmployeeFullWrapper
 ```
 
 Change a user password
@@ -24,7 +24,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **userid** | **string**| The user ID. | |
-| **member_base_request_dto** | [**\OpenAPI\Client\Model\MemberBaseRequestDto**](../Model/MemberBaseRequestDto.md)| The request parameters for the user generic information. | |
+| **change_password_request** | [**\OpenAPI\Client\Model\ChangePasswordRequest**](../Model/ChangePasswordRequest.md)| The request parameters for updating a user password. | |
 
 ### Return type
 
@@ -63,18 +63,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PasswordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The user ID.
-$member_base_request_dto = new \OpenAPI\Client\Model\MemberBaseRequestDto(); // \OpenAPI\Client\Model\MemberBaseRequestDto | The request parameters for the user generic information.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
+$change_password_request = new \OpenAPI\Client\Model\ChangePasswordRequest(); // \OpenAPI\Client\Model\ChangePasswordRequest | The request parameters for updating a user password.
 
 try {
-    $result = $apiInstance->changeUserPassword($userid, $member_base_request_dto);
+    $result = $apiInstance->changeUserPassword($userid, $change_password_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PasswordApi->changeUserPassword: ', $e->getMessage(), PHP_EOL;
@@ -120,7 +119,6 @@ No authorization required
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\PasswordApi(

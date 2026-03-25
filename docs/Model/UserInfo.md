@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The user ID. | [optional]
-**first_name** | **string** | The user first name. | [optional]
-**last_name** | **string** | The user last name. | [optional]
+**first_name** | **string** | The user&#39;s first name. | [optional]
+**last_name** | **string** | The user&#39;s last name. | [optional]
 **user_name** | **string** | The user username. | [optional]
 **birth_date** | **\DateTime** | The user birthday. | [optional]
 **sex** | **bool** | The user sex (male or female). | [optional]
@@ -27,13 +27,13 @@ Name | Type | Description | Notes
 **culture_name** | **string** | The user culture code. | [optional]
 **mobile_phone** | **string** | The user mobile phone. | [optional]
 **mobile_phone_activation_status** | [**\OpenAPI\Client\Model\MobilePhoneActivationStatus**](MobilePhoneActivationStatus.md) |  | [optional]
-**sid** | **string** | The LDAP user identificator. | [optional]
+**sid** | **string** | The LDAP user identifier. | [optional]
 **ldap_qouta** | **int** | The LDAP user quota attribute. | [optional]
-**sso_name_id** | **string** | The SSO SAML user identificator. | [optional]
-**sso_session_id** | **string** | The SSO SAML user session identificator. | [optional]
+**sso_name_id** | **string** | The SSO SAML user identifier. | [optional]
+**sso_session_id** | **string** | The SSO SAML user session identifier. | [optional]
 **create_date** | **\DateTime** | The date and time when the user account was created. | [optional]
 **created_by** | **string** | The ID of the user who created the current user account. | [optional]
 **spam** | **bool** | Specifies if tips, updates and offers are allowed to be sent to the user or not. | [optional]
-**check_activation** | **bool** |  | [optional] [readonly]
+**check_activation** | **bool** | Indicates whether the activation status of the employee or recipient is unchecked or inactive.  Depending on the context, this property evaluates the activation or eligibility status accordingly. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

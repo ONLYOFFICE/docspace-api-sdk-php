@@ -69,7 +69,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -149,7 +148,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -227,7 +225,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -255,7 +252,7 @@ try {
 ## `getWebhookTriggers()`
 
 ```php
-getWebhookTriggers(): \OpenAPI\Client\Model\UnknownWrapper
+getWebhookTriggers(): \OpenAPI\Client\Model\GetWebhookTriggers200Response
 ```
 
 Get webhook triggers
@@ -269,7 +266,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\UnknownWrapper**](../Model/UnknownWrapper.md)
+[**\OpenAPI\Client\Model\GetWebhookTriggers200Response**](../Model/GetWebhookTriggers200Response.md)
 
 ### Authorization
 
@@ -302,7 +299,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
@@ -392,23 +388,22 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$delivery_from = 2008-04-10T06:30+04:00; // \DateTime | The delivery start time for filtering webhook logs.
-$delivery_to = 2008-04-10T06:30+04:00; // \DateTime | The delivery end time for filtering webhook logs.
-$hook_uri = some text; // string | The destination URL where webhooks are delivered.
-$config_id = 1234; // int | The webhook configuration identifier.
-$event_id = 1234; // int | The unique identifier of the event that triggered the webhook.
-$group_status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\WebhookGroupStatus(); // \OpenAPI\Client\Model\WebhookGroupStatus | The status of the webhook delivery group.
-$user_id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The identifier of the user associated with the webhook event.
-$trigger = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\WebhookTrigger(); // \OpenAPI\Client\Model\WebhookTrigger | The type of event that triggered the webhook.
-$count = 1234; // int | The maximum number of webhook log records to return in the query response.
-$start_index = 1234; // int | Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries.
+$delivery_from = 2024-01-15T10:30Z; // \DateTime | The delivery start time for filtering webhook logs.
+$delivery_to = 2024-01-15T10:30Z; // \DateTime | The delivery end time for filtering webhook logs.
+$hook_uri = https://example.com/webhook; // string | The destination URL where webhooks are delivered.
+$config_id = 1; // int | The webhook configuration identifier.
+$event_id = 1; // int | The unique identifier of the event that triggered the webhook.
+$group_status = NotSent; // \OpenAPI\Client\Model\WebhookGroupStatus | The status of the webhook delivery group.
+$user_id = 'user_id_example'; // string | The identifier of the user associated with the webhook event.
+$trigger = 0; // \OpenAPI\Client\Model\WebhookTrigger | The type of event that triggered the webhook.
+$count = 1; // int | The maximum number of webhook log records to return in the query response.
+$start_index = 1; // int | Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries.
 
 try {
     $result = $apiInstance->getWebhooksLogs($delivery_from, $delivery_to, $hook_uri, $config_id, $event_id, $group_status, $user_id, $trigger, $count, $start_index);
@@ -481,14 +476,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The ID extracted from the route parameters.
+$id = 1; // int | The ID extracted from the route parameters.
 
 try {
     $result = $apiInstance->removeWebhook($id);
@@ -561,14 +555,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The ID extracted from the route parameters.
+$id = 1; // int | The ID extracted from the route parameters.
 
 try {
     $result = $apiInstance->retryWebhook($id);
@@ -639,7 +632,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
@@ -719,7 +711,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\WebhooksApi(

@@ -67,18 +67,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The group ID.
-$exclude_shared = true; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 1234; // int | The number of groups to retrieve in the request.
-$start_index = 1234; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = some text; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 56; // int | The group ID.
+$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
+$count = 25; // int | The number of groups to retrieve in the request.
+$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
+$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
 
 try {
     $result = $apiInstance->getGroupsWithFilesShared($id, $exclude_shared, $count, $start_index, $filter_value);
@@ -155,18 +154,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The group ID.
-$exclude_shared = true; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 1234; // int | The number of groups to retrieve in the request.
-$start_index = 1234; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = some text; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 56; // int | The group ID.
+$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
+$count = 25; // int | The number of groups to retrieve in the request.
+$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
+$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
 
 try {
     $result = $apiInstance->getGroupsWithFoldersShared($id, $exclude_shared, $count, $start_index, $filter_value);
@@ -243,18 +241,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The group ID.
-$exclude_shared = true; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 1234; // int | The number of groups to retrieve in the request.
-$start_index = 1234; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = some text; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 56; // int | The group ID.
+$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
+$count = 25; // int | The number of groups to retrieve in the request.
+$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
+$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
 
 try {
     $result = $apiInstance->getGroupsWithRoomsShared($id, $exclude_shared, $count, $start_index, $filter_value);

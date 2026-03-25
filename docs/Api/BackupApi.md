@@ -4,6 +4,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**cancelBackup()**](BackupApi.md#cancelBackup) | **POST** /api/2.0/backup/cancelbackup | Cancel current backup |
 | [**createBackupSchedule()**](BackupApi.md#createBackupSchedule) | **POST** /api/2.0/backup/createbackupschedule | Create the backup schedule |
 | [**deleteBackup()**](BackupApi.md#deleteBackup) | **DELETE** /api/2.0/backup/deletebackup/{id} | Delete the backup |
 | [**deleteBackupHistory()**](BackupApi.md#deleteBackupHistory) | **DELETE** /api/2.0/backup/deletebackuphistory | Delete the backup history |
@@ -17,6 +18,82 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**startBackup()**](BackupApi.md#startBackup) | **POST** /api/2.0/backup/startbackup | Start the backup |
 | [**startBackupRestore()**](BackupApi.md#startBackupRestore) | **POST** /api/2.0/backup/startrestore | Start the restoring process |
 
+
+## `cancelBackup()`
+
+```php
+cancelBackup(): \OpenAPI\Client\Model\BooleanWrapper
+```
+
+Cancel current backup
+Cancel current backup.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/cancel-backup/).
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\BooleanWrapper**](../Model/BooleanWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\BackupApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->cancelBackup();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BackupApi->cancelBackup: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createBackupSchedule()`
 
@@ -70,7 +147,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
@@ -152,14 +228,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The backup ID.
+$id = 00000000-0000-0000-0000-000000000000; // string | The backup ID.
 
 try {
     $result = $apiInstance->deleteBackup($id);
@@ -230,7 +305,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
@@ -312,7 +386,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -390,7 +463,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
@@ -472,7 +544,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -552,7 +623,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -585,7 +655,7 @@ getBackupsCount($from, $to, $paid): \OpenAPI\Client\Model\Int32Wrapper
 ```
 
 Get the number of backups
-Returns the number of backups for a period of time. The default is one month.
+Returns the number of backups for a period of time. The default is the current calendar month.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-count/).
 
@@ -634,16 +704,15 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$from = 2008-04-10T06:30+04:00; // \DateTime | The from date.
-$to = 2008-04-10T06:30+04:00; // \DateTime | The to date.
-$paid = true; // bool | Specifies if the backups are paid or not.
+$from = 2025-01-01T00:00Z; // \DateTime | The from date.
+$to = 2025-12-31T23:59:59Z; // \DateTime | The to date.
+$paid = false; // bool | Specifies if the backups are paid or not.
 
 try {
     $result = $apiInstance->getBackupsCount($from, $to, $paid);
@@ -714,7 +783,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -771,13 +839,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$dump = true; // bool | Specifies if a dump will be created or not.
+$dump = false; // bool | Specifies if a dump will be created or not.
 
 try {
     $result = $apiInstance->getRestoreProgress($dump);
@@ -848,7 +915,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\BackupApi(
@@ -928,7 +994,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\BackupApi(

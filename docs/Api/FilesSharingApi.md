@@ -53,13 +53,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$key = some text; // string | The unique document identifier.
+$key = doc_key_123; // string | The unique document identifier.
 $external_share_request_param = new \OpenAPI\Client\Model\ExternalShareRequestParam(); // \OpenAPI\Client\Model\ExternalShareRequestParam | The external data share request parameters.
 
 try {
@@ -133,7 +132,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -193,15 +191,14 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$key = some text; // string | The unique key of the external shared data.
-$file_id = 9846; // string | The unique document identifier.
-$folder_id = 9846; // string | The unique folder identifier.
+$key = doc_key_123; // string | The unique key of the external shared data.
+$file_id = 1; // string | The unique document identifier.
+$folder_id = 1; // string | The unique folder identifier.
 
 try {
     $result = $apiInstance->getExternalShareData($key, $file_id, $folder_id);
@@ -276,16 +273,15 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The file unique identifier.
-$count = 1234; // int | The number of items to retrieve in the request.
-$start_index = 1234; // int | The starting index for the query results.
+$id = 10; // int | The file unique identifier.
+$count = 25; // int | The number of items to retrieve in the request.
+$start_index = 0; // int | The starting index for the query results.
 
 try {
     $result = $apiInstance->getFileSecurityInfo($id, $count, $start_index);
@@ -360,16 +356,15 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The folder unique identifier.
-$count = 1234; // int | The number of items to retrieve in the request.
-$start_index = 1234; // int | The starting index for the query results.
+$id = 10; // int | The folder unique identifier.
+$count = 25; // int | The number of items to retrieve in the request.
+$start_index = 0; // int | The starting index for the query results.
 
 try {
     $result = $apiInstance->getFolderSecurityInfo($id, $count, $start_index);
@@ -446,18 +441,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
-$group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID.
-$count = 1234; // int | The number of items to be retrieved in the current query.
-$start_index = 1234; // int | The starting index for the query result set.
-$filter_value = some text; // string | The filter value used for searching or querying group members based on text input.
+$file_id = 1; // int | The file ID.
+$group_id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
+$count = 25; // int | The number of items to be retrieved in the current query.
+$start_index = 0; // int | The starting index for the query result set.
+$filter_value = My Document; // string | The filter value used for searching or querying group members based on text input.
 
 try {
     $result = $apiInstance->getGroupsMembersWithFileSecurity($file_id, $group_id, $count, $start_index, $filter_value);
@@ -534,18 +528,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The folder ID.
-$group_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The group ID.
-$count = 1234; // int | The number of items to be retrieved in the current query.
-$start_index = 1234; // int | The starting index for the query result set.
-$filter_value = some text; // string | The filter value used for searching or querying group members based on text input.
+$folder_id = 1; // int | The folder ID.
+$group_id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
+$count = 25; // int | The number of items to be retrieved in the current query.
+$start_index = 0; // int | The starting index for the query result set.
+$filter_value = My Document; // string | The filter value used for searching or querying group members based on text input.
 
 try {
     $result = $apiInstance->getGroupsMembersWithFolderSecurity($folder_id, $group_id, $count, $start_index, $filter_value);
@@ -616,7 +609,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
@@ -698,14 +690,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getSharedUsers($file_id);
@@ -776,7 +767,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
@@ -859,14 +849,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID with the mention message.
+$file_id = 56; // int | The file ID with the mention message.
 $mention_message_wrapper = new \OpenAPI\Client\Model\MentionMessageWrapper(); // \OpenAPI\Client\Model\MentionMessageWrapper | The mention message.
 
 try {
@@ -941,14 +930,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
+$file_id = 1; // int | The file ID.
 $security_info_simple_request_dto = new \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto(); // \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto | The parameters of the security information simple request.
 
 try {
@@ -1023,14 +1011,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\SharingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The folder ID.
+$folder_id = 1; // int | The folder ID.
 $security_info_simple_request_dto = new \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto(); // \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto | The parameters of the security information simple request.
 
 try {
@@ -1102,7 +1089,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\SharingApi(

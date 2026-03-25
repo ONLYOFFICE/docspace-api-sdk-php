@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **plugins** | [**\OpenAPI\Client\Model\PluginsConfig**](PluginsConfig.md) |  | [optional]
 **recent** | [**\OpenAPI\Client\Model\RecentConfig[]**](RecentConfig.md) | The recent configuration of the editor. | [optional]
 **templates** | [**\OpenAPI\Client\Model\TemplatesConfig[]**](TemplatesConfig.md) | The templates of the editor configuration. | [optional]
-**user** | [**\OpenAPI\Client\Model\UserConfig**](UserConfig.md) |  |
+**user** | [**\OpenAPI\Client\Model\UserConfig**](UserConfig.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

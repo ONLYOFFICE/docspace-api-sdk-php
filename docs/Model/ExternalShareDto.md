@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**\OpenAPI\Client\Model\Status**](Status.md) |  |
-**id** | **string** | The external data ID. |
-**title** | **string** | The external data title. |
+**id** | **string** | The external data ID. | [optional]
+**title** | **string** | The external data title. | [optional]
 **type** | [**\OpenAPI\Client\Model\FileEntryType**](FileEntryType.md) |  | [optional]
 **tenant_id** | **int** | The tenant ID. |
 **entity_id** | **string** | The unique identifier of the shared entity. | [optional]

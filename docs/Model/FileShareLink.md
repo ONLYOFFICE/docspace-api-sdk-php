@@ -15,5 +15,7 @@ Name | Type | Description | Notes
 **primary** | **bool** | Indicates whether this is the primary shared link. | [optional]
 **internal** | **bool** | Indicates whether the link is for the internal sharing only. | [optional]
 **request_token** | **string** | The token for validating access requests. | [optional]
+**max_use_count** | **int** | The maximum number of times the invitation link can be used. | [optional]
+**current_use_count** | **int** | The current number of times the invitation link has been used. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

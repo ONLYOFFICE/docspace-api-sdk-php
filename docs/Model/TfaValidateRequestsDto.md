@@ -5,5 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **string** | The verification code provided by the user. |
+**session** | **bool** | Specifies whether the authentication is session-based. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

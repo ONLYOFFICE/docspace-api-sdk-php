@@ -5,7 +5,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getUserTypeUpdateProgress()**](PeopleUserTypeApi.md#getUserTypeUpdateProgress) | **GET** /api/2.0/people/type/progress/{userid} | Get the progress of updating user type |
-| [**starUserTypetUpdate()**](PeopleUserTypeApi.md#starUserTypetUpdate) | **POST** /api/2.0/people/type | Start updating user type |
+| [**startUserTypeUpdate()**](PeopleUserTypeApi.md#startUserTypeUpdate) | **POST** /api/2.0/people/type | Start updating user type |
 | [**terminateUserTypeUpdate()**](PeopleUserTypeApi.md#terminateUserTypeUpdate) | **PUT** /api/2.0/people/type/terminate | Terminate updating user type |
 | [**updateUserType()**](PeopleUserTypeApi.md#updateUserType) | **PUT** /api/2.0/people/type/{type} | Change a user type |
 
@@ -64,14 +64,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 
 try {
     $result = $apiInstance->getUserTypeUpdateProgress($userid);
@@ -90,16 +89,16 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `starUserTypetUpdate()`
+## `startUserTypeUpdate()`
 
 ```php
-starUserTypetUpdate($start_update_user_type_dto): \OpenAPI\Client\Model\TaskProgressResponseWrapper
+startUserTypeUpdate($start_update_user_type_dto): \OpenAPI\Client\Model\TaskProgressResponseWrapper
 ```
 
 Start updating user type
 Starts updating the type of the user or guest when reassigning rooms and shared files.
 
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/star-user-typet-update/).
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/start-user-type-update/).
 
 ### Parameters
 
@@ -144,7 +143,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -154,10 +152,10 @@ $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
 $start_update_user_type_dto = new \OpenAPI\Client\Model\StartUpdateUserTypeDto(); // \OpenAPI\Client\Model\StartUpdateUserTypeDto
 
 try {
-    $result = $apiInstance->starUserTypetUpdate($start_update_user_type_dto);
+    $result = $apiInstance->startUserTypeUpdate($start_update_user_type_dto);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserTypeApi->starUserTypetUpdate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserTypeApi->startUserTypeUpdate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -222,7 +220,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
@@ -305,14 +302,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeType(); // \OpenAPI\Client\Model\EmployeeType | The new user type.
+$type = 1; // \OpenAPI\Client\Model\EmployeeType | The new user type.
 $update_members_request_dto = new \OpenAPI\Client\Model\UpdateMembersRequestDto(); // \OpenAPI\Client\Model\UpdateMembersRequestDto | The request parameters for updating the user information.
 
 try {

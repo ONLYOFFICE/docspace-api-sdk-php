@@ -61,14 +61,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\StatisticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The ID extracted from the route parameters.
+$id = 'id_example'; // string | The ID extracted from the route parameters.
 
 try {
     $result = $apiInstance->getSpaceUsageStatistics($id);

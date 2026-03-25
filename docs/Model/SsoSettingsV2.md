@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_modified** | **\DateTime** |  | [optional]
+**last_modified** | **\DateTime** | The timestamp indicating when the settings were last modified. | [optional]
 **enable_sso** | **bool** | Specifies if the SSO settings are enabled or not. | [optional]
 **idp_settings** | [**\OpenAPI\Client\Model\SsoIdpSettings**](SsoIdpSettings.md) |  | [optional]
 **idp_certificates** | [**\OpenAPI\Client\Model\SsoCertificate[]**](SsoCertificate.md) | The list of the IdP certificates. | [optional]

@@ -66,14 +66,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PhotosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 $thumbnails_request = new \OpenAPI\Client\Model\ThumbnailsRequest(); // \OpenAPI\Client\Model\ThumbnailsRequest | The thumbnail request.
 
 try {
@@ -147,14 +146,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PhotosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 
 try {
     $result = $apiInstance->deleteMemberPhoto($userid);
@@ -227,14 +225,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PhotosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 
 try {
     $result = $apiInstance->getMemberPhoto($userid);
@@ -308,14 +305,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PhotosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 $update_photo_member_request = new \OpenAPI\Client\Model\UpdatePhotoMemberRequest(); // \OpenAPI\Client\Model\UpdatePhotoMemberRequest | The request parameters for updating a photo.
 
 try {
@@ -338,7 +334,7 @@ try {
 ## `uploadMemberPhoto()`
 
 ```php
-uploadMemberPhoto($userid, $form_collection): \OpenAPI\Client\Model\FileUploadResultWrapper
+uploadMemberPhoto($userid, $file, $autosave): \OpenAPI\Client\Model\FileUploadResultWrapper
 ```
 
 Upload a user photo
@@ -351,7 +347,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **userid** | **string**| The user ID. | |
-| **form_collection** | [**\OpenAPI\Client\Model\KeyValuePairStringStringValues[]**](../Model/\OpenAPI\Client\Model\KeyValuePairStringStringValues.md)| The image data. | |
+| **file** | **\SplFileObject****\SplFileObject**| The image data. | |
+| **autosave** | **bool**|  | [optional] |
 
 ### Return type
 
@@ -390,18 +387,18 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PhotosApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 9846; // string | The user ID.
-$form_collection = array(new \OpenAPI\Client\Model\\OpenAPI\Client\Model\KeyValuePairStringStringValues()); // \OpenAPI\Client\Model\KeyValuePairStringStringValues[] | The image data.
+$userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
+$file = '/path/to/file.txt'; // \SplFileObject | The image data.
+$autosave = True; // bool
 
 try {
-    $result = $apiInstance->uploadMemberPhoto($userid, $form_collection);
+    $result = $apiInstance->uploadMemberPhoto($userid, $file, $autosave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PhotosApi->uploadMemberPhoto: ', $e->getMessage(), PHP_EOL;

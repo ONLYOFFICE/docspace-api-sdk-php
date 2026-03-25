@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **user_forum_enabled** | **bool** | Specifies if the user forum is available or not. | [optional]
 **video_guides_enabled** | **bool** | Specifies if the Video Guides link is available or not. | [optional]
 **license_agreements_enabled** | **bool** | Specifies if the License Agreements link is available or not. | [optional]
-**last_modified** | **\DateTime** |  | [optional]
+**last_modified** | **\DateTime** | The timestamp indicating when the settings were last modified. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
