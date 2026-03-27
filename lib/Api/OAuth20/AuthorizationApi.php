@@ -141,7 +141,7 @@ class AuthorizationApi
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. (required)
+     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
      * @param  string $client_id The client identifier issued to the client during registration. (required)
      * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
      * @param  string $scope The space-separated list of requested scope permissions. (required)
@@ -164,7 +164,7 @@ class AuthorizationApi
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. (required)
+     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
      * @param  string $client_id The client identifier issued to the client during registration. (required)
      * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
      * @param  string $scope The space-separated list of requested scope permissions. (required)
@@ -219,7 +219,7 @@ class AuthorizationApi
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. (required)
+     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
      * @param  string $client_id The client identifier issued to the client during registration. (required)
      * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
      * @param  string $scope The space-separated list of requested scope permissions. (required)
@@ -246,7 +246,7 @@ class AuthorizationApi
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. (required)
+     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
      * @param  string $client_id The client identifier issued to the client during registration. (required)
      * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
      * @param  string $scope The space-separated list of requested scope permissions. (required)
@@ -286,7 +286,7 @@ class AuthorizationApi
     /**
      * Create request for operation 'authorizeOAuth'
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. (required)
+     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
      * @param  string $client_id The client identifier issued to the client during registration. (required)
      * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
      * @param  string $scope The space-separated list of requested scope permissions. (required)
@@ -440,7 +440,7 @@ class AuthorizationApi
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. (optional)
+     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
      * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
      * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
      * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
@@ -465,7 +465,7 @@ class AuthorizationApi
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. (optional)
+     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
      * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
      * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
      * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
@@ -557,7 +557,7 @@ class AuthorizationApi
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. (optional)
+     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
      * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
      * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
      * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
@@ -585,7 +585,7 @@ class AuthorizationApi
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. (optional)
+     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
      * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
      * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
      * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
@@ -639,7 +639,7 @@ class AuthorizationApi
     /**
      * Create request for operation 'exchangeToken'
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. (optional)
+     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
      * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
      * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
      * @param  string|null $client_id The client identifier issued to the client during registration. (optional)

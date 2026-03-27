@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Unique identifier of the MCP server. | [optional]
 **name** | **string** | Display name of the MCP server. | [optional]
-**description** | **string** | Human-readable description of the server&#39;s purpose and capabilities. | [optional]
+**description** | **string** | Human-readable description of the server's purpose and capabilities. | [optional]
 **endpoint** | **string** | Base URL of the MCP server endpoint. | [optional]
 **server_type** | [**\OpenAPI\Client\Model\ServerType**](ServerType.md) |  | [optional]
 **headers** | **array<string,string>** | HTTP headers sent with every request to the server (e.g., authentication tokens). | [optional]

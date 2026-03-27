@@ -1024,7 +1024,7 @@ class ApiKeysApi
     /**
      * Operation getApiKey
      *
-     * Get current user&#39;s API key
+     * Get current user's API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1044,7 +1044,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyWithHttpInfo
      *
-     * Get current user&#39;s API key
+     * Get current user's API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1131,7 +1131,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyAsync
      *
-     * Get current user&#39;s API key
+     * Get current user's API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1154,7 +1154,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyAsyncWithHttpInfo
      *
-     * Get current user&#39;s API key
+     * Get current user's API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1306,7 +1306,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeys
      *
-     * Get current user&#39;s API keys
+     * Get current user's API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1326,7 +1326,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysWithHttpInfo
      *
-     * Get current user&#39;s API keys
+     * Get current user's API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1413,7 +1413,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysAsync
      *
-     * Get current user&#39;s API keys
+     * Get current user's API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1436,7 +1436,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysAsyncWithHttpInfo
      *
-     * Get current user&#39;s API keys
+     * Get current user's API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/

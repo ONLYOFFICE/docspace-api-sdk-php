@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FeedbackConfig Class Doc Comment
  *
  * @category Class
- * @description The settings for the Feedback &amp; Support menu button.
+ * @description The settings for the Feedback & Support menu button.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The user ID. | [optional]
-**first_name** | **string** | The user&#39;s first name. | [optional]
-**last_name** | **string** | The user&#39;s last name. | [optional]
+**first_name** | **string** | The user's first name. | [optional]
+**last_name** | **string** | The user's last name. | [optional]
 **user_name** | **string** | The user username. | [optional]
 **birth_date** | **\DateTime** | The user birthday. | [optional]
 **sex** | **bool** | The user sex (male or female). | [optional]

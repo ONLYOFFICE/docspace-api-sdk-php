@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * McpServerStatusDto Class Doc Comment
  *
  * @category Class
- * @description MCP server status within a room, reflecting the current user&#39;s connection state for OAuth-based servers.
+ * @description MCP server status within a room, reflecting the current user's connection state for OAuth-based servers.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -24,7 +24,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **response_type** | **string**| The OAuth 2.0 response type, must be &#39;code&#39; for authorization code flow. | |
+| **response_type** | **string**| The OAuth 2.0 response type, must be 'code' for authorization code flow. | |
 | **client_id** | **string**| The client identifier issued to the client during registration. | |
 | **redirect_uri** | **string**| The URL to redirect to after authorization is complete. | |
 | **scope** | **string**| The space-separated list of requested scope permissions. | |
@@ -91,7 +91,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **grant_type** | **string**| The OAuth2 grant type, must be &#39;authorization_code&#39; for the authorization code flow. | [optional] |
+| **grant_type** | **string**| The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. | [optional] |
 | **code** | **string**| A temporary authorization code that is sent to the client to be exchanged for a token. | [optional] |
 | **redirect_uri** | **string**| The URL where the user will be redirected after successful or unsuccessful authentication. | [optional] |
 | **client_id** | **string**| The client identifier issued to the client during registration. | [optional] |

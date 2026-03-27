@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The user ID. | [optional]
 **name** | **string** | The full name of the user. | [optional]
-**image** | **string** | The path to the user&#39;s avatar. | [optional]
+**image** | **string** | The path to the user's avatar. | [optional]
 **roles** | **string[]** | Roles | [optional]
 **customer_id** | **string** | Customer identifier associated with the user. | [optional]
 

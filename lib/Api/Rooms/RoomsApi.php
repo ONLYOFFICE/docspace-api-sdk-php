@@ -6631,7 +6631,7 @@ class RoomsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
      * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags&#39; information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
+     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
      * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
@@ -6654,7 +6654,7 @@ class RoomsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
      * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags&#39; information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
+     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
      * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
@@ -6744,7 +6744,7 @@ class RoomsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
      * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags&#39; information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
+     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
      * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
@@ -6770,7 +6770,7 @@ class RoomsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
      * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags&#39; information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
+     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
      * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
@@ -6822,7 +6822,7 @@ class RoomsApi
      * Create request for operation 'getRoomTagsInfo'
      *
      * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags&#39; information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
+     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
      * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *

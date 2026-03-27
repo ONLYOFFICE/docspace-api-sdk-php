@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AgentNewItemsDto Class Doc Comment
  *
  * @category Class
- * @description The agent new item&#39;s information.
+ * @description The agent new item's information.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

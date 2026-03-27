@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SubmitForm Class Doc Comment
  *
  * @category Class
- * @description The Complete &amp; Submit button settings.
+ * @description The Complete & Submit button settings.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpdateProviderBody Class Doc Comment
  *
  * @category Class
- * @description Parameters for updating an AI provider&#39;s configuration.
+ * @description Parameters for updating an AI provider's configuration.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
