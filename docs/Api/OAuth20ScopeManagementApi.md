@@ -4,7 +4,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getScopes()**](OAuth20ScopeManagementApi.md#getScopes) | **GET** /api/2.0/scopes | Get available OAuth2 scopes |
+| [**getScopes()**](OAuth20ScopeManagementApi.md#getScopes) | **GET** /api/2.0/scopes | List available OAuth2 scopes |
 
 
 ## `getScopes()`
@@ -13,7 +13,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 getScopes(): \OpenAPI\Client\Model\ScopeResponse
 ```
 
-Get available OAuth2 scopes
+List available OAuth2 scopes
 Retrieves a list of all available OAuth2 scopes for the specified tenant. The scopes define the permissions that can be requested by OAuth2 clients. The list is ordered alphabetically, with the 'openid' scope always appearing first.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-scopes/).
@@ -28,7 +28,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -37,10 +37,10 @@ This endpoint does not need any parameter.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ScopeManagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.

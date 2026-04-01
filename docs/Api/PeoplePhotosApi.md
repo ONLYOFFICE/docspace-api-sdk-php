@@ -348,7 +348,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | ------------- | ------------- | ------------- | ------------- |
 | **userid** | **string**| The user ID. | |
 | **file** | **\SplFileObject****\SplFileObject**| The image data. | |
-| **autosave** | **bool**|  | [optional] |
+| **autosave** | **bool**| Specifies whether to autosave a photo or not. | [optional] |
 
 ### Return type
 
@@ -395,7 +395,7 @@ $apiInstance = new OpenAPI\Client\Api\PhotosApi(
 );
 $userid = 00000000-0000-0000-0000-000000000000; // string | The user ID.
 $file = '/path/to/file.txt'; // \SplFileObject | The image data.
-$autosave = True; // bool
+$autosave = True; // bool | Specifies whether to autosave a photo or not.
 
 try {
     $result = $apiInstance->uploadMemberPhoto($userid, $file, $autosave);

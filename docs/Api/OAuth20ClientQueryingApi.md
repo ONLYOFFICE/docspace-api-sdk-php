@@ -5,11 +5,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getClient()**](OAuth20ClientQueryingApi.md#getClient) | **GET** /api/2.0/clients/{clientId} | Get client details |
-| [**getClientInfo()**](OAuth20ClientQueryingApi.md#getClientInfo) | **GET** /api/2.0/clients/{clientId}/info | Get detailed client information |
-| [**getClients()**](OAuth20ClientQueryingApi.md#getClients) | **GET** /api/2.0/clients | Get clients |
-| [**getClientsInfo()**](OAuth20ClientQueryingApi.md#getClientsInfo) | **GET** /api/2.0/clients/info | Get detailed information of clients |
-| [**getConsents()**](OAuth20ClientQueryingApi.md#getConsents) | **GET** /api/2.0/clients/consents | Get user consents |
-| [**getPublicClientInfo()**](OAuth20ClientQueryingApi.md#getPublicClientInfo) | **GET** /api/2.0/clients/{clientId}/public/info | Get public client information |
+| [**getClientInfo()**](OAuth20ClientQueryingApi.md#getClientInfo) | **GET** /api/2.0/clients/{clientId}/info | Retrieves detailed information for a specific client |
+| [**getClients()**](OAuth20ClientQueryingApi.md#getClients) | **GET** /api/2.0/clients | List clients |
+| [**getClientsInfo()**](OAuth20ClientQueryingApi.md#getClientsInfo) | **GET** /api/2.0/clients/info | Retrieves a pageable list of client information |
+| [**getConsents()**](OAuth20ClientQueryingApi.md#getConsents) | **GET** /api/2.0/clients/consents | Retrieves a pageable list of consents |
+| [**getPublicClientInfo()**](OAuth20ClientQueryingApi.md#getPublicClientInfo) | **GET** /api/2.0/clients/{clientId}/public/info | Handles the GET request for public client information |
 
 
 ## `getClient()`
@@ -27,7 +27,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **client_id** | **string**| The client identifier. | |
+| **client_id** | **string**| ID of the client to retrieve | |
 
 ### Return type
 
@@ -35,7 +35,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -44,10 +44,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -55,7 +55,7 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | The client identifier.
+$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | ID of the client to retrieve
 
 try {
     $result = $apiInstance->getClient($client_id);
@@ -80,7 +80,7 @@ try {
 getClientInfo($client_id): \OpenAPI\Client\Model\ClientInfoResponse
 ```
 
-Get detailed client information
+Retrieves detailed information for a specific client
 Retrieves the detailed information for a client with the ID specified in the request.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-client-info/).
@@ -89,7 +89,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **client_id** | **string**| The client identifier. | |
+| **client_id** | **string**| ID of the client to retrieve | |
 
 ### Return type
 
@@ -97,7 +97,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -106,10 +106,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -117,7 +117,7 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | The client identifier.
+$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | ID of the client to retrieve
 
 try {
     $result = $apiInstance->getClientInfo($client_id);
@@ -142,8 +142,8 @@ try {
 getClients($limit, $last_client_id, $last_created_on): \OpenAPI\Client\Model\PageableResponse
 ```
 
-Get clients
-Retrieves a paginated list of OAuth2 clients. The results can be paginated using the 'limit' parameter and the last seen client ID or creation date.
+List clients
+Retrieves a paginated list of OAuth2 clients. The results can be paginated using the limit parameter and last seen client ID/creation date.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients/).
 
@@ -151,9 +151,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| The maximum number of results returned per page. | |
-| **last_client_id** | **string**| The ID of the last retrieved client. | [optional] |
-| **last_created_on** | **\DateTime**| The creation date of the last retrieved client. | [optional] |
+| **limit** | **int**| Pagination limit | [default to 30] |
+| **last_client_id** | **string**| ID of the last retrieved client | [optional] |
+| **last_created_on** | **\DateTime**| Date of the last retrieved client | [optional] |
 
 ### Return type
 
@@ -161,7 +161,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -170,10 +170,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -181,9 +181,9 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$limit = 1; // int | The maximum number of results returned per page.
-$last_client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | The ID of the last retrieved client.
-$last_created_on = 2024-04-04T12:00:00Z; // \DateTime | The creation date of the last retrieved client.
+$limit = 1; // int | Pagination limit
+$last_client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | ID of the last retrieved client
+$last_created_on = 2024-04-04T12:00:00Z; // \DateTime | Date of the last retrieved client
 
 try {
     $result = $apiInstance->getClients($limit, $last_client_id, $last_created_on);
@@ -208,7 +208,7 @@ try {
 getClientsInfo($limit, $last_client_id, $last_created_on): \OpenAPI\Client\Model\PageableResponseClientInfoResponse
 ```
 
-Get detailed information of clients
+Retrieves a pageable list of client information
 Retrieves a paginated list of information for all clients.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients-info/).
@@ -217,9 +217,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| The maximum number of results returned per page. | |
-| **last_client_id** | **string**| The identifier of the last retrieved client. | [optional] |
-| **last_created_on** | **\DateTime**| The creation date of the last retrieved client. | [optional] |
+| **limit** | **int**| Pagination limit | |
+| **last_client_id** | **string**| ID of the last retrieved client | [optional] |
+| **last_created_on** | **\DateTime**| Date of the last retrieved client | [optional] |
 
 ### Return type
 
@@ -227,7 +227,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -236,10 +236,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -247,9 +247,9 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$limit = 1; // int | The maximum number of results returned per page.
-$last_client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | The identifier of the last retrieved client.
-$last_created_on = 2024-04-04T12:00:00Z; // \DateTime | The creation date of the last retrieved client.
+$limit = 1; // int | Pagination limit
+$last_client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | ID of the last retrieved client
+$last_created_on = 2024-04-04T12:00:00Z; // \DateTime | Date of the last retrieved client
 
 try {
     $result = $apiInstance->getClientsInfo($limit, $last_client_id, $last_created_on);
@@ -274,7 +274,7 @@ try {
 getConsents($limit, $last_modified_on): \OpenAPI\Client\Model\PageableModificationResponse
 ```
 
-Get user consents
+Retrieves a pageable list of consents
 Retrieves a paginated list of user consents.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-consents/).
@@ -283,8 +283,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| The maximum number of results returned per page. | |
-| **last_modified_on** | **\DateTime**| The date when the user consent was last modified. | [optional] |
+| **limit** | **int**| Pagination limit | |
+| **last_modified_on** | **\DateTime**| Date of the last retrieved consent | [optional] |
 
 ### Return type
 
@@ -292,7 +292,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -301,10 +301,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -312,8 +312,8 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$limit = 1; // int | The maximum number of results returned per page.
-$last_modified_on = 2024-04-04T12:00:00Z; // \DateTime | The date when the user consent was last modified.
+$limit = 1; // int | Pagination limit
+$last_modified_on = 2024-04-04T12:00:00Z; // \DateTime | Date of the last retrieved consent
 
 try {
     $result = $apiInstance->getConsents($limit, $last_modified_on);
@@ -338,8 +338,7 @@ try {
 getPublicClientInfo($client_id): \OpenAPI\Client\Model\ClientInfoResponse
 ```
 
-Get public client information
-Returns the public information for a client with the ID secified din the request.
+Handles the GET request for public client information
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-client-info/).
 
@@ -347,7 +346,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **client_id** | **string**| The client identifier. | |
+| **client_id** | **string**| ID of the client to retrieve | |
 
 ### Return type
 
@@ -369,7 +368,7 @@ $apiInstance = new OpenAPI\Client\Api\ClientQueryingApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | The client identifier.
+$client_id = 6c7cf17b-1bd3-47d5-94c6-be2d3570e168; // string | ID of the client to retrieve
 
 try {
     $result = $apiInstance->getPublicClientInfo($client_id);

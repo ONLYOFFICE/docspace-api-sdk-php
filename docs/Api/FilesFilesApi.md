@@ -1375,7 +1375,7 @@ try {
 ## `generateXlsx()`
 
 ```php
-generateXlsx($file_id)
+generateXlsx($file_id): \OpenAPI\Client\Model\FileIntegerWrapper
 ```
 
 Generate XLSX report
@@ -1391,7 +1391,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\FileIntegerWrapper**](../Model/FileIntegerWrapper.md)
 
 ### Authorization
 
@@ -1435,7 +1435,8 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
 $file_id = 1; // int | The file unique identifier.
 
 try {
-    $apiInstance->generateXlsx($file_id);
+    $result = $apiInstance->generateXlsx($file_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->generateXlsx: ', $e->getMessage(), PHP_EOL;
 }
@@ -1444,7 +1445,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

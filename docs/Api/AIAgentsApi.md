@@ -256,7 +256,7 @@ try {
 ## `getAgents()`
 
 ```php
-getAgents($subject_id, $without_tags, $tags, $exclude_subject, $subject_filter, $quota_filter, $count, $start_index, $sort_by, $sort_order, $filter_value): \OpenAPI\Client\Model\FolderContentIntegerWrapper
+getAgents($subject_id, $subject_owner_id, $without_tags, $tags, $exclude_subject, $subject_filter, $quota_filter, $count, $start_index, $sort_by, $sort_order, $filter_value): \OpenAPI\Client\Model\FolderContentIntegerWrapper
 ```
 
 Get ai agents
@@ -269,6 +269,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **subject_id** | **string**| The filter by user ID. | [optional] |
+| **subject_owner_id** | **string**| The filter by room owner ID. | [optional] |
 | **without_tags** | **bool**| Specifies whether to search by tags or not. | [optional] |
 | **tags** | **string**| The tags in the serialized format. | [optional] |
 | **exclude_subject** | **bool**| Specifies whether to exclude search by user or group ID. | [optional] |
@@ -324,6 +325,7 @@ $apiInstance = new OpenAPI\Client\Api\AgentsApi(
     $config
 );
 $subject_id = 00000000-0000-0000-0000-000000000000; // string | The filter by user ID.
+$subject_owner_id = 00000000-0000-0000-0000-000000000000; // string | The filter by room owner ID.
 $without_tags = false; // bool | Specifies whether to search by tags or not.
 $tags = ai,assistant; // string | The tags in the serialized format.
 $exclude_subject = false; // bool | Specifies whether to exclude search by user or group ID.
@@ -336,7 +338,7 @@ $sort_order = 1; // \OpenAPI\Client\Model\SortOrder | The order in which the res
 $filter_value = my agent; // string | The text filter value used to refine search or query operations.
 
 try {
-    $result = $apiInstance->getAgents($subject_id, $without_tags, $tags, $exclude_subject, $subject_filter, $quota_filter, $count, $start_index, $sort_by, $sort_order, $filter_value);
+    $result = $apiInstance->getAgents($subject_id, $subject_owner_id, $without_tags, $tags, $exclude_subject, $subject_filter, $quota_filter, $count, $start_index, $sort_by, $sort_order, $filter_value);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AgentsApi->getAgents: ', $e->getMessage(), PHP_EOL;

@@ -4,8 +4,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**authorizeOAuth()**](OAuth20AuthorizationApi.md#authorizeOAuth) | **GET** /oauth2/authorize | OAuth2 authorization endpoint |
-| [**exchangeToken()**](OAuth20AuthorizationApi.md#exchangeToken) | **POST** /oauth2/token | OAuth2 token endpoint |
+| [**authorizeOAuth()**](OAuth20AuthorizationApi.md#authorizeOAuth) | **GET** /oauth2/authorize | OAuth2 Authorization Endpoint |
+| [**exchangeToken()**](OAuth20AuthorizationApi.md#exchangeToken) | **POST** /oauth2/token | OAuth2 Token Endpoint |
 | [**submitConsent()**](OAuth20AuthorizationApi.md#submitConsent) | **POST** /oauth2/authorize | OAuth2 consent endpoint |
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 authorizeOAuth($response_type, $client_id, $redirect_uri, $scope)
 ```
 
-OAuth2 authorization endpoint
+OAuth2 Authorization Endpoint
 Initiates the OAuth2 authorization flow.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/).
@@ -35,7 +35,7 @@ void (empty response body)
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -44,10 +44,10 @@ void (empty response body)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\AuthorizationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -82,8 +82,8 @@ try {
 exchangeToken($grant_type, $code, $redirect_uri, $client_id, $client_secret): \OpenAPI\Client\Model\ExchangeToken200Response
 ```
 
-OAuth2 token endpoint
-Exchanges an authorization code specified in the request for the access token.
+OAuth2 Token Endpoint
+Exchange authorization code for access token
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/).
 
@@ -147,7 +147,7 @@ submitConsent($client_id, $state, $scope)
 ```
 
 OAuth2 consent endpoint
-Sends a consent request with the specified parameters.
+Sends consent approval
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/submit-consent/).
 
@@ -165,7 +165,7 @@ void (empty response body)
 
 ### Authorization
 
-[asc_auth_key](../../README.md#asc_auth_key)
+[x-signature](../../README.md#x-signature)
 
 ### Example
 
@@ -174,10 +174,10 @@ void (empty response body)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Configure API key authorization: x-signature
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('x-signature', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('x-signature', 'Bearer');
 
 $apiInstance = new OpenAPI\Client\Api\AuthorizationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.

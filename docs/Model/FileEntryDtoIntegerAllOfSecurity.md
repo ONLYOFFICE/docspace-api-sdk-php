@@ -47,5 +47,6 @@ Name | Type | Description | Notes
 **vectorization** | **bool** |  | [optional]
 **ask_ai** | **bool** |  | [optional]
 **use_chat** | **bool** |  | [optional]
+**update_xlsx** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

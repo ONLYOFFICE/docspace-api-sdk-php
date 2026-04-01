@@ -30,6 +30,7 @@ docs/Api/MigrationApi.md
 docs/Api/OAuth20AuthorizationApi.md
 docs/Api/OAuth20ClientManagementApi.md
 docs/Api/OAuth20ClientQueryingApi.md
+docs/Api/OAuth20DiscoveryApi.md
 docs/Api/OAuth20ScopeManagementApi.md
 docs/Api/PeopleEmailApi.md
 docs/Api/PeopleGuestsApi.md
@@ -339,7 +340,6 @@ docs/Model/EncryptionSettings.md
 docs/Model/EncryptionSettingsWrapper.md
 docs/Model/EngineType.md
 docs/Model/EntryType.md
-docs/Model/ErrorResponse.md
 docs/Model/ExchangeToken200Response.md
 docs/Model/ExportChatRequestBodyInteger.md
 docs/Model/ExportMessageRequestBodyInteger.md
@@ -574,6 +574,7 @@ docs/Model/PermissionsConfig.md
 docs/Model/PluginsConfig.md
 docs/Model/PluginsDto.md
 docs/Model/PriceDto.md
+docs/Model/ProblemDetail.md
 docs/Model/ProductAdministratorDto.md
 docs/Model/ProductAdministratorWrapper.md
 docs/Model/ProductQuantityType.md
@@ -864,6 +865,7 @@ lib/Api/Migration/MigrationApi.php
 lib/Api/OAuth20/AuthorizationApi.php
 lib/Api/OAuth20/ClientManagementApi.php
 lib/Api/OAuth20/ClientQueryingApi.php
+lib/Api/OAuth20/DiscoveryApi.php
 lib/Api/OAuth20/ScopeManagementApi.php
 lib/Api/People/EmailApi.php
 lib/Api/People/GuestsApi.php
@@ -1177,7 +1179,6 @@ lib/Model/EncryptionSettings.php
 lib/Model/EncryptionSettingsWrapper.php
 lib/Model/EngineType.php
 lib/Model/EntryType.php
-lib/Model/ErrorResponse.php
 lib/Model/ExchangeToken200Response.php
 lib/Model/ExportChatRequestBodyInteger.php
 lib/Model/ExportMessageRequestBodyInteger.php
@@ -1413,6 +1414,7 @@ lib/Model/PermissionsConfig.php
 lib/Model/PluginsConfig.php
 lib/Model/PluginsDto.php
 lib/Model/PriceDto.php
+lib/Model/ProblemDetail.php
 lib/Model/ProductAdministratorDto.php
 lib/Model/ProductAdministratorWrapper.php
 lib/Model/ProductQuantityType.php

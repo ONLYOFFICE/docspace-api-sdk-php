@@ -1858,7 +1858,7 @@ try {
 ## `getRoomsFolder()`
 
 ```php
-getRoomsFolder($type, $subject_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $subject_filter, $quota_filter, $storage_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id): \OpenAPI\Client\Model\FolderContentIntegerWrapper
+getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $subject_filter, $quota_filter, $storage_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id): \OpenAPI\Client\Model\FolderContentIntegerWrapper
 ```
 
 Get rooms
@@ -1872,6 +1872,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | ------------- | ------------- | ------------- | ------------- |
 | **type** | [**\OpenAPI\Client\Model\RoomType[]**](../Model/\OpenAPI\Client\Model\RoomType.md)| The filter by room type. | [optional] |
 | **subject_id** | **string**| The filter by user ID. | [optional] |
+| **subject_owner_id** | **string**| The filter by room owner ID. | [optional] |
 | **search_area** | [**\OpenAPI\Client\Model\SearchArea**](../Model/.md)| The room search area (Active, Archive, Any, Recent by links). | [optional] |
 | **without_tags** | **bool**| Specifies whether to search by tags or not. | [optional] |
 | **tags** | **string**| The tags in the serialized format. | [optional] |
@@ -1932,6 +1933,7 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
 );
 $type = 1; // \OpenAPI\Client\Model\RoomType[] | The filter by room type.
 $subject_id = 00000000-0000-0000-0000-000000000000; // string | The filter by user ID.
+$subject_owner_id = 00000000-0000-0000-0000-000000000000; // string | The filter by room owner ID.
 $search_area = 1; // \OpenAPI\Client\Model\SearchArea | The room search area (Active, Archive, Any, Recent by links).
 $without_tags = false; // bool | Specifies whether to search by tags or not.
 $tags = tag1; // string | The tags in the serialized format.
@@ -1948,7 +1950,7 @@ $filter_value = My Document; // string | The text filter value used to refine se
 $group_id = 1; // int | The group ID
 
 try {
-    $result = $apiInstance->getRoomsFolder($type, $subject_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $subject_filter, $quota_filter, $storage_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id);
+    $result = $apiInstance->getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $subject_filter, $quota_filter, $storage_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoomsApi->getRoomsFolder: ', $e->getMessage(), PHP_EOL;

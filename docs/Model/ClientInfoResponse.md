@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **name** | **string** | The client name. | [optional]
 **description** | **string** | The client description. | [optional]
 **scopes** | **string[]** | The client scopes. | [optional]
+**public** | **bool** |  | [optional]
 **client_id** | **string** | The client ID. | [optional]
 **website_url** | **string** | The URL to the client's website | [optional]
 **terms_url** | **string** | The URL to the client's terms of service. | [optional]
