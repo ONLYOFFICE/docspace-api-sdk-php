@@ -179,7 +179,7 @@ try {
 ## `exportChat()`
 
 ```php
-exportChat($chat_id, $export_chat_request_body_integer)
+exportChat($chat_id, $export_chat_request_body)
 ```
 
 Export AI chat messages to a file
@@ -192,7 +192,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **chat_id** | **string**| The unique identifier of the AI chat session to export. | |
-| **export_chat_request_body_integer** | [**\OpenAPI\Client\Model\ExportChatRequestBodyInteger**](../Model/ExportChatRequestBodyInteger.md)| The export parameters including destination folder and file title. | |
+| **export_chat_request_body** | [**\OpenAPI\Client\Model\ExportChatRequestBody**](../Model/ExportChatRequestBody.md)| The export parameters including destination folder and file title. | |
 
 ### Return type
 
@@ -238,10 +238,10 @@ $apiInstance = new OpenAPI\Client\Api\ChatApi(
     $config
 );
 $chat_id = 00000000-0000-0000-0000-000000000000; // string | The unique identifier of the AI chat session to export.
-$export_chat_request_body_integer = new \OpenAPI\Client\Model\ExportChatRequestBodyInteger(); // \OpenAPI\Client\Model\ExportChatRequestBodyInteger | The export parameters including destination folder and file title.
+$export_chat_request_body = new \OpenAPI\Client\Model\ExportChatRequestBody(); // \OpenAPI\Client\Model\ExportChatRequestBody | The export parameters including destination folder and file title.
 
 try {
-    $apiInstance->exportChat($chat_id, $export_chat_request_body_integer);
+    $apiInstance->exportChat($chat_id, $export_chat_request_body);
 } catch (Exception $e) {
     echo 'Exception when calling ChatApi->exportChat: ', $e->getMessage(), PHP_EOL;
 }

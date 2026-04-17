@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **prompt** | **string** | The system prompt for the chat. | [optional]
 **multimodal** | [**\OpenAPI\Client\Model\ChatMultimodalSettingsDto**](ChatMultimodalSettingsDto.md) |  | [optional]
 **thinking** | **bool** | Indicates whether the model supports extended thinking mode. | [optional]
+**capabilities** | [**\OpenAPI\Client\Model\AiModelCapabilities**](AiModelCapabilities.md) |  | [optional]
 **internal** | **bool** | Indicates whether this is an internal AI gateway provider. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

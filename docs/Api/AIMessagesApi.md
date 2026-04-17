@@ -10,7 +10,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `exportMessage()`
 
 ```php
-exportMessage($message_id, $export_message_request_body_integer)
+exportMessage($message_id, $export_message_request_body)
 ```
 
 Export a single AI message to a document
@@ -23,7 +23,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **message_id** | **int**| The unique identifier of the AI chat message to export. | |
-| **export_message_request_body_integer** | [**\OpenAPI\Client\Model\ExportMessageRequestBodyInteger**](../Model/ExportMessageRequestBodyInteger.md)| The export parameters including destination folder and file title. | |
+| **export_message_request_body** | [**\OpenAPI\Client\Model\ExportMessageRequestBody**](../Model/ExportMessageRequestBody.md)| The export parameters including destination folder and file title. | |
 
 ### Return type
 
@@ -69,10 +69,10 @@ $apiInstance = new OpenAPI\Client\Api\MessagesApi(
     $config
 );
 $message_id = 1; // int | The unique identifier of the AI chat message to export.
-$export_message_request_body_integer = new \OpenAPI\Client\Model\ExportMessageRequestBodyInteger(); // \OpenAPI\Client\Model\ExportMessageRequestBodyInteger | The export parameters including destination folder and file title.
+$export_message_request_body = new \OpenAPI\Client\Model\ExportMessageRequestBody(); // \OpenAPI\Client\Model\ExportMessageRequestBody | The export parameters including destination folder and file title.
 
 try {
-    $apiInstance->exportMessage($message_id, $export_message_request_body_integer);
+    $apiInstance->exportMessage($message_id, $export_message_request_body);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->exportMessage: ', $e->getMessage(), PHP_EOL;
 }

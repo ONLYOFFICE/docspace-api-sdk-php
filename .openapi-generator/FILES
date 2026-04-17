@@ -107,6 +107,7 @@ docs/Model/AiChatModelPricing.md
 docs/Model/AiChatPrice.md
 docs/Model/AiEmbeddingModelPricing.md
 docs/Model/AiEmbeddingPrice.md
+docs/Model/AiModelCapabilities.md
 docs/Model/AiPricesResponse.md
 docs/Model/AiPricesResponseWrapper.md
 docs/Model/AiProviderArrayWrapper.md
@@ -341,8 +342,9 @@ docs/Model/EncryptionSettingsWrapper.md
 docs/Model/EngineType.md
 docs/Model/EntryType.md
 docs/Model/ExchangeToken200Response.md
-docs/Model/ExportChatRequestBodyInteger.md
-docs/Model/ExportMessageRequestBodyInteger.md
+docs/Model/ExportChatRequestBody.md
+docs/Model/ExportChatRequestBodyFolderId.md
+docs/Model/ExportMessageRequestBody.md
 docs/Model/ExternalDatabaseSettings.md
 docs/Model/ExternalDatabaseType.md
 docs/Model/ExternalShareDto.md
@@ -352,15 +354,11 @@ docs/Model/FeatureUsedDto.md
 docs/Model/FeedbackConfig.md
 docs/Model/FileConflictResolveType.md
 docs/Model/FileDtoInteger.md
-docs/Model/FileDtoIntegerAllOfViewAccessibility.md
+docs/Model/FileDtoIntegerViewAccessibility.md
 docs/Model/FileEntryBaseArrayWrapper.md
 docs/Model/FileEntryBaseDto.md
 docs/Model/FileEntryBaseWrapper.md
 docs/Model/FileEntryDtoInteger.md
-docs/Model/FileEntryDtoIntegerAllOfAvailableShareRights.md
-docs/Model/FileEntryDtoIntegerAllOfSecurity.md
-docs/Model/FileEntryDtoIntegerAllOfShareSettings.md
-docs/Model/FileEntryDtoString.md
 docs/Model/FileEntryIntegerArrayWrapper.md
 docs/Model/FileEntryType.md
 docs/Model/FileIntegerArrayWrapper.md
@@ -404,6 +402,9 @@ docs/Model/FolderContentDtoInteger.md
 docs/Model/FolderContentIntegerArrayWrapper.md
 docs/Model/FolderContentIntegerWrapper.md
 docs/Model/FolderDtoInteger.md
+docs/Model/FolderDtoIntegerAvailableShareRights.md
+docs/Model/FolderDtoIntegerSecurity.md
+docs/Model/FolderDtoIntegerShareSettings.md
 docs/Model/FolderDtoString.md
 docs/Model/FolderIntegerArrayWrapper.md
 docs/Model/FolderIntegerWrapper.md
@@ -522,6 +523,9 @@ docs/Model/MobilePhoneActivationStatus.md
 docs/Model/MobileRequestsDto.md
 docs/Model/ModelArrayWrapper.md
 docs/Model/ModelDto.md
+docs/Model/ModelSettingsArrayWrapper.md
+docs/Model/ModelSettingsDto.md
+docs/Model/ModelSettingsItemDto.md
 docs/Model/Module.md
 docs/Model/ModuleWrapper.md
 docs/Model/MultiSizeLogoCover.md
@@ -573,6 +577,7 @@ docs/Model/Payments.md
 docs/Model/PermissionsConfig.md
 docs/Model/PluginsConfig.md
 docs/Model/PluginsDto.md
+docs/Model/PreviewProviderModelsRequestDto.md
 docs/Model/PriceDto.md
 docs/Model/ProblemDetail.md
 docs/Model/ProductAdministratorDto.md
@@ -660,7 +665,6 @@ docs/Model/SettingsRequestDto.md
 docs/Model/SettingsWrapper.md
 docs/Model/SetupCode.md
 docs/Model/SetupCodeWrapper.md
-docs/Model/SexEnum.md
 docs/Model/ShareFilterType.md
 docs/Model/SignupAccountRequestDto.md
 docs/Model/Size.md
@@ -750,6 +754,8 @@ docs/Model/TenantWalletSettings.md
 docs/Model/TenantWalletSettingsWrapper.md
 docs/Model/TenantWrapper.md
 docs/Model/TerminateRequestDto.md
+docs/Model/TfaAppCodeArrayWrapper.md
+docs/Model/TfaAppCodeDto.md
 docs/Model/TfaRequestsDto.md
 docs/Model/TfaRequestsDtoType.md
 docs/Model/TfaSettingsArrayWrapper.md
@@ -841,6 +847,8 @@ docs/Model/WhiteLabelRequestsDto.md
 docs/Model/WizardRequestsDto.md
 docs/Model/WizardSettings.md
 docs/Model/WizardSettingsWrapper.md
+docs/Model/XlsxReportResponseDto.md
+docs/Model/XlsxReportResponseWrapper.md
 lib/Api/AI/AgentsApi.php
 lib/Api/AI/ChatApi.php
 lib/Api/AI/MCPApi.php
@@ -946,6 +954,7 @@ lib/Model/AiChatModelPricing.php
 lib/Model/AiChatPrice.php
 lib/Model/AiEmbeddingModelPricing.php
 lib/Model/AiEmbeddingPrice.php
+lib/Model/AiModelCapabilities.php
 lib/Model/AiPricesResponse.php
 lib/Model/AiPricesResponseWrapper.php
 lib/Model/AiProviderArrayWrapper.php
@@ -1180,8 +1189,9 @@ lib/Model/EncryptionSettingsWrapper.php
 lib/Model/EngineType.php
 lib/Model/EntryType.php
 lib/Model/ExchangeToken200Response.php
-lib/Model/ExportChatRequestBodyInteger.php
-lib/Model/ExportMessageRequestBodyInteger.php
+lib/Model/ExportChatRequestBody.php
+lib/Model/ExportChatRequestBodyFolderId.php
+lib/Model/ExportMessageRequestBody.php
 lib/Model/ExternalDatabaseSettings.php
 lib/Model/ExternalDatabaseType.php
 lib/Model/ExternalShareDto.php
@@ -1191,15 +1201,11 @@ lib/Model/FeatureUsedDto.php
 lib/Model/FeedbackConfig.php
 lib/Model/FileConflictResolveType.php
 lib/Model/FileDtoInteger.php
-lib/Model/FileDtoIntegerAllOfViewAccessibility.php
+lib/Model/FileDtoIntegerViewAccessibility.php
 lib/Model/FileEntryBaseArrayWrapper.php
 lib/Model/FileEntryBaseDto.php
 lib/Model/FileEntryBaseWrapper.php
 lib/Model/FileEntryDtoInteger.php
-lib/Model/FileEntryDtoIntegerAllOfAvailableShareRights.php
-lib/Model/FileEntryDtoIntegerAllOfSecurity.php
-lib/Model/FileEntryDtoIntegerAllOfShareSettings.php
-lib/Model/FileEntryDtoString.php
 lib/Model/FileEntryIntegerArrayWrapper.php
 lib/Model/FileEntryType.php
 lib/Model/FileIntegerArrayWrapper.php
@@ -1243,6 +1249,9 @@ lib/Model/FolderContentDtoInteger.php
 lib/Model/FolderContentIntegerArrayWrapper.php
 lib/Model/FolderContentIntegerWrapper.php
 lib/Model/FolderDtoInteger.php
+lib/Model/FolderDtoIntegerAvailableShareRights.php
+lib/Model/FolderDtoIntegerSecurity.php
+lib/Model/FolderDtoIntegerShareSettings.php
 lib/Model/FolderDtoString.php
 lib/Model/FolderIntegerArrayWrapper.php
 lib/Model/FolderIntegerWrapper.php
@@ -1362,6 +1371,9 @@ lib/Model/MobileRequestsDto.php
 lib/Model/ModelArrayWrapper.php
 lib/Model/ModelDto.php
 lib/Model/ModelInterface.php
+lib/Model/ModelSettingsArrayWrapper.php
+lib/Model/ModelSettingsDto.php
+lib/Model/ModelSettingsItemDto.php
 lib/Model/Module.php
 lib/Model/ModuleWrapper.php
 lib/Model/MultiSizeLogoCover.php
@@ -1413,6 +1425,7 @@ lib/Model/Payments.php
 lib/Model/PermissionsConfig.php
 lib/Model/PluginsConfig.php
 lib/Model/PluginsDto.php
+lib/Model/PreviewProviderModelsRequestDto.php
 lib/Model/PriceDto.php
 lib/Model/ProblemDetail.php
 lib/Model/ProductAdministratorDto.php
@@ -1500,7 +1513,6 @@ lib/Model/SettingsRequestDto.php
 lib/Model/SettingsWrapper.php
 lib/Model/SetupCode.php
 lib/Model/SetupCodeWrapper.php
-lib/Model/SexEnum.php
 lib/Model/ShareFilterType.php
 lib/Model/SignupAccountRequestDto.php
 lib/Model/Size.php
@@ -1590,6 +1602,8 @@ lib/Model/TenantWalletSettings.php
 lib/Model/TenantWalletSettingsWrapper.php
 lib/Model/TenantWrapper.php
 lib/Model/TerminateRequestDto.php
+lib/Model/TfaAppCodeArrayWrapper.php
+lib/Model/TfaAppCodeDto.php
 lib/Model/TfaRequestsDto.php
 lib/Model/TfaRequestsDtoType.php
 lib/Model/TfaSettingsArrayWrapper.php
@@ -1681,5 +1695,7 @@ lib/Model/WhiteLabelRequestsDto.php
 lib/Model/WizardRequestsDto.php
 lib/Model/WizardSettings.php
 lib/Model/WizardSettingsWrapper.php
+lib/Model/XlsxReportResponseDto.php
+lib/Model/XlsxReportResponseWrapper.php
 lib/ObjectSerializer.php
 phpunit.xml.dist

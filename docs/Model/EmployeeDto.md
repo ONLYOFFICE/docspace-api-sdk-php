@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The user ID. | [optional]
 **display_name** | **string** | The HTML-encoded user's display name formatted according to the default format for the current culture. | [optional]
-**title** | **string** | The user title. | [optional]
 **avatar** | **string** | The user avatar. | [optional]
 **avatar_original** | **string** | The user original size avatar. | [optional]
 **avatar_max** | **string** | The user maximum size avatar. | [optional]

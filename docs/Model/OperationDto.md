@@ -15,5 +15,7 @@ Name | Type | Description | Notes
 **debit** | **float** | The debit amount of the operation. | [optional]
 **participant_name** | **string** | The participant original name. | [optional]
 **participant_display_name** | **string** | The participant display name. | [optional]
+**agent_id** | **string** | AI Agent id. | [optional]
+**agent_title** | **string** | AI Agent name. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

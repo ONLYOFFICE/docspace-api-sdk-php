@@ -5,20 +5,20 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getTfaAppCodes()**](SettingsTFASettingsApi.md#getTfaAppCodes) | **GET** /api/2.0/settings/tfaappcodes | Get the TFA codes |
-| [**getTfaConfirmUrl()**](SettingsTFASettingsApi.md#getTfaConfirmUrl) | **GET** /api/2.0/settings/tfaapp/confirm | Get confirmation email |
+| [**getTfaConfirmUrl()**](SettingsTFASettingsApi.md#getTfaConfirmUrl) | **GET** /api/2.0/settings/tfaapp/confirm | Get TFA confirmation URL |
 | [**getTfaSettings()**](SettingsTFASettingsApi.md#getTfaSettings) | **GET** /api/2.0/settings/tfaapp | Get the TFA settings |
 | [**tfaAppGenerateSetupCode()**](SettingsTFASettingsApi.md#tfaAppGenerateSetupCode) | **GET** /api/2.0/settings/tfaapp/setup | Generate setup code |
 | [**tfaValidateAuthCode()**](SettingsTFASettingsApi.md#tfaValidateAuthCode) | **POST** /api/2.0/settings/tfaapp/validate | Validate the TFA code |
 | [**unlinkTfaApp()**](SettingsTFASettingsApi.md#unlinkTfaApp) | **PUT** /api/2.0/settings/tfaappnewapp | Unlink the TFA application |
 | [**updateTfaAppCodes()**](SettingsTFASettingsApi.md#updateTfaAppCodes) | **PUT** /api/2.0/settings/tfaappnewcodes | Update the TFA codes |
 | [**updateTfaSettings()**](SettingsTFASettingsApi.md#updateTfaSettings) | **PUT** /api/2.0/settings/tfaapp | Update the TFA settings |
-| [**updateTfaSettingsLink()**](SettingsTFASettingsApi.md#updateTfaSettingsLink) | **PUT** /api/2.0/settings/tfaappwithlink | Get a confirmation email for updating TFA settings |
+| [**updateTfaSettingsLink()**](SettingsTFASettingsApi.md#updateTfaSettingsLink) | **PUT** /api/2.0/settings/tfaappwithlink | Updates TFA settings |
 
 
 ## `getTfaAppCodes()`
 
 ```php
-getTfaAppCodes(): \OpenAPI\Client\Model\ObjectArrayWrapper
+getTfaAppCodes(): \OpenAPI\Client\Model\TfaAppCodeArrayWrapper
 ```
 
 Get the TFA codes
@@ -32,7 +32,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectArrayWrapper**](../Model/ObjectArrayWrapper.md)
+[**\OpenAPI\Client\Model\TfaAppCodeArrayWrapper**](../Model/TfaAppCodeArrayWrapper.md)
 
 ### Authorization
 
@@ -97,8 +97,8 @@ try {
 getTfaConfirmUrl(): \OpenAPI\Client\Model\StringWrapper
 ```
 
-Get confirmation email
-Returns the confirmation email URL for authorization via SMS or TFA application.
+Get TFA confirmation URL
+Returns the confirmation URL for authorization via SMS or TFA application.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-confirm-url/).
 
@@ -480,7 +480,7 @@ try {
 ## `updateTfaAppCodes()`
 
 ```php
-updateTfaAppCodes(): \OpenAPI\Client\Model\ObjectArrayWrapper
+updateTfaAppCodes(): \OpenAPI\Client\Model\TfaAppCodeArrayWrapper
 ```
 
 Update the TFA codes
@@ -494,7 +494,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectArrayWrapper**](../Model/ObjectArrayWrapper.md)
+[**\OpenAPI\Client\Model\TfaAppCodeArrayWrapper**](../Model/TfaAppCodeArrayWrapper.md)
 
 ### Authorization
 
@@ -638,8 +638,8 @@ try {
 updateTfaSettingsLink($tfa_requests_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
-Get a confirmation email for updating TFA settings
-Returns the confirmation email URL for updating TFA settings.
+Updates TFA settings
+Updates TFA settings and returns the confirmation URL for authorization via SMS or TFA application.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/).
 

@@ -441,7 +441,7 @@ try {
 ## `generateXlsxByFolder()`
 
 ```php
-generateXlsxByFolder($folder_id): \OpenAPI\Client\Model\FileIntegerWrapper
+generateXlsxByFolder($folder_id): \OpenAPI\Client\Model\XlsxReportResponseWrapper
 ```
 
 Generate XLSX report by folder
@@ -457,7 +457,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FileIntegerWrapper**](../Model/FileIntegerWrapper.md)
+[**\OpenAPI\Client\Model\XlsxReportResponseWrapper**](../Model/XlsxReportResponseWrapper.md)
 
 ### Authorization
 

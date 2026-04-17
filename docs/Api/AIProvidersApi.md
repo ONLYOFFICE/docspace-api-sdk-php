@@ -8,7 +8,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**deleteProviders()**](AIProvidersApi.md#deleteProviders) | **DELETE** /api/2.0/ai/providers | Delete AI providers |
 | [**getAvailableProviders()**](AIProvidersApi.md#getAvailableProviders) | **GET** /api/2.0/ai/providers/available | Get available AI provider types |
 | [**getDefaultProvider()**](AIProvidersApi.md#getDefaultProvider) | **GET** /api/2.0/ai/providers/default | Get the default AI provider |
+| [**getProviderModels()**](AIProvidersApi.md#getProviderModels) | **GET** /api/2.0/ai/providers/{providerId}/models | Get all models for a provider with their settings |
 | [**getProviders()**](AIProvidersApi.md#getProviders) | **GET** /api/2.0/ai/providers | Get AI providers |
+| [**previewProviderModels()**](AIProvidersApi.md#previewProviderModels) | **POST** /api/2.0/ai/providers/models/preview | Preview models for a new AI provider |
 | [**setDefaultProvider()**](AIProvidersApi.md#setDefaultProvider) | **PUT** /api/2.0/ai/providers/default | Set the default AI provider |
 | [**updateProvider()**](AIProvidersApi.md#updateProvider) | **PUT** /api/2.0/ai/providers/{id} | Update an AI provider |
 
@@ -322,6 +324,85 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getProviderModels()`
+
+```php
+getProviderModels($provider_id): \OpenAPI\Client\Model\ModelSettingsArrayWrapper
+```
+
+Get all models for a provider with their settings
+Returns the full list of AI models available from a provider, including both recommended and additional models.  Each model includes its current settings: enabled state, display alias, and capabilities (vision, tool calling, thinking).  Recommended models are enabled by default and their alias and capabilities come from configuration.  Additional models are disabled by default and can be configured by the admin.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-provider-models/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **provider_id** | **int**| The identifier of the AI provider. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ModelSettingsArrayWrapper**](../Model/ModelSettingsArrayWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ProvidersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$provider_id = 1; // int | The identifier of the AI provider.
+
+try {
+    $result = $apiInstance->getProviderModels($provider_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProvidersApi->getProviderModels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getProviders()`
 
 ```php
@@ -397,6 +478,85 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `previewProviderModels()`
+
+```php
+previewProviderModels($preview_provider_models_request_dto): \OpenAPI\Client\Model\ModelSettingsArrayWrapper
+```
+
+Preview models for a new AI provider
+Connects to the specified AI provider using the provided credentials and returns the available models  with their default settings. This is used to preview models before saving the provider.  Recommended models are enabled by default with configuration-defined settings.  Additional models are disabled by default with empty capabilities.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/preview-provider-models/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **preview_provider_models_request_dto** | [**\OpenAPI\Client\Model\PreviewProviderModelsRequestDto**](../Model/PreviewProviderModelsRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ModelSettingsArrayWrapper**](../Model/ModelSettingsArrayWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ProvidersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$preview_provider_models_request_dto = new \OpenAPI\Client\Model\PreviewProviderModelsRequestDto(); // \OpenAPI\Client\Model\PreviewProviderModelsRequestDto
+
+try {
+    $result = $apiInstance->previewProviderModels($preview_provider_models_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProvidersApi->previewProviderModels: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
