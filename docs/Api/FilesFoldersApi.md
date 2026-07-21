@@ -743,7 +743,7 @@ try {
 ## `getFolderByFolderId()`
 
 ```php
-getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location): \OpenAPI\Client\Model\FolderContentIntegerWrapper
+getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location): \OpenAPI\Client\Model\FolderContentIntegerWrapper
 ```
 
 Get a folder by ID
@@ -762,6 +762,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **room_id** | **int**| The room ID. | [optional] |
 | **exclude_subject** | **bool**| Specifies whether to exclude search by user or group ID. | [optional] |
 | **apply_filter_option** | [**\OpenAPI\Client\Model\ApplyFilterOption**](../Model/.md)| Specifies whether to return only files, only folders, or all elements from the specified folder. | [optional] |
+| **with_sub_folders** | **bool**| Specifies whether to include files from subfolders in the results. | [optional] |
 | **extension** | **string**| Specifies whether to search for the specific file extension. | [optional] |
 | **search_area** | [**\OpenAPI\Client\Model\SearchArea**](../Model/.md)| The search area. | [optional] |
 | **forms_item_key** | **string**| The forms item key. | [optional] |
@@ -800,6 +801,7 @@ $filter_type = 1; // \OpenAPI\Client\Model\FilterType | The filter type.
 $room_id = 1; // int | The room ID.
 $exclude_subject = false; // bool | Specifies whether to exclude search by user or group ID.
 $apply_filter_option = 1; // \OpenAPI\Client\Model\ApplyFilterOption | Specifies whether to return only files, only folders, or all elements from the specified folder.
+$with_sub_folders = true; // bool | Specifies whether to include files from subfolders in the results.
 $extension = .docx; // string | Specifies whether to search for the specific file extension.
 $search_area = 1; // \OpenAPI\Client\Model\SearchArea | The search area.
 $forms_item_key = doc_key_123; // string | The forms item key.
@@ -812,7 +814,7 @@ $filter_value = My Document; // string | The text value used as a filter paramet
 $location = 1; // \OpenAPI\Client\Model\Location | The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link.
 
 try {
-    $result = $apiInstance->getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location);
+    $result = $apiInstance->getFolderByFolderId($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FoldersApi->getFolderByFolderId: ', $e->getMessage(), PHP_EOL;
@@ -2266,7 +2268,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($folder_id, $upload_request_dto): \OpenAPI\Client\Model\ObjectWrapper
+uploadFile($folder_id, $create_new_if_exist, $store_original_file, $keep_convert_status, $file): \OpenAPI\Client\Model\FileIntegerArrayWrapper
 ```
 
 Upload a file
@@ -2279,11 +2281,14 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int**| The folder ID to upload a file. | |
-| **upload_request_dto** | [**\OpenAPI\Client\Model\UploadRequestDto**](../Model/UploadRequestDto.md)| The request parameters for uploading a file. | [optional] |
+| **create_new_if_exist** | **bool**| Specifies whether to create the new file if it already exists or not. | [optional] |
+| **store_original_file** | **bool**| Specifies whether to upload documents in the original formats as well or not. | [optional] |
+| **keep_convert_status** | **bool**| Specifies whether to keep the file converting status or not. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| The file to be uploaded. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectWrapper**](../Model/ObjectWrapper.md)
+[**\OpenAPI\Client\Model\FileIntegerArrayWrapper**](../Model/FileIntegerArrayWrapper.md)
 
 ### Authorization
 
@@ -2325,10 +2330,13 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
     $config
 );
 $folder_id = 1; // int | The folder ID to upload a file.
-$upload_request_dto = new \OpenAPI\Client\Model\UploadRequestDto(); // \OpenAPI\Client\Model\UploadRequestDto | The request parameters for uploading a file.
+$create_new_if_exist = true; // bool | Specifies whether to create the new file if it already exists or not.
+$store_original_file = true; // bool | Specifies whether to upload documents in the original formats as well or not.
+$keep_convert_status = false; // bool | Specifies whether to keep the file converting status or not.
+$file = '/path/to/file.txt'; // \SplFileObject | The file to be uploaded.
 
 try {
-    $result = $apiInstance->uploadFile($folder_id, $upload_request_dto);
+    $result = $apiInstance->uploadFile($folder_id, $create_new_if_exist, $store_original_file, $keep_convert_status, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FoldersApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -2337,7 +2345,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -2347,7 +2355,7 @@ try {
 ## `uploadFileToMy()`
 
 ```php
-uploadFileToMy($in_dto): \OpenAPI\Client\Model\ObjectWrapper
+uploadFileToMy($create_new_if_exist, $store_original_file, $keep_convert_status, $file): \OpenAPI\Client\Model\FileIntegerArrayWrapper
 ```
 
 Upload a file to the My documents section
@@ -2359,11 +2367,14 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **in_dto** | [**\OpenAPI\Client\Model\UploadRequestDto**](../Model/.md)| The request parameters for uploading a file. | [optional] |
+| **create_new_if_exist** | **bool**| Specifies whether to create the new file if it already exists or not. | [optional] |
+| **store_original_file** | **bool**| Specifies whether to upload documents in the original formats as well or not. | [optional] |
+| **keep_convert_status** | **bool**| Specifies whether to keep the file converting status or not. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| The file to be uploaded. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectWrapper**](../Model/ObjectWrapper.md)
+[**\OpenAPI\Client\Model\FileIntegerArrayWrapper**](../Model/FileIntegerArrayWrapper.md)
 
 ### Authorization
 
@@ -2404,10 +2415,13 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$in_dto = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\UploadRequestDto(); // \OpenAPI\Client\Model\UploadRequestDto | The request parameters for uploading a file.
+$create_new_if_exist = true; // bool | Specifies whether to create the new file if it already exists or not.
+$store_original_file = true; // bool | Specifies whether to upload documents in the original formats as well or not.
+$keep_convert_status = false; // bool | Specifies whether to keep the file converting status or not.
+$file = '/path/to/file.txt'; // \SplFileObject | The file to be uploaded.
 
 try {
-    $result = $apiInstance->uploadFileToMy($in_dto);
+    $result = $apiInstance->uploadFileToMy($create_new_if_exist, $store_original_file, $keep_convert_status, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FoldersApi->uploadFileToMy: ', $e->getMessage(), PHP_EOL;
@@ -2416,7 +2430,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

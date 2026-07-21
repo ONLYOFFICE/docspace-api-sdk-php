@@ -153,7 +153,6 @@ All API responses may include the following rate limiting headers:
 | `X-RateLimit-Reset` | Unix timestamp (seconds) when the current sliding window rate limit resets. |
 | `Retry-After` | Seconds to wait before retrying. Up to 60s for the sliding window (1500 req/min), up to 86400s for the daily POST/PUT limit (10000/day). |
 
-
 ## API Endpoints
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
@@ -265,6 +264,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiAIChatApi.md#renamechat"><strong>renameChat</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/ai/chats/{chatId}</td>
         <td>Rename an AI chat</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIChatApi.md#resolveeditortool"><strong>resolveEditorTool</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/ai/chats/tool-files/{callId}/decision</td>
+        <td>Resolve a pending editor file-generation tool</td>
       </tr>
       <tr>
         <td><a href="docs/ApiAIChatApi.md#setuserchatssettings"><strong>setUserChatsSettings</strong></a></td>
@@ -414,6 +418,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get AI settings</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiAISettingsApi.md#getaiusersettings"><strong>getAiUserSettings</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/config/user</td>
+        <td>Get per-user AI settings</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiAISettingsApi.md#getvectorizationsettings"><strong>getVectorizationSettings</strong></a></td>
         <td><strong>GET</strong> /api/2.0/ai/config/vectorization</td>
         <td>Get vectorization settings</td>
@@ -422,6 +431,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiAISettingsApi.md#getwebsearchsettings"><strong>getWebSearchSettings</strong></a></td>
         <td><strong>GET</strong> /api/2.0/ai/config/web-search</td>
         <td>Get web search settings</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAISettingsApi.md#setaiusersettings"><strong>setAiUserSettings</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/ai/config/user</td>
+        <td>Update per-user AI settings</td>
       </tr>
       <tr>
         <td><a href="docs/ApiAISettingsApi.md#setvectorizationsettings"><strong>setVectorizationSettings</strong></a></td>
@@ -1222,6 +1236,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiFilesSettingsApi.md#changedownloadzipfrombody"><strong>changeDownloadZipFromBody</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/files/settings/downloadtargz</td>
         <td>Change the archive format (using body parameters)</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesSettingsApi.md#changeexternalsharingsettings"><strong>changeExternalSharingSettings</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/settings/externalsharingsettings</td>
+        <td>Change the Access Control external sharing settings</td>
       </tr>
       <tr>
         <td><a href="docs/ApiFilesSettingsApi.md#checkdocserviceurl"><strong>checkDocServiceUrl</strong></a></td>
@@ -2111,11 +2130,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td colspan="3" style="text-align: center;"><strong>PaymentApi</strong></td>
       </tr>
       <tr>
-        <td><a href="docs/ApiPortalPaymentApi.md#buywalletservice"><strong>buyWalletService</strong></a></td>
-        <td><strong>POST</strong> /api/2.0/portal/payment/buywalletservice</td>
-        <td>Purchases a wallet service with the specified quantity.</td>
-      </tr>
-      <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#calculatewalletpayment"><strong>calculateWalletPayment</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/portal/payment/calculatewallet</td>
         <td>Calculate the wallet payment amount</td>
@@ -2131,6 +2145,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Start the customer operations report generation</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#creditaibalance"><strong>creditAiBalance</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/portal/payment/creditaibalance</td>
+        <td>Credit AI balance</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getaiprices"><strong>getAiPrices</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/ai-prices</td>
         <td>Get AI model prices</td>
@@ -2139,6 +2158,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#getcheckoutsetupurl"><strong>getCheckoutSetupUrl</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/checkoutsetupurl</td>
         <td>Get the checkout setup page URL</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getcustomeraibalance"><strong>getCustomerAiBalance</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/customer/aibalance</td>
+        <td>Get the customer AI balance</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getcustomerbalance"><strong>getCustomerBalance</strong></a></td>
@@ -2159,11 +2183,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#getcustomeroperationsreport"><strong>getCustomerOperationsReport</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/customer/operationsreport</td>
         <td>Get the status of the customer operations report generation</td>
-      </tr>
-      <tr>
-        <td><a href="docs/ApiPortalPaymentApi.md#getcustomerservicequota"><strong>getCustomerServiceQuota</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/portal/payment/customer/servicequota</td>
-        <td>Get the service quota</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getpaymentaccount"><strong>getPaymentAccount</strong></a></td>
@@ -2447,6 +2466,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Remove the room tags</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiRoomsApi.md#getexternaldbsyncstatus"><strong>getExternalDbSyncStatus</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/rooms/{id}/externaldbsync</td>
+        <td>Get external DB sync status</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiRoomsApi.md#getnewroomitems"><strong>getNewRoomItems</strong></a></td>
         <td><strong>GET</strong> /api/2.0/files/rooms/{id}/news</td>
         <td>Get the new room items</td>
@@ -2545,6 +2569,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiRoomsApi.md#setroomsecurity"><strong>setRoomSecurity</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/files/rooms/{id}/share</td>
         <td>Set the room access rights</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiRoomsApi.md#startexternaldbsync"><strong>startExternalDbSync</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/files/rooms/{id}/externaldbsync</td>
+        <td>Start external DB sync</td>
       </tr>
       <tr>
         <td><a href="docs/ApiRoomsApi.md#startroomindexexport"><strong>startRoomIndexExport</strong></a></td>
@@ -3385,9 +3414,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get the TFA codes</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiSettingsTFASettingsApi.md#gettfaconfirmurl"><strong>getTfaConfirmUrl</strong></a></td>
+        <td><a href="docs/ApiSettingsTFASettingsApi.md#gettfaconfirmdata"><strong>getTfaConfirmData</strong></a></td>
         <td><strong>GET</strong> /api/2.0/settings/tfaapp/confirm</td>
-        <td>Get TFA confirmation URL</td>
+        <td>Get TFA confirmation data</td>
       </tr>
       <tr>
         <td><a href="docs/ApiSettingsTFASettingsApi.md#gettfasettings"><strong>getTfaSettings</strong></a></td>
@@ -3580,6 +3609,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiProviderWrapper](docs/ModelAiProviderWrapper.md)
  - [OpenAPI\Client\Model.AiSettingsDto](docs/ModelAiSettingsDto.md)
  - [OpenAPI\Client\Model.AiSettingsWrapper](docs/ModelAiSettingsWrapper.md)
+ - [OpenAPI\Client\Model.AiUserSettingsDto](docs/ModelAiUserSettingsDto.md)
+ - [OpenAPI\Client\Model.AiUserSettingsWrapper](docs/ModelAiUserSettingsWrapper.md)
  - [OpenAPI\Client\Model.AiWebSearchPricing](docs/ModelAiWebSearchPricing.md)
  - [OpenAPI\Client\Model.AnonymousConfigDto](docs/ModelAnonymousConfigDto.md)
  - [OpenAPI\Client\Model.ApiDateTime](docs/ModelApiDateTime.md)
@@ -3628,7 +3659,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.BatchRequestDtoAllOfFolderIds](docs/ModelBatchRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.BatchTagsRequestDto](docs/ModelBatchTagsRequestDto.md)
  - [OpenAPI\Client\Model.BooleanWrapper](docs/ModelBooleanWrapper.md)
- - [OpenAPI\Client\Model.BuyWalletServiceRequestDto](docs/ModelBuyWalletServiceRequestDto.md)
  - [OpenAPI\Client\Model.CapabilitiesDto](docs/ModelCapabilitiesDto.md)
  - [OpenAPI\Client\Model.CapabilitiesWrapper](docs/ModelCapabilitiesWrapper.md)
  - [OpenAPI\Client\Model.CdnStorageSettings](docs/ModelCdnStorageSettings.md)
@@ -3677,8 +3707,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ConnectionTestResult](docs/ModelConnectionTestResult.md)
  - [OpenAPI\Client\Model.ConnectionTestResultWrapper](docs/ModelConnectionTestResultWrapper.md)
  - [OpenAPI\Client\Model.Contact](docs/ModelContact.md)
- - [OpenAPI\Client\Model.ContentDisposition](docs/ModelContentDisposition.md)
- - [OpenAPI\Client\Model.ContentType](docs/ModelContentType.md)
  - [OpenAPI\Client\Model.ContinueChatBody](docs/ModelContinueChatBody.md)
  - [OpenAPI\Client\Model.ContinueChatBodyFilesInner](docs/ModelContinueChatBodyFilesInner.md)
  - [OpenAPI\Client\Model.ConversationResultArrayWrapper](docs/ModelConversationResultArrayWrapper.md)
@@ -3704,6 +3732,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.CreateTextOrHtmlFile](docs/ModelCreateTextOrHtmlFile.md)
  - [OpenAPI\Client\Model.CreateThirdPartyRoom](docs/ModelCreateThirdPartyRoom.md)
  - [OpenAPI\Client\Model.CreateWebhooksConfigRequestsDto](docs/ModelCreateWebhooksConfigRequestsDto.md)
+ - [OpenAPI\Client\Model.CreditAiBalanceRequestDto](docs/ModelCreditAiBalanceRequestDto.md)
  - [OpenAPI\Client\Model.Cron](docs/ModelCron.md)
  - [OpenAPI\Client\Model.CronParams](docs/ModelCronParams.md)
  - [OpenAPI\Client\Model.CspDto](docs/ModelCspDto.md)
@@ -3783,6 +3812,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.EditHistoryUrl](docs/ModelEditHistoryUrl.md)
  - [OpenAPI\Client\Model.EditorConfigurationDto](docs/ModelEditorConfigurationDto.md)
  - [OpenAPI\Client\Model.EditorToolCallStateDto](docs/ModelEditorToolCallStateDto.md)
+ - [OpenAPI\Client\Model.EditorToolDecisionRequestBody](docs/ModelEditorToolDecisionRequestBody.md)
  - [OpenAPI\Client\Model.EditorType](docs/ModelEditorType.md)
  - [OpenAPI\Client\Model.EmailActivationSettings](docs/ModelEmailActivationSettings.md)
  - [OpenAPI\Client\Model.EmailActivationSettingsWrapper](docs/ModelEmailActivationSettingsWrapper.md)
@@ -3812,18 +3842,28 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ExportMessageRequestBody](docs/ModelExportMessageRequestBody.md)
  - [OpenAPI\Client\Model.ExternalDatabaseSettings](docs/ModelExternalDatabaseSettings.md)
  - [OpenAPI\Client\Model.ExternalDatabaseType](docs/ModelExternalDatabaseType.md)
+ - [OpenAPI\Client\Model.ExternalDbSyncFormResultDto](docs/ModelExternalDbSyncFormResultDto.md)
+ - [OpenAPI\Client\Model.ExternalDbSyncTaskDto](docs/ModelExternalDbSyncTaskDto.md)
+ - [OpenAPI\Client\Model.ExternalDbSyncTaskWrapper](docs/ModelExternalDbSyncTaskWrapper.md)
  - [OpenAPI\Client\Model.ExternalShareDto](docs/ModelExternalShareDto.md)
  - [OpenAPI\Client\Model.ExternalShareRequestParam](docs/ModelExternalShareRequestParam.md)
  - [OpenAPI\Client\Model.ExternalShareWrapper](docs/ModelExternalShareWrapper.md)
+ - [OpenAPI\Client\Model.ExternalSharingSettingsDto](docs/ModelExternalSharingSettingsDto.md)
+ - [OpenAPI\Client\Model.ExternalSharingSettingsRequestDto](docs/ModelExternalSharingSettingsRequestDto.md)
+ - [OpenAPI\Client\Model.ExternalSharingSettingsWrapper](docs/ModelExternalSharingSettingsWrapper.md)
  - [OpenAPI\Client\Model.FeatureUsedDto](docs/ModelFeatureUsedDto.md)
  - [OpenAPI\Client\Model.FeedbackConfig](docs/ModelFeedbackConfig.md)
  - [OpenAPI\Client\Model.FileConflictResolveType](docs/ModelFileConflictResolveType.md)
  - [OpenAPI\Client\Model.FileDtoInteger](docs/ModelFileDtoInteger.md)
- - [OpenAPI\Client\Model.FileDtoIntegerViewAccessibility](docs/ModelFileDtoIntegerViewAccessibility.md)
+ - [OpenAPI\Client\Model.FileDtoIntegerAllOfViewAccessibility](docs/ModelFileDtoIntegerAllOfViewAccessibility.md)
  - [OpenAPI\Client\Model.FileEntryBaseArrayWrapper](docs/ModelFileEntryBaseArrayWrapper.md)
  - [OpenAPI\Client\Model.FileEntryBaseDto](docs/ModelFileEntryBaseDto.md)
  - [OpenAPI\Client\Model.FileEntryBaseWrapper](docs/ModelFileEntryBaseWrapper.md)
  - [OpenAPI\Client\Model.FileEntryDtoInteger](docs/ModelFileEntryDtoInteger.md)
+ - [OpenAPI\Client\Model.FileEntryDtoIntegerAllOfAvailableShareRights](docs/ModelFileEntryDtoIntegerAllOfAvailableShareRights.md)
+ - [OpenAPI\Client\Model.FileEntryDtoIntegerAllOfSecurity](docs/ModelFileEntryDtoIntegerAllOfSecurity.md)
+ - [OpenAPI\Client\Model.FileEntryDtoIntegerAllOfShareSettings](docs/ModelFileEntryDtoIntegerAllOfShareSettings.md)
+ - [OpenAPI\Client\Model.FileEntryDtoString](docs/ModelFileEntryDtoString.md)
  - [OpenAPI\Client\Model.FileEntryIntegerArrayWrapper](docs/ModelFileEntryIntegerArrayWrapper.md)
  - [OpenAPI\Client\Model.FileEntryType](docs/ModelFileEntryType.md)
  - [OpenAPI\Client\Model.FileIntegerArrayWrapper](docs/ModelFileIntegerArrayWrapper.md)
@@ -3867,9 +3907,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.FolderContentIntegerArrayWrapper](docs/ModelFolderContentIntegerArrayWrapper.md)
  - [OpenAPI\Client\Model.FolderContentIntegerWrapper](docs/ModelFolderContentIntegerWrapper.md)
  - [OpenAPI\Client\Model.FolderDtoInteger](docs/ModelFolderDtoInteger.md)
- - [OpenAPI\Client\Model.FolderDtoIntegerAvailableShareRights](docs/ModelFolderDtoIntegerAvailableShareRights.md)
- - [OpenAPI\Client\Model.FolderDtoIntegerSecurity](docs/ModelFolderDtoIntegerSecurity.md)
- - [OpenAPI\Client\Model.FolderDtoIntegerShareSettings](docs/ModelFolderDtoIntegerShareSettings.md)
  - [OpenAPI\Client\Model.FolderDtoString](docs/ModelFolderDtoString.md)
  - [OpenAPI\Client\Model.FolderIntegerArrayWrapper](docs/ModelFolderIntegerArrayWrapper.md)
  - [OpenAPI\Client\Model.FolderIntegerWrapper](docs/ModelFolderIntegerWrapper.md)
@@ -3890,10 +3927,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.FormsItemArrayWrapper](docs/ModelFormsItemArrayWrapper.md)
  - [OpenAPI\Client\Model.FormsItemData](docs/ModelFormsItemData.md)
  - [OpenAPI\Client\Model.FormsItemDto](docs/ModelFormsItemDto.md)
+ - [OpenAPI\Client\Model.GeneratedFileDto](docs/ModelGeneratedFileDto.md)
+ - [OpenAPI\Client\Model.GeneratedFileWrapper](docs/ModelGeneratedFileWrapper.md)
  - [OpenAPI\Client\Model.GetPortalPrices200Response](docs/ModelGetPortalPrices200Response.md)
  - [OpenAPI\Client\Model.GetPortalPrices200ResponseLinksInner](docs/ModelGetPortalPrices200ResponseLinksInner.md)
  - [OpenAPI\Client\Model.GetReferenceDataDtoInteger](docs/ModelGetReferenceDataDtoInteger.md)
- - [OpenAPI\Client\Model.GetWebhookTriggers200Response](docs/ModelGetWebhookTriggers200Response.md)
  - [OpenAPI\Client\Model.GobackConfig](docs/ModelGobackConfig.md)
  - [OpenAPI\Client\Model.GreetingSettingsRequestsDto](docs/ModelGreetingSettingsRequestsDto.md)
  - [OpenAPI\Client\Model.GroupArrayWrapper](docs/ModelGroupArrayWrapper.md)
@@ -4116,6 +4154,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ServicePayment](docs/ModelServicePayment.md)
  - [OpenAPI\Client\Model.ServicePaymentWrapper](docs/ModelServicePaymentWrapper.md)
  - [OpenAPI\Client\Model.SessionRequest](docs/ModelSessionRequest.md)
+ - [OpenAPI\Client\Model.SetAiUserSettingsRequestDto](docs/ModelSetAiUserSettingsRequestDto.md)
  - [OpenAPI\Client\Model.SetDefaultProviderRequestDto](docs/ModelSetDefaultProviderRequestDto.md)
  - [OpenAPI\Client\Model.SetEmbeddingConfigRequestBody](docs/ModelSetEmbeddingConfigRequestBody.md)
  - [OpenAPI\Client\Model.SetManagerRequest](docs/ModelSetManagerRequest.md)
@@ -4221,6 +4260,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.TerminateRequestDto](docs/ModelTerminateRequestDto.md)
  - [OpenAPI\Client\Model.TfaAppCodeArrayWrapper](docs/ModelTfaAppCodeArrayWrapper.md)
  - [OpenAPI\Client\Model.TfaAppCodeDto](docs/ModelTfaAppCodeDto.md)
+ - [OpenAPI\Client\Model.TfaConfirmDataDto](docs/ModelTfaConfirmDataDto.md)
+ - [OpenAPI\Client\Model.TfaConfirmDataWrapper](docs/ModelTfaConfirmDataWrapper.md)
  - [OpenAPI\Client\Model.TfaRequestsDto](docs/ModelTfaRequestsDto.md)
  - [OpenAPI\Client\Model.TfaRequestsDtoType](docs/ModelTfaRequestsDtoType.md)
  - [OpenAPI\Client\Model.TfaSettingsArrayWrapper](docs/ModelTfaSettingsArrayWrapper.md)
@@ -4259,7 +4300,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.UpdateServerRequestBody](docs/ModelUpdateServerRequestBody.md)
  - [OpenAPI\Client\Model.UpdateTagRequestDto](docs/ModelUpdateTagRequestDto.md)
  - [OpenAPI\Client\Model.UpdateWebhooksConfigRequestsDto](docs/ModelUpdateWebhooksConfigRequestsDto.md)
- - [OpenAPI\Client\Model.UploadRequestDto](docs/ModelUploadRequestDto.md)
  - [OpenAPI\Client\Model.UploadResultDto](docs/ModelUploadResultDto.md)
  - [OpenAPI\Client\Model.UploadResultWrapper](docs/ModelUploadResultWrapper.md)
  - [OpenAPI\Client\Model.UploadSessionResponseDtoInteger](docs/ModelUploadSessionResponseDtoInteger.md)
@@ -4269,6 +4309,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.UserChatSettingsDto](docs/ModelUserChatSettingsDto.md)
  - [OpenAPI\Client\Model.UserChatSettingsWrapper](docs/ModelUserChatSettingsWrapper.md)
  - [OpenAPI\Client\Model.UserConfig](docs/ModelUserConfig.md)
+ - [OpenAPI\Client\Model.UserExistsResponseDto](docs/ModelUserExistsResponseDto.md)
+ - [OpenAPI\Client\Model.UserExistsResponseWrapper](docs/ModelUserExistsResponseWrapper.md)
  - [OpenAPI\Client\Model.UserInfo](docs/ModelUserInfo.md)
  - [OpenAPI\Client\Model.UserInfoWrapper](docs/ModelUserInfoWrapper.md)
  - [OpenAPI\Client\Model.UserInvitation](docs/ModelUserInvitation.md)
@@ -4297,6 +4339,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.WebhookGroupStatus](docs/ModelWebhookGroupStatus.md)
  - [OpenAPI\Client\Model.WebhookRetryRequestsDto](docs/ModelWebhookRetryRequestsDto.md)
  - [OpenAPI\Client\Model.WebhookTrigger](docs/ModelWebhookTrigger.md)
+ - [OpenAPI\Client\Model.WebhookTriggerArrayWrapper](docs/ModelWebhookTriggerArrayWrapper.md)
+ - [OpenAPI\Client\Model.WebhookTriggerDto](docs/ModelWebhookTriggerDto.md)
  - [OpenAPI\Client\Model.WebhooksConfigDto](docs/ModelWebhooksConfigDto.md)
  - [OpenAPI\Client\Model.WebhooksConfigWithStatusArrayWrapper](docs/ModelWebhooksConfigWithStatusArrayWrapper.md)
  - [OpenAPI\Client\Model.WebhooksConfigWithStatusDto](docs/ModelWebhooksConfigWithStatusDto.md)

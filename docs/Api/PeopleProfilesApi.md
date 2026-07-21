@@ -102,11 +102,11 @@ try {
 ## `checkUserExistsByEmail()`
 
 ```php
-checkUserExistsByEmail($email, $encemail, $culture): \OpenAPI\Client\Model\BooleanWrapper
+checkUserExistsByEmail($email, $encemail, $culture): \OpenAPI\Client\Model\UserExistsResponseWrapper
 ```
 
 Check if a user exists by email
-Returns a boolean indicating whether a user with the specified email exists on the portal.
+Returns data indicating whether a user with the specified email exists on the portal.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/check-user-exists-by-email/).
 
@@ -120,7 +120,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\BooleanWrapper**](../Model/BooleanWrapper.md)
+[**\OpenAPI\Client\Model\UserExistsResponseWrapper**](../Model/UserExistsResponseWrapper.md)
 
 ### Authorization
 

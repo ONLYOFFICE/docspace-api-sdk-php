@@ -9,6 +9,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**changeDefaultAccessRights()**](FilesSettingsApi.md#changeDefaultAccessRights) | **PUT** /api/2.0/files/settings/dafaultaccessrights | Change the default access rights |
 | [**changeDeleteConfirm()**](FilesSettingsApi.md#changeDeleteConfirm) | **PUT** /api/2.0/files/changedeleteconfrim | Confirm the file deletion |
 | [**changeDownloadZipFromBody()**](FilesSettingsApi.md#changeDownloadZipFromBody) | **PUT** /api/2.0/files/settings/downloadtargz | Change the archive format (using body parameters) |
+| [**changeExternalSharingSettings()**](FilesSettingsApi.md#changeExternalSharingSettings) | **PUT** /api/2.0/files/settings/externalsharingsettings | Change the Access Control external sharing settings |
 | [**checkDocServiceUrl()**](FilesSettingsApi.md#checkDocServiceUrl) | **PUT** /api/2.0/files/docservice | Check the document service URL |
 | [**displayFileExtension()**](FilesSettingsApi.md#displayFileExtension) | **PUT** /api/2.0/files/displayfileextension | Display a file extension |
 | [**displayRecent()**](FilesSettingsApi.md#displayRecent) | **PUT** /api/2.0/files/displayrecent | Display the Recent folder |
@@ -418,6 +419,85 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SettingsApi->changeDownloadZipFromBody: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `changeExternalSharingSettings()`
+
+```php
+changeExternalSharingSettings($external_sharing_settings_request_dto): \OpenAPI\Client\Model\ExternalSharingSettingsWrapper
+```
+
+Change the Access Control external sharing settings
+Changes the Access Control external sharing settings.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/change-external-sharing-settings/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **external_sharing_settings_request_dto** | [**\OpenAPI\Client\Model\ExternalSharingSettingsRequestDto**](../Model/ExternalSharingSettingsRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ExternalSharingSettingsWrapper**](../Model/ExternalSharingSettingsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\SettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$external_sharing_settings_request_dto = new \OpenAPI\Client\Model\ExternalSharingSettingsRequestDto(); // \OpenAPI\Client\Model\ExternalSharingSettingsRequestDto
+
+try {
+    $result = $apiInstance->changeExternalSharingSettings($external_sharing_settings_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SettingsApi->changeExternalSharingSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

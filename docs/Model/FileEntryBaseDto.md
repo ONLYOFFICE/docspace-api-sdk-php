@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **owned_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  | [optional]
 **shared** | **bool** | Specifies if the file entry is shared via link or not. | [optional]
 **shared_for_user** | **bool** | Specifies if the file entry is shared for user or not. | [optional]
+**shared_external** | **bool** | Specifies if the file entry is shared via a public (non-internal) external link. | [optional]
 **parent_shared** | **bool** | Indicates whether the parent entity is shared. | [optional]
 **short_web_url** | **string** | The short Web URL. | [optional]
 **created** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]

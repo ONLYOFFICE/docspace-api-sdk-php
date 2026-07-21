@@ -20,5 +20,6 @@ Name | Type | Description | Notes
 **generate_form_tool_name** | **string** | The tool name used by the AI assistant to launch form creation in the editor. |
 **generate_presentation_tool_name** | **string** | The tool name used by the AI assistant to launch presentation creation in the editor. |
 **system_ai_enabled** | **bool** | Indicates whether the system-level AI provider is enabled. | [optional]
+**recommended_model_for_forms** | **string** | The identifier of the model recommended for form generation. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -17,5 +17,6 @@ Name | Type | Description | Notes
 **participant_display_name** | **string** | The participant display name. | [optional]
 **agent_id** | **string** | AI Agent id. | [optional]
 **agent_title** | **string** | AI Agent name. | [optional]
+**type** | [**\OpenAPI\Client\Model\OperationType**](OperationType.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

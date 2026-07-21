@@ -4,17 +4,17 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**buyWalletService()**](PortalPaymentApi.md#buyWalletService) | **POST** /api/2.0/portal/payment/buywalletservice | Purchases a wallet service with the specified quantity. |
 | [**calculateWalletPayment()**](PortalPaymentApi.md#calculateWalletPayment) | **PUT** /api/2.0/portal/payment/calculatewallet | Calculate the wallet payment amount |
 | [**changeTenantWalletServiceState()**](PortalPaymentApi.md#changeTenantWalletServiceState) | **POST** /api/2.0/portal/payment/servicestate | Change tenant wallet service state |
 | [**createCustomerOperationsReport()**](PortalPaymentApi.md#createCustomerOperationsReport) | **POST** /api/2.0/portal/payment/customer/operationsreport | Start the customer operations report generation |
+| [**creditAiBalance()**](PortalPaymentApi.md#creditAiBalance) | **POST** /api/2.0/portal/payment/creditaibalance | Credit AI balance |
 | [**getAiPrices()**](PortalPaymentApi.md#getAiPrices) | **GET** /api/2.0/portal/payment/ai-prices | Get AI model prices |
 | [**getCheckoutSetupUrl()**](PortalPaymentApi.md#getCheckoutSetupUrl) | **GET** /api/2.0/portal/payment/checkoutsetupurl | Get the checkout setup page URL |
+| [**getCustomerAiBalance()**](PortalPaymentApi.md#getCustomerAiBalance) | **GET** /api/2.0/portal/payment/customer/aibalance | Get the customer AI balance |
 | [**getCustomerBalance()**](PortalPaymentApi.md#getCustomerBalance) | **GET** /api/2.0/portal/payment/customer/balance | Get the customer balance |
 | [**getCustomerInfo()**](PortalPaymentApi.md#getCustomerInfo) | **GET** /api/2.0/portal/payment/customerinfo | Get the customer information |
 | [**getCustomerOperations()**](PortalPaymentApi.md#getCustomerOperations) | **GET** /api/2.0/portal/payment/customer/operations | Get the customer operations |
 | [**getCustomerOperationsReport()**](PortalPaymentApi.md#getCustomerOperationsReport) | **GET** /api/2.0/portal/payment/customer/operationsreport | Get the status of the customer operations report generation |
-| [**getCustomerServiceQuota()**](PortalPaymentApi.md#getCustomerServiceQuota) | **GET** /api/2.0/portal/payment/customer/servicequota | Get the service quota |
 | [**getPaymentAccount()**](PortalPaymentApi.md#getPaymentAccount) | **GET** /api/2.0/portal/payment/account | Get the payment account |
 | [**getPaymentCurrencies()**](PortalPaymentApi.md#getPaymentCurrencies) | **GET** /api/2.0/portal/payment/currencies | Get currencies |
 | [**getPaymentQuotas()**](PortalPaymentApi.md#getPaymentQuotas) | **GET** /api/2.0/portal/payment/quotas | Get quotas |
@@ -34,85 +34,6 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**updatePayment()**](PortalPaymentApi.md#updatePayment) | **PUT** /api/2.0/portal/payment/update | Update the payment quantity |
 | [**updateWalletPayment()**](PortalPaymentApi.md#updateWalletPayment) | **PUT** /api/2.0/portal/payment/updatewallet | Update the wallet payment quantity |
 
-
-## `buyWalletService()`
-
-```php
-buyWalletService($buy_wallet_service_request_dto): \OpenAPI\Client\Model\ServicePaymentWrapper
-```
-
-Purchases a wallet service with the specified quantity.
-This method processes a payment for a wallet service using the configured payment method.  Requires the tariff service to be configured and a valid payment method to be set for the customer.  Rate limiting is applied according to the payments API policy.
-
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/buy-wallet-service/).
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **buy_wallet_service_request_dto** | [**\OpenAPI\Client\Model\BuyWalletServiceRequestDto**](../Model/BuyWalletServiceRequestDto.md)|  | [optional] |
-
-### Return type
-
-[**\OpenAPI\Client\Model\ServicePaymentWrapper**](../Model/ServicePaymentWrapper.md)
-
-### Authorization
-
-[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure HTTP basic authorization: Basic
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-// Configure OAuth2 access token for authorization: OAuth2
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure API key authorization: ApiKeyBearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
-
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
-
-// Configure Bearer (JWT) authorization: Bearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new OpenAPI\Client\Api\PaymentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$buy_wallet_service_request_dto = new \OpenAPI\Client\Model\BuyWalletServiceRequestDto(); // \OpenAPI\Client\Model\BuyWalletServiceRequestDto
-
-try {
-    $result = $apiInstance->buyWalletService($buy_wallet_service_request_dto);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PaymentApi->buyWalletService: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `calculateWalletPayment()`
 
@@ -351,6 +272,85 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `creditAiBalance()`
+
+```php
+creditAiBalance($credit_ai_balance_request_dto): \OpenAPI\Client\Model\ServicePaymentWrapper
+```
+
+Credit AI balance
+Credits AI quota to the customer AI sub-account from their main balance.  Requires the customer to have a configured payment method.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/credit-ai-balance/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **credit_ai_balance_request_dto** | [**\OpenAPI\Client\Model\CreditAiBalanceRequestDto**](../Model/CreditAiBalanceRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ServicePaymentWrapper**](../Model/ServicePaymentWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\PaymentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$credit_ai_balance_request_dto = new \OpenAPI\Client\Model\CreditAiBalanceRequestDto(); // \OpenAPI\Client\Model\CreditAiBalanceRequestDto
+
+try {
+    $result = $apiInstance->creditAiBalance($credit_ai_balance_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PaymentApi->creditAiBalance: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getAiPrices()`
 
 ```php
@@ -430,7 +430,7 @@ try {
 ## `getCheckoutSetupUrl()`
 
 ```php
-getCheckoutSetupUrl($back_url): \OpenAPI\Client\Model\StringWrapper
+getCheckoutSetupUrl($back_url, $success_url): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Get the checkout setup page URL
@@ -442,7 +442,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **back_url** | **string**| The URL where the user will be redirected after completing the setup. | [optional] |
+| **back_url** | **string**| The URL where the user will be redirected after setup cancellation. | |
+| **success_url** | **string**| The URL where the user will be redirected after successful payment. | |
 
 ### Return type
 
@@ -487,13 +488,93 @@ $apiInstance = new OpenAPI\Client\Api\PaymentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$back_url = https://example.com/setup/complete; // string | The URL where the user will be redirected after completing the setup.
+$back_url = https://example.com/payment/back; // string | The URL where the user will be redirected after setup cancellation.
+$success_url = https://example.com/payment/success; // string | The URL where the user will be redirected after successful payment.
 
 try {
-    $result = $apiInstance->getCheckoutSetupUrl($back_url);
+    $result = $apiInstance->getCheckoutSetupUrl($back_url, $success_url);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentApi->getCheckoutSetupUrl: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCustomerAiBalance()`
+
+```php
+getCustomerAiBalance($refresh): \OpenAPI\Client\Model\BalanceWrapper
+```
+
+Get the customer AI balance
+Returns the AI quota balance of a customer from the accounting service.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-ai-balance/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **refresh** | **bool**| Specifies whether to refresh the payment information cache or not. | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\BalanceWrapper**](../Model/BalanceWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\PaymentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$refresh = true; // bool | Specifies whether to refresh the payment information cache or not.
+
+try {
+    $result = $apiInstance->getCustomerAiBalance($refresh);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PaymentApi->getCustomerAiBalance: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -667,7 +748,7 @@ try {
 ## `getCustomerOperations()`
 
 ```php
-getCustomerOperations($offset, $limit, $service_name, $write_off_service_quota, $start_date, $end_date, $participant_name, $credit, $debit, $types, $status, $order_by, $order_type): \OpenAPI\Client\Model\ReportWrapper
+getCustomerOperations($offset, $limit, $service_name, $start_date, $end_date, $participant_name, $credit, $debit, $type, $status, $order_by, $order_type): \OpenAPI\Client\Model\ReportWrapper
 ```
 
 Get the customer operations
@@ -682,14 +763,13 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **offset** | **int**| The number of items to skip for pagination. The default value is 0. | [optional] |
 | **limit** | **int**| The maximum number of items to return for pagination. The default value is 25. | [optional] |
 | **service_name** | **string**| The service name. | [optional] |
-| **write_off_service_quota** | **bool**| Write-off of the quota for the service | [optional] |
 | **start_date** | **\DateTime**| The report start date. | [optional] |
 | **end_date** | **\DateTime**| The report end date. | [optional] |
 | **participant_name** | **string**| The participant name. | [optional] |
 | **credit** | **bool**| Specifies whether to include credit operations in the report. | [optional] |
 | **debit** | **bool**| Specifies whether to include debit operations in the report. | [optional] |
-| **types** | [**\OpenAPI\Client\Model\OperationType**](../Model/.md)| List of operation types to filter by. | [optional] |
-| **status** | [**\OpenAPI\Client\Model\OperationStatus**](../Model/.md)| List of operation status to filter by. | [optional] |
+| **type** | [**\OpenAPI\Client\Model\OperationType**](../Model/.md)| The operation type to filter by. | [optional] |
+| **status** | [**\OpenAPI\Client\Model\OperationStatus**](../Model/.md)| The operation status to filter by. | [optional] |
 | **order_by** | **string**| The field to order by. | [optional] |
 | **order_type** | [**\OpenAPI\Client\Model\OperationOrderType**](../Model/.md)| Order direction: Ascending or Descending. | [optional] |
 
@@ -739,19 +819,18 @@ $apiInstance = new OpenAPI\Client\Api\PaymentApi(
 $offset = 0; // int | The number of items to skip for pagination. The default value is 0.
 $limit = 25; // int | The maximum number of items to return for pagination. The default value is 25.
 $service_name = backup; // string | The service name.
-$write_off_service_quota = false; // bool | Write-off of the quota for the service
 $start_date = 2024-01-01T00:00Z; // \DateTime | The report start date.
 $end_date = 2024-01-31T23:59:59Z; // \DateTime | The report end date.
-$participant_name = ACME Corp; // string | The participant name.
+$participant_name = My Own Corporation; // string | The participant name.
 $credit = true; // bool | Specifies whether to include credit operations in the report.
 $debit = false; // bool | Specifies whether to include debit operations in the report.
-$types = Any; // \OpenAPI\Client\Model\OperationType | List of operation types to filter by.
-$status = Any; // \OpenAPI\Client\Model\OperationStatus | List of operation status to filter by.
+$type = Any; // \OpenAPI\Client\Model\OperationType | The operation type to filter by.
+$status = Any; // \OpenAPI\Client\Model\OperationStatus | The operation status to filter by.
 $order_by = StartDate; // string | The field to order by.
 $order_type = Descending; // \OpenAPI\Client\Model\OperationOrderType | Order direction: Ascending or Descending.
 
 try {
-    $result = $apiInstance->getCustomerOperations($offset, $limit, $service_name, $write_off_service_quota, $start_date, $end_date, $participant_name, $credit, $debit, $types, $status, $order_by, $order_type);
+    $result = $apiInstance->getCustomerOperations($offset, $limit, $service_name, $start_date, $end_date, $participant_name, $credit, $debit, $type, $status, $order_by, $order_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentApi->getCustomerOperations: ', $e->getMessage(), PHP_EOL;
@@ -831,87 +910,6 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentApi->getCustomerOperationsReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getCustomerServiceQuota()`
-
-```php
-getCustomerServiceQuota($service_name, $refresh): \OpenAPI\Client\Model\BalanceWrapper
-```
-
-Get the service quota
-Returns the service quota from the accounting service.
-
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-quota/).
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **service_name** | **string**| The service name. | [optional] |
-| **refresh** | **bool**| Specifies whether to refresh the payment information cache or not. | [optional] |
-
-### Return type
-
-[**\OpenAPI\Client\Model\BalanceWrapper**](../Model/BalanceWrapper.md)
-
-### Authorization
-
-[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure HTTP basic authorization: Basic
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-// Configure OAuth2 access token for authorization: OAuth2
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure API key authorization: ApiKeyBearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
-
-// Configure API key authorization: asc_auth_key
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
-
-// Configure Bearer (JWT) authorization: Bearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new OpenAPI\Client\Api\PaymentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$service_name = backup; // string | The service name.
-$refresh = true; // bool | Specifies whether to refresh the payment information cache or not.
-
-try {
-    $result = $apiInstance->getCustomerServiceQuota($service_name, $refresh);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PaymentApi->getCustomerServiceQuota: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

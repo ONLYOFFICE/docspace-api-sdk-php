@@ -252,11 +252,11 @@ try {
 ## `getWebhookTriggers()`
 
 ```php
-getWebhookTriggers(): \OpenAPI\Client\Model\GetWebhookTriggers200Response
+getWebhookTriggers(): \OpenAPI\Client\Model\WebhookTriggerArrayWrapper
 ```
 
 Get webhook triggers
-Returns a list of triggers for a webhook.
+Returns a list of triggers for a webhook with their availability for the current user.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhook-triggers/).
 
@@ -266,7 +266,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GetWebhookTriggers200Response**](../Model/GetWebhookTriggers200Response.md)
+[**\OpenAPI\Client\Model\WebhookTriggerArrayWrapper**](../Model/WebhookTriggerArrayWrapper.md)
 
 ### Authorization
 

@@ -14,6 +14,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getUserChatsSettings()**](AIChatApi.md#getUserChatsSettings) | **GET** /api/2.0/ai/rooms/{roomId}/chats/config | Get user chat settings for a room |
 | [**providePermission()**](AIChatApi.md#providePermission) | **POST** /api/2.0/ai/chats/tool-permissions/{callId}/decision | Submit a tool execution permission decision |
 | [**renameChat()**](AIChatApi.md#renameChat) | **PUT** /api/2.0/ai/chats/{chatId} | Rename an AI chat |
+| [**resolveEditorTool()**](AIChatApi.md#resolveEditorTool) | **POST** /api/2.0/ai/chats/tool-files/{callId}/decision | Resolve a pending editor file-generation tool |
 | [**setUserChatsSettings()**](AIChatApi.md#setUserChatsSettings) | **PUT** /api/2.0/ai/rooms/{roomId}/chats/config | Update user chat settings for a room |
 | [**startNewChat()**](AIChatApi.md#startNewChat) | **POST** /api/2.0/ai/rooms/{roomId}/chats | Start a new AI chat |
 
@@ -808,6 +809,87 @@ try {
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ChatApi->renameChat: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `resolveEditorTool()`
+
+```php
+resolveEditorTool($call_id, $editor_tool_decision_request_body): \OpenAPI\Client\Model\GeneratedFileWrapper
+```
+
+Resolve a pending editor file-generation tool
+Submits the user's approval or denial for a pending editor generation tool call (docx, form, presentation).  On approval the file is created from the original tool arguments and information about it is returned,  while the suspended chat tool is resumed with the same result so the AI session can continue.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/resolve-editor-tool/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **call_id** | **string**| The unique identifier of the pending tool call awaiting the user's decision. | |
+| **editor_tool_decision_request_body** | [**\OpenAPI\Client\Model\EditorToolDecisionRequestBody**](../Model/EditorToolDecisionRequestBody.md)| The decision parameters. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\GeneratedFileWrapper**](../Model/GeneratedFileWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\ChatApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$call_id = call_abc123; // string | The unique identifier of the pending tool call awaiting the user's decision.
+$editor_tool_decision_request_body = new \OpenAPI\Client\Model\EditorToolDecisionRequestBody(); // \OpenAPI\Client\Model\EditorToolDecisionRequestBody | The decision parameters.
+
+try {
+    $result = $apiInstance->resolveEditorTool($call_id, $editor_tool_decision_request_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ChatApi->resolveEditorTool: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
