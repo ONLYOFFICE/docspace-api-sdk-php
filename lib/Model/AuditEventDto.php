@@ -59,7 +59,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
-        'date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'date' => '\DateTime',
         'user' => 'string',
         'user_id' => 'string',
         'action' => 'string',
@@ -87,7 +87,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'id' => 'int32',
-        'date' => null,
+        'date' => 'date-time',
         'user' => null,
         'user_id' => 'uuid',
         'action' => null,
@@ -113,7 +113,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'date' => false,
+        'date' => true,
         'user' => true,
         'user_id' => false,
         'action' => true,
@@ -439,7 +439,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getDate()
     {
@@ -449,14 +449,21 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $date The API date and time parameters.
+     * @param \DateTime|null $date The audit event date.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 
@@ -571,7 +578,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_id
      *
-     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The event action ID.
+     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The specific action that occurred within the audit event.
      *
      * @return self
      */

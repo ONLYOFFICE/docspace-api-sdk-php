@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudQuotaWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DocsCloudQuota object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DocsCloudQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudQuota|null $response response
+     * @param \OpenAPI\Client\Model\DocsCloudQuota|null $response The DocsCloudQuota object returned by the operation.
      *
      * @return self
      */

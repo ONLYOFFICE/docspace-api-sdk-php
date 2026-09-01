@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * IconRequest Class Doc Comment
  *
  * @category Class
+ * @description The icon to set on a room group.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

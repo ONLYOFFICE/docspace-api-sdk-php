@@ -59,7 +59,7 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPITypes = [
         'user' => '\OpenAPI\Client\Model\EditHistoryAuthor',
-        'created' => '\OpenAPI\Client\Model\ApiDateTime',
+        'created' => '\DateTime',
         'document_sha256' => 'string'
     ];
 
@@ -72,7 +72,7 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPIFormats = [
         'user' => null,
-        'created' => null,
+        'created' => 'date-time',
         'document_sha256' => null
     ];
 
@@ -83,7 +83,7 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static array $openAPINullables = [
         'user' => false,
-        'created' => false,
+        'created' => true,
         'document_sha256' => true
     ];
 
@@ -317,7 +317,7 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EditHistoryAuthor|null $user The information about the file editing history author.
+     * @param \OpenAPI\Client\Model\EditHistoryAuthor|null $user The user who edited the file.
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets created
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreated()
     {
@@ -344,14 +344,21 @@ class EditHistoryChangesWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets created
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $created The API date and time parameters.
+     * @param \DateTime|null $created The creation date and time of the file version.
      *
      * @return self
      */
     public function setCreated($created)
     {
         if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created'] = $created;
 

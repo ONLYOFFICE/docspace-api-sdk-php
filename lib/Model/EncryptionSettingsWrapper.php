@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the EncryptionSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EncryptionSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EncryptionSettings|null $response response
+     * @param \OpenAPI\Client\Model\EncryptionSettings|null $response The EncryptionSettings object returned by the operation.
      *
      * @return self
      */

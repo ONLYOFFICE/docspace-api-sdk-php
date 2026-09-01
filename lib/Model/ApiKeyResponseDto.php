@@ -63,10 +63,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => 'string',
         'key_postfix' => 'string',
         'permissions' => 'string[]',
-        'last_used' => '\OpenAPI\Client\Model\ApiDateTime',
-        'create_on' => '\OpenAPI\Client\Model\ApiDateTime',
+        'last_used' => '\DateTime',
+        'create_on' => '\DateTime',
         'create_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'expires_at' => '\OpenAPI\Client\Model\ApiDateTime',
+        'expires_at' => '\DateTime',
         'is_active' => 'bool'
     ];
 
@@ -83,10 +83,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => null,
         'key_postfix' => null,
         'permissions' => null,
-        'last_used' => null,
-        'create_on' => null,
+        'last_used' => 'date-time',
+        'create_on' => 'date-time',
         'create_by' => null,
-        'expires_at' => null,
+        'expires_at' => 'date-time',
         'is_active' => null
     ];
 
@@ -101,10 +101,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => true,
         'key_postfix' => true,
         'permissions' => true,
-        'last_used' => false,
-        'create_on' => false,
+        'last_used' => true,
+        'create_on' => true,
         'create_by' => false,
-        'expires_at' => false,
+        'expires_at' => true,
         'is_active' => false
     ];
 
@@ -534,7 +534,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets last_used
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getLastUsed()
     {
@@ -544,14 +544,21 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets last_used
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $last_used The API date and time parameters.
+     * @param \DateTime|null $last_used The date and time when the API key was last used.
      *
      * @return self
      */
     public function setLastUsed($last_used)
     {
         if (is_null($last_used)) {
-            throw new \InvalidArgumentException('non-nullable last_used cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_used');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_used', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_used'] = $last_used;
 
@@ -561,7 +568,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets create_on
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreateOn()
     {
@@ -571,14 +578,21 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets create_on
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $create_on The API date and time parameters.
+     * @param \DateTime|null $create_on The date and time when the API key was created.
      *
      * @return self
      */
     public function setCreateOn($create_on)
     {
         if (is_null($create_on)) {
-            throw new \InvalidArgumentException('non-nullable create_on cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'create_on');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('create_on', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['create_on'] = $create_on;
 
@@ -598,7 +612,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets create_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $create_by The user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $create_by The identifier of the user who created the API key.
      *
      * @return self
      */
@@ -615,7 +629,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets expires_at
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpiresAt()
     {
@@ -625,14 +639,21 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expires_at
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expires_at The API date and time parameters.
+     * @param \DateTime|null $expires_at The date and time when the API key expires.
      *
      * @return self
      */
     public function setExpiresAt($expires_at)
     {
         if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expires_at'] = $expires_at;
 

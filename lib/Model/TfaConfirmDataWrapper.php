@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TfaConfirmDataWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TfaConfirmDataDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TfaConfirmDataWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TfaConfirmDataDto|null $response response
+     * @param \OpenAPI\Client\Model\TfaConfirmDataDto|null $response The TfaConfirmDataDto object returned by the operation.
      *
      * @return self
      */

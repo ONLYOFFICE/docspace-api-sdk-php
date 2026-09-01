@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TaskProgressResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TaskProgressResponseDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TaskProgressResponseWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TaskProgressResponseDto|null $response response
+     * @param \OpenAPI\Client\Model\TaskProgressResponseDto|null $response The TaskProgressResponseDto object returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SsoSettingsV2Wrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the SsoSettingsV2 object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SsoSettingsV2Wrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SsoSettingsV2|null $response response
+     * @param \OpenAPI\Client\Model\SsoSettingsV2|null $response The SsoSettingsV2 object returned by the operation.
      *
      * @return self
      */

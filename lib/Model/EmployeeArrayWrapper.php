@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EmployeeArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of EmployeeDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EmployeeArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto[]|null $response response
+     * @param \OpenAPI\Client\Model\EmployeeDto[]|null $response The list of EmployeeDto objects returned by the operation.
      *
      * @return self
      */

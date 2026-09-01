@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * IsDefaultWhiteLabelLogosWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the IsDefaultWhiteLabelLogosDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class IsDefaultWhiteLabelLogosWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\IsDefaultWhiteLabelLogosDto|null $response response
+     * @param \OpenAPI\Client\Model\IsDefaultWhiteLabelLogosDto|null $response The IsDefaultWhiteLabelLogosDto object returned by the operation.
      *
      * @return self
      */

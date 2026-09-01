@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhookTriggerArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of WebhookTriggerDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WebhookTriggerArrayWrapper implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WebhookTriggerDto[]|null $response response
+     * @param \OpenAPI\Client\Model\WebhookTriggerDto[]|null $response The list of WebhookTriggerDto objects returned by the operation.
      *
      * @return self
      */

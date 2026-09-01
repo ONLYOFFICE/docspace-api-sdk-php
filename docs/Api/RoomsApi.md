@@ -841,7 +841,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2217,7 +2217,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tag_name2** | **string**|  | |
+| **tag_name2** | **string**| The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. | |
 | **tag_name** | **string**| Represents the name of a tag | [optional] |
 
 ### Return type
@@ -2263,7 +2263,7 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tag_name2 = 'tag_name_example'; // string
+$tag_name2 = 'tag_name_example'; // string | The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads.
 $tag_name = tag1; // string | Represents the name of a tag
 
 try {
@@ -2515,7 +2515,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2593,7 +2593,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2988,7 +2988,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -310,7 +310,7 @@ class HistoryAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param \OpenAPI\Client\Model\MessageAction|null $id The event action ID.
+     * @param \OpenAPI\Client\Model\MessageAction|null $id The action performed on the file.
      *
      * @return self
      */

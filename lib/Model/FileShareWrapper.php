@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileShareWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileShareDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileShareWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileShareDto|null $response response
+     * @param \OpenAPI\Client\Model\FileShareDto|null $response The FileShareDto object returned by the operation.
      *
      * @return self
      */

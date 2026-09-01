@@ -449,7 +449,7 @@ class AgentsApi
      * REST API Reference for aiAgentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-delete/
      *
-     * @param  string $id id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsDeleteRequest $ai_agents_delete_request ai_agents_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsDelete'] to see the possible values for this operation
      *
@@ -471,7 +471,7 @@ class AgentsApi
      * REST API Reference for aiAgentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-delete/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsDeleteRequest $ai_agents_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsDelete'] to see the possible values for this operation
      *
@@ -574,7 +574,7 @@ class AgentsApi
      * REST API Reference for aiAgentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-delete/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsDeleteRequest $ai_agents_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsDelete'] to see the possible values for this operation
      *
@@ -599,7 +599,7 @@ class AgentsApi
      * REST API Reference for aiAgentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-delete/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsDeleteRequest $ai_agents_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsDelete'] to see the possible values for this operation
      *
@@ -650,7 +650,7 @@ class AgentsApi
     /**
      * Create request for operation 'aiAgentsDelete'
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsDeleteRequest $ai_agents_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsDelete'] to see the possible values for this operation
      *
@@ -762,7 +762,7 @@ class AgentsApi
      * REST API Reference for aiAgentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-get/
      *
-     * @param  string $id id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -783,7 +783,7 @@ class AgentsApi
      * REST API Reference for aiAgentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-get/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -885,7 +885,7 @@ class AgentsApi
      * REST API Reference for aiAgentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-get/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -909,7 +909,7 @@ class AgentsApi
      * REST API Reference for aiAgentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-get/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -959,7 +959,7 @@ class AgentsApi
     /**
      * Create request for operation 'aiAgentsGet'
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1897,7 +1897,7 @@ class AgentsApi
      * REST API Reference for aiAgentsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update/
      *
-     * @param  string $id id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsUpdateRequest $ai_agents_update_request ai_agents_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsUpdate'] to see the possible values for this operation
      *
@@ -1919,7 +1919,7 @@ class AgentsApi
      * REST API Reference for aiAgentsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsUpdateRequest $ai_agents_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsUpdate'] to see the possible values for this operation
      *
@@ -2022,7 +2022,7 @@ class AgentsApi
      * REST API Reference for aiAgentsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsUpdateRequest $ai_agents_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsUpdate'] to see the possible values for this operation
      *
@@ -2047,7 +2047,7 @@ class AgentsApi
      * REST API Reference for aiAgentsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update/
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsUpdateRequest $ai_agents_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsUpdate'] to see the possible values for this operation
      *
@@ -2098,7 +2098,7 @@ class AgentsApi
     /**
      * Create request for operation 'aiAgentsUpdate'
      *
-     * @param  string $id (required)
+     * @param  string $id The agent identifier. (required)
      * @param  \OpenAPI\Client\Model\AiAgentsUpdateRequest $ai_agents_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsUpdate'] to see the possible values for this operation
      *

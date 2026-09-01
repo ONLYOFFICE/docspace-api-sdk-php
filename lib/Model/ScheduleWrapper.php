@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ScheduleWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ScheduleDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ScheduleWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ScheduleDto|null $response response
+     * @param \OpenAPI\Client\Model\ScheduleDto|null $response The ScheduleDto object returned by the operation.
      *
      * @return self
      */

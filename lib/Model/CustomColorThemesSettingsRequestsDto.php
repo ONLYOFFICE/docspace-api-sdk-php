@@ -310,7 +310,7 @@ class CustomColorThemesSettingsRequestsDto implements ModelInterface, ArrayAcces
     /**
      * Sets theme
      *
-     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsItem|null $theme The custom color theme settings.
+     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsItem|null $theme The custom color theme configuration.
      *
      * @return self
      */

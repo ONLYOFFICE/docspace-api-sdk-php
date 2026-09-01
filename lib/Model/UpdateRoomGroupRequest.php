@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpdateRoomGroupRequest Class Doc Comment
  *
  * @category Class
+ * @description The changes to apply to a room group: its name and the rooms to add or remove.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

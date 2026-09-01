@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The ID of the invitation link. | [optional]
-**employee_type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The user type. |
-**expiration** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**employee_type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The type of employee role for the invitation link. |
+**expiration** | **\DateTime** | The expiration date of the invitation link. | [optional]
 **is_expired** | **bool** | Indicates whether the invitation link has expired. | [optional]
 **max_use_count** | **int** | The maximum number of times the invitation link can be used. | [optional]
 **current_use_count** | **int** | The current number of times the invitation link has been used. | [optional]

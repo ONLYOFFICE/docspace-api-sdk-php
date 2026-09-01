@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SubscriptionBalanceInfoWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the SubscriptionBalanceInfo object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SubscriptionBalanceInfoWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SubscriptionBalanceInfo|null $response response
+     * @param \OpenAPI\Client\Model\SubscriptionBalanceInfo|null $response The SubscriptionBalanceInfo object returned by the operation.
      *
      * @return self
      */

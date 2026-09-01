@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenOrCreateResult Class Doc Comment
  *
  * @category Class
- * @description Resolved thread state returned by  {@link  ThreadsEngine.openOrCreate } .
+ * @description Resolved thread state returned by `ThreadsEngine.openOrCreate`.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +326,7 @@ class AiOpenOrCreateResult implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets thread_id
      *
-     * @param string $thread_id thread_id
+     * @param string $thread_id The thread that was opened, or the one just created.
      *
      * @return self
      */
@@ -380,7 +380,7 @@ class AiOpenOrCreateResult implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets prior_messages
      *
-     * @param \OpenAPI\Client\Model\AiThreadMessageLike[] $prior_messages prior_messages
+     * @param \OpenAPI\Client\Model\AiThreadMessageLike[] $prior_messages The messages already in the thread - empty for a thread that was just created.
      *
      * @return self
      */

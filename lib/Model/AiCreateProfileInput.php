@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiCreateProfileInput Class Doc Comment
  *
  * @category Class
- * @description Input for creating a new profile — the same shape as  {@link  Profile }  without the engine-generated fields (`id`, `createdAt`).
+ * @description Input for creating a new profile — the same shape as `Profile` without the engine-generated fields (`id`, `createdAt`).
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -426,7 +426,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets provider_type
      *
-     * @param \OpenAPI\Client\Model\AiProviderType $provider_type Provider type for this profile. Use `external` to delegate all HTTP transport to  {@link  PlatformAdapter.externalFetch  }  while reusing an existing provider's response parser — see  {@link  Profile.basedOn }  for the format selector.
+     * @param \OpenAPI\Client\Model\AiProviderType $provider_type Provider type for this profile. Use `external` to delegate all HTTP transport to `PlatformAdapter.externalFetch` while reusing an existing provider's response parser — see `Profile.basedOn` for the format selector.
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets headers
      *
-     * @param array<string,string>|null $headers Extra HTTP headers sent with every request to this provider. Merged into the SDK client's default headers; an explicit `Authorization` here wins over the one derived from  {@link  key  } . Honoured by the OpenAI-family providers.
+     * @param array<string,string>|null $headers Extra HTTP headers sent with every request to this provider. Merged into the SDK client's default headers; an explicit `Authorization` here wins over the one derived from `key`. Honoured by the OpenAI-family providers.
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets use_responses_api
      *
-     * @param bool|null $use_responses_api Result of the live Responses-API probe (parallel to  {@link  canUseTool  } ). `true` means the model speaks `/v1/responses` and the OpenAI provider must route through `client.responses.create` — required for gpt-5+ reasoning models that reject `reasoning_effort` together with `tools` on `/v1/chat/completions`. Probed at create time and whenever `modelId` / `providerType` / `baseUrl` change. `undefined` means the probe never ran (legacy record) — readers treat that as `false`.
+     * @param bool|null $use_responses_api Result of the live Responses-API probe (parallel to `canUseTool`). `true` means the model speaks `/v1/responses` and the OpenAI provider must route through `client.responses.create` — required for gpt-5+ reasoning models that reject `reasoning_effort` together with `tools` on `/v1/chat/completions`. Probed at create time and whenever `modelId` / `providerType` / `baseUrl` change. `undefined` means the probe never ran (legacy record) — readers treat that as `false`.
      *
      * @return self
      */
@@ -723,7 +723,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets use_proxy
      *
-     * @param bool|null $use_proxy Route every provider request through the host's `fetchProxy` instead of the global `fetch`. Useful when the host runs the widget in a sandbox without direct network access (CORS, custom auth, etc.). Has no effect when the  {@link  PlatformAdapter.fetchProxy  }  is not configured.
+     * @param bool|null $use_proxy Route every provider request through the host's `fetchProxy` instead of the global `fetch`. Useful when the host runs the widget in a sandbox without direct network access (CORS, custom auth, etc.). Has no effect when the `PlatformAdapter.fetchProxy` is not configured.
      *
      * @return self
      */

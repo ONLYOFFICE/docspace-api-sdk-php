@@ -21,6 +21,7 @@ aiProfilesCreate($ai_create_profile_input): \OpenAPI\Client\Model\AiProfileMutat
 ```
 
 Create
+Creates an AI provider profile. The name must be unique and the credentials are validated against the provider before the profile is stored; the portal's first profile also takes the `Default` assignment slot.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-create/).
 
@@ -76,6 +77,7 @@ aiProfilesDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete
+Deletes an AI provider profile and cleans up the assignments pointing at it - the `Default` slot moves to the first remaining profile, the other slots are unbound.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-delete/).
 
@@ -131,6 +133,7 @@ aiProfilesGetById($id): \OpenAPI\Client\Model\AiProfilesGetById200Response
 ```
 
 Get by id
+Returns one AI provider profile, or an empty result when the identifier is unknown.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-get-by-id/).
 
@@ -138,7 +141,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The AI provider profile identifier. | |
 
 ### Return type
 
@@ -160,7 +163,7 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The AI provider profile identifier.
 
 try {
     $result = $apiInstance->aiProfilesGetById($id);
@@ -186,6 +189,7 @@ aiProfilesList(): \OpenAPI\Client\Model\AiProfile[]
 ```
 
 List
+Lists the portal's AI provider profiles.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list/).
 
@@ -238,6 +242,7 @@ aiProfilesListModels($profile_id): \OpenAPI\Client\Model\AiModel[]
 ```
 
 List models
+Lists the models the given profile's provider offers, as reported by the provider itself.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/).
 
@@ -245,7 +250,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| The AI provider profile identifier. | |
 
 ### Return type
 
@@ -267,7 +272,7 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | The AI provider profile identifier.
 
 try {
     $result = $apiInstance->aiProfilesListModels($profile_id);
@@ -293,6 +298,7 @@ aiProfilesListProviderModels($ai_profiles_list_provider_models_request): \OpenAP
 ```
 
 List provider models
+Lists the models a provider offers for the supplied endpoint and key, before any profile is created from them.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-provider-models/).
 
@@ -348,6 +354,7 @@ aiProfilesTestConnection($body): \OpenAPI\Client\Model\AiProfilesTestConnection2
 ```
 
 Test connection
+Checks a stored profile's credentials against its provider and reports the provider's own error when the call fails. Nothing is written.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/).
 
@@ -403,6 +410,7 @@ aiProfilesUpdate($ai_profile): \OpenAPI\Client\Model\AiProfileMutationResult
 ```
 
 Update
+Updates an AI provider profile, re-checking name uniqueness and the provider credentials.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-update/).
 

@@ -371,7 +371,7 @@ class FillingFormResultDtoInteger implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets completed_form
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $completed_form The file parameters.
+     * @param \OpenAPI\Client\Model\FileDtoInteger|null $completed_form The file with the completed forms.
      *
      * @return self
      */
@@ -398,7 +398,7 @@ class FillingFormResultDtoInteger implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets original_form
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $original_form The file parameters.
+     * @param \OpenAPI\Client\Model\FileDtoInteger|null $original_form The file with the original forms.
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class FillingFormResultDtoInteger implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets manager
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $manager The full list of user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $manager The manager who is filling the form.
      *
      * @return self
      */

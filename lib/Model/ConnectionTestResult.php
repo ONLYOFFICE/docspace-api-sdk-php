@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConnectionTestResult Class Doc Comment
  *
  * @category Class
+ * @description The outcome of a connection test against an external database.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class ConnectionTestResult implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets success
      *
-     * @param bool|null $success success
+     * @param bool|null $success Specifies whether the connection to the database succeeded.
      *
      * @return self
      */
@@ -336,7 +337,7 @@ class ConnectionTestResult implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets error
      *
-     * @param string|null $error error
+     * @param string|null $error The reason the connection failed, or null when it succeeded.
      *
      * @return self
      */

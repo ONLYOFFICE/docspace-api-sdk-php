@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigrationApiInfo Class Doc Comment
  *
  * @category Class
+ * @description The migration API information.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -414,7 +415,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets migrator_name
      *
-     * @param string|null $migrator_name migrator_name
+     * @param string|null $migrator_name The migrator name.
      *
      * @return self
      */
@@ -448,7 +449,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operation
      *
-     * @param string|null $operation operation
+     * @param string|null $operation The migration operation.
      *
      * @return self
      */
@@ -482,7 +483,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets failed_archives
      *
-     * @param string[]|null $failed_archives failed_archives
+     * @param string[]|null $failed_archives The list of failed archives.
      *
      * @return self
      */
@@ -516,7 +517,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets users
      *
-     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $users users
+     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $users The list of migrating users.
      *
      * @return self
      */
@@ -550,7 +551,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets without_email_users
      *
-     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $without_email_users without_email_users
+     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $without_email_users The list of migrating users without email.
      *
      * @return self
      */
@@ -584,7 +585,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets exist_users
      *
-     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $exist_users exist_users
+     * @param \OpenAPI\Client\Model\MigratingApiUser[]|null $exist_users The list of existing migrating users.
      *
      * @return self
      */
@@ -618,7 +619,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets groups
      *
-     * @param \OpenAPI\Client\Model\MigratingApiGroup[]|null $groups groups
+     * @param \OpenAPI\Client\Model\MigratingApiGroup[]|null $groups The list of migrating groups.
      *
      * @return self
      */
@@ -652,7 +653,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_personal_files
      *
-     * @param bool|null $import_personal_files import_personal_files
+     * @param bool|null $import_personal_files Specifies whether to import personal files or not.
      *
      * @return self
      */
@@ -679,7 +680,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_shared_files
      *
-     * @param bool|null $import_shared_files import_shared_files
+     * @param bool|null $import_shared_files Specifies whether to import shared files or not.
      *
      * @return self
      */
@@ -706,7 +707,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_shared_folders
      *
-     * @param bool|null $import_shared_folders import_shared_folders
+     * @param bool|null $import_shared_folders Specifies whether to import shared folders or not.
      *
      * @return self
      */
@@ -733,7 +734,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_common_files
      *
-     * @param bool|null $import_common_files import_common_files
+     * @param bool|null $import_common_files Specifies whether to import common files or not.
      *
      * @return self
      */
@@ -760,7 +761,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_project_files
      *
-     * @param bool|null $import_project_files import_project_files
+     * @param bool|null $import_project_files Specifies whether to import project files or not.
      *
      * @return self
      */
@@ -787,7 +788,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets import_groups
      *
-     * @param bool|null $import_groups import_groups
+     * @param bool|null $import_groups Specifies whether to import groups or not.
      *
      * @return self
      */
@@ -814,7 +815,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets successed_users
      *
-     * @param int|null $successed_users successed_users
+     * @param int|null $successed_users The number of successfully migrated users.
      *
      * @return self
      */
@@ -841,7 +842,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets failed_users
      *
-     * @param int|null $failed_users failed_users
+     * @param int|null $failed_users The number of unsuccessfully migrated users.
      *
      * @return self
      */
@@ -868,7 +869,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param string[]|null $files files
+     * @param string[]|null $files The list of migrated files.
      *
      * @return self
      */
@@ -902,7 +903,7 @@ class MigrationApiInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param string[]|null $errors errors
+     * @param string[]|null $errors The list of migration errors.
      *
      * @return self
      */

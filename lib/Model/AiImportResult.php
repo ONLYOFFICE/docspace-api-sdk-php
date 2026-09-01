@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of  {@link  PromptsEngine.importBundle } . Either every entry persisted with counts, or no entries persisted plus a per-entry error report.
+ * @description Outcome of `PromptsEngine.importBundle`. Either every entry persisted with counts, or no entries persisted plus a per-entry error report.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -320,7 +320,7 @@ class AiImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the whole bundle was imported.
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class AiImportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\AiImportError[]|null $errors errors
+     * @param \OpenAPI\Client\Model\AiImportError[]|null $errors What was rejected, per entry. Present on failure - and then nothing was imported.
      *
      * @return self
      */

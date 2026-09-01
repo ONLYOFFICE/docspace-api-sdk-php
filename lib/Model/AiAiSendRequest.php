@@ -383,7 +383,7 @@ class AiAiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args action_args
+     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
      *
      * @return self
      */

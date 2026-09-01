@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LoginSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the LoginSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class LoginSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\LoginSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\LoginSettingsDto|null $response The LoginSettingsDto object returned by the operation.
      *
      * @return self
      */

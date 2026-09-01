@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ModuleWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the Module object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ModuleWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\Module|null $response response
+     * @param \OpenAPI\Client\Model\Module|null $response The Module object returned by the operation.
      *
      * @return self
      */

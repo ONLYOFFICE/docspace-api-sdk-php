@@ -21,6 +21,7 @@ aiWebSearchClear($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Clear
+Removes the web-search configuration of the scope. Does nothing when web search was not configured there.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/).
 
@@ -76,6 +77,7 @@ aiWebSearchConfigure($ai_web_search_configure_request): \OpenAPI\Client\Model\Ai
 ```
 
 Configure
+Validates a web-search configuration against the live provider and stores it only when the provider answers, replacing the previous one in a single write.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-configure/).
 
@@ -131,6 +133,7 @@ aiWebSearchGetActiveConfig($entity_id): \OpenAPI\Client\Model\AiWebSearchConfig
 ```
 
 Get active config
+Returns the web-search configuration active in the scope, or an empty result when web search is not configured.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-get-active-config/).
 
@@ -138,7 +141,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -160,7 +163,7 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiWebSearchGetActiveConfig($entity_id);
@@ -186,6 +189,7 @@ aiWebSearchIsConfigured($entity_id): bool
 ```
 
 Is configured
+Tells whether web search is configured in the scope.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-is-configured/).
 
@@ -193,7 +197,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -215,7 +219,7 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiWebSearchIsConfigured($entity_id);
@@ -241,6 +245,7 @@ aiWebSearchPassthroughContents($request_body): \OpenAPI\Client\Model\AiSuccessRe
 ```
 
 Web page contents proxied to the portal's active web-search provider
+Fetches web page contents on behalf of the document editor's AI plugin, against the portal's active web-search provider, the same way as the search passthrough.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/).
 
@@ -296,6 +301,7 @@ aiWebSearchPassthroughSearch($request_body): \OpenAPI\Client\Model\AiSuccessResp
 ```
 
 Web search proxied to the portal's active web-search provider
+Runs a web search on behalf of the document editor's AI plugin. The plugin only holds a placeholder configuration; the portal's active provider and its key are resolved here and never reach the browser.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/).
 
@@ -351,6 +357,7 @@ aiWebSearchSetActiveConfig($ai_web_search_configure_request): \OpenAPI\Client\Mo
 ```
 
 Set active config
+Stores a web-search configuration without contacting the provider first, for forms that validate locally.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-set-active-config/).
 
@@ -406,6 +413,7 @@ aiWebSearchTestConnection($ai_web_search_config): \OpenAPI\Client\Model\AiProfil
 ```
 
 Test connection
+Checks a web-search configuration against the live provider without storing it - for a Test button that must not commit on success.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-test-connection/).
 

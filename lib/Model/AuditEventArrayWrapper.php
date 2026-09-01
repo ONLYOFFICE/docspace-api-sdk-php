@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuditEventArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of AuditEventDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AuditEventArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AuditEventDto[]|null $response response
+     * @param \OpenAPI\Client\Model\AuditEventDto[]|null $response The list of AuditEventDto objects returned by the operation.
      *
      * @return self
      */

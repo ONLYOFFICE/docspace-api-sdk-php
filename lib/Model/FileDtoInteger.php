@@ -67,10 +67,10 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared_external' => 'bool',
         'parent_shared' => 'bool',
         'short_web_url' => 'string',
-        'created' => '\OpenAPI\Client\Model\ApiDateTime',
+        'created' => '\DateTime',
         'created_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'updated' => '\OpenAPI\Client\Model\ApiDateTime',
-        'auto_delete' => '\OpenAPI\Client\Model\ApiDateTime',
+        'updated' => '\DateTime',
+        'auto_delete' => '\DateTime',
         'root_folder_type' => '\OpenAPI\Client\Model\FolderType',
         'parent_room_type' => '\OpenAPI\Client\Model\FolderType',
         'updated_by' => '\OpenAPI\Client\Model\EmployeeDto',
@@ -92,7 +92,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'available_share_rights' => '\OpenAPI\Client\Model\FileEntryDtoIntegerAllOfAvailableShareRights',
         'request_token' => 'string',
         'external' => 'bool',
-        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'expiration_date' => '\DateTime',
         'is_link_expired' => 'bool',
         'folder_id' => 'int',
         'version' => 'int',
@@ -124,8 +124,8 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'results_folder_id' => 'int',
         'draft_location' => '\OpenAPI\Client\Model\DraftLocationInteger',
         'view_accessibility' => '\OpenAPI\Client\Model\FileDtoIntegerAllOfViewAccessibility',
-        'last_opened' => '\OpenAPI\Client\Model\ApiDateTime',
-        'expired' => '\OpenAPI\Client\Model\ApiDateTime',
+        'last_opened' => '\DateTime',
+        'expired' => '\DateTime',
         'vectorization_status' => '\OpenAPI\Client\Model\VectorizationStatus',
         'external_db_table_name' => 'string',
         'dimensions' => '\OpenAPI\Client\Model\Size'
@@ -148,10 +148,10 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared_external' => null,
         'parent_shared' => null,
         'short_web_url' => 'uri',
-        'created' => null,
+        'created' => 'date-time',
         'created_by' => null,
-        'updated' => null,
-        'auto_delete' => null,
+        'updated' => 'date-time',
+        'auto_delete' => 'date-time',
         'root_folder_type' => null,
         'parent_room_type' => null,
         'updated_by' => null,
@@ -173,7 +173,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'available_share_rights' => null,
         'request_token' => null,
         'external' => null,
-        'expiration_date' => null,
+        'expiration_date' => 'date-time',
         'is_link_expired' => null,
         'folder_id' => 'int32',
         'version' => 'int32',
@@ -205,8 +205,8 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'results_folder_id' => 'int32',
         'draft_location' => null,
         'view_accessibility' => null,
-        'last_opened' => null,
-        'expired' => null,
+        'last_opened' => 'date-time',
+        'expired' => 'date-time',
         'vectorization_status' => null,
         'external_db_table_name' => null,
         'dimensions' => null
@@ -284,8 +284,8 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
         'results_folder_id' => true,
         'draft_location' => false,
         'view_accessibility' => true,
-        'last_opened' => false,
-        'expired' => false,
+        'last_opened' => true,
+        'expired' => true,
         'vectorization_status' => false,
         'external_db_table_name' => true,
         'dimensions' => false
@@ -1026,7 +1026,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreated()
     {
@@ -1036,7 +1036,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $created The creation date and time of the file entry.
+     * @param \DateTime|null $created The creation date and time of the file entry.
      *
      * @return self
      */
@@ -1080,7 +1080,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getUpdated()
     {
@@ -1090,7 +1090,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $updated The last date and time when the file entry was updated.
+     * @param \DateTime|null $updated The last date and time when the file entry was updated.
      *
      * @return self
      */
@@ -1107,7 +1107,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets auto_delete
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getAutoDelete()
     {
@@ -1117,7 +1117,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets auto_delete
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $auto_delete The date and time when the file entry will be automatically deleted.
+     * @param \DateTime|null $auto_delete The date and time when the file entry will be automatically deleted.
      *
      * @return self
      */
@@ -1722,7 +1722,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpirationDate()
     {
@@ -1732,7 +1732,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date Represents the expiration date of the file entry.
+     * @param \DateTime|null $expiration_date Represents the expiration date of the file entry.
      *
      * @return self
      */
@@ -2726,7 +2726,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets last_opened
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getLastOpened()
     {
@@ -2736,14 +2736,21 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_opened
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $last_opened The time when the file was last opened.
+     * @param \DateTime|null $last_opened The time when the file was last opened.
      *
      * @return self
      */
     public function setLastOpened($last_opened)
     {
         if (is_null($last_opened)) {
-            throw new \InvalidArgumentException('non-nullable last_opened cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'last_opened');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('last_opened', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['last_opened'] = $last_opened;
 
@@ -2753,7 +2760,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expired
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpired()
     {
@@ -2763,14 +2770,21 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expired
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expired The date when the file will be expired.
+     * @param \DateTime|null $expired The date when the file will be expired.
      *
      * @return self
      */
     public function setExpired($expired)
     {
         if (is_null($expired)) {
-            throw new \InvalidArgumentException('non-nullable expired cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expired');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expired', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expired'] = $expired;
 
@@ -2851,7 +2865,7 @@ class FileDtoInteger implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\Size|null $dimensions Represents dimensions with width and height values.
+     * @param \OpenAPI\Client\Model\Size|null $dimensions The dimensions (width and height) of the image file in pixels.  This property is populated only for image files that can be viewed (supported formats like PNG, JPEG, GIF, BMP, etc.).  For non-image files, this property remains null.
      *
      * @return self
      */

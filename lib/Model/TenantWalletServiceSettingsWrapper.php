@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantWalletServiceSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantWalletServiceSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantWalletServiceSettingsWrapper implements ModelInterface, ArrayAccess,
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantWalletServiceSettings|null $response response
+     * @param \OpenAPI\Client\Model\TenantWalletServiceSettings|null $response The TenantWalletServiceSettings object returned by the operation.
      *
      * @return self
      */

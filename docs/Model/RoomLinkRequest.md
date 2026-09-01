@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **link_id** | **string** | The room link ID. | [optional]
-**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The access rights type. | [optional]
-**expiration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The link sharing rights. | [optional]
+**expiration_date** | **\DateTime** | The link expiration date. | [optional]
 **internal** | **bool** | The link scope, whether it is internal or not. | [optional]
 **title** | **string** | The link name. | [optional]
 **link_type** | [**\OpenAPI\Client\Model\LinkType**](LinkType.md) | The link type. | [optional]

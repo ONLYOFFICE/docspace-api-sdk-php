@@ -306,7 +306,7 @@ class DefaultProductRequestDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets default_folder_type
      *
-     * @param \OpenAPI\Client\Model\FolderType $default_folder_type The folder type.
+     * @param \OpenAPI\Client\Model\FolderType $default_folder_type The ID of the product to be set as default.
      *
      * @return self
      */

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **plugin_name** | **string** | The name by which the web plugin is registered in the window object. |
 **scopes** | **string** | The web plugin scopes. |
 **image** | **string** | The web plugin image. |
-**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user parameters. |
+**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user who created the web plugin. |
 **create_on** | **\DateTime** | The date and time when the web plugin was created. |
 **enabled** | **bool** | Specifies if the web plugin is enabled or not. |
 **system** | **bool** | Specifies if the web plugin is system or not. |

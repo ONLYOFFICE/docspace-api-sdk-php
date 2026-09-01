@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EditHistoryArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of EditHistoryDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EditHistoryArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EditHistoryDto[]|null $response response
+     * @param \OpenAPI\Client\Model\EditHistoryDto[]|null $response The list of EditHistoryDto objects returned by the operation.
      *
      * @return self
      */

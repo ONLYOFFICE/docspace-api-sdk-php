@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhooksLogArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of WebhooksLogDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WebhooksLogArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WebhooksLogDto[]|null $response response
+     * @param \OpenAPI\Client\Model\WebhooksLogDto[]|null $response The list of WebhooksLogDto objects returned by the operation.
      *
      * @return self
      */

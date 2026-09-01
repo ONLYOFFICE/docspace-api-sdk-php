@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileOperationWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileOperationDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileOperationWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileOperationDto|null $response response
+     * @param \OpenAPI\Client\Model\FileOperationDto|null $response The FileOperationDto object returned by the operation.
      *
      * @return self
      */

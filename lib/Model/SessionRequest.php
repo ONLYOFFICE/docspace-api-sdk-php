@@ -61,7 +61,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => 'string',
         'file_size' => 'int',
         'relative_path' => 'string',
-        'create_on' => '\OpenAPI\Client\Model\ApiDateTime',
+        'create_on' => '\DateTime',
         'encrypted' => 'bool',
         'create_new_if_exist' => 'bool'
     ];
@@ -77,7 +77,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => null,
         'file_size' => 'int64',
         'relative_path' => null,
-        'create_on' => null,
+        'create_on' => 'date-time',
         'encrypted' => null,
         'create_new_if_exist' => null
     ];
@@ -91,7 +91,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => true,
         'file_size' => false,
         'relative_path' => true,
-        'create_on' => false,
+        'create_on' => true,
         'encrypted' => false,
         'create_new_if_exist' => false
     ];
@@ -426,7 +426,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets create_on
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreateOn()
     {
@@ -436,14 +436,21 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_on
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $create_on The API date and time parameters.
+     * @param \DateTime|null $create_on The date and time when the file was created.
      *
      * @return self
      */
     public function setCreateOn($create_on)
     {
         if (is_null($create_on)) {
-            throw new \InvalidArgumentException('non-nullable create_on cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'create_on');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('create_on', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['create_on'] = $create_on;
 

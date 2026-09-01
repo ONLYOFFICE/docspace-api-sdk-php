@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UserInfoWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the UserInfo object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UserInfoWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UserInfo|null $response response
+     * @param \OpenAPI\Client\Model\UserInfo|null $response The UserInfo object returned by the operation.
      *
      * @return self
      */

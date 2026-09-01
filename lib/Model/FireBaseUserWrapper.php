@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FireBaseUserWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FireBaseUser object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FireBaseUserWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FireBaseUser|null $response response
+     * @param \OpenAPI\Client\Model\FireBaseUser|null $response The FireBaseUser object returned by the operation.
      *
      * @return self
      */

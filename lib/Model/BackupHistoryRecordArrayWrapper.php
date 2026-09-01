@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupHistoryRecordArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of BackupHistoryRecord objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BackupHistoryRecordArrayWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupHistoryRecord[]|null $response response
+     * @param \OpenAPI\Client\Model\BackupHistoryRecord[]|null $response The list of BackupHistoryRecord objects returned by the operation.
      *
      * @return self
      */

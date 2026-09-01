@@ -33,6 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiActionType Class Doc Comment
  *
  * @category Class
+ * @description The AI action a request or an assignment applies to. Each action has its own assignment slot; `Default` is the profile used when an action's own slot is empty.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

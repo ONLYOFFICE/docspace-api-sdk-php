@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StudioDefaultPageSettings Class Doc Comment
  *
  * @category Class
+ * @description The settings that define the folder opened by default after sign-in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

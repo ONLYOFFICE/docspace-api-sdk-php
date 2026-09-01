@@ -601,7 +601,7 @@ class QuotaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets users_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $users_quota The tenant entity quota settings.
+     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $users_quota The user quota.
      *
      * @return self
      */
@@ -628,7 +628,7 @@ class QuotaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rooms_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $rooms_quota The tenant entity quota settings.
+     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $rooms_quota The room quota.
      *
      * @return self
      */
@@ -655,7 +655,7 @@ class QuotaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ai_agents_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $ai_agents_quota The tenant entity quota settings.
+     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $ai_agents_quota The ai agent quota.
      *
      * @return self
      */
@@ -682,7 +682,7 @@ class QuotaDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_custom_quota
      *
-     * @param \OpenAPI\Client\Model\TenantQuotaSettings|null $tenant_custom_quota The tenant quota settings.
+     * @param \OpenAPI\Client\Model\TenantQuotaSettings|null $tenant_custom_quota The tenant custom quota.
      *
      * @return self
      */

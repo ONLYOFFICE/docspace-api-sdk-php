@@ -171,7 +171,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createAuditTrailReport($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
@@ -192,7 +192,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAuditTrailReportWithHttpInfo($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
@@ -228,6 +228,30 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -256,6 +280,38 @@ class AuditTrailDataApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -469,15 +525,15 @@ class AuditTrailDataApi
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
      * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
      * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
      * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
      * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper
+     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditEventsByFilter($user_id = null, $module_type = null, $action_type = null, $action = null, $entry_type = null, $target = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getAuditEventsByFilter'][0])
     {
@@ -499,15 +555,15 @@ class AuditTrailDataApi
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
      * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
      * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
      * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
      * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditEventsByFilterWithHttpInfo($user_id = null, $module_type = null, $action_type = null, $action = null, $entry_type = null, $target = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getAuditEventsByFilter'][0])
     {
@@ -543,6 +599,30 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -575,6 +655,38 @@ class AuditTrailDataApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -596,8 +708,8 @@ class AuditTrailDataApi
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
      * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
      * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
      * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
      * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
@@ -629,8 +741,8 @@ class AuditTrailDataApi
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
      * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
      * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
      * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
      * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
@@ -688,8 +800,8 @@ class AuditTrailDataApi
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
      * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
      * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
      * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
      * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
@@ -782,18 +894,18 @@ class AuditTrailDataApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $from,
             'from', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            false, // explode
+            'string', // openApiType
+            'form', // style
+            true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to,
             'to', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            false, // explode
+            'string', // openApiType
+            'form', // style
+            true, // explode
             false // required
         ) ?? []);
         // query params
@@ -907,7 +1019,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantAuditSettingsWrapper
+     * @return \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditSettings(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
@@ -927,7 +1039,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditSettingsWithHttpInfo(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
@@ -959,7 +1071,25 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
                         $response,
                     );
@@ -981,7 +1111,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
                 $request,
                 $response,
             );
@@ -990,7 +1120,31 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1040,7 +1194,7 @@ class AuditTrailDataApi
      */
     public function getAuditSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsWrapper';
+        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper';
         $request = $this->getAuditSettingsRequest($contentType);
 
         return $this->client
@@ -1191,7 +1345,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper
+     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailMappers($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1213,7 +1367,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailMappersWithHttpInfo($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1249,6 +1403,30 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1277,6 +1455,38 @@ class AuditTrailDataApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ObjectWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1501,7 +1711,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailReport(string $contentType = self::contentTypes['getAuditTrailReport'][0])
     {
@@ -1521,7 +1731,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailReportWithHttpInfo(string $contentType = self::contentTypes['getAuditTrailReport'][0])
     {
@@ -1557,6 +1767,24 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1585,6 +1813,30 @@ class AuditTrailDataApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1783,7 +2035,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper
+     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailTypes(string $contentType = self::contentTypes['getAuditTrailTypes'][0])
     {
@@ -1803,7 +2055,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailTypesWithHttpInfo(string $contentType = self::contentTypes['getAuditTrailTypes'][0])
     {
@@ -1839,6 +2091,24 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1867,6 +2137,30 @@ class AuditTrailDataApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ObjectWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2065,7 +2359,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper
+     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLastAuditEvents(string $contentType = self::contentTypes['getLastAuditEvents'][0])
     {
@@ -2085,7 +2379,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLastAuditEventsWithHttpInfo(string $contentType = self::contentTypes['getLastAuditEvents'][0])
     {
@@ -2121,6 +2415,24 @@ class AuditTrailDataApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2149,6 +2461,30 @@ class AuditTrailDataApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AuditEventArrayWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2348,7 +2684,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantAuditSettingsWrapper
+     * @return \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setAuditSettings($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
@@ -2369,7 +2705,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setAuditSettingsWithHttpInfo($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
@@ -2401,7 +2737,25 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
                         $response,
                     );
@@ -2423,7 +2777,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
                 $request,
                 $response,
             );
@@ -2432,7 +2786,31 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2484,7 +2862,7 @@ class AuditTrailDataApi
      */
     public function setAuditSettingsAsyncWithHttpInfo($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsWrapper';
+        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper';
         $request = $this->setAuditSettingsRequest($tenant_audit_settings_wrapper, $contentType);
 
         return $this->client
@@ -2693,6 +3071,30 @@ class AuditTrailDataApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2788,7 +3190,7 @@ class AuditTrailDataApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );

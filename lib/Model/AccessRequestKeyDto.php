@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AccessRequestKeyDto Class Doc Comment
  *
  * @category Class
+ * @description The encryption key granting one user access to a file.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

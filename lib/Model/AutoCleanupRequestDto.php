@@ -337,7 +337,7 @@ class AutoCleanupRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets gap
      *
-     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap The period when the trash bin will be cleared.
+     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap The time interval when the auto-clearing will be performed.
      *
      * @return self
      */

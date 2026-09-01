@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActiveConnectionsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ActiveConnectionsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ActiveConnectionsWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ActiveConnectionsDto|null $response response
+     * @param \OpenAPI\Client\Model\ActiveConnectionsDto|null $response The ActiveConnectionsDto object returned by the operation.
      *
      * @return self
      */

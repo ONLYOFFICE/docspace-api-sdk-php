@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiChatPrice Class Doc Comment
  *
  * @category Class
+ * @description The price of a chat model, per token.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class AiChatPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prompt
      *
-     * @param float|null $prompt prompt
+     * @param float|null $prompt The price of a single prompt token.
      *
      * @return self
      */
@@ -336,7 +337,7 @@ class AiChatPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets completion
      *
-     * @param float|null $completion completion
+     * @param float|null $completion The price of a single completion token.
      *
      * @return self
      */

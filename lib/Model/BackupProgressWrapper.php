@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupProgressWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the BackupProgress object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BackupProgressWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupProgress|null $response response
+     * @param \OpenAPI\Client\Model\BackupProgress|null $response The BackupProgress object returned by the operation.
      *
      * @return self
      */

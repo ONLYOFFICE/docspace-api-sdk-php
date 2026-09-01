@@ -464,7 +464,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The logo request parameters.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The room template logo.
      *
      * @return self
      */

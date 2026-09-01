@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIChatCompletionChunk Class Doc Comment
  *
  * @category Class
+ * @description One `chat.completion.chunk` of an OpenAI-compatible streaming response. Only the fields this service can populate are emitted - an OpenAI client tolerates the rest as absent.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -367,7 +368,7 @@ class AiOpenAIChatCompletionChunk implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The completion identifier, stable across every chunk of one response.
      *
      * @return self
      */
@@ -394,7 +395,7 @@ class AiOpenAIChatCompletionChunk implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets object
      *
-     * @param string $object object
+     * @param string $object Always `chat.completion.chunk`.
      *
      * @return self
      */
@@ -431,7 +432,7 @@ class AiOpenAIChatCompletionChunk implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets created
      *
-     * @param float $created created
+     * @param float $created When the completion started, in Unix seconds.
      *
      * @return self
      */
@@ -458,7 +459,7 @@ class AiOpenAIChatCompletionChunk implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets model
      *
-     * @param string $model model
+     * @param string $model The model that produced the completion - the resolved profile's model.
      *
      * @return self
      */
@@ -485,7 +486,7 @@ class AiOpenAIChatCompletionChunk implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets choices
      *
-     * @param \OpenAPI\Client\Model\AiOpenAIChunkChoice[] $choices choices
+     * @param \OpenAPI\Client\Model\AiOpenAIChunkChoice[] $choices The choices carried by this chunk. This service emits exactly one.
      *
      * @return self
      */

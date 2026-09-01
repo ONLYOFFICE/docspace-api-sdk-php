@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WhiteLabelItemArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of WhiteLabelItemDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WhiteLabelItemArrayWrapper implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WhiteLabelItemDto[]|null $response response
+     * @param \OpenAPI\Client\Model\WhiteLabelItemDto[]|null $response The list of WhiteLabelItemDto objects returned by the operation.
      *
      * @return self
      */

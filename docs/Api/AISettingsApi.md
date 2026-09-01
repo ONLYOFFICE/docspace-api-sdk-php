@@ -18,6 +18,7 @@ aiSettingsGet(): \OpenAPI\Client\Model\AiAiSettingsWrapper
 ```
 
 Get AI settings
+Reports the portal's combined AI configuration and readiness.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get/).
 
@@ -70,6 +71,7 @@ aiSettingsGetUser(): \OpenAPI\Client\Model\AiAiUserSettingsWrapper
 ```
 
 Get user AI settings
+Returns the current user's AI settings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get-user/).
 
@@ -122,6 +124,7 @@ aiSettingsGetVectorization(): \OpenAPI\Client\Model\AiVectorizationSettingsWrapp
 ```
 
 Get vectorization settings
+Returns the portal's vectorization settings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get-vectorization/).
 
@@ -174,6 +177,7 @@ aiSettingsSetUser($request_body): \OpenAPI\Client\Model\AiAiUserSettingsWrapper
 ```
 
 Update user AI settings
+Updates the current user's AI settings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/).
 
@@ -229,6 +233,7 @@ aiSettingsSetVectorization($request_body): \OpenAPI\Client\Model\AiVectorization
 ```
 
 Update vectorization settings
+Updates the portal's vectorization settings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/).
 

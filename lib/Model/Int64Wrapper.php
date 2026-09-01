@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Int64Wrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the int64 value.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class Int64Wrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param int|null $response response
+     * @param int|null $response The int64 value returned by the operation.
      *
      * @return self
      */

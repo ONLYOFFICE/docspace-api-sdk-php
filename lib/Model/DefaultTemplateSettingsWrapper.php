@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DefaultTemplateSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DefaultTemplateSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DefaultTemplateSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DefaultTemplateSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\DefaultTemplateSettingsDto|null $response The DefaultTemplateSettingsDto object returned by the operation.
      *
      * @return self
      */

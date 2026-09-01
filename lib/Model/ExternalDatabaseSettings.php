@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalDatabaseSettings Class Doc Comment
  *
  * @category Class
+ * @description The connection parameters of an external database.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -358,7 +359,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets database_type
      *
-     * @param string|null $database_type database_type
+     * @param string|null $database_type The engine of the external database.
      *
      * @return self
      */
@@ -392,7 +393,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets database_type_enum
      *
-     * @param \OpenAPI\Client\Model\ExternalDatabaseType|null $database_type_enum database_type_enum
+     * @param \OpenAPI\Client\Model\ExternalDatabaseType|null $database_type_enum The engine of an external database.
      *
      * @return self
      */
@@ -419,7 +420,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_host
      *
-     * @param string|null $db_host db_host
+     * @param string|null $db_host The host name or the IP address of the database server.
      *
      * @return self
      */
@@ -453,7 +454,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_port
      *
-     * @param int|null $db_port db_port
+     * @param int|null $db_port The port the database server listens on.
      *
      * @return self
      */
@@ -480,7 +481,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_name
      *
-     * @param string|null $db_name db_name
+     * @param string|null $db_name The name of the database to connect to.
      *
      * @return self
      */
@@ -514,7 +515,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_user
      *
-     * @param string|null $db_user db_user
+     * @param string|null $db_user The user name to connect with.
      *
      * @return self
      */
@@ -548,7 +549,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_password
      *
-     * @param string|null $db_password db_password
+     * @param string|null $db_password The password to connect with.
      *
      * @return self
      */
@@ -582,7 +583,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets db_ssl
      *
-     * @param bool|null $db_ssl db_ssl
+     * @param bool|null $db_ssl Specifies whether the connection to the database is secured with SSL.
      *
      * @return self
      */
@@ -609,7 +610,7 @@ class ExternalDatabaseSettings implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sqlite_file_path
      *
-     * @param string|null $sqlite_file_path sqlite_file_path
+     * @param string|null $sqlite_file_path The path to the database file, used by the SQLite engine only.
      *
      * @return self
      */

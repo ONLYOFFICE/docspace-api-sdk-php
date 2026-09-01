@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomColorThemesSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CustomColorThemesSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CustomColorThemesSettingsWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsDto|null $response The CustomColorThemesSettingsDto object returned by the operation.
      *
      * @return self
      */

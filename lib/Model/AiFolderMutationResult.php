@@ -320,7 +320,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the folder was persisted.
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets folder
      *
-     * @param \OpenAPI\Client\Model\AiPromptFolder|null $folder folder
+     * @param \OpenAPI\Client\Model\AiPromptFolder|null $folder The persisted folder. Present on success.
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the folder was rejected. Present on failure.
      *
      * @return self
      */

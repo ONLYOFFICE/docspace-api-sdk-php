@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiPricesResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AiPricesResponse object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AiPricesResponseWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AiPricesResponse|null $response response
+     * @param \OpenAPI\Client\Model\AiPricesResponse|null $response The AiPricesResponse object returned by the operation.
      *
      * @return self
      */

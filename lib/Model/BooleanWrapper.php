@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BooleanWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the boolean value.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BooleanWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param bool|null $response response
+     * @param bool|null $response The boolean value returned by the operation.
      *
      * @return self
      */

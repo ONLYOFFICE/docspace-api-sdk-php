@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigratingApiFiles Class Doc Comment
  *
  * @category Class
+ * @description The parameters of the migrating files.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +317,7 @@ class MigratingApiFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets folders_count
      *
-     * @param int|null $folders_count folders_count
+     * @param int|null $folders_count The number of folders.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class MigratingApiFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets files_count
      *
-     * @param int|null $files_count files_count
+     * @param int|null $files_count The number of files.
      *
      * @return self
      */
@@ -370,7 +371,7 @@ class MigratingApiFiles implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets bytes_total
      *
-     * @param int|null $bytes_total bytes_total
+     * @param int|null $bytes_total The total number of bytes.
      *
      * @return self
      */

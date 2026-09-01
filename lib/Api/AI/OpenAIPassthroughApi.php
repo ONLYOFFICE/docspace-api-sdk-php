@@ -138,7 +138,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiChatCompletions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
@@ -160,7 +160,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiChatCompletions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
@@ -263,7 +263,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiChatCompletions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
@@ -288,7 +288,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiChatCompletions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
@@ -339,7 +339,7 @@ class OpenAIPassthroughApi
     /**
      * Create request for operation 'aiOpenaiChatCompletions'
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
@@ -451,7 +451,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiImagesGenerations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
@@ -473,7 +473,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiImagesGenerations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
@@ -576,7 +576,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiImagesGenerations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
@@ -601,7 +601,7 @@ class OpenAIPassthroughApi
      * REST API Reference for aiOpenaiImagesGenerations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
@@ -652,7 +652,7 @@ class OpenAIPassthroughApi
     /**
      * Create request for operation 'aiOpenaiImagesGenerations'
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  array<string,mixed> $request_body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BalanceWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the Balance object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BalanceWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\Balance|null $response response
+     * @param \OpenAPI\Client\Model\Balance|null $response The Balance object returned by the operation.
      *
      * @return self
      */

@@ -455,7 +455,7 @@ class AiProfilesGetById200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets provider_type
      *
-     * @param \OpenAPI\Client\Model\AiProviderType $provider_type Provider type for this profile. Use `external` to delegate all HTTP transport to  {@link  PlatformAdapter.externalFetch  }  while reusing an existing provider's response parser — see  {@link  Profile.basedOn }  for the format selector.
+     * @param \OpenAPI\Client\Model\AiProviderType $provider_type Provider type for this profile. Use `external` to delegate all HTTP transport to `PlatformAdapter.externalFetch` while reusing an existing provider's response parser — see `Profile.basedOn` for the format selector.
      *
      * @return self
      */
@@ -644,7 +644,7 @@ class AiProfilesGetById200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets use_responses_api
      *
-     * @param bool|null $use_responses_api Result of the live Responses-API probe (parallel to  {@link  canUseTool  } ). `true` means the model speaks `/v1/responses` and the OpenAI provider must route through `client.responses.create` — required for gpt-5+ reasoning models that reject `reasoning_effort` together with `tools` on `/v1/chat/completions`. Probed at create time and whenever `modelId` / `providerType` / `baseUrl` change. `undefined` means the probe never ran (legacy record) — readers treat that as `false`.
+     * @param bool|null $use_responses_api Result of the live Responses-API probe (parallel to `canUseTool`). `true` means the model speaks `/v1/responses` and the OpenAI provider must route through `client.responses.create` — required for gpt-5+ reasoning models that reject `reasoning_effort` together with `tools` on `/v1/chat/completions`. Probed at create time and whenever `modelId` / `providerType` / `baseUrl` change. `undefined` means the probe never ran (legacy record) — readers treat that as `false`.
      *
      * @return self
      */
@@ -698,7 +698,7 @@ class AiProfilesGetById200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets use_proxy
      *
-     * @param bool|null $use_proxy Route every provider request through the host's `fetchProxy` instead of the global `fetch`. Useful when the host runs the widget in a sandbox without direct network access (CORS, custom auth, etc.). Has no effect when the  {@link  PlatformAdapter.fetchProxy  }  is not configured.
+     * @param bool|null $use_proxy Route every provider request through the host's `fetchProxy` instead of the global `fetch`. Useful when the host runs the widget in a sandbox without direct network access (CORS, custom auth, etc.). Has no effect when the `PlatformAdapter.fetchProxy` is not configured.
      *
      * @return self
      */

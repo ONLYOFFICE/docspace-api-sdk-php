@@ -472,7 +472,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shared_to_user
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $shared_to_user The full list of user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $shared_to_user The user who has the access to the specified file.
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shared_to_group
      *
-     * @param \OpenAPI\Client\Model\GroupSummaryDto|null $shared_to_group The group summary parameters.
+     * @param \OpenAPI\Client\Model\GroupSummaryDto|null $shared_to_group The user who has the access to the specified file.
      *
      * @return self
      */
@@ -742,7 +742,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subject_type
      *
-     * @param \OpenAPI\Client\Model\SubjectType $subject_type The subject type of the access right.
+     * @param \OpenAPI\Client\Model\SubjectType $subject_type The subject type.
      *
      * @return self
      */

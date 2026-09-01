@@ -607,7 +607,7 @@ class WebhooksConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets created_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $created_by The user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $created_by The user who created the webhook.
      *
      * @return self
      */
@@ -668,7 +668,7 @@ class WebhooksConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets modified_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $modified_by The user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $modified_by The user who modified the webhook.
      *
      * @return self
      */

@@ -784,7 +784,7 @@ class CreateRoomFromTemplateDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets watermark
      *
-     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The request parameters for adding watermarks.
+     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The watermark settings.
      *
      * @return self
      */

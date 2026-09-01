@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response** | **object** |  | [optional]
+**response** | **object** | The response payload. | [optional]
 **count** | **int** | The total number of items in the response | [optional]
 **links** | [**\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]**](GetPortalPrices200ResponseLinksInner.md) | List of links related to the response | [optional]
 **status** | **int** | HTTP status code of the response | [optional]

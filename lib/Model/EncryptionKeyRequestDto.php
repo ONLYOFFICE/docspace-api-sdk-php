@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionKeyRequestDto Class Doc Comment
  *
  * @category Class
+ * @description The request parameters for storing the encryption key pair of a user.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +317,7 @@ class EncryptionKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The identifier of the key pair.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class EncryptionKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets public_key
      *
-     * @param string|null $public_key public_key
+     * @param string|null $public_key The public key of the pair, used to encrypt the file keys.
      *
      * @return self
      */
@@ -377,7 +378,7 @@ class EncryptionKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets private_key_enc
      *
-     * @param string|null $private_key_enc private_key_enc
+     * @param string|null $private_key_enc The private key of the pair, encrypted with the user password.
      *
      * @return self
      */

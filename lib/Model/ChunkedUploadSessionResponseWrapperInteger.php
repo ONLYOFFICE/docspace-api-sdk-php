@@ -337,7 +337,7 @@ class ChunkedUploadSessionResponseWrapperInteger implements ModelInterface, Arra
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\ChunkedUploadSessionResponseInteger|null $data Represents the response returned from a chunked upload session.
+     * @param \OpenAPI\Client\Model\ChunkedUploadSessionResponseInteger|null $data Gets or sets the data of the chunked upload session response.
      *
      * @return self
      */

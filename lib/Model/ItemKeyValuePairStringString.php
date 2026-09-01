@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ItemKeyValuePairStringString Class Doc Comment
  *
  * @category Class
+ * @description A key-value pair of a list item.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class ItemKeyValuePairStringString implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets key
      *
-     * @param string|null $key key
+     * @param string|null $key The key that identifies the item within the list.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class ItemKeyValuePairStringString implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets value
      *
-     * @param string|null $value value
+     * @param string|null $value The value associated with the key.
      *
      * @return self
      */

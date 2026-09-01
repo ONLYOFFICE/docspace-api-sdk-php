@@ -21,6 +21,7 @@ aiAgentsCreate($ai_agents_create_request): \OpenAPI\Client\Model\AiFolderInteger
 ```
 
 Create an agent
+Creates an AI agent room in the .NET AI service and binds the supplied `profileId` to it as a `Chat` assignment. The instruction is stored on the room as a prompt-only chat setting; a failed binding is reported as an error even though the room already exists.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-create/).
 
@@ -76,6 +77,7 @@ aiAgentsDelete($id, $ai_agents_delete_request): \OpenAPI\Client\Model\AiFileOper
 ```
 
 Delete an agent
+Deletes an AI agent room.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-delete/).
 
@@ -83,7 +85,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The agent identifier. | |
 | **ai_agents_delete_request** | [**\OpenAPI\Client\Model\AiAgentsDeleteRequest**](../Model/AiAgentsDeleteRequest.md)|  | |
 
 ### Return type
@@ -106,7 +108,7 @@ $apiInstance = new OpenAPI\Client\Api\AgentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The agent identifier.
 $ai_agents_delete_request = new \OpenAPI\Client\Model\AiAgentsDeleteRequest(); // \OpenAPI\Client\Model\AiAgentsDeleteRequest
 
 try {
@@ -133,6 +135,7 @@ aiAgentsGet($id): \OpenAPI\Client\Model\AiFolderIntegerWrapper
 ```
 
 Get an agent
+Returns one AI agent room, enriched with the `profileId` bound to it so an edit form can prefill the profile selector. A missing assignment simply leaves `profileId` out.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-get/).
 
@@ -140,7 +143,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The agent identifier. | |
 
 ### Return type
 
@@ -162,7 +165,7 @@ $apiInstance = new OpenAPI\Client\Api\AgentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The agent identifier.
 
 try {
     $result = $apiInstance->aiAgentsGet($id);
@@ -188,6 +191,7 @@ aiAgentsList(): \OpenAPI\Client\Model\AiFolderContentIntegerWrapper
 ```
 
 List agents
+Lists the portal's AI agent rooms. Query parameters are forwarded unchanged to the .NET AI service, which answers with its folder-content payload.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-list/).
 
@@ -240,6 +244,7 @@ aiAgentsNews(): \OpenAPI\Client\Model\AiNewItemsAgentNewItemsArrayWrapper
 ```
 
 List agent news items
+Lists the new items across the caller's AI agent rooms.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-news/).
 
@@ -292,6 +297,7 @@ aiAgentsResetQuota($ai_agents_reset_quota_request): \OpenAPI\Client\Model\AiFold
 ```
 
 Reset agents' quota
+Resets the storage quota of the given AI agent rooms.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-reset-quota/).
 
@@ -347,6 +353,7 @@ aiAgentsUpdate($id, $ai_agents_update_request): \OpenAPI\Client\Model\AiFolderIn
 ```
 
 Update an agent
+Updates an AI agent room - title, tags, instruction. `profileId` is not part of the room contract: it is stripped from the forwarded body and re-bound as the agent's assignment afterwards.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update/).
 
@@ -354,7 +361,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The agent identifier. | |
 | **ai_agents_update_request** | [**\OpenAPI\Client\Model\AiAgentsUpdateRequest**](../Model/AiAgentsUpdateRequest.md)|  | |
 
 ### Return type
@@ -377,7 +384,7 @@ $apiInstance = new OpenAPI\Client\Api\AgentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The agent identifier.
 $ai_agents_update_request = new \OpenAPI\Client\Model\AiAgentsUpdateRequest(); // \OpenAPI\Client\Model\AiAgentsUpdateRequest
 
 try {
@@ -404,6 +411,7 @@ aiAgentsUpdateQuota($ai_agents_update_quota_request): \OpenAPI\Client\Model\AiFo
 ```
 
 Update agents' quota
+Changes the storage quota of the given AI agent rooms.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-update-quota/).
 

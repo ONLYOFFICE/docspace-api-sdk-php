@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomFromTemplateStatusWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the RoomFromTemplateStatusDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class RoomFromTemplateStatusWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\RoomFromTemplateStatusDto|null $response response
+     * @param \OpenAPI\Client\Model\RoomFromTemplateStatusDto|null $response The RoomFromTemplateStatusDto object returned by the operation.
      *
      * @return self
      */

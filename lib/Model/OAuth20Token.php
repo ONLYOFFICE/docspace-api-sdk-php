@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * OAuth20Token Class Doc Comment
  *
  * @category Class
+ * @description The OAuth 2.0 token issued by a third-party provider.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -351,7 +352,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access_token
      *
-     * @param string|null $access_token access_token
+     * @param string|null $access_token Access token
      *
      * @return self
      */
@@ -385,7 +386,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets refresh_token
      *
-     * @param string|null $refresh_token refresh_token
+     * @param string|null $refresh_token Refresh token
      *
      * @return self
      */
@@ -419,7 +420,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expires_in
      *
-     * @param int|null $expires_in expires_in
+     * @param int|null $expires_in Expires in
      *
      * @return self
      */
@@ -446,7 +447,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_id
      *
-     * @param string|null $client_id client_id
+     * @param string|null $client_id Client id
      *
      * @return self
      */
@@ -480,7 +481,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_secret
      *
-     * @param string|null $client_secret client_secret
+     * @param string|null $client_secret Client secret
      *
      * @return self
      */
@@ -514,7 +515,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets redirect_uri
      *
-     * @param string|null $redirect_uri redirect_uri
+     * @param string|null $redirect_uri Redirect uri
      *
      * @return self
      */
@@ -548,7 +549,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param \DateTime|null $timestamp Timestamp
      *
      * @return self
      */
@@ -575,7 +576,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_expired
      *
-     * @param bool|null $is_expired is_expired
+     * @param bool|null $is_expired Is expired
      *
      * @return self
      */

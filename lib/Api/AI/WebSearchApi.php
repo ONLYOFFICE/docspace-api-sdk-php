@@ -742,14 +742,14 @@ class WebSearchApi
      * REST API Reference for aiWebSearchGetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-get-active-config/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchGetActiveConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchGetActiveConfig($entity_id, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
+    public function aiWebSearchGetActiveConfig($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
         list($response) = $this->aiWebSearchGetActiveConfigWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -763,14 +763,14 @@ class WebSearchApi
      * REST API Reference for aiWebSearchGetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-get-active-config/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchGetActiveConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchGetActiveConfigWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
+    public function aiWebSearchGetActiveConfigWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
         $request = $this->aiWebSearchGetActiveConfigRequest($entity_id, $contentType);
 
@@ -865,13 +865,13 @@ class WebSearchApi
      * REST API Reference for aiWebSearchGetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-get-active-config/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchGetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchGetActiveConfigAsync($entity_id, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
+    public function aiWebSearchGetActiveConfigAsync($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
         return $this->aiWebSearchGetActiveConfigAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -889,13 +889,13 @@ class WebSearchApi
      * REST API Reference for aiWebSearchGetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-get-active-config/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchGetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchGetActiveConfigAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
+    public function aiWebSearchGetActiveConfigAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiWebSearchConfig';
         $request = $this->aiWebSearchGetActiveConfigRequest($entity_id, $contentType);
@@ -939,21 +939,15 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchGetActiveConfig'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchGetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchGetActiveConfigRequest($entity_id, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
+    public function aiWebSearchGetActiveConfigRequest($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiWebSearchGetActiveConfig'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/web-search/get-active-config';
@@ -970,7 +964,7 @@ class WebSearchApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1037,14 +1031,14 @@ class WebSearchApi
      * REST API Reference for aiWebSearchIsConfigured Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-is-configured/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchIsConfigured'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return bool|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchIsConfigured($entity_id, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
+    public function aiWebSearchIsConfigured($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
         list($response) = $this->aiWebSearchIsConfiguredWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -1058,14 +1052,14 @@ class WebSearchApi
      * REST API Reference for aiWebSearchIsConfigured Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-is-configured/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchIsConfigured'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchIsConfiguredWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
+    public function aiWebSearchIsConfiguredWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
         $request = $this->aiWebSearchIsConfiguredRequest($entity_id, $contentType);
 
@@ -1160,13 +1154,13 @@ class WebSearchApi
      * REST API Reference for aiWebSearchIsConfigured Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-is-configured/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchIsConfigured'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchIsConfiguredAsync($entity_id, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
+    public function aiWebSearchIsConfiguredAsync($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
         return $this->aiWebSearchIsConfiguredAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -1184,13 +1178,13 @@ class WebSearchApi
      * REST API Reference for aiWebSearchIsConfigured Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-is-configured/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchIsConfigured'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchIsConfiguredAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
+    public function aiWebSearchIsConfiguredAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
         $returnType = 'bool';
         $request = $this->aiWebSearchIsConfiguredRequest($entity_id, $contentType);
@@ -1234,21 +1228,15 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchIsConfigured'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchIsConfigured'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchIsConfiguredRequest($entity_id, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
+    public function aiWebSearchIsConfiguredRequest($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiWebSearchIsConfigured'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/web-search/is-configured';
@@ -1265,7 +1253,7 @@ class WebSearchApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

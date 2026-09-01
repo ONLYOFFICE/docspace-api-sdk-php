@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigratingApiGroup Class Doc Comment
  *
  * @category Class
+ * @description The migrating group parameters.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -323,7 +324,7 @@ class MigratingApiGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets should_import
      *
-     * @param bool|null $should_import should_import
+     * @param bool|null $should_import Specifies whether the API entity should be imported.
      *
      * @return self
      */
@@ -350,7 +351,7 @@ class MigratingApiGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets group_name
      *
-     * @param string|null $group_name group_name
+     * @param string|null $group_name The group name.
      *
      * @return self
      */
@@ -384,7 +385,7 @@ class MigratingApiGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets module_name
      *
-     * @param string|null $module_name module_name
+     * @param string|null $module_name The group module name.
      *
      * @return self
      */
@@ -418,7 +419,7 @@ class MigratingApiGroup implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets user_uid_list
      *
-     * @param string[]|null $user_uid_list user_uid_list
+     * @param string[]|null $user_uid_list The list of group user UIDs.
      *
      * @return self
      */

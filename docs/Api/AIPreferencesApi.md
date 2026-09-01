@@ -17,6 +17,7 @@ aiPreferencesClearDeepMode($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Clear deep mode
+Drops the persisted deep-mode toggle of the scope, so later reads fall back to the configured default.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-clear-deep-mode/).
 
@@ -72,6 +73,7 @@ aiPreferencesGetDeepMode($entity_id): bool
 ```
 
 Get deep mode
+Returns the deep-mode toggle of the scope, falling back to the configured default when nothing has been persisted.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-deep-mode/).
 
@@ -79,7 +81,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -101,7 +103,7 @@ $apiInstance = new OpenAPI\Client\Api\PreferencesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiPreferencesGetDeepMode($entity_id);
@@ -127,6 +129,7 @@ aiPreferencesIsDeepModeSet($entity_id): bool
 ```
 
 Is deep mode set
+Tells whether the scope has an explicitly persisted deep-mode value, whichever way that value is set.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-is-deep-mode-set/).
 
@@ -134,7 +137,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -156,7 +159,7 @@ $apiInstance = new OpenAPI\Client\Api\PreferencesApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiPreferencesIsDeepModeSet($entity_id);
@@ -182,6 +185,7 @@ aiPreferencesSetDeepMode($ai_preferences_set_deep_mode_request): \OpenAPI\Client
 ```
 
 Set deep mode
+Persists the deep-mode toggle of the scope. Idempotent - there is no need to check whether a value already exists.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-set-deep-mode/).
 

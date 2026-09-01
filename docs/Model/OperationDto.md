@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**date** | **\DateTime** | The date when the operation took place. | [optional]
 **service** | **string** | The service related to the operation. | [optional]
 **description** | **string** | The brief operation description. | [optional]
 **details** | **string** | The detailed information about the operation. | [optional]
@@ -17,6 +17,6 @@ Name | Type | Description | Notes
 **participant_display_name** | **string** | The participant display name. | [optional]
 **agent_id** | **string** | AI Agent id. | [optional]
 **agent_title** | **string** | AI Agent name. | [optional]
-**type** | [**\OpenAPI\Client\Model\OperationType**](OperationType.md) | The operation type | [optional]
+**type** | [**\OpenAPI\Client\Model\OperationType**](OperationType.md) | Type of the operation | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

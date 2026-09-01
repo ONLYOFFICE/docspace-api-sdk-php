@@ -448,7 +448,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets capabilities
      *
-     * @param float|null $capabilities Bitmask of model capabilities (Chat, Image, Vision, Tools, etc.). Used to filter models per  {@link  ActionType  } .
+     * @param float|null $capabilities Bitmask of model capabilities (Chat, Image, Vision, Tools, etc.). Used to filter models per `ActionType`.
      *
      * @return self
      */

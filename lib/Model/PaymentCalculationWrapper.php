@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PaymentCalculationWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the PaymentCalculation object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class PaymentCalculationWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\PaymentCalculation|null $response response
+     * @param \OpenAPI\Client\Model\PaymentCalculation|null $response The PaymentCalculation object returned by the operation.
      *
      * @return self
      */

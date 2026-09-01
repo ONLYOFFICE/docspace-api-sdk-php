@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** | The unique identifier of the shared link. | [optional]
 **title** | **string** | The title of the shared content. | [optional]
 **share_link** | **string** | The URL for accessing the shared content. | [optional]
-**expiration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**expiration_date** | **\DateTime** | The date when the shared link expires. | [optional]
 **link_type** | [**\OpenAPI\Client\Model\LinkType**](LinkType.md) | The sharing link type (e.g., Invitation). | [optional]
 **password** | **string** | The password protection for accessing the shared content. | [optional]
 **deny_download** | **bool** | Indicates whether downloading of the shared content is prohibited. | [optional]

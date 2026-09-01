@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * IMagickGeometry Class Doc Comment
+ * AdditionalWhiteLabelSettingsDtoWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AdditionalWhiteLabelSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
+class AdditionalWhiteLabelSettingsDtoWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'IMagickGeometry';
+    protected static $openAPIModelName = 'AdditionalWhiteLabelSettingsDtoWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,17 +58,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'aspect_ratio' => 'bool',
-        'fill_area' => 'bool',
-        'greater' => 'bool',
-        'height' => 'int',
-        'ignore_aspect_ratio' => 'bool',
-        'is_percentage' => 'bool',
-        'less' => 'bool',
-        'limit_pixels' => 'bool',
-        'width' => 'int',
-        'x' => 'int',
-        'y' => 'int'
+        'response' => '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDto',
+        'count' => 'int',
+        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
+        'status' => 'int',
+        'status_code' => 'int'
     ];
 
     /**
@@ -78,17 +73,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'aspect_ratio' => null,
-        'fill_area' => null,
-        'greater' => null,
-        'height' => 'int32',
-        'ignore_aspect_ratio' => null,
-        'is_percentage' => null,
-        'less' => null,
-        'limit_pixels' => null,
-        'width' => 'int32',
-        'x' => 'int32',
-        'y' => 'int32'
+        'response' => null,
+        'count' => 'int32',
+        'links' => null,
+        'status' => 'int32',
+        'status_code' => 'int32'
     ];
 
     /**
@@ -97,17 +86,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'aspect_ratio' => false,
-        'fill_area' => false,
-        'greater' => false,
-        'height' => false,
-        'ignore_aspect_ratio' => false,
-        'is_percentage' => false,
-        'less' => false,
-        'limit_pixels' => false,
-        'width' => false,
-        'x' => false,
-        'y' => false
+        'response' => false,
+        'count' => false,
+        'links' => false,
+        'status' => false,
+        'status_code' => false
     ];
 
     /**
@@ -196,17 +179,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'aspect_ratio' => 'aspectRatio',
-        'fill_area' => 'fillArea',
-        'greater' => 'greater',
-        'height' => 'height',
-        'ignore_aspect_ratio' => 'ignoreAspectRatio',
-        'is_percentage' => 'isPercentage',
-        'less' => 'less',
-        'limit_pixels' => 'limitPixels',
-        'width' => 'width',
-        'x' => 'x',
-        'y' => 'y'
+        'response' => 'response',
+        'count' => 'count',
+        'links' => 'links',
+        'status' => 'status',
+        'status_code' => 'statusCode'
     ];
 
     /**
@@ -215,17 +192,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'aspect_ratio' => 'setAspectRatio',
-        'fill_area' => 'setFillArea',
-        'greater' => 'setGreater',
-        'height' => 'setHeight',
-        'ignore_aspect_ratio' => 'setIgnoreAspectRatio',
-        'is_percentage' => 'setIsPercentage',
-        'less' => 'setLess',
-        'limit_pixels' => 'setLimitPixels',
-        'width' => 'setWidth',
-        'x' => 'setX',
-        'y' => 'setY'
+        'response' => 'setResponse',
+        'count' => 'setCount',
+        'links' => 'setLinks',
+        'status' => 'setStatus',
+        'status_code' => 'setStatusCode'
     ];
 
     /**
@@ -234,17 +205,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'aspect_ratio' => 'getAspectRatio',
-        'fill_area' => 'getFillArea',
-        'greater' => 'getGreater',
-        'height' => 'getHeight',
-        'ignore_aspect_ratio' => 'getIgnoreAspectRatio',
-        'is_percentage' => 'getIsPercentage',
-        'less' => 'getLess',
-        'limit_pixels' => 'getLimitPixels',
-        'width' => 'getWidth',
-        'x' => 'getX',
-        'y' => 'getY'
+        'response' => 'getResponse',
+        'count' => 'getCount',
+        'links' => 'getLinks',
+        'status' => 'getStatus',
+        'status_code' => 'getStatusCode'
     ];
 
     /**
@@ -304,17 +269,11 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('aspect_ratio', $data ?? [], null);
-        $this->setIfExists('fill_area', $data ?? [], null);
-        $this->setIfExists('greater', $data ?? [], null);
-        $this->setIfExists('height', $data ?? [], null);
-        $this->setIfExists('ignore_aspect_ratio', $data ?? [], null);
-        $this->setIfExists('is_percentage', $data ?? [], null);
-        $this->setIfExists('less', $data ?? [], null);
-        $this->setIfExists('limit_pixels', $data ?? [], null);
-        $this->setIfExists('width', $data ?? [], null);
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('response', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_code', $data ?? [], null);
     }
 
     /**
@@ -360,298 +319,136 @@ class IMagickGeometry implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets aspect_ratio
+     * Gets response
      *
-     * @return bool|null
+     * @return \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDto|null
      */
-    public function getAspectRatio()
+    public function getResponse()
     {
-        return $this->container['aspect_ratio'];
+        return $this->container['response'];
     }
 
     /**
-     * Sets aspect_ratio
+     * Sets response
      *
-     * @param bool|null $aspect_ratio aspect_ratio
+     * @param \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDto|null $response The AdditionalWhiteLabelSettingsDto object returned by the operation.
      *
      * @return self
      */
-    public function setAspectRatio($aspect_ratio)
+    public function setResponse($response)
     {
-        if (is_null($aspect_ratio)) {
-            throw new \InvalidArgumentException('non-nullable aspect_ratio cannot be null');
+        if (is_null($response)) {
+            throw new \InvalidArgumentException('non-nullable response cannot be null');
         }
-        $this->container['aspect_ratio'] = $aspect_ratio;
+        $this->container['response'] = $response;
 
         return $this;
     }
 
     /**
-     * Gets fill_area
-     *
-     * @return bool|null
-     */
-    public function getFillArea()
-    {
-        return $this->container['fill_area'];
-    }
-
-    /**
-     * Sets fill_area
-     *
-     * @param bool|null $fill_area fill_area
-     *
-     * @return self
-     */
-    public function setFillArea($fill_area)
-    {
-        if (is_null($fill_area)) {
-            throw new \InvalidArgumentException('non-nullable fill_area cannot be null');
-        }
-        $this->container['fill_area'] = $fill_area;
-
-        return $this;
-    }
-
-    /**
-     * Gets greater
-     *
-     * @return bool|null
-     */
-    public function getGreater()
-    {
-        return $this->container['greater'];
-    }
-
-    /**
-     * Sets greater
-     *
-     * @param bool|null $greater greater
-     *
-     * @return self
-     */
-    public function setGreater($greater)
-    {
-        if (is_null($greater)) {
-            throw new \InvalidArgumentException('non-nullable greater cannot be null');
-        }
-        $this->container['greater'] = $greater;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
+     * Gets count
      *
      * @return int|null
      */
-    public function getHeight()
+    public function getCount()
     {
-        return $this->container['height'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets height
+     * Sets count
      *
-     * @param int|null $height height
+     * @param int|null $count The total number of items in the response
      *
      * @return self
      */
-    public function setHeight($height)
+    public function setCount($count)
     {
-        if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['height'] = $height;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets ignore_aspect_ratio
+     * Gets links
      *
-     * @return bool|null
+     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
      */
-    public function getIgnoreAspectRatio()
+    public function getLinks()
     {
-        return $this->container['ignore_aspect_ratio'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets ignore_aspect_ratio
+     * Sets links
      *
-     * @param bool|null $ignore_aspect_ratio ignore_aspect_ratio
+     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
      *
      * @return self
      */
-    public function setIgnoreAspectRatio($ignore_aspect_ratio)
+    public function setLinks($links)
     {
-        if (is_null($ignore_aspect_ratio)) {
-            throw new \InvalidArgumentException('non-nullable ignore_aspect_ratio cannot be null');
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['ignore_aspect_ratio'] = $ignore_aspect_ratio;
+        $this->container['links'] = $links;
 
         return $this;
     }
 
     /**
-     * Gets is_percentage
-     *
-     * @return bool|null
-     */
-    public function getIsPercentage()
-    {
-        return $this->container['is_percentage'];
-    }
-
-    /**
-     * Sets is_percentage
-     *
-     * @param bool|null $is_percentage is_percentage
-     *
-     * @return self
-     */
-    public function setIsPercentage($is_percentage)
-    {
-        if (is_null($is_percentage)) {
-            throw new \InvalidArgumentException('non-nullable is_percentage cannot be null');
-        }
-        $this->container['is_percentage'] = $is_percentage;
-
-        return $this;
-    }
-
-    /**
-     * Gets less
-     *
-     * @return bool|null
-     */
-    public function getLess()
-    {
-        return $this->container['less'];
-    }
-
-    /**
-     * Sets less
-     *
-     * @param bool|null $less less
-     *
-     * @return self
-     */
-    public function setLess($less)
-    {
-        if (is_null($less)) {
-            throw new \InvalidArgumentException('non-nullable less cannot be null');
-        }
-        $this->container['less'] = $less;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit_pixels
-     *
-     * @return bool|null
-     */
-    public function getLimitPixels()
-    {
-        return $this->container['limit_pixels'];
-    }
-
-    /**
-     * Sets limit_pixels
-     *
-     * @param bool|null $limit_pixels limit_pixels
-     *
-     * @return self
-     */
-    public function setLimitPixels($limit_pixels)
-    {
-        if (is_null($limit_pixels)) {
-            throw new \InvalidArgumentException('non-nullable limit_pixels cannot be null');
-        }
-        $this->container['limit_pixels'] = $limit_pixels;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
+     * Gets status
      *
      * @return int|null
      */
-    public function getWidth()
+    public function getStatus()
     {
-        return $this->container['width'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets width
+     * Sets status
      *
-     * @param int|null $width width
+     * @param int|null $status HTTP status code of the response
      *
      * @return self
      */
-    public function setWidth($width)
+    public function setStatus($status)
     {
-        if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['width'] = $width;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets x
+     * Gets status_code
      *
      * @return int|null
      */
-    public function getX()
+    public function getStatusCode()
     {
-        return $this->container['x'];
+        return $this->container['status_code'];
     }
 
     /**
-     * Sets x
+     * Sets status_code
      *
-     * @param int|null $x x
+     * @param int|null $status_code HTTP status code of the response (duplicate of status)
      *
      * @return self
      */
-    public function setX($x)
+    public function setStatusCode($status_code)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($status_code)) {
+            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
         }
-        $this->container['x'] = $x;
-
-        return $this;
-    }
-
-    /**
-     * Gets y
-     *
-     * @return int|null
-     */
-    public function getY()
-    {
-        return $this->container['y'];
-    }
-
-    /**
-     * Sets y
-     *
-     * @param int|null $y y
-     *
-     * @return self
-     */
-    public function setY($y)
-    {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
-        }
-        $this->container['y'] = $y;
+        $this->container['status_code'] = $status_code;
 
         return $this;
     }

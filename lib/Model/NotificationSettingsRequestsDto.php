@@ -313,7 +313,7 @@ class NotificationSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\NotificationType $type The notification type.
+     * @param \OpenAPI\Client\Model\NotificationType $type The notification to be configured.
      *
      * @return self
      */

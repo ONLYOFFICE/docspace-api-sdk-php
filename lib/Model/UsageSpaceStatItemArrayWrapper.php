@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UsageSpaceStatItemArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of UsageSpaceStatItemDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UsageSpaceStatItemArrayWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UsageSpaceStatItemDto[]|null $response response
+     * @param \OpenAPI\Client\Model\UsageSpaceStatItemDto[]|null $response The list of UsageSpaceStatItemDto objects returned by the operation.
      *
      * @return self
      */

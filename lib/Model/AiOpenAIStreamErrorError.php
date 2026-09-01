@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIStreamErrorError Class Doc Comment
  *
  * @category Class
+ * @description The error that ended the stream: its message, type, code and the offending parameter.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

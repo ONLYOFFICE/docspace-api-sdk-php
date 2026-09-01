@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GroupWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the GroupDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class GroupWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\GroupDto|null $response response
+     * @param \OpenAPI\Client\Model\GroupDto|null $response The GroupDto object returned by the operation.
      *
      * @return self
      */

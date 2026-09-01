@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupServiceStateWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the BackupServiceStateDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BackupServiceStateWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupServiceStateDto|null $response response
+     * @param \OpenAPI\Client\Model\BackupServiceStateDto|null $response The BackupServiceStateDto object returned by the operation.
      *
      * @return self
      */

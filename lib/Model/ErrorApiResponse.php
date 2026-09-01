@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * NoContentResultWrapper Class Doc Comment
+ * ErrorApiResponse Class Doc Comment
  *
  * @category Class
+ * @description The error body returned with every failed request.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorApiResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @var string
      */
-    protected static $openAPIModelName = 'NoContentResultWrapper';
+    protected static $openAPIModelName = 'ErrorApiResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\NoContentResult',
-        'count' => 'int',
-        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
-        'status_code' => 'int'
+        'status_code' => 'int',
+        'error' => '\OpenAPI\Client\Model\ErrorApiResponseError'
     ];
 
     /**
@@ -72,11 +71,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'response' => null,
-        'count' => 'int32',
-        'links' => null,
         'status' => 'int32',
-        'status_code' => 'int32'
+        'status_code' => 'int32',
+        'error' => null
     ];
 
     /**
@@ -85,11 +82,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'response' => false,
-        'count' => false,
-        'links' => false,
         'status' => false,
-        'status_code' => false
+        'status_code' => false,
+        'error' => false
     ];
 
     /**
@@ -178,11 +173,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'response' => 'response',
-        'count' => 'count',
-        'links' => 'links',
         'status' => 'status',
-        'status_code' => 'statusCode'
+        'status_code' => 'statusCode',
+        'error' => 'error'
     ];
 
     /**
@@ -191,11 +184,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'response' => 'setResponse',
-        'count' => 'setCount',
-        'links' => 'setLinks',
         'status' => 'setStatus',
-        'status_code' => 'setStatusCode'
+        'status_code' => 'setStatusCode',
+        'error' => 'setError'
     ];
 
     /**
@@ -204,11 +195,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'response' => 'getResponse',
-        'count' => 'getCount',
-        'links' => 'getLinks',
         'status' => 'getStatus',
-        'status_code' => 'getStatusCode'
+        'status_code' => 'getStatusCode',
+        'error' => 'getError'
     ];
 
     /**
@@ -268,11 +257,9 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('response', $data ?? [], null);
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('status_code', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
     }
 
     /**
@@ -318,87 +305,6 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets response
-     *
-     * @return \OpenAPI\Client\Model\NoContentResult|null
-     */
-    public function getResponse()
-    {
-        return $this->container['response'];
-    }
-
-    /**
-     * Sets response
-     *
-     * @param \OpenAPI\Client\Model\NoContentResult|null $response response
-     *
-     * @return self
-     */
-    public function setResponse($response)
-    {
-        if (is_null($response)) {
-            throw new \InvalidArgumentException('non-nullable response cannot be null');
-        }
-        $this->container['response'] = $response;
-
-        return $this;
-    }
-
-    /**
-     * Gets count
-     *
-     * @return int|null
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int|null $count The total number of items in the response
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
-        }
-        $this->container['count'] = $count;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return int|null
@@ -411,7 +317,7 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param int|null $status HTTP status code of the response
+     * @param int|null $status The response status flag. Always 1 on an error, as opposed to 0 on success.
      *
      * @return self
      */
@@ -438,7 +344,7 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status_code
      *
-     * @param int|null $status_code HTTP status code of the response (duplicate of status)
+     * @param int|null $status_code The HTTP status code of the response, repeated in the body.
      *
      * @return self
      */
@@ -448,6 +354,33 @@ class NoContentResultWrapper implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable status_code cannot be null');
         }
         $this->container['status_code'] = $status_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     *
+     * @return \OpenAPI\Client\Model\ErrorApiResponseError|null
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     *
+     * @param \OpenAPI\Client\Model\ErrorApiResponseError|null $error error
+     *
+     * @return self
+     */
+    public function setError($error)
+    {
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        }
+        $this->container['error'] = $error;
 
         return $this;
     }

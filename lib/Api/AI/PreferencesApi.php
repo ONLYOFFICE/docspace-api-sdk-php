@@ -437,14 +437,14 @@ class PreferencesApi
      * REST API Reference for aiPreferencesGetDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-deep-mode/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetDeepMode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return bool|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiPreferencesGetDeepMode($entity_id, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
+    public function aiPreferencesGetDeepMode($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
         list($response) = $this->aiPreferencesGetDeepModeWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -458,14 +458,14 @@ class PreferencesApi
      * REST API Reference for aiPreferencesGetDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-deep-mode/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetDeepMode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiPreferencesGetDeepModeWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
+    public function aiPreferencesGetDeepModeWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
         $request = $this->aiPreferencesGetDeepModeRequest($entity_id, $contentType);
 
@@ -560,13 +560,13 @@ class PreferencesApi
      * REST API Reference for aiPreferencesGetDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-deep-mode/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesGetDeepModeAsync($entity_id, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
+    public function aiPreferencesGetDeepModeAsync($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
         return $this->aiPreferencesGetDeepModeAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -584,13 +584,13 @@ class PreferencesApi
      * REST API Reference for aiPreferencesGetDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-deep-mode/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesGetDeepModeAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
+    public function aiPreferencesGetDeepModeAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
         $returnType = 'bool';
         $request = $this->aiPreferencesGetDeepModeRequest($entity_id, $contentType);
@@ -634,21 +634,15 @@ class PreferencesApi
     /**
      * Create request for operation 'aiPreferencesGetDeepMode'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiPreferencesGetDeepModeRequest($entity_id, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
+    public function aiPreferencesGetDeepModeRequest($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiPreferencesGetDeepMode'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/preferences/get-deep-mode';
@@ -665,7 +659,7 @@ class PreferencesApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -732,14 +726,14 @@ class PreferencesApi
      * REST API Reference for aiPreferencesIsDeepModeSet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-is-deep-mode-set/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesIsDeepModeSet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return bool|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiPreferencesIsDeepModeSet($entity_id, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
+    public function aiPreferencesIsDeepModeSet($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
         list($response) = $this->aiPreferencesIsDeepModeSetWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -753,14 +747,14 @@ class PreferencesApi
      * REST API Reference for aiPreferencesIsDeepModeSet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-is-deep-mode-set/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesIsDeepModeSet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiPreferencesIsDeepModeSetWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
+    public function aiPreferencesIsDeepModeSetWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
         $request = $this->aiPreferencesIsDeepModeSetRequest($entity_id, $contentType);
 
@@ -855,13 +849,13 @@ class PreferencesApi
      * REST API Reference for aiPreferencesIsDeepModeSet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-is-deep-mode-set/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesIsDeepModeSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesIsDeepModeSetAsync($entity_id, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
+    public function aiPreferencesIsDeepModeSetAsync($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
         return $this->aiPreferencesIsDeepModeSetAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -879,13 +873,13 @@ class PreferencesApi
      * REST API Reference for aiPreferencesIsDeepModeSet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-is-deep-mode-set/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesIsDeepModeSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesIsDeepModeSetAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
+    public function aiPreferencesIsDeepModeSetAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
         $returnType = 'bool';
         $request = $this->aiPreferencesIsDeepModeSetRequest($entity_id, $contentType);
@@ -929,21 +923,15 @@ class PreferencesApi
     /**
      * Create request for operation 'aiPreferencesIsDeepModeSet'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesIsDeepModeSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiPreferencesIsDeepModeSetRequest($entity_id, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
+    public function aiPreferencesIsDeepModeSetRequest($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiPreferencesIsDeepModeSet'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/preferences/is-deep-mode-set';
@@ -960,7 +948,7 @@ class PreferencesApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

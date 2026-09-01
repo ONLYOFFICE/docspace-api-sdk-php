@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormSubmissionsDto Class Doc Comment
  *
  * @category Class
+ * @description All submissions of a form, together with the metadata of its fields.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

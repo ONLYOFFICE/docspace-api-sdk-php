@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The audit event ID. | [optional]
-**date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**date** | **\DateTime** | The audit event date. | [optional]
 **user** | **string** | The name of the user who triggered the audit event. | [optional]
 **user_id** | **string** | The ID of the user who triggered the audit event. | [optional]
 **action** | **string** | The audit event action. | [optional]
-**action_id** | [**\OpenAPI\Client\Model\MessageAction**](MessageAction.md) | The event action ID. | [optional]
+**action_id** | [**\OpenAPI\Client\Model\MessageAction**](MessageAction.md) | The specific action that occurred within the audit event. | [optional]
 **ip** | **string** | The audit event IP. | [optional]
 **country** | **string** | The audit event country. | [optional]
 **city** | **string** | The audit event city. | [optional]

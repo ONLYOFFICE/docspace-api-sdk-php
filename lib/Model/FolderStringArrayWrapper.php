@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FolderStringArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of FolderDtoString objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FolderStringArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FolderDtoString[]|null $response response
+     * @param \OpenAPI\Client\Model\FolderDtoString[]|null $response The list of FolderDtoString objects returned by the operation.
      *
      * @return self
      */

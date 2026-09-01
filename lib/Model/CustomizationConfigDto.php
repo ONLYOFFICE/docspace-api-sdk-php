@@ -454,7 +454,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets feedback
      *
-     * @param \OpenAPI\Client\Model\FeedbackConfig|null $feedback The settings for the Feedback & Support menu button.
+     * @param \OpenAPI\Client\Model\FeedbackConfig|null $feedback The feedback configuration of the customization.
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets goback
      *
-     * @param \OpenAPI\Client\Model\GobackConfig|null $goback The settings for the Open file location menu button and upper right corner button.
+     * @param \OpenAPI\Client\Model\GobackConfig|null $goback The go back configuration of the customization.
      *
      * @return self
      */
@@ -542,7 +542,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets review
      *
-     * @param \OpenAPI\Client\Model\ReviewConfig|null $review Configuration for review display settings.
+     * @param \OpenAPI\Client\Model\ReviewConfig|null $review The review configuration of the customization.
      *
      * @return self
      */

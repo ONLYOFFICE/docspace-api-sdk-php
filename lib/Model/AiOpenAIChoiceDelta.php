@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIChoiceDelta Class Doc Comment
  *
  * @category Class
+ * @description The incremental part of one choice - what this chunk adds to the assistant message.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +339,7 @@ class AiOpenAIChoiceDelta implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets role
      *
-     * @param string|null $role role
+     * @param string|null $role Sent on the first chunk only, always `assistant`.
      *
      * @return self
      */
@@ -375,7 +376,7 @@ class AiOpenAIChoiceDelta implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets content
      *
-     * @param string|null $content content
+     * @param string|null $content The text this chunk appends. Null when the chunk carries no text.
      *
      * @return self
      */
@@ -409,7 +410,7 @@ class AiOpenAIChoiceDelta implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets tool_calls
      *
-     * @param \OpenAPI\Client\Model\AiOpenAIToolCallDelta[]|null $tool_calls tool_calls
+     * @param \OpenAPI\Client\Model\AiOpenAIToolCallDelta[]|null $tool_calls The tool calls the model requested, emitted in place of text.
      *
      * @return self
      */

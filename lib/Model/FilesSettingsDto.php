@@ -2184,7 +2184,7 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_order
      *
-     * @param \OpenAPI\Client\Model\OrderBy|null $default_order The sorting parameters.
+     * @param \OpenAPI\Client\Model\OrderBy|null $default_order The default order of files.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AppWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AppDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AppWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AppDto|null $response response
+     * @param \OpenAPI\Client\Model\AppDto|null $response The AppDto object returned by the operation.
      *
      * @return self
      */

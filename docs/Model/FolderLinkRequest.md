@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **link_id** | **string** | The folder link ID. | [optional]
-**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The access rights type. | [optional]
-**expiration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The link sharing rights. | [optional]
+**expiration_date** | **\DateTime** | The link expiration date. | [optional]
 **title** | **string** | The link name. | [optional]
 **password** | **string** | The link password. | [optional]
 **deny_download** | **bool** | Specifies if downloading the file from the link is disabled or not. | [optional]

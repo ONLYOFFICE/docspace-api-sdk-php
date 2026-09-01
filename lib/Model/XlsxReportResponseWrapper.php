@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * XlsxReportResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the XlsxReportResponseDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class XlsxReportResponseWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\XlsxReportResponseDto|null $response response
+     * @param \OpenAPI\Client\Model\XlsxReportResponseDto|null $response The XlsxReportResponseDto object returned by the operation.
      *
      * @return self
      */

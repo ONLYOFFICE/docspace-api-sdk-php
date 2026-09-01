@@ -378,7 +378,7 @@ class AiOpenAIStreamChunk implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id The completion identifier, stable across every chunk of one response.
      *
      * @return self
      */
@@ -405,7 +405,7 @@ class AiOpenAIStreamChunk implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets object
      *
-     * @param string $object object
+     * @param string $object Always `chat.completion.chunk`.
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class AiOpenAIStreamChunk implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets created
      *
-     * @param float $created created
+     * @param float $created When the completion started, in Unix seconds.
      *
      * @return self
      */
@@ -469,7 +469,7 @@ class AiOpenAIStreamChunk implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets model
      *
-     * @param string $model model
+     * @param string $model The model that produced the completion - the resolved profile's model.
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class AiOpenAIStreamChunk implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets choices
      *
-     * @param \OpenAPI\Client\Model\AiOpenAIChunkChoice[] $choices choices
+     * @param \OpenAPI\Client\Model\AiOpenAIChunkChoice[] $choices The choices carried by this chunk. This service emits exactly one.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TfaAppCodeArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of TfaAppCodeDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TfaAppCodeArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TfaAppCodeDto[]|null $response response
+     * @param \OpenAPI\Client\Model\TfaAppCodeDto[]|null $response The list of TfaAppCodeDto objects returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AutoCleanUpDataWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AutoCleanUpData object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AutoCleanUpDataWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AutoCleanUpData|null $response response
+     * @param \OpenAPI\Client\Model\AutoCleanUpData|null $response The AutoCleanUpData object returned by the operation.
      *
      * @return self
      */

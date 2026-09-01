@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ItemKeyValuePairObjectObject Class Doc Comment
  *
  * @category Class
+ * @description A key-value pair of a list item.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

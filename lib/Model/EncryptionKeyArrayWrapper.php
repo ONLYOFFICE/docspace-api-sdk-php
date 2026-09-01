@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionKeyArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of EncryptionKeyDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EncryptionKeyArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $response response
+     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $response The list of EncryptionKeyDto objects returned by the operation.
      *
      * @return self
      */

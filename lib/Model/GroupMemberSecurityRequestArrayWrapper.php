@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GroupMemberSecurityRequestArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of GroupMemberSecurityRequestDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class GroupMemberSecurityRequestArrayWrapper implements ModelInterface, ArrayAcc
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\GroupMemberSecurityRequestDto[]|null $response response
+     * @param \OpenAPI\Client\Model\GroupMemberSecurityRequestDto[]|null $response The list of GroupMemberSecurityRequestDto objects returned by the operation.
      *
      * @return self
      */

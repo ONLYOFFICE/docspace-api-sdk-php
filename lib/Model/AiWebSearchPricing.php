@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiWebSearchPricing Class Doc Comment
  *
  * @category Class
+ * @description The pricing of a single web search provider, per request.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -323,7 +324,7 @@ class AiWebSearchPricing implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The identifier of the web search provider.
      *
      * @return self
      */
@@ -357,7 +358,7 @@ class AiWebSearchPricing implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets provider
      *
-     * @param string|null $provider provider
+     * @param string|null $provider The provider that serves the web search requests.
      *
      * @return self
      */
@@ -391,7 +392,7 @@ class AiWebSearchPricing implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets price
      *
-     * @param float|null $price price
+     * @param float|null $price The price of a single web search request.
      *
      * @return self
      */
@@ -418,7 +419,7 @@ class AiWebSearchPricing implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets link
      *
-     * @param string|null $link link
+     * @param string|null $link The link to the pricing page of the provider.
      *
      * @return self
      */

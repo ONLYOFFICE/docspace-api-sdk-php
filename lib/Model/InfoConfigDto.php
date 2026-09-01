@@ -474,7 +474,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\EditorType|null $type The editor type.
+     * @param \OpenAPI\Client\Model\EditorType|null $type The editor type of the file.
      *
      * @return self
      */

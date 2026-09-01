@@ -313,7 +313,7 @@ class AiToolsMutationResult implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the MCP server was persisted.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class AiToolsMutationResult implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the MCP server was rejected. Present on failure.
      *
      * @return self
      */

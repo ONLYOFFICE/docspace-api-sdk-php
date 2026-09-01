@@ -58,7 +58,7 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $openAPITypes = [
-        'date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'date' => '\DateTime',
         'items' => '\OpenAPI\Client\Model\RoomNewItemsDto[]'
     ];
 
@@ -70,7 +70,7 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'date' => null,
+        'date' => 'date-time',
         'items' => null
     ];
 
@@ -80,7 +80,7 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'date' => false,
+        'date' => true,
         'items' => true
     ];
 
@@ -282,8 +282,8 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['date'] === null) {
-            $invalidProperties[] = "'date' can't be null";
+        if ($this->container['date'] === null && !$this->isNullableSetToNull('date')) {
+            $invalidProperties[] = "'date' is required";
         }
         if ($this->container['items'] === null && !$this->isNullableSetToNull('items')) {
             $invalidProperties[] = "'items' is required";
@@ -306,7 +306,7 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime
+     * @return \DateTime|null
      */
     public function getDate()
     {
@@ -316,14 +316,21 @@ class NewItemsDtoRoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime $date The date and time when the new item was created.
+     * @param \DateTime|null $date The date and time when the new item was created.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 

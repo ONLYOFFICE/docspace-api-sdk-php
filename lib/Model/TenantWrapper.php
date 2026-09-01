@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantDto|null $response response
+     * @param \OpenAPI\Client\Model\TenantDto|null $response The TenantDto object returned by the operation.
      *
      * @return self
      */

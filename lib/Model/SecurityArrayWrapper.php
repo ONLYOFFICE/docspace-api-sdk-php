@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SecurityArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of SecurityDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SecurityArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SecurityDto[]|null $response response
+     * @param \OpenAPI\Client\Model\SecurityDto[]|null $response The list of SecurityDto objects returned by the operation.
      *
      * @return self
      */

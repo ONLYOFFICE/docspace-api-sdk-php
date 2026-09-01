@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiThreadMessageLike Class Doc Comment
  *
  * @category Class
+ * @description A single chat message as it travels on the wire.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

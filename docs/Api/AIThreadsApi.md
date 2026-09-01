@@ -27,6 +27,7 @@ aiThreadsAppendUserMessage($ai_threads_append_user_message_request): \OpenAPI\Cl
 ```
 
 Append user message
+Persists a user message in a thread and bumps the thread's last-edit date so it resurfaces in the sidebar. Optionally rebinds the thread to another profile when the model changed mid-conversation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-append-user-message/).
 
@@ -82,6 +83,7 @@ aiThreadsClearMessages($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Clear messages
+Drops every message of a thread while keeping the thread itself, and bumps its last-edit date.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/).
 
@@ -137,6 +139,7 @@ aiThreadsCreate($ai_threads_create_request): \OpenAPI\Client\Model\AiThread
 ```
 
 Create
+Creates a chat thread with a caller-supplied title. Use `open-or-create` instead when the title should be generated from the first user message.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-create/).
 
@@ -192,6 +195,7 @@ aiThreadsDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete
+Deletes a chat thread together with its messages.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/).
 
@@ -247,6 +251,7 @@ aiThreadsDeleteMessage($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete message
+Deletes one chat message, leaving the rest of the thread untouched.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/).
 
@@ -302,6 +307,7 @@ aiThreadsGetById($thread_id): \OpenAPI\Client\Model\AiThread
 ```
 
 Get by id
+Returns one chat thread, or an empty result when the identifier is unknown.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/).
 
@@ -309,7 +315,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **thread_id** | **string**|  | |
+| **thread_id** | **string**| The chat thread identifier. | |
 
 ### Return type
 
@@ -331,7 +337,7 @@ $apiInstance = new OpenAPI\Client\Api\ThreadsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$thread_id = 'thread_id_example'; // string
+$thread_id = 'thread_id_example'; // string | The chat thread identifier.
 
 try {
     $result = $apiInstance->aiThreadsGetById($thread_id);
@@ -357,6 +363,7 @@ aiThreadsGetMessageById($message_id): \OpenAPI\Client\Model\AiThreadMessageLike
 ```
 
 Get message by id
+Returns one chat message by its globally unique identifier.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/).
 
@@ -364,7 +371,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **message_id** | **string**|  | |
+| **message_id** | **string**| The globally unique chat message identifier. | |
 
 ### Return type
 
@@ -386,7 +393,7 @@ $apiInstance = new OpenAPI\Client\Api\ThreadsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$message_id = 'message_id_example'; // string
+$message_id = 'message_id_example'; // string | The globally unique chat message identifier.
 
 try {
     $result = $apiInstance->aiThreadsGetMessageById($message_id);
@@ -412,6 +419,7 @@ aiThreadsList($entity_id, $count, $cursor, $query): \OpenAPI\Client\Model\AiThre
 ```
 
 List
+Lists the chat threads of the scope, most recently edited first. Supports cursor pagination and a server-side case-insensitive title search.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/).
 
@@ -419,10 +427,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
-| **count** | **string**|  | |
-| **cursor** | **string**|  | |
-| **query** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **count** | **string**| The maximum number of items to return in one page. | [optional] |
+| **cursor** | **string**| The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. | [optional] |
+| **query** | **string**| The full-text query the thread list is filtered by. | [optional] |
 
 ### Return type
 
@@ -444,10 +452,10 @@ $apiInstance = new OpenAPI\Client\Api\ThreadsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
-$count = 'count_example'; // string
-$cursor = 'cursor_example'; // string
-$query = 'query_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$count = 'count_example'; // string | The maximum number of items to return in one page.
+$cursor = 'cursor_example'; // string | The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page.
+$query = 'query_example'; // string | The full-text query the thread list is filtered by.
 
 try {
     $result = $apiInstance->aiThreadsList($entity_id, $count, $cursor, $query);
@@ -473,6 +481,7 @@ aiThreadsOpenOrCreate($ai_threads_open_or_create_request): \OpenAPI\Client\Model
 ```
 
 Open or create
+Opens a chat thread and returns its history, or creates one with a title generated from the supplied first message. That first message is not persisted - the caller decides whether to follow up with `append-user-message`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-open-or-create/).
 
@@ -528,6 +537,7 @@ aiThreadsReadMessages($thread_id, $count, $cursor, $direction): \OpenAPI\Client\
 ```
 
 Read messages
+Reads the messages of a thread, with the same cursor pagination as the thread list.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/).
 
@@ -535,10 +545,10 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **thread_id** | **string**|  | |
-| **count** | **string**|  | |
-| **cursor** | **string**|  | |
-| **direction** | **string**|  | |
+| **thread_id** | **string**| The chat thread identifier. | |
+| **count** | **string**| The maximum number of items to return in one page. | [optional] |
+| **cursor** | **string**| The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. | [optional] |
+| **direction** | **string**| The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. | [optional] |
 
 ### Return type
 
@@ -560,10 +570,10 @@ $apiInstance = new OpenAPI\Client\Api\ThreadsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$thread_id = 'thread_id_example'; // string
-$count = 'count_example'; // string
-$cursor = 'cursor_example'; // string
-$direction = 'direction_example'; // string
+$thread_id = 'thread_id_example'; // string | The chat thread identifier.
+$count = 'count_example'; // string | The maximum number of items to return in one page.
+$cursor = 'cursor_example'; // string | The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page.
+$direction = 'direction_example'; // string | The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read.
 
 try {
     $result = $apiInstance->aiThreadsReadMessages($thread_id, $count, $cursor, $direction);
@@ -589,6 +599,7 @@ aiThreadsRegenerateTitle($ai_threads_regenerate_title_request): string
 ```
 
 Regenerate title
+Generates a fresh title from the thread's first user message and persists it. Fails when the thread has no user message yet.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-regenerate-title/).
 
@@ -644,6 +655,7 @@ aiThreadsRename($ai_threads_rename_request): \OpenAPI\Client\Model\AiSuccessResp
 ```
 
 Rename
+Renames a chat thread and bumps its last-edit date so the new title shows up in the sidebar.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-rename/).
 
@@ -699,6 +711,7 @@ aiThreadsTouch($ai_threads_touch_request): \OpenAPI\Client\Model\AiSuccessRespon
 ```
 
 Touch
+Bumps a thread's last-edit date, and optionally rebinds it to another profile, when something other than a new message - a model switch, say - should resurface it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-touch/).
 
@@ -754,6 +767,7 @@ aiThreadsUpdateMessage($ai_threads_update_message_request): \OpenAPI\Client\Mode
 ```
 
 Update message
+Replaces the content of a chat message - used by the edit and regenerate flows that change a message outside the streaming lifecycle.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-update-message/).
 

@@ -824,7 +824,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto $create_by The user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeDto $create_by The user who created the web plugin.
      *
      * @return self
      */

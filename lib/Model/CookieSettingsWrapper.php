@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CookieSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CookieSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CookieSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CookieSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\CookieSettingsDto|null $response The CookieSettingsDto object returned by the operation.
      *
      * @return self
      */

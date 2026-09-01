@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDevToolsAccessSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantDevToolsAccessSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantDevToolsAccessSettingsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantDevToolsAccessSettings|null $response response
+     * @param \OpenAPI\Client\Model\TenantDevToolsAccessSettings|null $response The TenantDevToolsAccessSettings object returned by the operation.
      *
      * @return self
      */

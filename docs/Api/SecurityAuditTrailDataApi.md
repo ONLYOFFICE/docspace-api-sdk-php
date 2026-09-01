@@ -115,8 +115,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **action** | [**\OpenAPI\Client\Model\MessageAction**](../Model/.md)| The specific action that occurred within the audit event. | [optional] |
 | **entry_type** | [**\OpenAPI\Client\Model\EntryType**](../Model/.md)| The type of audit entry (e.g., Folder, User, File). | [optional] |
 | **target** | **string**| The target object affected by the audit event (e.g., document ID, user account). | [optional] |
-| **from** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The starting date and time for filtering audit events. | [optional] |
-| **to** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The ending date and time for filtering audit events. | [optional] |
+| **from** | **\DateTime**| The starting date and time for filtering audit events. | [optional] |
+| **to** | **\DateTime**| The ending date and time for filtering audit events. | [optional] |
 | **count** | **int**| The maximum number of audit event records to retrieve. | [optional] |
 | **start_index** | **int**| The index of the first audit event record to retrieve in a paged query. | [optional] |
 
@@ -169,8 +169,8 @@ $action_type = Create; // \OpenAPI\Client\Model\ActionType | The type of action 
 $action = FileCreated; // \OpenAPI\Client\Model\MessageAction | The specific action that occurred within the audit event.
 $entry_type = File; // \OpenAPI\Client\Model\EntryType | The type of audit entry (e.g., Folder, User, File).
 $target = document.docx; // string | The target object affected by the audit event (e.g., document ID, user account).
-$from = 2024-01-01T00:00:00Z; // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering audit events.
-$to = 2024-01-31T23:59:59Z; // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering audit events.
+$from = 2024-01-01T00:00:00Z; // \DateTime | The starting date and time for filtering audit events.
+$to = 2024-01-31T23:59:59Z; // \DateTime | The ending date and time for filtering audit events.
 $count = 100; // int | The maximum number of audit event records to retrieve.
 $start_index = 0; // int | The index of the first audit event record to retrieve in a paged query.
 
@@ -194,7 +194,7 @@ try {
 ## `getAuditSettings()`
 
 ```php
-getAuditSettings(): \OpenAPI\Client\Model\TenantAuditSettingsWrapper
+getAuditSettings(): \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper
 ```
 
 Get the audit trail settings
@@ -208,7 +208,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAuditSettingsWrapper**](../Model/TenantAuditSettingsWrapper.md)
+[**\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper**](../Model/TenantAuditSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -579,7 +579,7 @@ try {
 ## `setAuditSettings()`
 
 ```php
-setAuditSettings($tenant_audit_settings_wrapper): \OpenAPI\Client\Model\TenantAuditSettingsWrapper
+setAuditSettings($tenant_audit_settings_wrapper): \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper
 ```
 
 Set the audit trail settings
@@ -595,7 +595,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAuditSettingsWrapper**](../Model/TenantAuditSettingsWrapper.md)
+[**\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper**](../Model/TenantAuditSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -724,7 +724,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

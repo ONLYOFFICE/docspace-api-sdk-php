@@ -63,7 +63,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'int',
         'version_group' => 'int',
         'user' => '\OpenAPI\Client\Model\EditHistoryAuthor',
-        'created' => '\OpenAPI\Client\Model\ApiDateTime',
+        'created' => '\DateTime',
         'changes_history' => 'string',
         'changes' => '\OpenAPI\Client\Model\EditHistoryChangesWrapper[]',
         'server_version' => 'string'
@@ -82,7 +82,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'int32',
         'version_group' => 'int32',
         'user' => null,
-        'created' => null,
+        'created' => 'date-time',
         'changes_history' => null,
         'changes' => null,
         'server_version' => null
@@ -99,7 +99,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => false,
         'version_group' => false,
         'user' => false,
-        'created' => false,
+        'created' => true,
         'changes_history' => true,
         'changes' => true,
         'server_version' => true
@@ -474,7 +474,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EditHistoryAuthor|null $user The information about the file editing history author.
+     * @param \OpenAPI\Client\Model\EditHistoryAuthor|null $user The user who updated a file.
      *
      * @return self
      */
@@ -491,7 +491,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreated()
     {
@@ -501,14 +501,21 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $created The API date and time parameters.
+     * @param \DateTime|null $created The document version creation date.
      *
      * @return self
      */
     public function setCreated($created)
     {
         if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created'] = $created;
 

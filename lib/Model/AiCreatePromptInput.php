@@ -323,7 +323,7 @@ class AiCreatePromptInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The prompt name.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class AiCreatePromptInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string $text The prompt body.
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class AiCreatePromptInput implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets folder_id
      *
-     * @param string|null $folder_id folder_id
+     * @param string|null $folder_id The folder to file the prompt under. Omit or send null to leave it outside any folder.
      *
      * @return self
      */

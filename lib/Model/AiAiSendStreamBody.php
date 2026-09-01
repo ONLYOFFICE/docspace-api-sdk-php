@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAiSendStreamBody Class Doc Comment
  *
  * @category Class
+ * @description Shared body of the two streaming send endpoints (`sendWithStream` and its OpenAI-framed twin) — the `Chat` action is implied, so there is no `actionType`.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -387,7 +388,7 @@ class AiAiSendStreamBody implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args action_args
+     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
      *
      * @return self
      */

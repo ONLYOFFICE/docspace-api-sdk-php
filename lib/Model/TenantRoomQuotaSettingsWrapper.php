@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantRoomQuotaSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantRoomQuotaSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantRoomQuotaSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantRoomQuotaSettings|null $response response
+     * @param \OpenAPI\Client\Model\TenantRoomQuotaSettings|null $response The TenantRoomQuotaSettings object returned by the operation.
      *
      * @return self
      */

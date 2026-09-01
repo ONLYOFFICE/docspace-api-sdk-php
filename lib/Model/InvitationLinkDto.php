@@ -60,7 +60,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'id' => 'string',
         'employee_type' => '\OpenAPI\Client\Model\EmployeeType',
-        'expiration' => '\OpenAPI\Client\Model\ApiDateTime',
+        'expiration' => '\DateTime',
         'is_expired' => 'bool',
         'max_use_count' => 'int',
         'current_use_count' => 'int',
@@ -77,7 +77,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPIFormats = [
         'id' => 'uuid',
         'employee_type' => null,
-        'expiration' => null,
+        'expiration' => 'date-time',
         'is_expired' => null,
         'max_use_count' => 'int32',
         'current_use_count' => 'int32',
@@ -92,7 +92,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'id' => false,
         'employee_type' => false,
-        'expiration' => false,
+        'expiration' => true,
         'is_expired' => false,
         'max_use_count' => true,
         'current_use_count' => false,
@@ -375,7 +375,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets employee_type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The user type.
+     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets expiration
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpiration()
     {
@@ -402,14 +402,21 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expiration
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration The API date and time parameters.
+     * @param \DateTime|null $expiration The expiration date of the invitation link.
      *
      * @return self
      */
     public function setExpiration($expiration)
     {
         if (is_null($expiration)) {
-            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiration'] = $expiration;
 

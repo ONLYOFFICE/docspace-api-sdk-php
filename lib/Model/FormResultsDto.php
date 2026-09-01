@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormResultsDto Class Doc Comment
  *
  * @category Class
+ * @description A single filled-in form submission.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

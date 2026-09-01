@@ -180,7 +180,7 @@ try {
 ## `deleteGroup()`
 
 ```php
-deleteGroup($id): \OpenAPI\Client\Model\NoContentResultWrapper
+deleteGroup($id)
 ```
 
 Delete a group
@@ -196,7 +196,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\NoContentResultWrapper**](../Model/NoContentResultWrapper.md)
+void (empty response body)
 
 ### Authorization
 
@@ -240,8 +240,7 @@ $apiInstance = new OpenAPI\Client\Api\GroupApi(
 $id = 00000000-0000-0000-0000-000000000000; // string | The group ID.
 
 try {
-    $result = $apiInstance->deleteGroup($id);
-    print_r($result);
+    $apiInstance->deleteGroup($id);
 } catch (Exception $e) {
     echo 'Exception when calling GroupApi->deleteGroup: ', $e->getMessage(), PHP_EOL;
 }

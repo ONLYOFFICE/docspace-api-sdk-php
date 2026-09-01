@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CoversResultArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of CoversResultDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CoversResultArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CoversResultDto[]|null $response response
+     * @param \OpenAPI\Client\Model\CoversResultDto[]|null $response The list of CoversResultDto objects returned by the operation.
      *
      * @return self
      */

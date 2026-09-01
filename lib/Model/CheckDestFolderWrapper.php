@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CheckDestFolderWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CheckDestFolderDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CheckDestFolderWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CheckDestFolderDto|null $response response
+     * @param \OpenAPI\Client\Model\CheckDestFolderDto|null $response The CheckDestFolderDto object returned by the operation.
      *
      * @return self
      */

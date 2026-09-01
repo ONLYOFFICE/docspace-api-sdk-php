@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationChannelStatusWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the NotificationChannelStatusDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class NotificationChannelStatusWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\NotificationChannelStatusDto|null $response response
+     * @param \OpenAPI\Client\Model\NotificationChannelStatusDto|null $response The NotificationChannelStatusDto object returned by the operation.
      *
      * @return self
      */

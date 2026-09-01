@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AppArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of AppDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AppArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AppDto[]|null $response response
+     * @param \OpenAPI\Client\Model\AppDto[]|null $response The list of AppDto objects returned by the operation.
      *
      * @return self
      */

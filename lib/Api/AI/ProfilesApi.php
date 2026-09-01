@@ -742,7 +742,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-get-by-id/
      *
-     * @param  string $id id (required)
+     * @param  string $id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -763,7 +763,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -865,7 +865,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -889,7 +889,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -939,7 +939,7 @@ class ProfilesApi
     /**
      * Create request for operation 'aiProfilesGetById'
      *
-     * @param  string $id (required)
+     * @param  string $id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1311,7 +1311,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesListModels Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesListModels'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1332,7 +1332,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesListModels Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesListModels'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1434,7 +1434,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesListModels Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesListModels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1458,7 +1458,7 @@ class ProfilesApi
      * REST API Reference for aiProfilesListModels Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesListModels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1508,7 +1508,7 @@ class ProfilesApi
     /**
      * Create request for operation 'aiProfilesListModels'
      *
-     * @param  string $profile_id (required)
+     * @param  string $profile_id The AI provider profile identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesListModels'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileLinkWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileLink object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileLinkWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileLink|null $response response
+     * @param \OpenAPI\Client\Model\FileLink|null $response The FileLink object returned by the operation.
      *
      * @return self
      */

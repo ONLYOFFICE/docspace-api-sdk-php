@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImageModelPricing Class Doc Comment
  *
  * @category Class
+ * @description The pricing of a single image model.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -343,7 +344,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The identifier of the model, as the provider expects it on the wire.
      *
      * @return self
      */
@@ -377,7 +378,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets alias
      *
-     * @param string|null $alias alias
+     * @param string|null $alias The display name of the model.
      *
      * @return self
      */
@@ -411,7 +412,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets owned_by
      *
-     * @param string|null $owned_by owned_by
+     * @param string|null $owned_by The owner of the model, as reported by the provider.
      *
      * @return self
      */
@@ -445,7 +446,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets provider
      *
-     * @param string|null $provider provider
+     * @param string|null $provider The provider that serves the model.
      *
      * @return self
      */
@@ -479,7 +480,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets link
      *
-     * @param string|null $link link
+     * @param string|null $link The link to the pricing page of the model.
      *
      * @return self
      */
@@ -513,7 +514,7 @@ class AiImageModelPricing implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets price
      *
-     * @param \OpenAPI\Client\Model\AiImagePrice $price price
+     * @param \OpenAPI\Client\Model\AiImagePrice $price The price of an image model: per prompt token and per generated image.
      *
      * @return self
      */

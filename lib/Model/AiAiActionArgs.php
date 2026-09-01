@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAiActionArgs Class Doc Comment
  *
  * @category Class
+ * @description Wire-serializable subset of the engine's `ActionArgs` — drops the engine-injected `signal`/`fetch`; `profile`/`messages` are owned by the engine and never sent by the caller.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormSubmissionsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FormSubmissionsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FormSubmissionsWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FormSubmissionsDto|null $response response
+     * @param \OpenAPI\Client\Model\FormSubmissionsDto|null $response The FormSubmissionsDto object returned by the operation.
      *
      * @return self
      */

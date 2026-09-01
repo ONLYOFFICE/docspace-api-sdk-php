@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigratingApiUser Class Doc Comment
  *
  * @category Class
+ * @description The migrating user parameters.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -351,7 +352,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets should_import
      *
-     * @param bool|null $should_import should_import
+     * @param bool|null $should_import Specifies whether the API entity should be imported.
      *
      * @return self
      */
@@ -378,7 +379,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key key
+     * @param string|null $key The user key.
      *
      * @return self
      */
@@ -412,7 +413,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email email
+     * @param string|null $email The user email.
      *
      * @return self
      */
@@ -446,7 +447,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_name
      *
-     * @param string|null $display_name display_name
+     * @param string|null $display_name The user display name.
      *
      * @return self
      */
@@ -480,7 +481,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets first_name
      *
-     * @param string|null $first_name first_name
+     * @param string|null $first_name The user first name.
      *
      * @return self
      */
@@ -514,7 +515,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_name
      *
-     * @param string|null $last_name last_name
+     * @param string|null $last_name The user last name.
      *
      * @return self
      */
@@ -575,7 +576,7 @@ class MigratingApiUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets migrating_files
      *
-     * @param \OpenAPI\Client\Model\MigratingApiFiles|null $migrating_files migrating_files
+     * @param \OpenAPI\Client\Model\MigratingApiFiles|null $migrating_files The user's migrating files.
      *
      * @return self
      */

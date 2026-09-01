@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CapabilitiesWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CapabilitiesDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CapabilitiesWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CapabilitiesDto|null $response response
+     * @param \OpenAPI\Client\Model\CapabilitiesDto|null $response The CapabilitiesDto object returned by the operation.
      *
      * @return self
      */

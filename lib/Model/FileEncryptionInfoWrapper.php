@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileEncryptionInfoWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileEncryptionInfoDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileEncryptionInfoWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileEncryptionInfoDto|null $response response
+     * @param \OpenAPI\Client\Model\FileEncryptionInfoDto|null $response The FileEncryptionInfoDto object returned by the operation.
      *
      * @return self
      */

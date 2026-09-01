@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **title** | **string** | The file title. | [optional]
 **provider_key** | **string** | The third-party provider key. | [optional]
 **uploaded** | **bool** | Specifies whether the file has been uploaded. | [optional]
-**file** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The file parameters. | [optional]
+**file** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The uploaded file information. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

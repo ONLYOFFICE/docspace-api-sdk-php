@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NewItemsRoomNewItemsArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of NewItemsDtoRoomNewItemsDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class NewItemsRoomNewItemsArrayWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\NewItemsDtoRoomNewItemsDto[]|null $response response
+     * @param \OpenAPI\Client\Model\NewItemsDtoRoomNewItemsDto[]|null $response The list of NewItemsDtoRoomNewItemsDto objects returned by the operation.
      *
      * @return self
      */

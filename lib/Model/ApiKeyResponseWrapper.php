@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ApiKeyResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ApiKeyResponseDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ApiKeyResponseWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ApiKeyResponseDto|null $response response
+     * @param \OpenAPI\Client\Model\ApiKeyResponseDto|null $response The ApiKeyResponseDto object returned by the operation.
      *
      * @return self
      */

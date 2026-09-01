@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiChatEvent Class Doc Comment
  *
  * @category Class
- * @description Discriminated event emitted by the streaming methods of  {@link  AIEngine } . The engine never invokes user-supplied middleware or callbacks directly — every observable side-effect is encoded as a  {@link  ChatEvent }  so the same stream can be replayed over SSE, WebSocket, or in-process.  Pause point: `tool-call-pending` is the only stop. The UI must execute the tool itself (consulting `autoAllow` to decide between the silent path and the approve dialog) and resume via  {@link  AIEngine.approveToolCall }  or  {@link  AIEngine.denyToolCall } .  Other variants are pure data:  - `message-start` / `message-delta` / `message-end` — assistant   reply lifecycle. - `message-incomplete` — the provider returned an error or   incomplete status. - `thread-title` — auto-generated title ready for a new thread.
+ * @description Discriminated event emitted by the streaming methods of `AIEngine`. The engine never invokes user-supplied middleware or callbacks directly — every observable side-effect is encoded as a `ChatEvent` so the same stream can be replayed over SSE, WebSocket, or in-process.  Pause point: `tool-call-pending` is the only stop. The UI must execute the tool itself (consulting `autoAllow` to decide between the silent path and the approve dialog) and resume via `AIEngine.approveToolCall` or `AIEngine.denyToolCall`.  Other variants are pure data:  - `message-start` / `message-delta` / `message-end` — assistant reply lifecycle. - `message-incomplete` — the provider returned an error or incomplete status. - `thread-title` — auto-generated title ready for a new thread.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -433,7 +433,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param \OpenAPI\Client\Model\AiThreadMessageLike|null $message message
+     * @param \OpenAPI\Client\Model\AiThreadMessageLike|null $message The message the event is about, in the state it has reached.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message_id
      *
-     * @param string|null $message_id message_id
+     * @param string|null $message_id The storage identifier of that message.
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets idx
      *
-     * @param float|null $idx idx
+     * @param float|null $idx The zero-based position of the pending tool call within the message.
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets thread_id
      *
-     * @param string|null $thread_id thread_id
+     * @param string|null $thread_id The thread the event belongs to.
      *
      * @return self
      */
@@ -595,7 +595,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title title
+     * @param string|null $title The generated thread title.
      *
      * @return self
      */
@@ -622,7 +622,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id profile_id
+     * @param string|null $profile_id The profile that generated the title, when one was used.
      *
      * @return self
      */

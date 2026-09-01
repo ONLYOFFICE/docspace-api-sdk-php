@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GetPortalPrices200Response Class Doc Comment
  *
  * @category Class
+ * @description The successful API response.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class GetPortalPrices200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param array<string,float>|null $response response
+     * @param array<string,float>|null $response The response payload.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiWebSearchMutationResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of  {@link  WebSearchEngine.configure }  — either the persisted config or a field-scoped error suitable for the settings form.
+ * @description Outcome of `WebSearchEngine.configure` — either the persisted config or a field-scoped error suitable for the settings form.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -320,7 +320,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the configuration was persisted.
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets config
      *
-     * @param \OpenAPI\Client\Model\AiWebSearchConfig|null $config config
+     * @param \OpenAPI\Client\Model\AiWebSearchConfig|null $config The persisted web-search configuration. Present on success.
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the configuration was rejected. Present on failure.
      *
      * @return self
      */

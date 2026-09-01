@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CurrencyAmount Class Doc Comment
  *
  * @category Class
+ * @description An amount of money together with its currency.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

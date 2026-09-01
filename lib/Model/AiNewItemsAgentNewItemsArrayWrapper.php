@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiNewItemsAgentNewItemsArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of NewItemsDtoAgentNewItemsDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AiNewItemsAgentNewItemsArrayWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AiNewItemsDtoAgentNewItemsDto[]|null $response response
+     * @param \OpenAPI\Client\Model\AiNewItemsDtoAgentNewItemsDto[]|null $response The list of NewItemsDtoAgentNewItemsDto objects returned by the operation.
      *
      * @return self
      */

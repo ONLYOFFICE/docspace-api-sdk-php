@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Int32Wrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the int32 value.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class Int32Wrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param int|null $response response
+     * @param int|null $response The int32 value returned by the operation.
      *
      * @return self
      */

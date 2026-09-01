@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConnectionTestResultWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ConnectionTestResult object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ConnectionTestResultWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ConnectionTestResult|null $response response
+     * @param \OpenAPI\Client\Model\ConnectionTestResult|null $response The ConnectionTestResult object returned by the operation.
      *
      * @return self
      */

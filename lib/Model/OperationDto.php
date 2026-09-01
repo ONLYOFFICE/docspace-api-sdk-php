@@ -58,7 +58,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'date' => '\DateTime',
         'service' => 'string',
         'description' => 'string',
         'details' => 'string',
@@ -82,7 +82,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'date' => null,
+        'date' => 'date-time',
         'service' => null,
         'description' => null,
         'details' => null,
@@ -104,7 +104,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'date' => false,
+        'date' => true,
         'service' => true,
         'description' => true,
         'details' => true,
@@ -384,7 +384,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getDate()
     {
@@ -394,14 +394,21 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $date The API date and time parameters.
+     * @param \DateTime|null $date The date when the operation took place.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 
@@ -808,7 +815,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\OperationType|null $type The operation type
+     * @param \OpenAPI\Client\Model\OperationType|null $type Type of the operation
      *
      * @return self
      */

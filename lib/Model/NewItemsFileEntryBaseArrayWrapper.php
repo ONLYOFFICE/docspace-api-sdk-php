@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NewItemsFileEntryBaseArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of NewItemsDtoFileEntryBaseDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class NewItemsFileEntryBaseArrayWrapper implements ModelInterface, ArrayAccess, 
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\NewItemsDtoFileEntryBaseDto[]|null $response response
+     * @param \OpenAPI\Client\Model\NewItemsDtoFileEntryBaseDto[]|null $response The list of NewItemsDtoFileEntryBaseDto objects returned by the operation.
      *
      * @return self
      */

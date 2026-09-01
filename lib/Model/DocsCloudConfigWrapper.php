@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudConfigWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DocsCloudConfig object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DocsCloudConfigWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudConfig|null $response response
+     * @param \OpenAPI\Client\Model\DocsCloudConfig|null $response The DocsCloudConfig object returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DoubleWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the double value.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DoubleWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param float|null $response response
+     * @param float|null $response The double value returned by the operation.
      *
      * @return self
      */

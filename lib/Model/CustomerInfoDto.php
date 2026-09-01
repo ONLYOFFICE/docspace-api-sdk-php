@@ -358,7 +358,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method_status
      *
-     * @param \OpenAPI\Client\Model\PaymentMethodStatus|null $payment_method_status The payment method status.
+     * @param \OpenAPI\Client\Model\PaymentMethodStatus|null $payment_method_status The customer's payment method.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payer
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $payer The user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $payer The paying user.
      *
      * @return self
      */

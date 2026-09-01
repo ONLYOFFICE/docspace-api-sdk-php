@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileEncryptionInfoDto Class Doc Comment
  *
  * @category Class
+ * @description The encryption information of a file: the user key pairs and the per-user file keys.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets user_keys
      *
-     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $user_keys user_keys
+     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $user_keys The key pairs of the users who have access to the file.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_keys
      *
-     * @param \OpenAPI\Client\Model\FileKeys[]|null $file_keys file_keys
+     * @param \OpenAPI\Client\Model\FileKeys[]|null $file_keys The file keys issued to those users.
      *
      * @return self
      */

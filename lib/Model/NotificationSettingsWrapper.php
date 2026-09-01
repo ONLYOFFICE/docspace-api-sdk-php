@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the NotificationSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class NotificationSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\NotificationSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\NotificationSettingsDto|null $response The NotificationSettingsDto object returned by the operation.
      *
      * @return self
      */

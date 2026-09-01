@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | The conversion operation ID. |
-**operation** | [**\OpenAPI\Client\Model\FileOperationType**](FileOperationType.md) | The file operation type. |
+**operation** | [**\OpenAPI\Client\Model\FileOperationType**](FileOperationType.md) | The conversion operation type. |
 **progress** | **int** | The conversion operation progress. |
 **source** | **string** | The source file for the conversion. | [optional]
 **result** | **mixed** |  | [optional]

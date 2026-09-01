@@ -67,10 +67,10 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared_external' => 'bool',
         'parent_shared' => 'bool',
         'short_web_url' => 'string',
-        'created' => '\OpenAPI\Client\Model\ApiDateTime',
+        'created' => '\DateTime',
         'created_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'updated' => '\OpenAPI\Client\Model\ApiDateTime',
-        'auto_delete' => '\OpenAPI\Client\Model\ApiDateTime',
+        'updated' => '\DateTime',
+        'auto_delete' => '\DateTime',
         'root_folder_type' => '\OpenAPI\Client\Model\FolderType',
         'parent_room_type' => '\OpenAPI\Client\Model\FolderType',
         'updated_by' => '\OpenAPI\Client\Model\EmployeeDto',
@@ -92,7 +92,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
         'available_share_rights' => '\OpenAPI\Client\Model\FileEntryDtoIntegerAllOfAvailableShareRights',
         'request_token' => 'string',
         'external' => 'bool',
-        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'expiration_date' => '\DateTime',
         'is_link_expired' => 'bool',
         'parent_id' => 'string',
         'files_count' => 'int',
@@ -140,10 +140,10 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
         'shared_external' => null,
         'parent_shared' => null,
         'short_web_url' => 'uri',
-        'created' => null,
+        'created' => 'date-time',
         'created_by' => null,
-        'updated' => null,
-        'auto_delete' => null,
+        'updated' => 'date-time',
+        'auto_delete' => 'date-time',
         'root_folder_type' => null,
         'parent_room_type' => null,
         'updated_by' => null,
@@ -165,7 +165,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
         'available_share_rights' => null,
         'request_token' => null,
         'external' => null,
-        'expiration_date' => null,
+        'expiration_date' => 'date-time',
         'is_link_expired' => null,
         'parent_id' => null,
         'files_count' => 'int32',
@@ -970,7 +970,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets created
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getCreated()
     {
@@ -980,7 +980,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $created The creation date and time of the file entry.
+     * @param \DateTime|null $created The creation date and time of the file entry.
      *
      * @return self
      */
@@ -1024,7 +1024,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getUpdated()
     {
@@ -1034,7 +1034,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $updated The last date and time when the file entry was updated.
+     * @param \DateTime|null $updated The last date and time when the file entry was updated.
      *
      * @return self
      */
@@ -1051,7 +1051,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets auto_delete
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getAutoDelete()
     {
@@ -1061,7 +1061,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets auto_delete
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $auto_delete The date and time when the file entry will be automatically deleted.
+     * @param \DateTime|null $auto_delete The date and time when the file entry will be automatically deleted.
      *
      * @return self
      */
@@ -1666,7 +1666,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpirationDate()
     {
@@ -1676,7 +1676,7 @@ class FolderDtoString implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date Represents the expiration date of the file entry.
+     * @param \DateTime|null $expiration_date Represents the expiration date of the file entry.
      *
      * @return self
      */

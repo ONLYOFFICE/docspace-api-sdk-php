@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileShareArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of FileShareDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileShareArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileShareDto[]|null $response response
+     * @param \OpenAPI\Client\Model\FileShareDto[]|null $response The list of FileShareDto objects returned by the operation.
      *
      * @return self
      */

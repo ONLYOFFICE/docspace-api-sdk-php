@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StringWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the string value.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class StringWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param string|null $response response
+     * @param string|null $response The string value returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ChunkedUploadSessionResponseWrapperIntegerWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ChunkedUploadSessionResponseWrapperInteger object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ChunkedUploadSessionResponseWrapperIntegerWrapper implements ModelInterfac
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperInteger|null $response response
+     * @param \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperInteger|null $response The ChunkedUploadSessionResponseWrapperInteger object returned by the operation.
      *
      * @return self
      */

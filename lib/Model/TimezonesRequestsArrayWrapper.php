@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TimezonesRequestsArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of TimezonesRequestsDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TimezonesRequestsArrayWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TimezonesRequestsDto[]|null $response response
+     * @param \OpenAPI\Client\Model\TimezonesRequestsDto[]|null $response The list of TimezonesRequestsDto objects returned by the operation.
      *
      * @return self
      */

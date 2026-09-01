@@ -316,7 +316,7 @@ class AiResolvedAssignment implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets profile_id
      *
-     * @param string $profile_id profile_id
+     * @param string $profile_id The identifier of the resolved profile.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class AiResolvedAssignment implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets profile
      *
-     * @param \OpenAPI\Client\Model\AiProfile $profile profile
+     * @param \OpenAPI\Client\Model\AiProfile $profile The resolved profile itself.
      *
      * @return self
      */

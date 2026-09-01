@@ -313,7 +313,7 @@ class TelegramStatusDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\RegStatus $status The registration Telegram status.
+     * @param \OpenAPI\Client\Model\RegStatus $status The Telegram registration status.
      *
      * @return self
      */

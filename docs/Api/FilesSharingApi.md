@@ -16,8 +16,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getSharedUsers()**](FilesSharingApi.md#getSharedUsers) | **GET** /api/2.0/files/file/{fileId}/sharedusers | Get user access rights by file ID |
 | [**removeSecurityInfo()**](FilesSharingApi.md#removeSecurityInfo) | **DELETE** /api/2.0/files/share | Remove the sharing rights |
 | [**sendEditorNotify()**](FilesSharingApi.md#sendEditorNotify) | **POST** /api/2.0/files/file/{fileId}/sendeditornotify | Send the mention message |
-| [**setFileSecurityInfo()**](FilesSharingApi.md#setFileSecurityInfo) | **PUT** /api/2.0/files/file/{fileId}/share | Share a file |
-| [**setFolderSecurityInfo()**](FilesSharingApi.md#setFolderSecurityInfo) | **PUT** /api/2.0/files/folder/{folderId}/share | Share a folder |
+| [**setFileSecurityInfo()**](FilesSharingApi.md#setFileSecurityInfo) | **PUT** /api/2.0/files/file/{id}/share | Share a file |
+| [**setFolderSecurityInfo()**](FilesSharingApi.md#setFolderSecurityInfo) | **PUT** /api/2.0/files/folder/{id}/share | Share a folder |
 | [**setSecurityInfo()**](FilesSharingApi.md#setSecurityInfo) | **PUT** /api/2.0/files/share | Set the sharing rights |
 
 
@@ -958,7 +958,7 @@ try {
 ## `setFileSecurityInfo()`
 
 ```php
-setFileSecurityInfo($file_id, $security_info_simple_request_dto): \OpenAPI\Client\Model\FileShareArrayWrapper
+setFileSecurityInfo($id, $security_info_simple_request_dto): \OpenAPI\Client\Model\FileShareArrayWrapper
 ```
 
 Share a file
@@ -970,7 +970,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **int**| The file ID. | |
+| **id** | **int**| The file ID. | |
 | **security_info_simple_request_dto** | [**\OpenAPI\Client\Model\SecurityInfoSimpleRequestDto**](../Model/SecurityInfoSimpleRequestDto.md)| The parameters of the security information simple request. | |
 
 ### Return type
@@ -1016,11 +1016,11 @@ $apiInstance = new OpenAPI\Client\Api\SharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 1; // int | The file ID.
+$id = 1; // int | The file ID.
 $security_info_simple_request_dto = new \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto(); // \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto | The parameters of the security information simple request.
 
 try {
-    $result = $apiInstance->setFileSecurityInfo($file_id, $security_info_simple_request_dto);
+    $result = $apiInstance->setFileSecurityInfo($id, $security_info_simple_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SharingApi->setFileSecurityInfo: ', $e->getMessage(), PHP_EOL;
@@ -1039,7 +1039,7 @@ try {
 ## `setFolderSecurityInfo()`
 
 ```php
-setFolderSecurityInfo($folder_id, $security_info_simple_request_dto): \OpenAPI\Client\Model\FileShareArrayWrapper
+setFolderSecurityInfo($id, $security_info_simple_request_dto): \OpenAPI\Client\Model\FileShareArrayWrapper
 ```
 
 Share a folder
@@ -1051,7 +1051,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **folder_id** | **int**| The folder ID. | |
+| **id** | **int**| The folder ID. | |
 | **security_info_simple_request_dto** | [**\OpenAPI\Client\Model\SecurityInfoSimpleRequestDto**](../Model/SecurityInfoSimpleRequestDto.md)| The parameters of the security information simple request. | |
 
 ### Return type
@@ -1097,11 +1097,11 @@ $apiInstance = new OpenAPI\Client\Api\SharingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 1; // int | The folder ID.
+$id = 1; // int | The folder ID.
 $security_info_simple_request_dto = new \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto(); // \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto | The parameters of the security information simple request.
 
 try {
-    $result = $apiInstance->setFolderSecurityInfo($folder_id, $security_info_simple_request_dto);
+    $result = $apiInstance->setFolderSecurityInfo($id, $security_info_simple_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SharingApi->setFolderSecurityInfo: ', $e->getMessage(), PHP_EOL;

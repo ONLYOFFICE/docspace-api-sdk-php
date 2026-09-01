@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GroupSummaryArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of GroupSummaryDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class GroupSummaryArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\GroupSummaryDto[]|null $response response
+     * @param \OpenAPI\Client\Model\GroupSummaryDto[]|null $response The list of GroupSummaryDto objects returned by the operation.
      *
      * @return self
      */

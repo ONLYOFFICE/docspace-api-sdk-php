@@ -306,7 +306,7 @@ class DarkThemeSettingsRequestDto implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets theme
      *
-     * @param \OpenAPI\Client\Model\DarkThemeSettingsType $theme The theme type.
+     * @param \OpenAPI\Client\Model\DarkThemeSettingsType $theme The portal theme settings type.
      *
      * @return self
      */

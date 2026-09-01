@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomsNotificationSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the RoomsNotificationSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class RoomsNotificationSettingsWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\RoomsNotificationSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\RoomsNotificationSettingsDto|null $response The RoomsNotificationSettingsDto object returned by the operation.
      *
      * @return self
      */

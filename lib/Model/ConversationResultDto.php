@@ -388,7 +388,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets operation
      *
-     * @param \OpenAPI\Client\Model\FileOperationType $operation The file operation type.
+     * @param \OpenAPI\Client\Model\FileOperationType $operation The conversion operation type.
      *
      * @return self
      */

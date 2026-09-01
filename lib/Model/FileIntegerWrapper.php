@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileIntegerWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileDtoInteger object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileIntegerWrapper implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $response response
+     * @param \OpenAPI\Client\Model\FileDtoInteger|null $response The FileDtoInteger object returned by the operation.
      *
      * @return self
      */

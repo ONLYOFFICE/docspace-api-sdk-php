@@ -84,7 +84,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **code** | **string**|  | |
+| **code** | **string**| The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. | |
 | **auth_with_code_requests_dto** | [**\OpenAPI\Client\Model\AuthWithCodeRequestsDto**](../Model/AuthWithCodeRequestsDto.md)|  | [optional] |
 
 ### Return type
@@ -107,7 +107,7 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$code = 'code_example'; // string
+$code = 'code_example'; // string | The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads.
 $auth_with_code_requests_dto = new \OpenAPI\Client\Model\AuthWithCodeRequestsDto(); // \OpenAPI\Client\Model\AuthWithCodeRequestsDto
 
 try {

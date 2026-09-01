@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpcomingPaymentArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of UpcomingPaymentDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UpcomingPaymentArrayWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UpcomingPaymentDto[]|null $response response
+     * @param \OpenAPI\Client\Model\UpcomingPaymentDto[]|null $response The list of UpcomingPaymentDto objects returned by the operation.
      *
      * @return self
      */

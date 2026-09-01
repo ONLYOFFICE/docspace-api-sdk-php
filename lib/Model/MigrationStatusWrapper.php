@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigrationStatusWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the MigrationStatusDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class MigrationStatusWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\MigrationStatusDto|null $response response
+     * @param \OpenAPI\Client\Model\MigrationStatusDto|null $response The MigrationStatusDto object returned by the operation.
      *
      * @return self
      */

@@ -60,7 +60,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'type' => '\OpenAPI\Client\Model\WhiteLabelLogoType',
         'name' => 'string',
-        'size' => '\OpenAPI\Client\Model\IMagickGeometry',
+        'size' => '\OpenAPI\Client\Model\WhiteLabelItemSizeDto',
         'path' => '\OpenAPI\Client\Model\WhiteLabelItemPathDto'
     ];
 
@@ -375,7 +375,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets size
      *
-     * @return \OpenAPI\Client\Model\IMagickGeometry|null
+     * @return \OpenAPI\Client\Model\WhiteLabelItemSizeDto|null
      */
     public function getSize()
     {
@@ -385,7 +385,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets size
      *
-     * @param \OpenAPI\Client\Model\IMagickGeometry|null $size The white label file size.
+     * @param \OpenAPI\Client\Model\WhiteLabelItemSizeDto|null $size The white label file size.
      *
      * @return self
      */

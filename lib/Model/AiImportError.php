@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportError Class Doc Comment
  *
  * @category Class
- * @description Per-entry error reported by  {@link  PromptsEngine.importBundle } .
+ * @description Per-entry error reported by `PromptsEngine.importBundle`.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -387,7 +387,7 @@ class AiImportError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ref
      *
-     * @param string $ref ref
+     * @param string $ref The offending entry - its name or its id.
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class AiImportError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData $error Why the entry was rejected.
      *
      * @return self
      */

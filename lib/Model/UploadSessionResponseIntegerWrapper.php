@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UploadSessionResponseIntegerWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the UploadSessionResponseDtoInteger object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UploadSessionResponseIntegerWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UploadSessionResponseDtoInteger|null $response response
+     * @param \OpenAPI\Client\Model\UploadSessionResponseDtoInteger|null $response The UploadSessionResponseDtoInteger object returned by the operation.
      *
      * @return self
      */

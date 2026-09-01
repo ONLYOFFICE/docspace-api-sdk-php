@@ -1035,14 +1035,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAllAssignments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAllAssignments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array<string,string>|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsGetAllAssignments($entity_id, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
+    public function aiAssignmentsGetAllAssignments($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
         list($response) = $this->aiAssignmentsGetAllAssignmentsWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -1056,14 +1056,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAllAssignments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAllAssignments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of array<string,string>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsGetAllAssignmentsWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
+    public function aiAssignmentsGetAllAssignmentsWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
         $request = $this->aiAssignmentsGetAllAssignmentsRequest($entity_id, $contentType);
 
@@ -1158,13 +1158,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAllAssignments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAllAssignments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsGetAllAssignmentsAsync($entity_id, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
+    public function aiAssignmentsGetAllAssignmentsAsync($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
         return $this->aiAssignmentsGetAllAssignmentsAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -1182,13 +1182,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAllAssignments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAllAssignments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsGetAllAssignmentsAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
+    public function aiAssignmentsGetAllAssignmentsAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
         $returnType = 'array<string,string>';
         $request = $this->aiAssignmentsGetAllAssignmentsRequest($entity_id, $contentType);
@@ -1232,21 +1232,15 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsGetAllAssignments'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAllAssignments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsGetAllAssignmentsRequest($entity_id, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
+    public function aiAssignmentsGetAllAssignmentsRequest($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiAssignmentsGetAllAssignments'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/assignments/get-all-assignments';
@@ -1263,7 +1257,7 @@ class AssignmentsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1330,7 +1324,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type action_type (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1351,7 +1345,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1453,7 +1447,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1477,7 +1471,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1527,7 +1521,7 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsGetAssignment'
      *
-     * @param  string $action_type (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1625,15 +1619,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type action_type (required)
-     * @param  string $entity_id entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsResolveForAction($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
+    public function aiAssignmentsResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
         list($response) = $this->aiAssignmentsResolveForActionWithHttpInfo($action_type, $entity_id, $contentType);
         return $response;
@@ -1647,15 +1641,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsResolveForActionWithHttpInfo($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
+    public function aiAssignmentsResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
         $request = $this->aiAssignmentsResolveForActionRequest($action_type, $entity_id, $contentType);
 
@@ -1750,14 +1744,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsResolveForActionAsync($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
+    public function aiAssignmentsResolveForActionAsync($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
         return $this->aiAssignmentsResolveForActionAsyncWithHttpInfo($action_type, $entity_id, $contentType)
             ->then(
@@ -1775,14 +1769,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsResolveForActionAsyncWithHttpInfo($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
+    public function aiAssignmentsResolveForActionAsyncWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiResolvedAssignment';
         $request = $this->aiAssignmentsResolveForActionRequest($action_type, $entity_id, $contentType);
@@ -1826,14 +1820,14 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsResolveForAction'
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsResolveForActionRequest($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
+    public function aiAssignmentsResolveForActionRequest($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
 
         // verify the required parameter 'action_type' is set
@@ -1843,12 +1837,6 @@ class AssignmentsApi
             );
         }
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiAssignmentsResolveForAction'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/assignments/resolve-for-action';
@@ -1874,7 +1862,7 @@ class AssignmentsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1941,15 +1929,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type action_type (required)
-     * @param  string $entity_id entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsTryResolveForAction($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
+    public function aiAssignmentsTryResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
         list($response) = $this->aiAssignmentsTryResolveForActionWithHttpInfo($action_type, $entity_id, $contentType);
         return $response;
@@ -1963,15 +1951,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsTryResolveForActionWithHttpInfo($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
+    public function aiAssignmentsTryResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
         $request = $this->aiAssignmentsTryResolveForActionRequest($action_type, $entity_id, $contentType);
 
@@ -2066,14 +2054,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsTryResolveForActionAsync($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
+    public function aiAssignmentsTryResolveForActionAsync($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
         return $this->aiAssignmentsTryResolveForActionAsyncWithHttpInfo($action_type, $entity_id, $contentType)
             ->then(
@@ -2091,14 +2079,14 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsTryResolveForActionAsyncWithHttpInfo($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
+    public function aiAssignmentsTryResolveForActionAsyncWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiResolvedAssignment';
         $request = $this->aiAssignmentsTryResolveForActionRequest($action_type, $entity_id, $contentType);
@@ -2142,14 +2130,14 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsTryResolveForAction'
      *
-     * @param  string $action_type (required)
-     * @param  string $entity_id (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsTryResolveForActionRequest($action_type, $entity_id, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
+    public function aiAssignmentsTryResolveForActionRequest($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
 
         // verify the required parameter 'action_type' is set
@@ -2159,12 +2147,6 @@ class AssignmentsApi
             );
         }
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiAssignmentsTryResolveForAction'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/assignments/try-resolve-for-action';
@@ -2190,7 +2172,7 @@ class AssignmentsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

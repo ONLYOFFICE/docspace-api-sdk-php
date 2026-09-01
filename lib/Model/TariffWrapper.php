@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TariffWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the Tariff object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TariffWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\Tariff|null $response response
+     * @param \OpenAPI\Client\Model\Tariff|null $response The Tariff object returned by the operation.
      *
      * @return self
      */

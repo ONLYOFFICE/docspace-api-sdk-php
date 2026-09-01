@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormsItemArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of FormsItemDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FormsItemArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FormsItemDto[]|null $response response
+     * @param \OpenAPI\Client\Model\FormsItemDto[]|null $response The list of FormsItemDto objects returned by the operation.
      *
      * @return self
      */

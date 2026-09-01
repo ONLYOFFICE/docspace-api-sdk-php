@@ -196,7 +196,7 @@ try {
 ## `changeDefaultAccessRights()`
 
 ```php
-changeDefaultAccessRights($request_body): \OpenAPI\Client\Model\FileShareArrayWrapper
+changeDefaultAccessRights($request_body): \OpenAPI\Client\Model\FileShareResponseArrayWrapper
 ```
 
 Change the default access rights
@@ -212,7 +212,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FileShareArrayWrapper**](../Model/FileShareArrayWrapper.md)
+[**\OpenAPI\Client\Model\FileShareResponseArrayWrapper**](../Model/FileShareResponseArrayWrapper.md)
 
 ### Authorization
 

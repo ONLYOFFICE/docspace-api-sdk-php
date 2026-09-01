@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerServiceUsageReportWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CustomerServiceUsageReportDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CustomerServiceUsageReportWrapper implements ModelInterface, ArrayAccess, 
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CustomerServiceUsageReportDto|null $response response
+     * @param \OpenAPI\Client\Model\CustomerServiceUsageReportDto|null $response The CustomerServiceUsageReportDto object returned by the operation.
      *
      * @return self
      */

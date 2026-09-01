@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RestrictedModelsResponse Class Doc Comment
  *
  * @category Class
+ * @description The AI models the portal is not allowed to use.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -305,7 +306,7 @@ class RestrictedModelsResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets models
      *
-     * @param string[]|null $models models
+     * @param string[]|null $models The identifiers of the models the portal is not allowed to use.
      *
      * @return self
      */

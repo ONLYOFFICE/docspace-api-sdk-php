@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FilesStatisticsResultWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FilesStatisticsResultDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FilesStatisticsResultWrapper implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsResultDto|null $response response
+     * @param \OpenAPI\Client\Model\FilesStatisticsResultDto|null $response The FilesStatisticsResultDto object returned by the operation.
      *
      * @return self
      */

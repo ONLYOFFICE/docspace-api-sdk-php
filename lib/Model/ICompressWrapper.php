@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ICompressWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ICompress object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ICompressWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param object|null $response The archiving class unification interface.
+     * @param object|null $response The ICompress object returned by the operation.
      *
      * @return self
      */

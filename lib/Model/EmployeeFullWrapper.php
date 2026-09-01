@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EmployeeFullWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the EmployeeFullDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EmployeeFullWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $response response
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $response The EmployeeFullDto object returned by the operation.
      *
      * @return self
      */

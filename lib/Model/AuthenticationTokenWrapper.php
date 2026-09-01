@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuthenticationTokenWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AuthenticationTokenDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AuthenticationTokenWrapper implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AuthenticationTokenDto|null $response response
+     * @param \OpenAPI\Client\Model\AuthenticationTokenDto|null $response The AuthenticationTokenDto object returned by the operation.
      *
      * @return self
      */

@@ -433,7 +433,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets room_type
      *
-     * @param \OpenAPI\Client\Model\RoomType $room_type The room type.
+     * @param \OpenAPI\Client\Model\RoomType $room_type The third-party room type to be created.
      *
      * @return self
      */
@@ -643,7 +643,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The logo request parameters.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The logo request parameters of the third-party room.
      *
      * @return self
      */

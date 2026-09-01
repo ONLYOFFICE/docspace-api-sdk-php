@@ -540,7 +540,7 @@ class CreateWebhooksConfigRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets triggers
      *
-     * @param \OpenAPI\Client\Model\WebhookTrigger|null $triggers The webhook trigger type.
+     * @param \OpenAPI\Client\Model\WebhookTrigger|null $triggers Defines which events will trigger webhook notifications.
      *
      * @return self
      */

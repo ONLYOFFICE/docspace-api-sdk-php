@@ -326,7 +326,7 @@ class MailDomainSettingsRequestsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType $type The type of the tenant trusted domains.
+     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType $type Defines how trusted domains are handled and validated.
      *
      * @return self
      */

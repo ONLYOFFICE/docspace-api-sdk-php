@@ -159,7 +159,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createLoginHistoryReport($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
@@ -180,7 +180,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createLoginHistoryReportWithHttpInfo($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
@@ -216,6 +216,30 @@ class LoginHistoryApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -244,6 +268,38 @@ class LoginHistoryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -455,7 +511,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper
+     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLastLoginEvents(string $contentType = self::contentTypes['getLastLoginEvents'][0])
     {
@@ -475,7 +531,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLastLoginEventsWithHttpInfo(string $contentType = self::contentTypes['getLastLoginEvents'][0])
     {
@@ -511,6 +567,24 @@ class LoginHistoryApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -539,6 +613,30 @@ class LoginHistoryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\LoginEventArrayWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -735,15 +833,15 @@ class LoginHistoryApi
      *
      * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering login events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
      * @param  int|null $count The number of login events to retrieve in the query. (optional)
      * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper
+     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLoginEventsByFilter($user_id = null, $action = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getLoginEventsByFilter'][0])
     {
@@ -761,15 +859,15 @@ class LoginHistoryApi
      *
      * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering login events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
      * @param  int|null $count The number of login events to retrieve in the query. (optional)
      * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLoginEventsByFilterWithHttpInfo($user_id = null, $action = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getLoginEventsByFilter'][0])
     {
@@ -805,6 +903,30 @@ class LoginHistoryApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -837,6 +959,38 @@ class LoginHistoryApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -854,8 +1008,8 @@ class LoginHistoryApi
      *
      * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering login events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
      * @param  int|null $count The number of login events to retrieve in the query. (optional)
      * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
@@ -883,8 +1037,8 @@ class LoginHistoryApi
      *
      * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering login events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
      * @param  int|null $count The number of login events to retrieve in the query. (optional)
      * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
@@ -938,8 +1092,8 @@ class LoginHistoryApi
      *
      * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
      * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \OpenAPI\Client\Model\ApiDateTime|null $to The ending date and time for filtering login events. (optional)
+     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
+     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
      * @param  int|null $count The number of login events to retrieve in the query. (optional)
      * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
@@ -992,18 +1146,18 @@ class LoginHistoryApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $from,
             'from', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            false, // explode
+            'string', // openApiType
+            'form', // style
+            true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to,
             'to', // param base name
-            'object', // openApiType
-            'deepObject', // style
-            false, // explode
+            'string', // openApiType
+            'form', // style
+            true, // explode
             false // required
         ) ?? []);
         // query params
@@ -1117,7 +1271,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLoginHistoryReport(string $contentType = self::contentTypes['getLoginHistoryReport'][0])
     {
@@ -1137,7 +1291,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLoginHistoryReportWithHttpInfo(string $contentType = self::contentTypes['getLoginHistoryReport'][0])
     {
@@ -1173,6 +1327,24 @@ class LoginHistoryApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1201,6 +1373,30 @@ class LoginHistoryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1450,6 +1646,30 @@ class LoginHistoryApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1545,7 +1765,7 @@ class LoginHistoryApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );

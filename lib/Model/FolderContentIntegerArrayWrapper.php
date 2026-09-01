@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FolderContentIntegerArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of FolderContentDtoInteger objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FolderContentIntegerArrayWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FolderContentDtoInteger[]|null $response response
+     * @param \OpenAPI\Client\Model\FolderContentDtoInteger[]|null $response The list of FolderContentDtoInteger objects returned by the operation.
      *
      * @return self
      */

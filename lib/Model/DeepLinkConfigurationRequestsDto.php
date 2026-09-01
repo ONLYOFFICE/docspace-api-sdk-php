@@ -303,7 +303,7 @@ class DeepLinkConfigurationRequestsDto implements ModelInterface, ArrayAccess, \
     /**
      * Sets deep_link_settings
      *
-     * @param \OpenAPI\Client\Model\TenantDeepLinkSettings|null $deep_link_settings The deep link settings.
+     * @param \OpenAPI\Client\Model\TenantDeepLinkSettings|null $deep_link_settings The deep link settings for the specified tenant.
      *
      * @return self
      */

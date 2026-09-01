@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomGroupArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of RoomGroupDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class RoomGroupArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\RoomGroupDto[]|null $response response
+     * @param \OpenAPI\Client\Model\RoomGroupDto[]|null $response The list of RoomGroupDto objects returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConfigurationIntegerWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ConfigurationDtoInteger object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ConfigurationIntegerWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ConfigurationDtoInteger|null $response response
+     * @param \OpenAPI\Client\Model\ConfigurationDtoInteger|null $response The ConfigurationDtoInteger object returned by the operation.
      *
      * @return self
      */

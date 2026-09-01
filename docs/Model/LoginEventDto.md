@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The login event ID. | [optional]
-**date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**date** | **\DateTime** | The login event date. | [optional]
 **user** | **string** | The user name of the login event. | [optional]
 **user_id** | **string** | The user ID of the login event. | [optional]
 **login** | **string** | The user login of the login event. | [optional]
 **action** | **string** | The login event action. | [optional]
-**action_id** | [**\OpenAPI\Client\Model\MessageAction**](MessageAction.md) | The event action ID. | [optional]
+**action_id** | [**\OpenAPI\Client\Model\MessageAction**](MessageAction.md) | The login-related action to filter events by. | [optional]
 **ip** | **string** | The login event IP. | [optional]
 **country** | **string** | The login event country. | [optional]
 **city** | **string** | The login event city. | [optional]

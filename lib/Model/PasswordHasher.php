@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PasswordHasher Class Doc Comment
  *
  * @category Class
+ * @description The password hash parameters.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +317,7 @@ class PasswordHasher implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets size
      *
-     * @param int|null $size size
+     * @param int|null $size The password hash size.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class PasswordHasher implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iterations
      *
-     * @param int|null $iterations iterations
+     * @param int|null $iterations The number of iterations to generate the ppassword hash.
      *
      * @return self
      */
@@ -370,7 +371,7 @@ class PasswordHasher implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets salt
      *
-     * @param string|null $salt salt
+     * @param string|null $salt The salt to generate the ppassword hash.
      *
      * @return self
      */

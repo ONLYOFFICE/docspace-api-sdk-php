@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ProductAdministratorWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ProductAdministratorDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ProductAdministratorWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ProductAdministratorDto|null $response response
+     * @param \OpenAPI\Client\Model\ProductAdministratorDto|null $response The ProductAdministratorDto object returned by the operation.
      *
      * @return self
      */

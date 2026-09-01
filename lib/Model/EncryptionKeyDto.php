@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionKeyDto Class Doc Comment
  *
  * @category Class
+ * @description The encryption key pair of a user.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -337,7 +338,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The identifier of the key pair.
      *
      * @return self
      */
@@ -364,7 +365,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id user_id
+     * @param string|null $user_id The identifier of the user the key pair belongs to.
      *
      * @return self
      */
@@ -391,7 +392,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date date
+     * @param \DateTime|null $date The date and time when the key pair was created.
      *
      * @return self
      */
@@ -418,7 +419,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public_key
      *
-     * @param string|null $public_key public_key
+     * @param string|null $public_key The public key of the pair, used to encrypt the file keys.
      *
      * @return self
      */
@@ -452,7 +453,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets private_key_enc
      *
-     * @param string|null $private_key_enc private_key_enc
+     * @param string|null $private_key_enc The private key of the pair, encrypted with the user password.
      *
      * @return self
      */
@@ -486,7 +487,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crypto_engine_id
      *
-     * @param string|null $crypto_engine_id crypto_engine_id
+     * @param string|null $crypto_engine_id The identifier of the crypto engine the key pair was issued for.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WizardSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the WizardSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WizardSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WizardSettings|null $response response
+     * @param \OpenAPI\Client\Model\WizardSettings|null $response The WizardSettings object returned by the operation.
      *
      * @return self
      */

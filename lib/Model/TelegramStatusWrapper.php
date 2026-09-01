@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TelegramStatusWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TelegramStatusDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TelegramStatusWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TelegramStatusDto|null $response response
+     * @param \OpenAPI\Client\Model\TelegramStatusDto|null $response The TelegramStatusDto object returned by the operation.
      *
      * @return self
      */

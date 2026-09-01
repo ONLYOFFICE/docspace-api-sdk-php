@@ -476,7 +476,7 @@ class AiThread implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id ID of the profile used for this thread. Links to  {@link  Profile.id } .
+     * @param string|null $profile_id ID of the profile used for this thread. Links to `Profile.id`.
      *
      * @return self
      */

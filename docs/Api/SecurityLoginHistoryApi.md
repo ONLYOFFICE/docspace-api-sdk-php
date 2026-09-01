@@ -183,8 +183,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | ------------- | ------------- | ------------- | ------------- |
 | **user_id** | **string**| The ID of the user whose login events are being queried. | [optional] |
 | **action** | [**\OpenAPI\Client\Model\MessageAction**](../Model/.md)| The login-related action to filter events by. | [optional] |
-| **from** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The starting date and time for filtering login events. | [optional] |
-| **to** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The ending date and time for filtering login events. | [optional] |
+| **from** | **\DateTime**| The starting date and time for filtering login events. | [optional] |
+| **to** | **\DateTime**| The ending date and time for filtering login events. | [optional] |
 | **count** | **int**| The number of login events to retrieve in the query. | [optional] |
 | **start_index** | **int**| The starting index for fetching a subset of login events from the query results. | [optional] |
 
@@ -233,8 +233,8 @@ $apiInstance = new OpenAPI\Client\Api\LoginHistoryApi(
 );
 $user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the user whose login events are being queried.
 $action = FileCreated; // \OpenAPI\Client\Model\MessageAction | The login-related action to filter events by.
-$from = 2024-01-15T10:30:00Z; // \OpenAPI\Client\Model\ApiDateTime | The starting date and time for filtering login events.
-$to = 2024-01-15T10:30:00Z; // \OpenAPI\Client\Model\ApiDateTime | The ending date and time for filtering login events.
+$from = 2024-01-15T10:30:00Z; // \DateTime | The starting date and time for filtering login events.
+$to = 2024-01-15T10:30:00Z; // \DateTime | The ending date and time for filtering login events.
 $count = 1; // int | The number of login events to retrieve in the query.
 $start_index = 1; // int | The starting index for fetching a subset of login events from the query results.
 
@@ -400,7 +400,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -1617,7 +1617,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
      *
-     * @param  string $id id (required)
+     * @param  string $id The saved prompt identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1638,7 +1638,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The saved prompt identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1740,7 +1740,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The saved prompt identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1764,7 +1764,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The saved prompt identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1814,7 +1814,7 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsGetById'
      *
-     * @param  string $id (required)
+     * @param  string $id The saved prompt identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1912,7 +1912,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
      *
-     * @param  string $id id (required)
+     * @param  string $id The prompt folder identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetFolderById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1933,7 +1933,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The prompt folder identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetFolderById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2035,7 +2035,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The prompt folder identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetFolderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2059,7 +2059,7 @@ class PromptsApi
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
      *
-     * @param  string $id (required)
+     * @param  string $id The prompt folder identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetFolderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2109,7 +2109,7 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsGetFolderById'
      *
-     * @param  string $id (required)
+     * @param  string $id The prompt folder identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsGetFolderById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2500,14 +2500,14 @@ class PromptsApi
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
      *
-     * @param  string $folder_id folder_id (required)
+     * @param  string|null $folder_id The prompt folder identifier. Omit to list the prompts that sit outside any folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiPromptsList($folder_id, string $contentType = self::contentTypes['aiPromptsList'][0])
+    public function aiPromptsList($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
         list($response) = $this->aiPromptsListWithHttpInfo($folder_id, $contentType);
         return $response;
@@ -2521,14 +2521,14 @@ class PromptsApi
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
      *
-     * @param  string $folder_id (required)
+     * @param  string|null $folder_id The prompt folder identifier. Omit to list the prompts that sit outside any folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiPromptsListWithHttpInfo($folder_id, string $contentType = self::contentTypes['aiPromptsList'][0])
+    public function aiPromptsListWithHttpInfo($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
         $request = $this->aiPromptsListRequest($folder_id, $contentType);
 
@@ -2623,13 +2623,13 @@ class PromptsApi
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
      *
-     * @param  string $folder_id (required)
+     * @param  string|null $folder_id The prompt folder identifier. Omit to list the prompts that sit outside any folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPromptsListAsync($folder_id, string $contentType = self::contentTypes['aiPromptsList'][0])
+    public function aiPromptsListAsync($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
         return $this->aiPromptsListAsyncWithHttpInfo($folder_id, $contentType)
             ->then(
@@ -2647,13 +2647,13 @@ class PromptsApi
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
      *
-     * @param  string $folder_id (required)
+     * @param  string|null $folder_id The prompt folder identifier. Omit to list the prompts that sit outside any folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPromptsListAsyncWithHttpInfo($folder_id, string $contentType = self::contentTypes['aiPromptsList'][0])
+    public function aiPromptsListAsyncWithHttpInfo($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiPrompt[]';
         $request = $this->aiPromptsListRequest($folder_id, $contentType);
@@ -2697,21 +2697,15 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsList'
      *
-     * @param  string $folder_id (required)
+     * @param  string|null $folder_id The prompt folder identifier. Omit to list the prompts that sit outside any folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiPromptsListRequest($folder_id, string $contentType = self::contentTypes['aiPromptsList'][0])
+    public function aiPromptsListRequest($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
 
-        // verify the required parameter 'folder_id' is set
-        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling aiPromptsList'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/prompts/list';
@@ -2728,7 +2722,7 @@ class PromptsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

@@ -246,7 +246,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -336,7 +336,7 @@ try {
 ## `getRoomGroups()`
 
 ```php
-getRoomGroups($id, $include_members): \OpenAPI\Client\Model\RoomGroupArrayWrapper
+getRoomGroups($include_members): \OpenAPI\Client\Model\RoomGroupArrayWrapper
 ```
 
 List room groups
@@ -348,7 +348,6 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The group unique identifier. | |
 | **include_members** | **bool**| Whether to include group members. | [optional] |
 
 ### Return type
@@ -394,11 +393,10 @@ $apiInstance = new OpenAPI\Client\Api\GroupsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 10; // int | The group unique identifier.
 $include_members = true; // bool | Whether to include group members.
 
 try {
-    $result = $apiInstance->getRoomGroups($id, $include_members);
+    $result = $apiInstance->getRoomGroups($include_members);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GroupsApi->getRoomGroups: ', $e->getMessage(), PHP_EOL;

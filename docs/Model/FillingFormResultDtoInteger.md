@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **form_number** | **int** | The filling form number. |
-**completed_form** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The file parameters. | [optional]
-**original_form** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The file parameters. | [optional]
-**manager** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The full list of user parameters. | [optional]
+**completed_form** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The file with the completed forms. | [optional]
+**original_form** | [**\OpenAPI\Client\Model\FileDtoInteger**](FileDtoInteger.md) | The file with the original forms. | [optional]
+**manager** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The manager who is filling the form. | [optional]
 **room_id** | **int** | The room ID where filling the form. |
 **is_room_member** | **bool** | Specifies if the manager who fills the form is a room member or not. | [optional]
 

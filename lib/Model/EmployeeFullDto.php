@@ -75,7 +75,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'contacts' => '\OpenAPI\Client\Model\Contact[]',
         'status' => '\OpenAPI\Client\Model\EmployeeStatus',
         'activation_status' => '\OpenAPI\Client\Model\EmployeeActivationStatus',
-        'terminated' => '\OpenAPI\Client\Model\ApiDateTime',
+        'terminated' => '\DateTime',
         'department' => 'string',
         'groups' => '\OpenAPI\Client\Model\GroupSummaryDto[]',
         'location' => 'string',
@@ -99,7 +99,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'login_event_id' => 'int',
         'auth_cookie_lifetime' => 'float',
         'created_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'registration_date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'registration_date' => '\DateTime',
         'has_personal_folder' => 'bool',
         'tfa_app_enabled' => 'bool'
     ];
@@ -129,7 +129,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'contacts' => null,
         'status' => null,
         'activation_status' => null,
-        'terminated' => null,
+        'terminated' => 'date-time',
         'department' => null,
         'groups' => null,
         'location' => null,
@@ -153,7 +153,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'login_event_id' => 'int32',
         'auth_cookie_lifetime' => 'double',
         'created_by' => null,
-        'registration_date' => null,
+        'registration_date' => 'date-time',
         'has_personal_folder' => null,
         'tfa_app_enabled' => null
     ];
@@ -181,7 +181,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'contacts' => true,
         'status' => false,
         'activation_status' => false,
-        'terminated' => false,
+        'terminated' => true,
         'department' => true,
         'groups' => true,
         'location' => true,
@@ -205,7 +205,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'login_event_id' => true,
         'auth_cookie_lifetime' => true,
         'created_by' => false,
-        'registration_date' => false,
+        'registration_date' => true,
         'has_personal_folder' => true,
         'tfa_app_enabled' => true
     ];
@@ -1088,7 +1088,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets terminated
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getTerminated()
     {
@@ -1098,14 +1098,21 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets terminated
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $terminated The date when the user account was terminated.
+     * @param \DateTime|null $terminated The date when the user account was terminated.
      *
      * @return self
      */
     public function setTerminated($terminated)
     {
         if (is_null($terminated)) {
-            throw new \InvalidArgumentException('non-nullable terminated cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'terminated');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('terminated', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['terminated'] = $terminated;
 
@@ -1525,7 +1532,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mobile_phone_activation_status
      *
-     * @param \OpenAPI\Client\Model\MobilePhoneActivationStatus|null $mobile_phone_activation_status The user mobile phone activation status.
+     * @param \OpenAPI\Client\Model\MobilePhoneActivationStatus|null $mobile_phone_activation_status The mobile phone activation status.
      *
      * @return self
      */
@@ -1827,7 +1834,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets registration_date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getRegistrationDate()
     {
@@ -1837,14 +1844,21 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets registration_date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $registration_date The user registration date.
+     * @param \DateTime|null $registration_date The user registration date.
      *
      * @return self
      */
     public function setRegistrationDate($registration_date)
     {
         if (is_null($registration_date)) {
-            throw new \InvalidArgumentException('non-nullable registration_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'registration_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('registration_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['registration_date'] = $registration_date;
 

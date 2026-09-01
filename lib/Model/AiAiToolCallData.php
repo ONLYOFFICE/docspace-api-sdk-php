@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAiToolCallData Class Doc Comment
  *
  * @category Class
+ * @description Identifies a pending tool call to resume — mirrors the library `ToolCallData` (its serializable fields).
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -464,7 +465,7 @@ class AiAiToolCallData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args action_args
+     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
      *
      * @return self
      */
@@ -491,7 +492,7 @@ class AiAiToolCallData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets entity_id
      *
-     * @param string|null $entity_id entity_id
+     * @param string|null $entity_id Optional entity (room) scope for profile resolution.
      *
      * @return self
      */
@@ -518,7 +519,7 @@ class AiAiToolCallData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id profile_id
+     * @param string|null $profile_id Session-level profile override for this request only.
      *
      * @return self
      */

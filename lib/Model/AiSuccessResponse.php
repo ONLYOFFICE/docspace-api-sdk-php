@@ -306,7 +306,7 @@ class AiSuccessResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success Always true — the mutation completed.
      *
      * @return self
      */

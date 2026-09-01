@@ -20,6 +20,7 @@ aiAttachmentsDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete
+Permanently deletes one attachment, whether it is still a draft or already linked to a message.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/).
 
@@ -75,6 +76,7 @@ aiAttachmentsDeleteMany($request_body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete many
+Permanently deletes a batch of attachments in a single round trip.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/).
 
@@ -130,6 +132,7 @@ aiAttachmentsGet($body): \OpenAPI\Client\Model\AiAttachment
 ```
 
 Get
+Returns one attachment by identifier.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/).
 
@@ -185,6 +188,7 @@ aiAttachmentsGetMany($request_body): \OpenAPIClientModelAiAttachment[]
 ```
 
 Get many
+Returns a batch of attachments, preserving the requested order; an identifier that no longer exists comes back empty.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/).
 
@@ -240,6 +244,7 @@ aiAttachmentsLinkToMessage($ai_attachments_link_to_message_request): \OpenAPI\Cl
 ```
 
 Link to message
+Binds draft attachments to the chat message that owns them, once that message has been persisted, so deleting the message removes them too. Identifiers that no longer exist are skipped.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-link-to-message/).
 
@@ -295,6 +300,7 @@ aiAttachmentsSaveFile($ai_attachments_save_file_request): \OpenAPI\Client\Model\
 ```
 
 Save file
+Stores one file attachment as a draft, carrying the host-extracted text of the file. Prefer `save-files-many` when adding several files at once so they land as one round trip.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-save-file/).
 
@@ -350,6 +356,7 @@ aiAttachmentsSaveFilesMany($ai_attachments_save_files_many_request): \OpenAPI\Cl
 ```
 
 Save files many
+Stores a batch of file attachments as drafts in a single round trip. The returned records keep the order of the input.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-save-files-many/).
 

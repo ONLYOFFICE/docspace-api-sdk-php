@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **file_name** | **string** | The file name. |
 **file_size** | **int** | The file size. | [optional]
 **relative_path** | **string** | The relative path to the file. | [optional]
-**create_on** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**create_on** | **\DateTime** | The date and time when the file was created. | [optional]
 **encrypted** | **bool** | Specifies whether the file is encrypted or not. | [optional]
 **create_new_if_exist** | **bool** | Specifies whether to create a new file if it already exists. | [optional]
 

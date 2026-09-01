@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EmailActivationSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the EmailActivationSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class EmailActivationSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EmailActivationSettings|null $response response
+     * @param \OpenAPI\Client\Model\EmailActivationSettings|null $response The EmailActivationSettings object returned by the operation.
      *
      * @return self
      */

@@ -188,7 +188,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **refresh** | **bool**|  | [optional] [default to false] |
+| **refresh** | **bool**| Specifies whether to bypass the cache and request the tenant from DocsCloud again. | [optional] [default to false] |
 
 ### Return type
 
@@ -233,7 +233,7 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$refresh = false; // bool
+$refresh = false; // bool | Specifies whether to bypass the cache and request the tenant from DocsCloud again.
 
 try {
     $result = $apiInstance->getTenant($refresh);
@@ -267,7 +267,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **refresh** | **bool**|  | [optional] [default to false] |
+| **refresh** | **bool**| Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. | [optional] [default to false] |
 
 ### Return type
 
@@ -312,7 +312,7 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$refresh = false; // bool
+$refresh = false; // bool | Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again.
 
 try {
     $result = $apiInstance->getTenantConfig($refresh);
@@ -346,7 +346,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **refresh** | **bool**|  | [optional] [default to false] |
+| **refresh** | **bool**| Specifies whether to bypass the cache and request the tenant information from DocsCloud again. | [optional] [default to false] |
 
 ### Return type
 
@@ -391,7 +391,7 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$refresh = false; // bool
+$refresh = false; // bool | Specifies whether to bypass the cache and request the tenant information from DocsCloud again.
 
 try {
     $result = $apiInstance->getTenantInfo($refresh);
@@ -425,7 +425,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **refresh** | **bool**|  | [optional] [default to false] |
+| **refresh** | **bool**| Specifies whether to bypass the cache and request the user quota from DocsCloud again. | [optional] [default to false] |
 
 ### Return type
 
@@ -470,7 +470,7 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$refresh = false; // bool
+$refresh = false; // bool | Specifies whether to bypass the cache and request the user quota from DocsCloud again.
 
 try {
     $result = $apiInstance->getTenantQuota($refresh);
@@ -580,7 +580,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **refresh** | **bool**|  | [optional] [default to false] |
+| **refresh** | **bool**| Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. | [optional] [default to false] |
 
 ### Return type
 
@@ -625,7 +625,7 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$refresh = false; // bool
+$refresh = false; // bool | Specifies whether to bypass the cache and request the usage statistics from DocsCloud again.
 
 try {
     $result = $apiInstance->getTenantUsage($refresh);
@@ -868,7 +868,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

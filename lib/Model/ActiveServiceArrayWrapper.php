@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActiveServiceArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of ActiveServiceDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ActiveServiceArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ActiveServiceDto[]|null $response response
+     * @param \OpenAPI\Client\Model\ActiveServiceDto[]|null $response The list of ActiveServiceDto objects returned by the operation.
      *
      * @return self
      */

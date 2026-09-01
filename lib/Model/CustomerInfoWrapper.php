@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerInfoWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the CustomerInfoDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CustomerInfoWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CustomerInfoDto|null $response response
+     * @param \OpenAPI\Client\Model\CustomerInfoDto|null $response The CustomerInfoDto object returned by the operation.
      *
      * @return self
      */

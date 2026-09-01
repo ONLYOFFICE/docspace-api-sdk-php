@@ -26,6 +26,7 @@ aiToolsAddCustomServer($ai_tools_add_custom_server_request): \OpenAPI\Client\Mod
 ```
 
 Add custom server
+Registers a custom MCP server in the scope under the given name.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-add-custom-server/).
 
@@ -81,6 +82,7 @@ aiToolsGetAllowAlways($entity_id): string[]
 ```
 
 Get allow always
+Lists the tools on the always-allow list of the scope.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-allow-always/).
 
@@ -88,7 +90,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -110,7 +112,7 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsGetAllowAlways($entity_id);
@@ -136,6 +138,7 @@ aiToolsGetCustomServer($name, $entity_id): object
 ```
 
 Get custom server
+Returns the configuration of one custom MCP server, or an empty result when it is not registered.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-custom-server/).
 
@@ -143,8 +146,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **name** | **string**|  | |
-| **entity_id** | **string**|  | |
+| **name** | **string**| The custom MCP server name. | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -166,8 +169,8 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$name = 'name_example'; // string
-$entity_id = 'entity_id_example'; // string
+$name = 'name_example'; // string | The custom MCP server name.
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsGetCustomServer($name, $entity_id);
@@ -193,6 +196,7 @@ aiToolsGetDisabled($entity_id): array<string,string[]>
 ```
 
 Get disabled
+Returns the switched-off tools of the scope, grouped by server type.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/).
 
@@ -200,7 +204,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -222,7 +226,7 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsGetDisabled($entity_id);
@@ -248,6 +252,7 @@ aiToolsIsAllowAlways($server_type, $tool_name, $entity_id): bool
 ```
 
 Is allow always
+Tells whether one tool is on the always-allow list.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-allow-always/).
 
@@ -255,9 +260,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_type** | **string**|  | |
-| **tool_name** | **string**|  | |
-| **entity_id** | **string**|  | |
+| **server_type** | **string**| The MCP server type the tool belongs to. | |
+| **tool_name** | **string**| The tool name. | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -279,9 +284,9 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$server_type = 'server_type_example'; // string
-$tool_name = 'tool_name_example'; // string
-$entity_id = 'entity_id_example'; // string
+$server_type = 'server_type_example'; // string | The MCP server type the tool belongs to.
+$tool_name = 'tool_name_example'; // string | The tool name.
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsIsAllowAlways($server_type, $tool_name, $entity_id);
@@ -307,6 +312,7 @@ aiToolsIsToolDisabled($server_type, $tool_name, $entity_id): bool
 ```
 
 Is tool disabled
+Tells whether one tool of a server type is switched off.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-tool-disabled/).
 
@@ -314,9 +320,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_type** | **string**|  | |
-| **tool_name** | **string**|  | |
-| **entity_id** | **string**|  | |
+| **server_type** | **string**| The MCP server type the tool belongs to. | |
+| **tool_name** | **string**| The tool name. | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -338,9 +344,9 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$server_type = 'server_type_example'; // string
-$tool_name = 'tool_name_example'; // string
-$entity_id = 'entity_id_example'; // string
+$server_type = 'server_type_example'; // string | The MCP server type the tool belongs to.
+$tool_name = 'tool_name_example'; // string | The tool name.
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsIsToolDisabled($server_type, $tool_name, $entity_id);
@@ -366,6 +372,7 @@ aiToolsListCustomServers($entity_id): array<string,object>
 ```
 
 List custom servers
+Lists the custom MCP servers registered in the scope, keyed by name.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-custom-servers/).
 
@@ -373,7 +380,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -395,7 +402,7 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsListCustomServers($entity_id);
@@ -421,6 +428,7 @@ aiToolsListSystemTools($entity_id): array<string,\OpenAPI\Client\Model\AiTMCPIte
 ```
 
 List system tools
+Lists the tools of the host-configured system MCP servers, grouped by server type. The servers are connected and listed server-side, so the client renders its permission cards from one request and never opens an MCP connection of its own.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-system-tools/).
 
@@ -428,7 +436,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -450,7 +458,7 @@ $apiInstance = new OpenAPI\Client\Api\ToolsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiToolsListSystemTools($entity_id);
@@ -476,6 +484,7 @@ aiToolsRemoveCustomServer($ai_tools_remove_custom_server_request): \OpenAPI\Clie
 ```
 
 Remove custom server
+Removes a custom MCP server from the registry.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-remove-custom-server/).
 
@@ -531,6 +540,7 @@ aiToolsReplaceAllCustomServers($ai_tools_replace_all_custom_servers_request): \O
 ```
 
 Replace all custom servers
+Replaces the whole custom MCP server registry of the scope with the supplied map.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-replace-all-custom-servers/).
 
@@ -586,6 +596,7 @@ aiToolsSetAllowAlways($ai_tools_set_allow_always_request): \OpenAPI\Client\Model
 ```
 
 Set allow always
+Adds a tool to the always-allow list, or removes it - the tools on that list run without an approval dialog.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-set-allow-always/).
 
@@ -641,6 +652,7 @@ aiToolsSetDisabled($ai_tools_set_disabled_request): \OpenAPI\Client\Model\AiSucc
 ```
 
 Set disabled
+Marks the listed tools of one server type as switched off, so the model is no longer offered them.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-set-disabled/).
 
@@ -696,6 +708,7 @@ aiToolsUpdateCustomServer($ai_tools_update_custom_server_request): \OpenAPI\Clie
 ```
 
 Update custom server
+Updates the configuration of a registered custom MCP server.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-update-custom-server/).
 

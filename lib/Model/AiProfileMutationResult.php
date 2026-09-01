@@ -320,7 +320,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the profile was persisted.
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets profile
      *
-     * @param \OpenAPI\Client\Model\AiProfile|null $profile profile
+     * @param \OpenAPI\Client\Model\AiProfile|null $profile The persisted profile. Present on success.
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the profile was rejected - the name check or the provider credential check. Present on failure.
      *
      * @return self
      */

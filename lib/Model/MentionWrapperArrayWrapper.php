@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MentionWrapperArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of MentionWrapper objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class MentionWrapperArrayWrapper implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\MentionWrapper[]|null $response response
+     * @param \OpenAPI\Client\Model\MentionWrapper[]|null $response The list of MentionWrapper objects returned by the operation.
      *
      * @return self
      */

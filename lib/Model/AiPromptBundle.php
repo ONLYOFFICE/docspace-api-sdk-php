@@ -348,7 +348,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param float $version version
+     * @param float $version The bundle format version, so an import can migrate an older export.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folders
      *
-     * @param \OpenAPI\Client\Model\AiPromptFolder[] $folders folders
+     * @param \OpenAPI\Client\Model\AiPromptFolder[] $folders Every exported prompt folder.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prompts
      *
-     * @param \OpenAPI\Client\Model\AiPrompt[] $prompts prompts
+     * @param \OpenAPI\Client\Model\AiPrompt[] $prompts Every exported prompt.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CurrencyInfo Class Doc Comment
  *
  * @category Class
+ * @description The currency the AI prices are quoted in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -315,7 +316,7 @@ class CurrencyInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets code
      *
-     * @param string|null $code code
+     * @param string|null $code The ISO 4217 code of the currency the prices are quoted in.
      *
      * @return self
      */
@@ -349,7 +350,7 @@ class CurrencyInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets symbol
      *
-     * @param string|null $symbol symbol
+     * @param string|null $symbol The display symbol of the currency.
      *
      * @return self
      */

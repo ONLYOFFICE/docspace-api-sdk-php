@@ -856,8 +856,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int**| The folder ID of the history request. | |
-| **from_date** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The start date of the history request. | [optional] |
-| **to_date** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The end date of the history request. | [optional] |
+| **from_date** | **\DateTime**| The start date of the history request. | [optional] |
+| **to_date** | **\DateTime**| The end date of the history request. | [optional] |
 | **count** | **int**| The number of records to retrieve for the folder history. | [optional] |
 | **start_index** | **int**| The starting index from which the history records are retrieved in the request. | [optional] |
 
@@ -905,8 +905,8 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
     $config
 );
 $folder_id = 1; // int | The folder ID of the history request.
-$from_date = 2025-01-01T00:00:00.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The start date of the history request.
-$to_date = 2025-12-31T23:59:59.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The end date of the history request.
+$from_date = 2025-01-01T00:00:00.0000000Z; // \DateTime | The start date of the history request.
+$to_date = 2025-12-31T23:59:59.0000000Z; // \DateTime | The end date of the history request.
 $count = 25; // int | The number of records to retrieve for the folder history.
 $start_index = 0; // int | The starting index from which the history records are retrieved in the request.
 
@@ -1657,7 +1657,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **folder_id** | **int**|  | |
+| **folder_id** | **int**| The folder unique identifier. | |
 
 ### Return type
 
@@ -1702,7 +1702,7 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 56; // int
+$folder_id = 56; // int | The folder unique identifier.
 
 try {
     $result = $apiInstance->getReportFolderHistory($folder_id);
@@ -2369,7 +2369,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **folder_id** | **int**|  | |
+| **folder_id** | **int**| The folder unique identifier. | |
 
 ### Return type
 
@@ -2414,7 +2414,7 @@ $apiInstance = new OpenAPI\Client\Api\FoldersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 56; // int
+$folder_id = 56; // int | The folder unique identifier.
 
 try {
     $apiInstance->terminateReportFolderHistory($folder_id);
@@ -2426,7 +2426,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

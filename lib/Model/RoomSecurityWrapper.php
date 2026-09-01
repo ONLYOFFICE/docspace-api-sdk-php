@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomSecurityWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the RoomSecurityDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class RoomSecurityWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\RoomSecurityDto|null $response response
+     * @param \OpenAPI\Client\Model\RoomSecurityDto|null $response The RoomSecurityDto object returned by the operation.
      *
      * @return self
      */

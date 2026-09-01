@@ -521,7 +521,7 @@ class UploadSessionResponseDtoInteger implements ModelInterface, ArrayAccess, \J
     /**
      * Sets file
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $file The file parameters.
+     * @param \OpenAPI\Client\Model\FileDtoInteger|null $file The uploaded file information.
      *
      * @return self
      */

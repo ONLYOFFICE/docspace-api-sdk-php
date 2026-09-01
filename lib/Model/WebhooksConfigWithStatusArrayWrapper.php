@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhooksConfigWithStatusArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of WebhooksConfigWithStatusDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WebhooksConfigWithStatusArrayWrapper implements ModelInterface, ArrayAcces
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WebhooksConfigWithStatusDto[]|null $response response
+     * @param \OpenAPI\Client\Model\WebhooksConfigWithStatusDto[]|null $response The list of WebhooksConfigWithStatusDto objects returned by the operation.
      *
      * @return self
      */

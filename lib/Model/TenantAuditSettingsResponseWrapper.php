@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * SetupCode Class Doc Comment
+ * TenantAuditSettingsResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantAuditSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
+class TenantAuditSettingsResponseWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'SetupCode';
+    protected static $openAPIModelName = 'TenantAuditSettingsResponseWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +58,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'account' => 'string',
-        'manual_entry_key' => 'string',
-        'qr_code_setup_image_url' => 'string'
+        'response' => '\OpenAPI\Client\Model\TenantAuditSettings',
+        'count' => 'int',
+        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
+        'status' => 'int',
+        'status_code' => 'int'
     ];
 
     /**
@@ -70,9 +73,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'account' => null,
-        'manual_entry_key' => null,
-        'qr_code_setup_image_url' => null
+        'response' => null,
+        'count' => 'int32',
+        'links' => null,
+        'status' => 'int32',
+        'status_code' => 'int32'
     ];
 
     /**
@@ -81,9 +86,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'account' => true,
-        'manual_entry_key' => true,
-        'qr_code_setup_image_url' => true
+        'response' => false,
+        'count' => false,
+        'links' => false,
+        'status' => false,
+        'status_code' => false
     ];
 
     /**
@@ -172,9 +179,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'account' => 'account',
-        'manual_entry_key' => 'manualEntryKey',
-        'qr_code_setup_image_url' => 'qrCodeSetupImageUrl'
+        'response' => 'response',
+        'count' => 'count',
+        'links' => 'links',
+        'status' => 'status',
+        'status_code' => 'statusCode'
     ];
 
     /**
@@ -183,9 +192,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'account' => 'setAccount',
-        'manual_entry_key' => 'setManualEntryKey',
-        'qr_code_setup_image_url' => 'setQrCodeSetupImageUrl'
+        'response' => 'setResponse',
+        'count' => 'setCount',
+        'links' => 'setLinks',
+        'status' => 'setStatus',
+        'status_code' => 'setStatusCode'
     ];
 
     /**
@@ -194,9 +205,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'account' => 'getAccount',
-        'manual_entry_key' => 'getManualEntryKey',
-        'qr_code_setup_image_url' => 'getQrCodeSetupImageUrl'
+        'response' => 'getResponse',
+        'count' => 'getCount',
+        'links' => 'getLinks',
+        'status' => 'getStatus',
+        'status_code' => 'getStatusCode'
     ];
 
     /**
@@ -256,9 +269,11 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('manual_entry_key', $data ?? [], null);
-        $this->setIfExists('qr_code_setup_image_url', $data ?? [], null);
+        $this->setIfExists('response', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_code', $data ?? [], null);
     }
 
     /**
@@ -304,103 +319,136 @@ class SetupCode implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets account
+     * Gets response
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\TenantAuditSettings|null
      */
-    public function getAccount()
+    public function getResponse()
     {
-        return $this->container['account'];
+        return $this->container['response'];
     }
 
     /**
-     * Sets account
+     * Sets response
      *
-     * @param string|null $account account
+     * @param \OpenAPI\Client\Model\TenantAuditSettings|null $response The TenantAuditSettings object returned by the operation.
      *
      * @return self
      */
-    public function setAccount($account)
+    public function setResponse($response)
     {
-        if (is_null($account)) {
-            array_push($this->openAPINullablesSetToNull, 'account');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('account', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($response)) {
+            throw new \InvalidArgumentException('non-nullable response cannot be null');
         }
-        $this->container['account'] = $account;
+        $this->container['response'] = $response;
 
         return $this;
     }
 
     /**
-     * Gets manual_entry_key
+     * Gets count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getManualEntryKey()
+    public function getCount()
     {
-        return $this->container['manual_entry_key'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets manual_entry_key
+     * Sets count
      *
-     * @param string|null $manual_entry_key manual_entry_key
+     * @param int|null $count The total number of items in the response
      *
      * @return self
      */
-    public function setManualEntryKey($manual_entry_key)
+    public function setCount($count)
     {
-        if (is_null($manual_entry_key)) {
-            array_push($this->openAPINullablesSetToNull, 'manual_entry_key');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('manual_entry_key', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['manual_entry_key'] = $manual_entry_key;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets qr_code_setup_image_url
+     * Gets links
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
      */
-    public function getQrCodeSetupImageUrl()
+    public function getLinks()
     {
-        return $this->container['qr_code_setup_image_url'];
+        return $this->container['links'];
     }
 
     /**
-     * Sets qr_code_setup_image_url
+     * Sets links
      *
-     * @param string|null $qr_code_setup_image_url qr_code_setup_image_url
+     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
      *
      * @return self
      */
-    public function setQrCodeSetupImageUrl($qr_code_setup_image_url)
+    public function setLinks($links)
     {
-        if (is_null($qr_code_setup_image_url)) {
-            array_push($this->openAPINullablesSetToNull, 'qr_code_setup_image_url');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('qr_code_setup_image_url', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
         }
-        $this->container['qr_code_setup_image_url'] = $qr_code_setup_image_url;
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status HTTP status code of the response
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_code
+     *
+     * @return int|null
+     */
+    public function getStatusCode()
+    {
+        return $this->container['status_code'];
+    }
+
+    /**
+     * Sets status_code
+     *
+     * @param int|null $status_code HTTP status code of the response (duplicate of status)
+     *
+     * @return self
+     */
+    public function setStatusCode($status_code)
+    {
+        if (is_null($status_code)) {
+            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
+        }
+        $this->container['status_code'] = $status_code;
 
         return $this;
     }

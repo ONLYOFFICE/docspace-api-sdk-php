@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIChunkChoice Class Doc Comment
  *
  * @category Class
+ * @description One choice of a streaming completion, carrying the part this chunk adds.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -325,7 +326,7 @@ class AiOpenAIChunkChoice implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets index
      *
-     * @param float $index index
+     * @param float $index The zero-based position of the choice. This service emits a single choice, so always 0.
      *
      * @return self
      */
@@ -352,7 +353,7 @@ class AiOpenAIChunkChoice implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets delta
      *
-     * @param \OpenAPI\Client\Model\AiOpenAIChoiceDelta $delta delta
+     * @param \OpenAPI\Client\Model\AiOpenAIChoiceDelta $delta What this chunk adds to the choice.
      *
      * @return self
      */
@@ -379,7 +380,7 @@ class AiOpenAIChunkChoice implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets finish_reason
      *
-     * @param \OpenAPI\Client\Model\AiOpenAIFinishReason|null $finish_reason finish_reason
+     * @param \OpenAPI\Client\Model\AiOpenAIFinishReason|null $finish_reason Why the completion stopped, or null while it is still streaming.
      *
      * @return self
      */

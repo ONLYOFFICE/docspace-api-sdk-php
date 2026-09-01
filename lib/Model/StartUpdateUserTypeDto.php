@@ -317,7 +317,7 @@ class StartUpdateUserTypeDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType|null $type The user type.
+     * @param \OpenAPI\Client\Model\EmployeeType|null $type The new user type.
      *
      * @return self
      */

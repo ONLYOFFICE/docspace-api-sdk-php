@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiVectorizationSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the VectorizationSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AiVectorizationSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AiVectorizationSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\AiVectorizationSettingsDto|null $response The VectorizationSettingsDto object returned by the operation.
      *
      * @return self
      */

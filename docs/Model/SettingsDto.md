@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timezone** | **string** | The time zone. | [optional]
 **trusted_domains** | **string[]** | The list of the trusted domains. | [optional]
-**trusted_domains_type** | [**\OpenAPI\Client\Model\TenantTrustedDomainsType**](TenantTrustedDomainsType.md) | The type of the tenant trusted domains. | [optional]
+**trusted_domains_type** | [**\OpenAPI\Client\Model\TenantTrustedDomainsType**](TenantTrustedDomainsType.md) | The type of the trusted domains. | [optional]
 **culture** | **string** | The language. |
 **utc_offset** | **string** | The UTC offset in the TimeSpan format. | [optional]
 **utc_hours_offset** | **float** | The UTC offset in hours. | [optional]
@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 **max_image_upload_size** | **int** | The maximum image upload size. | [optional]
 **logo_text** | **string** | The white label logo text. | [optional]
 **external_resources** | [**\OpenAPI\Client\Model\CultureSpecificExternalResources**](CultureSpecificExternalResources.md) | The external resources settings. | [optional]
-**default_folder_type** | [**\OpenAPI\Client\Model\FolderType**](FolderType.md) | The folder type. | [optional]
+**default_folder_type** | [**\OpenAPI\Client\Model\FolderType**](FolderType.md) | Specifies the default folder type for the current settings. | [optional]
 **external_db_enabled** | **bool** | Specifies if an external database is connected for storing form results. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThumbnailsDataWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ThumbnailsDataDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ThumbnailsDataWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ThumbnailsDataDto|null $response response
+     * @param \OpenAPI\Client\Model\ThumbnailsDataDto|null $response The ThumbnailsDataDto object returned by the operation.
      *
      * @return self
      */

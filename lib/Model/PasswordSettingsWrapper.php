@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PasswordSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the PasswordSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class PasswordSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\PasswordSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\PasswordSettingsDto|null $response The PasswordSettingsDto object returned by the operation.
      *
      * @return self
      */

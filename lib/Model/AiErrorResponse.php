@@ -306,7 +306,7 @@ class AiErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string $error error
+     * @param string $error The error message, ready to be shown to the caller.
      *
      * @return self
      */

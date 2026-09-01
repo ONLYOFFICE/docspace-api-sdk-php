@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIToolCallDelta Class Doc Comment
  *
  * @category Class
+ * @description The incremental part of one tool call the model requested.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -348,7 +349,7 @@ class AiOpenAIToolCallDelta implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets index
      *
-     * @param float $index index
+     * @param float $index The zero-based position of the tool call within the message.
      *
      * @return self
      */
@@ -375,7 +376,7 @@ class AiOpenAIToolCallDelta implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id The tool call identifier, quoted back when its result is submitted.
      *
      * @return self
      */
@@ -402,7 +403,7 @@ class AiOpenAIToolCallDelta implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Always `function` - the only tool kind the API defines.
      *
      * @return self
      */

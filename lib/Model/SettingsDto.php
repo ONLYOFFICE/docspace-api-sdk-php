@@ -698,7 +698,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_domains_type
      *
-     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType|null $trusted_domains_type The type of the tenant trusted domains.
+     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType|null $trusted_domains_type The type of the trusted domains.
      *
      * @return self
      */
@@ -1958,7 +1958,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_folder_type
      *
-     * @param \OpenAPI\Client\Model\FolderType|null $default_folder_type The folder type.
+     * @param \OpenAPI\Client\Model\FolderType|null $default_folder_type Specifies the default folder type for the current settings.
      *
      * @return self
      */

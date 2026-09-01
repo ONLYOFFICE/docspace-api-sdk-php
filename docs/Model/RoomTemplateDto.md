@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **room_id** | **int** | The room template ID. |
 **title** | **string** | The room template title. |
-**logo** | [**\OpenAPI\Client\Model\LogoRequest**](LogoRequest.md) | The logo request parameters. | [optional]
+**logo** | [**\OpenAPI\Client\Model\LogoRequest**](LogoRequest.md) | The room template logo. | [optional]
 **copy_logo** | **bool** | Specifies whether to copy room logo or not. | [optional]
 **share** | **string[]** | The collection of email addresses of users with whom to share a room. | [optional]
 **groups** | **string[]** | The collection of groups with whom to share a room. | [optional]

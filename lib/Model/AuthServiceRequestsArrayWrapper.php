@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuthServiceRequestsArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of AuthServiceRequestsDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AuthServiceRequestsArrayWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AuthServiceRequestsDto[]|null $response response
+     * @param \OpenAPI\Client\Model\AuthServiceRequestsDto[]|null $response The list of AuthServiceRequestsDto objects returned by the operation.
      *
      * @return self
      */

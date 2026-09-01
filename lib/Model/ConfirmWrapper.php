@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConfirmWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ConfirmDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ConfirmWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ConfirmDto|null $response response
+     * @param \OpenAPI\Client\Model\ConfirmDto|null $response The ConfirmDto object returned by the operation.
      *
      * @return self
      */

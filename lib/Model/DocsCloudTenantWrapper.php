@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudTenantWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DocsCloudTenant object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DocsCloudTenantWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudTenant|null $response response
+     * @param \OpenAPI\Client\Model\DocsCloudTenant|null $response The DocsCloudTenant object returned by the operation.
      *
      * @return self
      */

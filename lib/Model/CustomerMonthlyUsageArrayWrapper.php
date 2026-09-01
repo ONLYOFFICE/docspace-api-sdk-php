@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerMonthlyUsageArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of CustomerMonthlyUsageDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class CustomerMonthlyUsageArrayWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\CustomerMonthlyUsageDto[]|null $response response
+     * @param \OpenAPI\Client\Model\CustomerMonthlyUsageDto[]|null $response The list of CustomerMonthlyUsageDto objects returned by the operation.
      *
      * @return self
      */

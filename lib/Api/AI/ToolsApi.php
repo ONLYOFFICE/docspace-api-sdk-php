@@ -464,14 +464,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-allow-always/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetAllowAlways'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return string[]|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsGetAllowAlways($entity_id, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
+    public function aiToolsGetAllowAlways($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
         list($response) = $this->aiToolsGetAllowAlwaysWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -485,14 +485,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-allow-always/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetAllowAlways'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of string[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsGetAllowAlwaysWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
+    public function aiToolsGetAllowAlwaysWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
         $request = $this->aiToolsGetAllowAlwaysRequest($entity_id, $contentType);
 
@@ -587,13 +587,13 @@ class ToolsApi
      * REST API Reference for aiToolsGetAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-allow-always/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetAllowAlwaysAsync($entity_id, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
+    public function aiToolsGetAllowAlwaysAsync($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
         return $this->aiToolsGetAllowAlwaysAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -611,13 +611,13 @@ class ToolsApi
      * REST API Reference for aiToolsGetAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-allow-always/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetAllowAlwaysAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
+    public function aiToolsGetAllowAlwaysAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
         $returnType = 'string[]';
         $request = $this->aiToolsGetAllowAlwaysRequest($entity_id, $contentType);
@@ -661,21 +661,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsGetAllowAlways'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsGetAllowAlwaysRequest($entity_id, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
+    public function aiToolsGetAllowAlwaysRequest($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsGetAllowAlways'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/get-allow-always';
@@ -692,7 +686,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -759,15 +753,15 @@ class ToolsApi
      * REST API Reference for aiToolsGetCustomServer Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-custom-server/
      *
-     * @param  string $name name (required)
-     * @param  string $entity_id entity_id (required)
+     * @param  string $name The custom MCP server name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetCustomServer'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return object|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsGetCustomServer($name, $entity_id, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
+    public function aiToolsGetCustomServer($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
         list($response) = $this->aiToolsGetCustomServerWithHttpInfo($name, $entity_id, $contentType);
         return $response;
@@ -781,15 +775,15 @@ class ToolsApi
      * REST API Reference for aiToolsGetCustomServer Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-custom-server/
      *
-     * @param  string $name (required)
-     * @param  string $entity_id (required)
+     * @param  string $name The custom MCP server name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetCustomServer'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of object|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsGetCustomServerWithHttpInfo($name, $entity_id, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
+    public function aiToolsGetCustomServerWithHttpInfo($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
         $request = $this->aiToolsGetCustomServerRequest($name, $entity_id, $contentType);
 
@@ -884,14 +878,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetCustomServer Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-custom-server/
      *
-     * @param  string $name (required)
-     * @param  string $entity_id (required)
+     * @param  string $name The custom MCP server name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetCustomServer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetCustomServerAsync($name, $entity_id, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
+    public function aiToolsGetCustomServerAsync($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
         return $this->aiToolsGetCustomServerAsyncWithHttpInfo($name, $entity_id, $contentType)
             ->then(
@@ -909,14 +903,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetCustomServer Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-custom-server/
      *
-     * @param  string $name (required)
-     * @param  string $entity_id (required)
+     * @param  string $name The custom MCP server name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetCustomServer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetCustomServerAsyncWithHttpInfo($name, $entity_id, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
+    public function aiToolsGetCustomServerAsyncWithHttpInfo($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
         $returnType = 'object';
         $request = $this->aiToolsGetCustomServerRequest($name, $entity_id, $contentType);
@@ -960,14 +954,14 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsGetCustomServer'
      *
-     * @param  string $name (required)
-     * @param  string $entity_id (required)
+     * @param  string $name The custom MCP server name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetCustomServer'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsGetCustomServerRequest($name, $entity_id, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
+    public function aiToolsGetCustomServerRequest($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
 
         // verify the required parameter 'name' is set
@@ -977,12 +971,6 @@ class ToolsApi
             );
         }
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsGetCustomServer'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/get-custom-server';
@@ -1008,7 +996,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1075,14 +1063,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsGetDisabled($entity_id, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabled($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
         list($response) = $this->aiToolsGetDisabledWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -1096,14 +1084,14 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsGetDisabledWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
         $request = $this->aiToolsGetDisabledRequest($entity_id, $contentType);
 
@@ -1198,13 +1186,13 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetDisabledAsync($entity_id, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledAsync($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
         return $this->aiToolsGetDisabledAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -1222,13 +1210,13 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetDisabledAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
         $returnType = 'array<string,string[]>';
         $request = $this->aiToolsGetDisabledRequest($entity_id, $contentType);
@@ -1272,21 +1260,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsGetDisabled'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsGetDisabledRequest($entity_id, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledRequest($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsGetDisabled'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/get-disabled';
@@ -1303,7 +1285,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1370,16 +1352,16 @@ class ToolsApi
      * REST API Reference for aiToolsIsAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-allow-always/
      *
-     * @param  string $server_type server_type (required)
-     * @param  string $tool_name tool_name (required)
-     * @param  string $entity_id entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsAllowAlways'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return bool|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsIsAllowAlways($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
+    public function aiToolsIsAllowAlways($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
         list($response) = $this->aiToolsIsAllowAlwaysWithHttpInfo($server_type, $tool_name, $entity_id, $contentType);
         return $response;
@@ -1393,16 +1375,16 @@ class ToolsApi
      * REST API Reference for aiToolsIsAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-allow-always/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsAllowAlways'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsIsAllowAlwaysWithHttpInfo($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
+    public function aiToolsIsAllowAlwaysWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
         $request = $this->aiToolsIsAllowAlwaysRequest($server_type, $tool_name, $entity_id, $contentType);
 
@@ -1497,15 +1479,15 @@ class ToolsApi
      * REST API Reference for aiToolsIsAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-allow-always/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsIsAllowAlwaysAsync($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
+    public function aiToolsIsAllowAlwaysAsync($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
         return $this->aiToolsIsAllowAlwaysAsyncWithHttpInfo($server_type, $tool_name, $entity_id, $contentType)
             ->then(
@@ -1523,15 +1505,15 @@ class ToolsApi
      * REST API Reference for aiToolsIsAllowAlways Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-allow-always/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsIsAllowAlwaysAsyncWithHttpInfo($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
+    public function aiToolsIsAllowAlwaysAsyncWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
         $returnType = 'bool';
         $request = $this->aiToolsIsAllowAlwaysRequest($server_type, $tool_name, $entity_id, $contentType);
@@ -1575,15 +1557,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsIsAllowAlways'
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsAllowAlways'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsIsAllowAlwaysRequest($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
+    public function aiToolsIsAllowAlwaysRequest($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
 
         // verify the required parameter 'server_type' is set
@@ -1600,12 +1582,6 @@ class ToolsApi
             );
         }
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsIsAllowAlways'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/is-allow-always';
@@ -1640,7 +1616,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -1707,16 +1683,16 @@ class ToolsApi
      * REST API Reference for aiToolsIsToolDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-tool-disabled/
      *
-     * @param  string $server_type server_type (required)
-     * @param  string $tool_name tool_name (required)
-     * @param  string $entity_id entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsToolDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return bool|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsIsToolDisabled($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
+    public function aiToolsIsToolDisabled($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
         list($response) = $this->aiToolsIsToolDisabledWithHttpInfo($server_type, $tool_name, $entity_id, $contentType);
         return $response;
@@ -1730,16 +1706,16 @@ class ToolsApi
      * REST API Reference for aiToolsIsToolDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-tool-disabled/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsToolDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsIsToolDisabledWithHttpInfo($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
+    public function aiToolsIsToolDisabledWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
         $request = $this->aiToolsIsToolDisabledRequest($server_type, $tool_name, $entity_id, $contentType);
 
@@ -1834,15 +1810,15 @@ class ToolsApi
      * REST API Reference for aiToolsIsToolDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-tool-disabled/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsToolDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsIsToolDisabledAsync($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
+    public function aiToolsIsToolDisabledAsync($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
         return $this->aiToolsIsToolDisabledAsyncWithHttpInfo($server_type, $tool_name, $entity_id, $contentType)
             ->then(
@@ -1860,15 +1836,15 @@ class ToolsApi
      * REST API Reference for aiToolsIsToolDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-is-tool-disabled/
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsToolDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsIsToolDisabledAsyncWithHttpInfo($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
+    public function aiToolsIsToolDisabledAsyncWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
         $returnType = 'bool';
         $request = $this->aiToolsIsToolDisabledRequest($server_type, $tool_name, $entity_id, $contentType);
@@ -1912,15 +1888,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsIsToolDisabled'
      *
-     * @param  string $server_type (required)
-     * @param  string $tool_name (required)
-     * @param  string $entity_id (required)
+     * @param  string $server_type The MCP server type the tool belongs to. (required)
+     * @param  string $tool_name The tool name. (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsIsToolDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsIsToolDisabledRequest($server_type, $tool_name, $entity_id, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
+    public function aiToolsIsToolDisabledRequest($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
 
         // verify the required parameter 'server_type' is set
@@ -1937,12 +1913,6 @@ class ToolsApi
             );
         }
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsIsToolDisabled'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/is-tool-disabled';
@@ -1977,7 +1947,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -2044,14 +2014,14 @@ class ToolsApi
      * REST API Reference for aiToolsListCustomServers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-custom-servers/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListCustomServers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array<string,object>|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsListCustomServers($entity_id, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
+    public function aiToolsListCustomServers($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
         list($response) = $this->aiToolsListCustomServersWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -2065,14 +2035,14 @@ class ToolsApi
      * REST API Reference for aiToolsListCustomServers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-custom-servers/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListCustomServers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of array<string,object>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsListCustomServersWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
+    public function aiToolsListCustomServersWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
         $request = $this->aiToolsListCustomServersRequest($entity_id, $contentType);
 
@@ -2167,13 +2137,13 @@ class ToolsApi
      * REST API Reference for aiToolsListCustomServers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-custom-servers/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListCustomServers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsListCustomServersAsync($entity_id, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
+    public function aiToolsListCustomServersAsync($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
         return $this->aiToolsListCustomServersAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -2191,13 +2161,13 @@ class ToolsApi
      * REST API Reference for aiToolsListCustomServers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-custom-servers/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListCustomServers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsListCustomServersAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
+    public function aiToolsListCustomServersAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
         $returnType = 'array<string,object>';
         $request = $this->aiToolsListCustomServersRequest($entity_id, $contentType);
@@ -2241,21 +2211,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsListCustomServers'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListCustomServers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsListCustomServersRequest($entity_id, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
+    public function aiToolsListCustomServersRequest($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsListCustomServers'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/list-custom-servers';
@@ -2272,7 +2236,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 
@@ -2339,14 +2303,14 @@ class ToolsApi
      * REST API Reference for aiToolsListSystemTools Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-system-tools/
      *
-     * @param  string $entity_id entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListSystemTools'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array<string,\OpenAPI\Client\Model\AiTMCPItem[]>|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsListSystemTools($entity_id, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
+    public function aiToolsListSystemTools($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
         list($response) = $this->aiToolsListSystemToolsWithHttpInfo($entity_id, $contentType);
         return $response;
@@ -2360,14 +2324,14 @@ class ToolsApi
      * REST API Reference for aiToolsListSystemTools Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-system-tools/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListSystemTools'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of array<string,\OpenAPI\Client\Model\AiTMCPItem[]>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsListSystemToolsWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
+    public function aiToolsListSystemToolsWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
         $request = $this->aiToolsListSystemToolsRequest($entity_id, $contentType);
 
@@ -2462,13 +2426,13 @@ class ToolsApi
      * REST API Reference for aiToolsListSystemTools Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-system-tools/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListSystemTools'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsListSystemToolsAsync($entity_id, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
+    public function aiToolsListSystemToolsAsync($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
         return $this->aiToolsListSystemToolsAsyncWithHttpInfo($entity_id, $contentType)
             ->then(
@@ -2486,13 +2450,13 @@ class ToolsApi
      * REST API Reference for aiToolsListSystemTools Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-list-system-tools/
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListSystemTools'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsListSystemToolsAsyncWithHttpInfo($entity_id, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
+    public function aiToolsListSystemToolsAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
         $returnType = 'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>';
         $request = $this->aiToolsListSystemToolsRequest($entity_id, $contentType);
@@ -2536,21 +2500,15 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsListSystemTools'
      *
-     * @param  string $entity_id (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsListSystemTools'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsListSystemToolsRequest($entity_id, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
+    public function aiToolsListSystemToolsRequest($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiToolsListSystemTools'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/tools/list-system-tools';
@@ -2567,7 +2525,7 @@ class ToolsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

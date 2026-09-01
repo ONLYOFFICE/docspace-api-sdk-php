@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiToolsBulkResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of  {@link  ToolsEngine.replaceAllCustomServers }  — either every entry persisted, or no entries persisted plus a per-key error report.
+ * @description Outcome of `ToolsEngine.replaceAllCustomServers` — either every entry persisted, or no entries persisted plus a per-key error report.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class AiToolsBulkResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when every custom MCP server was persisted.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class AiToolsBulkResult implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\AiToolsBulkResultErrorsInner[]|null $errors errors
+     * @param \OpenAPI\Client\Model\AiToolsBulkResultErrorsInner[]|null $errors What was rejected, per server. Present on failure - and then no server was persisted.
      *
      * @return self
      */

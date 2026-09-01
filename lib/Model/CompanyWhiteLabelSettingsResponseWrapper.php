@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * AiApiDateTime Class Doc Comment
+ * CompanyWhiteLabelSettingsResponseWrapper Class Doc Comment
  *
  * @category Class
- * @description The API date and time parameters.
+ * @description The successful API response containing the CompanyWhiteLabelSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyWhiteLabelSettingsResponseWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'AiApiDateTime';
+    protected static $openAPIModelName = 'CompanyWhiteLabelSettingsResponseWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'utc_time' => '\DateTime',
-        'time_zone_offset' => 'string'
+        'response' => '\OpenAPI\Client\Model\CompanyWhiteLabelSettings',
+        'count' => 'int',
+        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
+        'status' => 'int',
+        'status_code' => 'int'
     ];
 
     /**
@@ -70,8 +73,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'utc_time' => 'date-time',
-        'time_zone_offset' => 'date-span'
+        'response' => null,
+        'count' => 'int32',
+        'links' => null,
+        'status' => 'int32',
+        'status_code' => 'int32'
     ];
 
     /**
@@ -80,8 +86,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'utc_time' => false,
-        'time_zone_offset' => false
+        'response' => false,
+        'count' => false,
+        'links' => false,
+        'status' => false,
+        'status_code' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'utc_time' => 'utcTime',
-        'time_zone_offset' => 'timeZoneOffset'
+        'response' => 'response',
+        'count' => 'count',
+        'links' => 'links',
+        'status' => 'status',
+        'status_code' => 'statusCode'
     ];
 
     /**
@@ -180,8 +192,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'utc_time' => 'setUtcTime',
-        'time_zone_offset' => 'setTimeZoneOffset'
+        'response' => 'setResponse',
+        'count' => 'setCount',
+        'links' => 'setLinks',
+        'status' => 'setStatus',
+        'status_code' => 'setStatusCode'
     ];
 
     /**
@@ -190,8 +205,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'utc_time' => 'getUtcTime',
-        'time_zone_offset' => 'getTimeZoneOffset'
+        'response' => 'getResponse',
+        'count' => 'getCount',
+        'links' => 'getLinks',
+        'status' => 'getStatus',
+        'status_code' => 'getStatusCode'
     ];
 
     /**
@@ -251,8 +269,11 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('utc_time', $data ?? [], null);
-        $this->setIfExists('time_zone_offset', $data ?? [], null);
+        $this->setIfExists('response', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_code', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,136 @@ class AiApiDateTime implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets utc_time
+     * Gets response
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\CompanyWhiteLabelSettings|null
      */
-    public function getUtcTime()
+    public function getResponse()
     {
-        return $this->container['utc_time'];
+        return $this->container['response'];
     }
 
     /**
-     * Sets utc_time
+     * Sets response
      *
-     * @param \DateTime|null $utc_time The time in UTC format.
+     * @param \OpenAPI\Client\Model\CompanyWhiteLabelSettings|null $response The CompanyWhiteLabelSettings object returned by the operation.
      *
      * @return self
      */
-    public function setUtcTime($utc_time)
+    public function setResponse($response)
     {
-        if (is_null($utc_time)) {
-            throw new \InvalidArgumentException('non-nullable utc_time cannot be null');
+        if (is_null($response)) {
+            throw new \InvalidArgumentException('non-nullable response cannot be null');
         }
-        $this->container['utc_time'] = $utc_time;
+        $this->container['response'] = $response;
 
         return $this;
     }
 
     /**
-     * Gets time_zone_offset
+     * Gets count
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getTimeZoneOffset()
+    public function getCount()
     {
-        return $this->container['time_zone_offset'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets time_zone_offset
+     * Sets count
      *
-     * @param string|null $time_zone_offset The time zone offset.
+     * @param int|null $count The total number of items in the response
      *
      * @return self
      */
-    public function setTimeZoneOffset($time_zone_offset)
+    public function setCount($count)
     {
-        if (is_null($time_zone_offset)) {
-            throw new \InvalidArgumentException('non-nullable time_zone_offset cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['time_zone_offset'] = $time_zone_offset;
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status HTTP status code of the response
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_code
+     *
+     * @return int|null
+     */
+    public function getStatusCode()
+    {
+        return $this->container['status_code'];
+    }
+
+    /**
+     * Sets status_code
+     *
+     * @param int|null $status_code HTTP status code of the response (duplicate of status)
+     *
+     * @return self
+     */
+    public function setStatusCode($status_code)
+    {
+        if (is_null($status_code)) {
+            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
+        }
+        $this->container['status_code'] = $status_code;
 
         return $this;
     }

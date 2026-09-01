@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The user type. | [optional]
+**type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The new user type. | [optional]
 **user_id** | **string** | The user ID. | [optional]
 **reassign_user_id** | **string** | The user ID to reassign. | [optional]
 

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiBulkAssignmentResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of  {@link  AssignmentsEngine.bulkAssign } . Either every entry persisted, or no entries persisted and a per-key error report. The engine validates first and writes second so a single bad entry never leaves the assignment table in a half-written state.
+ * @description Outcome of `AssignmentsEngine.bulkAssign`. Either every entry persisted, or no entries persisted and a per-key error report. The engine validates first and writes second so a single bad entry never leaves the assignment table in a half-written state.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class AiBulkAssignmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when every entry was persisted.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class AiBulkAssignmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets errors
      *
-     * @param \OpenAPI\Client\Model\AiBulkAssignmentResultErrorsInner[]|null $errors errors
+     * @param \OpenAPI\Client\Model\AiBulkAssignmentResultErrorsInner[]|null $errors What was rejected, per action. Present on failure - and then no entry was persisted.
      *
      * @return self
      */

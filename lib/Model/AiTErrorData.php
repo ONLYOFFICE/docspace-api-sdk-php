@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiTErrorData Class Doc Comment
  *
  * @category Class
+ * @description A field-scoped validation error: which form field was rejected, and why.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -341,7 +342,7 @@ class AiTErrorData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets field
      *
-     * @param string $field field
+     * @param string $field The rejected field.
      *
      * @return self
      */
@@ -378,7 +379,7 @@ class AiTErrorData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string $message The human-readable reason the field was rejected.
      *
      * @return self
      */

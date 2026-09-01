@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDeepLinkSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantDeepLinkSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantDeepLinkSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantDeepLinkSettings|null $response response
+     * @param \OpenAPI\Client\Model\TenantDeepLinkSettings|null $response The TenantDeepLinkSettings object returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FilesSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FilesSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FilesSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FilesSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\FilesSettingsDto|null $response The FilesSettingsDto object returned by the operation.
      *
      * @return self
      */

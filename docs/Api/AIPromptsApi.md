@@ -26,6 +26,7 @@ aiPromptsCreate($ai_create_prompt_input): \OpenAPI\Client\Model\AiPromptMutation
 ```
 
 Create
+Saves a new prompt. The name must be non-empty and unique inside its folder, and `folderId` must point at an existing folder - omit it for the root.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create/).
 
@@ -81,6 +82,7 @@ aiPromptsCreateFolder($body): \OpenAPI\Client\Model\AiFolderMutationResult
 ```
 
 Create folder
+Creates a prompt folder. The name must be non-empty and unique across the portal - prompt folders do not nest.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create-folder/).
 
@@ -136,6 +138,7 @@ aiPromptsDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete
+Deletes a saved prompt. Does nothing when it no longer exists.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete/).
 
@@ -191,6 +194,7 @@ aiPromptsDeleteFolder($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete folder
+Deletes a prompt folder together with the prompts inside it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete-folder/).
 
@@ -246,6 +250,7 @@ aiPromptsExport(): \OpenAPI\Client\Model\AiPromptBundle
 ```
 
 Export
+Builds a self-contained, versioned bundle of every saved prompt and folder, ready for `import-bundle`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-export/).
 
@@ -298,6 +303,7 @@ aiPromptsGetById($id): \OpenAPI\Client\Model\AiPrompt
 ```
 
 Get by id
+Returns one saved prompt, or an empty result when the identifier is unknown.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/).
 
@@ -305,7 +311,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The saved prompt identifier. | |
 
 ### Return type
 
@@ -327,7 +333,7 @@ $apiInstance = new OpenAPI\Client\Api\PromptsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The saved prompt identifier.
 
 try {
     $result = $apiInstance->aiPromptsGetById($id);
@@ -353,6 +359,7 @@ aiPromptsGetFolderById($id): \OpenAPI\Client\Model\AiPromptFolder
 ```
 
 Get folder by id
+Returns one prompt folder, or an empty result when the identifier is unknown.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/).
 
@@ -360,7 +367,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**|  | |
+| **id** | **string**| The prompt folder identifier. | |
 
 ### Return type
 
@@ -382,7 +389,7 @@ $apiInstance = new OpenAPI\Client\Api\PromptsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 'id_example'; // string
+$id = 'id_example'; // string | The prompt folder identifier.
 
 try {
     $result = $apiInstance->aiPromptsGetFolderById($id);
@@ -408,6 +415,7 @@ aiPromptsImportBundle($ai_prompts_import_bundle_request): \OpenAPI\Client\Model\
 ```
 
 Import bundle
+Restores a prompt bundle. `replace` wipes the current prompts and folders before writing the bundle, `merge` writes the bundle on top of what is already there; both validate the folder references inside the bundle before any write, so a corrupt bundle is rejected whole.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-import-bundle/).
 
@@ -463,6 +471,7 @@ aiPromptsList($folder_id): \OpenAPI\Client\Model\AiPrompt[]
 ```
 
 List
+Lists saved prompts. Scope the answer to one folder, ask for the root-level prompts only, or omit the folder to get every prompt newest first.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/).
 
@@ -470,7 +479,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **folder_id** | **string**|  | |
+| **folder_id** | **string**| The prompt folder identifier. Omit to list the prompts that sit outside any folder. | [optional] |
 
 ### Return type
 
@@ -492,7 +501,7 @@ $apiInstance = new OpenAPI\Client\Api\PromptsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$folder_id = 'folder_id_example'; // string
+$folder_id = 'folder_id_example'; // string | The prompt folder identifier. Omit to list the prompts that sit outside any folder.
 
 try {
     $result = $apiInstance->aiPromptsList($folder_id);
@@ -518,6 +527,7 @@ aiPromptsListFolders(): \OpenAPI\Client\Model\AiPromptFolder[]
 ```
 
 List folders
+Lists the prompt folders, newest first.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list-folders/).
 
@@ -570,6 +580,7 @@ aiPromptsMove($ai_prompts_move_request): \OpenAPI\Client\Model\AiPromptMutationR
 ```
 
 Move
+Moves a saved prompt into another folder, or to the root. The name is re-validated in the target folder, so the move fails when a prompt of that name is already there.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-move/).
 
@@ -625,6 +636,7 @@ aiPromptsRenameFolder($ai_prompts_rename_folder_request): \OpenAPI\Client\Model\
 ```
 
 Rename folder
+Renames a prompt folder, validating the new name against the existing folders.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-rename-folder/).
 
@@ -680,6 +692,7 @@ aiPromptsUpdate($ai_prompts_update_request): \OpenAPI\Client\Model\AiPromptMutat
 ```
 
 Update
+Updates a saved prompt. The name and the folder reference are re-validated whenever either of them changes.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-update/).
 

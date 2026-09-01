@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantUserInvitationSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantUserInvitationSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantUserInvitationSettingsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantUserInvitationSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\TenantUserInvitationSettingsDto|null $response The TenantUserInvitationSettingsDto object returned by the operation.
      *
      * @return self
      */

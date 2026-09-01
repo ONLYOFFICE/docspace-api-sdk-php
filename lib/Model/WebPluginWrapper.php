@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebPluginWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the WebPluginDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WebPluginWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WebPluginDto|null $response response
+     * @param \OpenAPI\Client\Model\WebPluginDto|null $response The WebPluginDto object returned by the operation.
      *
      * @return self
      */

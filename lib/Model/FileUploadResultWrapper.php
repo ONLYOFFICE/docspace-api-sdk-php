@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileUploadResultWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the FileUploadResultDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FileUploadResultWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileUploadResultDto|null $response response
+     * @param \OpenAPI\Client\Model\FileUploadResultDto|null $response The FileUploadResultDto object returned by the operation.
      *
      * @return self
      */

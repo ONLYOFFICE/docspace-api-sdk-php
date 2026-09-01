@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * IPRestriction Class Doc Comment
  *
  * @category Class
+ * @description The IP restiction parameters.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +327,7 @@ class IPRestriction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ip
      *
-     * @param string $ip ip
+     * @param string $ip The IP address.
      *
      * @return self
      */
@@ -353,7 +354,7 @@ class IPRestriction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets for_admin
      *
-     * @param bool|null $for_admin for_admin
+     * @param bool|null $for_admin Specifies if the IP address is for administrator users only or not.
      *
      * @return self
      */
@@ -380,7 +381,7 @@ class IPRestriction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int|null $id The IP restiction ID.
      *
      * @return self
      */
@@ -407,7 +408,7 @@ class IPRestriction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_id
      *
-     * @param int|null $tenant_id tenant_id
+     * @param int|null $tenant_id The tenant ID.
      *
      * @return self
      */

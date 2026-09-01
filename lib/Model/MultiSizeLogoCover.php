@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MultiSizeLogoCover Class Doc Comment
  *
  * @category Class
+ * @description The logo cover information, with the cover data in every available size.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

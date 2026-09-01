@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalSharingSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the ExternalSharingSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ExternalSharingSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ExternalSharingSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\ExternalSharingSettingsDto|null $response The ExternalSharingSettingsDto object returned by the operation.
      *
      * @return self
      */

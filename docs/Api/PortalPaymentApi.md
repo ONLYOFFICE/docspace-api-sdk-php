@@ -1066,8 +1066,8 @@ $end_date = 2024-01-31T23:59:59Z; // \DateTime | The report end date.
 $participant_name = My Own Corporation; // string | The participant name.
 $credit = true; // bool | Specifies whether to include credit operations in the report.
 $debit = false; // bool | Specifies whether to include debit operations in the report.
-$type = Any; // \OpenAPI\Client\Model\OperationType | The operation type to filter by.
-$status = Any; // \OpenAPI\Client\Model\OperationStatus | The operation status to filter by.
+$type = ServicePayment; // \OpenAPI\Client\Model\OperationType | The operation type to filter by.
+$status = Completed; // \OpenAPI\Client\Model\OperationStatus | The operation status to filter by.
 $order_by = StartDate; // string | The field to order by.
 $order_type = Descending; // \OpenAPI\Client\Model\OperationOrderType | Order direction: Ascending or Descending.
 
@@ -2038,7 +2038,7 @@ try {
 ## `getTenantWalletSettings()`
 
 ```php
-getTenantWalletSettings(): \OpenAPI\Client\Model\TenantWalletSettingsWrapper
+getTenantWalletSettings(): \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper
 ```
 
 Gets the tenant wallet auto top up settings
@@ -2052,7 +2052,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantWalletSettingsWrapper**](../Model/TenantWalletSettingsWrapper.md)
+[**\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper**](../Model/TenantWalletSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -2417,7 +2417,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2505,7 +2505,7 @@ try {
 ## `setTenantWalletSettings()`
 
 ```php
-setTenantWalletSettings($tenant_wallet_settings_wrapper): \OpenAPI\Client\Model\TenantWalletSettingsWrapper
+setTenantWalletSettings($tenant_wallet_settings_wrapper): \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper
 ```
 
 Set the wallet auto top up settings
@@ -2521,7 +2521,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantWalletSettingsWrapper**](../Model/TenantWalletSettingsWrapper.md)
+[**\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper**](../Model/TenantWalletSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -2650,7 +2650,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2725,7 +2725,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -2800,7 +2800,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

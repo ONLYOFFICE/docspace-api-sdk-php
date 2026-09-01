@@ -316,7 +316,7 @@ class AiAgentNewItemsDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets agent
      *
-     * @param \OpenAPI\Client\Model\AiFileEntryBaseDto $agent The file entry information.
+     * @param \OpenAPI\Client\Model\AiFileEntryBaseDto $agent The agent file entry.
      *
      * @return self
      */

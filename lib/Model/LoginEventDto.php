@@ -59,7 +59,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
-        'date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'date' => '\DateTime',
         'user' => 'string',
         'user_id' => 'string',
         'login' => 'string',
@@ -82,7 +82,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'id' => 'int32',
-        'date' => null,
+        'date' => 'date-time',
         'user' => null,
         'user_id' => 'uuid',
         'login' => null,
@@ -103,7 +103,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'date' => false,
+        'date' => true,
         'user' => true,
         'user_id' => false,
         'login' => true,
@@ -404,7 +404,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getDate()
     {
@@ -414,14 +414,21 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $date The API date and time parameters.
+     * @param \DateTime|null $date The login event date.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 
@@ -570,7 +577,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_id
      *
-     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The event action ID.
+     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The login-related action to filter events by.
      *
      * @return self
      */

@@ -1220,7 +1220,7 @@ try {
 ## `deleteRecent()`
 
 ```php
-deleteRecent($base_batch_request_dto): \OpenAPI\Client\Model\NoContentResultWrapper
+deleteRecent($base_batch_request_dto)
 ```
 
 Delete recent files
@@ -1236,7 +1236,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\NoContentResultWrapper**](../Model/NoContentResultWrapper.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1280,8 +1280,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
 $base_batch_request_dto = new \OpenAPI\Client\Model\BaseBatchRequestDto(); // \OpenAPI\Client\Model\BaseBatchRequestDto
 
 try {
-    $result = $apiInstance->deleteRecent($base_batch_request_dto);
-    print_r($result);
+    $apiInstance->deleteRecent($base_batch_request_dto);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->deleteRecent: ', $e->getMessage(), PHP_EOL;
 }
@@ -1662,7 +1661,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **int**|  | |
+| **file_id** | **int**| The file unique identifier. | |
 
 ### Return type
 
@@ -1707,7 +1706,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 56; // int
+$file_id = 56; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getEncryptionInfo($file_id);
@@ -1742,8 +1741,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int**| The file ID of the history request. | |
-| **from_date** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The start date of the history. | [optional] |
-| **to_date** | [**\OpenAPI\Client\Model\ApiDateTime**](../Model/.md)| The end date of the history. | [optional] |
+| **from_date** | **\DateTime**| The start date of the history. | [optional] |
+| **to_date** | **\DateTime**| The end date of the history. | [optional] |
 | **count** | **int**| The number of history entries to retrieve for the file log. | [optional] |
 | **start_index** | **int**| The starting index for retrieving a subset of file history entries. | [optional] |
 
@@ -1791,8 +1790,8 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file ID of the history request.
-$from_date = 2025-01-01T00:00:00.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The start date of the history.
-$to_date = 2025-12-31T23:59:59.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The end date of the history.
+$from_date = 2025-01-01T00:00:00.0000000Z; // \DateTime | The start date of the history.
+$to_date = 2025-12-31T23:59:59.0000000Z; // \DateTime | The end date of the history.
 $count = 25; // int | The number of history entries to retrieve for the file log.
 $start_index = 0; // int | The starting index for retrieving a subset of file history entries.
 
@@ -2775,7 +2774,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**|  | |
+| **file_id** | **string**| The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. | |
 | **manage_form_filling_dto_integer** | [**\OpenAPI\Client\Model\ManageFormFillingDtoInteger**](../Model/ManageFormFillingDtoInteger.md)|  | [optional] |
 
 ### Return type
@@ -2821,7 +2820,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 'file_id_example'; // string
+$file_id = 'file_id_example'; // string | The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads.
 $manage_form_filling_dto_integer = new \OpenAPI\Client\Model\ManageFormFillingDtoInteger(); // \OpenAPI\Client\Model\ManageFormFillingDtoInteger
 
 try {
@@ -2834,7 +2833,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -3149,7 +3148,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file_id** | **string**|  | |
+| **file_id** | **string**| The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. | |
 | **save_form_role_mapping_dto_integer** | [**\OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger**](../Model/SaveFormRoleMappingDtoInteger.md)|  | [optional] |
 
 ### Return type
@@ -3195,7 +3194,7 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 'file_id_example'; // string
+$file_id = 'file_id_example'; // string | The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads.
 $save_form_role_mapping_dto_integer = new \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger(); // \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger
 
 try {
@@ -3208,7 +3207,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -3369,7 +3368,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -3837,7 +3836,7 @@ try {
 ## `trackEditFile()`
 
 ```php
-trackEditFile($file_id, $tab_id, $doc_key_for_track, $is_finish): \OpenAPI\Client\Model\KeyValuePairBooleanStringWrapper
+trackEditFile($file_id, $tab_id, $doc_key_for_track, $is_finish): \OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper
 ```
 
 Track file editing
@@ -3856,7 +3855,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\KeyValuePairBooleanStringWrapper**](../Model/KeyValuePairBooleanStringWrapper.md)
+[**\OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper**](../Model/ItemKeyValuePairBooleanStringWrapper.md)
 
 ### Authorization
 

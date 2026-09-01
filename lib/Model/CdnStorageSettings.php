@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CdnStorageSettings Class Doc Comment
  *
  * @category Class
+ * @description The CDN storage settings.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +317,7 @@ class CdnStorageSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets module
      *
-     * @param string|null $module module
+     * @param string|null $module The storage name.
      *
      * @return self
      */
@@ -350,7 +351,7 @@ class CdnStorageSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets props
      *
-     * @param array<string,string>|null $props props
+     * @param array<string,string>|null $props The storage properties.
      *
      * @return self
      */
@@ -377,7 +378,7 @@ class CdnStorageSettings implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets last_modified
      *
-     * @param \DateTime|null $last_modified last_modified
+     * @param \DateTime|null $last_modified The date and time when the storage settings were last modified.
      *
      * @return self
      */

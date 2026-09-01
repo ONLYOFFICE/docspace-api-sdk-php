@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * IpRestrictionsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the IpRestrictionsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class IpRestrictionsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\IpRestrictionsDto|null $response response
+     * @param \OpenAPI\Client\Model\IpRestrictionsDto|null $response The IpRestrictionsDto object returned by the operation.
      *
      * @return self
      */

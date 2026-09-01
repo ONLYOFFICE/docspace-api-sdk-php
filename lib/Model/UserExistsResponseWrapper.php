@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UserExistsResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the UserExistsResponseDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UserExistsResponseWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UserExistsResponseDto|null $response response
+     * @param \OpenAPI\Client\Model\UserExistsResponseDto|null $response The UserExistsResponseDto object returned by the operation.
      *
      * @return self
      */

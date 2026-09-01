@@ -58,9 +58,9 @@ docs/Api/PortalPaymentApi.md
 docs/Api/PortalQuotaApi.md
 docs/Api/PortalSettingsApi.md
 docs/Api/PortalUsersApi.md
-docs/Api/PrivacyroomApi.md
 docs/Api/RoomsApi.md
 docs/Api/RoomsGroupsApi.md
+docs/Api/RoomsPrivacyRoomApi.md
 docs/Api/SecurityAccessToDevToolsApi.md
 docs/Api/SecurityActiveConnectionsApi.md
 docs/Api/SecurityAuditTrailDataApi.md
@@ -111,6 +111,8 @@ docs/Model/ActiveServiceArrayWrapper.md
 docs/Model/ActiveServiceDto.md
 docs/Model/AdditionalWhiteLabelSettings.md
 docs/Model/AdditionalWhiteLabelSettingsDto.md
+docs/Model/AdditionalWhiteLabelSettingsDtoWrapper.md
+docs/Model/AdditionalWhiteLabelSettingsResponseWrapper.md
 docs/Model/AdditionalWhiteLabelSettingsWrapper.md
 docs/Model/AdminMessageBaseSettingsRequestsDto.md
 docs/Model/AdminMessageSettingsRequestsDto.md
@@ -134,7 +136,6 @@ docs/Model/AiAiSettingsWrapper.md
 docs/Model/AiAiToolCallData.md
 docs/Model/AiAiUserSettingsDto.md
 docs/Model/AiAiUserSettingsWrapper.md
-docs/Model/AiApiDateTime.md
 docs/Model/AiAssignmentMutationResult.md
 docs/Model/AiAssignmentsAssignRequest.md
 docs/Model/AiAttachment.md
@@ -255,7 +256,6 @@ docs/Model/AiWebSearchConfigureRequest.md
 docs/Model/AiWebSearchMutationResult.md
 docs/Model/AiWebSearchPricing.md
 docs/Model/AnonymousConfigDto.md
-docs/Model/ApiDateTime.md
 docs/Model/ApiKeyResponseArrayWrapper.md
 docs/Model/ApiKeyResponseDto.md
 docs/Model/ApiKeyResponseWrapper.md
@@ -337,6 +337,8 @@ docs/Model/CoEditingConfigMode.md
 docs/Model/CompanyWhiteLabelSettings.md
 docs/Model/CompanyWhiteLabelSettingsArrayWrapper.md
 docs/Model/CompanyWhiteLabelSettingsDto.md
+docs/Model/CompanyWhiteLabelSettingsDtoWrapper.md
+docs/Model/CompanyWhiteLabelSettingsResponseWrapper.md
 docs/Model/CompanyWhiteLabelSettingsWrapper.md
 docs/Model/ConfigurationDtoInteger.md
 docs/Model/ConfigurationIntegerWrapper.md
@@ -498,6 +500,8 @@ docs/Model/EncryptionKeyRequestDto.md
 docs/Model/EncryptionSettings.md
 docs/Model/EncryptionSettingsWrapper.md
 docs/Model/EntryType.md
+docs/Model/ErrorApiResponse.md
+docs/Model/ErrorApiResponseError.md
 docs/Model/ExchangeToken200Response.md
 docs/Model/ExternalDatabaseSettings.md
 docs/Model/ExternalDatabaseType.md
@@ -546,6 +550,7 @@ docs/Model/FileShareArrayWrapper.md
 docs/Model/FileShareDto.md
 docs/Model/FileShareLink.md
 docs/Model/FileShareParams.md
+docs/Model/FileShareResponseArrayWrapper.md
 docs/Model/FileShareWrapper.md
 docs/Model/FileStatus.md
 docs/Model/FileType.md
@@ -608,7 +613,6 @@ docs/Model/HistoryArrayWrapper.md
 docs/Model/HistoryData.md
 docs/Model/HistoryDto.md
 docs/Model/ICompressWrapper.md
-docs/Model/IMagickGeometry.md
 docs/Model/IPRestriction.md
 docs/Model/IPRestrictionArrayWrapper.md
 docs/Model/IPRestrictionsSettings.md
@@ -630,12 +634,12 @@ docs/Model/IpRestrictionsWrapper.md
 docs/Model/IsDefaultWhiteLabelLogosArrayWrapper.md
 docs/Model/IsDefaultWhiteLabelLogosDto.md
 docs/Model/IsDefaultWhiteLabelLogosWrapper.md
+docs/Model/ItemKeyValuePairBooleanString.md
+docs/Model/ItemKeyValuePairBooleanStringWrapper.md
 docs/Model/ItemKeyValuePairObjectObject.md
 docs/Model/ItemKeyValuePairStringBoolean.md
 docs/Model/ItemKeyValuePairStringLogoRequestsDto.md
 docs/Model/ItemKeyValuePairStringString.md
-docs/Model/KeyValuePairBooleanString.md
-docs/Model/KeyValuePairBooleanStringWrapper.md
 docs/Model/LinkAccountRequestDto.md
 docs/Model/LinkType.md
 docs/Model/Location.md
@@ -675,8 +679,6 @@ docs/Model/NewItemsDtoFileEntryBaseDto.md
 docs/Model/NewItemsDtoRoomNewItemsDto.md
 docs/Model/NewItemsFileEntryBaseArrayWrapper.md
 docs/Model/NewItemsRoomNewItemsArrayWrapper.md
-docs/Model/NoContentResult.md
-docs/Model/NoContentResultWrapper.md
 docs/Model/NotificationChannelDto.md
 docs/Model/NotificationChannelStatusDto.md
 docs/Model/NotificationChannelStatusWrapper.md
@@ -791,8 +793,6 @@ docs/Model/SetRestrictedAiModelsRequestDto.md
 docs/Model/SettingsDto.md
 docs/Model/SettingsRequestDto.md
 docs/Model/SettingsWrapper.md
-docs/Model/SetupCode.md
-docs/Model/SetupCodeWrapper.md
 docs/Model/ShareFilterType.md
 docs/Model/SignupAccountRequestDto.md
 docs/Model/Size.md
@@ -846,6 +846,7 @@ docs/Model/TenantAiAccessSettingsWrapper.md
 docs/Model/TenantAiAgentQuotaSettings.md
 docs/Model/TenantAiAgentQuotaSettingsWrapper.md
 docs/Model/TenantAuditSettings.md
+docs/Model/TenantAuditSettingsResponseWrapper.md
 docs/Model/TenantAuditSettingsWrapper.md
 docs/Model/TenantBannerSettings.md
 docs/Model/TenantBannerSettingsDto.md
@@ -878,6 +879,7 @@ docs/Model/TenantWalletService.md
 docs/Model/TenantWalletServiceSettings.md
 docs/Model/TenantWalletServiceSettingsWrapper.md
 docs/Model/TenantWalletSettings.md
+docs/Model/TenantWalletSettingsResponseWrapper.md
 docs/Model/TenantWalletSettingsWrapper.md
 docs/Model/TenantWrapper.md
 docs/Model/TerminateRequestDto.md
@@ -889,6 +891,8 @@ docs/Model/TfaRequestsDto.md
 docs/Model/TfaRequestsDtoType.md
 docs/Model/TfaSettingsArrayWrapper.md
 docs/Model/TfaSettingsDto.md
+docs/Model/TfaSetupCodeDto.md
+docs/Model/TfaSetupCodeWrapper.md
 docs/Model/TfaValidateRequestsDto.md
 docs/Model/ThirdPartyBackupRequestDto.md
 docs/Model/ThirdPartyParams.md
@@ -965,6 +969,7 @@ docs/Model/WebhooksLogWrapper.md
 docs/Model/WhiteLabelItemArrayWrapper.md
 docs/Model/WhiteLabelItemDto.md
 docs/Model/WhiteLabelItemPathDto.md
+docs/Model/WhiteLabelItemSizeDto.md
 docs/Model/WhiteLabelLogoType.md
 docs/Model/WhiteLabelRequestsDto.md
 docs/Model/WizardRequestsDto.md
@@ -1024,8 +1029,8 @@ lib/Api/Portal/PaymentApi.php
 lib/Api/Portal/QuotaApi.php
 lib/Api/Portal/SettingsApi.php
 lib/Api/Portal/UsersApi.php
-lib/Api/Privacyroom/PrivacyroomApi.php
 lib/Api/Rooms/GroupsApi.php
+lib/Api/Rooms/PrivacyRoomApi.php
 lib/Api/Rooms/RoomsApi.php
 lib/Api/Security/AccessToDevToolsApi.php
 lib/Api/Security/ActiveConnectionsApi.php
@@ -1081,6 +1086,8 @@ lib/Model/ActiveServiceArrayWrapper.php
 lib/Model/ActiveServiceDto.php
 lib/Model/AdditionalWhiteLabelSettings.php
 lib/Model/AdditionalWhiteLabelSettingsDto.php
+lib/Model/AdditionalWhiteLabelSettingsDtoWrapper.php
+lib/Model/AdditionalWhiteLabelSettingsResponseWrapper.php
 lib/Model/AdditionalWhiteLabelSettingsWrapper.php
 lib/Model/AdminMessageBaseSettingsRequestsDto.php
 lib/Model/AdminMessageSettingsRequestsDto.php
@@ -1104,7 +1111,6 @@ lib/Model/AiAiSettingsWrapper.php
 lib/Model/AiAiToolCallData.php
 lib/Model/AiAiUserSettingsDto.php
 lib/Model/AiAiUserSettingsWrapper.php
-lib/Model/AiApiDateTime.php
 lib/Model/AiAssignmentMutationResult.php
 lib/Model/AiAssignmentsAssignRequest.php
 lib/Model/AiAttachment.php
@@ -1225,7 +1231,6 @@ lib/Model/AiWebSearchConfigureRequest.php
 lib/Model/AiWebSearchMutationResult.php
 lib/Model/AiWebSearchPricing.php
 lib/Model/AnonymousConfigDto.php
-lib/Model/ApiDateTime.php
 lib/Model/ApiKeyResponseArrayWrapper.php
 lib/Model/ApiKeyResponseDto.php
 lib/Model/ApiKeyResponseWrapper.php
@@ -1307,6 +1312,8 @@ lib/Model/CoEditingConfigMode.php
 lib/Model/CompanyWhiteLabelSettings.php
 lib/Model/CompanyWhiteLabelSettingsArrayWrapper.php
 lib/Model/CompanyWhiteLabelSettingsDto.php
+lib/Model/CompanyWhiteLabelSettingsDtoWrapper.php
+lib/Model/CompanyWhiteLabelSettingsResponseWrapper.php
 lib/Model/CompanyWhiteLabelSettingsWrapper.php
 lib/Model/ConfigurationDtoInteger.php
 lib/Model/ConfigurationIntegerWrapper.php
@@ -1468,6 +1475,8 @@ lib/Model/EncryptionKeyRequestDto.php
 lib/Model/EncryptionSettings.php
 lib/Model/EncryptionSettingsWrapper.php
 lib/Model/EntryType.php
+lib/Model/ErrorApiResponse.php
+lib/Model/ErrorApiResponseError.php
 lib/Model/ExchangeToken200Response.php
 lib/Model/ExternalDatabaseSettings.php
 lib/Model/ExternalDatabaseType.php
@@ -1516,6 +1525,7 @@ lib/Model/FileShareArrayWrapper.php
 lib/Model/FileShareDto.php
 lib/Model/FileShareLink.php
 lib/Model/FileShareParams.php
+lib/Model/FileShareResponseArrayWrapper.php
 lib/Model/FileShareWrapper.php
 lib/Model/FileStatus.php
 lib/Model/FileType.php
@@ -1578,7 +1588,6 @@ lib/Model/HistoryArrayWrapper.php
 lib/Model/HistoryData.php
 lib/Model/HistoryDto.php
 lib/Model/ICompressWrapper.php
-lib/Model/IMagickGeometry.php
 lib/Model/IPRestriction.php
 lib/Model/IPRestrictionArrayWrapper.php
 lib/Model/IPRestrictionsSettings.php
@@ -1600,12 +1609,12 @@ lib/Model/IpRestrictionsWrapper.php
 lib/Model/IsDefaultWhiteLabelLogosArrayWrapper.php
 lib/Model/IsDefaultWhiteLabelLogosDto.php
 lib/Model/IsDefaultWhiteLabelLogosWrapper.php
+lib/Model/ItemKeyValuePairBooleanString.php
+lib/Model/ItemKeyValuePairBooleanStringWrapper.php
 lib/Model/ItemKeyValuePairObjectObject.php
 lib/Model/ItemKeyValuePairStringBoolean.php
 lib/Model/ItemKeyValuePairStringLogoRequestsDto.php
 lib/Model/ItemKeyValuePairStringString.php
-lib/Model/KeyValuePairBooleanString.php
-lib/Model/KeyValuePairBooleanStringWrapper.php
 lib/Model/LinkAccountRequestDto.php
 lib/Model/LinkType.php
 lib/Model/Location.php
@@ -1646,8 +1655,6 @@ lib/Model/NewItemsDtoFileEntryBaseDto.php
 lib/Model/NewItemsDtoRoomNewItemsDto.php
 lib/Model/NewItemsFileEntryBaseArrayWrapper.php
 lib/Model/NewItemsRoomNewItemsArrayWrapper.php
-lib/Model/NoContentResult.php
-lib/Model/NoContentResultWrapper.php
 lib/Model/NotificationChannelDto.php
 lib/Model/NotificationChannelStatusDto.php
 lib/Model/NotificationChannelStatusWrapper.php
@@ -1762,8 +1769,6 @@ lib/Model/SetRestrictedAiModelsRequestDto.php
 lib/Model/SettingsDto.php
 lib/Model/SettingsRequestDto.php
 lib/Model/SettingsWrapper.php
-lib/Model/SetupCode.php
-lib/Model/SetupCodeWrapper.php
 lib/Model/ShareFilterType.php
 lib/Model/SignupAccountRequestDto.php
 lib/Model/Size.php
@@ -1817,6 +1822,7 @@ lib/Model/TenantAiAccessSettingsWrapper.php
 lib/Model/TenantAiAgentQuotaSettings.php
 lib/Model/TenantAiAgentQuotaSettingsWrapper.php
 lib/Model/TenantAuditSettings.php
+lib/Model/TenantAuditSettingsResponseWrapper.php
 lib/Model/TenantAuditSettingsWrapper.php
 lib/Model/TenantBannerSettings.php
 lib/Model/TenantBannerSettingsDto.php
@@ -1849,6 +1855,7 @@ lib/Model/TenantWalletService.php
 lib/Model/TenantWalletServiceSettings.php
 lib/Model/TenantWalletServiceSettingsWrapper.php
 lib/Model/TenantWalletSettings.php
+lib/Model/TenantWalletSettingsResponseWrapper.php
 lib/Model/TenantWalletSettingsWrapper.php
 lib/Model/TenantWrapper.php
 lib/Model/TerminateRequestDto.php
@@ -1860,6 +1867,8 @@ lib/Model/TfaRequestsDto.php
 lib/Model/TfaRequestsDtoType.php
 lib/Model/TfaSettingsArrayWrapper.php
 lib/Model/TfaSettingsDto.php
+lib/Model/TfaSetupCodeDto.php
+lib/Model/TfaSetupCodeWrapper.php
 lib/Model/TfaValidateRequestsDto.php
 lib/Model/ThirdPartyBackupRequestDto.php
 lib/Model/ThirdPartyParams.php
@@ -1936,6 +1945,7 @@ lib/Model/WebhooksLogWrapper.php
 lib/Model/WhiteLabelItemArrayWrapper.php
 lib/Model/WhiteLabelItemDto.php
 lib/Model/WhiteLabelItemPathDto.php
+lib/Model/WhiteLabelItemSizeDto.php
 lib/Model/WhiteLabelLogoType.php
 lib/Model/WhiteLabelRequestsDto.php
 lib/Model/WizardRequestsDto.php

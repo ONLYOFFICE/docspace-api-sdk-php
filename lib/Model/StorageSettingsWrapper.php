@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StorageSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the StorageSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class StorageSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\StorageSettings|null $response response
+     * @param \OpenAPI\Client\Model\StorageSettings|null $response The StorageSettings object returned by the operation.
      *
      * @return self
      */

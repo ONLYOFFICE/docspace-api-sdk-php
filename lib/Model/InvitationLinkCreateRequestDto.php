@@ -328,7 +328,7 @@ class InvitationLinkCreateRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets employee_type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The user type.
+     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User).
      *
      * @return self
      */

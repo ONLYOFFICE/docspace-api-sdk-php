@@ -67,7 +67,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => 'string',
         'browser' => 'string',
         'platform' => 'string',
-        'date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'date' => '\DateTime',
         'page' => 'string'
     ];
 
@@ -88,7 +88,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => null,
         'browser' => null,
         'platform' => null,
-        'date' => null,
+        'date' => 'date-time',
         'page' => null
     ];
 
@@ -107,7 +107,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => true,
         'browser' => true,
         'platform' => true,
-        'date' => false,
+        'date' => true,
         'page' => true
     ];
 
@@ -650,7 +650,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getDate()
     {
@@ -660,14 +660,21 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $date The API date and time parameters.
+     * @param \DateTime|null $date The active connection date.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            throw new \InvalidArgumentException('non-nullable date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date'] = $date;
 

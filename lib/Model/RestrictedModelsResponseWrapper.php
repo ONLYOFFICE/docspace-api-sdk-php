@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RestrictedModelsResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the RestrictedModelsResponse object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class RestrictedModelsResponseWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\RestrictedModelsResponse|null $response response
+     * @param \OpenAPI\Client\Model\RestrictedModelsResponse|null $response The RestrictedModelsResponse object returned by the operation.
      *
      * @return self
      */

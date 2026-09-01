@@ -353,7 +353,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto $user The full list of user parameters.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto $user The group member parameters.
      *
      * @return self
      */
@@ -380,7 +380,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets group_access
      *
-     * @param \OpenAPI\Client\Model\FileShare $group_access The access rights type.
+     * @param \OpenAPI\Client\Model\FileShare $group_access The group access rights to the files.
      *
      * @return self
      */

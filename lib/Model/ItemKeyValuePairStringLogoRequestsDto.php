@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ItemKeyValuePairStringLogoRequestsDto Class Doc Comment
  *
  * @category Class
+ * @description A key-value pair of a list item.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class ItemKeyValuePairStringLogoRequestsDto implements ModelInterface, ArrayAcce
     /**
      * Sets key
      *
-     * @param string|null $key key
+     * @param string|null $key The key that identifies the item within the list.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class ItemKeyValuePairStringLogoRequestsDto implements ModelInterface, ArrayAcce
     /**
      * Sets value
      *
-     * @param \OpenAPI\Client\Model\LogoRequestsDto|null $value The request parameters for the theme-specific logo configurations.
+     * @param \OpenAPI\Client\Model\LogoRequestsDto|null $value The value associated with the key.
      *
      * @return self
      */

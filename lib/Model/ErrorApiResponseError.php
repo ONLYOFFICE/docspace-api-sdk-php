@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * KeyValuePairBooleanString Class Doc Comment
+ * ErrorApiResponseError Class Doc Comment
  *
  * @category Class
+ * @description What went wrong.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSerializable
+class ErrorApiResponseError implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'KeyValuePairBooleanString';
+    protected static $openAPIModelName = 'ErrorApiResponse_error';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +58,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'key' => 'bool',
-        'value' => 'string'
+        'message' => 'string',
+        'type' => 'string',
+        'stack' => 'string',
+        'hresult' => 'int'
     ];
 
     /**
@@ -69,8 +72,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'key' => null,
-        'value' => null
+        'message' => null,
+        'type' => null,
+        'stack' => null,
+        'hresult' => 'int32'
     ];
 
     /**
@@ -79,8 +84,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'key' => false,
-        'value' => true
+        'message' => false,
+        'type' => false,
+        'stack' => false,
+        'hresult' => false
     ];
 
     /**
@@ -169,8 +176,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'value' => 'value'
+        'message' => 'message',
+        'type' => 'type',
+        'stack' => 'stack',
+        'hresult' => 'hresult'
     ];
 
     /**
@@ -179,8 +188,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'value' => 'setValue'
+        'message' => 'setMessage',
+        'type' => 'setType',
+        'stack' => 'setStack',
+        'hresult' => 'setHresult'
     ];
 
     /**
@@ -189,8 +200,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'value' => 'getValue'
+        'message' => 'getMessage',
+        'type' => 'getType',
+        'stack' => 'getStack',
+        'hresult' => 'getHresult'
     ];
 
     /**
@@ -250,8 +263,10 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('stack', $data ?? [], null);
+        $this->setIfExists('hresult', $data ?? [], null);
     }
 
     /**
@@ -297,62 +312,109 @@ class KeyValuePairBooleanString implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets key
+     * Gets message
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getKey()
+    public function getMessage()
     {
-        return $this->container['key'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets key
+     * Sets message
      *
-     * @param bool|null $key key
+     * @param string|null $message The human-readable error message.
      *
      * @return self
      */
-    public function setKey($key)
+    public function setMessage($message)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['key'] = $key;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets value
+     * Gets type
      *
      * @return string|null
      */
-    public function getValue()
+    public function getType()
     {
-        return $this->container['value'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets value
+     * Sets type
      *
-     * @param string|null $value value
+     * @param string|null $type The .NET type of the underlying exception. Only sent when stack traces are enabled.
      *
      * @return self
      */
-    public function setValue($value)
+    public function setType($type)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['value'] = $value;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets stack
+     *
+     * @return string|null
+     */
+    public function getStack()
+    {
+        return $this->container['stack'];
+    }
+
+    /**
+     * Sets stack
+     *
+     * @param string|null $stack The stack trace of the underlying exception. Only sent when stack traces are enabled.
+     *
+     * @return self
+     */
+    public function setStack($stack)
+    {
+        if (is_null($stack)) {
+            throw new \InvalidArgumentException('non-nullable stack cannot be null');
+        }
+        $this->container['stack'] = $stack;
+
+        return $this;
+    }
+
+    /**
+     * Gets hresult
+     *
+     * @return int|null
+     */
+    public function getHresult()
+    {
+        return $this->container['hresult'];
+    }
+
+    /**
+     * Sets hresult
+     *
+     * @param int|null $hresult The HRESULT of the underlying exception. Only sent when stack traces are enabled.
+     *
+     * @return self
+     */
+    public function setHresult($hresult)
+    {
+        if (is_null($hresult)) {
+            throw new \InvalidArgumentException('non-nullable hresult cannot be null');
+        }
+        $this->container['hresult'] = $hresult;
 
         return $this;
     }

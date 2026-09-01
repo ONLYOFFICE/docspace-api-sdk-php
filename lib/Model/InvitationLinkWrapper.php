@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InvitationLinkWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the InvitationLinkDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class InvitationLinkWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\InvitationLinkDto|null $response response
+     * @param \OpenAPI\Client\Model\InvitationLinkDto|null $response The InvitationLinkDto object returned by the operation.
      *
      * @return self
      */

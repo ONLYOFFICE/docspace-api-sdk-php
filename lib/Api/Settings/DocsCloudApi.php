@@ -173,7 +173,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PaymentCalculationWrapper
+     * @return \OpenAPI\Client\Model\PaymentCalculationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function calculateDevPack($docs_cloud_dev_pack_request_dto = null, string $contentType = self::contentTypes['calculateDevPack'][0])
     {
@@ -194,7 +194,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PaymentCalculationWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PaymentCalculationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function calculateDevPackWithHttpInfo($docs_cloud_dev_pack_request_dto = null, string $contentType = self::contentTypes['calculateDevPack'][0])
     {
@@ -230,6 +230,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -258,6 +276,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\PaymentCalculationWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -467,7 +509,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createTenantQuotaReport(string $contentType = self::contentTypes['createTenantQuotaReport'][0])
     {
@@ -487,7 +529,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTenantQuotaReportWithHttpInfo(string $contentType = self::contentTypes['createTenantQuotaReport'][0])
     {
@@ -523,6 +565,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -551,6 +611,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -745,12 +829,12 @@ class DocsCloudApi
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudTenantWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudTenantWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenant($refresh = false, string $contentType = self::contentTypes['getTenant'][0])
     {
@@ -766,12 +850,12 @@ class DocsCloudApi
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudTenantWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudTenantWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantWithHttpInfo($refresh = false, string $contentType = self::contentTypes['getTenant'][0])
     {
@@ -807,6 +891,30 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -839,6 +947,38 @@ class DocsCloudApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -854,7 +994,7 @@ class DocsCloudApi
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -878,7 +1018,7 @@ class DocsCloudApi
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -928,7 +1068,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenant'
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1042,12 +1182,12 @@ class DocsCloudApi
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudConfigWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantConfig($refresh = false, string $contentType = self::contentTypes['getTenantConfig'][0])
     {
@@ -1063,12 +1203,12 @@ class DocsCloudApi
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudConfigWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantConfigWithHttpInfo($refresh = false, string $contentType = self::contentTypes['getTenantConfig'][0])
     {
@@ -1104,6 +1244,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1136,6 +1294,30 @@ class DocsCloudApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1151,7 +1333,7 @@ class DocsCloudApi
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1175,7 +1357,7 @@ class DocsCloudApi
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1225,7 +1407,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantConfig'
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1339,12 +1521,12 @@ class DocsCloudApi
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudTenantInfoWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudTenantInfoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantInfo($refresh = false, string $contentType = self::contentTypes['getTenantInfo'][0])
     {
@@ -1360,12 +1542,12 @@ class DocsCloudApi
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudTenantInfoWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudTenantInfoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantInfoWithHttpInfo($refresh = false, string $contentType = self::contentTypes['getTenantInfo'][0])
     {
@@ -1401,6 +1583,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1433,6 +1633,30 @@ class DocsCloudApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1448,7 +1672,7 @@ class DocsCloudApi
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1472,7 +1696,7 @@ class DocsCloudApi
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1522,7 +1746,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantInfo'
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1636,12 +1860,12 @@ class DocsCloudApi
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudQuotaWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudQuotaWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantQuota($refresh = false, string $contentType = self::contentTypes['getTenantQuota'][0])
     {
@@ -1657,12 +1881,12 @@ class DocsCloudApi
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudQuotaWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudQuotaWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantQuotaWithHttpInfo($refresh = false, string $contentType = self::contentTypes['getTenantQuota'][0])
     {
@@ -1698,6 +1922,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1730,6 +1972,30 @@ class DocsCloudApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1745,7 +2011,7 @@ class DocsCloudApi
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1769,7 +2035,7 @@ class DocsCloudApi
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1819,7 +2085,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantQuota'
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1937,7 +2203,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantQuotaReport(string $contentType = self::contentTypes['getTenantQuotaReport'][0])
     {
@@ -1957,7 +2223,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantQuotaReportWithHttpInfo(string $contentType = self::contentTypes['getTenantQuotaReport'][0])
     {
@@ -1993,6 +2259,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2021,6 +2305,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2215,12 +2523,12 @@ class DocsCloudApi
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudUsageWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudUsageWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantUsage($refresh = false, string $contentType = self::contentTypes['getTenantUsage'][0])
     {
@@ -2236,12 +2544,12 @@ class DocsCloudApi
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudUsageWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudUsageWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantUsageWithHttpInfo($refresh = false, string $contentType = self::contentTypes['getTenantUsage'][0])
     {
@@ -2277,6 +2585,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2309,6 +2635,30 @@ class DocsCloudApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2324,7 +2674,7 @@ class DocsCloudApi
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2348,7 +2698,7 @@ class DocsCloudApi
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2398,7 +2748,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantUsage'
      *
-     * @param  bool|null $refresh (optional, default to false)
+     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2516,7 +2866,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function startDocsCloudTrial(string $contentType = self::contentTypes['startDocsCloudTrial'][0])
     {
@@ -2536,7 +2886,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function startDocsCloudTrialWithHttpInfo(string $contentType = self::contentTypes['startDocsCloudTrial'][0])
     {
@@ -2572,6 +2922,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2600,6 +2968,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\BooleanWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2799,7 +3191,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function switchToDevPack($docs_cloud_dev_pack_request_dto = null, string $contentType = self::contentTypes['switchToDevPack'][0])
     {
@@ -2820,7 +3212,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function switchToDevPackWithHttpInfo($docs_cloud_dev_pack_request_dto = null, string $contentType = self::contentTypes['switchToDevPack'][0])
     {
@@ -2856,6 +3248,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2884,6 +3294,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\BooleanWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3144,6 +3578,30 @@ class DocsCloudApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -3239,7 +3697,7 @@ class DocsCloudApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -3326,7 +3784,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocsCloudConfigWrapper
+     * @return \OpenAPI\Client\Model\DocsCloudConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateTenantConfig($docs_cloud_config = null, string $contentType = self::contentTypes['updateTenantConfig'][0])
     {
@@ -3347,7 +3805,7 @@ class DocsCloudApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocsCloudConfigWrapper, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocsCloudConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTenantConfigWithHttpInfo($docs_cloud_config = null, string $contentType = self::contentTypes['updateTenantConfig'][0])
     {
@@ -3383,6 +3841,24 @@ class DocsCloudApi
                         $request,
                         $response,
                     );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -3411,6 +3887,30 @@ class DocsCloudApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\DocsCloudConfigWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

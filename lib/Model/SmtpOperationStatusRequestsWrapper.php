@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SmtpOperationStatusRequestsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the SmtpOperationStatusRequestsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SmtpOperationStatusRequestsWrapper implements ModelInterface, ArrayAccess,
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SmtpOperationStatusRequestsDto|null $response response
+     * @param \OpenAPI\Client\Model\SmtpOperationStatusRequestsDto|null $response The SmtpOperationStatusRequestsDto object returned by the operation.
      *
      * @return self
      */

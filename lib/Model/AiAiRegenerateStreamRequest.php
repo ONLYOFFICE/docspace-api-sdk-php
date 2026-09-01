@@ -353,7 +353,7 @@ class AiAiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args action_args
+     * @param \OpenAPI\Client\Model\AiAiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
      *
      * @return self
      */
@@ -380,7 +380,7 @@ class AiAiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets entity_id
      *
-     * @param string|null $entity_id entity_id
+     * @param string|null $entity_id Optional entity (room) scope for profile resolution.
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class AiAiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id profile_id
+     * @param string|null $profile_id Session-level profile override for this request only.
      *
      * @return self
      */

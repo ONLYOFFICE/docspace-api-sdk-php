@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudUsageWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DocsCloudUsage object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DocsCloudUsageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudUsage|null $response response
+     * @param \OpenAPI\Client\Model\DocsCloudUsage|null $response The DocsCloudUsage object returned by the operation.
      *
      * @return self
      */

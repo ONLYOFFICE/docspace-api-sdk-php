@@ -21,6 +21,7 @@ aiAssignmentsAssign($ai_assignments_assign_request): \OpenAPI\Client\Model\AiAss
 ```
 
 Assign
+Binds a profile to an AI action, creating the assignment or updating it in place. The profile's declared capabilities are validated against the action, except for the `Default` slot.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/).
 
@@ -76,6 +77,7 @@ aiAssignmentsBulkAssign($request_body): \OpenAPI\Client\Model\AiBulkAssignmentRe
 ```
 
 Bulk assign
+Applies many action-to-profile bindings at once. Every entry is validated first and nothing is written if any of them fails, so the assignment set is never left half-written.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/).
 
@@ -131,6 +133,7 @@ aiAssignmentsCascadeProfileDelete($body): \OpenAPI\Client\Model\AiSuccessRespons
 ```
 
 Cascade profile delete
+Cleans up the assignments pointing at a profile that is about to be deleted: the `Default` slot is promoted to the first remaining profile (or dropped when none is left), and every other slot holding that profile is unbound.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/).
 
@@ -186,6 +189,7 @@ aiAssignmentsGetAllAssignments($entity_id): array<string,string>
 ```
 
 Get all assignments
+Returns the full action-to-profile assignment map of the scope.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/).
 
@@ -193,7 +197,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**|  | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -215,7 +219,7 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$entity_id = 'entity_id_example'; // string
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsGetAllAssignments($entity_id);
@@ -241,6 +245,7 @@ aiAssignmentsGetAssignment($action_type): string
 ```
 
 Get assignment
+Returns the profile bound to one AI action, without the `Default` fallback.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/).
 
@@ -248,7 +253,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**|  | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
 
 ### Return type
 
@@ -270,7 +275,7 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$action_type = 'action_type_example'; // string
+$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
 
 try {
     $result = $apiInstance->aiAssignmentsGetAssignment($action_type);
@@ -296,6 +301,7 @@ aiAssignmentsResolveForAction($action_type, $entity_id): \OpenAPI\Client\Model\A
 ```
 
 Resolve for action
+Resolves the profile bound to an AI action, falling back to the `Default` slot when the action itself has none. Fails when neither slot is set or the bound profile no longer exists - use `try-resolve-for-action` for an empty answer instead.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/).
 
@@ -303,8 +309,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**|  | |
-| **entity_id** | **string**|  | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -326,8 +332,8 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$action_type = 'action_type_example'; // string
-$entity_id = 'entity_id_example'; // string
+$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsResolveForAction($action_type, $entity_id);
@@ -353,6 +359,7 @@ aiAssignmentsTryResolveForAction($action_type, $entity_id): \OpenAPI\Client\Mode
 ```
 
 Try resolve for action
+Resolves the profile bound to an AI action exactly like `resolve-for-action`, but answers with an empty result instead of failing when nothing is configured.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/).
 
@@ -360,8 +367,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**|  | |
-| **entity_id** | **string**|  | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
+| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
 
@@ -383,8 +390,8 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$action_type = 'action_type_example'; // string
-$entity_id = 'entity_id_example'; // string
+$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
+$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsTryResolveForAction($action_type, $entity_id);
@@ -410,6 +417,7 @@ aiAssignmentsUnassign($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Unassign
+Removes the profile binding of an AI action. Does nothing when that slot is already empty.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/).
 

@@ -14,6 +14,7 @@ aiVectorizationStartTask($request_body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Start a vectorization task
+Starts a vectorization task over the supplied portal files. The indexing itself runs asynchronously on the .NET side.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/).
 

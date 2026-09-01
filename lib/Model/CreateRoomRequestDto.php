@@ -604,7 +604,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets watermark
      *
-     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The request parameters for adding watermarks.
+     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The watermark settings.
      *
      * @return self
      */
@@ -631,7 +631,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The logo request parameters.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The room logo.
      *
      * @return self
      */

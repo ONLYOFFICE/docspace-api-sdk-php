@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LoginEventArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of LoginEventDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class LoginEventArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\LoginEventDto[]|null $response response
+     * @param \OpenAPI\Client\Model\LoginEventDto[]|null $response The list of LoginEventDto objects returned by the operation.
      *
      * @return self
      */

@@ -1,14 +1,14 @@
-# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.PrivacyroomApi
+# onlyoffice/docspace-api-sdk.OpenAPI\Client\Api.PrivacyRoomApi
 
 All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteKeys()**](PrivacyroomApi.md#deleteKeys) | **DELETE** /api/2.0/privacyroom/keys/{id} | Deletes an encryption key and removes it from the system. |
-| [**getUserKeys()**](PrivacyroomApi.md#getUserKeys) | **GET** /api/2.0/privacyroom/keys | Retrieves encryption keys associated with the current user. |
-| [**getUserKeysForRoom()**](PrivacyroomApi.md#getUserKeysForRoom) | **GET** /api/2.0/privacyroom/{roomId}/access | Retrieves the encryption keys associated with a specific privacy room. |
-| [**replaceKey()**](PrivacyroomApi.md#replaceKey) | **PUT** /api/2.0/privacyroom/keys | Replaces an existing encryption key with a new one for the user. |
-| [**setKeys()**](PrivacyroomApi.md#setKeys) | **POST** /api/2.0/privacyroom/keys | Creates and sets encryption keys for the user. |
+| [**deleteKeys()**](RoomsPrivacyRoomApi.md#deleteKeys) | **DELETE** /api/2.0/privacyroom/keys/{id} | Deletes an encryption key and removes it from the system. |
+| [**getUserKeys()**](RoomsPrivacyRoomApi.md#getUserKeys) | **GET** /api/2.0/privacyroom/keys | Retrieves encryption keys associated with the current user. |
+| [**getUserKeysForRoom()**](RoomsPrivacyRoomApi.md#getUserKeysForRoom) | **GET** /api/2.0/privacyroom/{roomId}/access | Retrieves the encryption keys associated with a specific privacy room. |
+| [**replaceKey()**](RoomsPrivacyRoomApi.md#replaceKey) | **PUT** /api/2.0/privacyroom/keys | Replaces an existing encryption key with a new one for the user. |
+| [**setKeys()**](RoomsPrivacyRoomApi.md#setKeys) | **POST** /api/2.0/privacyroom/keys | Creates and sets encryption keys for the user. |
 
 
 ## `deleteKeys()`
@@ -65,7 +65,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\PrivacyroomApi(
+$apiInstance = new OpenAPI\Client\Api\PrivacyRoomApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -76,14 +76,14 @@ $id = 00000000-0000-0000-0000-000000000000; // string | The unique identifier of
 try {
     $apiInstance->deleteKeys($id);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyroomApi->deleteKeys: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyRoomApi->deleteKeys: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -141,7 +141,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\PrivacyroomApi(
+$apiInstance = new OpenAPI\Client\Api\PrivacyRoomApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -152,7 +152,7 @@ try {
     $result = $apiInstance->getUserKeys();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyroomApi->getUserKeys: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyRoomApi->getUserKeys: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -219,7 +219,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\PrivacyroomApi(
+$apiInstance = new OpenAPI\Client\Api\PrivacyRoomApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -231,7 +231,7 @@ try {
     $result = $apiInstance->getUserKeysForRoom($room_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyroomApi->getUserKeysForRoom: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyRoomApi->getUserKeysForRoom: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -298,7 +298,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\PrivacyroomApi(
+$apiInstance = new OpenAPI\Client\Api\PrivacyRoomApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -310,7 +310,7 @@ try {
     $result = $apiInstance->replaceKey($encryption_key_request_dto);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyroomApi->replaceKey: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyRoomApi->replaceKey: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -377,7 +377,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new OpenAPI\Client\Api\PrivacyroomApi(
+$apiInstance = new OpenAPI\Client\Api\PrivacyRoomApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -389,7 +389,7 @@ try {
     $result = $apiInstance->setKeys($encryption_key_request_dto);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PrivacyroomApi->setKeys: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PrivacyRoomApi->setKeys: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

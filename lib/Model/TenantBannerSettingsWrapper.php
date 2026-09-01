@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantBannerSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantBannerSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class TenantBannerSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantBannerSettings|null $response response
+     * @param \OpenAPI\Client\Model\TenantBannerSettings|null $response The TenantBannerSettings object returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the SettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\SettingsDto|null $response The SettingsDto object returned by the operation.
      *
      * @return self
      */

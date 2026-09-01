@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiEmbeddingPrice Class Doc Comment
  *
  * @category Class
+ * @description The price of an embedding model, per token.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -302,7 +303,7 @@ class AiEmbeddingPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prompt
      *
-     * @param float|null $prompt prompt
+     * @param float|null $prompt The price of a single input token.
      *
      * @return self
      */

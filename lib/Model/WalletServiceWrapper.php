@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WalletServiceWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the WalletServiceDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WalletServiceWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WalletServiceDto|null $response response
+     * @param \OpenAPI\Client\Model\WalletServiceDto|null $response The WalletServiceDto object returned by the operation.
      *
      * @return self
      */

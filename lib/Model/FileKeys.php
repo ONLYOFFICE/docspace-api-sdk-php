@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileKeys Class Doc Comment
  *
  * @category Class
+ * @description The encrypted file key issued to one user.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -337,7 +338,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id user_id
+     * @param string|null $user_id The identifier of the user the file key was issued to.
      *
      * @return self
      */
@@ -364,7 +365,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public_key_id
      *
-     * @param string|null $public_key_id public_key_id
+     * @param string|null $public_key_id The identifier of the key pair the file key is encrypted for.
      *
      * @return self
      */
@@ -391,7 +392,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets private_key_enc
      *
-     * @param string|null $private_key_enc private_key_enc
+     * @param string|null $private_key_enc The file key, encrypted with the public key of the pair.
      *
      * @return self
      */
@@ -425,7 +426,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_id
      *
-     * @param int|null $tenant_id tenant_id
+     * @param int|null $tenant_id The identifier of the portal the file belongs to.
      *
      * @return self
      */
@@ -452,7 +453,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_id
      *
-     * @param int|null $file_id file_id
+     * @param int|null $file_id The identifier of the file the key unlocks.
      *
      * @return self
      */
@@ -479,7 +480,7 @@ class FileKeys implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_on
      *
-     * @param \DateTime|null $create_on create_on
+     * @param \DateTime|null $create_on The date and time when the file key was issued.
      *
      * @return self
      */

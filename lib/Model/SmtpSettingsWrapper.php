@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SmtpSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the SmtpSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class SmtpSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\SmtpSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\SmtpSettingsDto|null $response The SmtpSettingsDto object returned by the operation.
      *
      * @return self
      */

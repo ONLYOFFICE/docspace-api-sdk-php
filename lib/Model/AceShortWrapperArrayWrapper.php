@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AceShortWrapperArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of AceShortWrapper objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AceShortWrapperArrayWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AceShortWrapper[]|null $response response
+     * @param \OpenAPI\Client\Model\AceShortWrapper[]|null $response The list of AceShortWrapper objects returned by the operation.
      *
      * @return self
      */

@@ -64,7 +64,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => 'string',
         'quantity' => 'int',
         'wallet' => 'bool',
-        'due_date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'due_date' => '\DateTime',
         'amount' => 'float',
         'currency' => 'string'
     ];
@@ -83,7 +83,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => null,
         'quantity' => 'int32',
         'wallet' => null,
-        'due_date' => null,
+        'due_date' => 'date-time',
         'amount' => 'double',
         'currency' => null
     ];
@@ -100,7 +100,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => true,
         'quantity' => false,
         'wallet' => false,
-        'due_date' => false,
+        'due_date' => true,
         'amount' => false,
         'currency' => true
     ];
@@ -532,7 +532,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets due_date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getDueDate()
     {
@@ -542,14 +542,21 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets due_date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $due_date The API date and time parameters.
+     * @param \DateTime|null $due_date The due date of the upcoming payment in the portal time zone.
      *
      * @return self
      */
     public function setDueDate($due_date)
     {
         if (is_null($due_date)) {
-            throw new \InvalidArgumentException('non-nullable due_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'due_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('due_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['due_date'] = $due_date;
 

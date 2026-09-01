@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * OwnerChangeInstructionsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the OwnerChangeInstructionsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class OwnerChangeInstructionsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\OwnerChangeInstructionsDto|null $response response
+     * @param \OpenAPI\Client\Model\OwnerChangeInstructionsDto|null $response The OwnerChangeInstructionsDto object returned by the operation.
      *
      * @return self
      */

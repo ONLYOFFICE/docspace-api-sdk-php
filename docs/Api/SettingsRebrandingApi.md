@@ -26,7 +26,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `deleteAdditionalWhiteLabelSettings()`
 
 ```php
-deleteAdditionalWhiteLabelSettings(): \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper
+deleteAdditionalWhiteLabelSettings(): \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper
 ```
 
 Delete the additional white label settings
@@ -40,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper**](../Model/AdditionalWhiteLabelSettingsWrapper.md)
+[**\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper**](../Model/AdditionalWhiteLabelSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ try {
 ## `deleteCompanyWhiteLabelSettings()`
 
 ```php
-deleteCompanyWhiteLabelSettings(): \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper
+deleteCompanyWhiteLabelSettings(): \OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper
 ```
 
 Delete the company white label settings
@@ -116,7 +116,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper**](../Model/CompanyWhiteLabelSettingsWrapper.md)
+[**\OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper**](../Model/CompanyWhiteLabelSettingsResponseWrapper.md)
 
 ### Authorization
 
@@ -178,7 +178,7 @@ try {
 ## `getAdditionalWhiteLabelSettings()`
 
 ```php
-getAdditionalWhiteLabelSettings(): \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper
+getAdditionalWhiteLabelSettings(): \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper
 ```
 
 Get the additional white label settings
@@ -192,7 +192,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper**](../Model/AdditionalWhiteLabelSettingsWrapper.md)
+[**\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper**](../Model/AdditionalWhiteLabelSettingsDtoWrapper.md)
 
 ### Authorization
 
@@ -254,7 +254,7 @@ try {
 ## `getCompanyWhiteLabelSettings()`
 
 ```php
-getCompanyWhiteLabelSettings(): \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper
+getCompanyWhiteLabelSettings(): \OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper
 ```
 
 Get the company white label settings
@@ -268,7 +268,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper**](../Model/CompanyWhiteLabelSettingsWrapper.md)
+[**\OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper**](../Model/CompanyWhiteLabelSettingsDtoWrapper.md)
 
 ### Authorization
 

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiPricesResponse Class Doc Comment
  *
  * @category Class
+ * @description The AI price list: per-model pricing for every model kind, in a single currency.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -345,7 +346,7 @@ class AiPricesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets chat
      *
-     * @param \OpenAPI\Client\Model\AiChatModelPricing[]|null $chat chat
+     * @param \OpenAPI\Client\Model\AiChatModelPricing[]|null $chat The pricing of every available chat model.
      *
      * @return self
      */
@@ -379,7 +380,7 @@ class AiPricesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets embedding
      *
-     * @param \OpenAPI\Client\Model\AiEmbeddingModelPricing[]|null $embedding embedding
+     * @param \OpenAPI\Client\Model\AiEmbeddingModelPricing[]|null $embedding The pricing of every available embedding model.
      *
      * @return self
      */
@@ -413,7 +414,7 @@ class AiPricesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param \OpenAPI\Client\Model\AiImageModelPricing[]|null $image image
+     * @param \OpenAPI\Client\Model\AiImageModelPricing[]|null $image The pricing of every available image model.
      *
      * @return self
      */
@@ -447,7 +448,7 @@ class AiPricesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets search
      *
-     * @param \OpenAPI\Client\Model\AiWebSearchPricing[]|null $search search
+     * @param \OpenAPI\Client\Model\AiWebSearchPricing[]|null $search The pricing of every available web search provider.
      *
      * @return self
      */
@@ -481,7 +482,7 @@ class AiPricesResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param \OpenAPI\Client\Model\CurrencyInfo $currency currency
+     * @param \OpenAPI\Client\Model\CurrencyInfo $currency The currency the AI prices are quoted in.
      *
      * @return self
      */

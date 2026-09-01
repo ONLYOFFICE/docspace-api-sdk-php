@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * KeyValuePairBooleanStringWrapper Class Doc Comment
+ * AdditionalWhiteLabelSettingsResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AdditionalWhiteLabelSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KeyValuePairBooleanStringWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
+class AdditionalWhiteLabelSettingsResponseWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class KeyValuePairBooleanStringWrapper implements ModelInterface, ArrayAccess, \
      *
      * @var string
      */
-    protected static $openAPIModelName = 'KeyValuePairBooleanStringWrapper';
+    protected static $openAPIModelName = 'AdditionalWhiteLabelSettingsResponseWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +58,7 @@ class KeyValuePairBooleanStringWrapper implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\KeyValuePairBooleanString',
+        'response' => '\OpenAPI\Client\Model\AdditionalWhiteLabelSettings',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -320,7 +321,7 @@ class KeyValuePairBooleanStringWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\KeyValuePairBooleanString|null
+     * @return \OpenAPI\Client\Model\AdditionalWhiteLabelSettings|null
      */
     public function getResponse()
     {
@@ -330,7 +331,7 @@ class KeyValuePairBooleanStringWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\KeyValuePairBooleanString|null $response response
+     * @param \OpenAPI\Client\Model\AdditionalWhiteLabelSettings|null $response The AdditionalWhiteLabelSettings object returned by the operation.
      *
      * @return self
      */

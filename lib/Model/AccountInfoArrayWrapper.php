@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AccountInfoArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of AccountInfoDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AccountInfoArrayWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AccountInfoDto[]|null $response response
+     * @param \OpenAPI\Client\Model\AccountInfoDto[]|null $response The list of AccountInfoDto objects returned by the operation.
      *
      * @return self
      */

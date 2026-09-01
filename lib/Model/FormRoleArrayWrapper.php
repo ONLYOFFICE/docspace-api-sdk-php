@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormRoleArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of FormRoleDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class FormRoleArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FormRoleDto[]|null $response response
+     * @param \OpenAPI\Client\Model\FormRoleDto[]|null $response The list of FormRoleDto objects returned by the operation.
      *
      * @return self
      */

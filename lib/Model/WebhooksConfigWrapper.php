@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhooksConfigWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the WebhooksConfigDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class WebhooksConfigWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WebhooksConfigDto|null $response response
+     * @param \OpenAPI\Client\Model\WebhooksConfigDto|null $response The WebhooksConfigDto object returned by the operation.
      *
      * @return self
      */

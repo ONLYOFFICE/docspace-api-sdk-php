@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UploadResultWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the UploadResultDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class UploadResultWrapper implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\UploadResultDto|null $response response
+     * @param \OpenAPI\Client\Model\UploadResultDto|null $response The UploadResultDto object returned by the operation.
      *
      * @return self
      */

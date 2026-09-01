@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAiUserSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the AiUserSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class AiAiUserSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AiAiUserSettingsDto|null $response response
+     * @param \OpenAPI\Client\Model\AiAiUserSettingsDto|null $response The AiUserSettingsDto object returned by the operation.
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocumentBuilderTaskWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the DocumentBuilderTaskDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class DocumentBuilderTaskWrapper implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $response response
+     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $response The DocumentBuilderTaskDto object returned by the operation.
      *
      * @return self
      */

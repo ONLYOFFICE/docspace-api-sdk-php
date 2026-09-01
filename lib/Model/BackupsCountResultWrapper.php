@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupsCountResultWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the BackupsCountResultDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class BackupsCountResultWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupsCountResultDto|null $response response
+     * @param \OpenAPI\Client\Model\BackupsCountResultDto|null $response The BackupsCountResultDto object returned by the operation.
      *
      * @return self
      */

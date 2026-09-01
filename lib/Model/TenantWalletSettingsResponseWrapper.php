@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * NoContentResult Class Doc Comment
+ * TenantWalletSettingsResponseWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the TenantWalletSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class TenantWalletSettingsResponseWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'NoContentResult';
+    protected static $openAPIModelName = 'TenantWalletSettingsResponseWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,6 +58,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
+        'response' => '\OpenAPI\Client\Model\TenantWalletSettings',
+        'count' => 'int',
+        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
+        'status' => 'int',
         'status_code' => 'int'
     ];
 
@@ -68,6 +73,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'response' => null,
+        'count' => 'int32',
+        'links' => null,
+        'status' => 'int32',
         'status_code' => 'int32'
     ];
 
@@ -77,6 +86,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
+        'response' => false,
+        'count' => false,
+        'links' => false,
+        'status' => false,
         'status_code' => false
     ];
 
@@ -166,6 +179,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'response' => 'response',
+        'count' => 'count',
+        'links' => 'links',
+        'status' => 'status',
         'status_code' => 'statusCode'
     ];
 
@@ -175,6 +192,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'response' => 'setResponse',
+        'count' => 'setCount',
+        'links' => 'setLinks',
+        'status' => 'setStatus',
         'status_code' => 'setStatusCode'
     ];
 
@@ -184,6 +205,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'response' => 'getResponse',
+        'count' => 'getCount',
+        'links' => 'getLinks',
+        'status' => 'getStatus',
         'status_code' => 'getStatusCode'
     ];
 
@@ -244,6 +269,10 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('response', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('status_code', $data ?? [], null);
     }
 
@@ -290,6 +319,114 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets response
+     *
+     * @return \OpenAPI\Client\Model\TenantWalletSettings|null
+     */
+    public function getResponse()
+    {
+        return $this->container['response'];
+    }
+
+    /**
+     * Sets response
+     *
+     * @param \OpenAPI\Client\Model\TenantWalletSettings|null $response The TenantWalletSettings object returned by the operation.
+     *
+     * @return self
+     */
+    public function setResponse($response)
+    {
+        if (is_null($response)) {
+            throw new \InvalidArgumentException('non-nullable response cannot be null');
+        }
+        $this->container['response'] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count The total number of items in the response
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status HTTP status code of the response
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
      * Gets status_code
      *
      * @return int|null
@@ -302,7 +439,7 @@ class NoContentResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status_code
      *
-     * @param int|null $status_code status_code
+     * @param int|null $status_code HTTP status code of the response (duplicate of status)
      *
      * @return self
      */

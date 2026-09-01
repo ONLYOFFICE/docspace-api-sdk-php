@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * QuotaArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of QuotaDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class QuotaArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\QuotaDto[]|null $response response
+     * @param \OpenAPI\Client\Model\QuotaDto[]|null $response The list of QuotaDto objects returned by the operation.
      *
      * @return self
      */

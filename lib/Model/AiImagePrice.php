@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImagePrice Class Doc Comment
  *
  * @category Class
+ * @description The price of an image model: per prompt token and per generated image.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +317,7 @@ class AiImagePrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prompt
      *
-     * @param float|null $prompt prompt
+     * @param float|null $prompt The price of a single prompt token.
      *
      * @return self
      */
@@ -343,7 +344,7 @@ class AiImagePrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets completion
      *
-     * @param float|null $completion completion
+     * @param float|null $completion The cost associated with the completion of a prompt in an AI model.
      *
      * @return self
      */
@@ -370,7 +371,7 @@ class AiImagePrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param float|null $image image
+     * @param float|null $image The price of a single generated image.
      *
      * @return self
      */

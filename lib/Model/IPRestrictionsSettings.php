@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * IPRestrictionsSettings Class Doc Comment
  *
  * @category Class
+ * @description The IP restriction settings.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -309,7 +310,7 @@ class IPRestrictionsSettings implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets enable
      *
-     * @param bool|null $enable enable
+     * @param bool|null $enable Specifies if the IP restrictions are enabled or not.
      *
      * @return self
      */
@@ -336,7 +337,7 @@ class IPRestrictionsSettings implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets last_modified
      *
-     * @param \DateTime|null $last_modified last_modified
+     * @param \DateTime|null $last_modified The date and time when the settings were last modified.
      *
      * @return self
      */

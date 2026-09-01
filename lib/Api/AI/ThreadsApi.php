@@ -1646,7 +1646,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
      *
-     * @param  string $thread_id thread_id (required)
+     * @param  string $thread_id The chat thread identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1667,7 +1667,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
      *
-     * @param  string $thread_id (required)
+     * @param  string $thread_id The chat thread identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1769,7 +1769,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
      *
-     * @param  string $thread_id (required)
+     * @param  string $thread_id The chat thread identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1793,7 +1793,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
      *
-     * @param  string $thread_id (required)
+     * @param  string $thread_id The chat thread identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1843,7 +1843,7 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsGetById'
      *
-     * @param  string $thread_id (required)
+     * @param  string $thread_id The chat thread identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1941,7 +1941,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
      *
-     * @param  string $message_id message_id (required)
+     * @param  string $message_id The globally unique chat message identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetMessageById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1962,7 +1962,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
      *
-     * @param  string $message_id (required)
+     * @param  string $message_id The globally unique chat message identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetMessageById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2064,7 +2064,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
      *
-     * @param  string $message_id (required)
+     * @param  string $message_id The globally unique chat message identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetMessageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2088,7 +2088,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
      *
-     * @param  string $message_id (required)
+     * @param  string $message_id The globally unique chat message identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetMessageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2138,7 +2138,7 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsGetMessageById'
      *
-     * @param  string $message_id (required)
+     * @param  string $message_id The globally unique chat message identifier. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsGetMessageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2236,17 +2236,17 @@ class ThreadsApi
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
-     * @param  string $entity_id entity_id (required)
-     * @param  string $count count (required)
-     * @param  string $cursor cursor (required)
-     * @param  string $query query (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiThreadsList($entity_id, $count, $cursor, $query, string $contentType = self::contentTypes['aiThreadsList'][0])
+    public function aiThreadsList($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
         list($response) = $this->aiThreadsListWithHttpInfo($entity_id, $count, $cursor, $query, $contentType);
         return $response;
@@ -2260,17 +2260,17 @@ class ThreadsApi
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
-     * @param  string $entity_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $query (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiThreadsListWithHttpInfo($entity_id, $count, $cursor, $query, string $contentType = self::contentTypes['aiThreadsList'][0])
+    public function aiThreadsListWithHttpInfo($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
         $request = $this->aiThreadsListRequest($entity_id, $count, $cursor, $query, $contentType);
 
@@ -2365,16 +2365,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
-     * @param  string $entity_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $query (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsListAsync($entity_id, $count, $cursor, $query, string $contentType = self::contentTypes['aiThreadsList'][0])
+    public function aiThreadsListAsync($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
         return $this->aiThreadsListAsyncWithHttpInfo($entity_id, $count, $cursor, $query, $contentType)
             ->then(
@@ -2392,16 +2392,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
-     * @param  string $entity_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $query (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsListAsyncWithHttpInfo($entity_id, $count, $cursor, $query, string $contentType = self::contentTypes['aiThreadsList'][0])
+    public function aiThreadsListAsyncWithHttpInfo($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiThread[]';
         $request = $this->aiThreadsListRequest($entity_id, $count, $cursor, $query, $contentType);
@@ -2445,45 +2445,21 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsList'
      *
-     * @param  string $entity_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $query (required)
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiThreadsListRequest($entity_id, $count, $cursor, $query, string $contentType = self::contentTypes['aiThreadsList'][0])
+    public function aiThreadsListRequest($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
 
-        // verify the required parameter 'entity_id' is set
-        if ($entity_id === null || (is_array($entity_id) && count($entity_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $entity_id when calling aiThreadsList'
-            );
-        }
 
-        // verify the required parameter 'count' is set
-        if ($count === null || (is_array($count) && count($count) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $count when calling aiThreadsList'
-            );
-        }
 
-        // verify the required parameter 'cursor' is set
-        if ($cursor === null || (is_array($cursor) && count($cursor) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $cursor when calling aiThreadsList'
-            );
-        }
 
-        // verify the required parameter 'query' is set
-        if ($query === null || (is_array($query) && count($query) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $query when calling aiThreadsList'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/threads/list';
@@ -2500,7 +2476,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2509,7 +2485,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2518,7 +2494,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -2527,7 +2503,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
         if ($this->fields !== null) {
@@ -2889,17 +2865,17 @@ class ThreadsApi
      * REST API Reference for aiThreadsReadMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
-     * @param  string $thread_id thread_id (required)
-     * @param  string $count count (required)
-     * @param  string $cursor cursor (required)
-     * @param  string $direction direction (required)
+     * @param  string $thread_id The chat thread identifier. (required)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiThreadsReadMessages($thread_id, $count, $cursor, $direction, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
+    public function aiThreadsReadMessages($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
         list($response) = $this->aiThreadsReadMessagesWithHttpInfo($thread_id, $count, $cursor, $direction, $contentType);
         return $response;
@@ -2913,17 +2889,17 @@ class ThreadsApi
      * REST API Reference for aiThreadsReadMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
-     * @param  string $thread_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $direction (required)
+     * @param  string $thread_id The chat thread identifier. (required)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiThreadsReadMessagesWithHttpInfo($thread_id, $count, $cursor, $direction, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
+    public function aiThreadsReadMessagesWithHttpInfo($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
         $request = $this->aiThreadsReadMessagesRequest($thread_id, $count, $cursor, $direction, $contentType);
 
@@ -3018,16 +2994,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsReadMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
-     * @param  string $thread_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $direction (required)
+     * @param  string $thread_id The chat thread identifier. (required)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsReadMessagesAsync($thread_id, $count, $cursor, $direction, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
+    public function aiThreadsReadMessagesAsync($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
         return $this->aiThreadsReadMessagesAsyncWithHttpInfo($thread_id, $count, $cursor, $direction, $contentType)
             ->then(
@@ -3045,16 +3021,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsReadMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
-     * @param  string $thread_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $direction (required)
+     * @param  string $thread_id The chat thread identifier. (required)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsReadMessagesAsyncWithHttpInfo($thread_id, $count, $cursor, $direction, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
+    public function aiThreadsReadMessagesAsyncWithHttpInfo($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiThreadMessageLike[]';
         $request = $this->aiThreadsReadMessagesRequest($thread_id, $count, $cursor, $direction, $contentType);
@@ -3098,16 +3074,16 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsReadMessages'
      *
-     * @param  string $thread_id (required)
-     * @param  string $count (required)
-     * @param  string $cursor (required)
-     * @param  string $direction (required)
+     * @param  string $thread_id The chat thread identifier. (required)
+     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
+     * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiThreadsReadMessagesRequest($thread_id, $count, $cursor, $direction, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
+    public function aiThreadsReadMessagesRequest($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
 
         // verify the required parameter 'thread_id' is set
@@ -3117,26 +3093,8 @@ class ThreadsApi
             );
         }
 
-        // verify the required parameter 'count' is set
-        if ($count === null || (is_array($count) && count($count) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $count when calling aiThreadsReadMessages'
-            );
-        }
 
-        // verify the required parameter 'cursor' is set
-        if ($cursor === null || (is_array($cursor) && count($cursor) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $cursor when calling aiThreadsReadMessages'
-            );
-        }
 
-        // verify the required parameter 'direction' is set
-        if ($direction === null || (is_array($direction) && count($direction) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $direction when calling aiThreadsReadMessages'
-            );
-        }
 
 
         $resourcePath = '/api/2.0/ai/threads/read-messages';
@@ -3162,7 +3120,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3171,7 +3129,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -3180,7 +3138,7 @@ class ThreadsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
         if ($this->fields !== null) {

@@ -15,6 +15,7 @@ aiOpenaiChatCompletions($profile_id, $request_body): \OpenAPI\Client\Model\AiSuc
 ```
 
 OpenAI-compatible chat completions proxied to the profile's provider
+OpenAI-compatible chat completions for the document editor's AI plugin. The profile is resolved server-side, its credentials are attached, and the body is forwarded to the provider verbatim - the payload is owned by the plugin's SDK on one end and the provider on the other. A client disconnect cancels the provider call.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/).
 
@@ -22,7 +23,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| The AI provider profile identifier. | |
 | **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
 
 ### Return type
@@ -45,7 +46,7 @@ $apiInstance = new OpenAPI\Client\Api\OpenAIPassthroughApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | The AI provider profile identifier.
 $request_body = NULL; // array<string,mixed>
 
 try {
@@ -72,6 +73,7 @@ aiOpenaiImagesGenerations($profile_id, $request_body): \OpenAPI\Client\Model\AiS
 ```
 
 OpenAI-compatible image generation proxied to the profile's provider
+OpenAI-compatible image generation for the document editor's AI plugin. As with the chat-completions passthrough, the profile's credentials are attached server-side and the body reaches the provider unchanged.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/).
 
@@ -79,7 +81,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| The AI provider profile identifier. | |
 | **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
 
 ### Return type
@@ -102,7 +104,7 @@ $apiInstance = new OpenAPI\Client\Api\OpenAIPassthroughApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | The AI provider profile identifier.
 $request_body = NULL; // array<string,mixed>
 
 try {

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThirdPartyParamsArrayWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the list of ThirdPartyParams objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class ThirdPartyParamsArrayWrapper implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ThirdPartyParams[]|null $response response
+     * @param \OpenAPI\Client\Model\ThirdPartyParams[]|null $response The list of ThirdPartyParams objects returned by the operation.
      *
      * @return self
      */

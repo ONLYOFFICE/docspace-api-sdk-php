@@ -320,7 +320,7 @@ class AiPromptMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the prompt was persisted.
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class AiPromptMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets prompt
      *
-     * @param \OpenAPI\Client\Model\AiPrompt|null $prompt prompt
+     * @param \OpenAPI\Client\Model\AiPrompt|null $prompt The persisted prompt. Present on success.
      *
      * @return self
      */
@@ -374,7 +374,7 @@ class AiPromptMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the prompt was rejected. Present on failure.
      *
      * @return self
      */

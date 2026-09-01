@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ImportableApiEntity Class Doc Comment
  *
  * @category Class
+ * @description The parameters of an importable API entity.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -302,7 +303,7 @@ class ImportableApiEntity implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets should_import
      *
-     * @param bool|null $should_import should_import
+     * @param bool|null $should_import Specifies whether the API entity should be imported.
      *
      * @return self
      */

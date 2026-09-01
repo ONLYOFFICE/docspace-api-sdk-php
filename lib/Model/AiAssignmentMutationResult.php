@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAssignmentMutationResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of  {@link  AssignmentsEngine.assign }  /  {@link  AssignmentsEngine.unassign } . Either a success or a field-scoped error suitable for displaying in the profile editor.
+ * @description Outcome of `AssignmentsEngine.assign` / `AssignmentsEngine.unassign`. Either a success or a field-scoped error suitable for displaying in the profile editor.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class AiAssignmentMutationResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets success
      *
-     * @param bool $success success
+     * @param bool $success True when the assignment was persisted.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class AiAssignmentMutationResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error error
+     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the assignment was rejected. Present on failure.
      *
      * @return self
      */

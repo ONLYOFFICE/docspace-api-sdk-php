@@ -61,7 +61,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'title' => 'string',
         'share_link' => 'string',
-        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
+        'expiration_date' => '\DateTime',
         'link_type' => '\OpenAPI\Client\Model\LinkType',
         'password' => 'string',
         'deny_download' => 'bool',
@@ -84,7 +84,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'uuid',
         'title' => null,
         'share_link' => null,
-        'expiration_date' => null,
+        'expiration_date' => 'date-time',
         'link_type' => null,
         'password' => null,
         'deny_download' => null,
@@ -105,7 +105,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'title' => true,
         'share_link' => true,
-        'expiration_date' => false,
+        'expiration_date' => true,
         'link_type' => false,
         'password' => true,
         'deny_download' => true,
@@ -472,7 +472,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
+     * @return \DateTime|null
      */
     public function getExpirationDate()
     {
@@ -482,14 +482,21 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date The API date and time parameters.
+     * @param \DateTime|null $expiration_date The date when the shared link expires.
      *
      * @return self
      */
     public function setExpirationDate($expiration_date)
     {
         if (is_null($expiration_date)) {
-            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'expiration_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expiration_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['expiration_date'] = $expiration_date;
 

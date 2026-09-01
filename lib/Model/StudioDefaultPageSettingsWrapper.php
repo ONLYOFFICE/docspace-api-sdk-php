@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StudioDefaultPageSettingsWrapper Class Doc Comment
  *
  * @category Class
+ * @description The successful API response containing the StudioDefaultPageSettings object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +331,7 @@ class StudioDefaultPageSettingsWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\StudioDefaultPageSettings|null $response response
+     * @param \OpenAPI\Client\Model\StudioDefaultPageSettings|null $response The StudioDefaultPageSettings object returned by the operation.
      *
      * @return self
      */

@@ -317,7 +317,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets form
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $form The file parameters.
+     * @param \OpenAPI\Client\Model\FileDtoInteger|null $form The original form file information.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets task
      *
-     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $task The Document Builder task parameters.
+     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $task The Document Builder task information.
      *
      * @return self
      */

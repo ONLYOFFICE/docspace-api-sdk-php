@@ -246,7 +246,7 @@ try {
 ## `tfaAppGenerateSetupCode()`
 
 ```php
-tfaAppGenerateSetupCode(): \OpenAPI\Client\Model\SetupCodeWrapper
+tfaAppGenerateSetupCode(): \OpenAPI\Client\Model\TfaSetupCodeWrapper
 ```
 
 Generate setup code
@@ -260,7 +260,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SetupCodeWrapper**](../Model/SetupCodeWrapper.md)
+[**\OpenAPI\Client\Model\TfaSetupCodeWrapper**](../Model/TfaSetupCodeWrapper.md)
 
 ### Authorization
 

@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiOpenAIToolCallDeltaFunction Class Doc Comment
  *
  * @category Class
+ * @description The call itself: the function name and its JSON-encoded arguments.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

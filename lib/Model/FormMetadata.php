@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormMetadata Class Doc Comment
  *
  * @category Class
+ * @description The metadata of a single form field.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

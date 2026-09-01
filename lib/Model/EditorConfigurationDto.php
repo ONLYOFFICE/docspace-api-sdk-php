@@ -515,7 +515,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets embedded
      *
-     * @param \OpenAPI\Client\Model\EmbeddedConfig|null $embedded The configuration parameters for the embedded document type.
+     * @param \OpenAPI\Client\Model\EmbeddedConfig|null $embedded The embedded configuration parameters for embedded documents.
      *
      * @return self
      */
@@ -671,7 +671,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets plugins
      *
-     * @param \OpenAPI\Client\Model\PluginsConfig|null $plugins The configuration settings to connect the special add-ons.
+     * @param \OpenAPI\Client\Model\PluginsConfig|null $plugins The plugins configuration.
      *
      * @return self
      */
@@ -766,7 +766,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\UserConfig|null $user The configuration parameters of the user currently viewing or editing the document.
+     * @param \OpenAPI\Client\Model\UserConfig|null $user The user configuration of the editor.
      *
      * @return self
      */

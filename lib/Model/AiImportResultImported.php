@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportResultImported Class Doc Comment
  *
  * @category Class
+ * @description How many folders and prompts were created. Present on success.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

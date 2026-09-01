@@ -33,7 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportMode Class Doc Comment
  *
  * @category Class
- * @description Mode passed to  {@link  PromptsEngine.importBundle } .
+ * @description Mode passed to `PromptsEngine.importBundle`.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
