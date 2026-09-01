@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**\OpenAPI\Client\Model\Status**](Status.md) |  |
-**id** | **string** | The external data ID. |
-**title** | **string** | The external data title. |
-**type** | [**\OpenAPI\Client\Model\FileEntryType**](FileEntryType.md) |  | [optional]
+**status** | [**\OpenAPI\Client\Model\Status**](Status.md) | The external data status. |
+**id** | **string** | The external data ID. | [optional]
+**title** | **string** | The external data title. | [optional]
+**type** | [**\OpenAPI\Client\Model\FileEntryType**](FileEntryType.md) | The type of the external data. | [optional]
 **tenant_id** | **int** | The tenant ID. |
 **entity_id** | **string** | The unique identifier of the shared entity. | [optional]
 **entity_title** | **string** | The title of the shared entity. | [optional]
-**entity_type** | [**\OpenAPI\Client\Model\FileEntryType**](FileEntryType.md) |  | [optional]
+**entity_type** | [**\OpenAPI\Client\Model\FileEntryType**](FileEntryType.md) | The entry type of the external data. | [optional]
 **is_room** | **bool** | Indicates whether the entity represents a room. | [optional]
 **shared** | **bool** | Specifies whether to share the external data or not. |
 **link_id** | **string** | The link ID of the external data. |

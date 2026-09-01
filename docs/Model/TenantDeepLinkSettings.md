@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**handling_mode** | [**\OpenAPI\Client\Model\DeepLinkHandlingMode**](DeepLinkHandlingMode.md) |  | [optional]
-**last_modified** | **\DateTime** |  | [optional]
+**handling_mode** | [**\OpenAPI\Client\Model\DeepLinkHandlingMode**](DeepLinkHandlingMode.md) | The deep link handling mode. | [optional]
+**last_modified** | **\DateTime** | The timestamp indicating when the settings were last modified. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

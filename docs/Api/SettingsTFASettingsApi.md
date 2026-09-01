@@ -5,20 +5,20 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getTfaAppCodes()**](SettingsTFASettingsApi.md#getTfaAppCodes) | **GET** /api/2.0/settings/tfaappcodes | Get the TFA codes |
-| [**getTfaConfirmUrl()**](SettingsTFASettingsApi.md#getTfaConfirmUrl) | **GET** /api/2.0/settings/tfaapp/confirm | Get confirmation email |
+| [**getTfaConfirmData()**](SettingsTFASettingsApi.md#getTfaConfirmData) | **GET** /api/2.0/settings/tfaapp/confirm | Get TFA confirmation data |
 | [**getTfaSettings()**](SettingsTFASettingsApi.md#getTfaSettings) | **GET** /api/2.0/settings/tfaapp | Get the TFA settings |
 | [**tfaAppGenerateSetupCode()**](SettingsTFASettingsApi.md#tfaAppGenerateSetupCode) | **GET** /api/2.0/settings/tfaapp/setup | Generate setup code |
 | [**tfaValidateAuthCode()**](SettingsTFASettingsApi.md#tfaValidateAuthCode) | **POST** /api/2.0/settings/tfaapp/validate | Validate the TFA code |
 | [**unlinkTfaApp()**](SettingsTFASettingsApi.md#unlinkTfaApp) | **PUT** /api/2.0/settings/tfaappnewapp | Unlink the TFA application |
 | [**updateTfaAppCodes()**](SettingsTFASettingsApi.md#updateTfaAppCodes) | **PUT** /api/2.0/settings/tfaappnewcodes | Update the TFA codes |
 | [**updateTfaSettings()**](SettingsTFASettingsApi.md#updateTfaSettings) | **PUT** /api/2.0/settings/tfaapp | Update the TFA settings |
-| [**updateTfaSettingsLink()**](SettingsTFASettingsApi.md#updateTfaSettingsLink) | **PUT** /api/2.0/settings/tfaappwithlink | Get a confirmation email for updating TFA settings |
+| [**updateTfaSettingsLink()**](SettingsTFASettingsApi.md#updateTfaSettingsLink) | **PUT** /api/2.0/settings/tfaappwithlink | Updates TFA settings |
 
 
 ## `getTfaAppCodes()`
 
 ```php
-getTfaAppCodes(): \OpenAPI\Client\Model\ObjectArrayWrapper
+getTfaAppCodes(): \OpenAPI\Client\Model\TfaAppCodeArrayWrapper
 ```
 
 Get the TFA codes
@@ -32,7 +32,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectArrayWrapper**](../Model/ObjectArrayWrapper.md)
+[**\OpenAPI\Client\Model\TfaAppCodeArrayWrapper**](../Model/TfaAppCodeArrayWrapper.md)
 
 ### Authorization
 
@@ -65,7 +65,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
@@ -92,16 +91,16 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getTfaConfirmUrl()`
+## `getTfaConfirmData()`
 
 ```php
-getTfaConfirmUrl(): \OpenAPI\Client\Model\StringWrapper
+getTfaConfirmData(): \OpenAPI\Client\Model\TfaConfirmDataWrapper
 ```
 
-Get confirmation email
-Returns the confirmation email URL for authorization via SMS or TFA application.
+Get TFA confirmation data
+Returns the confirmation data for authorization via SMS or TFA application.
 
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-confirm-url/).
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-confirm-data/).
 
 ### Parameters
 
@@ -109,7 +108,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\StringWrapper**](../Model/StringWrapper.md)
+[**\OpenAPI\Client\Model\TfaConfirmDataWrapper**](../Model/TfaConfirmDataWrapper.md)
 
 ### Authorization
 
@@ -144,7 +143,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -153,10 +151,10 @@ $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
 );
 
 try {
-    $result = $apiInstance->getTfaConfirmUrl();
+    $result = $apiInstance->getTfaConfirmData();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling TFASettingsApi->getTfaConfirmUrl: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling TFASettingsApi->getTfaConfirmData: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -219,7 +217,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
@@ -298,7 +295,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -375,7 +371,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
@@ -457,7 +452,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -486,7 +480,7 @@ try {
 ## `updateTfaAppCodes()`
 
 ```php
-updateTfaAppCodes(): \OpenAPI\Client\Model\ObjectArrayWrapper
+updateTfaAppCodes(): \OpenAPI\Client\Model\TfaAppCodeArrayWrapper
 ```
 
 Update the TFA codes
@@ -500,7 +494,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectArrayWrapper**](../Model/ObjectArrayWrapper.md)
+[**\OpenAPI\Client\Model\TfaAppCodeArrayWrapper**](../Model/TfaAppCodeArrayWrapper.md)
 
 ### Authorization
 
@@ -533,7 +527,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
@@ -614,7 +607,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -646,8 +638,8 @@ try {
 updateTfaSettingsLink($tfa_requests_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
-Get a confirmation email for updating TFA settings
-Returns the confirmation email URL for updating TFA settings.
+Updates TFA settings
+Updates TFA settings and returns the confirmation URL for authorization via SMS or TFA application.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/).
 
@@ -692,7 +684,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\TFASettingsApi(

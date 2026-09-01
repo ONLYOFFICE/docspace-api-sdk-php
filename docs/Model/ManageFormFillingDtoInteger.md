@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **form_id** | **int** | The ID of the form to manage. |
-**action** | [**\OpenAPI\Client\Model\FormFillingManageAction**](FormFillingManageAction.md) |  | [optional]
+**action** | [**\OpenAPI\Client\Model\FormFillingManageAction**](FormFillingManageAction.md) | The action to perform on the form. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

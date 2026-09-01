@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **secret_key** | **string** | The webhook secret key used to sign the webhook payloads for the security verification. | [optional]
 **enabled** | **bool** | Specifies whether the webhook configuration is active or not. | [optional]
 **ssl** | **bool** | Specifies whether the SSL certificate verification is required or not. | [optional]
-**triggers** | [**\OpenAPI\Client\Model\WebhookTrigger**](WebhookTrigger.md) |  | [optional]
+**triggers** | [**\OpenAPI\Client\Model\WebhookTrigger**](WebhookTrigger.md) | The webhook trigger type. | [optional]
 **target_id** | **string** | Target ID | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

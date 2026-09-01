@@ -1,0 +1,44 @@
+# # AiFileEntryDtoInteger
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**title** | **string** | The file entry title. | [optional]
+**access** | [**\OpenAPI\Client\Model\AiFileShare**](AiFileShare.md) | The access rights to the file entry. | [optional]
+**shared_by** | [**\OpenAPI\Client\Model\AiEmployeeDto**](AiEmployeeDto.md) | Provides information about the employee who shared the file or folder. | [optional]
+**owned_by** | [**\OpenAPI\Client\Model\AiEmployeeDto**](AiEmployeeDto.md) | The information about the employee who owns the file entry. | [optional]
+**shared** | **bool** | Specifies if the file entry is shared via link or not. | [optional]
+**shared_for_user** | **bool** | Specifies if the file entry is shared for user or not. | [optional]
+**shared_external** | **bool** | Specifies if the file entry is shared via a public (non-internal) external link. | [optional]
+**parent_shared** | **bool** | Indicates whether the parent entity is shared. | [optional]
+**short_web_url** | **string** | The short Web URL. | [optional]
+**created** | [**\OpenAPI\Client\Model\AiApiDateTime**](AiApiDateTime.md) | The creation date and time of the file entry. | [optional]
+**created_by** | [**\OpenAPI\Client\Model\AiEmployeeDto**](AiEmployeeDto.md) | The file entry author. | [optional]
+**updated** | [**\OpenAPI\Client\Model\AiApiDateTime**](AiApiDateTime.md) | The last date and time when the file entry was updated. | [optional]
+**auto_delete** | [**\OpenAPI\Client\Model\AiApiDateTime**](AiApiDateTime.md) | The date and time when the file entry will be automatically deleted. | [optional]
+**root_folder_type** | [**\OpenAPI\Client\Model\AiFolderType**](AiFolderType.md) | The root folder type of the file entry. | [optional]
+**parent_room_type** | [**\OpenAPI\Client\Model\AiFolderType**](AiFolderType.md) | The parent room type of the file entry. | [optional]
+**updated_by** | [**\OpenAPI\Client\Model\AiEmployeeDto**](AiEmployeeDto.md) | The user who updated the file entry. | [optional]
+**provider_item** | **bool** | Specifies if the file entry provider is specified or not. | [optional]
+**provider_key** | **string** | The provider key of the file entry. | [optional]
+**provider_id** | **int** | The provider ID of the file entry. | [optional]
+**order** | **string** | The order of the file entry. | [optional]
+**is_favorite** | **bool** | Specifies if the file is a favorite or not. | [optional]
+**file_entry_type** | [**\OpenAPI\Client\Model\AiFileEntryType**](AiFileEntryType.md) | The file entry type. | [optional]
+**id** | **int** | The file entry ID. | [optional]
+**root_folder_id** | **int** | The root folder ID of the file entry. | [optional]
+**origin_id** | **int** | The origin ID of the file entry. | [optional]
+**origin_room_id** | **int** | The origin room ID of the file entry. | [optional]
+**origin_title** | **string** | The origin title of the file entry. | [optional]
+**origin_room_title** | **string** | The origin room title of the file entry. | [optional]
+**can_share** | **bool** | Specifies if the file entry can be shared or not. | [optional]
+**share_settings** | [**\OpenAPI\Client\Model\FileEntryDtoIntegerAllOfShareSettings**](FileEntryDtoIntegerAllOfShareSettings.md) |  | [optional]
+**security** | [**\OpenAPI\Client\Model\FileEntryDtoIntegerAllOfSecurity**](FileEntryDtoIntegerAllOfSecurity.md) |  | [optional]
+**available_share_rights** | [**\OpenAPI\Client\Model\FileEntryDtoIntegerAllOfAvailableShareRights**](FileEntryDtoIntegerAllOfAvailableShareRights.md) |  | [optional]
+**request_token** | **string** | The request token of the file entry. | [optional]
+**external** | **bool** | Specifies if the folder can be accessed via an external link or not. | [optional]
+**expiration_date** | [**\OpenAPI\Client\Model\AiApiDateTime**](AiApiDateTime.md) | Represents the expiration date of the file entry. | [optional]
+**is_link_expired** | **bool** | Indicates whether the shareable link associated with the file or folder has expired. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

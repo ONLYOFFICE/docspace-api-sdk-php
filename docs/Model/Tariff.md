@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The tariff ID. | [optional]
-**state** | [**\OpenAPI\Client\Model\TariffState**](TariffState.md) |  | [optional]
+**state** | [**\OpenAPI\Client\Model\TariffState**](TariffState.md) | The tariff state. | [optional]
 **due_date** | **\DateTime** | The tariff due date. |
 **delay_due_date** | **\DateTime** | The tariff delay due date. | [optional]
 **license_date** | **\DateTime** | The tariff license date. | [optional]

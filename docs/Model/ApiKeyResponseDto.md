@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **key** | **string** | The full API key value (only returned when creating a new key). |
 **key_postfix** | **string** | The API key postfix (used for identification). | [optional]
 **permissions** | **string[]** | The list of permissions granted to the API key. |
-**last_used** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]
-**create_on** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]
-**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  | [optional]
-**expires_at** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]
+**last_used** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**create_on** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
+**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user parameters. | [optional]
+**expires_at** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
 **is_active** | **bool** | Indicates whether the API key is active or not. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

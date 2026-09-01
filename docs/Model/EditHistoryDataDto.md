@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **changes_url** | **string** | The URL address of the file with the document changes data. | [optional]
 **key** | **string** | The document identifier used to unambiguously identify the document file. |
-**previous** | [**\OpenAPI\Client\Model\EditHistoryUrl**](EditHistoryUrl.md) |  | [optional]
+**previous** | [**\OpenAPI\Client\Model\EditHistoryUrl**](EditHistoryUrl.md) | The object of the previous version of the document. | [optional]
 **token** | **string** | The encrypted signature added to the parameter in the form of a token. | [optional]
 **url** | **string** | The URL address of the current document version. |
 **version** | **int** | The document version number. |

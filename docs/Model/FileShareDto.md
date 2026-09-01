@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) |  | [optional]
-**shared_to** | **mixed** | The user who has the access to the specified file. | [optional]
-**shared_to_user** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) |  | [optional]
-**shared_to_group** | [**\OpenAPI\Client\Model\GroupSummaryDto**](GroupSummaryDto.md) |  | [optional]
-**shared_link** | [**\OpenAPI\Client\Model\FileShareLink**](FileShareLink.md) |  | [optional]
+**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The access rights type. | [optional]
+**shared_to** | **mixed** |  | [optional]
+**shared_to_user** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The full list of user parameters. | [optional]
+**shared_to_group** | [**\OpenAPI\Client\Model\GroupSummaryDto**](GroupSummaryDto.md) | The group summary parameters. | [optional]
+**shared_link** | [**\OpenAPI\Client\Model\FileShareLink**](FileShareLink.md) | The user who has the access to the specified file. | [optional]
 **is_locked** | **bool** | Specifies if the access right is locked or not. |
 **is_owner** | **bool** | Specifies if the user is an owner of the specified file or not. |
 **can_edit_access** | **bool** | Specifies if the user can edit the access to the specified file or not. |
@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **can_edit_deny_download** | **bool** | Determines whether the user has permission to modify the deny download setting for the file share. |
 **can_edit_expiration_date** | **bool** | Indicates whether the expiration date of access permissions can be edited. |
 **can_revoke** | **bool** | Specifies whether the file sharing access can be revoked by the current user. |
-**subject_type** | [**\OpenAPI\Client\Model\SubjectType**](SubjectType.md) |  |
+**subject_type** | [**\OpenAPI\Client\Model\SubjectType**](SubjectType.md) | The subject type of the access right. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

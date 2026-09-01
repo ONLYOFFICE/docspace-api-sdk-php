@@ -14,11 +14,15 @@ Name | Type | Description | Notes
 **plugin_name** | **string** | The name by which the web plugin is registered in the window object. |
 **scopes** | **string** | The web plugin scopes. |
 **image** | **string** | The web plugin image. |
-**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) |  |
+**create_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user parameters. |
 **create_on** | **\DateTime** | The date and time when the web plugin was created. |
 **enabled** | **bool** | Specifies if the web plugin is enabled or not. |
 **system** | **bool** | Specifies if the web plugin is system or not. |
 **url** | **string** | The web plugin URL. |
+**css_url** | **string** | The web plugin css URL. |
 **settings** | **string** | The web plugin settings. |
+**name_locale** | **array<string,string>** | The web plugin localized name. | [optional]
+**description_locale** | **array<string,string>** | The web plugin localized description. | [optional]
+**runtime** | **string** | The web plugin loading method | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

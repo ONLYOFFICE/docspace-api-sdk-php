@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **link_id** | **string** | The room link ID. | [optional]
-**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) |  | [optional]
-**expiration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]
+**access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The access rights type. | [optional]
+**expiration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
 **internal** | **bool** | The link scope, whether it is internal or not. | [optional]
 **title** | **string** | The link name. | [optional]
-**link_type** | [**\OpenAPI\Client\Model\LinkType**](LinkType.md) |  | [optional]
+**link_type** | [**\OpenAPI\Client\Model\LinkType**](LinkType.md) | The link type. | [optional]
 **password** | **string** | The link password. | [optional]
 **deny_download** | **bool** | Specifies if downloading the file from the link is disabled or not. | [optional]
+**max_use_count** | **int** | The maximum number of times the invitation link can be used. | [optional]
+**current_use_count** | **int** | The current number of times the invitation link has been used. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

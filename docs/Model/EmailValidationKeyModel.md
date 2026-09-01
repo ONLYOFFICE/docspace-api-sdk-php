@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **string** | The email validation key. | [optional]
-**empl_type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) |  | [optional]
+**empl_type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The user type. | [optional]
 **email** | **string** | The email address. | [optional]
 **enc_email** | **string** | The encrypted email address. | [optional]
 **ui_d** | **string** | The user ID. | [optional]
-**type** | [**\OpenAPI\Client\Model\ConfirmType**](ConfirmType.md) |  | [optional]
+**type** | [**\OpenAPI\Client\Model\ConfirmType**](ConfirmType.md) | The confirmation email type. | [optional]
 **first** | **string** | Specifies whether it is the first time account access or not. | [optional]
 **room_id** | **string** | The room ID. | [optional]
 

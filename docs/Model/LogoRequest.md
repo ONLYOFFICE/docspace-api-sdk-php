@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tmp_file** | **string** | The path to the temporary image file. | [optional]
+**tmp_file** | **string** | The path to the temporary image file. |
 **x** | **int** | The X coordinate of the rectangle starting point. | [optional]
 **y** | **int** | The Y coordinate of the rectangle starting point. | [optional]
 **width** | **int** | The rectangle width. | [optional]

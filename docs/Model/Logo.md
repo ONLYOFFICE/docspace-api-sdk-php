@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **medium** | **string** | The medium logo. |
 **small** | **string** | The small logo. |
 **color** | **string** | The logo color. | [optional]
-**cover** | [**\OpenAPI\Client\Model\LogoCover**](LogoCover.md) |  | [optional]
+**cover** | [**\OpenAPI\Client\Model\LogoCover**](LogoCover.md) | The logo cover. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

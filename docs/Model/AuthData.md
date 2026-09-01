@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **raw_token** | **string** | The authentication raw token. | [optional]
 **url** | **string** | The authentication URL. | [optional]
 **provider** | **string** | The authentication provider. | [optional]
-**token** | [**\OpenAPI\Client\Model\OAuth20Token**](OAuth20Token.md) |  | [optional]
+**token** | [**\OpenAPI\Client\Model\OAuth20Token**](OAuth20Token.md) | The authentication token. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

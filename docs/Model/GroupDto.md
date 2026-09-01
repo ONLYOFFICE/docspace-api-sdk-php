@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **string** | The group ID. |
 **is_ldap** | **bool** | Specifies if the LDAP settings are enabled for the group or not. |
 **is_system** | **bool** | Indicates whether the group is a system group. | [optional]
-**manager** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) |  | [optional]
+**manager** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The group manager full information. | [optional]
 **members** | [**\OpenAPI\Client\Model\EmployeeFullDto[]**](EmployeeFullDto.md) | The list of group members. | [optional]
 **shared** | **bool** | Specifies whether the group can be shared or not. | [optional]
 **members_count** | **int** | The number of group members. | [optional]

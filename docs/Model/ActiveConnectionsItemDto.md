@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **city** | **string** | The active connection city. | [optional]
 **browser** | **string** | The active connection browser. | [optional]
 **platform** | **string** | The active connection platform. | [optional]
-**date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) |  | [optional]
+**date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The API date and time parameters. | [optional]
 **page** | **string** | The active connection page. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

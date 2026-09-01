@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**period** | [**\OpenAPI\Client\Model\BackupPeriod**](BackupPeriod.md) |  | [optional]
+**period** | [**\OpenAPI\Client\Model\BackupPeriod**](BackupPeriod.md) | The backup period type. | [optional]
 **hour** | **int** | The time of the day to start the backup process. | [optional]
 **day** | **int** | The day of the week to start the backup process. | [optional]
 

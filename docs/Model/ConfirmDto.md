@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**result** | [**\OpenAPI\Client\Model\ValidationResult**](ValidationResult.md) |  |
+**result** | [**\OpenAPI\Client\Model\ValidationResult**](ValidationResult.md) | The confirmation result. |
 **room_id** | **string** | The confirmation room ID. | [optional]
 **title** | **string** | The confirmation title. | [optional]
 **email** | **string** | The confirmation email. | [optional]

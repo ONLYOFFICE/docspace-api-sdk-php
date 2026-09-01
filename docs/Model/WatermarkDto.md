@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**additions** | [**\OpenAPI\Client\Model\WatermarkAdditions**](WatermarkAdditions.md) |  |
+**additions** | [**\OpenAPI\Client\Model\WatermarkAdditions**](WatermarkAdditions.md) | Specifies whether to display in the watermark: username, user email, user ip-adress, current date, and room name. |
 **text** | **string** | The watermark text. | [optional]
 **rotate** | **int** | The watermark text and image rotate. |
 **image_scale** | **int** | The watermark image scale. |

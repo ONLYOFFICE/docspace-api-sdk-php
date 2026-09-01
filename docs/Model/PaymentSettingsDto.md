@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **feedback_and_support_url** | **string** | The URL for accessing the feedback and support resources. | [optional]
 **buy_url** | **string** | The URL for purchasing or upgrading the product. |
 **standalone** | **bool** | Indicates whether the system is running in standalone mode. |
-**current_license** | [**\OpenAPI\Client\Model\CurrentLicenseInfo**](CurrentLicenseInfo.md) |  |
+**current_license** | [**\OpenAPI\Client\Model\CurrentLicenseInfo**](CurrentLicenseInfo.md) | The current license information. |
 **max** | **int** | The maximum quota quantity. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

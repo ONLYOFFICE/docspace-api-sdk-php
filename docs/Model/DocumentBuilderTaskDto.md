@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **error** | **string** | The error message occurred during the document building process. |
 **percentage** | **int** | The progress percentage of the document building process. |
 **is_completed** | **bool** | Specifies whether the document building process is completed or not. |
-**status** | [**\OpenAPI\Client\Model\DistributedTaskStatus**](DistributedTaskStatus.md) |  |
-**result_file_id** | **mixed** | The result file ID. |
+**status** | [**\OpenAPI\Client\Model\DistributedTaskStatus**](DistributedTaskStatus.md) | The status of the document building process. |
+**result_file_id** | **mixed** |  |
 **result_file_name** | **string** | The result file name. |
 **result_file_url** | **string** | The result file URL. |
 

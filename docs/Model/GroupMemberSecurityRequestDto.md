@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) |  |
-**group_access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) |  |
-**user_access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) |  | [optional]
+**user** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The full list of user parameters. |
+**group_access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The access rights type. |
+**user_access** | [**\OpenAPI\Client\Model\FileShare**](FileShare.md) | The group member access rights to the files. | [optional]
 **overridden** | **bool** | Specifies if the group access rights are overridden or not. |
 **can_edit_access** | **bool** | Specifies if the group member can edit the group access rights or not. |
 **owner** | **bool** | Specifies if the group member is a group owner or not. |

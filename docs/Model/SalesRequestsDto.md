@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user_name** | **string** | The name of the user submitting the sales request. | [optional]
+**user_name** | **string** | The name of the user submitting the sales request. |
 **email** | **string** | The contact email address for the sales inquiry. |
 **message** | **string** | The details of the sales inquiry or payment request. |
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\OpenAPI\Client\Model\TenantTrustedDomainsType**](TenantTrustedDomainsType.md) |  |
+**type** | [**\OpenAPI\Client\Model\TenantTrustedDomainsType**](TenantTrustedDomainsType.md) | The type of the tenant trusted domains. |
 **domains** | **string[]** | The list of authorized email domains that are considered trusted. |
 **invite_users_as_visitors** | **bool** | Specifies the default permission level for the invited users (visitors or not). |
 

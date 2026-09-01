@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **firebase_device_token** | **string** | The Firebase device token. | [optional]
 **application** | **string** | The Firebase application. | [optional]
 **is_subscribed** | **bool** | Specifies if the user is subscribed to the push notifications or not. | [optional]
-**tenant** | [**\OpenAPI\Client\Model\DbTenant**](DbTenant.md) |  | [optional]
+**tenant** | [**\OpenAPI\Client\Model\DbTenant**](DbTenant.md) | The database tenant parameters. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

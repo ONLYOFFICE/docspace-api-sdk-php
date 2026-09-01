@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **bool** | Specifies whether watermarks are on or off. | [optional]
-**additions** | [**\OpenAPI\Client\Model\WatermarkAdditions**](WatermarkAdditions.md) |  | [optional]
+**additions** | [**\OpenAPI\Client\Model\WatermarkAdditions**](WatermarkAdditions.md) | Specifies whether to display the following addditional information or not: username, user email, user IP address, current date and room name. | [optional]
 **text** | **string** | The watermark text. | [optional]
 **rotate** | **int** | The watermark text and image rotate angle. | [optional]
 **image_scale** | **int** | The watermark image scale. | [optional]

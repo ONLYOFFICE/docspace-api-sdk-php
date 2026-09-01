@@ -21,19 +21,23 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**deleteFile()**](FilesFilesApi.md#deleteFile) | **DELETE** /api/2.0/files/file/{fileId} | Delete a file |
 | [**deleteRecent()**](FilesFilesApi.md#deleteRecent) | **DELETE** /api/2.0/files/recent | Delete recent files |
 | [**deleteTemplates()**](FilesFilesApi.md#deleteTemplates) | **DELETE** /api/2.0/files/templates | Delete template files |
+| [**generateXlsx()**](FilesFilesApi.md#generateXlsx) | **POST** /api/2.0/files/file/{fileId}/xlsx | Generate XLSX report |
 | [**getAllFormRoles()**](FilesFilesApi.md#getAllFormRoles) | **GET** /api/2.0/files/file/{fileId}/formroles | Get form roles |
 | [**getEditDiffUrl()**](FilesFilesApi.md#getEditDiffUrl) | **GET** /api/2.0/files/file/{fileId}/edit/diff | Get changes URL |
 | [**getEditHistory()**](FilesFilesApi.md#getEditHistory) | **GET** /api/2.0/files/file/{fileId}/edit/history | Get version history |
+| [**getEncryptionInfo()**](FilesFilesApi.md#getEncryptionInfo) | **GET** /api/2.0/files/{fileId}/access | Get file encryption information |
 | [**getFileHistory()**](FilesFilesApi.md#getFileHistory) | **GET** /api/2.0/files/file/{fileId}/log | Get file history |
 | [**getFileInfo()**](FilesFilesApi.md#getFileInfo) | **GET** /api/2.0/files/file/{fileId} | Get file information |
 | [**getFileLinks()**](FilesFilesApi.md#getFileLinks) | **GET** /api/2.0/files/file/{id}/links | Get file external links |
 | [**getFilePrimaryExternalLink()**](FilesFilesApi.md#getFilePrimaryExternalLink) | **GET** /api/2.0/files/file/{id}/link | Get primary external link |
 | [**getFileVersionInfo()**](FilesFilesApi.md#getFileVersionInfo) | **GET** /api/2.0/files/file/{fileId}/history | Get file versions |
 | [**getFillResult()**](FilesFilesApi.md#getFillResult) | **GET** /api/2.0/files/file/fillresult | Get form-filling result |
+| [**getFormSubmissions()**](FilesFilesApi.md#getFormSubmissions) | **GET** /api/2.0/files/file/{fileId}/submissions | Get form submission results |
 | [**getPresignedFileUri()**](FilesFilesApi.md#getPresignedFileUri) | **GET** /api/2.0/files/file/{fileId}/presigned | Get file download link asynchronously |
 | [**getPresignedUri()**](FilesFilesApi.md#getPresignedUri) | **GET** /api/2.0/files/file/{fileId}/presigneduri | Get file download link |
 | [**getProtectedFileUsers()**](FilesFilesApi.md#getProtectedFileUsers) | **GET** /api/2.0/files/file/{fileId}/protectusers | Get users access rights to the protected file |
 | [**getReferenceData()**](FilesFilesApi.md#getReferenceData) | **POST** /api/2.0/files/file/referencedata | Get reference data |
+| [**getXlsx()**](FilesFilesApi.md#getXlsx) | **GET** /api/2.0/files/file/{fileId}/xlsx | Get XLSX report generation status |
 | [**isFormPDF()**](FilesFilesApi.md#isFormPDF) | **GET** /api/2.0/files/file/{fileId}/isformpdf | Check the PDF file |
 | [**lockFile()**](FilesFilesApi.md#lockFile) | **PUT** /api/2.0/files/file/{fileId}/lock | Lock a file |
 | [**manageFormFilling()**](FilesFilesApi.md#manageFormFilling) | **PUT** /api/2.0/files/file/{fileId}/manageformfilling | Perform form filling action |
@@ -43,6 +47,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**saveFileAsPdf()**](FilesFilesApi.md#saveFileAsPdf) | **POST** /api/2.0/files/file/{id}/saveaspdf | Save a file as PDF |
 | [**saveFormRoleMapping()**](FilesFilesApi.md#saveFormRoleMapping) | **POST** /api/2.0/files/file/{fileId}/formrolemapping | Save form role mapping |
 | [**setCustomFilterTag()**](FilesFilesApi.md#setCustomFilterTag) | **PUT** /api/2.0/files/file/{fileId}/customfilter | Set the Custom Filter editing mode |
+| [**setEncryptionInfo()**](FilesFilesApi.md#setEncryptionInfo) | **PUT** /api/2.0/files/{fileId}/access | Set file encryption information |
 | [**setFileExternalLink()**](FilesFilesApi.md#setFileExternalLink) | **PUT** /api/2.0/files/file/{id}/links | Set an external link |
 | [**setFileOrder()**](FilesFilesApi.md#setFileOrder) | **PUT** /api/2.0/files/{fileId}/order | Set file order |
 | [**setFilesOrder()**](FilesFilesApi.md#setFilesOrder) | **PUT** /api/2.0/files/order | Set order of files |
@@ -107,14 +112,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->addFileToRecent($file_id);
@@ -185,7 +189,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
@@ -268,14 +271,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file Id to change its version history.
+$file_id = 1; // int | The file Id to change its version history.
 $change_history = new \OpenAPI\Client\Model\ChangeHistory(); // \OpenAPI\Client\Model\ChangeHistory | The parameters for changing version history.
 
 try {
@@ -328,13 +330,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID of the form draft.
+$file_id = 1; // int | The file ID of the form draft.
 $check_fill_form_draft = new \OpenAPI\Client\Model\CheckFillFormDraft(); // \OpenAPI\Client\Model\CheckFillFormDraft | The parameters for checking the form draft filling.
 
 try {
@@ -409,14 +410,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID to copy.
+$file_id = 1; // int | The file ID to copy.
 $copy_as_json_element = new \OpenAPI\Client\Model\CopyAsJsonElement(); // \OpenAPI\Client\Model\CopyAsJsonElement | The parameters for copying a file.
 
 try {
@@ -439,11 +439,11 @@ try {
 ## `createEditSession()`
 
 ```php
-createEditSession($file_id, $file_size): \OpenAPI\Client\Model\ObjectWrapper
+createEditSession($file_id, $file_size): \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper
 ```
 
 Create the editing session
-Creates a session to edit the existing file with multiple chunks (needed for WebDAV).   **Note**: Information about created session which includes:  <ul>  <li><b>id:</b> unique ID of this upload session,</li>  <li><b>created:</b> UTC time when the session was created,</li>  <li><b>expired:</b> UTC time when the session will expire if no chunks are sent before that time,</li>  <li><b>location:</b> URL where you should send your next chunk,</li>  <li><b>bytes_uploaded:</b> number of bytes uploaded for the specific upload ID,</li>  <li><b>bytes_total:</b> total number of bytes which will be uploaded.</li>  </ul>
+Creates a session to edit the existing file with multiple chunks (needed for WebDAV).
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/create-edit-session/).
 
@@ -456,7 +456,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ObjectWrapper**](../Model/ObjectWrapper.md)
+[**\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper**](../Model/ChunkedUploadSessionResponseWrapperIntegerWrapper.md)
 
 ### Authorization
 
@@ -491,15 +491,14 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
-$file_size = 1234; // int | The file size in bytes.
+$file_id = 1; // int | The file ID.
+$file_size = 1024; // int | The file size in bytes.
 
 try {
     $result = $apiInstance->createEditSession($file_id, $file_size);
@@ -525,7 +524,7 @@ createFile($folder_id, $create_file_json_element): \OpenAPI\Client\Model\FileInt
 ```
 
 Create a file
-Creates a new file in the specified folder with the title specified in the request.   **Note**: If a file extension is different from DOCX/XLSX/PPTX and refers to one of the known text, spreadsheet, or presentation formats, it will be changed to DOCX/XLSX/PPTX accordingly. If the file extension is not specified or is unknown, the DOCX extension will be added to the file title.
+Creates a new file in the specified folder with the title specified in the request.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/).
 
@@ -573,14 +572,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The folder ID for the file creation.
+$folder_id = 1; // int | The folder ID for the file creation.
 $create_file_json_element = new \OpenAPI\Client\Model\CreateFileJsonElement(); // \OpenAPI\Client\Model\CreateFileJsonElement | The parameters for creating a file.
 
 try {
@@ -607,7 +605,7 @@ createFileInMyDocuments($create_file_json_element): \OpenAPI\Client\Model\FileIn
 ```
 
 Create a file in the My documents section
-Creates a new file in the My documents section with the title specified in the request.   **Note**: If a file extension is different from DOCX/XLSX/PPTX and refers to one of the known text, spreadsheet, or presentation formats, it will be changed to DOCX/XLSX/PPTX accordingly. If the file extension is not specified or is unknown, the DOCX extension will be added to the file title.
+Creates a new file in the My documents section with the title specified in the request.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/).
 
@@ -652,7 +650,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
@@ -735,14 +732,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The file ID.
+$id = 1; // int | The file ID.
 $file_link_request = new \OpenAPI\Client\Model\FileLinkRequest(); // \OpenAPI\Client\Model\FileLinkRequest | The file external link parameters.
 
 try {
@@ -817,14 +813,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The folder ID to create the text or HTML file.
+$folder_id = 1; // int | The folder ID to create the text or HTML file.
 $create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile | The parameters for creating an HTML or text file.
 
 try {
@@ -896,7 +891,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
@@ -979,14 +973,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$folder_id = 9846; // int | The folder ID to create the text or HTML file.
+$folder_id = 1; // int | The folder ID to create the text or HTML file.
 $create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile | The parameters for creating an HTML or text file.
 
 try {
@@ -1060,7 +1053,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1118,7 +1110,6 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1146,7 +1137,7 @@ try {
 ## `deleteFile()`
 
 ```php
-deleteFile($file_id, $delete): \OpenAPI\Client\Model\FileOperationArrayWrapper
+deleteFile($file_id, $delete, $return_single_operation): \OpenAPI\Client\Model\FileOperationArrayWrapper
 ```
 
 Delete a file
@@ -1160,6 +1151,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int**| The file ID to delete. | |
 | **delete** | [**\OpenAPI\Client\Model\Delete**](../Model/Delete.md)| The parameters for deleting a file. | |
+| **return_single_operation** | **bool**| Specifies whether to return only the current operation | [optional] |
 
 ### Return type
 
@@ -1198,18 +1190,18 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID to delete.
+$file_id = 1; // int | The file ID to delete.
 $delete = new \OpenAPI\Client\Model\Delete(); // \OpenAPI\Client\Model\Delete | The parameters for deleting a file.
+$return_single_operation = false; // bool | Specifies whether to return only the current operation
 
 try {
-    $result = $apiInstance->deleteFile($file_id, $delete);
+    $result = $apiInstance->deleteFile($file_id, $delete, $return_single_operation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->deleteFile: ', $e->getMessage(), PHP_EOL;
@@ -1277,7 +1269,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
@@ -1359,7 +1350,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -1379,6 +1369,85 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateXlsx()`
+
+```php
+generateXlsx($file_id): \OpenAPI\Client\Model\XlsxReportResponseWrapper
+```
+
+Generate XLSX report
+Triggers asynchronous XLSX report generation for the specified form file.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **int**| The file unique identifier. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\XlsxReportResponseWrapper**](../Model/XlsxReportResponseWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_id = 1; // int | The file unique identifier.
+
+try {
+    $result = $apiInstance->generateXlsx($file_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->generateXlsx: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1439,14 +1508,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getAllFormRoles($file_id);
@@ -1498,14 +1566,13 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID.
-$version = 1234; // int | The file version.
+$file_id = 1; // int | The file ID.
+$version = 1; // int | The file version.
 
 try {
     $result = $apiInstance->getEditDiffUrl($file_id, $version);
@@ -1556,19 +1623,97 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getEditHistory($file_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->getEditHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEncryptionInfo()`
+
+```php
+getEncryptionInfo($file_id): \OpenAPI\Client\Model\FileEncryptionInfoWrapper
+```
+
+Get file encryption information
+Returns the encryption information for a file with the specified identifier, including user encryption keys and file-specific encryption keys.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-info/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **int**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\FileEncryptionInfoWrapper**](../Model/FileEncryptionInfoWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_id = 56; // int
+
+try {
+    $result = $apiInstance->getEncryptionInfo($file_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->getEncryptionInfo: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1639,18 +1784,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID of the history request.
-$from_date = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The start date of the history.
-$to_date = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\ApiDateTime(); // \OpenAPI\Client\Model\ApiDateTime | The end date of the history.
-$count = 1234; // int | The number of history entries to retrieve for the file log.
-$start_index = 1234; // int | The starting index for retrieving a subset of file history entries.
+$file_id = 1; // int | The file ID of the history request.
+$from_date = 2025-01-01T00:00:00.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The start date of the history.
+$to_date = 2025-12-31T23:59:59.0000000Z; // \OpenAPI\Client\Model\ApiDateTime | The end date of the history.
+$count = 25; // int | The number of history entries to retrieve for the file log.
+$start_index = 0; // int | The starting index for retrieving a subset of file history entries.
 
 try {
     $result = $apiInstance->getFileHistory($file_id, $from_date, $to_date, $count, $start_index);
@@ -1702,14 +1846,13 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID.
-$version = 1234; // int | The file version.
+$file_id = 1; // int | The file ID.
+$version = 1; // int | The file version.
 
 try {
     $result = $apiInstance->getFileInfo($file_id, $version);
@@ -1784,16 +1927,15 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The file unique identifier.
-$count = 1234; // int | The number of items to retrieve in the request.
-$start_index = 1234; // int | The starting index for the query results.
+$id = 10; // int | The file unique identifier.
+$count = 25; // int | The number of items to retrieve in the request.
+$start_index = 0; // int | The starting index for the query results.
 
 try {
     $result = $apiInstance->getFileLinks($id, $count, $start_index);
@@ -1846,15 +1988,14 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 9846; // int | The file unique identifier.
-$count = 1234; // int | The number of items to retrieve in the request.
-$start_index = 1234; // int | The starting index for the query results.
+$id = 10; // int | The file unique identifier.
+$count = 25; // int | The number of items to retrieve in the request.
+$start_index = 0; // int | The starting index for the query results.
 
 try {
     $result = $apiInstance->getFilePrimaryExternalLink($id, $count, $start_index);
@@ -1905,13 +2046,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getFileVersionInfo($file_id);
@@ -1962,19 +2102,97 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$filling_session_id = some text; // string | The form-filling session ID.
+$filling_session_id = doc_key_123; // string | The form-filling session ID.
 
 try {
     $result = $apiInstance->getFillResult($filling_session_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->getFillResult: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getFormSubmissions()`
+
+```php
+getFormSubmissions($file_id): \OpenAPI\Client\Model\FormSubmissionsWrapper
+```
+
+Get form submission results
+Returns the results of form submissions.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-form-submissions/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **int**| The file unique identifier. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\FormSubmissionsWrapper**](../Model/FormSubmissionsWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_id = 1; // int | The file unique identifier.
+
+try {
+    $result = $apiInstance->getFormSubmissions($file_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->getFormSubmissions: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2041,14 +2259,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getPresignedFileUri($file_id);
@@ -2121,14 +2338,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getPresignedUri($file_id);
@@ -2201,14 +2417,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->getProtectedFileUsers($file_id);
@@ -2281,7 +2496,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -2301,6 +2515,85 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getXlsx()`
+
+```php
+getXlsx($file_id): \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+```
+
+Get XLSX report generation status
+Returns the status of the XLSX report generation task for the specified form.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-xlsx/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **int**| The file unique identifier. | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\DocumentBuilderTaskWrapper**](../Model/DocumentBuilderTaskWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_id = 1; // int | The file unique identifier.
+
+try {
+    $result = $apiInstance->getXlsx($file_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->getXlsx: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -2361,14 +2654,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 
 try {
     $result = $apiInstance->isFormPDF($file_id);
@@ -2442,14 +2734,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID for locking.
+$file_id = 1; // int | The file ID for locking.
 $lock_file_parameters = new \OpenAPI\Client\Model\LockFileParameters(); // \OpenAPI\Client\Model\LockFileParameters | The parameters for locking a file.
 
 try {
@@ -2524,7 +2815,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -2587,18 +2877,17 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID to open.
-$version = 1234; // int | The file version to open.
-$view = true; // bool | Specifies if the document will be opened for viewing only or not.
-$editor_type = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EditorType(); // \OpenAPI\Client\Model\EditorType | The editor type to open the file.
-$edit = true; // bool | Specifies if the document is opened in the editing mode or not.
-$fill = true; // bool | Specifies if the document is opened in the form-filling mode or not.
+$file_id = 1; // int | The file ID to open.
+$version = 1; // int | The file version to open.
+$view = false; // bool | Specifies if the document will be opened for viewing only or not.
+$editor_type = 1; // \OpenAPI\Client\Model\EditorType | The editor type to open the file.
+$edit = false; // bool | Specifies if the document is opened in the editing mode or not.
+$fill = false; // bool | Specifies if the document is opened in the form-filling mode or not.
 
 try {
     $result = $apiInstance->openEditFile($file_id, $version, $view, $editor_type, $edit, $fill);
@@ -2651,15 +2940,14 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID of the restore version.
-$version = 1234; // int | The file version of the restore.
-$url = some text; // string | The file version URL of the restore.
+$file_id = 1; // int | The file ID of the restore version.
+$version = 1; // int | The file version of the restore.
+$url = https://example.com; // string | The file version URL of the restore.
 
 try {
     $result = $apiInstance->restoreFileVersion($file_id, $version, $url);
@@ -2681,7 +2969,7 @@ try {
 ## `saveEditingFileFromForm()`
 
 ```php
-saveEditingFileFromForm($file_id, $file_extension, $download_uri, $file, $forcesave): \OpenAPI\Client\Model\FileIntegerWrapper
+saveEditingFileFromForm($file_id, $download_uri, $file_extension, $file, $forcesave): \OpenAPI\Client\Model\FileIntegerWrapper
 ```
 
 Save file edits
@@ -2694,9 +2982,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int**| The editing file ID from the request. | |
-| **file_extension** | **string**| The editing file extension from the request. | [optional] |
 | **download_uri** | **string**| The URI to download the editing file. | [optional] |
-| **file** | **\SplFileObject****\SplFileObject**| The request file stream. | [optional] |
+| **file_extension** | **string**| The editing file extension from the request. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. | [optional] |
 | **forcesave** | **bool**| Specifies whether to force save the file or not. | [optional] |
 
 ### Return type
@@ -2736,21 +3024,20 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9079; // int | The editing file ID from the request.
+$file_id = 1; // int | The editing file ID from the request.
+$download_uri = https://example.com/file.txt; // string | The URI to download the editing file.
 $file_extension = 'file_extension_example'; // string | The editing file extension from the request.
-$download_uri = 'download_uri_example'; // string | The URI to download the editing file.
-$file = '/path/to/file.txt'; // \SplFileObject | The request file stream.
+$file = '/path/to/file.txt'; // \SplFileObject | The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream.
 $forcesave = True; // bool | Specifies whether to force save the file or not.
 
 try {
-    $result = $apiInstance->saveEditingFileFromForm($file_id, $file_extension, $download_uri, $file, $forcesave);
+    $result = $apiInstance->saveEditingFileFromForm($file_id, $download_uri, $file_extension, $file, $forcesave);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->saveEditingFileFromForm: ', $e->getMessage(), PHP_EOL;
@@ -2821,14 +3108,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The file ID to save as PDF.
+$id = 1; // int | The file ID to save as PDF.
 $save_as_pdf_integer = new \OpenAPI\Client\Model\SaveAsPdfInteger(); // \OpenAPI\Client\Model\SaveAsPdfInteger | The parameters for saving the file as PDF.
 
 try {
@@ -2901,7 +3187,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 
 // Configure Bearer (JWT) authorization: Bearer
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
@@ -2984,14 +3269,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
+$file_id = 1; // int | The file ID.
 $custom_filter_parameters = new \OpenAPI\Client\Model\CustomFilterParameters(); // \OpenAPI\Client\Model\CustomFilterParameters | The parameters for setting the Custom Filter editing mode.
 
 try {
@@ -3006,6 +3290,86 @@ try {
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `setEncryptionInfo()`
+
+```php
+setEncryptionInfo($file_id, $access_request_key_dto)
+```
+
+Set file encryption information
+Sets or updates the encryption keys for a file with the specified identifier. This allows updating the file's encryption configuration.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-encryption-info/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file_id** | **int**| File ID | |
+| **access_request_key_dto** | [**\OpenAPI\Client\Model\AccessRequestKeyDto[]**](../Model/AccessRequestKeyDto.md)| Collection of encryption key data for users with access to the file | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\FilesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file_id = 12345; // int | File ID
+$access_request_key_dto = array(new \OpenAPI\Client\Model\AccessRequestKeyDto()); // \OpenAPI\Client\Model\AccessRequestKeyDto[] | Collection of encryption key data for users with access to the file
+
+try {
+    $apiInstance->setEncryptionInfo($file_id, $access_request_key_dto);
+} catch (Exception $e) {
+    echo 'Exception when calling FilesApi->setEncryptionInfo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -3066,14 +3430,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$id = 9846; // int | The file ID.
+$id = 1; // int | The file ID.
 $file_link_request = new \OpenAPI\Client\Model\FileLinkRequest(); // \OpenAPI\Client\Model\FileLinkRequest | The file external link parameters.
 
 try {
@@ -3148,14 +3511,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file unique identifier.
+$file_id = 1; // int | The file unique identifier.
 $order_request_dto = new \OpenAPI\Client\Model\OrderRequestDto(); // \OpenAPI\Client\Model\OrderRequestDto | The file order information.
 
 try {
@@ -3229,7 +3591,6 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
@@ -3288,13 +3649,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID to start editing.
+$file_id = 1; // int | The file ID to start editing.
 $start_edit = new \OpenAPI\Client\Model\StartEdit(); // \OpenAPI\Client\Model\StartEdit | The file parameters to start editing.
 
 try {
@@ -3368,14 +3728,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID to start filling.
+$file_id = 1; // int | The file ID to start filling.
 
 try {
     $result = $apiInstance->startFillingFile($file_id);
@@ -3449,14 +3808,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$file_id = 9846; // int | The file ID.
+$file_id = 1; // int | The file ID.
 $favorite = true; // bool | Specifies if the file is marked as favorite or not.
 
 try {
@@ -3511,15 +3869,14 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID to track editing changes.
-$tab_id = 75a5f745-f697-4418-b38d-0fe0d277e258; // string | The tab ID to track editing changes.
-$doc_key_for_track = some text; // string | The document key for tracking changes.
+$file_id = 1; // int | The file ID to track editing changes.
+$tab_id = 00000000-0000-0000-0000-000000000000; // string | The tab ID to track editing changes.
+$doc_key_for_track = abc123; // string | The document key for tracking changes.
 $is_finish = true; // bool | Specifies whether to finish file tracking or not.
 
 try {
@@ -3572,13 +3929,12 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\FilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$file_id = 9846; // int | The file ID to update.
+$file_id = 1; // int | The file ID to update.
 $update_file = new \OpenAPI\Client\Model\UpdateFile(); // \OpenAPI\Client\Model\UpdateFile | The parameters for updating a file.
 
 try {

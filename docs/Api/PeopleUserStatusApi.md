@@ -70,21 +70,20 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserStatusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The user status.
-$filter_by = some text; // string | Specifies the criteria used to filter the profiles in the request.
-$count = 1234; // int | The maximum number of user profiles to retrieve.
-$start_index = 1234; // int | The starting index for retrieving data in a paginated request.
-$sort_by = some text; // string | Specifies the property or field name by which the results should be sorted.
-$sort_order = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\SortOrder(); // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
-$filter_separator = some text; // string | Represents the separator used to split multiple filter criteria in a query string.
-$filter_value = some text; // string | A string value representing additional filter criteria used in query parameters.
+$status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The user status.
+$filter_by = displayName; // string | Specifies the criteria used to filter the profiles in the request.
+$count = 25; // int | The maximum number of user profiles to retrieve.
+$start_index = 0; // int | The starting index for retrieving data in a paginated request.
+$sort_by = displayName; // string | Specifies the property or field name by which the results should be sorted.
+$sort_order = 0; // \OpenAPI\Client\Model\SortOrder | The order in which the results are sorted.
+$filter_separator = ,; // string | Represents the separator used to split multiple filter criteria in a query string.
+$filter_value = John; // string | A string value representing additional filter criteria used in query parameters.
 
 try {
     $result = $apiInstance->getByStatus($status, $filter_by, $count, $start_index, $sort_by, $sort_order, $filter_separator, $filter_value);
@@ -158,14 +157,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserStatusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$activationstatus = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeActivationStatus(); // \OpenAPI\Client\Model\EmployeeActivationStatus | The new user activation status.
+$activationstatus = 1; // \OpenAPI\Client\Model\EmployeeActivationStatus | The new user activation status.
 $update_members_request_dto = new \OpenAPI\Client\Model\UpdateMembersRequestDto(); // \OpenAPI\Client\Model\UpdateMembersRequestDto | The request parameters for updating the user information.
 
 try {
@@ -240,14 +238,13 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\UserStatusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$status = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\EmployeeStatus(); // \OpenAPI\Client\Model\EmployeeStatus | The new user status.
+$status = 1; // \OpenAPI\Client\Model\EmployeeStatus | The new user status.
 $update_members_request_dto = new \OpenAPI\Client\Model\UpdateMembersRequestDto(); // \OpenAPI\Client\Model\UpdateMembersRequestDto | The request parameters for updating the user information.
 
 try {

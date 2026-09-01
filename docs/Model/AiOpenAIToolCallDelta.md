@@ -1,0 +1,12 @@
+# # AiOpenAIToolCallDelta
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**index** | **float** |  |
+**id** | **string** |  | [optional]
+**type** | **string** |  | [optional]
+**function** | [**\OpenAPI\Client\Model\AiOpenAIToolCallDeltaFunction**](AiOpenAIToolCallDeltaFunction.md) |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

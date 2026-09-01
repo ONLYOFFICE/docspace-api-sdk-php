@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The webhook log ID. |
 **config_name** | **string** | The webhook configuration name. | [optional]
-**trigger** | [**\OpenAPI\Client\Model\WebhookTrigger**](WebhookTrigger.md) |  | [optional]
+**trigger** | [**\OpenAPI\Client\Model\WebhookTrigger**](WebhookTrigger.md) | The webhook trigger type. | [optional]
 **creation_time** | **\DateTime** | The webhook creation time. | [optional]
 **method** | **string** | The webhook method. | [optional]
 **route** | **string** | The webhook route. | [optional]
