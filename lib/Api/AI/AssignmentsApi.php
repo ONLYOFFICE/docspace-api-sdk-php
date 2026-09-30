@@ -151,7 +151,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsAssign
      *
-     * Assign
+     * Bind a profile to an action
      *
      * REST API Reference for aiAssignmentsAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/
@@ -161,7 +161,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAssignmentMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAssignmentMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsAssign($ai_assignments_assign_request, string $contentType = self::contentTypes['aiAssignmentsAssign'][0])
     {
@@ -172,7 +172,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsAssignWithHttpInfo
      *
-     * Assign
+     * Bind a profile to an action
      *
      * REST API Reference for aiAssignmentsAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/
@@ -182,7 +182,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAssignmentMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAssignmentMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsAssignWithHttpInfo($ai_assignments_assign_request, string $contentType = self::contentTypes['aiAssignmentsAssign'][0])
     {
@@ -218,7 +218,31 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -256,7 +280,39 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -274,7 +330,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsAssignAsync
      *
-     * Assign
+     * Bind a profile to an action
      *
      * REST API Reference for aiAssignmentsAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/
@@ -298,7 +354,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsAssignAsyncWithHttpInfo
      *
-     * Assign
+     * Bind a profile to an action
      *
      * REST API Reference for aiAssignmentsAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/
@@ -419,6 +475,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -449,12 +514,12 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body request_body (required)
+     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsBulkAssign($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
@@ -470,12 +535,12 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body (required)
+     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsBulkAssignWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
@@ -511,7 +576,31 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -549,7 +638,39 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -572,7 +693,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body (required)
+     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -596,7 +717,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body (required)
+     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -646,7 +767,7 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsBulkAssign'
      *
-     * @param  array<string,string> $request_body (required)
+     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -712,6 +833,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -742,16 +872,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsCascadeProfileDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/
      *
-     * @param  string $body body (required)
+     * @param  \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest $ai_assignments_cascade_profile_delete_request The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsCascadeProfileDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsCascadeProfileDelete($body, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
+    public function aiAssignmentsCascadeProfileDelete($ai_assignments_cascade_profile_delete_request, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
     {
-        list($response) = $this->aiAssignmentsCascadeProfileDeleteWithHttpInfo($body, $contentType);
+        list($response) = $this->aiAssignmentsCascadeProfileDeleteWithHttpInfo($ai_assignments_cascade_profile_delete_request, $contentType);
         return $response;
     }
 
@@ -763,16 +893,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsCascadeProfileDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/
      *
-     * @param  string $body (required)
+     * @param  \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest $ai_assignments_cascade_profile_delete_request The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsCascadeProfileDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsCascadeProfileDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
+    public function aiAssignmentsCascadeProfileDeleteWithHttpInfo($ai_assignments_cascade_profile_delete_request, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
     {
-        $request = $this->aiAssignmentsCascadeProfileDeleteRequest($body, $contentType);
+        $request = $this->aiAssignmentsCascadeProfileDeleteRequest($ai_assignments_cascade_profile_delete_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -804,7 +934,31 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -842,7 +996,39 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -865,15 +1051,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsCascadeProfileDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/
      *
-     * @param  string $body (required)
+     * @param  \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest $ai_assignments_cascade_profile_delete_request The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsCascadeProfileDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsCascadeProfileDeleteAsync($body, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
+    public function aiAssignmentsCascadeProfileDeleteAsync($ai_assignments_cascade_profile_delete_request, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
     {
-        return $this->aiAssignmentsCascadeProfileDeleteAsyncWithHttpInfo($body, $contentType)
+        return $this->aiAssignmentsCascadeProfileDeleteAsyncWithHttpInfo($ai_assignments_cascade_profile_delete_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -889,16 +1075,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsCascadeProfileDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/
      *
-     * @param  string $body (required)
+     * @param  \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest $ai_assignments_cascade_profile_delete_request The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsCascadeProfileDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsCascadeProfileDeleteAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
+    public function aiAssignmentsCascadeProfileDeleteAsyncWithHttpInfo($ai_assignments_cascade_profile_delete_request, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiAssignmentsCascadeProfileDeleteRequest($body, $contentType);
+        $request = $this->aiAssignmentsCascadeProfileDeleteRequest($ai_assignments_cascade_profile_delete_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -939,19 +1125,19 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsCascadeProfileDelete'
      *
-     * @param  string $body (required)
+     * @param  \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest $ai_assignments_cascade_profile_delete_request The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsCascadeProfileDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsCascadeProfileDeleteRequest($body, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
+    public function aiAssignmentsCascadeProfileDeleteRequest($ai_assignments_cascade_profile_delete_request, string $contentType = self::contentTypes['aiAssignmentsCascadeProfileDelete'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_assignments_cascade_profile_delete_request' is set
+        if ($ai_assignments_cascade_profile_delete_request === null || (is_array($ai_assignments_cascade_profile_delete_request) && count($ai_assignments_cascade_profile_delete_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiAssignmentsCascadeProfileDelete'
+                'Missing the required parameter $ai_assignments_cascade_profile_delete_request when calling aiAssignmentsCascadeProfileDelete'
             );
         }
 
@@ -974,12 +1160,12 @@ class AssignmentsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_assignments_cascade_profile_delete_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_assignments_cascade_profile_delete_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_assignments_cascade_profile_delete_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1005,6 +1191,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1040,7 +1235,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,string>|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,string>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsGetAllAssignments($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
@@ -1061,7 +1256,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,string>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,string>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsGetAllAssignmentsWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
@@ -1103,6 +1298,24 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1136,6 +1349,30 @@ class AssignmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1294,6 +1531,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1324,12 +1570,12 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return string|\OpenAPI\Client\Model\AiErrorResponse
+     * @return string|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsGetAssignment($action_type, string $contentType = self::contentTypes['aiAssignmentsGetAssignment'][0])
     {
@@ -1345,12 +1591,12 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of string|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsGetAssignmentWithHttpInfo($action_type, string $contentType = self::contentTypes['aiAssignmentsGetAssignment'][0])
     {
@@ -1386,7 +1632,25 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1424,7 +1688,31 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1447,7 +1735,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1471,7 +1759,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsGetAssignment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1521,7 +1809,7 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsGetAssignment'
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsGetAssignment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1589,6 +1877,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1619,13 +1916,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
@@ -1641,13 +1938,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
@@ -1683,7 +1980,25 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1721,7 +2036,31 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1744,7 +2083,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
@@ -1769,7 +2108,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
@@ -1820,7 +2159,7 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsResolveForAction'
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsResolveForAction'] to see the possible values for this operation
      *
@@ -1899,6 +2238,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1929,13 +2277,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsTryResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
@@ -1951,13 +2299,13 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsTryResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
@@ -1993,7 +2341,25 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2031,7 +2397,31 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2054,7 +2444,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
@@ -2079,7 +2469,7 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsTryResolveForAction Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
@@ -2130,7 +2520,7 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsTryResolveForAction'
      *
-     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. (required)
+     * @param  string $action_type The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsTryResolveForAction'] to see the possible values for this operation
      *
@@ -2209,6 +2599,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2234,7 +2633,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsUnassign
      *
-     * Unassign
+     * Clear an action's profile
      *
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
@@ -2244,7 +2643,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsUnassign($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
@@ -2255,7 +2654,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsUnassignWithHttpInfo
      *
-     * Unassign
+     * Clear an action's profile
      *
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
@@ -2265,7 +2664,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsUnassignWithHttpInfo($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
@@ -2301,7 +2700,31 @@ class AssignmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2339,7 +2762,39 @@ class AssignmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2357,7 +2812,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsUnassignAsync
      *
-     * Unassign
+     * Clear an action's profile
      *
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
@@ -2381,7 +2836,7 @@ class AssignmentsApi
     /**
      * Operation aiAssignmentsUnassignAsyncWithHttpInfo
      *
-     * Unassign
+     * Clear an action's profile
      *
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
@@ -2502,6 +2957,15 @@ class AssignmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

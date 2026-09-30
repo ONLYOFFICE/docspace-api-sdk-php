@@ -784,7 +784,7 @@ class EncryptionApi
     /**
      * Operation startStorageEncryption
      *
-     * Start the storage encryption process
+     * Start the storage encryption
      *
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
@@ -805,7 +805,7 @@ class EncryptionApi
     /**
      * Operation startStorageEncryptionWithHttpInfo
      *
-     * Start the storage encryption process
+     * Start the storage encryption
      *
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
@@ -949,7 +949,7 @@ class EncryptionApi
     /**
      * Operation startStorageEncryptionAsync
      *
-     * Start the storage encryption process
+     * Start the storage encryption
      *
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
@@ -973,7 +973,7 @@ class EncryptionApi
     /**
      * Operation startStorageEncryptionAsyncWithHttpInfo
      *
-     * Start the storage encryption process
+     * Start the storage encryption
      *
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * OrderRequestDto Class Doc Comment
  *
  * @category Class
- * @description The parameters for ordering requests.
+ * @description The position an entry is to take inside its folder.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -311,7 +311,7 @@ class OrderRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order
      *
-     * @param int|null $order The order value.
+     * @param int|null $order The position the entry is to take, counting from 1. The entry that held it, and everything after it, is  shifted to make room. A dotted path such as 1.2.3 is accepted as well, of which only the last segment is  read.
      *
      * @return self
      */

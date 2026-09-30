@@ -1,0 +1,59 @@
+# # IAccountEntryDto
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** | The group ID. |
+**display_name** | **string** | The HTML-encoded user's display name formatted according to the default format for the current culture. | [optional]
+**avatar** | **string** | The user avatar. | [optional]
+**avatar_original** | **string** | The user original size avatar. | [optional]
+**avatar_max** | **string** | The user maximum size avatar. | [optional]
+**avatar_medium** | **string** | The user medium size avatar. | [optional]
+**avatar_small** | **string** | The user small size avatar. | [optional]
+**profile_url** | **string** | The user profile URL. | [optional]
+**has_avatar** | **bool** | Specifies if the user has an avatar or not. | [optional]
+**is_anonim** | **bool** | Specifies if the user is anonymous or not. | [optional]
+**first_name** | **string** | The user first name. | [optional]
+**last_name** | **string** | The user last name. | [optional]
+**user_name** | **string** | The user username. | [optional]
+**email** | **string** | The user email. | [optional]
+**contacts** | [**\OpenAPI\Client\Model\Contact[]**](Contact.md) | The list of user contacts. | [optional]
+**status** | [**\OpenAPI\Client\Model\EmployeeStatus**](EmployeeStatus.md) | The user status. | [optional]
+**activation_status** | [**\OpenAPI\Client\Model\EmployeeActivationStatus**](EmployeeActivationStatus.md) | The user activation status. | [optional]
+**terminated** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The date when the user account was terminated. | [optional]
+**department** | **string** | The user department. | [optional]
+**groups** | [**\OpenAPI\Client\Model\GroupSummaryDto[]**](GroupSummaryDto.md) | The list of user groups. | [optional]
+**location** | **string** | The user location. | [optional]
+**notes** | **string** | The user notes. | [optional]
+**is_admin** | **bool** | Specifies if the user is an administrator or not. | [optional]
+**is_room_admin** | **bool** | Specifies if the user is a room administrator or not. | [optional]
+**is_ldap** | **bool** | Specifies if the LDAP settings are enabled for the group or not. |
+**list_admin_modules** | **string[]** | The list of the administrator modules. | [optional]
+**is_owner** | **bool** | Specifies if the user is a portal owner or not. | [optional]
+**is_visitor** | **bool** | Specifies if the user is a portal visitor or not. | [optional]
+**is_collaborator** | **bool** | Specifies if the user is a portal collaborator or not. | [optional]
+**culture_name** | **string** | The user culture code. | [optional]
+**mobile_phone** | **string** | The user mobile phone number. | [optional]
+**mobile_phone_activation_status** | [**\OpenAPI\Client\Model\MobilePhoneActivationStatus**](MobilePhoneActivationStatus.md) | The mobile phone activation status. | [optional]
+**is_sso** | **bool** | Specifies if the SSO settings are enabled for the user or not. | [optional]
+**theme** | [**\OpenAPI\Client\Model\DarkThemeSettingsType**](DarkThemeSettingsType.md) | The user theme settings. | [optional]
+**quota_limit** | **int** | The user quota limit. | [optional]
+**used_space** | **float** | The portal used space of the user. | [optional]
+**shared** | **bool** | Specifies whether the group can be shared or not. | [optional]
+**is_custom_quota** | **bool** | Specifies if the user has a custom quota or not. | [optional]
+**login_event_id** | **int** | The current login event ID. | [optional]
+**auth_cookie_lifetime** | **float** | The auth cookie lifetime in seconds. | [optional]
+**created_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user who created the current user. | [optional]
+**registration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The user registration date. | [optional]
+**has_personal_folder** | **bool** | Specifies if the user has a personal folder or not. | [optional]
+**tfa_app_enabled** | **bool** | Indicates whether the user has enabled two-factor authentication (TFA) using an authentication app. | [optional]
+**name** | **string** | The group name. |
+**parent** | **string** | The parent group ID. | [optional]
+**category** | **string** | The group category ID. |
+**is_system** | **bool** | Indicates whether the group is a system group. | [optional]
+**manager** | [**\OpenAPI\Client\Model\EmployeeFullDto**](EmployeeFullDto.md) | The group manager full information. | [optional]
+**members** | [**\OpenAPI\Client\Model\EmployeeFullDto[]**](EmployeeFullDto.md) | The list of group members. | [optional]
+**members_count** | **int** | The number of group members. | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

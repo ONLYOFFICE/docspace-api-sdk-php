@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerServiceUsageDto Class Doc Comment
  *
  * @category Class
- * @description Aggregated customer usage statistics for a service over a period.
+ * @description What one wallet service was consumed and cost over the requested period, added up rather than listed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -359,7 +359,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets service
      *
-     * @param string|null $service The name of the service.
+     * @param string|null $service The stable key of the service, which is what the `serviceName` filter of this operation matches on and  what `GET api/2.0/portal/payment/walletservice` looks a service up by.
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets title
      *
-     * @param string|null $title The title of the service.
+     * @param string|null $title The service name in the portal language, for printing rather than matching.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets service_unit
      *
-     * @param string|null $service_unit The unit of measurement for the service.
+     * @param string|null $service_unit What `totalQuantity` counts, in the portal language. AI consumption is reported in tokens here rather  than in the AI credits the service is sold in, so it does not line up with the price list.
      *
      * @return self
      */
@@ -461,7 +461,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets currency
      *
-     * @param string|null $currency The three-character ISO 4217 currency symbol of the amounts.
+     * @param string|null $currency The currency `totalAmount` and `price` are expressed in, as a three-letter ISO 4217 code.
      *
      * @return self
      */
@@ -495,7 +495,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets total_quantity
      *
-     * @param int|null $total_quantity The total number of units consumed.
+     * @param int|null $total_quantity How many units of the service were consumed over the period, in the unit named by `serviceUnit`.
      *
      * @return self
      */
@@ -522,7 +522,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets total_amount
      *
-     * @param float|null $total_amount The total amount charged for the service.
+     * @param float|null $total_amount What that consumption cost over the period. It is what was actually charged, so it can differ from  `price` times `totalQuantity` when the price changed inside the period.
      *
      * @return self
      */
@@ -549,7 +549,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets operation_count
      *
-     * @param int|null $operation_count The number of individual purchase operations.
+     * @param int|null $operation_count How many separate charges the total was added up from. The charges themselves are in  `GET api/2.0/portal/payment/customer/operations`.
      *
      * @return self
      */
@@ -576,7 +576,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets price
      *
-     * @param float|null $price The price of the service.
+     * @param float|null $price What one unit of the service costs today, not what it cost during the period. It is `0` when the service  is no longer on the installation's price list.
      *
      * @return self
      */
@@ -603,7 +603,7 @@ class CustomerServiceUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets subscription
      *
-     * @param bool|null $subscription Indicates whether the service is subscription-based.
+     * @param bool|null $subscription Whether the service is billed as a standing subscription rather than per unit consumed. It is derived  from today's price list, so it describes the service as it is sold now.
      *
      * @return self
      */

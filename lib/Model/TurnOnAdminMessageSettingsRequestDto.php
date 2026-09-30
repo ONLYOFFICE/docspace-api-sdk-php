@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TurnOnAdminMessageSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for enabling or disabling administrator messaging system.
+ * @description Whether the sign-in page offers the form for writing to the portal administrators.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class TurnOnAdminMessageSettingsRequestDto implements ModelInterface, ArrayAcces
     /**
      * Sets turn_on
      *
-     * @param bool|null $turn_on The global switch for the administrator messaging functionality.
+     * @param bool|null $turn_on Whether the form is offered. Switching it off hides the form for everybody and makes the operation that  submits it refuse new messages; letters already sent are untouched.
      *
      * @return self
      */

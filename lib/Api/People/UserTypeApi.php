@@ -139,12 +139,12 @@ class UserTypeApi
     /**
      * Operation getUserTypeUpdateProgress
      *
-     * Get the progress of updating user type
+     * Get the user type change progress
      *
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -160,12 +160,12 @@ class UserTypeApi
     /**
      * Operation getUserTypeUpdateProgressWithHttpInfo
      *
-     * Get the progress of updating user type
+     * Get the user type change progress
      *
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -304,12 +304,12 @@ class UserTypeApi
     /**
      * Operation getUserTypeUpdateProgressAsync
      *
-     * Get the progress of updating user type
+     * Get the user type change progress
      *
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -328,12 +328,12 @@ class UserTypeApi
     /**
      * Operation getUserTypeUpdateProgressAsyncWithHttpInfo
      *
-     * Get the progress of updating user type
+     * Get the user type change progress
      *
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -383,7 +383,7 @@ class UserTypeApi
     /**
      * Create request for operation 'getUserTypeUpdateProgress'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1190,8 +1190,8 @@ class UserTypeApi
      * REST API Reference for updateUserType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $type The new user type. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $type The type to convert the listed accounts to, taken from the route: `User`, `Guest`, `RoomAdmin` or  `DocSpaceAdmin`. `RoomAdmin` and `DocSpaceAdmin` take a paid seat. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to convert. Only `userIds` is read by this operation; `resendAll` belongs to the invitation  operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1212,8 +1212,8 @@ class UserTypeApi
      * REST API Reference for updateUserType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $type The new user type. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $type The type to convert the listed accounts to, taken from the route: `User`, `Guest`, `RoomAdmin` or  `DocSpaceAdmin`. `RoomAdmin` and `DocSpaceAdmin` take a paid seat. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to convert. Only `userIds` is read by this operation; `resendAll` belongs to the invitation  operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1357,8 +1357,8 @@ class UserTypeApi
      * REST API Reference for updateUserType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $type The new user type. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $type The type to convert the listed accounts to, taken from the route: `User`, `Guest`, `RoomAdmin` or  `DocSpaceAdmin`. `RoomAdmin` and `DocSpaceAdmin` take a paid seat. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to convert. Only `userIds` is read by this operation; `resendAll` belongs to the invitation  operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1382,8 +1382,8 @@ class UserTypeApi
      * REST API Reference for updateUserType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $type The new user type. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $type The type to convert the listed accounts to, taken from the route: `User`, `Guest`, `RoomAdmin` or  `DocSpaceAdmin`. `RoomAdmin` and `DocSpaceAdmin` take a paid seat. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to convert. Only `userIds` is read by this operation; `resendAll` belongs to the invitation  operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1433,8 +1433,8 @@ class UserTypeApi
     /**
      * Create request for operation 'updateUserType'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $type The new user type. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $type The type to convert the listed accounts to, taken from the route: `User`, `Guest`, `RoomAdmin` or  `DocSpaceAdmin`. `RoomAdmin` and `DocSpaceAdmin` take a paid seat. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to convert. Only `userIds` is read by this operation; `resendAll` belongs to the invitation  operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

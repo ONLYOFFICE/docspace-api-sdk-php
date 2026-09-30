@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EditorConfigurationDto Class Doc Comment
  *
  * @category Class
- * @description The editor configuration parameters.
+ * @description How the editors behave for this opening: the mode, the language, the interface, and who is editing.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -393,7 +393,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets callback_url
      *
-     * @param string|null $callback_url The callback URL of the editor.
+     * @param string|null $callback_url Where the editors post the document back to when they save it. A client must not call it itself; it is the  address the document service uses.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets co_editing
      *
-     * @param \OpenAPI\Client\Model\CoEditingConfig|null $co_editing The co-editing configuration parameters.
+     * @param \OpenAPI\Client\Model\CoEditingConfig|null $co_editing How co-editing starts out for this session and whether the user may switch it in the interface.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets create_url
      *
-     * @param string|null $create_url The creation URL of the editor.
+     * @param string|null $create_url Where the editor sends the user when they ask for a new document of the same type. It is empty when creating  one is not offered here.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customization
      *
-     * @param \OpenAPI\Client\Model\CustomizationConfigDto|null $customization The customization configuration.
+     * @param \OpenAPI\Client\Model\CustomizationConfigDto|null $customization How the editor interface is dressed for this portal, this document and this layout.
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets embedded
      *
-     * @param \OpenAPI\Client\Model\EmbeddedConfig|null $embedded The embedded configuration parameters for embedded documents.
+     * @param \OpenAPI\Client\Model\EmbeddedConfig|null $embedded The addresses the framed viewer needs. It is filled in only for the embedded layout.
      *
      * @return self
      */
@@ -542,7 +542,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets encryption_keys
      *
-     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $encryption_keys The encryption keys of the editor configuration.
+     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $encryption_keys The caller's end-to-end encryption keys, added only when the document lies in a private room, so that the  editors can decrypt it in the browser. It is empty everywhere else.
      *
      * @return self
      */
@@ -576,7 +576,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets lang
      *
-     * @param string|null $lang The language of the editor configuration.
+     * @param string|null $lang The culture the editor interface is shown in, taken from the profile of the caller.
      *
      * @return self
      */
@@ -610,7 +610,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mode
      *
-     * @param string|null $mode The mode of the editor configuration.
+     * @param string|null $mode `edit` when this session may write the document, `view` when it may only read it.
      *
      * @return self
      */
@@ -644,7 +644,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mode_write
      *
-     * @param bool|null $mode_write Specifies if the mode is write of the editor configuration.
+     * @param bool|null $mode_write Whether this session may write; it is what the mode above says in one word.
      *
      * @return self
      */
@@ -671,7 +671,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets plugins
      *
-     * @param \OpenAPI\Client\Model\PluginsConfig|null $plugins The plugins configuration.
+     * @param \OpenAPI\Client\Model\PluginsConfig|null $plugins Which editor plugins are offered. The portal currently offers none, so the list inside comes back empty.
      *
      * @return self
      */
@@ -698,7 +698,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets recent
      *
-     * @param \OpenAPI\Client\Model\RecentConfig[]|null $recent The recent configuration of the editor.
+     * @param \OpenAPI\Client\Model\RecentConfig[]|null $recent The documents offered in the editor's recent list. It is left out altogether when there is nothing to offer.
      *
      * @return self
      */
@@ -732,7 +732,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets templates
      *
-     * @param \OpenAPI\Client\Model\TemplatesConfig[]|null $templates The templates of the editor configuration.
+     * @param \OpenAPI\Client\Model\TemplatesConfig[]|null $templates Always empty: the portal no longer passes creation templates through the editor configuration.
      *
      * @return self
      */
@@ -766,7 +766,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\UserConfig|null $user The user configuration of the editor.
+     * @param \OpenAPI\Client\Model\UserConfig|null $user The account the editors attribute changes to. It is empty for an anonymous session opened through an external  link, and the editors then ask for a name themselves.
      *
      * @return self
      */

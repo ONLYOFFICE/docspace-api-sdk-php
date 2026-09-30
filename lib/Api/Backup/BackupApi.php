@@ -169,7 +169,7 @@ class BackupApi
     /**
      * Operation cancelBackup
      *
-     * Cancel current backup
+     * Cancel the running backup
      *
      * REST API Reference for cancelBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/cancel-backup/
@@ -189,7 +189,7 @@ class BackupApi
     /**
      * Operation cancelBackupWithHttpInfo
      *
-     * Cancel current backup
+     * Cancel the running backup
      *
      * REST API Reference for cancelBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/cancel-backup/
@@ -318,7 +318,7 @@ class BackupApi
     /**
      * Operation cancelBackupAsync
      *
-     * Cancel current backup
+     * Cancel the running backup
      *
      * REST API Reference for cancelBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/cancel-backup/
@@ -341,7 +341,7 @@ class BackupApi
     /**
      * Operation cancelBackupAsyncWithHttpInfo
      *
-     * Cancel current backup
+     * Cancel the running backup
      *
      * REST API Reference for cancelBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/cancel-backup/
@@ -835,7 +835,7 @@ class BackupApi
      * REST API Reference for deleteBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup/
      *
-     * @param  string $id The backup ID. (required)
+     * @param  string $id The ID of the backup to delete, taken from the route. It is the `id` of a record listed by  `GET api/2.0/backup/getbackuphistory`, which is also the `taskId` the backup was started with. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -856,7 +856,7 @@ class BackupApi
      * REST API Reference for deleteBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup/
      *
-     * @param  string $id The backup ID. (required)
+     * @param  string $id The ID of the backup to delete, taken from the route. It is the `id` of a record listed by  `GET api/2.0/backup/getbackuphistory`, which is also the `taskId` the backup was started with. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1000,7 +1000,7 @@ class BackupApi
      * REST API Reference for deleteBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup/
      *
-     * @param  string $id The backup ID. (required)
+     * @param  string $id The ID of the backup to delete, taken from the route. It is the `id` of a record listed by  `GET api/2.0/backup/getbackuphistory`, which is also the `taskId` the backup was started with. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1024,7 +1024,7 @@ class BackupApi
      * REST API Reference for deleteBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup/
      *
-     * @param  string $id The backup ID. (required)
+     * @param  string $id The ID of the backup to delete, taken from the route. It is the `id` of a record listed by  `GET api/2.0/backup/getbackuphistory`, which is also the `taskId` the backup was started with. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1074,7 +1074,7 @@ class BackupApi
     /**
      * Create request for operation 'deleteBackup'
      *
-     * @param  string $id The backup ID. (required)
+     * @param  string $id The ID of the backup to delete, taken from the route. It is the `id` of a record listed by  `GET api/2.0/backup/getbackuphistory`, which is also the `taskId` the backup was started with. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1193,7 +1193,7 @@ class BackupApi
      * REST API Reference for deleteBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1214,7 +1214,7 @@ class BackupApi
      * REST API Reference for deleteBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1358,7 +1358,7 @@ class BackupApi
      * REST API Reference for deleteBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1382,7 +1382,7 @@ class BackupApi
      * REST API Reference for deleteBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1432,7 +1432,7 @@ class BackupApi
     /**
      * Create request for operation 'deleteBackupHistory'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1546,7 +1546,7 @@ class BackupApi
      * REST API Reference for deleteBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1567,7 +1567,7 @@ class BackupApi
      * REST API Reference for deleteBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1711,7 +1711,7 @@ class BackupApi
      * REST API Reference for deleteBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1735,7 +1735,7 @@ class BackupApi
      * REST API Reference for deleteBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1785,7 +1785,7 @@ class BackupApi
     /**
      * Create request for operation 'deleteBackupSchedule'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1899,7 +1899,7 @@ class BackupApi
      * REST API Reference for getBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1920,7 +1920,7 @@ class BackupApi
      * REST API Reference for getBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2064,7 +2064,7 @@ class BackupApi
      * REST API Reference for getBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2088,7 +2088,7 @@ class BackupApi
      * REST API Reference for getBackupHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-history/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2138,7 +2138,7 @@ class BackupApi
     /**
      * Create request for operation 'getBackupHistory'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2252,7 +2252,7 @@ class BackupApi
      * REST API Reference for getBackupProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2273,7 +2273,7 @@ class BackupApi
      * REST API Reference for getBackupProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2417,7 +2417,7 @@ class BackupApi
      * REST API Reference for getBackupProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2441,7 +2441,7 @@ class BackupApi
      * REST API Reference for getBackupProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2491,7 +2491,7 @@ class BackupApi
     /**
      * Create request for operation 'getBackupProgress'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2605,7 +2605,7 @@ class BackupApi
      * REST API Reference for getBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2626,7 +2626,7 @@ class BackupApi
      * REST API Reference for getBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2770,7 +2770,7 @@ class BackupApi
      * REST API Reference for getBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2794,7 +2794,7 @@ class BackupApi
      * REST API Reference for getBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-schedule/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2844,7 +2844,7 @@ class BackupApi
     /**
      * Create request for operation 'getBackupSchedule'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Applies the operation to the whole server rather than to the current portal, which requires the space  access permission and works on a standalone installation only. Server-wide backups and schedules are  kept apart from the ones of a portal, so the two values address different data. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2958,9 +2958,9 @@ class BackupApi
      * REST API Reference for getBackupsCount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-count/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2981,9 +2981,9 @@ class BackupApi
      * REST API Reference for getBackupsCount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-count/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3113,9 +3113,9 @@ class BackupApi
      * REST API Reference for getBackupsCount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-count/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3139,9 +3139,9 @@ class BackupApi
      * REST API Reference for getBackupsCount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-count/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3191,9 +3191,9 @@ class BackupApi
     /**
      * Create request for operation 'getBackupsCount'
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3322,14 +3322,14 @@ class BackupApi
     /**
      * Operation getBackupsCounts
      *
-     * Get the number of free and paid backups
+     * Get free and paid backup counts
      *
      * REST API Reference for getBackupsCounts Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-counts/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCounts'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3345,14 +3345,14 @@ class BackupApi
     /**
      * Operation getBackupsCountsWithHttpInfo
      *
-     * Get the number of free and paid backups
+     * Get free and paid backup counts
      *
      * REST API Reference for getBackupsCounts Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-counts/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCounts'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3477,14 +3477,14 @@ class BackupApi
     /**
      * Operation getBackupsCountsAsync
      *
-     * Get the number of free and paid backups
+     * Get free and paid backup counts
      *
      * REST API Reference for getBackupsCounts Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-counts/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3503,14 +3503,14 @@ class BackupApi
     /**
      * Operation getBackupsCountsAsyncWithHttpInfo
      *
-     * Get the number of free and paid backups
+     * Get free and paid backup counts
      *
      * REST API Reference for getBackupsCounts Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-counts/
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3560,9 +3560,9 @@ class BackupApi
     /**
      * Create request for operation 'getBackupsCounts'
      *
-     * @param  \DateTime|null $from The from date. (optional)
-     * @param  \DateTime|null $to The to date. (optional)
-     * @param  bool|null $paid Specifies if the backups are paid or not. (optional)
+     * @param  \DateTime|null $from The start of the period, in UTC and inclusive. It defaults to the first day of the current calendar  month at 00:00 UTC, and it has to be no later than `to`. (optional)
+     * @param  \DateTime|null $to The end of the period, in UTC and inclusive. It defaults to the moment of the call. (optional)
+     * @param  bool|null $paid Counts the backups charged to the portal wallet when true, and the ones covered by the free monthly  allowance when false, which is the default. It is read only by  `GET api/2.0/backup/getbackupscount` and is ignored by  `GET api/2.0/backup/getbackupscountbypaid`, which always reports both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBackupsCounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3691,7 +3691,7 @@ class BackupApi
     /**
      * Operation getBackupsServiceState
      *
-     * Get the backup service state
+     * Check whether backups are enabled
      *
      * REST API Reference for getBackupsServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-service-state/
@@ -3711,7 +3711,7 @@ class BackupApi
     /**
      * Operation getBackupsServiceStateWithHttpInfo
      *
-     * Get the backup service state
+     * Check whether backups are enabled
      *
      * REST API Reference for getBackupsServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-service-state/
@@ -3840,7 +3840,7 @@ class BackupApi
     /**
      * Operation getBackupsServiceStateAsync
      *
-     * Get the backup service state
+     * Check whether backups are enabled
      *
      * REST API Reference for getBackupsServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-service-state/
@@ -3863,7 +3863,7 @@ class BackupApi
     /**
      * Operation getBackupsServiceStateAsyncWithHttpInfo
      *
-     * Get the backup service state
+     * Check whether backups are enabled
      *
      * REST API Reference for getBackupsServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backups-service-state/
@@ -4020,7 +4020,7 @@ class BackupApi
      * REST API Reference for getRestoreProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-restore-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Which restoring job to look for, read as three states rather than as a flag: leave it out for  whichever job concerns this portal, including a server-wide one, send false for the job of this  portal alone, and send true for the server-wide job. On a portal that is not a standalone  installation the value is forced to false. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4041,7 +4041,7 @@ class BackupApi
      * REST API Reference for getRestoreProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-restore-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Which restoring job to look for, read as three states rather than as a flag: leave it out for  whichever job concerns this portal, including a server-wide one, send false for the job of this  portal alone, and send true for the server-wide job. On a portal that is not a standalone  installation the value is forced to false. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4171,7 +4171,7 @@ class BackupApi
      * REST API Reference for getRestoreProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-restore-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Which restoring job to look for, read as three states rather than as a flag: leave it out for  whichever job concerns this portal, including a server-wide one, send false for the job of this  portal alone, and send true for the server-wide job. On a portal that is not a standalone  installation the value is forced to false. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4195,7 +4195,7 @@ class BackupApi
      * REST API Reference for getRestoreProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-restore-progress/
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Which restoring job to look for, read as three states rather than as a flag: leave it out for  whichever job concerns this portal, including a server-wide one, send false for the job of this  portal alone, and send true for the server-wide job. On a portal that is not a standalone  installation the value is forced to false. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4245,7 +4245,7 @@ class BackupApi
     /**
      * Create request for operation 'getRestoreProgress'
      *
-     * @param  bool|null $dump Specifies if a dump will be created or not. (optional)
+     * @param  bool|null $dump Which restoring job to look for, read as three states rather than as a flag: leave it out for  whichever job concerns this portal, including a server-wide one, send false for the job of this  portal alone, and send true for the server-wide job. On a portal that is not a standalone  installation the value is forced to false. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRestoreProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4307,6 +4307,28 @@ class BackupApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4679,7 +4701,7 @@ class BackupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function startBackupRestore($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
@@ -4700,7 +4722,7 @@ class BackupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function startBackupRestoreWithHttpInfo($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
@@ -4749,6 +4771,12 @@ class BackupApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4803,6 +4831,14 @@ class BackupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

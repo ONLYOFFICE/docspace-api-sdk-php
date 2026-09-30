@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SetPublicDto Class Doc Comment
  *
  * @category Class
- * @description The public settings of the room template to set.
+ * @description The public access to set on a room template.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -321,7 +321,7 @@ class SetPublicDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id The room template ID.
+     * @param int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted.
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class SetPublicDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Specifies whether the room template is public or not.
+     * @param bool|null $public Whether the Everyone group keeps read access to the template. True shares it with every member allowed to  create rooms; false leaves it reachable only for its owner.
      *
      * @return self
      */

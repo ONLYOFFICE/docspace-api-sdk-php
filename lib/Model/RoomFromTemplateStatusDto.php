@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomFromTemplateStatusDto Class Doc Comment
  *
  * @category Class
- * @description The progress parameters of creating a room from the template.
+ * @description The progress of the job that creates a room out of a room template.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -336,7 +336,7 @@ class RoomFromTemplateStatusDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets room_id
      *
-     * @param int $room_id The room ID.
+     * @param int $room_id The room the job is creating. It is meaningful once the room exists, which is guaranteed only after  `isCompleted` turns true and `error` stays empty; until then it carries no usable id.
      *
      * @return self
      */
@@ -363,7 +363,7 @@ class RoomFromTemplateStatusDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets progress
      *
-     * @param float $progress The progress of creating a room from the template.
+     * @param float $progress How far the job has got. The value climbs while the contents of the template are being copied into the new  room and reaches its maximum at the very end.
      *
      * @return self
      */
@@ -390,7 +390,7 @@ class RoomFromTemplateStatusDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets error
      *
-     * @param string|null $error The error message that is sent when a room is not created successfully from the template.
+     * @param string|null $error Why the job stopped. It is empty while the job runs and after a successful one, and a filled value means that  no room was created, so the request has to be repeated rather than waited out.
      *
      * @return self
      */
@@ -424,7 +424,7 @@ class RoomFromTemplateStatusDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets is_completed
      *
-     * @param bool $is_completed Specifies whether the process of creating a room from the template is completed.
+     * @param bool $is_completed Whether the job has ended. It is set both after a successful creation and after a failure, so it is the flag  to poll for, while `error` is what separates the two outcomes.
      *
      * @return self
      */

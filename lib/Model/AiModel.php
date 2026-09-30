@@ -62,6 +62,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'provider' => '\OpenAPI\Client\Model\AiProviderType',
         'reasoning' => 'bool',
+        'reasoning_support' => '\OpenAPI\Client\Model\AiReasoningSupport',
         'capabilities' => 'float'
     ];
 
@@ -77,6 +78,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'provider' => null,
         'reasoning' => null,
+        'reasoning_support' => null,
         'capabilities' => null
     ];
 
@@ -90,6 +92,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => false,
         'provider' => false,
         'reasoning' => false,
+        'reasoning_support' => false,
         'capabilities' => false
     ];
 
@@ -183,6 +186,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'provider' => 'provider',
         'reasoning' => 'reasoning',
+        'reasoning_support' => 'reasoningSupport',
         'capabilities' => 'capabilities'
     ];
 
@@ -196,6 +200,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'provider' => 'setProvider',
         'reasoning' => 'setReasoning',
+        'reasoning_support' => 'setReasoningSupport',
         'capabilities' => 'setCapabilities'
     ];
 
@@ -209,6 +214,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'provider' => 'getProvider',
         'reasoning' => 'getReasoning',
+        'reasoning_support' => 'getReasoningSupport',
         'capabilities' => 'getCapabilities'
     ];
 
@@ -273,6 +279,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('provider', $data ?? [], null);
         $this->setIfExists('reasoning', $data ?? [], null);
+        $this->setIfExists('reasoning_support', $data ?? [], null);
         $this->setIfExists('capabilities', $data ?? [], null);
     }
 
@@ -431,6 +438,33 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable reasoning cannot be null');
         }
         $this->container['reasoning'] = $reasoning;
+
+        return $this;
+    }
+
+    /**
+     * Gets reasoning_support
+     *
+     * @return \OpenAPI\Client\Model\AiReasoningSupport|null
+     */
+    public function getReasoningSupport()
+    {
+        return $this->container['reasoning_support'];
+    }
+
+    /**
+     * Sets reasoning_support
+     *
+     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support What the model can do with extended thinking, when the provider's catalogue says so (OpenRouter and the ONLYOFFICE route report a per-model `reasoning` object). Copied onto the profile at save time; absent, the widget falls back to the provider's id-based table.
+     *
+     * @return self
+     */
+    public function setReasoningSupport($reasoning_support)
+    {
+        if (is_null($reasoning_support)) {
+            throw new \InvalidArgumentException('non-nullable reasoning_support cannot be null');
+        }
+        $this->container['reasoning_support'] = $reasoning_support;
 
         return $this;
     }

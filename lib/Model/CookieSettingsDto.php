@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CookieSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The cookie settings.
+ * @description How long an authentication session of the portal stays valid, and whether that limit is applied.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class CookieSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets life_time
      *
-     * @param int $life_time The cookie lifetime value in minutes.
+     * @param int $life_time How long, in minutes, a session issued from now on remains valid. It is `1440` on a portal that has never  stored a limit, and that stored number is reported whether or not `enabled` puts it to use.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class CookieSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets enabled
      *
-     * @param bool $enabled Specifies if the cookie settings are enabled or not.
+     * @param bool $enabled Whether the stored lifetime is applied at all. While it is `false` the number above is ignored and an  issued session is honoured for a year.
      *
      * @return self
      */

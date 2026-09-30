@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ItemKeyValuePairObjectObject Class Doc Comment
  *
  * @category Class
- * @description A key-value pair of a list item.
+ * @description One entry of a keyed collection, carried as an explicit pair of `key` and `value` fields instead of as a member  of a JSON object, so that the key is not restricted to a string and the entries keep the order they are sent in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

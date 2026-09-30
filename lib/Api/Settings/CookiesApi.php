@@ -133,7 +133,7 @@ class CookiesApi
     /**
      * Operation getCookieSettings
      *
-     * Get cookies lifetime
+     * Get the cookie lifetime settings
      *
      * REST API Reference for getCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-cookie-settings/
@@ -153,7 +153,7 @@ class CookiesApi
     /**
      * Operation getCookieSettingsWithHttpInfo
      *
-     * Get cookies lifetime
+     * Get the cookie lifetime settings
      *
      * REST API Reference for getCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-cookie-settings/
@@ -282,7 +282,7 @@ class CookiesApi
     /**
      * Operation getCookieSettingsAsync
      *
-     * Get cookies lifetime
+     * Get the cookie lifetime settings
      *
      * REST API Reference for getCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-cookie-settings/
@@ -305,7 +305,7 @@ class CookiesApi
     /**
      * Operation getCookieSettingsAsyncWithHttpInfo
      *
-     * Get cookies lifetime
+     * Get the cookie lifetime settings
      *
      * REST API Reference for getCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-cookie-settings/
@@ -457,7 +457,7 @@ class CookiesApi
     /**
      * Operation updateCookieSettings
      *
-     * Update cookies lifetime
+     * Update the cookie lifetime settings
      *
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
@@ -478,7 +478,7 @@ class CookiesApi
     /**
      * Operation updateCookieSettingsWithHttpInfo
      *
-     * Update cookies lifetime
+     * Update the cookie lifetime settings
      *
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
@@ -622,7 +622,7 @@ class CookiesApi
     /**
      * Operation updateCookieSettingsAsync
      *
-     * Update cookies lifetime
+     * Update the cookie lifetime settings
      *
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
@@ -646,7 +646,7 @@ class CookiesApi
     /**
      * Operation updateCookieSettingsAsyncWithHttpInfo
      *
-     * Update cookies lifetime
+     * Update the cookie lifetime settings
      *
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/

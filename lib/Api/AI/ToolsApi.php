@@ -176,7 +176,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsAddCustomServer($ai_tools_add_custom_server_request, string $contentType = self::contentTypes['aiToolsAddCustomServer'][0])
     {
@@ -197,7 +197,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsAddCustomServerWithHttpInfo($ai_tools_add_custom_server_request, string $contentType = self::contentTypes['aiToolsAddCustomServer'][0])
     {
@@ -233,7 +233,37 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -271,7 +301,47 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -434,6 +504,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -469,7 +548,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return string[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return string[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsGetAllowAlways($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
@@ -490,7 +569,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of string[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsGetAllowAlwaysWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetAllowAlways'][0])
     {
@@ -532,6 +611,18 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -565,6 +656,22 @@ class ToolsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -723,6 +830,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -759,7 +875,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\AiErrorResponse
+     * @return object|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsGetCustomServer($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
@@ -781,7 +897,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsGetCustomServerWithHttpInfo($name, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetCustomServer'][0])
     {
@@ -817,7 +933,25 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -855,7 +989,31 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1033,6 +1191,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1068,7 +1235,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsGetDisabled($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
@@ -1089,7 +1256,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsGetDisabledWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
@@ -1131,6 +1298,18 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1164,6 +1343,22 @@ class ToolsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1322,6 +1517,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1359,7 +1563,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return bool|\OpenAPI\Client\Model\AiErrorResponse
+     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsIsAllowAlways($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
@@ -1382,7 +1586,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsIsAllowAlwaysWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsAllowAlways'][0])
     {
@@ -1418,7 +1622,25 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1456,7 +1678,31 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1653,6 +1899,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1690,7 +1945,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return bool|\OpenAPI\Client\Model\AiErrorResponse
+     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsIsToolDisabled($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
@@ -1713,7 +1968,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsIsToolDisabledWithHttpInfo($server_type, $tool_name, $entity_id = null, string $contentType = self::contentTypes['aiToolsIsToolDisabled'][0])
     {
@@ -1749,7 +2004,25 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1787,7 +2060,31 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1984,6 +2281,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2019,7 +2325,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,object>|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,object>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsListCustomServers($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
@@ -2040,7 +2346,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,object>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,object>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsListCustomServersWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListCustomServers'][0])
     {
@@ -2082,6 +2388,18 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2115,6 +2433,22 @@ class ToolsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2273,6 +2607,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2308,7 +2651,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,\OpenAPI\Client\Model\AiTMCPItem[]>|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolsListSystemTools200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsListSystemTools($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
@@ -2329,7 +2672,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,\OpenAPI\Client\Model\AiTMCPItem[]>|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolsListSystemTools200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsListSystemToolsWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
@@ -2361,11 +2704,23 @@ class ToolsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>',
+                        '\OpenAPI\Client\Model\AiToolsListSystemTools200Response',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2389,7 +2744,7 @@ class ToolsApi
             }
 
             return $this->handleResponseWithDataType(
-                'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>',
+                '\OpenAPI\Client\Model\AiToolsListSystemTools200Response',
                 $request,
                 $response,
             );
@@ -2398,12 +2753,28 @@ class ToolsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>',
+                        '\OpenAPI\Client\Model\AiToolsListSystemTools200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2458,7 +2829,7 @@ class ToolsApi
      */
     public function aiToolsListSystemToolsAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsListSystemTools'][0])
     {
-        $returnType = 'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>';
+        $returnType = '\OpenAPI\Client\Model\AiToolsListSystemTools200Response';
         $request = $this->aiToolsListSystemToolsRequest($entity_id, $contentType);
 
         return $this->client
@@ -2562,6 +2933,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2597,7 +2977,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsRemoveCustomServer($ai_tools_remove_custom_server_request, string $contentType = self::contentTypes['aiToolsRemoveCustomServer'][0])
     {
@@ -2618,7 +2998,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsRemoveCustomServerWithHttpInfo($ai_tools_remove_custom_server_request, string $contentType = self::contentTypes['aiToolsRemoveCustomServer'][0])
     {
@@ -2654,7 +3034,37 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2692,7 +3102,47 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2855,6 +3305,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2890,7 +3349,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiToolsBulkResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolsBulkResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsReplaceAllCustomServers($ai_tools_replace_all_custom_servers_request, string $contentType = self::contentTypes['aiToolsReplaceAllCustomServers'][0])
     {
@@ -2911,7 +3370,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiToolsBulkResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolsBulkResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsReplaceAllCustomServersWithHttpInfo($ai_tools_replace_all_custom_servers_request, string $contentType = self::contentTypes['aiToolsReplaceAllCustomServers'][0])
     {
@@ -2947,7 +3406,37 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2985,7 +3474,47 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3148,6 +3677,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3183,7 +3721,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsSetAllowAlways($ai_tools_set_allow_always_request, string $contentType = self::contentTypes['aiToolsSetAllowAlways'][0])
     {
@@ -3204,7 +3742,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsSetAllowAlwaysWithHttpInfo($ai_tools_set_allow_always_request, string $contentType = self::contentTypes['aiToolsSetAllowAlways'][0])
     {
@@ -3246,6 +3784,30 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -3279,6 +3841,38 @@ class ToolsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3441,6 +4035,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3476,7 +4079,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsSetDisabled($ai_tools_set_disabled_request, string $contentType = self::contentTypes['aiToolsSetDisabled'][0])
     {
@@ -3497,7 +4100,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsSetDisabledWithHttpInfo($ai_tools_set_disabled_request, string $contentType = self::contentTypes['aiToolsSetDisabled'][0])
     {
@@ -3533,7 +4136,37 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3571,7 +4204,47 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3734,6 +4407,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3769,7 +4451,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsUpdateCustomServer($ai_tools_update_custom_server_request, string $contentType = self::contentTypes['aiToolsUpdateCustomServer'][0])
     {
@@ -3790,7 +4472,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolsMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsUpdateCustomServerWithHttpInfo($ai_tools_update_custom_server_request, string $contentType = self::contentTypes['aiToolsUpdateCustomServer'][0])
     {
@@ -3826,7 +4508,37 @@ class ToolsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3864,7 +4576,47 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -4027,6 +4779,15 @@ class ToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

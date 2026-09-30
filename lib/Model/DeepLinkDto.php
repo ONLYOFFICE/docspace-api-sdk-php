@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DeepLinkDto Class Doc Comment
  *
  * @category Class
- * @description The deep link parameters.
+ * @description What a mobile client needs to hand a portal link to the installed application instead of the browser.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +326,7 @@ class DeepLinkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets android_package_name
      *
-     * @param string|null $android_package_name The Android package name.
+     * @param string|null $android_package_name The package name to look for on Android, and to build a store link from when the application is missing.  All three fields are empty strings on an installation that ships no mobile application, which is the  signal to keep opening links in the browser.
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class DeepLinkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The deep link URL.
+     * @param string|null $url The address the client redirects a portal link through so that the application can claim it. It is the  installation's own deep-link host, not a link to any particular document.
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class DeepLinkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ios_package_id
      *
-     * @param string|null $ios_package_id The deep link IOS package ID.
+     * @param string|null $ios_package_id The bundle identifier to look for on iOS, used the same way as `androidPackageName`.
      *
      * @return self
      */

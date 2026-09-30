@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudStats Class Doc Comment
  *
  * @category Class
- * @description Represents the usage statistics of a DocsCloud tenant for the current period.
+ * @description Represents the usage statistics of a Docs Connect tenant for the current period.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

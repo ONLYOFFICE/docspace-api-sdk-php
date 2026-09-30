@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FilesStatisticsResultDto Class Doc Comment
  *
  * @category Class
- * @description The file statistics result parameters.
+ * @description The space that stored documents take in each section of the portal, in bytes. The figures cover every account of  the portal rather than the caller alone, and a section the portal does not have comes back as null instead of a  zero figure.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets my_documents_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $my_documents_used_space The used space of files in the \\My Documents\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $my_documents_used_space The space taken by the personal Files sections of all accounts of the portal added together. An item deleted  to the trash keeps taking space and is counted in `trashUsedSpace` until the trash is emptied.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets trash_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $trash_used_space The used space of files in the \\Trash\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $trash_used_space The space held by the items deleted to the trash from any section, which is given back only when the trash is  emptied or the items are erased for good.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets archive_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $archive_used_space The used space of files in the \\Archive\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $archive_used_space The space taken by the content of the archived rooms, the archived form filling rooms included. Restoring a  room moves its space back to `roomsUsedSpace` or `formsUsedSpace`.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets rooms_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $rooms_used_space The used space of files in the \\Rooms\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $rooms_used_space The space taken by the content of the active rooms, except the form filling rooms, whose content is reported  in `formsUsedSpace`. Archiving a room moves its space to `archiveUsedSpace`.
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets ai_agents_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $ai_agents_used_space The used space of files in the \\AI agents\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $ai_agents_used_space The space taken by the content of the AI agents section, which exists only in a portal where the AI agents  feature is active; creating an AI room is not enough to bring the section into being.
      *
      * @return self
      */
@@ -473,7 +473,7 @@ class FilesStatisticsResultDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets forms_used_space
      *
-     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $forms_used_space The used space of files in the \\Forms\\ section.
+     * @param \OpenAPI\Client\Model\FilesStatisticsFolder|null $forms_used_space The space taken by the content of the active form filling rooms, which is kept apart from `roomsUsedSpace`  even though those rooms are listed among the rooms.
      *
      * @return self
      */

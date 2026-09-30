@@ -344,7 +344,7 @@ class FeedbackConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets visible
      *
-     * @param bool|null $visible Shows or hides the Feedback & Support menu button.
+     * @param bool|null $visible Whether the support button is shown. The portal always asks for it to be shown.
      *
      * @return self
      */

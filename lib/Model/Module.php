@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Module Class Doc Comment
  *
  * @category Class
- * @description The module information.
+ * @description The descriptor of a portal module: what it is called, where it starts and how it is pictured.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -359,7 +359,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The module ID.
+     * @param string|null $id The identifier of the module. It is the same in every portal and in every language, so use it rather than the  title to tell modules apart.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets app_name
      *
-     * @param string|null $app_name The module product class name.
+     * @param string|null $app_name The short system name of the module, the one that appears in its addresses and in the portal configuration.  Unlike the title it is not translated.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The module product class name.
+     * @param string|null $title The display name of the module, already translated for the calling account, so it changes with the language  and must not be compared against a fixed string.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link The URL to the module start page.
+     * @param string|null $link The address of the start page of the module, to be opened in a browser rather than called as an API.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets icon_url
      *
-     * @param string|null $icon_url The module icon URL.
+     * @param string|null $icon_url The address of the small icon of the module, meant for a menu entry.
      *
      * @return self
      */
@@ -522,7 +522,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_url
      *
-     * @param string|null $image_url The module large image URL.
+     * @param string|null $image_url The address of the large image of the module, meant for a tile or a start screen.
      *
      * @return self
      */
@@ -556,7 +556,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets help_url
      *
-     * @param string|null $help_url The module help URL.
+     * @param string|null $help_url The address of the help section of the module. It is empty when the portal publishes no help for it.
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The module description.
+     * @param string|null $description The one-line description of the module shown next to its title, translated for the calling account.
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class Module implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_primary
      *
-     * @param bool|null $is_primary Specifies if the module is primary or not.
+     * @param bool|null $is_primary Whether the portal opens this module first when no other destination is given.
      *
      * @return self
      */

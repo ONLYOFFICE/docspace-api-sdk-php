@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AppDto Class Doc Comment
  *
  * @category Class
- * @description The portal application information.
+ * @description One feature module of the portal: whether it is switched on here, and the settings stored for it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,7 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'enabled' => 'bool',
-        'settings' => '\OpenAPI\Client\Model\AppDtoSettings'
+        'settings' => 'mixed'
     ];
 
     /**
@@ -84,7 +84,7 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'id' => true,
         'enabled' => false,
-        'settings' => false
+        'settings' => true
     ];
 
     /**
@@ -317,7 +317,7 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The application identifier (stable slug). The client maps this to its title, description and icon.
+     * @param string|null $id The application's stable key, declared in the installation configuration - `ai-rooms`, `docs-cloud` and  the like. It is what every other operation of this group addresses an application by, and a client maps it  to a title and an icon of its own; the portal ships no display name for it.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Whether the application is enabled for the current tenant.
+     * @param bool|null $enabled Whether the application is switched on for this portal. It is the portal's own flag where one has been  saved, and the default the installation configuration gives the application otherwise.
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets settings
      *
-     * @return \OpenAPI\Client\Model\AppDtoSettings|null
+     * @return mixed|null
      */
     public function getSettings()
     {
@@ -378,14 +378,21 @@ class AppDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets settings
      *
-     * @param \OpenAPI\Client\Model\AppDtoSettings|null $settings settings
+     * @param mixed|null $settings settings
      *
      * @return self
      */
     public function setSettings($settings)
     {
         if (is_null($settings)) {
-            throw new \InvalidArgumentException('non-nullable settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('settings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['settings'] = $settings;
 

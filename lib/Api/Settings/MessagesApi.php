@@ -136,7 +136,7 @@ class MessagesApi
     /**
      * Operation enableAdminMessageSettings
      *
-     * Enable the administrator message settings
+     * Enable or disable administrator messages
      *
      * REST API Reference for enableAdminMessageSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-admin-message-settings/
@@ -157,7 +157,7 @@ class MessagesApi
     /**
      * Operation enableAdminMessageSettingsWithHttpInfo
      *
-     * Enable the administrator message settings
+     * Enable or disable administrator messages
      *
      * REST API Reference for enableAdminMessageSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-admin-message-settings/
@@ -301,7 +301,7 @@ class MessagesApi
     /**
      * Operation enableAdminMessageSettingsAsync
      *
-     * Enable the administrator message settings
+     * Enable or disable administrator messages
      *
      * REST API Reference for enableAdminMessageSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-admin-message-settings/
@@ -325,7 +325,7 @@ class MessagesApi
     /**
      * Operation enableAdminMessageSettingsAsyncWithHttpInfo
      *
-     * Enable the administrator message settings
+     * Enable or disable administrator messages
      *
      * REST API Reference for enableAdminMessageSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-admin-message-settings/
@@ -763,6 +763,28 @@ class MessagesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -788,7 +810,7 @@ class MessagesApi
     /**
      * Operation sendJoinInviteMail
      *
-     * Sends an invitation email
+     * Send an invitation email
      *
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
@@ -809,7 +831,7 @@ class MessagesApi
     /**
      * Operation sendJoinInviteMailWithHttpInfo
      *
-     * Sends an invitation email
+     * Send an invitation email
      *
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
@@ -925,7 +947,7 @@ class MessagesApi
     /**
      * Operation sendJoinInviteMailAsync
      *
-     * Sends an invitation email
+     * Send an invitation email
      *
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
@@ -949,7 +971,7 @@ class MessagesApi
     /**
      * Operation sendJoinInviteMailAsyncWithHttpInfo
      *
-     * Sends an invitation email
+     * Send an invitation email
      *
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
@@ -1064,6 +1086,28 @@ class MessagesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

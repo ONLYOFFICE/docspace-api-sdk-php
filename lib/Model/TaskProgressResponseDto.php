@@ -343,7 +343,7 @@ class TaskProgressResponseDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets id
      *
-     * @param string|null $id The task progress ID.
+     * @param string|null $id The ID of the queued job. It identifies this run of the job and changes every time the job is started again.
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class TaskProgressResponseDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets error
      *
-     * @param string|null $error The task progress error message.
+     * @param string|null $error The message of the error that stopped the job. It is empty while the job is running and after a job that  succeeded, and it is the only place where the reason for a failure is reported.
      *
      * @return self
      */
@@ -411,7 +411,7 @@ class TaskProgressResponseDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets percentage
      *
-     * @param int $percentage The percentage of the task progress.
+     * @param int $percentage The share of the job that is already done, from 0 to 100.
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class TaskProgressResponseDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets is_completed
      *
-     * @param bool $is_completed Specifies if the task peogress is completed or not.
+     * @param bool $is_completed Specifies whether the job has stopped running. This is the field to poll: true means the job will not change  any more, whether it succeeded, failed or was cancelled, and `status` tells which of the three it is.
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class TaskProgressResponseDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\DistributedTaskStatus $status The status of the distributed task.
+     * @param \OpenAPI\Client\Model\DistributedTaskStatus $status The state of the job: `Created` while it waits in the queue, `Running` while it works, `Completed` once it has  finished on its own, `Canceled` after a terminate operation, and `Failted` when it stopped on an error, in  which case `error` carries the reason.
      *
      * @return self
      */

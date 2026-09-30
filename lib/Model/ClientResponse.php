@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ClientResponse Class Doc Comment
  *
  * @category Class
+ * @description The whole stored record of an OAuth2 client, including the secret and every address the client is allowed to use.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -435,7 +436,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The client name.
+     * @param string|null $name The display name shown to the user on the consent screen, between 3 and 256 characters.
      *
      * @return self
      */
@@ -462,7 +463,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The client description.
+     * @param string|null $description The free-text description shown next to the name on the consent screen, at most 255 characters.
      *
      * @return self
      */
@@ -489,7 +490,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant
      *
-     * @param int|null $tenant The tenant ID associated with the client.
+     * @param int|null $tenant The identifier of the portal the client belongs to. A client is visible only inside its own tenant, apart from the unauthenticated public info read.
      *
      * @return self
      */
@@ -516,7 +517,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scopes
      *
-     * @param string[]|null $scopes The client scopes.
+     * @param string[]|null $scopes The permissions the client may ask for, named as they appear in the tenant scope catalogue - for example files:read, rooms:write or openid. A client cannot request a scope that is not listed here.
      *
      * @return self
      */
@@ -544,7 +545,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies if the client is currently enabled or not.
+     * @param bool|null $enabled Whether the client may currently obtain tokens. A disabled client keeps its registration and the tokens already issued to it, but new authorization requests for it are refused.
      *
      * @return self
      */
@@ -571,7 +572,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_id
      *
-     * @param string|null $client_id The client identifier issued to the client during registration.
+     * @param string|null $client_id The generated identifier of the client, sent as client_id in every OAuth2 request. It is assigned when the client is registered and never changes afterwards.
      *
      * @return self
      */
@@ -598,7 +599,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_secret
      *
-     * @param string|null $client_secret The client secret issued to the client during registration.
+     * @param string|null $client_secret The client secret, which the client presents at the token endpoint when it authenticates with client_secret_post. It is omitted from the response rather than sent as null when the client has none.
      *
      * @return self
      */
@@ -625,7 +626,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets website_url
      *
-     * @param string|null $website_url The URL to the client's website.
+     * @param string|null $website_url The URL of the client home page, offered to the user before they consent.
      *
      * @return self
      */
@@ -652,7 +653,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets terms_url
      *
-     * @param string|null $terms_url The URL to the client's terms of service.
+     * @param string|null $terms_url The URL of the client terms of service, linked from the consent screen.
      *
      * @return self
      */
@@ -679,7 +680,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets policy_url
      *
-     * @param string|null $policy_url The URL to the client's privacy policy.
+     * @param string|null $policy_url The URL of the client privacy policy, linked from the consent screen.
      *
      * @return self
      */
@@ -706,7 +707,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logo
      *
-     * @param string|null $logo The URL to the client's logo.
+     * @param string|null $logo The client logo as a data URI carrying base64 image data, shown on the consent screen. Only png, jpeg, jpg and svg+xml are accepted, the whole string may not exceed 2000000 characters and the decoded image may not exceed 256000 bytes.
      *
      * @return self
      */
@@ -733,7 +734,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets authentication_methods
      *
-     * @param string[]|null $authentication_methods The authentication methods supported by the client.
+     * @param string[]|null $authentication_methods How the client authenticates itself at the token endpoint: client_secret_post for a confidential client that sends its secret, none for a public client that proves itself with PKCE instead.
      *
      * @return self
      */
@@ -761,7 +762,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets redirect_uris
      *
-     * @param string[]|null $redirect_uris The list of allowed redirect URIs.
+     * @param string[]|null $redirect_uris The URIs an authorization code may be delivered to. An authorization request naming any other URI is refused, and the set holds between 1 and 12 addresses.
      *
      * @return self
      */
@@ -789,7 +790,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets allowed_origins
      *
-     * @param string[]|null $allowed_origins The list of allowed CORS origins.
+     * @param string[]|null $allowed_origins The web origins allowed to call the portal on behalf of this client, used for the CORS check. The set holds between 1 and 12 addresses.
      *
      * @return self
      */
@@ -817,7 +818,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logout_redirect_uris
      *
-     * @param string[]|null $logout_redirect_uris The list of allowed logout redirect URIs.
+     * @param string[]|null $logout_redirect_uris The URIs the user may be sent back to once they have logged out.
      *
      * @return self
      */
@@ -845,7 +846,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_on
      *
-     * @param \DateTime|null $created_on The date and time when the client was created.
+     * @param \DateTime|null $created_on When the client was registered, as an ISO-8601 timestamp with a zone offset.
      *
      * @return self
      */
@@ -872,7 +873,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_by
      *
-     * @param string|null $created_by The user who created the client.
+     * @param string|null $created_by The identifier of the user who registered the client. A plain user may read and change only the clients where this is their own identifier.
      *
      * @return self
      */
@@ -899,7 +900,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets modified_on
      *
-     * @param \DateTime|null $modified_on The date and time when the client was last modified.
+     * @param \DateTime|null $modified_on When the client was last changed, as an ISO-8601 timestamp with a zone offset.
      *
      * @return self
      */
@@ -926,7 +927,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets modified_by
      *
-     * @param string|null $modified_by The user who last modified the client.
+     * @param string|null $modified_by The identifier of the user who last changed the client.
      *
      * @return self
      */
@@ -953,7 +954,7 @@ class ClientResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_public
      *
-     * @param bool|null $is_public Indicates whether the client is accessible by third-party tenants.
+     * @param bool|null $is_public Whether the client is offered to third-party tenants rather than only to the tenant that registered it.
      *
      * @return self
      */

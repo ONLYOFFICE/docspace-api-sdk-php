@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SetAppSettingsBody Class Doc Comment
  *
  * @category Class
- * @description Request body for saving application-specific settings.
+ * @description The configuration document a portal application keeps.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class SetAppSettingsBody implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'settings' => '\OpenAPI\Client\Model\SetAppSettingsBodySettings'
+        'settings' => 'mixed'
     ];
 
     /**
@@ -78,7 +78,7 @@ class SetAppSettingsBody implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'settings' => false
+        'settings' => true
     ];
 
     /**
@@ -293,7 +293,7 @@ class SetAppSettingsBody implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets settings
      *
-     * @return \OpenAPI\Client\Model\SetAppSettingsBodySettings|null
+     * @return mixed|null
      */
     public function getSettings()
     {
@@ -303,14 +303,21 @@ class SetAppSettingsBody implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets settings
      *
-     * @param \OpenAPI\Client\Model\SetAppSettingsBodySettings|null $settings settings
+     * @param mixed|null $settings settings
      *
      * @return self
      */
     public function setSettings($settings)
     {
         if (is_null($settings)) {
-            throw new \InvalidArgumentException('non-nullable settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('settings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['settings'] = $settings;
 

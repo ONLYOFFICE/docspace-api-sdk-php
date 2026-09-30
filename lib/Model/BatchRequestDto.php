@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BatchRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for copying/moving files.
+ * @description The files and folders to move or copy, the folder they go to, and the way name clashes are settled.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -352,7 +352,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets return_single_operation
      *
-     * @param bool|null $return_single_operation Specifies whether to return only the current operation
+     * @param bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFolderIds[]|null $folder_ids The list of folder IDs to be copied/moved.
+     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFolderIds[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $file_ids The list of file IDs to be copied/moved.
+     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets conflict_resolve_type
      *
-     * @param \OpenAPI\Client\Model\FileConflictResolveType|null $conflict_resolve_type The overwriting behavior of the file copying or moving.
+     * @param \OpenAPI\Client\Model\FileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash.
      *
      * @return self
      */
@@ -501,7 +501,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to delete the source files/folders after they are moved or copied to the destination folder.
+     * @param bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them.
      *
      * @return self
      */
@@ -528,7 +528,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets content
      *
-     * @param bool|null $content Specifies whether to copy or move the folder content or not.
+     * @param bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there.
      *
      * @return self
      */
@@ -555,7 +555,7 @@ class BatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets to_fill_out
      *
-     * @param bool|null $to_fill_out Specifies whether the file is copied for filling out
+     * @param bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected.
      *
      * @return self
      */

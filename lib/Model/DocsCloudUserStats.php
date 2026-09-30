@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudUserStats Class Doc Comment
  *
  * @category Class
- * @description Represents the usage statistics of a single DocsCloud user category (editor or viewer).
+ * @description Represents the usage statistics of a single Docs Connect user category (editor or viewer).
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

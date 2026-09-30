@@ -142,12 +142,12 @@ class PrivacyRoomApi
     /**
      * Operation deleteKeys
      *
-     * Deletes an encryption key and removes it from the system.
+     * Delete an encryption key
      *
      * REST API Reference for deleteKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-keys/
      *
-     * @param  string $id The unique identifier of the encryption key to be deleted. (required)
+     * @param  string $id The pair to delete, taken from the `id` of an entry of `GET api/2.0/privacyroom/keys`. Only the caller's own  pairs can be named here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteKeys'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -162,12 +162,12 @@ class PrivacyRoomApi
     /**
      * Operation deleteKeysWithHttpInfo
      *
-     * Deletes an encryption key and removes it from the system.
+     * Delete an encryption key
      *
      * REST API Reference for deleteKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-keys/
      *
-     * @param  string $id The unique identifier of the encryption key to be deleted. (required)
+     * @param  string $id The pair to delete, taken from the `id` of an entry of `GET api/2.0/privacyroom/keys`. Only the caller's own  pairs can be named here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteKeys'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -238,12 +238,12 @@ class PrivacyRoomApi
     /**
      * Operation deleteKeysAsync
      *
-     * Deletes an encryption key and removes it from the system.
+     * Delete an encryption key
      *
      * REST API Reference for deleteKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-keys/
      *
-     * @param  string $id The unique identifier of the encryption key to be deleted. (required)
+     * @param  string $id The pair to delete, taken from the `id` of an entry of `GET api/2.0/privacyroom/keys`. Only the caller's own  pairs can be named here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -262,12 +262,12 @@ class PrivacyRoomApi
     /**
      * Operation deleteKeysAsyncWithHttpInfo
      *
-     * Deletes an encryption key and removes it from the system.
+     * Delete an encryption key
      *
      * REST API Reference for deleteKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-keys/
      *
-     * @param  string $id The unique identifier of the encryption key to be deleted. (required)
+     * @param  string $id The pair to delete, taken from the `id` of an entry of `GET api/2.0/privacyroom/keys`. Only the caller's own  pairs can be named here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -304,7 +304,7 @@ class PrivacyRoomApi
     /**
      * Create request for operation 'deleteKeys'
      *
-     * @param  string $id The unique identifier of the encryption key to be deleted. (required)
+     * @param  string $id The pair to delete, taken from the `id` of an entry of `GET api/2.0/privacyroom/keys`. Only the caller's own  pairs can be named here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -418,7 +418,7 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeys
      *
-     * Retrieves encryption keys associated with the current user.
+     * Get own encryption keys
      *
      * REST API Reference for getUserKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys/
@@ -438,7 +438,7 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysWithHttpInfo
      *
-     * Retrieves encryption keys associated with the current user.
+     * Get own encryption keys
      *
      * REST API Reference for getUserKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys/
@@ -567,7 +567,7 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysAsync
      *
-     * Retrieves encryption keys associated with the current user.
+     * Get own encryption keys
      *
      * REST API Reference for getUserKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys/
@@ -590,7 +590,7 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysAsyncWithHttpInfo
      *
-     * Retrieves encryption keys associated with the current user.
+     * Get own encryption keys
      *
      * REST API Reference for getUserKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys/
@@ -742,12 +742,12 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysForRoom
      *
-     * Retrieves the encryption keys associated with a specific privacy room.
+     * Get private room access keys
      *
      * REST API Reference for getUserKeysForRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys-for-room/
      *
-     * @param  int $room_id The identifier of the privacy room. (required)
+     * @param  int $room_id The private room whose access keys are read. Take it from the `id` of the room returned by  `POST api/2.0/files/rooms` or listed by `GET api/2.0/files/rooms`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserKeysForRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -763,12 +763,12 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysForRoomWithHttpInfo
      *
-     * Retrieves the encryption keys associated with a specific privacy room.
+     * Get private room access keys
      *
      * REST API Reference for getUserKeysForRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys-for-room/
      *
-     * @param  int $room_id The identifier of the privacy room. (required)
+     * @param  int $room_id The private room whose access keys are read. Take it from the `id` of the room returned by  `POST api/2.0/files/rooms` or listed by `GET api/2.0/files/rooms`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserKeysForRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -907,12 +907,12 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysForRoomAsync
      *
-     * Retrieves the encryption keys associated with a specific privacy room.
+     * Get private room access keys
      *
      * REST API Reference for getUserKeysForRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys-for-room/
      *
-     * @param  int $room_id The identifier of the privacy room. (required)
+     * @param  int $room_id The private room whose access keys are read. Take it from the `id` of the room returned by  `POST api/2.0/files/rooms` or listed by `GET api/2.0/files/rooms`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserKeysForRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -931,12 +931,12 @@ class PrivacyRoomApi
     /**
      * Operation getUserKeysForRoomAsyncWithHttpInfo
      *
-     * Retrieves the encryption keys associated with a specific privacy room.
+     * Get private room access keys
      *
      * REST API Reference for getUserKeysForRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-keys-for-room/
      *
-     * @param  int $room_id The identifier of the privacy room. (required)
+     * @param  int $room_id The private room whose access keys are read. Take it from the `id` of the room returned by  `POST api/2.0/files/rooms` or listed by `GET api/2.0/files/rooms`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserKeysForRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -986,7 +986,7 @@ class PrivacyRoomApi
     /**
      * Create request for operation 'getUserKeysForRoom'
      *
-     * @param  int $room_id The identifier of the privacy room. (required)
+     * @param  int $room_id The private room whose access keys are read. Take it from the `id` of the room returned by  `POST api/2.0/files/rooms` or listed by `GET api/2.0/files/rooms`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserKeysForRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1100,12 +1100,12 @@ class PrivacyRoomApi
     /**
      * Operation replaceKey
      *
-     * Replaces an existing encryption key with a new one for the user.
+     * Rotate an encryption key
      *
      * REST API Reference for replaceKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/replace-key/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing the public and private key information to replace the existing key. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1121,12 +1121,12 @@ class PrivacyRoomApi
     /**
      * Operation replaceKeyWithHttpInfo
      *
-     * Replaces an existing encryption key with a new one for the user.
+     * Rotate an encryption key
      *
      * REST API Reference for replaceKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/replace-key/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing the public and private key information to replace the existing key. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1251,12 +1251,12 @@ class PrivacyRoomApi
     /**
      * Operation replaceKeyAsync
      *
-     * Replaces an existing encryption key with a new one for the user.
+     * Rotate an encryption key
      *
      * REST API Reference for replaceKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/replace-key/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing the public and private key information to replace the existing key. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1275,12 +1275,12 @@ class PrivacyRoomApi
     /**
      * Operation replaceKeyAsyncWithHttpInfo
      *
-     * Replaces an existing encryption key with a new one for the user.
+     * Rotate an encryption key
      *
      * REST API Reference for replaceKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/replace-key/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing the public and private key information to replace the existing key. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1330,7 +1330,7 @@ class PrivacyRoomApi
     /**
      * Create request for operation 'replaceKey'
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing the public and private key information to replace the existing key. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1437,12 +1437,12 @@ class PrivacyRoomApi
     /**
      * Operation setKeys
      *
-     * Creates and sets encryption keys for the user.
+     * Create an encryption key
      *
      * REST API Reference for setKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-keys/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing public and private key information. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeys'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1458,12 +1458,12 @@ class PrivacyRoomApi
     /**
      * Operation setKeysWithHttpInfo
      *
-     * Creates and sets encryption keys for the user.
+     * Create an encryption key
      *
      * REST API Reference for setKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-keys/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing public and private key information. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeys'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1588,12 +1588,12 @@ class PrivacyRoomApi
     /**
      * Operation setKeysAsync
      *
-     * Creates and sets encryption keys for the user.
+     * Create an encryption key
      *
      * REST API Reference for setKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-keys/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing public and private key information. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1612,12 +1612,12 @@ class PrivacyRoomApi
     /**
      * Operation setKeysAsyncWithHttpInfo
      *
-     * Creates and sets encryption keys for the user.
+     * Create an encryption key
      *
      * REST API Reference for setKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-keys/
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing public and private key information. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1667,7 +1667,7 @@ class PrivacyRoomApi
     /**
      * Create request for operation 'setKeys'
      *
-     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto The request object containing public and private key information. (optional)
+     * @param  \OpenAPI\Client\Model\EncryptionKeyRequestDto|null $encryption_key_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeys'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ChangeHistory Class Doc Comment
  *
  * @category Class
- * @description The parameters for changing version history.
+ * @description The change to make to a revision group of a file.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class ChangeHistory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int $version The file version of the change history.
+     * @param int $version The version the change applies to; 0 means the current version of the file.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class ChangeHistory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets continue_version
      *
-     * @param bool|null $continue_version Specifies whether to start a new version or continue revision of the change history.
+     * @param bool|null $continue_version What to do with the revision group: `false` completes the named version, storing its content again as a fresh  version that opens a new group, while `true` folds the last group back into the group before it, so the next  save continues that revision.
      *
      * @return self
      */

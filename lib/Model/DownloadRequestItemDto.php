@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DownloadRequestItemDto Class Doc Comment
  *
  * @category Class
- * @description The download request item with conversion parameters and security settings.
+ * @description One file of a bulk download, together with the format it is converted to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -350,7 +350,7 @@ class DownloadRequestItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets value
      *
-     * @param string|null $value The target format or conversion type for the file download.
+     * @param string|null $value The format the file is converted to before it is packed, as a file extension without a leading dot.
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class DownloadRequestItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets password
      *
-     * @param string|null $password The optional password for accessing protected files.
+     * @param string|null $password The password that opens the source file, for a file protected with one; a protected file cannot be converted  without it.
      *
      * @return self
      */

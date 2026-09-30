@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDevToolsAccessSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the Developer Tools access settings for the current tenant.
+ * @description Whether the `User` role is barred from the portal developer tools.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets limited_access_for_users
      *
-     * @param bool|null $limited_access_for_users Determines if users have restricted access to the Developer Tools.
+     * @param bool|null $limited_access_for_users Whether members holding the `User` role are barred from the developer tools - API keys, OAuth applications  and webhooks. Room administrators and DocSpace administrators keep their access either way.
      *
      * @return self
      */

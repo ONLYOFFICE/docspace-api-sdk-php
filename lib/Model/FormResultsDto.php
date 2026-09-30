@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormResultsDto Class Doc Comment
  *
  * @category Class
- * @description A single filled-in form submission.
+ * @description One completed copy of a form, with the values that were entered into it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class FormResultsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_on
      *
-     * @param \DateTime|null $create_on The date and time when the form was created.
+     * @param \DateTime|null $create_on When the portal recorded this copy, in UTC: the moment the filled copy was completed and its data indexed, not  the moment the form itself was made.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class FormResultsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets forms_data
      *
-     * @param \OpenAPI\Client\Model\FormsItemData[]|null $forms_data The list of forms data.
+     * @param \OpenAPI\Client\Model\FormsItemData[]|null $forms_data The values that were entered into this copy, one entry per field, preceded by an entry keyed `FormNumber` that  carries the number of the copy and is what the submissions are ordered by. Fields holding a picture or a  signature are left out of the record, so a field missing here was not necessarily left blank.
      *
      * @return self
      */

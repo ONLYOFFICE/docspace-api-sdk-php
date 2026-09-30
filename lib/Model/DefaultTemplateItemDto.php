@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DefaultTemplateItemDto Class Doc Comment
  *
  * @category Class
- * @description Default template setting
+ * @description The blank document configured for one extension.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -341,7 +341,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets selected_file
      *
-     * @param int|null $selected_file File id to use as a default template
+     * @param int|null $selected_file The copy stored in the portal that serves as the blank for this extension. A null means no custom blank has  been chosen and new documents start from the portal's built-in one; the other fields of the entry are then  empty as well.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets file_extension
      *
-     * @param string|null $file_extension Extension of a default template
+     * @param string|null $file_extension The extension the entry describes, in lower case with the leading dot. It is the value to send back when this  blank is replaced or reset.
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets file_title
      *
-     * @param string|null $file_title Title of a default template
+     * @param string|null $file_title The name the custom blank was copied under, useful for showing which document was chosen. Empty while the  built-in blank is in use.
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets last_modified
      *
-     * @param \DateTime|null $last_modified Last modified date of a default template
+     * @param \DateTime|null $last_modified When the custom blank was last changed, in the time zone of the portal. Null while the built-in blank is in  use.
      *
      * @return self
      */
@@ -477,7 +477,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets file_size
      *
-     * @param int|null $file_size Filesize (in bytes) of a default template
+     * @param int|null $file_size The size of the custom blank in bytes. Null while the built-in blank is in use.
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class DefaultTemplateItemDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets view_url
      *
-     * @param string|null $view_url View url of a default template
+     * @param string|null $view_url The address the custom blank can be downloaded from, already carrying the access key of the calling account.  Empty while the built-in blank is in use.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuthServiceRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for handling the authorization service.
+ * @description One third-party authorization or storage provider and the keys the portal connects to it with.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -345,7 +345,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string|null $name The name of the authorization service.
+     * @param string|null $name The provider being configured, by its internal key such as `google` or `box`. Take it from the `name` of  `GET api/2.0/settings/authservice`; it is the only field that selects the provider, and a key this  installation does not know is refused the same way a provider that forbids changes is.
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets title
      *
-     * @param string|null $title The user-friendly display title of the authorization service.
+     * @param string|null $title The provider name as it is shown in the interface. It is filled in by the portal when the providers are  listed and is ignored when keys are saved.
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets description
      *
-     * @param string|null $description The brief description of the authorization service.
+     * @param string|null $description A sentence about what connecting the provider gives the portal, shown next to it in the interface. It is  filled in by the portal and ignored when keys are saved.
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets instruction
      *
-     * @param string|null $instruction The detailed instructions for configuring or using the authorization service.
+     * @param string|null $instruction The steps an administrator has to take on the provider side to obtain the keys, shown in the interface. It is  filled in by the portal and ignored when keys are saved.
      *
      * @return self
      */
@@ -481,7 +481,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets can_set
      *
-     * @param bool|null $can_set Specifies whether the authorization service can be configured by the user.
+     * @param bool|null $can_set Whether this provider accepts keys through the API at all. A provider whose keys are fixed by the  installation reports `false`, and saving keys for it is refused; the field is reported by the portal and  ignored on the way in.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets paid
      *
-     * @param bool|null $paid Specifies whether the authorization service is paid or not.
+     * @param bool|null $paid Whether the provider is a paid option. A paid one can only be connected while the portal plan includes  third-party storage or the installation is licensed as self-hosted; the field is reported by the portal and  ignored on the way in.
      *
      * @return self
      */
@@ -535,7 +535,7 @@ class AuthServiceRequestsDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets props
      *
-     * @param \OpenAPI\Client\Model\AuthKey[]|null $props The collection of authorization keys associated with the authorization service.
+     * @param \OpenAPI\Client\Model\AuthKey[]|null $props The credentials the portal authenticates to the provider with, as the name and value pairs the provider  defines. Send the whole set the provider expects: leaving every value empty disconnects it, and a set that  fails the provider validation is cleared rather than stored half-applied. The listing operation reports the  values last saved, and a provider that forbids changes reports none at all.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActionLinkConfig Class Doc Comment
  *
  * @category Class
- * @description The config parameter which contains the information about the action in the document that will be scrolled to.
+ * @description The place inside a document that a link should open at.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class ActionLinkConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \OpenAPI\Client\Model\ActionConfig|null $action The information about the action in the document that will be scrolled to.
+     * @param \OpenAPI\Client\Model\ActionConfig|null $action The anchor itself. It is passed on to the editor unchanged, so it has to be the value the editor produced for  the comment or the mention it points at.
      *
      * @return self
      */

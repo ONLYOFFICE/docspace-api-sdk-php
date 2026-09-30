@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BaseBatchRequestDto Class Doc Comment
  *
  * @category Class
- * @description The base batch request parameters.
+ * @description The files and folders a background operation is applied to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class BaseBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets return_single_operation
      *
-     * @param bool|null $return_single_operation Specifies whether to return only the current operation
+     * @param bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class BaseBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\BaseBatchRequestDtoAllOfFolderIds[]|null $folder_ids The list of folder IDs of the base batch request.
+     * @param \OpenAPI\Client\Model\BaseBatchRequestDtoAllOfFolderIds[]|null $folder_ids The folders to act on, by id, as reported by a folder listing such as `GET api/2.0/files/{folderId}`. A number  addresses a folder stored in the portal itself, a string addresses a folder on a connected third-party  account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class BaseBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\BaseBatchRequestDtoAllOfFileIds[]|null $file_ids The list of file IDs of the base batch request.
+     * @param \OpenAPI\Client\Model\BaseBatchRequestDtoAllOfFileIds[]|null $file_ids The files to act on, by id, as reported by a folder listing such as `GET api/2.0/files/{folderId}`. A number  addresses a file stored in the portal itself, a string addresses a file on a connected third-party account,  and both kinds may be sent in one list.
      *
      * @return self
      */

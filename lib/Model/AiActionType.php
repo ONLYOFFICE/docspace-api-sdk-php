@@ -61,6 +61,8 @@ class AiActionType
 
     public const VISION = 'Vision';
 
+    public const FORM_ANALYSIS = 'FormAnalysis';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -76,7 +78,8 @@ class AiActionType
             self::TEXT_ANALYZE,
             self::IMAGE_GENERATION,
             self::OCR,
-            self::VISION
+            self::VISION,
+            self::FORM_ANALYSIS
         ];
     }
 }

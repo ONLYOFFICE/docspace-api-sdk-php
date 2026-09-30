@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TemplatesConfig Class Doc Comment
  *
  * @category Class
- * @description The presence or absence of the templates in the Create New... menu option.
+ * @description One creation template offered in the editor. The portal no longer offers any, so this never appears in an editor  configuration.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

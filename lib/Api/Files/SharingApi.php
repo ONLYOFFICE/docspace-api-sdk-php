@@ -172,13 +172,13 @@ class SharingApi
     /**
      * Operation applyExternalSharePassword
      *
-     * Apply external data password
+     * Unlock a password-protected link
      *
      * REST API Reference for applyExternalSharePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/apply-external-share-password/
      *
-     * @param  string $key The unique document identifier. (required)
-     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The external data share request parameters. (required)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The body of the request, holding the password to check. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applyExternalSharePassword'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -194,13 +194,13 @@ class SharingApi
     /**
      * Operation applyExternalSharePasswordWithHttpInfo
      *
-     * Apply external data password
+     * Unlock a password-protected link
      *
      * REST API Reference for applyExternalSharePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/apply-external-share-password/
      *
-     * @param  string $key The unique document identifier. (required)
-     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The external data share request parameters. (required)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The body of the request, holding the password to check. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applyExternalSharePassword'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -325,13 +325,13 @@ class SharingApi
     /**
      * Operation applyExternalSharePasswordAsync
      *
-     * Apply external data password
+     * Unlock a password-protected link
      *
      * REST API Reference for applyExternalSharePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/apply-external-share-password/
      *
-     * @param  string $key The unique document identifier. (required)
-     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The external data share request parameters. (required)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The body of the request, holding the password to check. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applyExternalSharePassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -350,13 +350,13 @@ class SharingApi
     /**
      * Operation applyExternalSharePasswordAsyncWithHttpInfo
      *
-     * Apply external data password
+     * Unlock a password-protected link
      *
      * REST API Reference for applyExternalSharePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/apply-external-share-password/
      *
-     * @param  string $key The unique document identifier. (required)
-     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The external data share request parameters. (required)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The body of the request, holding the password to check. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applyExternalSharePassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -406,8 +406,8 @@ class SharingApi
     /**
      * Create request for operation 'applyExternalSharePassword'
      *
-     * @param  string $key The unique document identifier. (required)
-     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The external data share request parameters. (required)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  \OpenAPI\Client\Model\ExternalShareRequestParam $external_share_request_param The body of the request, holding the password to check. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['applyExternalSharePassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -488,6 +488,28 @@ class SharingApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -513,7 +535,7 @@ class SharingApi
     /**
      * Operation changeFileOwner
      *
-     * Change the file owner
+     * Change the room or file owner
      *
      * REST API Reference for changeFileOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-file-owner/
@@ -534,7 +556,7 @@ class SharingApi
     /**
      * Operation changeFileOwnerWithHttpInfo
      *
-     * Change the file owner
+     * Change the room or file owner
      *
      * REST API Reference for changeFileOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-file-owner/
@@ -678,7 +700,7 @@ class SharingApi
     /**
      * Operation changeFileOwnerAsync
      *
-     * Change the file owner
+     * Change the room or file owner
      *
      * REST API Reference for changeFileOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-file-owner/
@@ -702,7 +724,7 @@ class SharingApi
     /**
      * Operation changeFileOwnerAsyncWithHttpInfo
      *
-     * Change the file owner
+     * Change the room or file owner
      *
      * REST API Reference for changeFileOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-file-owner/
@@ -869,7 +891,7 @@ class SharingApi
      * REST API Reference for getEncryptionAccess Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-access/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionAccess'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -890,7 +912,7 @@ class SharingApi
      * REST API Reference for getEncryptionAccess Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-access/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionAccess'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1034,7 +1056,7 @@ class SharingApi
      * REST API Reference for getEncryptionAccess Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-access/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionAccess'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1058,7 +1080,7 @@ class SharingApi
      * REST API Reference for getEncryptionAccess Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-access/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionAccess'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1108,7 +1130,7 @@ class SharingApi
     /**
      * Create request for operation 'getEncryptionAccess'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionAccess'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1222,14 +1244,14 @@ class SharingApi
     /**
      * Operation getExternalShareData
      *
-     * Get the external data
+     * Resolve an external share link
      *
      * REST API Reference for getExternalShareData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-share-data/
      *
-     * @param  string $key The unique key of the external shared data. (required)
-     * @param  string|null $file_id The unique document identifier. (optional)
-     * @param  string|null $folder_id The unique folder identifier. (optional)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  string|null $file_id A file inside the room the link points at, echoed back in the answer's entity fields so a client can show what  was opened. The value is ignored when the file does not sit under the link's target, and passing it together  with a folder has no effect - the file wins. (optional)
+     * @param  string|null $folder_id A folder inside the room the link points at, echoed back in the answer's entity fields. It is ignored when the  folder does not sit under the link's target, and when a file is passed as well. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalShareData'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1245,14 +1267,14 @@ class SharingApi
     /**
      * Operation getExternalShareDataWithHttpInfo
      *
-     * Get the external data
+     * Resolve an external share link
      *
      * REST API Reference for getExternalShareData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-share-data/
      *
-     * @param  string $key The unique key of the external shared data. (required)
-     * @param  string|null $file_id The unique document identifier. (optional)
-     * @param  string|null $folder_id The unique folder identifier. (optional)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  string|null $file_id A file inside the room the link points at, echoed back in the answer's entity fields so a client can show what  was opened. The value is ignored when the file does not sit under the link's target, and passing it together  with a folder has no effect - the file wins. (optional)
+     * @param  string|null $folder_id A folder inside the room the link points at, echoed back in the answer's entity fields. It is ignored when the  folder does not sit under the link's target, and when a file is passed as well. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalShareData'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1377,14 +1399,14 @@ class SharingApi
     /**
      * Operation getExternalShareDataAsync
      *
-     * Get the external data
+     * Resolve an external share link
      *
      * REST API Reference for getExternalShareData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-share-data/
      *
-     * @param  string $key The unique key of the external shared data. (required)
-     * @param  string|null $file_id The unique document identifier. (optional)
-     * @param  string|null $folder_id The unique folder identifier. (optional)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  string|null $file_id A file inside the room the link points at, echoed back in the answer's entity fields so a client can show what  was opened. The value is ignored when the file does not sit under the link's target, and passing it together  with a folder has no effect - the file wins. (optional)
+     * @param  string|null $folder_id A folder inside the room the link points at, echoed back in the answer's entity fields. It is ignored when the  folder does not sit under the link's target, and when a file is passed as well. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalShareData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1403,14 +1425,14 @@ class SharingApi
     /**
      * Operation getExternalShareDataAsyncWithHttpInfo
      *
-     * Get the external data
+     * Resolve an external share link
      *
      * REST API Reference for getExternalShareData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-share-data/
      *
-     * @param  string $key The unique key of the external shared data. (required)
-     * @param  string|null $file_id The unique document identifier. (optional)
-     * @param  string|null $folder_id The unique folder identifier. (optional)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  string|null $file_id A file inside the room the link points at, echoed back in the answer's entity fields so a client can show what  was opened. The value is ignored when the file does not sit under the link's target, and passing it together  with a folder has no effect - the file wins. (optional)
+     * @param  string|null $folder_id A folder inside the room the link points at, echoed back in the answer's entity fields. It is ignored when the  folder does not sit under the link's target, and when a file is passed as well. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalShareData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1460,9 +1482,9 @@ class SharingApi
     /**
      * Create request for operation 'getExternalShareData'
      *
-     * @param  string $key The unique key of the external shared data. (required)
-     * @param  string|null $file_id The unique document identifier. (optional)
-     * @param  string|null $folder_id The unique folder identifier. (optional)
+     * @param  string $key The token of the external share link, taken verbatim from the `requestToken` of a link returned by the link  operations of an entry, such as `GET api/2.0/files/rooms/{id}/link`. It is an opaque URL-safe string that  carries the link's own identifier, so it cannot be assembled by hand. (required)
+     * @param  string|null $file_id A file inside the room the link points at, echoed back in the answer's entity fields so a client can show what  was opened. The value is ignored when the file does not sit under the link's target, and passing it together  with a folder has no effect - the file wins. (optional)
+     * @param  string|null $folder_id A folder inside the room the link points at, echoed back in the answer's entity fields. It is ignored when the  folder does not sit under the link's target, and when a file is passed as well. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalShareData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1549,6 +1571,28 @@ class SharingApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1574,14 +1618,14 @@ class SharingApi
     /**
      * Operation getFileSecurityInfo
      *
-     * Get the shared file information
+     * Get file sharing rights
      *
      * REST API Reference for getFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-security-info/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1597,14 +1641,14 @@ class SharingApi
     /**
      * Operation getFileSecurityInfoWithHttpInfo
      *
-     * Get the shared file information
+     * Get file sharing rights
      *
      * REST API Reference for getFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-security-info/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1743,14 +1787,14 @@ class SharingApi
     /**
      * Operation getFileSecurityInfoAsync
      *
-     * Get the shared file information
+     * Get file sharing rights
      *
      * REST API Reference for getFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-security-info/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1769,14 +1813,14 @@ class SharingApi
     /**
      * Operation getFileSecurityInfoAsyncWithHttpInfo
      *
-     * Get the shared file information
+     * Get file sharing rights
      *
      * REST API Reference for getFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-security-info/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1826,9 +1870,9 @@ class SharingApi
     /**
      * Create request for operation 'getFileSecurityInfo'
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1968,14 +2012,14 @@ class SharingApi
     /**
      * Operation getFolderSecurityInfo
      *
-     * Get the shared folder information
+     * Get folder sharing rights
      *
      * REST API Reference for getFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-security-info/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1991,14 +2035,14 @@ class SharingApi
     /**
      * Operation getFolderSecurityInfoWithHttpInfo
      *
-     * Get the shared folder information
+     * Get folder sharing rights
      *
      * REST API Reference for getFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-security-info/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2137,14 +2181,14 @@ class SharingApi
     /**
      * Operation getFolderSecurityInfoAsync
      *
-     * Get the shared folder information
+     * Get folder sharing rights
      *
      * REST API Reference for getFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-security-info/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2163,14 +2207,14 @@ class SharingApi
     /**
      * Operation getFolderSecurityInfoAsyncWithHttpInfo
      *
-     * Get the shared folder information
+     * Get folder sharing rights
      *
      * REST API Reference for getFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-security-info/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2220,9 +2264,9 @@ class SharingApi
     /**
      * Create request for operation 'getFolderSecurityInfo'
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2362,16 +2406,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurity
      *
-     * Get file group members with security information
+     * Get file access of group members
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $file_id The file whose access is being read. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/file/{id}/share` that stand  for a group; a group that holds no rights on this file is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFileSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2387,16 +2431,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityWithHttpInfo
      *
-     * Get file group members with security information
+     * Get file access of group members
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $file_id The file whose access is being read. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/file/{id}/share` that stand  for a group; a group that holds no rights on this file is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFileSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2535,16 +2579,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityAsync
      *
-     * Get file group members with security information
+     * Get file access of group members
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $file_id The file whose access is being read. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/file/{id}/share` that stand  for a group; a group that holds no rights on this file is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFileSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2563,16 +2607,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFileSecurityAsyncWithHttpInfo
      *
-     * Get file group members with security information
+     * Get file access of group members
      *
      * REST API Reference for getGroupsMembersWithFileSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-file-security/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $file_id The file whose access is being read. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/file/{id}/share` that stand  for a group; a group that holds no rights on this file is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFileSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2622,11 +2666,11 @@ class SharingApi
     /**
      * Create request for operation 'getGroupsMembersWithFileSecurity'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $file_id The file whose access is being read. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/file/{id}/share` that stand  for a group; a group that holds no rights on this file is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFileSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2791,16 +2835,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurity
      *
-     * Get folder group members with security information
+     * Get folder access of group members
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $folder_id The folder or room whose access is being read. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/folder/{id}/share` that  stand for a group; a group that holds no rights on this folder is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFolderSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2816,16 +2860,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityWithHttpInfo
      *
-     * Get folder group members with security information
+     * Get folder access of group members
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $folder_id The folder or room whose access is being read. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/folder/{id}/share` that  stand for a group; a group that holds no rights on this folder is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFolderSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2964,16 +3008,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityAsync
      *
-     * Get folder group members with security information
+     * Get folder access of group members
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $folder_id The folder or room whose access is being read. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/folder/{id}/share` that  stand for a group; a group that holds no rights on this folder is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFolderSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2992,16 +3036,16 @@ class SharingApi
     /**
      * Operation getGroupsMembersWithFolderSecurityAsyncWithHttpInfo
      *
-     * Get folder group members with security information
+     * Get folder access of group members
      *
      * REST API Reference for getGroupsMembersWithFolderSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-members-with-folder-security/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $folder_id The folder or room whose access is being read. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/folder/{id}/share` that  stand for a group; a group that holds no rights on this folder is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFolderSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3051,11 +3095,11 @@ class SharingApi
     /**
      * Create request for operation 'getGroupsMembersWithFolderSecurity'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $group_id The group ID. (required)
-     * @param  int|null $count The number of items to be retrieved in the current query. (optional)
-     * @param  int|null $start_index The starting index for the query result set. (optional)
-     * @param  string|null $filter_value The filter value used for searching or querying group members based on text input. (optional)
+     * @param  int|string $folder_id The folder or room whose access is being read. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  string $group_id The group whose members are listed. Take it from the entries of `GET api/2.0/files/folder/{id}/share` that  stand for a group; a group that holds no rights on this folder is answered with an empty list. (required)
+     * @param  int|null $count How many members at most to answer with. (optional)
+     * @param  int|null $start_index How many members to skip before answering, used together with `count` to page through a large group. (optional)
+     * @param  string|null $filter_value Keeps only the members whose first name, last name or email contains this value. The value is matched in lower  case, so an uppercase one finds nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsMembersWithFolderSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3220,7 +3264,7 @@ class SharingApi
     /**
      * Operation getSecurityInfo
      *
-     * Get the sharing rights
+     * Get sharing rights in batch
      *
      * REST API Reference for getSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-security-info/
@@ -3241,7 +3285,7 @@ class SharingApi
     /**
      * Operation getSecurityInfoWithHttpInfo
      *
-     * Get the sharing rights
+     * Get sharing rights in batch
      *
      * REST API Reference for getSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-security-info/
@@ -3385,7 +3429,7 @@ class SharingApi
     /**
      * Operation getSecurityInfoAsync
      *
-     * Get the sharing rights
+     * Get sharing rights in batch
      *
      * REST API Reference for getSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-security-info/
@@ -3409,7 +3453,7 @@ class SharingApi
     /**
      * Operation getSecurityInfoAsyncWithHttpInfo
      *
-     * Get the sharing rights
+     * Get sharing rights in batch
      *
      * REST API Reference for getSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-security-info/
@@ -3571,12 +3615,12 @@ class SharingApi
     /**
      * Operation getSharedUsers
      *
-     * Get user access rights by file ID
+     * Get users to mention in a file
      *
      * REST API Reference for getSharedUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-shared-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSharedUsers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3592,12 +3636,12 @@ class SharingApi
     /**
      * Operation getSharedUsersWithHttpInfo
      *
-     * Get user access rights by file ID
+     * Get users to mention in a file
      *
      * REST API Reference for getSharedUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-shared-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSharedUsers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3736,12 +3780,12 @@ class SharingApi
     /**
      * Operation getSharedUsersAsync
      *
-     * Get user access rights by file ID
+     * Get users to mention in a file
      *
      * REST API Reference for getSharedUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-shared-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSharedUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3760,12 +3804,12 @@ class SharingApi
     /**
      * Operation getSharedUsersAsyncWithHttpInfo
      *
-     * Get user access rights by file ID
+     * Get users to mention in a file
      *
      * REST API Reference for getSharedUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-shared-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSharedUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3815,7 +3859,7 @@ class SharingApi
     /**
      * Create request for operation 'getSharedUsers'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSharedUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3929,7 +3973,7 @@ class SharingApi
     /**
      * Operation removeSecurityInfo
      *
-     * Remove the sharing rights
+     * Remove sharing rights in batch
      *
      * REST API Reference for removeSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-security-info/
@@ -3950,7 +3994,7 @@ class SharingApi
     /**
      * Operation removeSecurityInfoWithHttpInfo
      *
-     * Remove the sharing rights
+     * Remove sharing rights in batch
      *
      * REST API Reference for removeSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-security-info/
@@ -4094,7 +4138,7 @@ class SharingApi
     /**
      * Operation removeSecurityInfoAsync
      *
-     * Remove the sharing rights
+     * Remove sharing rights in batch
      *
      * REST API Reference for removeSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-security-info/
@@ -4118,7 +4162,7 @@ class SharingApi
     /**
      * Operation removeSecurityInfoAsyncWithHttpInfo
      *
-     * Remove the sharing rights
+     * Remove sharing rights in batch
      *
      * REST API Reference for removeSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-security-info/
@@ -4280,13 +4324,13 @@ class SharingApi
     /**
      * Operation sendEditorNotify
      *
-     * Send the mention message
+     * Notify mentioned users
      *
      * REST API Reference for sendEditorNotify Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
-     * @param  int $file_id The file ID with the mention message. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The mention message. (optional)
+     * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4302,13 +4346,13 @@ class SharingApi
     /**
      * Operation sendEditorNotifyWithHttpInfo
      *
-     * Send the mention message
+     * Notify mentioned users
      *
      * REST API Reference for sendEditorNotify Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
-     * @param  int $file_id The file ID with the mention message. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The mention message. (optional)
+     * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4433,13 +4477,13 @@ class SharingApi
     /**
      * Operation sendEditorNotifyAsync
      *
-     * Send the mention message
+     * Notify mentioned users
      *
      * REST API Reference for sendEditorNotify Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
-     * @param  int $file_id The file ID with the mention message. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The mention message. (optional)
+     * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4458,13 +4502,13 @@ class SharingApi
     /**
      * Operation sendEditorNotifyAsyncWithHttpInfo
      *
-     * Send the mention message
+     * Notify mentioned users
      *
      * REST API Reference for sendEditorNotify Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
-     * @param  int $file_id The file ID with the mention message. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The mention message. (optional)
+     * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4514,8 +4558,8 @@ class SharingApi
     /**
      * Create request for operation 'sendEditorNotify'
      *
-     * @param  int $file_id The file ID with the mention message. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The mention message. (optional)
+     * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4642,8 +4686,8 @@ class SharingApi
      * REST API Reference for setFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-security-info/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The file whose sharing is being changed. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the file, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4664,8 +4708,8 @@ class SharingApi
      * REST API Reference for setFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-security-info/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The file whose sharing is being changed. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the file, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4809,8 +4853,8 @@ class SharingApi
      * REST API Reference for setFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-security-info/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The file whose sharing is being changed. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the file, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4834,8 +4878,8 @@ class SharingApi
      * REST API Reference for setFileSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-security-info/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The file whose sharing is being changed. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the file, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4885,8 +4929,8 @@ class SharingApi
     /**
      * Create request for operation 'setFileSecurityInfo'
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The file whose sharing is being changed. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the file, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5019,8 +5063,8 @@ class SharingApi
      * REST API Reference for setFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-security-info/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The folder whose sharing is being changed. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the folder, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5041,8 +5085,8 @@ class SharingApi
      * REST API Reference for setFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-security-info/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The folder whose sharing is being changed. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the folder, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5186,8 +5230,8 @@ class SharingApi
      * REST API Reference for setFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-security-info/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The folder whose sharing is being changed. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the folder, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5211,8 +5255,8 @@ class SharingApi
      * REST API Reference for setFolderSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-security-info/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The folder whose sharing is being changed. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the folder, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5262,8 +5306,8 @@ class SharingApi
     /**
      * Create request for operation 'setFolderSecurityInfo'
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The parameters of the security information simple request. (required)
+     * @param  int|string $id The folder whose sharing is being changed. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  \OpenAPI\Client\Model\SecurityInfoSimpleRequestDto $security_info_simple_request_dto The rights to apply to the folder, and whether to announce them by mail. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5391,7 +5435,7 @@ class SharingApi
     /**
      * Operation setSecurityInfo
      *
-     * Set the sharing rights
+     * Set sharing rights in batch
      *
      * REST API Reference for setSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-security-info/
@@ -5412,7 +5456,7 @@ class SharingApi
     /**
      * Operation setSecurityInfoWithHttpInfo
      *
-     * Set the sharing rights
+     * Set sharing rights in batch
      *
      * REST API Reference for setSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-security-info/
@@ -5556,7 +5600,7 @@ class SharingApi
     /**
      * Operation setSecurityInfoAsync
      *
-     * Set the sharing rights
+     * Set sharing rights in batch
      *
      * REST API Reference for setSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-security-info/
@@ -5580,7 +5624,7 @@ class SharingApi
     /**
      * Operation setSecurityInfoAsyncWithHttpInfo
      *
-     * Set the sharing rights
+     * Set sharing rights in batch
      *
      * REST API Reference for setSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-security-info/

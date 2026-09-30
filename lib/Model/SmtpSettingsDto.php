@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SmtpSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The SMTP settings parameters.
+ * @description The mail server the portal sends its letters through.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -406,7 +406,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets host
      *
-     * @param string|null $host The SMTP host.
+     * @param string|null $host The host name or address of the mail server. On a cloud portal that has saved no relay of its own every  field of this object comes back empty, because the installation's own server is not disclosed - only  `isDefaultSettings` is set there.
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets port
      *
-     * @param int|null $port The SMTP port.
+     * @param int|null $port The port the mail server is reached on - conventionally 25 or 587 without encryption from the start, 465  with it. It is empty when no port was stored, in which case the portal falls back to its own default.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sender_address
      *
-     * @param string|null $sender_address The sender address.
+     * @param string|null $sender_address The address the letters are sent from, which appears in the From header and is what a reply goes to.
      *
      * @return self
      */
@@ -529,7 +529,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sender_display_name
      *
-     * @param string|null $sender_display_name The sender display name.
+     * @param string|null $sender_display_name The name shown beside that address in a recipient's mailbox.
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credentials_user_name
      *
-     * @param string|null $credentials_user_name The credentials username.
+     * @param string|null $credentials_user_name The account the portal signs in to the mail server as, meaningful only while `enableAuth` is `true`.
      *
      * @return self
      */
@@ -611,7 +611,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credentials_user_password
      *
-     * @param string|null $credentials_user_password The credentials user password.
+     * @param string|null $credentials_user_password Always empty here: the stored password is never returned, so a client that sends these settings back has  to supply it again rather than echoing what it read.
      *
      * @return self
      */
@@ -645,7 +645,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enable_ssl
      *
-     * @param bool|null $enable_ssl Specifies whether the SSL is enabled or not.
+     * @param bool|null $enable_ssl Whether the connection to the mail server is encrypted.
      *
      * @return self
      */
@@ -672,7 +672,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enable_auth
      *
-     * @param bool|null $enable_auth Specifies whether the authentication is enabled or not.
+     * @param bool|null $enable_auth Whether the portal signs in to the mail server at all. While it is `false` the credentials above are  ignored and the server is expected to accept mail unauthenticated.
      *
      * @return self
      */
@@ -699,7 +699,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_ntlm
      *
-     * @param bool|null $use_ntlm Specifies whether to use NTLM or not.
+     * @param bool|null $use_ntlm Always `false` here: the flag is accepted when settings are saved but is not stored, so it never comes  back set and says nothing about how the portal authenticates.
      *
      * @return self
      */
@@ -726,7 +726,7 @@ class SmtpSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_default_settings
      *
-     * @param bool|null $is_default_settings Specifies if the current settings are default or not.
+     * @param bool|null $is_default_settings Whether the portal is still on the mail configuration of the installation rather than on a relay of its  own. `DELETE api/2.0/smtpsettings/smtp` puts it back to `true`, and while it is `true` on a cloud portal  the fields above are blank rather than showing the installation's server.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WhiteLabelItemSizeDto Class Doc Comment
  *
  * @category Class
- * @description The white label logo size parameters.
+ * @description The pixel box a logo slot is drawn in, in the shape the imaging library reports a geometry.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -373,7 +373,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets aspect_ratio
      *
-     * @param bool|null $aspect_ratio Specifies whether the size is an aspect ratio.
+     * @param bool|null $aspect_ratio Whether the numbers are to be read as an aspect ratio rather than as pixels. Always `false` on the sizes  this API reports.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets fill_area
      *
-     * @param bool|null $fill_area Specifies whether the logo is resized based on the smallest fitting dimension.
+     * @param bool|null $fill_area Whether an image would be scaled to cover the box rather than to fit inside it. Always `false` here.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets greater
      *
-     * @param bool|null $greater Specifies whether the logo is resized only if it is greater than the size.
+     * @param bool|null $greater Whether scaling would apply only to an image larger than the box. Always `false` here.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets height
      *
-     * @param int|null $height The logo height, in pixels.
+     * @param int|null $height The height of the box in pixels - one of the two fields of this object that carry information.
      *
      * @return self
      */
@@ -481,7 +481,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets ignore_aspect_ratio
      *
-     * @param bool|null $ignore_aspect_ratio Specifies whether the logo is resized without preserving the aspect ratio.
+     * @param bool|null $ignore_aspect_ratio Whether scaling would be allowed to distort the image. Always `false` here.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_percentage
      *
-     * @param bool|null $is_percentage Specifies whether the width and height are expressed as percentages.
+     * @param bool|null $is_percentage Whether `width` and `height` are to be read as percentages. Always `false` here, so both are pixels.
      *
      * @return self
      */
@@ -535,7 +535,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets less
      *
-     * @param bool|null $less Specifies whether the logo is resized only if it is less than the size.
+     * @param bool|null $less Whether scaling would apply only to an image smaller than the box. Always `false` here.
      *
      * @return self
      */
@@ -562,7 +562,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets limit_pixels
      *
-     * @param bool|null $limit_pixels Specifies whether the logo is resized using a pixel area count limit.
+     * @param bool|null $limit_pixels Whether the box is to be read as a total pixel-area budget instead of as two dimensions. Always `false`  here.
      *
      * @return self
      */
@@ -589,7 +589,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets width
      *
-     * @param int|null $width The logo width, in pixels.
+     * @param int|null $width The width of the box in pixels - the other field of this object that carries information.
      *
      * @return self
      */
@@ -616,7 +616,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets x
      *
-     * @param int|null $x The X offset from the origin, in pixels.
+     * @param int|null $x The horizontal offset of the box from the origin. Always `0` here.
      *
      * @return self
      */
@@ -643,7 +643,7 @@ class WhiteLabelItemSizeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets y
      *
-     * @param int|null $y The Y offset from the origin, in pixels.
+     * @param int|null $y The vertical offset of the box from the origin. Always `0` here.
      *
      * @return self
      */

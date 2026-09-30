@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The notification settings parameters.
+ * @description Whether one kind of notification is switched on for the calling user.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class NotificationSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\NotificationType|null $type The notification type.
+     * @param \OpenAPI\Client\Model\NotificationType|null $type Which kind of notification the flag belongs to, echoed from the request. It is published as a number:  badges, room activity, the daily feed, and the tips.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class NotificationSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets is_enabled
      *
-     * @param bool|null $is_enabled Specifies if the notification type is enabled or not.
+     * @param bool|null $is_enabled Whether the caller receives that kind of notification. It describes the caller's own account and nobody  else's; a fresh account has the badges on and the other three off, because those are subscriptions that  only `POST api/2.0/settings/notification` creates.
      *
      * @return self
      */

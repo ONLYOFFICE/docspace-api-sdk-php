@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CurrenciesDto Class Doc Comment
  *
  * @category Class
- * @description The currencies parameters.
+ * @description One currency the portal's subscription prices can be quoted in, with the region it belongs to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class CurrenciesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iso_country_code
      *
-     * @param string|null $iso_country_code The ISO country code.
+     * @param string|null $iso_country_code The two-letter ISO code of the country the currency is that of, which is the region the price list was  picked for rather than the country of the caller.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class CurrenciesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iso_currency_symbol
      *
-     * @param string|null $iso_currency_symbol The ISO currency symbol.
+     * @param string|null $iso_currency_symbol The three-letter ISO 4217 code of the currency. On the first item of the answer it is the currency the  amounts from `GET api/2.0/portal/payment/prices` are expressed in.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class CurrenciesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_native_name
      *
-     * @param string|null $currency_native_name The currency native name.
+     * @param string|null $currency_native_name The currency name in the language of its own region - not in the portal language, and not a symbol.
      *
      * @return self
      */

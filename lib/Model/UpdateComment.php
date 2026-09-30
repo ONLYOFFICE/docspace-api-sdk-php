@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpdateComment Class Doc Comment
  *
  * @category Class
- * @description The parameters for updating a comment.
+ * @description The comment to store on one version of a file.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -329,7 +329,7 @@ class UpdateComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int $version The comment version.
+     * @param int $version The version the comment belongs to, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. A version  that does not exist is rejected as an invalid request.
      *
      * @return self
      */
@@ -363,7 +363,7 @@ class UpdateComment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comment
      *
-     * @param string|null $comment The comment text.
+     * @param string|null $comment The note that explains what changed in that version, as the version history shows it. An empty text clears the  note, and a longer one is cut rather than refused, so read the stored text from the answer.
      *
      * @return self
      */

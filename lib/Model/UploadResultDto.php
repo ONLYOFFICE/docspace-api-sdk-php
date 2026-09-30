@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UploadResultDto Class Doc Comment
  *
  * @category Class
- * @description The upload result parameters.
+ * @description The outcome of storing an image in temporary storage before it is used as a room logo.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class UploadResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets success
      *
-     * @param bool|null $success Specifies if the upload operation is successful or not.
+     * @param bool|null $success True when the image was stored and its path is in the data field. A rejected image is reported with an error  response rather than with a false here, so this field is true in every answer that carries a body.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class UploadResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string|null $message The message sent after the successful upload operation.
+     * @param string|null $message Left empty by this operation: nothing is reported here, and a refused image comes back as an error response  instead.
      *
      * @return self
      */

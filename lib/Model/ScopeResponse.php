@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ScopeResponse Class Doc Comment
  *
  * @category Class
- * @description The response containing the scope information.
+ * @description One scope from the tenant scope catalogue, as it may be requested by a client.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class ScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The scope name.
+     * @param string|null $name The scope exactly as it is written in an authorization request, for example files:read or openid.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class ScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group
      *
-     * @param string|null $group The group the scope belongs to.
+     * @param string|null $group The area of the portal the scope belongs to, which is what groups the scopes on the consent screen: files, rooms, contacts, profiles or openid.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class ScopeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The scope type.
+     * @param string|null $type What the scope allows inside its group: read for read-only access, write for changes, and openid for the identity scope itself.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SecurityInfoSimpleRequestDto Class Doc Comment
  *
  * @category Class
- * @description The parameters of the security information request.
+ * @description The rights to apply to a single file or folder, and how to announce them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -325,7 +325,7 @@ class SecurityInfoSimpleRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets share
      *
-     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share The collection of sharing parameters.
+     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share One record per account or group whose rights are being set, each naming the subject and the level it gets; a  level of `None` takes the access away. An empty collection makes the call change nothing.
      *
      * @return self
      */
@@ -359,7 +359,7 @@ class SecurityInfoSimpleRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets notify
      *
-     * @param bool|null $notify Specifies whether to notify users about the shared file or not.
+     * @param bool|null $notify Set to true to have every account named in `share` emailed about the access it just received; false changes  the rights without telling anyone.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class SecurityInfoSimpleRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sharing_message
      *
-     * @param string|null $sharing_message The message to send when notifying about the shared file.
+     * @param string|null $sharing_message The text put into that email, ignored while `notify` is false. Markup is stripped before sending, so only the  plain text of the value survives.
      *
      * @return self
      */

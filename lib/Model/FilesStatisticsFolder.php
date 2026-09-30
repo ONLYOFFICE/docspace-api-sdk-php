@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FilesStatisticsFolder Class Doc Comment
  *
  * @category Class
- * @description The file statictics folder parameters.
+ * @description One section of the portal and the space its documents take.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class FilesStatisticsFolder implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets title
      *
-     * @param string|null $title The folder title.
+     * @param string|null $title The name of the section as the interface shows it, translated into the language used by the caller, so it  suits display but not matching - which section an entry describes is told by the field that carries it.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class FilesStatisticsFolder implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets used_space
      *
-     * @param int|null $used_space The used space in the folder.
+     * @param int|null $used_space The size of the files kept in the section, in bytes, counting every folder and room inside it; 0 means the  section holds nothing. The counter is brought up to date as an operation finishes, so a reading taken right  after an upload or a delete can still show the previous value.
      *
      * @return self
      */

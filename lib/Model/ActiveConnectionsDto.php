@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActiveConnectionsDto Class Doc Comment
  *
  * @category Class
- * @description The active connections parameters.
+ * @description The connections the calling user currently has open, and which of them the request itself was made with.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class ActiveConnectionsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets login_event
      *
-     * @param int $login_event The login event.
+     * @param int $login_event The `id` of the item in `items` that the current request is authenticated by. It is `0` when the request  carried a token in the `Authorization` header instead of the portal cookie, and in that case none of the  items is the current connection.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class ActiveConnectionsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets items
      *
-     * @param \OpenAPI\Client\Model\ActiveConnectionsItemDto[]|null $items The list of active connection items.
+     * @param \OpenAPI\Client\Model\ActiveConnectionsItemDto[]|null $items One item per sign-in of the caller that is still active, ordered newest sign-in first, with the connection  the request itself uses moved to the front. Sign-ins older than a year are left out, and a caller with no  stored connection gets a single item describing the current request rather than an empty list.
      *
      * @return self
      */

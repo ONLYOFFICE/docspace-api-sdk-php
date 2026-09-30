@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TemplatesRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for adding files to the template list.
+ * @description The files to put on the personal template list of the calling account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class TemplatesRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets file_ids
      *
-     * @param int[]|null $file_ids The list of file IDs.
+     * @param int[]|null $file_ids The files to put on the template list, by id, as reported by a folder listing such as  `GET api/2.0/files/{folderId}`. Only a file stored in the portal itself can become a template, which is why an  id here is always numeric.
      *
      * @return self
      */

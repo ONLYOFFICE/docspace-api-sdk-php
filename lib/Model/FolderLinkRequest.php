@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FolderLinkRequest Class Doc Comment
  *
  * @category Class
- * @description The folder link parameters.
+ * @description The external link of a folder, as it is to be created or rewritten.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'link_id' => 'string',
         'access' => '\OpenAPI\Client\Model\FileShare',
-        'expiration_date' => '\DateTime',
+        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'title' => 'string',
         'password' => 'string',
         'deny_download' => 'bool',
@@ -78,7 +78,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPIFormats = [
         'link_id' => 'uuid',
         'access' => null,
-        'expiration_date' => 'date-time',
+        'expiration_date' => null,
         'title' => null,
         'password' => null,
         'deny_download' => null,
@@ -94,7 +94,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'link_id' => false,
         'access' => false,
-        'expiration_date' => true,
+        'expiration_date' => false,
         'title' => true,
         'password' => true,
         'deny_download' => false,
@@ -368,7 +368,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets link_id
      *
-     * @param string|null $link_id The folder link ID.
+     * @param string|null $link_id Which link the request addresses: the identifier of an existing link rewrites that link, while an identifier  that is not in use, the empty one included, creates a new link. Take an existing identifier from  `GET api/2.0/files/folder/{id}/links`.
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The link sharing rights.
+     * @param \OpenAPI\Client\Model\FileShare|null $access The rights a visitor following the link is given. The value that grants nothing revokes the link instead of  setting it, and the answer is then empty.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets expiration_date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpirationDate()
     {
@@ -422,21 +422,14 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expiration_date
      *
-     * @param \DateTime|null $expiration_date The link expiration date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date The moment the link stops working, sent as an ISO-8601 stamp. A moment that lies in the past is ignored,  and leaving the field out gives the link no expiry.
      *
      * @return self
      */
     public function setExpirationDate($expiration_date)
     {
         if (is_null($expiration_date)) {
-            array_push($this->openAPINullablesSetToNull, 'expiration_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiration_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
         }
         $this->container['expiration_date'] = $expiration_date;
 
@@ -456,7 +449,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets title
      *
-     * @param string|null $title The link name.
+     * @param string|null $title The name the link is listed under for the people who manage the folder; a visitor following it never sees the  name.
      *
      * @return self
      */
@@ -497,7 +490,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets password
      *
-     * @param string|null $password The link password.
+     * @param string|null $password The secret a visitor has to enter before the link opens. Leave it out for a link that opens without one; the  secret itself is never given back, only the fact that one is set.
      *
      * @return self
      */
@@ -538,7 +531,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Specifies if downloading the file from the link is disabled or not.
+     * @param bool|null $deny_download Whether visitors are left with viewing alone: with true downloading and copying through the link are blocked,  with false they are allowed.
      *
      * @return self
      */
@@ -565,7 +558,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets internal
      *
-     * @param bool|null $internal The link scope, whether it is internal or not.
+     * @param bool|null $internal Whether the link admits signed-in portal members only: with true a visitor has to sign in before the link  opens, with false anyone holding the address may follow it.
      *
      * @return self
      */
@@ -592,7 +585,7 @@ class FolderLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets primary
      *
-     * @param bool|null $primary Specifies whether the folder link is primary or not.
+     * @param bool|null $primary Whether this link becomes the primary link of the folder, the one the Copy link action of a client hands  out; a folder has one primary link at a time.
      *
      * @return self
      */

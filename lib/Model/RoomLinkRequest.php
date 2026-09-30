@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomLinkRequest Class Doc Comment
  *
  * @category Class
- * @description The room link parameters.
+ * @description The link of a room to create, change or revoke.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'link_id' => 'string',
         'access' => '\OpenAPI\Client\Model\FileShare',
-        'expiration_date' => '\DateTime',
+        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'internal' => 'bool',
         'title' => 'string',
         'link_type' => '\OpenAPI\Client\Model\LinkType',
@@ -80,7 +80,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'link_id' => 'uuid',
         'access' => null,
-        'expiration_date' => 'date-time',
+        'expiration_date' => null,
         'internal' => null,
         'title' => null,
         'link_type' => null,
@@ -98,7 +98,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'link_id' => false,
         'access' => false,
-        'expiration_date' => true,
+        'expiration_date' => false,
         'internal' => false,
         'title' => true,
         'link_type' => false,
@@ -390,7 +390,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link_id
      *
-     * @param string|null $link_id The room link ID.
+     * @param string|null $link_id Which link to change, taken from `GET api/2.0/files/rooms/{id}/links`. Leaving it out creates a link, and an  identifier the room does not know creates a link carrying that identifier.
      *
      * @return self
      */
@@ -417,7 +417,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The link sharing rights.
+     * @param \OpenAPI\Client\Model\FileShare|null $access What whoever opens the link may do in the room. The value 0 revokes the link instead of changing it, and the  levels a room accepts depend on its kind.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpirationDate()
     {
@@ -444,21 +444,14 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \DateTime|null $expiration_date The link expiration date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date When the link stops working, written with the offset of the portal time zone. A date already past is dropped  silently for an external link and refused for an invitation link, and a date further ahead than the portal  allows is refused as well; leaving it out means the link does not expire.
      *
      * @return self
      */
     public function setExpirationDate($expiration_date)
     {
         if (is_null($expiration_date)) {
-            array_push($this->openAPINullablesSetToNull, 'expiration_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiration_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
         }
         $this->container['expiration_date'] = $expiration_date;
 
@@ -478,7 +471,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets internal
      *
-     * @param bool|null $internal The link scope, whether it is internal or not.
+     * @param bool|null $internal Whether the external link works only for people already signed in to the portal. With it off the link opens  the room for anyone who has the address, subject to the password.
      *
      * @return self
      */
@@ -505,7 +498,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The link name.
+     * @param string|null $title The name the link is shown under in the room. An empty value is accepted and the portal names the link itself,  so the answer is what tells the caller the name in use.
      *
      * @return self
      */
@@ -546,7 +539,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link_type
      *
-     * @param \OpenAPI\Client\Model\LinkType|null $link_type The link type.
+     * @param \OpenAPI\Client\Model\LinkType|null $link_type Which kind of link to create: an invitation link makes whoever opens it a member of the room, while an  external link opens the room without an account. It is fixed when the link is created and is ignored on later  changes.
      *
      * @return self
      */
@@ -573,7 +566,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string|null $password The link password.
+     * @param string|null $password The password an external link asks for before it opens the room. An empty value leaves the link open to anyone  who has the address, and the password is never returned when links are listed.
      *
      * @return self
      */
@@ -614,7 +607,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Specifies if downloading the file from the link is disabled or not.
+     * @param bool|null $deny_download Whether people arriving through the link are stopped from downloading and printing what they open. They can  still read the documents in the editor.
      *
      * @return self
      */
@@ -641,7 +634,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets max_use_count
      *
-     * @param int|null $max_use_count The maximum number of times the invitation link can be used.
+     * @param int|null $max_use_count How many people an invitation link may still let in before it stops working. A value below the number of  people who already used it is refused, and leaving it out puts no ceiling on the link.
      *
      * @return self
      */
@@ -682,7 +675,7 @@ class RoomLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets current_use_count
      *
-     * @param int|null $current_use_count The current number of times the invitation link has been used.
+     * @param int|null $current_use_count How many people have already joined through this invitation link. The value is kept by the portal: it is  reported back when links are listed and anything sent here is ignored.
      *
      * @return self
      */

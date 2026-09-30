@@ -151,7 +151,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAiSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAiSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsGet(string $contentType = self::contentTypes['aiSettingsGet'][0])
     {
@@ -171,7 +171,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAiSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAiSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsGetWithHttpInfo(string $contentType = self::contentTypes['aiSettingsGet'][0])
     {
@@ -213,6 +213,18 @@ class SettingsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -246,6 +258,22 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -391,6 +419,15 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -425,7 +462,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsGetUser(string $contentType = self::contentTypes['aiSettingsGetUser'][0])
     {
@@ -445,7 +482,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsGetUserWithHttpInfo(string $contentType = self::contentTypes['aiSettingsGetUser'][0])
     {
@@ -487,6 +524,18 @@ class SettingsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -520,6 +569,22 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -665,6 +730,15 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -699,7 +773,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsGetVectorization(string $contentType = self::contentTypes['aiSettingsGetVectorization'][0])
     {
@@ -719,7 +793,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsGetVectorizationWithHttpInfo(string $contentType = self::contentTypes['aiSettingsGetVectorization'][0])
     {
@@ -761,6 +835,18 @@ class SettingsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -794,6 +880,22 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -939,6 +1041,15 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -969,12 +1080,12 @@ class SettingsApi
      * REST API Reference for aiSettingsSetUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  array<string,mixed> $request_body The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetUser'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsSetUser($request_body, string $contentType = self::contentTypes['aiSettingsSetUser'][0])
     {
@@ -990,12 +1101,12 @@ class SettingsApi
      * REST API Reference for aiSettingsSetUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetUser'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAiUserSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsSetUserWithHttpInfo($request_body, string $contentType = self::contentTypes['aiSettingsSetUser'][0])
     {
@@ -1032,6 +1143,24 @@ class SettingsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1077,6 +1206,30 @@ class SettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1092,7 +1245,7 @@ class SettingsApi
      * REST API Reference for aiSettingsSetUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1116,7 +1269,7 @@ class SettingsApi
      * REST API Reference for aiSettingsSetUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1166,7 +1319,7 @@ class SettingsApi
     /**
      * Create request for operation 'aiSettingsSetUser'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1232,6 +1385,15 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1262,12 +1424,12 @@ class SettingsApi
      * REST API Reference for aiSettingsSetVectorization Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  array<string,mixed> $request_body The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetVectorization'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsSetVectorization($request_body, string $contentType = self::contentTypes['aiSettingsSetVectorization'][0])
     {
@@ -1283,12 +1445,12 @@ class SettingsApi
      * REST API Reference for aiSettingsSetVectorization Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetVectorization'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiVectorizationSettingsWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsSetVectorizationWithHttpInfo($request_body, string $contentType = self::contentTypes['aiSettingsSetVectorization'][0])
     {
@@ -1325,6 +1487,24 @@ class SettingsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1370,6 +1550,30 @@ class SettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1385,7 +1589,7 @@ class SettingsApi
      * REST API Reference for aiSettingsSetVectorization Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetVectorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1409,7 +1613,7 @@ class SettingsApi
      * REST API Reference for aiSettingsSetVectorization Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetVectorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1459,7 +1663,7 @@ class SettingsApi
     /**
      * Create request for operation 'aiSettingsSetVectorization'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSettingsSetVectorization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1525,6 +1729,15 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

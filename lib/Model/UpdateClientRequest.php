@@ -61,10 +61,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => 'string',
         'description' => 'string',
         'logo' => 'string',
-        'public' => 'bool',
+        'scopes' => 'string[]',
         'allow_pkce' => 'bool',
-        'is_public' => 'bool',
-        'allowed_origins' => 'string[]'
+        'allowed_origins' => 'string[]',
+        'redirect_uris' => 'string[]',
+        'is_public' => 'bool'
     ];
 
     /**
@@ -78,10 +79,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => null,
         'description' => null,
         'logo' => null,
-        'public' => null,
+        'scopes' => null,
         'allow_pkce' => null,
-        'is_public' => null,
-        'allowed_origins' => null
+        'allowed_origins' => null,
+        'redirect_uris' => null,
+        'is_public' => null
     ];
 
     /**
@@ -93,10 +95,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => false,
         'description' => false,
         'logo' => false,
-        'public' => false,
+        'scopes' => false,
         'allow_pkce' => false,
-        'is_public' => false,
-        'allowed_origins' => false
+        'allowed_origins' => false,
+        'redirect_uris' => false,
+        'is_public' => false
     ];
 
     /**
@@ -188,10 +191,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => 'name',
         'description' => 'description',
         'logo' => 'logo',
-        'public' => 'public',
+        'scopes' => 'scopes',
         'allow_pkce' => 'allow_pkce',
-        'is_public' => 'is_public',
-        'allowed_origins' => 'allowed_origins'
+        'allowed_origins' => 'allowed_origins',
+        'redirect_uris' => 'redirect_uris',
+        'is_public' => 'is_public'
     ];
 
     /**
@@ -203,10 +207,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => 'setName',
         'description' => 'setDescription',
         'logo' => 'setLogo',
-        'public' => 'setPublic',
+        'scopes' => 'setScopes',
         'allow_pkce' => 'setAllowPkce',
-        'is_public' => 'setIsPublic',
-        'allowed_origins' => 'setAllowedOrigins'
+        'allowed_origins' => 'setAllowedOrigins',
+        'redirect_uris' => 'setRedirectUris',
+        'is_public' => 'setIsPublic'
     ];
 
     /**
@@ -218,10 +223,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'name' => 'getName',
         'description' => 'getDescription',
         'logo' => 'getLogo',
-        'public' => 'getPublic',
+        'scopes' => 'getScopes',
         'allow_pkce' => 'getAllowPkce',
-        'is_public' => 'getIsPublic',
-        'allowed_origins' => 'getAllowedOrigins'
+        'allowed_origins' => 'getAllowedOrigins',
+        'redirect_uris' => 'getRedirectUris',
+        'is_public' => 'getIsPublic'
     ];
 
     /**
@@ -284,10 +290,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('logo', $data ?? [], null);
-        $this->setIfExists('public', $data ?? [], null);
+        $this->setIfExists('scopes', $data ?? [], null);
         $this->setIfExists('allow_pkce', $data ?? [], null);
-        $this->setIfExists('is_public', $data ?? [], null);
         $this->setIfExists('allowed_origins', $data ?? [], null);
+        $this->setIfExists('redirect_uris', $data ?? [], null);
+        $this->setIfExists('is_public', $data ?? [], null);
     }
 
     /**
@@ -317,8 +324,15 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 256)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 256.";
+        }
+
+        if ((mb_strlen($this->container['name']) < 3)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 3.";
         }
 
         if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 255)) {
@@ -329,20 +343,44 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['logo']) && (mb_strlen($this->container['logo']) < 1)) {
+        if ($this->container['logo'] === null) {
+            $invalidProperties[] = "'logo' can't be null";
+        }
+        if ((mb_strlen($this->container['logo']) < 1)) {
             $invalidProperties[] = "invalid value for 'logo', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['logo']) && !preg_match("/^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/", $this->container['logo'])) {
+        if (!preg_match("/^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/", $this->container['logo'])) {
             $invalidProperties[] = "invalid value for 'logo', must be conform to the pattern /^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/.";
         }
 
-        if (!is_null($this->container['allowed_origins']) && (count($this->container['allowed_origins']) > 12)) {
+        if ($this->container['scopes'] === null) {
+            $invalidProperties[] = "'scopes' can't be null";
+        }
+        if ((count($this->container['scopes']) < 1)) {
+            $invalidProperties[] = "invalid value for 'scopes', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['allowed_origins'] === null) {
+            $invalidProperties[] = "'allowed_origins' can't be null";
+        }
+        if ((count($this->container['allowed_origins']) > 12)) {
             $invalidProperties[] = "invalid value for 'allowed_origins', number of items must be less than or equal to 12.";
         }
 
-        if (!is_null($this->container['allowed_origins']) && (count($this->container['allowed_origins']) < 1)) {
+        if ((count($this->container['allowed_origins']) < 1)) {
             $invalidProperties[] = "invalid value for 'allowed_origins', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['redirect_uris'] === null) {
+            $invalidProperties[] = "'redirect_uris' can't be null";
+        }
+        if ((count($this->container['redirect_uris']) > 12)) {
+            $invalidProperties[] = "invalid value for 'redirect_uris', number of items must be less than or equal to 12.";
+        }
+
+        if ((count($this->container['redirect_uris']) < 1)) {
+            $invalidProperties[] = "invalid value for 'redirect_uris', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -363,7 +401,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -373,7 +411,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name The name of the client
+     * @param string $name The display name shown to the user on the consent screen. It has to be between 3 and 256 characters long.
      *
      * @return self
      */
@@ -382,9 +420,11 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateClientRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($name) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateClientRequest., must be smaller than or equal to 256.');
+        }
+        if ((mb_strlen($name) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateClientRequest., must be bigger than or equal to 3.');
         }
 
         $this->container['name'] = $name;
@@ -405,7 +445,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string|null $description The description of the client
+     * @param string|null $description The free-text description shown next to the name on the consent screen, at most 255 characters.
      *
      * @return self
      */
@@ -429,7 +469,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets logo
      *
-     * @return string|null
+     * @return string
      */
     public function getLogo()
     {
@@ -439,7 +479,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets logo
      *
-     * @param string|null $logo The logo of the client in base64 format
+     * @param string $logo The client logo as a data URI carrying base64 image data, shown on the consent screen. Only png, jpeg, jpg and svg+xml are accepted.
      *
      * @return self
      */
@@ -462,28 +502,32 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets public
+     * Gets scopes
      *
-     * @return bool|null
+     * @return string[]
      */
-    public function getPublic()
+    public function getScopes()
     {
-        return $this->container['public'];
+        return $this->container['scopes'];
     }
 
     /**
-     * Sets public
+     * Sets scopes
      *
-     * @param bool|null $public public
+     * @param string[] $scopes The permissions the client may ask for, named as they appear in the tenant scope catalogue - for example files:read, rooms:write or openid. A client cannot request a scope that is not listed here.
      *
      * @return self
      */
-    public function setPublic($public)
+    public function setScopes($scopes)
     {
-        if (is_null($public)) {
-            throw new \InvalidArgumentException('non-nullable public cannot be null');
+        if (is_null($scopes)) {
+            throw new \InvalidArgumentException('non-nullable scopes cannot be null');
         }
-        $this->container['public'] = $public;
+
+        if ((count($scopes) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $scopes when calling UpdateClientRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['scopes'] = $scopes;
 
         return $this;
     }
@@ -501,7 +545,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets allow_pkce
      *
-     * @param bool|null $allow_pkce Indicates whether PKCE is allowed for the client
+     * @param bool|null $allow_pkce Whether the client may use PKCE. Turning it on lets the client authenticate with the none method and prove itself with a code verifier instead of sending a secret, which is what a client that cannot keep a secret needs.
      *
      * @return self
      */
@@ -511,6 +555,72 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable allow_pkce cannot be null');
         }
         $this->container['allow_pkce'] = $allow_pkce;
+
+        return $this;
+    }
+
+    /**
+     * Gets allowed_origins
+     *
+     * @return string[]
+     */
+    public function getAllowedOrigins()
+    {
+        return $this->container['allowed_origins'];
+    }
+
+    /**
+     * Sets allowed_origins
+     *
+     * @param string[] $allowed_origins The web origins allowed to call the portal on behalf of this client, used for the CORS check. The set holds between 1 and 12 addresses.
+     *
+     * @return self
+     */
+    public function setAllowedOrigins($allowed_origins)
+    {
+        if (is_null($allowed_origins)) {
+            throw new \InvalidArgumentException('non-nullable allowed_origins cannot be null');
+        }
+        if ((count($allowed_origins) > 12)) {
+            throw new \InvalidArgumentException('invalid value for $allowed_origins when calling UpdateClientRequest., number of items must be less than or equal to 12.');
+        }
+        if ((count($allowed_origins) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $allowed_origins when calling UpdateClientRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['allowed_origins'] = $allowed_origins;
+
+        return $this;
+    }
+
+    /**
+     * Gets redirect_uris
+     *
+     * @return string[]
+     */
+    public function getRedirectUris()
+    {
+        return $this->container['redirect_uris'];
+    }
+
+    /**
+     * Sets redirect_uris
+     *
+     * @param string[] $redirect_uris The URIs an authorization code may be delivered to. An authorization request naming any other URI is refused, and the set holds between 1 and 12 addresses.
+     *
+     * @return self
+     */
+    public function setRedirectUris($redirect_uris)
+    {
+        if (is_null($redirect_uris)) {
+            throw new \InvalidArgumentException('non-nullable redirect_uris cannot be null');
+        }
+        if ((count($redirect_uris) > 12)) {
+            throw new \InvalidArgumentException('invalid value for $redirect_uris when calling UpdateClientRequest., number of items must be less than or equal to 12.');
+        }
+        if ((count($redirect_uris) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $redirect_uris when calling UpdateClientRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['redirect_uris'] = $redirect_uris;
 
         return $this;
     }
@@ -528,7 +638,7 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets is_public
      *
-     * @param bool|null $is_public Indicates whether client is accessible by third-party tenants
+     * @param bool|null $is_public Whether the client is offered to third-party tenants rather than only to the tenant that registers it.
      *
      * @return self
      */
@@ -538,39 +648,6 @@ class UpdateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable is_public cannot be null');
         }
         $this->container['is_public'] = $is_public;
-
-        return $this;
-    }
-
-    /**
-     * Gets allowed_origins
-     *
-     * @return string[]|null
-     */
-    public function getAllowedOrigins()
-    {
-        return $this->container['allowed_origins'];
-    }
-
-    /**
-     * Sets allowed_origins
-     *
-     * @param string[]|null $allowed_origins The allowed origins for the client
-     *
-     * @return self
-     */
-    public function setAllowedOrigins($allowed_origins)
-    {
-        if (is_null($allowed_origins)) {
-            throw new \InvalidArgumentException('non-nullable allowed_origins cannot be null');
-        }
-        if ((count($allowed_origins) > 12)) {
-            throw new \InvalidArgumentException('invalid value for $allowed_origins when calling UpdateClientRequest., number of items must be less than or equal to 12.');
-        }
-        if ((count($allowed_origins) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $allowed_origins when calling UpdateClientRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['allowed_origins'] = $allowed_origins;
 
         return $this;
     }

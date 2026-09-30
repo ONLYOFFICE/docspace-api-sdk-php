@@ -303,7 +303,7 @@ class LinkAccountRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets serialized_profile
      *
-     * @param string|null $serialized_profile The third-party profile in the serialized format.
+     * @param string|null $serialized_profile The profile a completed provider authorization produced, in the serialized form the login flow hands back.  Pass that value unchanged; it carries the provider, the third-party account ID and the authorization result,  and a hand-written object is not accepted.
      *
      * @return self
      */

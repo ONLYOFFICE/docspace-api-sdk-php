@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PriceDto Class Doc Comment
  *
  * @category Class
- * @description The price parameters.
+ * @description What a quota costs, and the currency that amount is in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class PriceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets value
      *
-     * @param float|null $value The price value.
+     * @param float|null $value The amount for one billing period, per unit for a quota sold by the unit. It is empty for a quota that is  not sold for money - the free, trial and non-profit ones - and for a quota this installation has no price  list entry for.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class PriceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency_symbol
      *
-     * @param string|null $currency_symbol The currency symbol.
+     * @param string|null $currency_symbol The symbol to print in front of `value`, such as `$`. It is chosen for the currency, not for the portal  language, so it is not a localised format.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class PriceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iso_currency_symbol
      *
-     * @param string|null $iso_currency_symbol The three-character ISO 4217 currency symbol.
+     * @param string|null $iso_currency_symbol The currency as a three-letter ISO 4217 code, which is the value to compare on when `currencySymbol` is  ambiguous between currencies that share a sign.
      *
      * @return self
      */

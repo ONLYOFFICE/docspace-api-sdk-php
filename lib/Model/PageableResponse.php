@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PageableResponse Class Doc Comment
  *
  * @category Class
- * @description The response containing paginated data.
+ * @description One page of results together with the cursor that asks for the next page.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'data' => 'object',
+        'data' => 'mixed',
         'limit' => 'int',
         'last_client_id' => 'string',
         'last_created_on' => '\DateTime'
@@ -84,7 +84,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'data' => false,
+        'data' => true,
         'limit' => false,
         'last_client_id' => false,
         'last_created_on' => false
@@ -314,7 +314,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getData()
     {
@@ -324,14 +324,21 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object|null $data The paginated data.
+     * @param mixed|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -351,7 +358,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets limit
      *
-     * @param int|null $limit The maximum number of results returned per page.
+     * @param int|null $limit The page size that was applied to this request, between 1 and 50.
      *
      * @return self
      */
@@ -378,7 +385,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_client_id
      *
-     * @param string|null $last_client_id The identifier of the last retrieved client.
+     * @param string|null $last_client_id The cursor to send back as last_client_id to ask for the next page, together with last_created_on. It is null when the page is empty.
      *
      * @return self
      */
@@ -405,7 +412,7 @@ class PageableResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_created_on
      *
-     * @param \DateTime|null $last_created_on The creation date of the last retrieved client.
+     * @param \DateTime|null $last_created_on The cursor to send back as last_created_on to ask for the next page, together with last_client_id. It is null when the page is empty.
      *
      * @return self
      */

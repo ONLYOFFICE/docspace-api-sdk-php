@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LogoRequest Class Doc Comment
  *
  * @category Class
- * @description The logo request parameters.
+ * @description The part of an uploaded picture to use as the logo.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -370,7 +370,7 @@ class LogoRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tmp_file
      *
-     * @param string $tmp_file The path to the temporary image file.
+     * @param string $tmp_file The picture to cut the logo out of, named by the path that `POST api/2.0/files/logos` returned for it. The  path may be used once and only by the account that uploaded it.
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class LogoRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x
      *
-     * @param int|null $x The X coordinate of the rectangle starting point.
+     * @param int|null $x The left edge of the rectangle cut out of the uploaded picture, counted in pixels from its left side. The  picture itself was already scaled down to fit 1280 by 1280 pixels when it was uploaded.
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class LogoRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets y
      *
-     * @param int|null $y The Y coordinate of the rectangle starting point.
+     * @param int|null $y The top edge of the rectangle cut out of the uploaded picture, counted in pixels from its top.
      *
      * @return self
      */
@@ -470,7 +470,7 @@ class LogoRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param int|null $width The rectangle width.
+     * @param int|null $width How wide a piece of the uploaded picture to cut out, in pixels. It has to be sent together with the height,  and the portal builds the four logo sizes out of the piece.
      *
      * @return self
      */
@@ -504,7 +504,7 @@ class LogoRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param int|null $height The rectangle height.
+     * @param int|null $height How tall a piece of the uploaded picture to cut out, in pixels. It has to be sent together with the width.
      *
      * @return self
      */

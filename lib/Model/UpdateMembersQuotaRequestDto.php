@@ -310,7 +310,7 @@ class UpdateMembersQuotaRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets user_ids
      *
-     * @param string[]|null $user_ids The list of user IDs.
+     * @param string[]|null $user_ids The accounts the operation applies to. System accounts are dropped from the list without an error.
      *
      * @return self
      */

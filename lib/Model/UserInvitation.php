@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UserInvitation Class Doc Comment
  *
  * @category Class
- * @description The user invitation parameters.
+ * @description Which pending room invitations are to be sent again.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class UserInvitation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets users_ids
      *
-     * @param string[]|null $users_ids The list of user IDs.
+     * @param string[]|null $users_ids The accounts to write to, taken from `GET api/2.0/files/rooms/{id}/share`. Anyone who has already joined, is  not in the room, or is invisible to the caller is skipped without an error, and the field is ignored once  every pending invitation is being resent.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class UserInvitation implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets resend_all
      *
-     * @param bool|null $resend_all Specifies whether to resend all user invitations or not.
+     * @param bool|null $resend_all Whether every invitation of the room that is still waiting is sent again. With it on the list of accounts is  ignored, and with it off an empty list means that nothing is sent at all.
      *
      * @return self
      */

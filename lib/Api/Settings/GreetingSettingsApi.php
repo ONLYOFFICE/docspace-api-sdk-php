@@ -148,7 +148,7 @@ class GreetingSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getGreetingSettings(string $contentType = self::contentTypes['getGreetingSettings'][0])
     {
@@ -168,7 +168,7 @@ class GreetingSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGreetingSettingsWithHttpInfo(string $contentType = self::contentTypes['getGreetingSettings'][0])
     {
@@ -200,7 +200,7 @@ class GreetingSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $request,
                         $response,
                     );
@@ -240,7 +240,7 @@ class GreetingSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\StringWrapper',
                 $request,
                 $response,
             );
@@ -249,7 +249,7 @@ class GreetingSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -323,7 +323,7 @@ class GreetingSettingsApi
      */
     public function getGreetingSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getGreetingSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringWrapper';
         $request = $this->getGreetingSettingsRequest($contentType);
 
         return $this->client

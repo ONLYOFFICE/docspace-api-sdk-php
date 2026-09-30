@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AceShortWrapper Class Doc Comment
  *
  * @category Class
- * @description The information about the settings which allow to share the document with other users.
+ * @description One line of a document sharing list in display form: who the document is shared with and the label of their access  level, rather than an access record with identifiers. Entries that deny access and invitation links are left out,  so the list names only the subjects and links that can currently open the document.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class AceShortWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param string|null $user The name of the user the document will be shared with.
+     * @param string|null $user Who or what the line stands for, as a display string: the display name of a member, the name of a group, or  the title given to a shared link when `isLink` is true. It is empty when the subject has no name to show - a  shared link that was never given a title, for instance.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class AceShortWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets permissions
      *
-     * @param string|null $permissions The access rights for the user with the name above.  Can be Full Access, Read Only, or Deny Access.
+     * @param string|null $permissions The access level of that subject as a localized label, not a code: inside a room it usually names the role the  subject holds there (Viewer, Editor, Room Manager), while outside a room it names the access itself  (Read Only, Full Access). The wording comes from the portal resources and is translated for the current  language, so show it to a person rather than compare it in code.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class AceShortWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_link
      *
-     * @param bool|null $is_link Specifies whether to change the user icon to the link icon.
+     * @param bool|null $is_link Whether the line stands for a shared link instead of a member or a group. Clients use it to draw a link badge  where they would otherwise draw an avatar.
      *
      * @return self
      */

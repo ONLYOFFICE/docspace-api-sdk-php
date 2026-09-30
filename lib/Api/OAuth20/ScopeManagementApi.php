@@ -139,7 +139,7 @@ class ScopeManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ScopeResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ScopeResponse[]|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getScopes(string $contentType = self::contentTypes['getScopes'][0])
     {
@@ -159,7 +159,7 @@ class ScopeManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ScopeResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ScopeResponse[]|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getScopesWithHttpInfo(string $contentType = self::contentTypes['getScopes'][0])
     {
@@ -191,17 +191,17 @@ class ScopeManagementApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ScopeResponse',
+                        '\OpenAPI\Client\Model\ScopeResponse[]',
                         $request,
                         $response,
                     );
-                case 400:
+                case 403:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
                         $response,
                     );
-                case 403:
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -214,6 +214,12 @@ class ScopeManagementApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -237,7 +243,7 @@ class ScopeManagementApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ScopeResponse',
+                '\OpenAPI\Client\Model\ScopeResponse[]',
                 $request,
                 $response,
             );
@@ -246,12 +252,12 @@ class ScopeManagementApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ScopeResponse',
+                        '\OpenAPI\Client\Model\ScopeResponse[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -259,7 +265,7 @@ class ScopeManagementApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 403:
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -276,6 +282,14 @@ class ScopeManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -328,7 +342,7 @@ class ScopeManagementApi
      */
     public function getScopesAsyncWithHttpInfo(string $contentType = self::contentTypes['getScopes'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ScopeResponse';
+        $returnType = '\OpenAPI\Client\Model\ScopeResponse[]';
         $request = $this->getScopesRequest($contentType);
 
         return $this->client
@@ -379,7 +393,7 @@ class ScopeManagementApi
     {
 
 
-        $resourcePath = '/api/2.0/scopes';
+        $resourcePath = '/api/2.0/oauth2/scopes';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

@@ -471,7 +471,7 @@ class NotificationsApi
      * REST API Reference for getNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationType $type The type of notification to query, specified in the route. (required)
+     * @param  \OpenAPI\Client\Model\NotificationType $type The kind of notification being asked about. A value outside the defined set fails the call rather than  falling back to a default. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNotificationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -492,7 +492,7 @@ class NotificationsApi
      * REST API Reference for getNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationType $type The type of notification to query, specified in the route. (required)
+     * @param  \OpenAPI\Client\Model\NotificationType $type The kind of notification being asked about. A value outside the defined set fails the call rather than  falling back to a default. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNotificationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -636,7 +636,7 @@ class NotificationsApi
      * REST API Reference for getNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationType $type The type of notification to query, specified in the route. (required)
+     * @param  \OpenAPI\Client\Model\NotificationType $type The kind of notification being asked about. A value outside the defined set fails the call rather than  falling back to a default. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -660,7 +660,7 @@ class NotificationsApi
      * REST API Reference for getNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationType $type The type of notification to query, specified in the route. (required)
+     * @param  \OpenAPI\Client\Model\NotificationType $type The kind of notification being asked about. A value outside the defined set fails the call rather than  falling back to a default. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -710,7 +710,7 @@ class NotificationsApi
     /**
      * Create request for operation 'getNotificationSettings'
      *
-     * @param  \OpenAPI\Client\Model\NotificationType $type The type of notification to query, specified in the route. (required)
+     * @param  \OpenAPI\Client\Model\NotificationType $type The kind of notification being asked about. A value outside the defined set fails the call rather than  falling back to a default. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -824,7 +824,7 @@ class NotificationsApi
     /**
      * Operation getRoomsNotificationSettings
      *
-     * Get room notification settings
+     * Get muted rooms
      *
      * REST API Reference for getRoomsNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-notification-settings/
@@ -844,7 +844,7 @@ class NotificationsApi
     /**
      * Operation getRoomsNotificationSettingsWithHttpInfo
      *
-     * Get room notification settings
+     * Get muted rooms
      *
      * REST API Reference for getRoomsNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-notification-settings/
@@ -973,7 +973,7 @@ class NotificationsApi
     /**
      * Operation getRoomsNotificationSettingsAsync
      *
-     * Get room notification settings
+     * Get muted rooms
      *
      * REST API Reference for getRoomsNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-notification-settings/
@@ -996,7 +996,7 @@ class NotificationsApi
     /**
      * Operation getRoomsNotificationSettingsAsyncWithHttpInfo
      *
-     * Get room notification settings
+     * Get muted rooms
      *
      * REST API Reference for getRoomsNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-notification-settings/
@@ -1148,7 +1148,7 @@ class NotificationsApi
     /**
      * Operation setNotificationSettings
      *
-     * Enable notifications
+     * Set notification status
      *
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
@@ -1169,7 +1169,7 @@ class NotificationsApi
     /**
      * Operation setNotificationSettingsWithHttpInfo
      *
-     * Enable notifications
+     * Set notification status
      *
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
@@ -1313,7 +1313,7 @@ class NotificationsApi
     /**
      * Operation setNotificationSettingsAsync
      *
-     * Enable notifications
+     * Set notification status
      *
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
@@ -1337,7 +1337,7 @@ class NotificationsApi
     /**
      * Operation setNotificationSettingsAsyncWithHttpInfo
      *
-     * Enable notifications
+     * Set notification status
      *
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
@@ -1499,7 +1499,7 @@ class NotificationsApi
     /**
      * Operation setRoomsNotificationStatus
      *
-     * Set room notification status
+     * Mute or unmute a room
      *
      * REST API Reference for setRoomsNotificationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-rooms-notification-status/
@@ -1520,7 +1520,7 @@ class NotificationsApi
     /**
      * Operation setRoomsNotificationStatusWithHttpInfo
      *
-     * Set room notification status
+     * Mute or unmute a room
      *
      * REST API Reference for setRoomsNotificationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-rooms-notification-status/
@@ -1664,7 +1664,7 @@ class NotificationsApi
     /**
      * Operation setRoomsNotificationStatusAsync
      *
-     * Set room notification status
+     * Mute or unmute a room
      *
      * REST API Reference for setRoomsNotificationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-rooms-notification-status/
@@ -1688,7 +1688,7 @@ class NotificationsApi
     /**
      * Operation setRoomsNotificationStatusAsyncWithHttpInfo
      *
-     * Set room notification status
+     * Mute or unmute a room
      *
      * REST API Reference for setRoomsNotificationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-rooms-notification-status/

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SecurityDto Class Doc Comment
  *
  * @category Class
- * @description The security information.
+ * @description How access to one portal module is configured: whether it is restricted, and who is let in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class SecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets web_item_id
      *
-     * @param string|null $web_item_id The module ID.
+     * @param string|null $web_item_id The module this entry is about, echoed from the identifier that was asked about. When several identifiers  are asked about at once, entries come back one per identifier and in the order they were sent, so they can  also be matched by position.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class SecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets users
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto[]|null $users The list of users with the access to the module.
+     * @param \OpenAPI\Client\Model\EmployeeDto[]|null $users The individual members the rule was stored for. Members the caller is not allowed to see are left out, so  the same module can come back with different lists for different callers and an empty list does not prove  that nobody was granted access.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class SecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets groups
      *
-     * @param \OpenAPI\Client\Model\GroupSummaryDto[]|null $groups The list of groups with the access to the module.
+     * @param \OpenAPI\Client\Model\GroupSummaryDto[]|null $groups The groups the rule was stored for, listed in full - unlike `users`, nothing is filtered out of it.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class SecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies if the security settings are enabled or not.
+     * @param bool|null $enabled Whether access to the module is restricted to the subjects listed here. It is `false` for a module nobody  has ever configured, in which case the two lists say nothing about who may open it.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class SecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_sub_item
      *
-     * @param bool|null $is_sub_item Specifies if the module is a subitem or not.
+     * @param bool|null $is_sub_item Whether the module hangs under another one rather than standing on its own. A sub-module is never returned  by `GET api/2.0/settings/security/modules`, which lists top-level modules only.
      *
      * @return self
      */

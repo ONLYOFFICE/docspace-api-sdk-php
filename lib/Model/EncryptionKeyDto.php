@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionKeyDto Class Doc Comment
  *
  * @category Class
- * @description The encryption key pair of a user.
+ * @description An encryption key pair as the portal reports it: the public half of some member's key, with the encrypted private  half filled in only when the pair belongs to the caller.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The identifier of the key pair.
+     * @param string|null $id Names the pair inside its owner's key set. Pass it back to rotate the pair or to delete it; the all-zero value  belongs to a client that stores its keys without sending an identifier.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The identifier of the user the key pair belongs to.
+     * @param string|null $user_id The member the pair belongs to. In the key set of a room or of a file this is how the caller tells its own  entries, the ones carrying a private half, from those of the other members.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The date and time when the key pair was created.
+     * @param \DateTime|null $date When this key material was written. Rotating the pair refreshes it, so it dates the material that is being  reported rather than the first appearance of the identifier.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public_key
      *
-     * @param string|null $public_key The public key of the pair, used to encrypt the file keys.
+     * @param string|null $public_key The public half of the pair, the half a client encrypts file keys with. A pair whose public half is missing  is treated as no access and left out of a room's or a file's key set.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets private_key_enc
      *
-     * @param string|null $private_key_enc The private key of the pair, encrypted with the user password.
+     * @param string|null $private_key_enc The private half, encrypted with its owner's password. It is filled in only when the pair belongs to the  calling user; on another member's entry it comes back empty, because the private half is not handed out.
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class EncryptionKeyDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets crypto_engine_id
      *
-     * @param string|null $crypto_engine_id The identifier of the crypto engine the key pair was issued for.
+     * @param string|null $crypto_engine_id The crypto engine this material was issued for, as a braced GUID. The engine is portal-wide, so the same value  comes back for every key of every member.
      *
      * @return self
      */

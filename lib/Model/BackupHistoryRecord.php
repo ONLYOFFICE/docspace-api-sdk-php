@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupHistoryRecord Class Doc Comment
  *
  * @category Class
- * @description The backup history parameters.
+ * @description One stored backup of a portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -346,7 +346,7 @@ class BackupHistoryRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param string $id The backup ID.
+     * @param string $id The ID of the backup, which is the same value as the `taskId` the backup was started with. Pass it to  `DELETE api/2.0/backup/deletebackup/{id}` or as the `backupId` of  `POST api/2.0/backup/startrestore`.
      *
      * @return self
      */
@@ -373,7 +373,7 @@ class BackupHistoryRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets file_name
      *
-     * @param string|null $file_name The backup file name.
+     * @param string|null $file_name The name of the stored archive. It is built from the portal alias and the moment the backup started,  or from `workspace` instead of the alias for a backup of the whole server.
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class BackupHistoryRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets storage_type
      *
-     * @param \OpenAPI\Client\Model\BackupStorageType $storage_type The backup storage type.
+     * @param \OpenAPI\Client\Model\BackupStorageType $storage_type The storage the archive was written to, reported as a number rather than as a name.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class BackupHistoryRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The backup creation date.
+     * @param \DateTime $created_on The date and time the backup was stored at, in UTC.
      *
      * @return self
      */
@@ -461,7 +461,7 @@ class BackupHistoryRecord implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets expires_on
      *
-     * @param \DateTime $expires_on The backup expiration date.
+     * @param \DateTime $expires_on The date and time a background cleaner removes this backup at. Only a backup written to `DataStore`  expires, one day after it was stored; for every other storage type this is `0001-01-01T00:00:00`,  which means the backup is kept until it is deleted by hand or pushed out by the stored-copies limit  of a schedule.
      *
      * @return self
      */

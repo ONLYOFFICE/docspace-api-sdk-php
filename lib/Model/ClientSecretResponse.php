@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ClientSecretResponse Class Doc Comment
  *
  * @category Class
- * @description The response containing the regenerated client secret.
+ * @description The response carrying a regenerated client secret.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class ClientSecretResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets client_secret
      *
-     * @param string|null $client_secret The newly generated client secret.
+     * @param string|null $client_secret The newly generated client secret. It replaces the previous one immediately, so every deployed copy of the client has to be updated with this value.
      *
      * @return self
      */

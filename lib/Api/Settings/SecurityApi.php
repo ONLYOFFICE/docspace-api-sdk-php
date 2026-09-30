@@ -157,7 +157,7 @@ class SecurityApi
     /**
      * Operation getEnabledModules
      *
-     * Get the enabled modules
+     * Get enabled modules
      *
      * REST API Reference for getEnabledModules Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-enabled-modules/
@@ -166,7 +166,7 @@ class SecurityApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EnabledModuleArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getEnabledModules(string $contentType = self::contentTypes['getEnabledModules'][0])
     {
@@ -177,7 +177,7 @@ class SecurityApi
     /**
      * Operation getEnabledModulesWithHttpInfo
      *
-     * Get the enabled modules
+     * Get enabled modules
      *
      * REST API Reference for getEnabledModules Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-enabled-modules/
@@ -186,7 +186,7 @@ class SecurityApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EnabledModuleArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEnabledModulesWithHttpInfo(string $contentType = self::contentTypes['getEnabledModules'][0])
     {
@@ -218,7 +218,7 @@ class SecurityApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\EnabledModuleArrayWrapper',
                         $request,
                         $response,
                     );
@@ -258,7 +258,7 @@ class SecurityApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\EnabledModuleArrayWrapper',
                 $request,
                 $response,
             );
@@ -267,7 +267,7 @@ class SecurityApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\EnabledModuleArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -306,7 +306,7 @@ class SecurityApi
     /**
      * Operation getEnabledModulesAsync
      *
-     * Get the enabled modules
+     * Get enabled modules
      *
      * REST API Reference for getEnabledModules Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-enabled-modules/
@@ -329,7 +329,7 @@ class SecurityApi
     /**
      * Operation getEnabledModulesAsyncWithHttpInfo
      *
-     * Get the enabled modules
+     * Get enabled modules
      *
      * REST API Reference for getEnabledModules Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-enabled-modules/
@@ -341,7 +341,7 @@ class SecurityApi
      */
     public function getEnabledModulesAsyncWithHttpInfo(string $contentType = self::contentTypes['getEnabledModules'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\EnabledModuleArrayWrapper';
         $request = $this->getEnabledModulesRequest($contentType);
 
         return $this->client
@@ -481,13 +481,13 @@ class SecurityApi
     /**
      * Operation getIsProductAdministrator
      *
-     * Check a product administrator
+     * Check product administrator
      *
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The ID of the product extracted from the query parameters. (required)
-     * @param  string $userid The user ID extracted from the query parameters. (required)
+     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -503,13 +503,13 @@ class SecurityApi
     /**
      * Operation getIsProductAdministratorWithHttpInfo
      *
-     * Check a product administrator
+     * Check product administrator
      *
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The ID of the product extracted from the query parameters. (required)
-     * @param  string $userid The user ID extracted from the query parameters. (required)
+     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -648,13 +648,13 @@ class SecurityApi
     /**
      * Operation getIsProductAdministratorAsync
      *
-     * Check a product administrator
+     * Check product administrator
      *
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The ID of the product extracted from the query parameters. (required)
-     * @param  string $userid The user ID extracted from the query parameters. (required)
+     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -673,13 +673,13 @@ class SecurityApi
     /**
      * Operation getIsProductAdministratorAsyncWithHttpInfo
      *
-     * Check a product administrator
+     * Check product administrator
      *
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The ID of the product extracted from the query parameters. (required)
-     * @param  string $userid The user ID extracted from the query parameters. (required)
+     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -729,8 +729,8 @@ class SecurityApi
     /**
      * Create request for operation 'getIsProductAdministrator'
      *
-     * @param  string $productid The ID of the product extracted from the query parameters. (required)
-     * @param  string $userid The user ID extracted from the query parameters. (required)
+     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -861,7 +861,7 @@ class SecurityApi
     /**
      * Operation getPasswordSettings
      *
-     * Get the password settings
+     * Get password settings
      *
      * REST API Reference for getPasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-password-settings/
@@ -881,7 +881,7 @@ class SecurityApi
     /**
      * Operation getPasswordSettingsWithHttpInfo
      *
-     * Get the password settings
+     * Get password settings
      *
      * REST API Reference for getPasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-password-settings/
@@ -1010,7 +1010,7 @@ class SecurityApi
     /**
      * Operation getPasswordSettingsAsync
      *
-     * Get the password settings
+     * Get password settings
      *
      * REST API Reference for getPasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-password-settings/
@@ -1033,7 +1033,7 @@ class SecurityApi
     /**
      * Operation getPasswordSettingsAsyncWithHttpInfo
      *
-     * Get the password settings
+     * Get password settings
      *
      * REST API Reference for getPasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-password-settings/
@@ -1185,12 +1185,12 @@ class SecurityApi
     /**
      * Operation getProductAdministrators
      *
-     * Get the product administrators
+     * Get product administrators
      *
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The ID of the product extracted from the route parameters. (required)
+     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1206,12 +1206,12 @@ class SecurityApi
     /**
      * Operation getProductAdministratorsWithHttpInfo
      *
-     * Get the product administrators
+     * Get product administrators
      *
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The ID of the product extracted from the route parameters. (required)
+     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1350,12 +1350,12 @@ class SecurityApi
     /**
      * Operation getProductAdministratorsAsync
      *
-     * Get the product administrators
+     * Get product administrators
      *
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The ID of the product extracted from the route parameters. (required)
+     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1374,12 +1374,12 @@ class SecurityApi
     /**
      * Operation getProductAdministratorsAsyncWithHttpInfo
      *
-     * Get the product administrators
+     * Get product administrators
      *
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The ID of the product extracted from the route parameters. (required)
+     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1429,7 +1429,7 @@ class SecurityApi
     /**
      * Create request for operation 'getProductAdministrators'
      *
-     * @param  string $productid The ID of the product extracted from the route parameters. (required)
+     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1543,12 +1543,12 @@ class SecurityApi
     /**
      * Operation getWebItemSecurityInfo
      *
-     * Get the module availability
+     * Check module availability
      *
      * REST API Reference for getWebItemSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-security-info/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1564,12 +1564,12 @@ class SecurityApi
     /**
      * Operation getWebItemSecurityInfoWithHttpInfo
      *
-     * Get the module availability
+     * Check module availability
      *
      * REST API Reference for getWebItemSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-security-info/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1708,12 +1708,12 @@ class SecurityApi
     /**
      * Operation getWebItemSecurityInfoAsync
      *
-     * Get the module availability
+     * Check module availability
      *
      * REST API Reference for getWebItemSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-security-info/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1732,12 +1732,12 @@ class SecurityApi
     /**
      * Operation getWebItemSecurityInfoAsyncWithHttpInfo
      *
-     * Get the module availability
+     * Check module availability
      *
      * REST API Reference for getWebItemSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-security-info/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1787,7 +1787,7 @@ class SecurityApi
     /**
      * Create request for operation 'getWebItemSecurityInfo'
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1901,12 +1901,12 @@ class SecurityApi
     /**
      * Operation getWebItemSettingsSecurityInfo
      *
-     * Get the security settings
+     * Get module access settings
      *
      * REST API Reference for getWebItemSettingsSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-settings-security-info/
      *
-     * @param  string[]|null $ids The list of module identifiers for which to retrieve the security settings. (optional)
+     * @param  string[]|null $ids The modules to report on, each given as a GUID and sent as a repeated query value. An entry that is not a  GUID fails the whole request as invalid. Leaving the list out asks about every module registered in the  portal, which on a DocSpace installation is none, so the answer is then empty rather than complete. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSettingsSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1922,12 +1922,12 @@ class SecurityApi
     /**
      * Operation getWebItemSettingsSecurityInfoWithHttpInfo
      *
-     * Get the security settings
+     * Get module access settings
      *
      * REST API Reference for getWebItemSettingsSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-settings-security-info/
      *
-     * @param  string[]|null $ids The list of module identifiers for which to retrieve the security settings. (optional)
+     * @param  string[]|null $ids The modules to report on, each given as a GUID and sent as a repeated query value. An entry that is not a  GUID fails the whole request as invalid. Leaving the list out asks about every module registered in the  portal, which on a DocSpace installation is none, so the answer is then empty rather than complete. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSettingsSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2066,12 +2066,12 @@ class SecurityApi
     /**
      * Operation getWebItemSettingsSecurityInfoAsync
      *
-     * Get the security settings
+     * Get module access settings
      *
      * REST API Reference for getWebItemSettingsSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-settings-security-info/
      *
-     * @param  string[]|null $ids The list of module identifiers for which to retrieve the security settings. (optional)
+     * @param  string[]|null $ids The modules to report on, each given as a GUID and sent as a repeated query value. An entry that is not a  GUID fails the whole request as invalid. Leaving the list out asks about every module registered in the  portal, which on a DocSpace installation is none, so the answer is then empty rather than complete. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSettingsSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2090,12 +2090,12 @@ class SecurityApi
     /**
      * Operation getWebItemSettingsSecurityInfoAsyncWithHttpInfo
      *
-     * Get the security settings
+     * Get module access settings
      *
      * REST API Reference for getWebItemSettingsSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-item-settings-security-info/
      *
-     * @param  string[]|null $ids The list of module identifiers for which to retrieve the security settings. (optional)
+     * @param  string[]|null $ids The modules to report on, each given as a GUID and sent as a repeated query value. An entry that is not a  GUID fails the whole request as invalid. Leaving the list out asks about every module registered in the  portal, which on a DocSpace installation is none, so the answer is then empty rather than complete. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSettingsSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2145,7 +2145,7 @@ class SecurityApi
     /**
      * Create request for operation 'getWebItemSettingsSecurityInfo'
      *
-     * @param  string[]|null $ids The list of module identifiers for which to retrieve the security settings. (optional)
+     * @param  string[]|null $ids The modules to report on, each given as a GUID and sent as a repeated query value. An entry that is not a  GUID fails the whole request as invalid. Leaving the list out asks about every module registered in the  portal, which on a DocSpace installation is none, so the answer is then empty rather than complete. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebItemSettingsSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2254,7 +2254,7 @@ class SecurityApi
     /**
      * Operation setAccessToWebItems
      *
-     * Set the security settings to modules
+     * Set access to modules in bulk
      *
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
@@ -2275,7 +2275,7 @@ class SecurityApi
     /**
      * Operation setAccessToWebItemsWithHttpInfo
      *
-     * Set the security settings to modules
+     * Set access to modules in bulk
      *
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
@@ -2419,7 +2419,7 @@ class SecurityApi
     /**
      * Operation setAccessToWebItemsAsync
      *
-     * Set the security settings to modules
+     * Set access to modules in bulk
      *
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
@@ -2443,7 +2443,7 @@ class SecurityApi
     /**
      * Operation setAccessToWebItemsAsyncWithHttpInfo
      *
-     * Set the security settings to modules
+     * Set access to modules in bulk
      *
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
@@ -2605,7 +2605,7 @@ class SecurityApi
     /**
      * Operation setProductAdministrator
      *
-     * Set a product administrator
+     * Set product administrator
      *
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
@@ -2626,7 +2626,7 @@ class SecurityApi
     /**
      * Operation setProductAdministratorWithHttpInfo
      *
-     * Set a product administrator
+     * Set product administrator
      *
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
@@ -2770,7 +2770,7 @@ class SecurityApi
     /**
      * Operation setProductAdministratorAsync
      *
-     * Set a product administrator
+     * Set product administrator
      *
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
@@ -2794,7 +2794,7 @@ class SecurityApi
     /**
      * Operation setProductAdministratorAsyncWithHttpInfo
      *
-     * Set a product administrator
+     * Set product administrator
      *
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
@@ -2956,7 +2956,7 @@ class SecurityApi
     /**
      * Operation setWebItemSecurity
      *
-     * Set the module security settings
+     * Set module access
      *
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
@@ -2977,7 +2977,7 @@ class SecurityApi
     /**
      * Operation setWebItemSecurityWithHttpInfo
      *
-     * Set the module security settings
+     * Set module access
      *
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
@@ -3121,7 +3121,7 @@ class SecurityApi
     /**
      * Operation setWebItemSecurityAsync
      *
-     * Set the module security settings
+     * Set module access
      *
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
@@ -3145,7 +3145,7 @@ class SecurityApi
     /**
      * Operation setWebItemSecurityAsyncWithHttpInfo
      *
-     * Set the module security settings
+     * Set module access
      *
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
@@ -3307,7 +3307,7 @@ class SecurityApi
     /**
      * Operation updatePasswordSettings
      *
-     * Set the password settings
+     * Update password settings
      *
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
@@ -3328,7 +3328,7 @@ class SecurityApi
     /**
      * Operation updatePasswordSettingsWithHttpInfo
      *
-     * Set the password settings
+     * Update password settings
      *
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
@@ -3458,7 +3458,7 @@ class SecurityApi
     /**
      * Operation updatePasswordSettingsAsync
      *
-     * Set the password settings
+     * Update password settings
      *
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
@@ -3482,7 +3482,7 @@ class SecurityApi
     /**
      * Operation updatePasswordSettingsAsyncWithHttpInfo
      *
-     * Set the password settings
+     * Update password settings
      *
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/

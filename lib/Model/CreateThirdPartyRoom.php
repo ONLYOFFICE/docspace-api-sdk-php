@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateThirdPartyRoom Class Doc Comment
  *
  * @category Class
- * @description The parameters for creating a third-party room.
+ * @description The room to be created out of a folder of a connected third-party storage account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -372,7 +372,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets create_as_new_folder
      *
-     * @param bool|null $create_as_new_folder Specifies whether to create a third-party room as a new folder or not.
+     * @param bool|null $create_as_new_folder Creates a new folder named after `title` inside the folder named in the path and turns that subfolder into the  room, leaving the named folder itself untouched. When omitted, the named folder becomes the room and keeps  everything it already holds.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets title
      *
-     * @param string|null $title The third-party room name to be created.
+     * @param string|null $title The name the room is shown under. It is stored on the connected account, so it does not have to match the name  of the folder in the storage; with `createAsNewFolder` it is also the name given to the created subfolder.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets room_type
      *
-     * @param \OpenAPI\Client\Model\RoomType $room_type The third-party room type to be created.
+     * @param \OpenAPI\Client\Model\RoomType $room_type The kind of room the folder becomes, which decides the default access rules of its members and cannot be  changed afterwards.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets private
      *
-     * @param bool|null $private Specifies whether to create the private third-party room or not.
+     * @param bool|null $private Restricts the room to the members explicitly invited into it. The flag is kept on the connected storage  account rather than on the folder, so every folder read through that account reports the same value.
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets indexing
      *
-     * @param bool|null $indexing Specifies whether to create the third-party room with indexing.
+     * @param bool|null $indexing Keeps the contents of the room in an explicit numbered order, the one reported as `order` on every entry,  instead of leaving the order to the reader.
      *
      * @return self
      */
@@ -514,7 +514,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Specifies whether to deny downloads from the third-party room.
+     * @param bool|null $deny_download Forbids downloading and printing the contents of the room, which leaves the members with viewing and editing  in the editor only.
      *
      * @return self
      */
@@ -541,7 +541,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets color
      *
-     * @param string|null $color The color of the third-party room.
+     * @param string|null $color The background colour drawn behind the cover of the room, as six hexadecimal digits without a leading number  sign. An empty value restores the colour the portal picks by default.
      *
      * @return self
      */
@@ -575,7 +575,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets cover
      *
-     * @param string|null $cover The cover of the third-party room.
+     * @param string|null $cover The drawing shown on the room tile, named by one of the built-in cover identifiers returned by  `GET api/2.0/files/rooms/covers`. An empty value leaves the room without a cover, and any other unknown value  is rejected as an invalid request.
      *
      * @return self
      */
@@ -609,7 +609,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tags
      *
-     * @param string[]|null $tags The list of tags of the third-party room.
+     * @param string[]|null $tags The tags to attach to the room, named by their text. A name that is not in the portal tag catalogue yet is  added to it, and `GET api/2.0/files/tags` lists the names already there.
      *
      * @return self
      */
@@ -643,7 +643,7 @@ class CreateThirdPartyRoom implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The logo request parameters of the third-party room.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The picture to use as the room logo, which has to be uploaded with `POST api/2.0/files/logos` first; leaving  it out keeps the room on its cover and colour.
      *
      * @return self
      */

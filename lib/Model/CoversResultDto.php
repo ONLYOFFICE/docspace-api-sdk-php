@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CoversResultDto Class Doc Comment
  *
  * @category Class
- * @description The result of the cover request containing the cover image data.
+ * @description One drawing of the built-in gallery of room covers.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class CoversResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The cover unique identifier.
+     * @param string|null $id The name of the cover, and the value to send as `cover` when a room is created or changed. The names are the  same on every portal and do not change with the language of the request.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class CoversResultDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param string|null $data The cover image data.
+     * @param string|null $data The drawing itself, as inline vector markup ready to be rendered as it is. It is the default size of the  cover, and it may change between product versions while the name stays.
      *
      * @return self
      */

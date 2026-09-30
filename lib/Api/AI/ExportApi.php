@@ -130,7 +130,7 @@ class ExportApi
     /**
      * Operation aiExportTextToDocx
      *
-     * Start markdown → docx export
+     * Start markdown export
      *
      * REST API Reference for aiExportTextToDocx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-export-text-to-docx/
@@ -140,7 +140,7 @@ class ExportApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiExportTextToDocx200Response|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiExportTextToDocx202Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiExportTextToDocx($ai_export_text_to_docx_request, string $contentType = self::contentTypes['aiExportTextToDocx'][0])
     {
@@ -151,7 +151,7 @@ class ExportApi
     /**
      * Operation aiExportTextToDocxWithHttpInfo
      *
-     * Start markdown → docx export
+     * Start markdown export
      *
      * REST API Reference for aiExportTextToDocx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-export-text-to-docx/
@@ -161,7 +161,7 @@ class ExportApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiExportTextToDocx200Response|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiExportTextToDocx202Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiExportTextToDocxWithHttpInfo($ai_export_text_to_docx_request, string $contentType = self::contentTypes['aiExportTextToDocx'][0])
     {
@@ -191,13 +191,37 @@ class ExportApi
 
 
             switch($statusCode) {
-                case 200:
+                case 202:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiExportTextToDocx200Response',
+                        '\OpenAPI\Client\Model\AiExportTextToDocx202Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -221,21 +245,53 @@ class ExportApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiExportTextToDocx200Response',
+                '\OpenAPI\Client\Model\AiExportTextToDocx202Response',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiExportTextToDocx200Response',
+                        '\OpenAPI\Client\Model\AiExportTextToDocx202Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -253,7 +309,7 @@ class ExportApi
     /**
      * Operation aiExportTextToDocxAsync
      *
-     * Start markdown → docx export
+     * Start markdown export
      *
      * REST API Reference for aiExportTextToDocx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-export-text-to-docx/
@@ -277,7 +333,7 @@ class ExportApi
     /**
      * Operation aiExportTextToDocxAsyncWithHttpInfo
      *
-     * Start markdown → docx export
+     * Start markdown export
      *
      * REST API Reference for aiExportTextToDocx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-export-text-to-docx/
@@ -290,7 +346,7 @@ class ExportApi
      */
     public function aiExportTextToDocxAsyncWithHttpInfo($ai_export_text_to_docx_request, string $contentType = self::contentTypes['aiExportTextToDocx'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiExportTextToDocx200Response';
+        $returnType = '\OpenAPI\Client\Model\AiExportTextToDocx202Response';
         $request = $this->aiExportTextToDocxRequest($ai_export_text_to_docx_request, $contentType);
 
         return $this->client
@@ -398,6 +454,15 @@ class ExportApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

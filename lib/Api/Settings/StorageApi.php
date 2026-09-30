@@ -159,7 +159,7 @@ class StorageApi
      * REST API Reference for getAllBackupStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-backup-storages/
      *
-     * @param  bool|null $dump Indicates whether the operation should perform a dump of backup storage data.  This property is used as a parameter in backup-related API requests to specify  if additional details or data dumping is required during the process. (optional)
+     * @param  bool|null $dump Whether the schedule of the whole server is read instead of the one of the current portal. It only changes  which schedule marks an entry as `current`; the list of storages itself is the same either way, and the flag  makes sense only on a self-hosted installation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllBackupStorages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -180,7 +180,7 @@ class StorageApi
      * REST API Reference for getAllBackupStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-backup-storages/
      *
-     * @param  bool|null $dump Indicates whether the operation should perform a dump of backup storage data.  This property is used as a parameter in backup-related API requests to specify  if additional details or data dumping is required during the process. (optional)
+     * @param  bool|null $dump Whether the schedule of the whole server is read instead of the one of the current portal. It only changes  which schedule marks an entry as `current`; the list of storages itself is the same either way, and the flag  makes sense only on a self-hosted installation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllBackupStorages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -324,7 +324,7 @@ class StorageApi
      * REST API Reference for getAllBackupStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-backup-storages/
      *
-     * @param  bool|null $dump Indicates whether the operation should perform a dump of backup storage data.  This property is used as a parameter in backup-related API requests to specify  if additional details or data dumping is required during the process. (optional)
+     * @param  bool|null $dump Whether the schedule of the whole server is read instead of the one of the current portal. It only changes  which schedule marks an entry as `current`; the list of storages itself is the same either way, and the flag  makes sense only on a self-hosted installation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllBackupStorages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -348,7 +348,7 @@ class StorageApi
      * REST API Reference for getAllBackupStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-backup-storages/
      *
-     * @param  bool|null $dump Indicates whether the operation should perform a dump of backup storage data.  This property is used as a parameter in backup-related API requests to specify  if additional details or data dumping is required during the process. (optional)
+     * @param  bool|null $dump Whether the schedule of the whole server is read instead of the one of the current portal. It only changes  which schedule marks an entry as `current`; the list of storages itself is the same either way, and the flag  makes sense only on a self-hosted installation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllBackupStorages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -398,7 +398,7 @@ class StorageApi
     /**
      * Create request for operation 'getAllBackupStorages'
      *
-     * @param  bool|null $dump Indicates whether the operation should perform a dump of backup storage data.  This property is used as a parameter in backup-related API requests to specify  if additional details or data dumping is required during the process. (optional)
+     * @param  bool|null $dump Whether the schedule of the whole server is read instead of the one of the current portal. It only changes  which schedule marks an entry as `current`; the list of storages itself is the same either way, and the flag  makes sense only on a self-hosted installation. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllBackupStorages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -831,7 +831,7 @@ class StorageApi
     /**
      * Operation getAllStorages
      *
-     * Get storages
+     * Get the portal storages
      *
      * REST API Reference for getAllStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-storages/
@@ -851,7 +851,7 @@ class StorageApi
     /**
      * Operation getAllStoragesWithHttpInfo
      *
-     * Get storages
+     * Get the portal storages
      *
      * REST API Reference for getAllStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-storages/
@@ -980,7 +980,7 @@ class StorageApi
     /**
      * Operation getAllStoragesAsync
      *
-     * Get storages
+     * Get the portal storages
      *
      * REST API Reference for getAllStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-storages/
@@ -1003,7 +1003,7 @@ class StorageApi
     /**
      * Operation getAllStoragesAsyncWithHttpInfo
      *
-     * Get storages
+     * Get the portal storages
      *
      * REST API Reference for getAllStorages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-storages/
@@ -1155,7 +1155,7 @@ class StorageApi
     /**
      * Operation getAmazonS3Regions
      *
-     * Get Amazon regions
+     * Get the Amazon S3 regions
      *
      * REST API Reference for getAmazonS3Regions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-amazon-s3-regions/
@@ -1164,7 +1164,7 @@ class StorageApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AmazonS3RegionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAmazonS3Regions(string $contentType = self::contentTypes['getAmazonS3Regions'][0])
     {
@@ -1175,7 +1175,7 @@ class StorageApi
     /**
      * Operation getAmazonS3RegionsWithHttpInfo
      *
-     * Get Amazon regions
+     * Get the Amazon S3 regions
      *
      * REST API Reference for getAmazonS3Regions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-amazon-s3-regions/
@@ -1184,7 +1184,7 @@ class StorageApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AmazonS3RegionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAmazonS3RegionsWithHttpInfo(string $contentType = self::contentTypes['getAmazonS3Regions'][0])
     {
@@ -1216,7 +1216,7 @@ class StorageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AmazonS3RegionArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1256,7 +1256,7 @@ class StorageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\AmazonS3RegionArrayWrapper',
                 $request,
                 $response,
             );
@@ -1265,7 +1265,7 @@ class StorageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AmazonS3RegionArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1304,7 +1304,7 @@ class StorageApi
     /**
      * Operation getAmazonS3RegionsAsync
      *
-     * Get Amazon regions
+     * Get the Amazon S3 regions
      *
      * REST API Reference for getAmazonS3Regions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-amazon-s3-regions/
@@ -1327,7 +1327,7 @@ class StorageApi
     /**
      * Operation getAmazonS3RegionsAsyncWithHttpInfo
      *
-     * Get Amazon regions
+     * Get the Amazon S3 regions
      *
      * REST API Reference for getAmazonS3Regions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-amazon-s3-regions/
@@ -1339,7 +1339,7 @@ class StorageApi
      */
     public function getAmazonS3RegionsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAmazonS3Regions'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\AmazonS3RegionArrayWrapper';
         $request = $this->getAmazonS3RegionsRequest($contentType);
 
         return $this->client
@@ -1479,7 +1479,7 @@ class StorageApi
     /**
      * Operation getStorageProgress
      *
-     * Get the storage progress
+     * Get the storage migration progress
      *
      * REST API Reference for getStorageProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-storage-progress/
@@ -1499,7 +1499,7 @@ class StorageApi
     /**
      * Operation getStorageProgressWithHttpInfo
      *
-     * Get the storage progress
+     * Get the storage migration progress
      *
      * REST API Reference for getStorageProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-storage-progress/
@@ -1628,7 +1628,7 @@ class StorageApi
     /**
      * Operation getStorageProgressAsync
      *
-     * Get the storage progress
+     * Get the storage migration progress
      *
      * REST API Reference for getStorageProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-storage-progress/
@@ -1651,7 +1651,7 @@ class StorageApi
     /**
      * Operation getStorageProgressAsyncWithHttpInfo
      *
-     * Get the storage progress
+     * Get the storage migration progress
      *
      * REST API Reference for getStorageProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-storage-progress/
@@ -2652,7 +2652,7 @@ class StorageApi
     /**
      * Operation updateStorage
      *
-     * Update a storage
+     * Switch the portal storage
      *
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
@@ -2673,7 +2673,7 @@ class StorageApi
     /**
      * Operation updateStorageWithHttpInfo
      *
-     * Update a storage
+     * Switch the portal storage
      *
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
@@ -2803,7 +2803,7 @@ class StorageApi
     /**
      * Operation updateStorageAsync
      *
-     * Update a storage
+     * Switch the portal storage
      *
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
@@ -2827,7 +2827,7 @@ class StorageApi
     /**
      * Operation updateStorageAsyncWithHttpInfo
      *
-     * Update a storage
+     * Switch the portal storage
      *
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/

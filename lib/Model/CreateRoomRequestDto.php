@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateRoomRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for creating a room.
+ * @description The parameters of a new room in the Rooms section.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -434,7 +434,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets title
      *
-     * @param string|null $title The room name.
+     * @param string|null $title The name of the room. It is trimmed, characters that a folder name cannot hold are replaced with underscores  and the rest is truncated, so the stored title can differ from the one sent; a blank title is rejected. Titles  are not unique, and rooms are told apart by their id.
      *
      * @return self
      */
@@ -475,7 +475,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets quota
      *
-     * @param int|null $quota The room quota.
+     * @param int|null $quota The storage the room may take, in bytes. It is accepted only while the per-room quota feature is on for the  portal and must stay inside the portal own limit; leaving it out lets the room follow the portal default.
      *
      * @return self
      */
@@ -509,7 +509,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets indexing
      *
-     * @param bool|null $indexing Specifies whether to create a room with indexing.
+     * @param bool|null $indexing Whether the room keeps a manual order of its contents. With it on every file and folder carries a position  that listings follow and that `PUT api/2.0/files/rooms/{id}/reorder` compacts; with it off the contents are  ordered by the sorting of the request.
      *
      * @return self
      */
@@ -543,7 +543,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Specifies whether to deny downloads from the room.
+     * @param bool|null $deny_download Whether members without editing rights are stopped from downloading and printing the contents of the room.  They can still open the documents in the editor.
      *
      * @return self
      */
@@ -577,7 +577,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets lifetime
      *
-     * @param \OpenAPI\Client\Model\RoomDataLifetimeDto|null $lifetime The room data lifetime information.
+     * @param \OpenAPI\Client\Model\RoomDataLifetimeDto|null $lifetime How long files may stay in the room before they are deleted automatically. The countdown starts when the  setting is saved, and leaving the field out keeps the files forever.
      *
      * @return self
      */
@@ -604,7 +604,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets watermark
      *
-     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The watermark settings.
+     * @param \OpenAPI\Client\Model\WatermarkRequestDto|null $watermark The watermark drawn over documents opened in the room. Leaving the field out adds no watermark, and sending it  with the switch turned off removes the one the room has.
      *
      * @return self
      */
@@ -631,7 +631,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The room logo.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The picture to use as the room logo, named by the path that `POST api/2.0/files/logos` returned for an image  uploaded beforehand, plus the crop to take from it. Leaving the field out keeps the room on its cover and  colour.
      *
      * @return self
      */
@@ -658,7 +658,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets tags
      *
-     * @param string[]|null $tags The list of tags.
+     * @param string[]|null $tags The labels to attach to the room, by name. Names the portal tag catalogue does not hold yet are added to it,  and `GET api/2.0/files/tags` lists what already exists.
      *
      * @return self
      */
@@ -692,7 +692,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets color
      *
-     * @param string|null $color The room color, as a six-digit hexadecimal value without a leading '#'.
+     * @param string|null $color The background colour the room is drawn with while it has no logo, as six hexadecimal digits with no leading  number sign. An empty value restores the default colour of the room type.
      *
      * @return self
      */
@@ -731,7 +731,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets cover
      *
-     * @param string|null $cover The room cover.
+     * @param string|null $cover The picture drawn on the room while it has no logo, named by an identifier from  `GET api/2.0/files/rooms/covers`. Any other value is rejected, and an empty value leaves the room without a  cover.
      *
      * @return self
      */
@@ -772,7 +772,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets room_type
      *
-     * @param \OpenAPI\Client\Model\RoomType $room_type The room type.
+     * @param \OpenAPI\Client\Model\RoomType $room_type What the room is for. It decides which sharing links, roles and form features the room offers, and it cannot  be changed once the room exists, so a room of the wrong kind has to be recreated.
      *
      * @return self
      */
@@ -799,7 +799,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets private
      *
-     * @param bool|null $private Specifies whether the room to be created is private or not.
+     * @param bool|null $private Whether the room is end-to-end encrypted. Its files can then be opened only in the desktop application by  members whose encryption keys are set up, and the flag cannot be changed after the room is created.
      *
      * @return self
      */
@@ -826,7 +826,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets share
      *
-     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share The collection of sharing parameters.
+     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share Not implemented on room creation: any non-empty value is rejected, and members are invited afterwards with  `PUT api/2.0/files/rooms/{id}/share`.
      *
      * @return self
      */
@@ -860,7 +860,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets chat_settings
      *
-     * @param \OpenAPI\Client\Model\ChatSettings|null $chat_settings The chat settings.
+     * @param \OpenAPI\Client\Model\ChatSettings|null $chat_settings The model and the prompt an AI room answers with. It belongs to AI rooms only and is rejected for a room of  any other kind.
      *
      * @return self
      */
@@ -887,7 +887,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets send_form_to_external_db
      *
-     * @param bool|null $send_form_to_external_db Specifies whether to send form data to external database.
+     * @param bool|null $send_form_to_external_db For a form filling room, whether the data of every completed submission is also pushed to the external  database configured for the portal. It is what `POST api/2.0/files/rooms/{id}/externaldbsync` re-runs for the  forms already collected.
      *
      * @return self
      */
@@ -921,7 +921,7 @@ class CreateRoomRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets save_form_as_xlsx
      *
-     * @param bool|null $save_form_as_xlsx Specifies whether to save form data as XLSX file.
+     * @param bool|null $save_form_as_xlsx For a form filling room, whether the collected submissions are also gathered into a spreadsheet stored next to  the completed forms. With it off the submissions are kept only as the filled documents themselves.
      *
      * @return self
      */

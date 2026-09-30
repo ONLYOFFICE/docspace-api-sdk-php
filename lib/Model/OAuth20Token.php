@@ -352,7 +352,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access_token
      *
-     * @param string|null $access_token Access token
+     * @param string|null $access_token The token sent to the provider with every request made on behalf of the account.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets refresh_token
      *
-     * @param string|null $refresh_token Refresh token
+     * @param string|null $refresh_token The token used to obtain a new access token when the current one expires. A provider that issues no refresh  token leaves it empty, and the account then has to be connected again to keep working.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expires_in
      *
-     * @param int|null $expires_in Expires in
+     * @param int|null $expires_in How long the access token stays usable, in seconds counted from `timestamp`. Zero means the provider did not  say, and the token is then treated as expired.
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_id
      *
-     * @param string|null $client_id Client id
+     * @param string|null $client_id The OAuth 2.0 client ID of the application the token was issued to.
      *
      * @return self
      */
@@ -481,7 +481,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets client_secret
      *
-     * @param string|null $client_secret Client secret
+     * @param string|null $client_secret The client secret of the application the token was issued to, needed when the token is refreshed.
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets redirect_uri
      *
-     * @param string|null $redirect_uri Redirect uri
+     * @param string|null $redirect_uri The redirect URL the authorization code behind this token was obtained with; providers require the same value  again when the token is refreshed.
      *
      * @return self
      */
@@ -549,7 +549,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp Timestamp
+     * @param \DateTime|null $timestamp When the token was issued, in UTC. This is the point `expires_in` is counted from.
      *
      * @return self
      */
@@ -576,7 +576,7 @@ class OAuth20Token implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_expired
      *
-     * @param bool|null $is_expired Is expired
+     * @param bool|null $is_expired Whether the access token can no longer be used and has to be refreshed. It is also true when the provider did  not say how long the token lives.
      *
      * @return self
      */

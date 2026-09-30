@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThumbnailsRequest Class Doc Comment
  *
  * @category Class
- * @description The thumbnail request.
+ * @description The crop rectangle to apply to an avatar image.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class ThumbnailsRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tmp_file
      *
-     * @param string|null $tmp_file The path to the temporary thumbnail file.
+     * @param string|null $tmp_file The temporary image to crop, as returned in the `data` of an upload made with `autosave` off. Only the file  name part of the value is used. Omit it to re-crop the photo the profile already has.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class ThumbnailsRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets x
      *
-     * @param int|null $x The thumbnail horizontal coordinate.
+     * @param int|null $x The distance in pixels from the left edge of the original image to the left edge of the crop rectangle.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class ThumbnailsRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets y
      *
-     * @param int|null $y The thumbnail vertical coordinate.
+     * @param int|null $y The distance in pixels from the top edge of the original image to the top edge of the crop rectangle.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class ThumbnailsRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets width
      *
-     * @param int|null $width The thumbnail width.
+     * @param int|null $width The width of the crop rectangle in pixels. Passing 0 together with `height` and `tmpFile` keeps the whole  uploaded image instead of cropping it.
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class ThumbnailsRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets height
      *
-     * @param int|null $height The thumbnail height.
+     * @param int|null $height The height of the crop rectangle in pixels. Passing 0 together with `width` and `tmpFile` keeps the whole  uploaded image instead of cropping it.
      *
      * @return self
      */

@@ -4,14 +4,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**aiAssignmentsAssign()**](AIAssignmentsApi.md#aiAssignmentsAssign) | **PUT** /api/2.0/ai/assignments/assign | Assign |
+| [**aiAssignmentsAssign()**](AIAssignmentsApi.md#aiAssignmentsAssign) | **PUT** /api/2.0/ai/assignments/assign | Bind a profile to an action |
 | [**aiAssignmentsBulkAssign()**](AIAssignmentsApi.md#aiAssignmentsBulkAssign) | **PUT** /api/2.0/ai/assignments/bulk-assign | Bulk assign |
 | [**aiAssignmentsCascadeProfileDelete()**](AIAssignmentsApi.md#aiAssignmentsCascadeProfileDelete) | **DELETE** /api/2.0/ai/assignments/cascade-profile-delete | Cascade profile delete |
 | [**aiAssignmentsGetAllAssignments()**](AIAssignmentsApi.md#aiAssignmentsGetAllAssignments) | **GET** /api/2.0/ai/assignments/get-all-assignments | Get all assignments |
 | [**aiAssignmentsGetAssignment()**](AIAssignmentsApi.md#aiAssignmentsGetAssignment) | **GET** /api/2.0/ai/assignments/get-assignment | Get assignment |
 | [**aiAssignmentsResolveForAction()**](AIAssignmentsApi.md#aiAssignmentsResolveForAction) | **GET** /api/2.0/ai/assignments/resolve-for-action | Resolve for action |
 | [**aiAssignmentsTryResolveForAction()**](AIAssignmentsApi.md#aiAssignmentsTryResolveForAction) | **GET** /api/2.0/ai/assignments/try-resolve-for-action | Try resolve for action |
-| [**aiAssignmentsUnassign()**](AIAssignmentsApi.md#aiAssignmentsUnassign) | **DELETE** /api/2.0/ai/assignments/unassign | Unassign |
+| [**aiAssignmentsUnassign()**](AIAssignmentsApi.md#aiAssignmentsUnassign) | **DELETE** /api/2.0/ai/assignments/unassign | Clear an action's profile |
 
 
 ## `aiAssignmentsAssign()`
@@ -20,8 +20,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 aiAssignmentsAssign($ai_assignments_assign_request): \OpenAPI\Client\Model\AiAssignmentMutationResult
 ```
 
-Assign
-Binds a profile to an AI action, creating the assignment or updating it in place. The profile's declared capabilities are validated against the action, except for the `Default` slot.
+Bind a profile to an action
+Binds a profile to one AI action portal-wide, creating the assignment or replacing it in place, and returns the result. Both `actionType` and `profileId` are required. The profile's declared capabilities are checked against the action, so a model that cannot generate images cannot be bound to `ImageGeneration` - the `Default` slot is exempt, because it stands in for every action. There is no room-scoped form of this write: a room's own binding is created by the agent that owns it, while reads accept an `entityId`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/).
 
@@ -37,7 +37,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -46,10 +46,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $ai_assignments_assign_request = new \OpenAPI\Client\Model\AiAssignmentsAssignRequest(); // \OpenAPI\Client\Model\AiAssignmentsAssignRequest
 
@@ -77,7 +86,7 @@ aiAssignmentsBulkAssign($request_body): \OpenAPI\Client\Model\AiBulkAssignmentRe
 ```
 
 Bulk assign
-Applies many action-to-profile bindings at once. Every entry is validated first and nothing is written if any of them fails, so the assignment set is never left half-written.
+Applies many action-to-profile bindings in one write, which is how a settings screen saves the whole set. The body is a plain map of action type to profile ID, and every entry is validated before anything is written: one unknown action or one non-string profile ID rejects the request whole, so the set is never left half-applied. Each entry behaves as the single assign operation does, capability checks included. The answer carries the resulting assignment set.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/).
 
@@ -85,7 +94,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,string>**](../Model/string.md)|  | |
+| **request_body** | [**array<string,string>**](../Model/string.md)| A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. | |
 
 ### Return type
 
@@ -93,7 +102,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -102,12 +111,21 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$request_body = array('key' => 'request_body_example'); // array<string,string>
+$request_body = array('key' => 'request_body_example'); // array<string,string> | A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map.
 
 try {
     $result = $apiInstance->aiAssignmentsBulkAssign($request_body);
@@ -129,11 +147,11 @@ try {
 ## `aiAssignmentsCascadeProfileDelete()`
 
 ```php
-aiAssignmentsCascadeProfileDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
+aiAssignmentsCascadeProfileDelete($ai_assignments_cascade_profile_delete_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Cascade profile delete
-Cleans up the assignments pointing at a profile that is about to be deleted: the `Default` slot is promoted to the first remaining profile (or dropped when none is left), and every other slot holding that profile is unbound.
+Detaches a profile from every assignment that points at it, which is the cleanup step before the profile itself is removed. The `Default` slot is promoted to the first remaining profile, or dropped when none is left, and every other slot holding the profile is cleared. `profileId` is required and may be sent in the body or as a query parameter. `DELETE api/2.0/ai/profiles/delete` already does this, so call it directly only when the profile is being removed by some other means.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-cascade-profile-delete/).
 
@@ -141,7 +159,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**|  | |
+| **ai_assignments_cascade_profile_delete_request** | [**\OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest**](../Model/AiAssignmentsCascadeProfileDeleteRequest.md)| The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body. | |
 
 ### Return type
 
@@ -149,7 +167,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -158,15 +176,24 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$body = 'body_example'; // string
+$ai_assignments_cascade_profile_delete_request = new \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest(); // \OpenAPI\Client\Model\AiAssignmentsCascadeProfileDeleteRequest | The profile to detach from every assignment. May be sent as the `profileId` query parameter instead of in the body.
 
 try {
-    $result = $apiInstance->aiAssignmentsCascadeProfileDelete($body);
+    $result = $apiInstance->aiAssignmentsCascadeProfileDelete($ai_assignments_cascade_profile_delete_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssignmentsApi->aiAssignmentsCascadeProfileDelete: ', $e->getMessage(), PHP_EOL;
@@ -189,7 +216,7 @@ aiAssignmentsGetAllAssignments($entity_id): array<string,string>
 ```
 
 Get all assignments
-Returns the full action-to-profile assignment map of the scope.
+Returns every action-to-profile binding of a scope as one map, which is what a settings screen loads. `entityId` narrows it to a room and has to name one the caller can open; a room that is not an agent room degrades to the portal-wide set rather than answering empty, and omitting the parameter reads the portal-wide set directly. Actions with no binding are simply absent from the map. The `Default` slot is reported as an entry of its own rather than being folded into the others.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/).
 
@@ -205,7 +232,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -214,12 +241,21 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsGetAllAssignments($entity_id);
@@ -245,7 +281,7 @@ aiAssignmentsGetAssignment($action_type): string
 ```
 
 Get assignment
-Returns the profile bound to one AI action, without the `Default` fallback.
+Returns the profile bound to one AI action, without applying the `Default` fallback - an empty answer means this action has no profile of its own, not that nothing is configured. `actionType` is required and is read from the query. Use `GET api/2.0/ai/assignments/resolve-for-action` to learn which profile would actually serve the action. This reads the portal-wide binding and accepts no `entityId`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-assignment/).
 
@@ -253,7 +289,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. | |
 
 ### Return type
 
@@ -261,7 +297,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -270,12 +306,21 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
+$action_type = Chat; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis.
 
 try {
     $result = $apiInstance->aiAssignmentsGetAssignment($action_type);
@@ -301,7 +346,7 @@ aiAssignmentsResolveForAction($action_type, $entity_id): \OpenAPI\Client\Model\A
 ```
 
 Resolve for action
-Resolves the profile bound to an AI action, falling back to the `Default` slot when the action itself has none. Fails when neither slot is set or the bound profile no longer exists - use `try-resolve-for-action` for an empty answer instead.
+Returns the profile that will serve one AI action, falling back to the `Default` slot when the action has no profile of its own. `actionType` is required and has to be one of the known actions - an unknown or misspelled value is rejected rather than resolved to the default. `entityId` narrows the lookup to a room, and a room with no assignment of its own degrades to the portal-wide one. This fails when neither slot is set or the bound profile is gone, so use `GET api/2.0/ai/assignments/try-resolve-for-action` when an unconfigured portal should answer empty instead.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/).
 
@@ -309,7 +354,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. | |
 | **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
@@ -318,7 +363,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -327,13 +372,22 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
-$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$action_type = Chat; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis.
+$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsResolveForAction($action_type, $entity_id);
@@ -359,7 +413,7 @@ aiAssignmentsTryResolveForAction($action_type, $entity_id): \OpenAPI\Client\Mode
 ```
 
 Try resolve for action
-Resolves the profile bound to an AI action exactly like `resolve-for-action`, but answers with an empty result instead of failing when nothing is configured.
+Returns the profile that will serve one AI action, exactly as `GET api/2.0/ai/assignments/resolve-for-action` does, but answers with an empty result rather than failing when nothing is configured. `actionType` is required and is validated the same way, and `entityId` narrows the lookup to a room. This is the operation to call when the absence of a profile is a normal state to render - a settings screen, or a feature that hides itself. Both operations are read-only.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/).
 
@@ -367,7 +421,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision. | |
+| **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. | |
 | **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
 
 ### Return type
@@ -376,7 +430,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -385,13 +439,22 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$action_type = 'action_type_example'; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision.
-$entity_id = 'entity_id_example'; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$action_type = Chat; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis.
+$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
 
 try {
     $result = $apiInstance->aiAssignmentsTryResolveForAction($action_type, $entity_id);
@@ -416,8 +479,8 @@ try {
 aiAssignmentsUnassign($body): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
-Unassign
-Removes the profile binding of an AI action. Does nothing when that slot is already empty.
+Clear an action's profile
+Clears the portal-wide binding of one AI action, after which the action falls back to the `Default` slot. `actionType` is required and may be sent in the body or as a query parameter. An action whose slot is already empty is not reported as an error - the call answers success either way, so it is safe to repeat. Clearing `Default` itself leaves the actions that relied on it unresolvable.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/).
 
@@ -433,7 +496,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -442,10 +505,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $body = 'body_example'; // string
 

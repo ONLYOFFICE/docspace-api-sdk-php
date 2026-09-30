@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InvitationLinkDeleteRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for deleting an invitation link.
+ * @description Which invitation link is withdrawn.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -306,7 +306,7 @@ class InvitationLinkDeleteRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string $id The ID of the invitation link.
+     * @param string $id The link to delete, by the `id` that creating or reading it returned. A link recreated for the same role  afterwards gets a new id, a new URL and a use count starting from zero.
      *
      * @return self
      */

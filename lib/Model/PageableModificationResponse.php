@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PageableModificationResponse Class Doc Comment
  *
  * @category Class
- * @description The response containing paginated modification information.
+ * @description One page of results ordered by modification time, together with the cursor that asks for the next page.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'data' => 'object',
+        'data' => 'mixed',
         'limit' => 'int',
         'last_modified_on' => '\DateTime'
     ];
@@ -82,7 +82,7 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'data' => false,
+        'data' => true,
         'limit' => false,
         'last_modified_on' => false
     ];
@@ -307,7 +307,7 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets data
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getData()
     {
@@ -317,14 +317,21 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets data
      *
-     * @param object|null $data The paginated modification data.
+     * @param mixed|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -344,7 +351,7 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets limit
      *
-     * @param int|null $limit The maximum number of results returned per page.
+     * @param int|null $limit The page size that was applied to this request, between 1 and 50.
      *
      * @return self
      */
@@ -371,7 +378,7 @@ class PageableModificationResponse implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets last_modified_on
      *
-     * @param \DateTime|null $last_modified_on The date when the user consent was last modified.
+     * @param \DateTime|null $last_modified_on The cursor to send back as last_modified_on to ask for the next page. It is null when the page is empty.
      *
      * @return self
      */

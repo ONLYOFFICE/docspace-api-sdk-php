@@ -294,9 +294,6 @@ class AiProfilesListProviderModelsRequest implements ModelInterface, ArrayAccess
         if ($this->container['base_url'] === null) {
             $invalidProperties[] = "'base_url' can't be null";
         }
-        if ($this->container['api_key'] === null) {
-            $invalidProperties[] = "'api_key' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -369,7 +366,7 @@ class AiProfilesListProviderModelsRequest implements ModelInterface, ArrayAccess
     /**
      * Gets api_key
      *
-     * @return string
+     * @return string|null
      */
     public function getApiKey()
     {
@@ -379,7 +376,7 @@ class AiProfilesListProviderModelsRequest implements ModelInterface, ArrayAccess
     /**
      * Sets api_key
      *
-     * @param string $api_key Provider API key.
+     * @param string|null $api_key Provider API key. Omit it for a provider that needs none; the request is then made without one.
      *
      * @return self
      */

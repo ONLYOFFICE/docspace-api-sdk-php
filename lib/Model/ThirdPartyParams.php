@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThirdPartyParams Class Doc Comment
  *
  * @category Class
- * @description The third-party account parameters.
+ * @description A third-party storage account connected to the portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets auth_data
      *
-     * @param \OpenAPI\Client\Model\AuthData|null $auth_data The authentication data.
+     * @param \OpenAPI\Client\Model\AuthData|null $auth_data The stored credentials of the account. They are not filled in here: the portal does not give back credentials  once an account is saved.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets corporate
      *
-     * @param bool|null $corporate Specifies if this is a corporate account or not.
+     * @param bool|null $corporate Whether the account is attached to the legacy Common section, which is the case only for accounts inherited  from an older portal.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rooms_storage
      *
-     * @param bool|null $rooms_storage Specifies if this is a room storage or not.
+     * @param bool|null $rooms_storage Whether the account is attached to the Rooms section, room templates and the archive counted in. This is where  `POST api/2.0/files/thirdparty` puts every account it connects.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_title
      *
-     * @param string|null $customer_title The customer title.
+     * @param string|null $customer_title The name the account is shown under in the portal, as it was saved when the account was connected.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider_id
      *
-     * @param int|null $provider_id The provider ID.
+     * @param int|null $provider_id The account ID to send to `DELETE api/2.0/files/thirdparty/{providerId}`, or as `providerId` to  re-authenticate the account.
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class ThirdPartyParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider_key
      *
-     * @param string|null $provider_key The provider key.
+     * @param string|null $provider_key The storage service behind the account. `WebDav` stands for every WebDAV preset, so it does not tell which of  them was chosen when the account was connected.
      *
      * @return self
      */

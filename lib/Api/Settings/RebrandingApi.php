@@ -1798,13 +1798,13 @@ class RebrandingApi
     /**
      * Operation getIsDefaultWhiteLabelLogoText
      *
-     * Check the default white label logo text
+     * Check the default logo text
      *
      * REST API Reference for getIsDefaultWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1820,13 +1820,13 @@ class RebrandingApi
     /**
      * Operation getIsDefaultWhiteLabelLogoTextWithHttpInfo
      *
-     * Check the default white label logo text
+     * Check the default logo text
      *
      * REST API Reference for getIsDefaultWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1965,13 +1965,13 @@ class RebrandingApi
     /**
      * Operation getIsDefaultWhiteLabelLogoTextAsync
      *
-     * Check the default white label logo text
+     * Check the default logo text
      *
      * REST API Reference for getIsDefaultWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1990,13 +1990,13 @@ class RebrandingApi
     /**
      * Operation getIsDefaultWhiteLabelLogoTextAsyncWithHttpInfo
      *
-     * Check the default white label logo text
+     * Check the default logo text
      *
      * REST API Reference for getIsDefaultWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2046,8 +2046,8 @@ class RebrandingApi
     /**
      * Create request for operation 'getIsDefaultWhiteLabelLogoText'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2171,8 +2171,8 @@ class RebrandingApi
      * REST API Reference for getIsDefaultWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2193,8 +2193,8 @@ class RebrandingApi
      * REST API Reference for getIsDefaultWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2338,8 +2338,8 @@ class RebrandingApi
      * REST API Reference for getIsDefaultWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2363,8 +2363,8 @@ class RebrandingApi
      * REST API Reference for getIsDefaultWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-default-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2414,8 +2414,8 @@ class RebrandingApi
     /**
      * Create request for operation 'getIsDefaultWhiteLabelLogos'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsDefaultWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2863,8 +2863,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2885,8 +2885,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3030,8 +3030,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3055,8 +3055,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3106,8 +3106,8 @@ class RebrandingApi
     /**
      * Create request for operation 'getWhiteLabelLogoText'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3231,8 +3231,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3253,8 +3253,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3384,8 +3384,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3409,8 +3409,8 @@ class RebrandingApi
      * REST API Reference for getWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3460,8 +3460,8 @@ class RebrandingApi
     /**
      * Create request for operation 'getWhiteLabelLogos'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3533,6 +3533,28 @@ class RebrandingApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3563,8 +3585,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3585,8 +3607,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3730,8 +3752,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3755,8 +3777,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3806,8 +3828,8 @@ class RebrandingApi
     /**
      * Create request for operation 'restoreWhiteLabelLogoText'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3931,8 +3953,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3953,8 +3975,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4098,8 +4120,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4123,8 +4145,8 @@ class RebrandingApi
      * REST API Reference for restoreWhiteLabelLogos Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-white-label-logos/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4174,8 +4196,8 @@ class RebrandingApi
     /**
      * Create request for operation 'restoreWhiteLabelLogos'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWhiteLabelLogos'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4968,13 +4990,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelLogoText
      *
-     * Save the white label logo text settings
+     * Save the white label logo text
      *
      * REST API Reference for saveWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
@@ -4991,13 +5013,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelLogoTextWithHttpInfo
      *
-     * Save the white label logo text settings
+     * Save the white label logo text
      *
      * REST API Reference for saveWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
@@ -5137,13 +5159,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelLogoTextAsync
      *
-     * Save the white label logo text settings
+     * Save the white label logo text
      *
      * REST API Reference for saveWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
@@ -5163,13 +5185,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelLogoTextAsyncWithHttpInfo
      *
-     * Save the white label logo text settings
+     * Save the white label logo text
      *
      * REST API Reference for saveWhiteLabelLogoText Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-logo-text/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
@@ -5220,8 +5242,8 @@ class RebrandingApi
     /**
      * Create request for operation 'saveWhiteLabelLogoText'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
@@ -5354,8 +5376,8 @@ class RebrandingApi
      * REST API Reference for saveWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
@@ -5377,8 +5399,8 @@ class RebrandingApi
      * REST API Reference for saveWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
@@ -5523,8 +5545,8 @@ class RebrandingApi
      * REST API Reference for saveWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
@@ -5549,8 +5571,8 @@ class RebrandingApi
      * REST API Reference for saveWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
@@ -5601,8 +5623,8 @@ class RebrandingApi
     /**
      * Create request for operation 'saveWhiteLabelSettings'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
@@ -5730,13 +5752,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelSettingsFromFiles
      *
-     * Save the white label logos from files
+     * Save the logos from files
      *
      * REST API Reference for saveWhiteLabelSettingsFromFiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings-from-files/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettingsFromFiles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5752,13 +5774,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelSettingsFromFilesWithHttpInfo
      *
-     * Save the white label logos from files
+     * Save the logos from files
      *
      * REST API Reference for saveWhiteLabelSettingsFromFiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings-from-files/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettingsFromFiles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5897,13 +5919,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelSettingsFromFilesAsync
      *
-     * Save the white label logos from files
+     * Save the logos from files
      *
      * REST API Reference for saveWhiteLabelSettingsFromFiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings-from-files/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettingsFromFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5922,13 +5944,13 @@ class RebrandingApi
     /**
      * Operation saveWhiteLabelSettingsFromFilesAsyncWithHttpInfo
      *
-     * Save the white label logos from files
+     * Save the logos from files
      *
      * REST API Reference for saveWhiteLabelSettingsFromFiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-white-label-settings-from-files/
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettingsFromFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5978,8 +6000,8 @@ class RebrandingApi
     /**
      * Create request for operation 'saveWhiteLabelSettingsFromFiles'
      *
-     * @param  bool|null $is_dark Specifies if the white label logo is for the dark theme or not. (optional)
-     * @param  bool|null $is_default Specifies if the logo is for a default tenant or not. (optional)
+     * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
+     * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettingsFromFiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

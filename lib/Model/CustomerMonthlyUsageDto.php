@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerMonthlyUsageDto Class Doc Comment
  *
  * @category Class
- * @description Aggregated customer spending for a single calendar month.
+ * @description What the portal spent from its wallet in one calendar month, added up across every service.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class CustomerMonthlyUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets year
      *
-     * @param int|null $year The calendar year.
+     * @param int|null $year The year the month belongs to. Months are cut in the portal time zone, so a movement at the edge of a  month falls where the portal sees it and not where UTC does.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class CustomerMonthlyUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets month
      *
-     * @param int|null $month The calendar month (1-12).
+     * @param int|null $month The month itself, January being 1. Only months that had spending appear at all, so a gap in the list is a  month with nothing in it rather than missing data.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class CustomerMonthlyUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets currency
      *
-     * @param string|null $currency The three-character ISO 4217 currency symbol of the amounts.
+     * @param string|null $currency The currency `totalAmount` is expressed in, as a three-letter ISO 4217 code - the accounting currency of  the wallet.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class CustomerMonthlyUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets total_amount
      *
-     * @param float|null $total_amount The total amount charged across all services in this month.
+     * @param float|null $total_amount What the month came to across every service, as a positive amount spent rather than a signed balance.
      *
      * @return self
      */
@@ -446,7 +446,7 @@ class CustomerMonthlyUsageDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets operation_count
      *
-     * @param int|null $operation_count The number of individual purchase operations in this month.
+     * @param int|null $operation_count How many separate movements that total was added up from, for a client that wants to show the weight  behind a figure. The movements themselves are in `GET api/2.0/portal/payment/customer/operations`.
      *
      * @return self
      */

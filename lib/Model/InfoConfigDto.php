@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InfoConfigDto Class Doc Comment
  *
  * @category Class
- * @description The information config parameters.
+ * @description The facts the editor information panel shows about the open document.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets favorite
      *
-     * @param bool|null $favorite Specifies if the file is favorite or not.
+     * @param bool|null $favorite Whether the caller has this document among their favorites. It is empty when favorites do not apply - for an  anonymous caller, for a guest, and for an encrypted document.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folder
      *
-     * @param string|null $folder The folder of the file.
+     * @param string|null $folder The place of the document as a readable path, its folders joined from the root downwards. It is empty in the  embedded layout, which shows no such panel.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner
      *
-     * @param string|null $owner The file owner.
+     * @param string|null $owner The display name of the owner of the document. It is empty for an anonymous session.
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sharing_settings
      *
-     * @param \OpenAPI\Client\Model\AceShortWrapper[]|null $sharing_settings The sharing settings of the file.
+     * @param \OpenAPI\Client\Model\AceShortWrapper[]|null $sharing_settings Who the document is shared with, as the information panel lists it. An empty list means it is shared with  nobody beyond its owner.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\EditorType|null $type The editor type of the file.
+     * @param \OpenAPI\Client\Model\EditorType|null $type The layout the information panel is rendered for.
      *
      * @return self
      */
@@ -501,7 +501,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uploaded
      *
-     * @param string|null $uploaded The uploaded file.
+     * @param string|null $uploaded When the document was created on the portal, already formatted for reading in the culture of the caller rather  than as a machine timestamp.
      *
      * @return self
      */

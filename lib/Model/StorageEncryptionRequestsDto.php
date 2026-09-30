@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StorageEncryptionRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing storage encryption operations and notifications.
+ * @description Whether the users are warned before the portals go down for the storage encryption pass.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class StorageEncryptionRequestsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets notify_users
      *
-     * @param bool|null $notify_users Specifies whether the users receive notifications about the storage encryption operations.
+     * @param bool|null $notify_users Whether every user of every portal on the server is mailed before the encryption or decryption pass starts.  The pass runs either way; the flag only decides whether people are told that their portal is about to become  unavailable.
      *
      * @return self
      */

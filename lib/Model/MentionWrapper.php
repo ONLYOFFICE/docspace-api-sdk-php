@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MentionWrapper Class Doc Comment
  *
  * @category Class
- * @description The parameters of a user mentioned in a message.
+ * @description A user the editor may offer: to be mentioned in a comment, or to be picked when protecting a document.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\UserInfo|null $user The user information.
+     * @param \OpenAPI\Client\Model\UserInfo|null $user The account itself, in the shape the people listings use.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email The user email address.
+     * @param string|null $email Where a mention notification for this user is delivered.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The user unique identification.
+     * @param string|null $id The account id as text, the same value the account object carries; it is what identifies the user in a sharing  request built from this list.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param string|null $image The path to the user's avatar.
+     * @param string|null $image An absolute address of the medium-sized avatar. A generated default avatar is reported when the user never  uploaded one, so the field is never empty.
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets has_access
      *
-     * @param bool|null $has_access Specifies whether the user has the access to the file where they are mentioned.
+     * @param bool|null $has_access Not filled in by the operations that return this list: it always comes back false. Whether a user can already  open the document has to be read from the sharing settings of the file.
      *
      * @return self
      */
@@ -494,7 +494,7 @@ class MentionWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The user full name.
+     * @param string|null $name The name to display, assembled the way the portal is configured to show names.
      *
      * @return self
      */

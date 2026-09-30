@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ReportDto Class Doc Comment
  *
  * @category Class
- * @description Represents a report containing a collection of operations.
+ * @description One page of the portal wallet's money movements, with the paging figures needed to walk the rest.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets collection
      *
-     * @param \OpenAPI\Client\Model\OperationDto[]|null $collection A collection of operations.
+     * @param \OpenAPI\Client\Model\OperationDto[]|null $collection The movements on this page - top-ups, charges, refunds and corrections alike, newest first. It is empty  for a page past the end of the report as well as for a period in which nothing happened.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets offset
      *
-     * @param int|null $offset The report data offset.
+     * @param int|null $offset How many movements were skipped before this page, echoed from the request so a client need not remember  what it asked for.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets limit
      *
-     * @param int|null $limit The report data limit.
+     * @param int|null $limit How many movements one page may hold, echoed from the request; it is 25 unless another value was asked  for. A full page is not proof that more exist - compare `currentPage` with `totalPage`.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_quantity
      *
-     * @param int|null $total_quantity The total quantity of operations in the report.
+     * @param int|null $total_quantity How many movements match the filters in total, across every page.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_page
      *
-     * @param int|null $total_page The total number of pages in the report.
+     * @param int|null $total_page How many pages those movements come to at the current `limit`.
      *
      * @return self
      */
@@ -480,7 +480,7 @@ class ReportDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets current_page
      *
-     * @param int|null $current_page The current page number of the report.
+     * @param int|null $current_page Which of those pages this one is, as the billing service numbers them. Page through by advancing `offset`  rather than this value, which nothing accepts as an argument.
      *
      * @return self
      */

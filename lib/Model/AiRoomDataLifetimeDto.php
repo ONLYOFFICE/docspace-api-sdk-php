@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiRoomDataLifetimeDto Class Doc Comment
  *
  * @category Class
- * @description The room data lifetime information.
+ * @description The rule by which the files of a room are removed once they have been lying in it for too long.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -332,7 +332,7 @@ class AiRoomDataLifetimeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets delete_permanently
      *
-     * @param bool|null $delete_permanently Specifies whether to permanently delete the room data or not.
+     * @param bool|null $delete_permanently Decides what happens to a file that has grown too old: it is erased outright, or it is moved to the trash of  the account that created the room, from where it can still be brought back.
      *
      * @return self
      */
@@ -359,7 +359,7 @@ class AiRoomDataLifetimeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets period
      *
-     * @param \OpenAPI\Client\Model\AiRoomDataLifetimePeriod|null $period Specifies the time period type of the room data lifetime.
+     * @param \OpenAPI\Client\Model\AiRoomDataLifetimePeriod|null $period The unit the age is counted in. Months and years are counted as calendar ones, so the same number of them  covers a different number of days depending on when the clean-up runs.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class AiRoomDataLifetimeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets value
      *
-     * @param int|null $value Specifies the time period value of the room data lifetime.
+     * @param int|null $value How many periods a file may stay in the room, counted from the moment it was last changed rather than from the  moment the rule was set. Files that are already older than this are removed by the next clean-up.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class AiRoomDataLifetimeDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies whether the room data lifetime setting is enabled or not.
+     * @param bool|null $enabled Switches the rule on and off. Switching it off erases the rule instead of keeping it aside, so afterwards the  room reports no rule at all and the other three values have to be sent again to bring it back.
      *
      * @return self
      */

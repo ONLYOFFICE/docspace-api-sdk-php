@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FirebaseRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The Firebase-related request parameters.
+ * @description Which mobile device receives the Documents push notifications, and whether it is subscribed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class FirebaseRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets firebase_device_token
      *
-     * @param string|null $firebase_device_token The Firebase device token.
+     * @param string|null $firebase_device_token The registration token Firebase issued to the mobile client for this device, obtained on the device itself.  It is kept as an opaque string of up to 255 characters and is never verified here; it identifies the device  and is matched but never changed, and a token belonging to another member or another portal matches nothing.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class FirebaseRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets is_subscribed
      *
-     * @param bool|null $is_subscribed Specifies whether the user is subscribed to the push notifications or not.
+     * @param bool|null $is_subscribed Whether the device is to receive the room activity messages - an invitation, a role change, an archived room,  a new document. On a first registration it is stored as given; on a registration that already exists it is  ignored, because registering does not update, and the subscription is changed with  `PUT api/2.0/settings/push/docsubscribe` instead.
      *
      * @return self
      */

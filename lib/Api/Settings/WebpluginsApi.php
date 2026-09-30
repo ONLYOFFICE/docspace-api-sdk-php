@@ -147,7 +147,7 @@ class WebpluginsApi
      * REST API Reference for addWebPluginFromFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-web-plugin-from-file/
      *
-     * @param  bool|null $system Specifies whether to load the system plugins or not. (optional)
+     * @param  bool|null $system Whether the plugin is installed for every portal of the installation rather than only this one. It is  accepted on a self-hosted installation alone and refused with 403 elsewhere; an installation-wide plugin also  hides a portal plugin that carries the same name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWebPluginFromFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -168,7 +168,7 @@ class WebpluginsApi
      * REST API Reference for addWebPluginFromFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-web-plugin-from-file/
      *
-     * @param  bool|null $system Specifies whether to load the system plugins or not. (optional)
+     * @param  bool|null $system Whether the plugin is installed for every portal of the installation rather than only this one. It is  accepted on a self-hosted installation alone and refused with 403 elsewhere; an installation-wide plugin also  hides a portal plugin that carries the same name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWebPluginFromFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -298,7 +298,7 @@ class WebpluginsApi
      * REST API Reference for addWebPluginFromFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-web-plugin-from-file/
      *
-     * @param  bool|null $system Specifies whether to load the system plugins or not. (optional)
+     * @param  bool|null $system Whether the plugin is installed for every portal of the installation rather than only this one. It is  accepted on a self-hosted installation alone and refused with 403 elsewhere; an installation-wide plugin also  hides a portal plugin that carries the same name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWebPluginFromFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -322,7 +322,7 @@ class WebpluginsApi
      * REST API Reference for addWebPluginFromFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-web-plugin-from-file/
      *
-     * @param  bool|null $system Specifies whether to load the system plugins or not. (optional)
+     * @param  bool|null $system Whether the plugin is installed for every portal of the installation rather than only this one. It is  accepted on a self-hosted installation alone and refused with 403 elsewhere; an installation-wide plugin also  hides a portal plugin that carries the same name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWebPluginFromFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -372,7 +372,7 @@ class WebpluginsApi
     /**
      * Create request for operation 'addWebPluginFromFile'
      *
-     * @param  bool|null $system Specifies whether to load the system plugins or not. (optional)
+     * @param  bool|null $system Whether the plugin is installed for every portal of the installation rather than only this one. It is  accepted on a self-hosted installation alone and refused with 403 elsewhere; an installation-wide plugin also  hides a portal plugin that carries the same name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWebPluginFromFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -486,7 +486,7 @@ class WebpluginsApi
      * REST API Reference for deleteWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -506,7 +506,7 @@ class WebpluginsApi
      * REST API Reference for deleteWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -590,7 +590,7 @@ class WebpluginsApi
      * REST API Reference for deleteWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -614,7 +614,7 @@ class WebpluginsApi
      * REST API Reference for deleteWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -651,7 +651,7 @@ class WebpluginsApi
     /**
      * Create request for operation 'deleteWebPlugin'
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -770,7 +770,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -791,7 +791,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -935,7 +935,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -959,7 +959,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1009,7 +1009,7 @@ class WebpluginsApi
     /**
      * Create request for operation 'getWebPlugin'
      *
-     * @param  string $name The web plugin name. (required)
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1128,7 +1128,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugins Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugins/
      *
-     * @param  bool|null $enabled The optional filter for the plugin enabled state. (optional)
+     * @param  bool|null $enabled Which plugins are kept: `true` the ones switched on, `false` the ones switched off. Omitting it lists every  installed plugin whatever its state. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugins'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1149,7 +1149,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugins Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugins/
      *
-     * @param  bool|null $enabled The optional filter for the plugin enabled state. (optional)
+     * @param  bool|null $enabled Which plugins are kept: `true` the ones switched on, `false` the ones switched off. Omitting it lists every  installed plugin whatever its state. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugins'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1293,7 +1293,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugins Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugins/
      *
-     * @param  bool|null $enabled The optional filter for the plugin enabled state. (optional)
+     * @param  bool|null $enabled Which plugins are kept: `true` the ones switched on, `false` the ones switched off. Omitting it lists every  installed plugin whatever its state. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugins'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1317,7 +1317,7 @@ class WebpluginsApi
      * REST API Reference for getWebPlugins Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-web-plugins/
      *
-     * @param  bool|null $enabled The optional filter for the plugin enabled state. (optional)
+     * @param  bool|null $enabled Which plugins are kept: `true` the ones switched on, `false` the ones switched off. Omitting it lists every  installed plugin whatever its state. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugins'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1367,7 +1367,7 @@ class WebpluginsApi
     /**
      * Create request for operation 'getWebPlugins'
      *
-     * @param  bool|null $enabled The optional filter for the plugin enabled state. (optional)
+     * @param  bool|null $enabled Which plugins are kept: `true` the ones switched on, `false` the ones switched off. Omitting it lists every  installed plugin whatever its state. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebPlugins'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1481,8 +1481,8 @@ class WebpluginsApi
      * REST API Reference for updateWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The configuration settings for the web plugin instance. (required)
+     * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1502,8 +1502,8 @@ class WebpluginsApi
      * REST API Reference for updateWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The configuration settings for the web plugin instance. (required)
+     * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1587,8 +1587,8 @@ class WebpluginsApi
      * REST API Reference for updateWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The configuration settings for the web plugin instance. (required)
+     * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1612,8 +1612,8 @@ class WebpluginsApi
      * REST API Reference for updateWebPlugin Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
-     * @param  string $name The web plugin name. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The configuration settings for the web plugin instance. (required)
+     * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1650,8 +1650,8 @@ class WebpluginsApi
     /**
      * Create request for operation 'updateWebPlugin'
      *
-     * @param  string $name The web plugin name. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The configuration settings for the web plugin instance. (required)
+     * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

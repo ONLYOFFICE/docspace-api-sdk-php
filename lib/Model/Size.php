@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Size Class Doc Comment
  *
  * @category Class
- * @description Represents dimensions with width and height values.
+ * @description A pixel size measured on the image itself.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class Size implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets height
      *
-     * @param int|null $height Gets or sets the height dimension of an object, typically measured in pixels or other unit.  It defines the vertical size of the object.
+     * @param int|null $height The height of the image in pixels, read from the stored file rather than from any display setting.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class Size implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets width
      *
-     * @param int|null $width Gets or sets the width dimension of an object, typically measured in pixels or other unit.
+     * @param int|null $width The width of the image in pixels, read from the stored file rather than from any display setting.
      *
      * @return self
      */

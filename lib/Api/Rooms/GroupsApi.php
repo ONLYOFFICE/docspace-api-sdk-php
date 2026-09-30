@@ -496,13 +496,13 @@ class GroupsApi
     /**
      * Operation changeRoomGroupIcon
      *
-     * Change group icon
+     * Change room group icon
      *
      * REST API Reference for changeRoomGroupIcon Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-group-icon/
      *
-     * @param  int $id Group id (required)
-     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request Icon update data. (optional)
+     * @param  int $id The room group to re-icon, identified by the value `GET api/2.0/files/group` reports for it. A group of  another account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request The icon to give the group. A body that leaves the icon out is accepted and changes nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomGroupIcon'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -518,13 +518,13 @@ class GroupsApi
     /**
      * Operation changeRoomGroupIconWithHttpInfo
      *
-     * Change group icon
+     * Change room group icon
      *
      * REST API Reference for changeRoomGroupIcon Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-group-icon/
      *
-     * @param  int $id Group id (required)
-     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request Icon update data. (optional)
+     * @param  int $id The room group to re-icon, identified by the value `GET api/2.0/files/group` reports for it. A group of  another account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request The icon to give the group. A body that leaves the icon out is accepted and changes nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomGroupIcon'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -663,13 +663,13 @@ class GroupsApi
     /**
      * Operation changeRoomGroupIconAsync
      *
-     * Change group icon
+     * Change room group icon
      *
      * REST API Reference for changeRoomGroupIcon Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-group-icon/
      *
-     * @param  int $id Group id (required)
-     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request Icon update data. (optional)
+     * @param  int $id The room group to re-icon, identified by the value `GET api/2.0/files/group` reports for it. A group of  another account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request The icon to give the group. A body that leaves the icon out is accepted and changes nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomGroupIcon'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -688,13 +688,13 @@ class GroupsApi
     /**
      * Operation changeRoomGroupIconAsyncWithHttpInfo
      *
-     * Change group icon
+     * Change room group icon
      *
      * REST API Reference for changeRoomGroupIcon Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-group-icon/
      *
-     * @param  int $id Group id (required)
-     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request Icon update data. (optional)
+     * @param  int $id The room group to re-icon, identified by the value `GET api/2.0/files/group` reports for it. A group of  another account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request The icon to give the group. A body that leaves the icon out is accepted and changes nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomGroupIcon'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -744,8 +744,8 @@ class GroupsApi
     /**
      * Create request for operation 'changeRoomGroupIcon'
      *
-     * @param  int $id Group id (required)
-     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request Icon update data. (optional)
+     * @param  int $id The room group to re-icon, identified by the value `GET api/2.0/files/group` reports for it. A group of  another account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\IconRequest|null $icon_request The icon to give the group. A body that leaves the icon out is accepted and changes nothing. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomGroupIcon'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -867,13 +867,13 @@ class GroupsApi
     /**
      * Operation deleteRoomGroup
      *
-     * Delete group
+     * Delete a room group
      *
      * REST API Reference for deleteRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-group/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -888,13 +888,13 @@ class GroupsApi
     /**
      * Operation deleteRoomGroupWithHttpInfo
      *
-     * Delete group
+     * Delete a room group
      *
      * REST API Reference for deleteRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-group/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -973,13 +973,13 @@ class GroupsApi
     /**
      * Operation deleteRoomGroupAsync
      *
-     * Delete group
+     * Delete a room group
      *
      * REST API Reference for deleteRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-group/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -998,13 +998,13 @@ class GroupsApi
     /**
      * Operation deleteRoomGroupAsyncWithHttpInfo
      *
-     * Delete group
+     * Delete a room group
      *
      * REST API Reference for deleteRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-group/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1041,8 +1041,8 @@ class GroupsApi
     /**
      * Create request for operation 'deleteRoomGroup'
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1171,8 +1171,8 @@ class GroupsApi
      * REST API Reference for getRoomGroupInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-group-info/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroupInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1193,8 +1193,8 @@ class GroupsApi
      * REST API Reference for getRoomGroupInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-group-info/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroupInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1338,8 +1338,8 @@ class GroupsApi
      * REST API Reference for getRoomGroupInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-group-info/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroupInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1363,8 +1363,8 @@ class GroupsApi
      * REST API Reference for getRoomGroupInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-group-info/
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroupInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1414,8 +1414,8 @@ class GroupsApi
     /**
      * Create request for operation 'getRoomGroupInfo'
      *
-     * @param  int $id The group unique identifier. (required)
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  int $id The room group to act on, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  bool|null $include_members Whether the rooms of the group are listed in the answer: true fills the `rooms` array, false leaves it out and  reports only how many there are in `totalRooms`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroupInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1544,16 +1544,17 @@ class GroupsApi
      * REST API Reference for getRoomGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-groups/
      *
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  bool|null $include_members Whether the rooms of each group are listed in the answer: true fills the `rooms` array of every entry, false  leaves it out and reports only how many there are in `totalRooms`. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list the groups of: Active for Rooms and Forms for Forms. Active when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroups'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\RoomGroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getRoomGroups($include_members = null, string $contentType = self::contentTypes['getRoomGroups'][0])
+    public function getRoomGroups($include_members = null, $search_area = null, string $contentType = self::contentTypes['getRoomGroups'][0])
     {
-        list($response) = $this->getRoomGroupsWithHttpInfo($include_members, $contentType);
+        list($response) = $this->getRoomGroupsWithHttpInfo($include_members, $search_area, $contentType);
         return $response;
     }
 
@@ -1565,16 +1566,17 @@ class GroupsApi
      * REST API Reference for getRoomGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-groups/
      *
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  bool|null $include_members Whether the rooms of each group are listed in the answer: true fills the `rooms` array of every entry, false  leaves it out and reports only how many there are in `totalRooms`. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list the groups of: Active for Rooms and Forms for Forms. Active when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroups'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\RoomGroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRoomGroupsWithHttpInfo($include_members = null, string $contentType = self::contentTypes['getRoomGroups'][0])
+    public function getRoomGroupsWithHttpInfo($include_members = null, $search_area = null, string $contentType = self::contentTypes['getRoomGroups'][0])
     {
-        $request = $this->getRoomGroupsRequest($include_members, $contentType);
+        $request = $this->getRoomGroupsRequest($include_members, $search_area, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1709,15 +1711,16 @@ class GroupsApi
      * REST API Reference for getRoomGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-groups/
      *
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  bool|null $include_members Whether the rooms of each group are listed in the answer: true fills the `rooms` array of every entry, false  leaves it out and reports only how many there are in `totalRooms`. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list the groups of: Active for Rooms and Forms for Forms. Active when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomGroupsAsync($include_members = null, string $contentType = self::contentTypes['getRoomGroups'][0])
+    public function getRoomGroupsAsync($include_members = null, $search_area = null, string $contentType = self::contentTypes['getRoomGroups'][0])
     {
-        return $this->getRoomGroupsAsyncWithHttpInfo($include_members, $contentType)
+        return $this->getRoomGroupsAsyncWithHttpInfo($include_members, $search_area, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1733,16 +1736,17 @@ class GroupsApi
      * REST API Reference for getRoomGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-groups/
      *
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  bool|null $include_members Whether the rooms of each group are listed in the answer: true fills the `rooms` array of every entry, false  leaves it out and reports only how many there are in `totalRooms`. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list the groups of: Active for Rooms and Forms for Forms. Active when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRoomGroupsAsyncWithHttpInfo($include_members = null, string $contentType = self::contentTypes['getRoomGroups'][0])
+    public function getRoomGroupsAsyncWithHttpInfo($include_members = null, $search_area = null, string $contentType = self::contentTypes['getRoomGroups'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RoomGroupArrayWrapper';
-        $request = $this->getRoomGroupsRequest($include_members, $contentType);
+        $request = $this->getRoomGroupsRequest($include_members, $search_area, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1783,14 +1787,16 @@ class GroupsApi
     /**
      * Create request for operation 'getRoomGroups'
      *
-     * @param  bool|null $include_members Whether to include group members. (optional)
+     * @param  bool|null $include_members Whether the rooms of each group are listed in the answer: true fills the `rooms` array of every entry, false  leaves it out and reports only how many there are in `totalRooms`. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list the groups of: Active for Rooms and Forms for Forms. Active when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRoomGroupsRequest($include_members = null, string $contentType = self::contentTypes['getRoomGroups'][0])
+    public function getRoomGroupsRequest($include_members = null, $search_area = null, string $contentType = self::contentTypes['getRoomGroups'][0])
     {
+
 
 
 
@@ -1806,6 +1812,15 @@ class GroupsApi
             $include_members,
             'includeMembers', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search_area,
+            'searchArea', // param base name
+            'SearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1897,8 +1912,8 @@ class GroupsApi
      * REST API Reference for updateRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-group/
      *
-     * @param  int $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The request for updating a group. (required)
+     * @param  int $id The room group to change, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The changes to apply. Carrying none of them leaves the group as it is, and each of them may be sent on its own  or together with the others. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1919,8 +1934,8 @@ class GroupsApi
      * REST API Reference for updateRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-group/
      *
-     * @param  int $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The request for updating a group. (required)
+     * @param  int $id The room group to change, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The changes to apply. Carrying none of them leaves the group as it is, and each of them may be sent on its own  or together with the others. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2064,8 +2079,8 @@ class GroupsApi
      * REST API Reference for updateRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-group/
      *
-     * @param  int $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The request for updating a group. (required)
+     * @param  int $id The room group to change, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The changes to apply. Carrying none of them leaves the group as it is, and each of them may be sent on its own  or together with the others. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2089,8 +2104,8 @@ class GroupsApi
      * REST API Reference for updateRoomGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-group/
      *
-     * @param  int $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The request for updating a group. (required)
+     * @param  int $id The room group to change, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The changes to apply. Carrying none of them leaves the group as it is, and each of them may be sent on its own  or together with the others. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2140,8 +2155,8 @@ class GroupsApi
     /**
      * Create request for operation 'updateRoomGroup'
      *
-     * @param  int $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The request for updating a group. (required)
+     * @param  int $id The room group to change, identified by the value `GET api/2.0/files/group` reports for it. A group of another  account cannot be addressed and reads as missing. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomGroupRequest $update_room_group_request The changes to apply. Carrying none of them leaves the group as it is, and each of them may be sent on its own  or together with the others. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

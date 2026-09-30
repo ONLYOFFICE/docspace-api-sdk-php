@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormGalleryDto Class Doc Comment
  *
  * @category Class
- * @description The form gallery parameters.
+ * @description Where the ready-made form templates are served from, for browsing them and for submitting new ones.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -366,7 +366,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param string|null $path The form gallery path.
+     * @param string|null $path The path under `domain` that the gallery's own listing API is reached at. It is joined to `domain` by the  client; the portal only relays the values from its configuration.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain
      *
-     * @param string|null $domain The form gallery domain.
+     * @param string|null $domain The address of the gallery service, which is a service of the vendor rather than part of the portal. Every  field of this object is empty on an installation that configures no gallery, and a client should then not  offer the gallery at all.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ext
      *
-     * @param string|null $ext The form gallery extension.
+     * @param string|null $ext The file extension to ask the gallery for, which decides which rendition of a template is downloaded when  several are published.
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_path
      *
-     * @param string|null $upload_path The form gallery upload path.
+     * @param string|null $upload_path The path used for submitting a form of one's own to the gallery, the counterpart of `path` for the upload  side. The four `upload` fields are empty when the installation allows browsing but not submitting.
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_domain
      *
-     * @param string|null $upload_domain The form gallery upload domain.
+     * @param string|null $upload_domain The address the submission is sent to, which may differ from `domain`.
      *
      * @return self
      */
@@ -536,7 +536,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_ext
      *
-     * @param string|null $upload_ext The form gallery upload extension.
+     * @param string|null $upload_ext The file extension a submitted form has to carry.
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class FormGalleryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_dashboard
      *
-     * @param string|null $upload_dashboard The form gallery upload dashboard.
+     * @param string|null $upload_dashboard The page a person is sent to in order to follow up on a submission, joined to `uploadDomain` the same way  as `uploadPath`.
      *
      * @return self
      */

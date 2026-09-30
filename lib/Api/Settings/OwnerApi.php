@@ -133,7 +133,7 @@ class OwnerApi
     /**
      * Operation sendOwnerChangeInstructions
      *
-     * Send the owner change instructions
+     * Start the portal owner change
      *
      * REST API Reference for sendOwnerChangeInstructions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-owner-change-instructions/
@@ -154,7 +154,7 @@ class OwnerApi
     /**
      * Operation sendOwnerChangeInstructionsWithHttpInfo
      *
-     * Send the owner change instructions
+     * Start the portal owner change
      *
      * REST API Reference for sendOwnerChangeInstructions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-owner-change-instructions/
@@ -284,7 +284,7 @@ class OwnerApi
     /**
      * Operation sendOwnerChangeInstructionsAsync
      *
-     * Send the owner change instructions
+     * Start the portal owner change
      *
      * REST API Reference for sendOwnerChangeInstructions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-owner-change-instructions/
@@ -308,7 +308,7 @@ class OwnerApi
     /**
      * Operation sendOwnerChangeInstructionsAsyncWithHttpInfo
      *
-     * Send the owner change instructions
+     * Start the portal owner change
      *
      * REST API Reference for sendOwnerChangeInstructions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-owner-change-instructions/
@@ -470,7 +470,7 @@ class OwnerApi
     /**
      * Operation updatePortalOwner
      *
-     * Update the portal owner
+     * Confirm the portal owner change
      *
      * REST API Reference for updatePortalOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-portal-owner/
@@ -490,7 +490,7 @@ class OwnerApi
     /**
      * Operation updatePortalOwnerWithHttpInfo
      *
-     * Update the portal owner
+     * Confirm the portal owner change
      *
      * REST API Reference for updatePortalOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-portal-owner/
@@ -566,7 +566,7 @@ class OwnerApi
     /**
      * Operation updatePortalOwnerAsync
      *
-     * Update the portal owner
+     * Confirm the portal owner change
      *
      * REST API Reference for updatePortalOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-portal-owner/
@@ -590,7 +590,7 @@ class OwnerApi
     /**
      * Operation updatePortalOwnerAsyncWithHttpInfo
      *
-     * Update the portal owner
+     * Confirm the portal owner change
      *
      * REST API Reference for updatePortalOwner Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-portal-owner/

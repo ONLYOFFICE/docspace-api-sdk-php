@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SecurityInfoRequestDto Class Doc Comment
  *
  * @category Class
- * @description The security information request parameters.
+ * @description The entries whose sharing rights are being changed, and the rights to apply to them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -339,7 +339,7 @@ class SecurityInfoRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]|null $folder_ids The list of the shared folder IDs.
+     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]|null $folder_ids The folders and rooms whose rights are being changed, identified as a listing operation returns them - a  number on the portal, a string on a connected third-party account.
      *
      * @return self
      */
@@ -373,7 +373,7 @@ class SecurityInfoRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]|null $file_ids The list of the shared file IDs.
+     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]|null $file_ids The files whose rights are being changed, identified as a listing operation returns them - a number on the  portal, a string on a connected third-party account.
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class SecurityInfoRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets share
      *
-     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share The collection of sharing parameters.
+     * @param \OpenAPI\Client\Model\FileShareParams[]|null $share One record per account or group whose rights are being set, each naming the subject and the level it gets on  all of the listed entries; a level of `None` takes the access away. An empty collection makes the call change  nothing.
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class SecurityInfoRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets notify
      *
-     * @param bool|null $notify Specifies whether to notify users about the shared file or not.
+     * @param bool|null $notify Set to true to have every account named in `share` emailed about the access it just received; false changes  the rights without telling anyone.
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class SecurityInfoRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets sharing_message
      *
-     * @param string|null $sharing_message The message to send when notifying about the shared file.
+     * @param string|null $sharing_message The text put into that email, ignored while `notify` is false. Markup is stripped before sending, so only the  plain text of the value survives.
      *
      * @return self
      */

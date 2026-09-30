@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EditorToolCallStateDto Class Doc Comment
  *
  * @category Class
- * @description The editor tool call state. Used to run the agent flow in the editor.
+ * @description A generation the editor is expected to run as soon as the document opens, left behind by an AI agent that created  the file but not its content.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,7 @@ class EditorToolCallStateDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'tool_name' => 'string',
-        'parameters' => 'object'
+        'parameters' => '\OpenAPI\Client\Model\EditorToolCallParametersDto'
     ];
 
     /**
@@ -316,7 +316,7 @@ class EditorToolCallStateDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets tool_name
      *
-     * @param string|null $tool_name The tool name.
+     * @param string|null $tool_name Which generation to run, which also decides the shape of the parameters below.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class EditorToolCallStateDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets parameters
      *
-     * @return object
+     * @return \OpenAPI\Client\Model\EditorToolCallParametersDto
      */
     public function getParameters()
     {
@@ -350,7 +350,7 @@ class EditorToolCallStateDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets parameters
      *
-     * @param object $parameters The tool call parameters.
+     * @param \OpenAPI\Client\Model\EditorToolCallParametersDto $parameters The arguments of the generation named above.
      *
      * @return self
      */

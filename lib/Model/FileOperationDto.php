@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileOperationDto Class Doc Comment
  *
  * @category Class
- * @description The file operation information.
+ * @description One background file operation of the caller, as it stood when the answer was built.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -384,7 +384,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The file operation ID.
+     * @param string|null $id The identifier of the operation, the one to pass to `PUT api/2.0/files/fileops/terminate/{id}` to stop it.  Operations belong to the account that started them, so an identifier of somebody else is never listed here.
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operation
      *
-     * @param \OpenAPI\Client\Model\FileOperationType $operation The file operation type.
+     * @param \OpenAPI\Client\Model\FileOperationType $operation What the operation does with the entries, which also decides what else is reported: only a download fills  `url`, and a deletion leaves `files` and `folders` empty.
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets progress
      *
-     * @param int $progress The file operation progress in percentage.
+     * @param int $progress How far the operation has come, from 0 to 100. Reaching 100 only means it stopped; whether it did what it was  asked for is told by `error`.
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string|null $error The file operation error message.
+     * @param string|null $error The reason the operation could not finish its work, in the language of the request. Empty when nothing went  wrong, which is the only way to tell a successful operation from a failed one.
      *
      * @return self
      */
@@ -506,7 +506,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets processed
      *
-     * @param string|null $processed The file operation processing status.
+     * @param string|null $processed How many entries the operation has handled so far, written as a decimal number in a string. It counts items,  not percent, and stays behind `progress` on operations that walk into subfolders.
      *
      * @return self
      */
@@ -540,7 +540,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets finished
      *
-     * @param bool $finished Specifies if the file operation is finished or not.
+     * @param bool $finished Whether the operation has stopped running. A finished operation is reported once and then dropped, so the next  read of the operation list no longer contains it.
      *
      * @return self
      */
@@ -567,7 +567,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The file operation URL.
+     * @param string|null $url The address the packed archive can be downloaded from once a bulk download has finished. Empty for every other  kind of operation.
      *
      * @return self
      */
@@ -601,7 +601,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $files The list of files of the file operation.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $files The files the operation produced or moved, in the order it wrote them down. Empty while nothing has been  written yet and for a deletion, which reports no entries at all.
      *
      * @return self
      */
@@ -635,7 +635,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folders
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $folders The list of folders of the file operation.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $folders The folders the operation produced or moved, in the order it wrote them down. Empty while nothing has been  written yet and for a deletion.
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class FileOperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\DistributedTaskStatus|null $status The status of the distributed task related to the file operation.
+     * @param \OpenAPI\Client\Model\DistributedTaskStatus|null $status The state of the background task behind the operation, which tells a task that was cancelled or that crashed  from one that ran to its end.
      *
      * @return self
      */

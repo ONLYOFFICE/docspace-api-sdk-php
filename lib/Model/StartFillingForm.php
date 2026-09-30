@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StartFillingForm Class Doc Comment
  *
  * @category Class
- * @description The parameters of the button that starts filling out the form.
+ * @description The button the editor shows to begin filling out a form.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class StartFillingForm implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets text
      *
-     * @param string|null $text The caption of the button that starts filling out the form.
+     * @param string|null $text The caption to put on the button, already translated into the language of the caller.
      *
      * @return self
      */

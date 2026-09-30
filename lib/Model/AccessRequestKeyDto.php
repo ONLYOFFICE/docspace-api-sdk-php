@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AccessRequestKeyDto Class Doc Comment
  *
  * @category Class
- * @description The encryption key granting one user access to a file.
+ * @description The file key issued to one account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class AccessRequestKeyDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets user_id
      *
-     * @param string|null $user_id User ID
+     * @param string|null $user_id The account that is to open the file with this key; it has to have read access to the file.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class AccessRequestKeyDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets public_key_id
      *
-     * @param string|null $public_key_id Public key ID
+     * @param string|null $public_key_id The public key the file key was encrypted with, as reported for that account by  `GET api/2.0/files/file/{fileId}/publickeys`.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class AccessRequestKeyDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets private_key_enc
      *
-     * @param string|null $private_key_enc Encrypted private key
+     * @param string|null $private_key_enc The key of the file itself, encrypted by the client with that public key, so that the plain key never reaches  the portal.
      *
      * @return self
      */

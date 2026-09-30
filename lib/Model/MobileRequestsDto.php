@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MobileRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The parameters required for the mobile phone verification.
+ * @description The phone number a user going through phone activation registers for SMS codes.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class MobileRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets mobile_phone
      *
-     * @param string|null $mobile_phone The user's mobile phone number.
+     * @param string|null $mobile_phone The number the SMS codes are sent to, in international form with the leading `+` and no spaces. It is stored  as not yet activated and only becomes the confirmed number once a code sent to it is accepted; an already  activated number is not replaced this way and has to be erased first.
      *
      * @return self
      */

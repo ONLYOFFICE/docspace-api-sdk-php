@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhooksConfigWithStatusDto Class Doc Comment
  *
  * @category Class
- * @description The webhook configuration with its status.
+ * @description A webhook subscription together with how its last delivery ended.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class WebhooksConfigWithStatusDto implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets configs
      *
-     * @param \OpenAPI\Client\Model\WebhooksConfigDto|null $configs The webhook configuration.
+     * @param \OpenAPI\Client\Model\WebhooksConfigDto|null $configs The subscription itself. Despite the plural name it is one subscription, not a list.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class WebhooksConfigWithStatusDto implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets status
      *
-     * @param int|null $status The webhook status.
+     * @param int|null $status The HTTP status code the target answered on the last attempt. `0` means nothing has been delivered yet,  which is not the same as a failure.
      *
      * @return self
      */

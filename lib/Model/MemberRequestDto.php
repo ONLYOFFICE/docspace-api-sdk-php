@@ -439,7 +439,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string|null $password The user password.
+     * @param string|null $password The password in plain text. It is checked against the portal password policy and rejected with 400 when it is  too weak. When neither this field nor `passwordHash` is sent, a random password is generated and nobody  learns it, so the account can only be used after a password recovery.
      *
      * @return self
      */
@@ -473,7 +473,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password_hash
      *
-     * @param string|null $password_hash The user password hash.
+     * @param string|null $password_hash The password already hashed by the client, which is what the portal stores. It is a PBKDF2-HMACSHA256 hash of  the plain password, computed with the salt, the iteration count and the key size the portal settings publish,  and written as lowercase hexadecimal. When it is sent, `password` is ignored and the password policy is not  applied.
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email The user email address.
+     * @param string|null $email The email address of the new account, up to 255 characters. It is required in practice and has to be a real  address, and it becomes the sign-in name of the account.
      *
      * @return self
      */
@@ -548,7 +548,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType|null $type The user type.
+     * @param \OpenAPI\Client\Model\EmployeeType|null $type The type of the new account: `User`, `RoomAdmin` or `DocSpaceAdmin`. `Guest` is not accepted here, and the  value is ignored entirely when `fromInviteLink` is set, because the invitation link decides the type. When no  paid seat is free, the account is created as `User` whatever was asked for.
      *
      * @return self
      */
@@ -575,7 +575,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_user
      *
-     * @param bool|null $is_user Specifies if this is a guest or a user.
+     * @param bool|null $is_user Only chooses which entry the operation writes to the audit trail - the one for a guest or the one for a  member. It does not change the type of the account; `type` and the invitation link do that.
      *
      * @return self
      */
@@ -609,7 +609,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets first_name
      *
-     * @param string|null $first_name The user first name.
+     * @param string|null $first_name The first name, up to 255 characters. It is checked together with `lastName`, and a pair the portal does not  accept as a name answers 400.
      *
      * @return self
      */
@@ -650,7 +650,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_name
      *
-     * @param string|null $last_name The user last name.
+     * @param string|null $last_name The last name, up to 255 characters. It is checked together with `firstName`, and a pair the portal does not  accept as a name answers 400.
      *
      * @return self
      */
@@ -691,7 +691,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets department
      *
-     * @param string[]|null $department The list of the user departments IDs.
+     * @param string[]|null $department The groups to put the new account into, by group ID. Read the IDs from `GET api/2.0/group`; an ID that  matches no group is skipped without an error.
      *
      * @return self
      */
@@ -725,7 +725,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets location
      *
-     * @param string|null $location The user location.
+     * @param string|null $location The free-text location shown on the profile. It is stored as it is given and is not validated.
      *
      * @return self
      */
@@ -759,7 +759,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comment
      *
-     * @param string|null $comment The user comment.
+     * @param string|null $comment The free-text note kept with the profile, shown to administrators. It is stored as it is given.
      *
      * @return self
      */
@@ -793,7 +793,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contacts
      *
-     * @param \OpenAPI\Client\Model\Contact[]|null $contacts The list of the user contacts.
+     * @param \OpenAPI\Client\Model\Contact[]|null $contacts The additional ways to reach the person, each as a type and a value pair. The type is a free-text label such  as `email`, `phone`, `skype` or `telegram`, and an entry with an empty value is dropped.
      *
      * @return self
      */
@@ -827,7 +827,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files
      *
-     * @param string|null $files The avatar photo URL.
+     * @param string|null $files The address the portal downloads the avatar from. It has to use HTTPS unless the request itself came over  HTTP, an address the portal refuses to fetch is rejected, and passing the default avatar path means no  avatar is downloaded.
      *
      * @return self
      */
@@ -861,7 +861,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets from_invite_link
      *
-     * @param bool|null $from_invite_link Specifies if the user is added via the invitation link or not.
+     * @param bool|null $from_invite_link Set it to true when the account is created by somebody accepting an invitation, which makes `key` required  and lets the link decide the type. With the default false the caller has to hold the permission to add an  account of the requested type.
      *
      * @return self
      */
@@ -888,7 +888,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key The user key.
+     * @param string|null $key The key of the invitation link being accepted, taken from the link itself. It is read only when  `fromInviteLink` is true, and an expired or already used key answers 403.
      *
      * @return self
      */
@@ -922,7 +922,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets culture_name
      *
-     * @param string|null $culture_name The user culture code.
+     * @param string|null $culture_name The interface language of the new account, as a culture code. It is applied whether or not the portal has  that culture enabled, so send a code the portal supports.
      *
      * @return self
      */
@@ -956,7 +956,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target
      *
-     * @param string|null $target The user target ID.
+     * @param string|null $target Not used. The handler reads nothing from this field, and it is kept only so that existing clients keep  working.
      *
      * @return self
      */
@@ -983,7 +983,7 @@ class MemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets spam
      *
-     * @param bool|null $spam Specifies if tips, updates and offers are allowed to be sent to the user or not.
+     * @param bool|null $spam Whether the account agrees to receive tips, updates and offers. It defaults to false, which means no such  mail is sent.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomGroupDto Class Doc Comment
  *
  * @category Class
- * @description The room security parameters.
+ * @description A personal collection of rooms: the name and icon it was given, the account that owns it, and the rooms it gathers  at the moment it was read.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,6 +62,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'icon' => '\OpenAPI\Client\Model\MultiSizeLogoCover',
         'user_id' => 'string',
+        'search_area' => '\OpenAPI\Client\Model\SearchArea',
         'rooms' => '\OpenAPI\Client\Model\FileEntryBaseDto[]',
         'total_rooms' => 'int'
     ];
@@ -78,6 +79,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'icon' => null,
         'user_id' => 'uuid',
+        'search_area' => null,
         'rooms' => null,
         'total_rooms' => 'int32'
     ];
@@ -92,6 +94,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => true,
         'icon' => false,
         'user_id' => false,
+        'search_area' => false,
         'rooms' => true,
         'total_rooms' => false
     ];
@@ -186,6 +189,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'icon' => 'icon',
         'user_id' => 'userId',
+        'search_area' => 'searchArea',
         'rooms' => 'rooms',
         'total_rooms' => 'totalRooms'
     ];
@@ -200,6 +204,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'icon' => 'setIcon',
         'user_id' => 'setUserId',
+        'search_area' => 'setSearchArea',
         'rooms' => 'setRooms',
         'total_rooms' => 'setTotalRooms'
     ];
@@ -214,6 +219,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'icon' => 'getIcon',
         'user_id' => 'getUserId',
+        'search_area' => 'getSearchArea',
         'rooms' => 'getRooms',
         'total_rooms' => 'getTotalRooms'
     ];
@@ -279,6 +285,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('icon', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('search_area', $data ?? [], null);
         $this->setIfExists('rooms', $data ?? [], null);
         $this->setIfExists('total_rooms', $data ?? [], null);
     }
@@ -338,7 +345,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id The group ID.
+     * @param int|null $id The identifier of the group, which addresses it in every other group operation and is kept for as long as the  group exists.
      *
      * @return self
      */
@@ -365,7 +372,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Group name
+     * @param string|null $name The name its owner gave the group, stored trimmed of surrounding spaces. Names are not unique, so two groups  of the same account can be told apart only by their identifier.
      *
      * @return self
      */
@@ -399,7 +406,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets icon
      *
-     * @param \OpenAPI\Client\Model\MultiSizeLogoCover|null $icon Group icon
+     * @param \OpenAPI\Client\Model\MultiSizeLogoCover|null $icon The built-in cover chosen for the group, carrying the cover identifier and its rendering in each available  size. Null when the group has no icon, either because it was never given one or because the icon was cleared  by setting it to an empty value.
      *
      * @return self
      */
@@ -426,7 +433,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The user ID.
+     * @param string|null $user_id The account that created the group and the only one able to read, change or delete it; for any other member of  the portal the group does not exist.
      *
      * @return self
      */
@@ -436,6 +443,33 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_area
+     *
+     * @return \OpenAPI\Client\Model\SearchArea|null
+     */
+    public function getSearchArea()
+    {
+        return $this->container['search_area'];
+    }
+
+    /**
+     * Sets search_area
+     *
+     * @param \OpenAPI\Client\Model\SearchArea|null $search_area The section the group belongs to, which categorizes it within the application's structure. This property determines  which area of the interface the group is associated with and affects how its rooms are filtered and displayed.  Common values include Active for standard rooms, Forms for form-based rooms, Archive for archived content, and  Templates for template rooms. The search area ensures that when retrieving a group, only rooms that belong to  the specified section are included in the results, maintaining proper organizational boundaries within the system.
+     *
+     * @return self
+     */
+    public function setSearchArea($search_area)
+    {
+        if (is_null($search_area)) {
+            throw new \InvalidArgumentException('non-nullable search_area cannot be null');
+        }
+        $this->container['search_area'] = $search_area;
 
         return $this;
     }
@@ -453,7 +487,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rooms
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $rooms The list of rooms in the group.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $rooms The rooms the group gathers, those stored in the portal first and those on connected third-party accounts  after them. Null when the group was asked for without its members, and an empty array when the group holds no  room the caller can still see. A room moved to the archive is left out until it is taken out of the archive.
      *
      * @return self
      */
@@ -487,7 +521,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_rooms
      *
-     * @param int|null $total_rooms Total number of rooms in the group.
+     * @param int|null $total_rooms How many rooms the group shows: the same rooms `rooms` lists, so archived ones are not counted either. It is  filled even when the rooms themselves were not asked for, which makes it the cheap way to tell an empty group  from a populated one.
      *
      * @return self
      */

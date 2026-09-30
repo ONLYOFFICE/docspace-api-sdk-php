@@ -227,13 +227,13 @@ class FoldersApi
     /**
      * Operation checkUpload
      *
-     * Check file uploads
+     * Check for upload conflicts
      *
      * REST API Reference for checkUpload Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-upload/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The request parameters for checking file uploads. (required)
+     * @param  int|string $folder_id The folder whose contents the names are tested against; take the id from a listing such as  `GET api/2.0/files/@root`. (required)
+     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The names to test against the files the folder already holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkUpload'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -249,13 +249,13 @@ class FoldersApi
     /**
      * Operation checkUploadWithHttpInfo
      *
-     * Check file uploads
+     * Check for upload conflicts
      *
      * REST API Reference for checkUpload Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-upload/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The request parameters for checking file uploads. (required)
+     * @param  int|string $folder_id The folder whose contents the names are tested against; take the id from a listing such as  `GET api/2.0/files/@root`. (required)
+     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The names to test against the files the folder already holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkUpload'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -394,13 +394,13 @@ class FoldersApi
     /**
      * Operation checkUploadAsync
      *
-     * Check file uploads
+     * Check for upload conflicts
      *
      * REST API Reference for checkUpload Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-upload/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The request parameters for checking file uploads. (required)
+     * @param  int|string $folder_id The folder whose contents the names are tested against; take the id from a listing such as  `GET api/2.0/files/@root`. (required)
+     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The names to test against the files the folder already holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -419,13 +419,13 @@ class FoldersApi
     /**
      * Operation checkUploadAsyncWithHttpInfo
      *
-     * Check file uploads
+     * Check for upload conflicts
      *
      * REST API Reference for checkUpload Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-upload/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The request parameters for checking file uploads. (required)
+     * @param  int|string $folder_id The folder whose contents the names are tested against; take the id from a listing such as  `GET api/2.0/files/@root`. (required)
+     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The names to test against the files the folder already holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -475,8 +475,8 @@ class FoldersApi
     /**
      * Create request for operation 'checkUpload'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The request parameters for checking file uploads. (required)
+     * @param  int|string $folder_id The folder whose contents the names are tested against; take the id from a listing such as  `GET api/2.0/files/@root`. (required)
+     * @param  \OpenAPI\Client\Model\CheckUploadRequest $check_upload_request The names to test against the files the folder already holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkUpload'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -609,13 +609,13 @@ class FoldersApi
      * REST API Reference for createFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createFolder($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
     {
@@ -631,13 +631,13 @@ class FoldersApi
      * REST API Reference for createFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFolderWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
     {
@@ -669,7 +669,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -715,7 +715,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -724,7 +724,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -776,8 +776,8 @@ class FoldersApi
      * REST API Reference for createFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -801,8 +801,8 @@ class FoldersApi
      * REST API Reference for createFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -810,7 +810,7 @@ class FoldersApi
      */
     public function createFolderAsyncWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->createFolderRequest($folder_id, $create_folder, $contentType);
 
         return $this->client
@@ -852,8 +852,8 @@ class FoldersApi
     /**
      * Create request for operation 'createFolder'
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -981,13 +981,13 @@ class FoldersApi
     /**
      * Operation createFolderPrimaryExternalLink
      *
-     * Create primary external link
+     * Create the folder primary external link
      *
      * REST API Reference for createFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1003,13 +1003,13 @@ class FoldersApi
     /**
      * Operation createFolderPrimaryExternalLinkWithHttpInfo
      *
-     * Create primary external link
+     * Create the folder primary external link
      *
      * REST API Reference for createFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1148,13 +1148,13 @@ class FoldersApi
     /**
      * Operation createFolderPrimaryExternalLinkAsync
      *
-     * Create primary external link
+     * Create the folder primary external link
      *
      * REST API Reference for createFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1173,13 +1173,13 @@ class FoldersApi
     /**
      * Operation createFolderPrimaryExternalLinkAsyncWithHttpInfo
      *
-     * Create primary external link
+     * Create the folder primary external link
      *
      * REST API Reference for createFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1229,8 +1229,8 @@ class FoldersApi
     /**
      * Create request for operation 'createFolderPrimaryExternalLink'
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1363,10 +1363,10 @@ class FoldersApi
      * REST API Reference for createReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
-     * @param  int $folder_id The folder ID whose history is exported. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
-     * @param  \DateTime|null $from The start date of the history period to export. (optional)
-     * @param  \DateTime|null $to The end date of the history period to export. (optional)
+     * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1387,10 +1387,10 @@ class FoldersApi
      * REST API Reference for createReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
-     * @param  int $folder_id The folder ID whose history is exported. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
-     * @param  \DateTime|null $from The start date of the history period to export. (optional)
-     * @param  \DateTime|null $to The end date of the history period to export. (optional)
+     * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1534,10 +1534,10 @@ class FoldersApi
      * REST API Reference for createReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
-     * @param  int $folder_id The folder ID whose history is exported. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
-     * @param  \DateTime|null $from The start date of the history period to export. (optional)
-     * @param  \DateTime|null $to The end date of the history period to export. (optional)
+     * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1561,10 +1561,10 @@ class FoldersApi
      * REST API Reference for createReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
-     * @param  int $folder_id The folder ID whose history is exported. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
-     * @param  \DateTime|null $from The start date of the history period to export. (optional)
-     * @param  \DateTime|null $to The end date of the history period to export. (optional)
+     * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1614,10 +1614,10 @@ class FoldersApi
     /**
      * Create request for operation 'createReportFolderHistory'
      *
-     * @param  int $folder_id The folder ID whose history is exported. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
-     * @param  \DateTime|null $from The start date of the history period to export. (optional)
-     * @param  \DateTime|null $to The end date of the history period to export. (optional)
+     * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1766,8 +1766,8 @@ class FoldersApi
      * REST API Reference for deleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
-     * @param  int $folder_id The folder ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder The parameters for deleting a folder. (required)
+     * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1788,8 +1788,8 @@ class FoldersApi
      * REST API Reference for deleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
-     * @param  int $folder_id The folder ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder The parameters for deleting a folder. (required)
+     * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1933,8 +1933,8 @@ class FoldersApi
      * REST API Reference for deleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
-     * @param  int $folder_id The folder ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder The parameters for deleting a folder. (required)
+     * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1958,8 +1958,8 @@ class FoldersApi
      * REST API Reference for deleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
-     * @param  int $folder_id The folder ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder The parameters for deleting a folder. (required)
+     * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2009,8 +2009,8 @@ class FoldersApi
     /**
      * Create request for operation 'deleteFolder'
      *
-     * @param  int $folder_id The folder ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder The parameters for deleting a folder. (required)
+     * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2143,7 +2143,7 @@ class FoldersApi
      * REST API Reference for generateXlsxByFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx-by-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsxByFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2164,7 +2164,7 @@ class FoldersApi
      * REST API Reference for generateXlsxByFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx-by-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsxByFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2308,7 +2308,7 @@ class FoldersApi
      * REST API Reference for generateXlsxByFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx-by-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsxByFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2332,7 +2332,7 @@ class FoldersApi
      * REST API Reference for generateXlsxByFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx-by-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsxByFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2382,7 +2382,7 @@ class FoldersApi
     /**
      * Create request for operation 'generateXlsxByFolder'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsxByFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2501,18 +2501,18 @@ class FoldersApi
      * REST API Reference for getFavoritesFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-favorites-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFavoritesFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
@@ -2528,18 +2528,18 @@ class FoldersApi
      * REST API Reference for getFavoritesFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-favorites-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFavoritesFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
@@ -2571,7 +2571,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -2617,7 +2617,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -2626,7 +2626,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2678,13 +2678,13 @@ class FoldersApi
      * REST API Reference for getFavoritesFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-favorites-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2708,13 +2708,13 @@ class FoldersApi
      * REST API Reference for getFavoritesFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-favorites-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2722,7 +2722,7 @@ class FoldersApi
      */
     public function getFavoritesFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getFavoritesFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -2764,13 +2764,13 @@ class FoldersApi
     /**
      * Create request for operation 'getFavoritesFolder'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3276,7 +3276,7 @@ class FoldersApi
      * REST API Reference for getFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3297,7 +3297,7 @@ class FoldersApi
      * REST API Reference for getFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3427,7 +3427,7 @@ class FoldersApi
      * REST API Reference for getFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3451,7 +3451,7 @@ class FoldersApi
      * REST API Reference for getFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3501,7 +3501,7 @@ class FoldersApi
     /**
      * Create request for operation 'getFolder'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3568,6 +3568,28 @@ class FoldersApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3598,30 +3620,30 @@ class FoldersApi
      * REST API Reference for getFolderByFolderId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-by-folder-id/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  string|null $shared_by The identifier of the user who shared the folder or file. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $room_id The room ID. (optional)
-     * @param  int[]|null $folder_type The parent folder types used to filter the folder contents by folder type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders, or all elements from the specified folder. (optional)
-     * @param  bool|null $with_sub_folders Specifies whether to include files from subfolders in the results. (optional)
-     * @param  string|null $extension Specifies whether to search for the specific file extension. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string|null $forms_item_key The forms item key. (optional)
-     * @param  string|null $forms_item_type The forms item type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated request. (optional)
-     * @param  string|null $sort_by The property used for sorting the folder request results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text value used as a filter parameter for folder content queries. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link. (optional)
+     * @param  int|string $folder_id The folder whose contents are listed. Each section root has an operation of its own, such as  `GET api/2.0/files/@my`, and every other folder is opened by the identifier a listing gave for it. (required)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  string|null $shared_by Restricts the listing to the entries this member shared, which narrows a shared listing down to what one  person handed out. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, spreadsheets, images or one type of room.  Omit it to list every kind the folder holds. (optional)
+     * @param  int|string|null $room_id Keeps only the entries that lie in this room, which matters when the listing being read gathers entries from  more than one of them. (optional)
+     * @param  int[]|null $folder_type Keeps only the folders of these kinds, each given as the number of a folder type; it is how a listing is  narrowed down to, say, the form-filling folders of a room. (optional)
+     * @param  bool|null $exclude_subject Turns `userIdOrGroupId` around: with true the entries of that member or group are the ones left out, with  false they are the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  bool|null $with_sub_folders Whether a narrowed request reaches into the subfolders: with true, which is what an omitted parameter means,  matching entries are gathered from the whole subtree, with false only the top level is read. It makes a  difference only once `filterType`, `userIdOrGroupId` or `filterValue` narrows the request, because an  unfiltered listing always shows the top level alone. (optional)
+     * @param  string|null $extension Keeps only the files carrying one of these extensions, several of them separated by commas; the leading dot is  optional. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area Which area a listing that spans several of them is taken from - the active rooms, the archive, the room  templates or the form-filling rooms. A folder that belongs to one area only settles the area itself and  ignores the parameter. (optional)
+     * @param  string|null $forms_item_key Keeps only the completed forms whose form field of this name holds a value. Take the name from  `GET api/2.0/files/{folderId}/formfilter`, and use it in the folder that gathers the completed copies of a  form-filling room. (optional)
+     * @param  string|null $forms_item_type The kind of the form field named by `formsItemKey`, taken from the same list; the two are sent together. (optional)
+     * @param  int|null $count The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
+     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFolderByFolderId($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
@@ -3637,30 +3659,30 @@ class FoldersApi
      * REST API Reference for getFolderByFolderId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-by-folder-id/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  string|null $shared_by The identifier of the user who shared the folder or file. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $room_id The room ID. (optional)
-     * @param  int[]|null $folder_type The parent folder types used to filter the folder contents by folder type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders, or all elements from the specified folder. (optional)
-     * @param  bool|null $with_sub_folders Specifies whether to include files from subfolders in the results. (optional)
-     * @param  string|null $extension Specifies whether to search for the specific file extension. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string|null $forms_item_key The forms item key. (optional)
-     * @param  string|null $forms_item_type The forms item type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated request. (optional)
-     * @param  string|null $sort_by The property used for sorting the folder request results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text value used as a filter parameter for folder content queries. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link. (optional)
+     * @param  int|string $folder_id The folder whose contents are listed. Each section root has an operation of its own, such as  `GET api/2.0/files/@my`, and every other folder is opened by the identifier a listing gave for it. (required)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  string|null $shared_by Restricts the listing to the entries this member shared, which narrows a shared listing down to what one  person handed out. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, spreadsheets, images or one type of room.  Omit it to list every kind the folder holds. (optional)
+     * @param  int|string|null $room_id Keeps only the entries that lie in this room, which matters when the listing being read gathers entries from  more than one of them. (optional)
+     * @param  int[]|null $folder_type Keeps only the folders of these kinds, each given as the number of a folder type; it is how a listing is  narrowed down to, say, the form-filling folders of a room. (optional)
+     * @param  bool|null $exclude_subject Turns `userIdOrGroupId` around: with true the entries of that member or group are the ones left out, with  false they are the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  bool|null $with_sub_folders Whether a narrowed request reaches into the subfolders: with true, which is what an omitted parameter means,  matching entries are gathered from the whole subtree, with false only the top level is read. It makes a  difference only once `filterType`, `userIdOrGroupId` or `filterValue` narrows the request, because an  unfiltered listing always shows the top level alone. (optional)
+     * @param  string|null $extension Keeps only the files carrying one of these extensions, several of them separated by commas; the leading dot is  optional. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area Which area a listing that spans several of them is taken from - the active rooms, the archive, the room  templates or the form-filling rooms. A folder that belongs to one area only settles the area itself and  ignores the parameter. (optional)
+     * @param  string|null $forms_item_key Keeps only the completed forms whose form field of this name holds a value. Take the name from  `GET api/2.0/files/{folderId}/formfilter`, and use it in the folder that gathers the completed copies of a  form-filling room. (optional)
+     * @param  string|null $forms_item_type The kind of the form field named by `formsItemKey`, taken from the same list; the two are sent together. (optional)
+     * @param  int|null $count The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
+     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderByFolderIdWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
@@ -3692,7 +3714,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -3732,7 +3754,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -3741,7 +3763,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3785,25 +3807,25 @@ class FoldersApi
      * REST API Reference for getFolderByFolderId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-by-folder-id/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  string|null $shared_by The identifier of the user who shared the folder or file. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $room_id The room ID. (optional)
-     * @param  int[]|null $folder_type The parent folder types used to filter the folder contents by folder type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders, or all elements from the specified folder. (optional)
-     * @param  bool|null $with_sub_folders Specifies whether to include files from subfolders in the results. (optional)
-     * @param  string|null $extension Specifies whether to search for the specific file extension. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string|null $forms_item_key The forms item key. (optional)
-     * @param  string|null $forms_item_type The forms item type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated request. (optional)
-     * @param  string|null $sort_by The property used for sorting the folder request results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text value used as a filter parameter for folder content queries. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link. (optional)
+     * @param  int|string $folder_id The folder whose contents are listed. Each section root has an operation of its own, such as  `GET api/2.0/files/@my`, and every other folder is opened by the identifier a listing gave for it. (required)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  string|null $shared_by Restricts the listing to the entries this member shared, which narrows a shared listing down to what one  person handed out. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, spreadsheets, images or one type of room.  Omit it to list every kind the folder holds. (optional)
+     * @param  int|string|null $room_id Keeps only the entries that lie in this room, which matters when the listing being read gathers entries from  more than one of them. (optional)
+     * @param  int[]|null $folder_type Keeps only the folders of these kinds, each given as the number of a folder type; it is how a listing is  narrowed down to, say, the form-filling folders of a room. (optional)
+     * @param  bool|null $exclude_subject Turns `userIdOrGroupId` around: with true the entries of that member or group are the ones left out, with  false they are the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  bool|null $with_sub_folders Whether a narrowed request reaches into the subfolders: with true, which is what an omitted parameter means,  matching entries are gathered from the whole subtree, with false only the top level is read. It makes a  difference only once `filterType`, `userIdOrGroupId` or `filterValue` narrows the request, because an  unfiltered listing always shows the top level alone. (optional)
+     * @param  string|null $extension Keeps only the files carrying one of these extensions, several of them separated by commas; the leading dot is  optional. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area Which area a listing that spans several of them is taken from - the active rooms, the archive, the room  templates or the form-filling rooms. A folder that belongs to one area only settles the area itself and  ignores the parameter. (optional)
+     * @param  string|null $forms_item_key Keeps only the completed forms whose form field of this name holds a value. Take the name from  `GET api/2.0/files/{folderId}/formfilter`, and use it in the folder that gathers the completed copies of a  form-filling room. (optional)
+     * @param  string|null $forms_item_type The kind of the form field named by `formsItemKey`, taken from the same list; the two are sent together. (optional)
+     * @param  int|null $count The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
+     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3827,25 +3849,25 @@ class FoldersApi
      * REST API Reference for getFolderByFolderId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-by-folder-id/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  string|null $shared_by The identifier of the user who shared the folder or file. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $room_id The room ID. (optional)
-     * @param  int[]|null $folder_type The parent folder types used to filter the folder contents by folder type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders, or all elements from the specified folder. (optional)
-     * @param  bool|null $with_sub_folders Specifies whether to include files from subfolders in the results. (optional)
-     * @param  string|null $extension Specifies whether to search for the specific file extension. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string|null $forms_item_key The forms item key. (optional)
-     * @param  string|null $forms_item_type The forms item type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated request. (optional)
-     * @param  string|null $sort_by The property used for sorting the folder request results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text value used as a filter parameter for folder content queries. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link. (optional)
+     * @param  int|string $folder_id The folder whose contents are listed. Each section root has an operation of its own, such as  `GET api/2.0/files/@my`, and every other folder is opened by the identifier a listing gave for it. (required)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  string|null $shared_by Restricts the listing to the entries this member shared, which narrows a shared listing down to what one  person handed out. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, spreadsheets, images or one type of room.  Omit it to list every kind the folder holds. (optional)
+     * @param  int|string|null $room_id Keeps only the entries that lie in this room, which matters when the listing being read gathers entries from  more than one of them. (optional)
+     * @param  int[]|null $folder_type Keeps only the folders of these kinds, each given as the number of a folder type; it is how a listing is  narrowed down to, say, the form-filling folders of a room. (optional)
+     * @param  bool|null $exclude_subject Turns `userIdOrGroupId` around: with true the entries of that member or group are the ones left out, with  false they are the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  bool|null $with_sub_folders Whether a narrowed request reaches into the subfolders: with true, which is what an omitted parameter means,  matching entries are gathered from the whole subtree, with false only the top level is read. It makes a  difference only once `filterType`, `userIdOrGroupId` or `filterValue` narrows the request, because an  unfiltered listing always shows the top level alone. (optional)
+     * @param  string|null $extension Keeps only the files carrying one of these extensions, several of them separated by commas; the leading dot is  optional. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area Which area a listing that spans several of them is taken from - the active rooms, the archive, the room  templates or the form-filling rooms. A folder that belongs to one area only settles the area itself and  ignores the parameter. (optional)
+     * @param  string|null $forms_item_key Keeps only the completed forms whose form field of this name holds a value. Take the name from  `GET api/2.0/files/{folderId}/formfilter`, and use it in the folder that gathers the completed copies of a  form-filling room. (optional)
+     * @param  string|null $forms_item_type The kind of the form field named by `formsItemKey`, taken from the same list; the two are sent together. (optional)
+     * @param  int|null $count The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
+     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3853,7 +3875,7 @@ class FoldersApi
      */
     public function getFolderByFolderIdAsyncWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getFolderByFolderIdRequest($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $contentType);
 
         return $this->client
@@ -3895,25 +3917,25 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderByFolderId'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  string|null $shared_by The identifier of the user who shared the folder or file. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $room_id The room ID. (optional)
-     * @param  int[]|null $folder_type The parent folder types used to filter the folder contents by folder type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders, or all elements from the specified folder. (optional)
-     * @param  bool|null $with_sub_folders Specifies whether to include files from subfolders in the results. (optional)
-     * @param  string|null $extension Specifies whether to search for the specific file extension. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string|null $forms_item_key The forms item key. (optional)
-     * @param  string|null $forms_item_type The forms item type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated request. (optional)
-     * @param  string|null $sort_by The property used for sorting the folder request results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text value used as a filter parameter for folder content queries. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location The location context of the request, specifying the area  where the operation is performed, such as a room, documents, or a link. (optional)
+     * @param  int|string $folder_id The folder whose contents are listed. Each section root has an operation of its own, such as  `GET api/2.0/files/@my`, and every other folder is opened by the identifier a listing gave for it. (required)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  string|null $shared_by Restricts the listing to the entries this member shared, which narrows a shared listing down to what one  person handed out. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, spreadsheets, images or one type of room.  Omit it to list every kind the folder holds. (optional)
+     * @param  int|string|null $room_id Keeps only the entries that lie in this room, which matters when the listing being read gathers entries from  more than one of them. (optional)
+     * @param  int[]|null $folder_type Keeps only the folders of these kinds, each given as the number of a folder type; it is how a listing is  narrowed down to, say, the form-filling folders of a room. (optional)
+     * @param  bool|null $exclude_subject Turns `userIdOrGroupId` around: with true the entries of that member or group are the ones left out, with  false they are the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  bool|null $with_sub_folders Whether a narrowed request reaches into the subfolders: with true, which is what an omitted parameter means,  matching entries are gathered from the whole subtree, with false only the top level is read. It makes a  difference only once `filterType`, `userIdOrGroupId` or `filterValue` narrows the request, because an  unfiltered listing always shows the top level alone. (optional)
+     * @param  string|null $extension Keeps only the files carrying one of these extensions, several of them separated by commas; the leading dot is  optional. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area Which area a listing that spans several of them is taken from - the active rooms, the archive, the room  templates or the form-filling rooms. A folder that belongs to one area only settles the area itself and  ignores the parameter. (optional)
+     * @param  string|null $forms_item_key Keeps only the completed forms whose form field of this name holds a value. Take the name from  `GET api/2.0/files/{folderId}/formfilter`, and use it in the folder that gathers the completed copies of a  form-filling room. (optional)
+     * @param  string|null $forms_item_type The kind of the form field named by `formsItemKey`, taken from the same list; the two are sent together. (optional)
+     * @param  int|null $count The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
+     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4166,6 +4188,28 @@ class FoldersApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4196,11 +4240,11 @@ class FoldersApi
      * REST API Reference for getFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-history/
      *
-     * @param  int $folder_id The folder ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history request. (optional)
-     * @param  \DateTime|null $to_date The end date of the history request. (optional)
-     * @param  int|null $count The number of records to retrieve for the folder history. (optional)
-     * @param  int|null $start_index The starting index from which the history records are retrieved in the request. (optional)
+     * @param  int $folder_id The folder whose activity log is read; the log covers the folder itself and the entries inside it. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4221,11 +4265,11 @@ class FoldersApi
      * REST API Reference for getFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-history/
      *
-     * @param  int $folder_id The folder ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history request. (optional)
-     * @param  \DateTime|null $to_date The end date of the history request. (optional)
-     * @param  int|null $count The number of records to retrieve for the folder history. (optional)
-     * @param  int|null $start_index The starting index from which the history records are retrieved in the request. (optional)
+     * @param  int $folder_id The folder whose activity log is read; the log covers the folder itself and the entries inside it. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4369,11 +4413,11 @@ class FoldersApi
      * REST API Reference for getFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-history/
      *
-     * @param  int $folder_id The folder ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history request. (optional)
-     * @param  \DateTime|null $to_date The end date of the history request. (optional)
-     * @param  int|null $count The number of records to retrieve for the folder history. (optional)
-     * @param  int|null $start_index The starting index from which the history records are retrieved in the request. (optional)
+     * @param  int $folder_id The folder whose activity log is read; the log covers the folder itself and the entries inside it. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4397,11 +4441,11 @@ class FoldersApi
      * REST API Reference for getFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-history/
      *
-     * @param  int $folder_id The folder ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history request. (optional)
-     * @param  \DateTime|null $to_date The end date of the history request. (optional)
-     * @param  int|null $count The number of records to retrieve for the folder history. (optional)
-     * @param  int|null $start_index The starting index from which the history records are retrieved in the request. (optional)
+     * @param  int $folder_id The folder whose activity log is read; the log covers the folder itself and the entries inside it. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4451,11 +4495,11 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderHistory'
      *
-     * @param  int $folder_id The folder ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history request. (optional)
-     * @param  \DateTime|null $to_date The end date of the history request. (optional)
-     * @param  int|null $count The number of records to retrieve for the folder history. (optional)
-     * @param  int|null $start_index The starting index from which the history records are retrieved in the request. (optional)
+     * @param  int $folder_id The folder whose activity log is read; the log covers the folder itself and the entries inside it. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4620,12 +4664,12 @@ class FoldersApi
      * REST API Reference for getFolderInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-info/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFolderInfo($folder_id, string $contentType = self::contentTypes['getFolderInfo'][0])
     {
@@ -4641,12 +4685,12 @@ class FoldersApi
      * REST API Reference for getFolderInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-info/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderInfoWithHttpInfo($folder_id, string $contentType = self::contentTypes['getFolderInfo'][0])
     {
@@ -4678,7 +4722,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -4718,7 +4762,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -4727,7 +4771,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4771,7 +4815,7 @@ class FoldersApi
      * REST API Reference for getFolderInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-info/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4795,7 +4839,7 @@ class FoldersApi
      * REST API Reference for getFolderInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-info/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4803,7 +4847,7 @@ class FoldersApi
      */
     public function getFolderInfoAsyncWithHttpInfo($folder_id, string $contentType = self::contentTypes['getFolderInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->getFolderInfoRequest($folder_id, $contentType);
 
         return $this->client
@@ -4845,7 +4889,7 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderInfo'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4912,6 +4956,28 @@ class FoldersApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4937,12 +5003,12 @@ class FoldersApi
     /**
      * Operation getFolderLinks
      *
-     * Get the folder links
+     * Get folder external links
      *
      * REST API Reference for getFolderLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-links/
      *
-     * @param  int $id The folder ID. (required)
+     * @param  int|string $id The folder or room whose external links are listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4958,12 +5024,12 @@ class FoldersApi
     /**
      * Operation getFolderLinksWithHttpInfo
      *
-     * Get the folder links
+     * Get folder external links
      *
      * REST API Reference for getFolderLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-links/
      *
-     * @param  int $id The folder ID. (required)
+     * @param  int|string $id The folder or room whose external links are listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5102,12 +5168,12 @@ class FoldersApi
     /**
      * Operation getFolderLinksAsync
      *
-     * Get the folder links
+     * Get folder external links
      *
      * REST API Reference for getFolderLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-links/
      *
-     * @param  int $id The folder ID. (required)
+     * @param  int|string $id The folder or room whose external links are listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5126,12 +5192,12 @@ class FoldersApi
     /**
      * Operation getFolderLinksAsyncWithHttpInfo
      *
-     * Get the folder links
+     * Get folder external links
      *
      * REST API Reference for getFolderLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-links/
      *
-     * @param  int $id The folder ID. (required)
+     * @param  int|string $id The folder or room whose external links are listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5181,7 +5247,7 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderLinks'
      *
-     * @param  int $id The folder ID. (required)
+     * @param  int|string $id The folder or room whose external links are listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5300,7 +5366,7 @@ class FoldersApi
      * REST API Reference for getFolderPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-path/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPath'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5321,7 +5387,7 @@ class FoldersApi
      * REST API Reference for getFolderPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-path/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPath'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5465,7 +5531,7 @@ class FoldersApi
      * REST API Reference for getFolderPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-path/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5489,7 +5555,7 @@ class FoldersApi
      * REST API Reference for getFolderPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-path/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5539,7 +5605,7 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderPath'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5653,14 +5719,14 @@ class FoldersApi
     /**
      * Operation getFolderPrimaryExternalLink
      *
-     * Get primary external link
+     * Get the folder primary external link
      *
      * REST API Reference for getFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-primary-external-link/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5676,14 +5742,14 @@ class FoldersApi
     /**
      * Operation getFolderPrimaryExternalLinkWithHttpInfo
      *
-     * Get primary external link
+     * Get the folder primary external link
      *
      * REST API Reference for getFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-primary-external-link/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5808,14 +5874,14 @@ class FoldersApi
     /**
      * Operation getFolderPrimaryExternalLinkAsync
      *
-     * Get primary external link
+     * Get the folder primary external link
      *
      * REST API Reference for getFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-primary-external-link/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5834,14 +5900,14 @@ class FoldersApi
     /**
      * Operation getFolderPrimaryExternalLinkAsyncWithHttpInfo
      *
-     * Get primary external link
+     * Get the folder primary external link
      *
      * REST API Reference for getFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folder-primary-external-link/
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5891,9 +5957,9 @@ class FoldersApi
     /**
      * Create request for operation 'getFolderPrimaryExternalLink'
      *
-     * @param  int $id The folder unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The folder or room the operation addresses. A folder stored on the portal is numbered, while a folder in a  connected third-party account is named by an opaque string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this folder that return a list; an operation  that answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5986,6 +6052,28 @@ class FoldersApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6016,7 +6104,7 @@ class FoldersApi
      * REST API Reference for getFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folders/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6037,7 +6125,7 @@ class FoldersApi
      * REST API Reference for getFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folders/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6181,7 +6269,7 @@ class FoldersApi
      * REST API Reference for getFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folders/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6205,7 +6293,7 @@ class FoldersApi
      * REST API Reference for getFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-folders/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6255,7 +6343,7 @@ class FoldersApi
     /**
      * Create request for operation 'getFolders'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6374,18 +6462,18 @@ class FoldersApi
      * REST API Reference for getFormsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-forms-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFormsFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
@@ -6401,18 +6489,18 @@ class FoldersApi
      * REST API Reference for getFormsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-forms-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFormsFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
@@ -6444,7 +6532,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -6490,7 +6578,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -6499,7 +6587,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6551,13 +6639,13 @@ class FoldersApi
      * REST API Reference for getFormsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-forms-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6581,13 +6669,13 @@ class FoldersApi
      * REST API Reference for getFormsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-forms-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6595,7 +6683,7 @@ class FoldersApi
      */
     public function getFormsFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getFormsFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -6637,13 +6725,13 @@ class FoldersApi
     /**
      * Create request for operation 'getFormsFolder'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to retrieve in a paginated list. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter or search criterion for folder content queries. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6825,19 +6913,19 @@ class FoldersApi
      * REST API Reference for getMyFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-my-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getMyFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
@@ -6853,19 +6941,19 @@ class FoldersApi
      * REST API Reference for getMyFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-my-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMyFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
@@ -6897,7 +6985,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -6943,7 +7031,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -6952,7 +7040,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7004,14 +7092,14 @@ class FoldersApi
      * REST API Reference for getMyFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-my-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7035,14 +7123,14 @@ class FoldersApi
      * REST API Reference for getMyFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-my-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7050,7 +7138,7 @@ class FoldersApi
      */
     public function getMyFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getMyFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -7092,14 +7180,14 @@ class FoldersApi
     /**
      * Create request for operation 'getMyFolder'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7291,7 +7379,7 @@ class FoldersApi
      * REST API Reference for getNewFolderItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-folder-items/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewFolderItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7312,7 +7400,7 @@ class FoldersApi
      * REST API Reference for getNewFolderItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-folder-items/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewFolderItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7456,7 +7544,7 @@ class FoldersApi
      * REST API Reference for getNewFolderItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-folder-items/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewFolderItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7480,7 +7568,7 @@ class FoldersApi
      * REST API Reference for getNewFolderItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-folder-items/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewFolderItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7530,7 +7618,7 @@ class FoldersApi
     /**
      * Create request for operation 'getNewFolderItems'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int|string $folder_id The folder the operation acts on. Take the identifier from a listing such as `GET api/2.0/files/@root` or  `GET api/2.0/files/{folderId}`: a folder stored in the portal is numbered, while a folder in a connected  third-party account is named by an opaque string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewFolderItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7649,22 +7737,22 @@ class FoldersApi
      * REST API Reference for getRecentFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-recent-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string[]|null $extension Specifies whether to search for a specific file extension in the Recent folder. (optional)
-     * @param  int|null $count The maximum number of items to return. (optional)
-     * @param  int|null $start_index The starting position of the results to be returned in the query response. (optional)
-     * @param  string|null $sort_by Specifies the sorting criteria for the folder request. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the files authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list the whole history. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of file, such as documents, spreadsheets or images. Omit it to list every  kind the history holds. (optional)
+     * @param  bool|null $exclude_subject Inverts `userIdOrGroupId`: with `true` the files of that member or group are the ones left out of the listing  instead of the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of a listing `filterType` and `filterValue` are applied to. The Recent section holds  files only, so the value does not change what comes back. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The area a listing is taken from. The Recent section is assembled from the caller's own open history rather  than from an area, so the value does not change which files are returned. (optional)
+     * @param  string[]|null $extension The file extensions the listing is limited to, matched against the end of the file name. The leading dot is  optional, and the parameter is repeated once per extension. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
+     * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRecentFolder($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
@@ -7680,22 +7768,22 @@ class FoldersApi
      * REST API Reference for getRecentFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-recent-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string[]|null $extension Specifies whether to search for a specific file extension in the Recent folder. (optional)
-     * @param  int|null $count The maximum number of items to return. (optional)
-     * @param  int|null $start_index The starting position of the results to be returned in the query response. (optional)
-     * @param  string|null $sort_by Specifies the sorting criteria for the folder request. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the files authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list the whole history. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of file, such as documents, spreadsheets or images. Omit it to list every  kind the history holds. (optional)
+     * @param  bool|null $exclude_subject Inverts `userIdOrGroupId`: with `true` the files of that member or group are the ones left out of the listing  instead of the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of a listing `filterType` and `filterValue` are applied to. The Recent section holds  files only, so the value does not change what comes back. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The area a listing is taken from. The Recent section is assembled from the caller's own open history rather  than from an area, so the value does not change which files are returned. (optional)
+     * @param  string[]|null $extension The file extensions the listing is limited to, matched against the end of the file name. The leading dot is  optional, and the parameter is repeated once per extension. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
+     * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRecentFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
@@ -7727,7 +7815,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -7773,7 +7861,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -7782,7 +7870,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7834,17 +7922,17 @@ class FoldersApi
      * REST API Reference for getRecentFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-recent-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string[]|null $extension Specifies whether to search for a specific file extension in the Recent folder. (optional)
-     * @param  int|null $count The maximum number of items to return. (optional)
-     * @param  int|null $start_index The starting position of the results to be returned in the query response. (optional)
-     * @param  string|null $sort_by Specifies the sorting criteria for the folder request. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the files authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list the whole history. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of file, such as documents, spreadsheets or images. Omit it to list every  kind the history holds. (optional)
+     * @param  bool|null $exclude_subject Inverts `userIdOrGroupId`: with `true` the files of that member or group are the ones left out of the listing  instead of the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of a listing `filterType` and `filterValue` are applied to. The Recent section holds  files only, so the value does not change what comes back. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The area a listing is taken from. The Recent section is assembled from the caller's own open history rather  than from an area, so the value does not change which files are returned. (optional)
+     * @param  string[]|null $extension The file extensions the listing is limited to, matched against the end of the file name. The leading dot is  optional, and the parameter is repeated once per extension. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
+     * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7868,17 +7956,17 @@ class FoldersApi
      * REST API Reference for getRecentFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-recent-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string[]|null $extension Specifies whether to search for a specific file extension in the Recent folder. (optional)
-     * @param  int|null $count The maximum number of items to return. (optional)
-     * @param  int|null $start_index The starting position of the results to be returned in the query response. (optional)
-     * @param  string|null $sort_by Specifies the sorting criteria for the folder request. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the files authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list the whole history. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of file, such as documents, spreadsheets or images. Omit it to list every  kind the history holds. (optional)
+     * @param  bool|null $exclude_subject Inverts `userIdOrGroupId`: with `true` the files of that member or group are the ones left out of the listing  instead of the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of a listing `filterType` and `filterValue` are applied to. The Recent section holds  files only, so the value does not change what comes back. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The area a listing is taken from. The Recent section is assembled from the caller's own open history rather  than from an area, so the value does not change which files are returned. (optional)
+     * @param  string[]|null $extension The file extensions the listing is limited to, matched against the end of the file name. The leading dot is  optional, and the parameter is repeated once per extension. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
+     * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7886,7 +7974,7 @@ class FoldersApi
      */
     public function getRecentFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getRecentFolderRequest($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -7928,17 +8016,17 @@ class FoldersApi
     /**
      * Create request for operation 'getRecentFolder'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The search area. (optional)
-     * @param  string[]|null $extension Specifies whether to search for a specific file extension in the Recent folder. (optional)
-     * @param  int|null $count The maximum number of items to return. (optional)
-     * @param  int|null $start_index The starting position of the results to be returned in the query response. (optional)
-     * @param  string|null $sort_by Specifies the sorting criteria for the folder request. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the files authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list the whole history. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of file, such as documents, spreadsheets or images. Omit it to list every  kind the history holds. (optional)
+     * @param  bool|null $exclude_subject Inverts `userIdOrGroupId`: with `true` the files of that member or group are the ones left out of the listing  instead of the only ones kept. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of a listing `filterType` and `filterValue` are applied to. The Recent section holds  files only, so the value does not change what comes back. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The area a listing is taken from. The Recent section is assembled from the caller's own open history rather  than from an area, so the value does not change which files are returned. (optional)
+     * @param  string[]|null $extension The file extensions the listing is limited to, matched against the end of the file name. The leading dot is  optional, and the parameter is repeated once per extension. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
+     * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8160,7 +8248,7 @@ class FoldersApi
      * REST API Reference for getReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose history report is being polled. It is the folder that was              passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8181,7 +8269,7 @@ class FoldersApi
      * REST API Reference for getReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose history report is being polled. It is the folder that was              passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8325,7 +8413,7 @@ class FoldersApi
      * REST API Reference for getReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose history report is being polled. It is the folder that was              passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8349,7 +8437,7 @@ class FoldersApi
      * REST API Reference for getReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose history report is being polled. It is the folder that was              passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8399,7 +8487,7 @@ class FoldersApi
     /**
      * Create request for operation 'getReportFolderHistory'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose history report is being polled. It is the folder that was              passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8518,19 +8606,19 @@ class FoldersApi
      * REST API Reference for getRootFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-root-folders/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $without_trash Specifies whether to return the Trash section or not. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter for searching or retrieving folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the content listed inside every returned section to a single kind of entry, such as documents, images  or one type of room. Omit it to list every kind the sections hold. (optional)
+     * @param  bool|null $without_trash Set it to `true` to leave the Trash section out of the returned set of sections; with `false`, or when the  parameter is omitted, the section is returned whenever the account has one of its own. (optional)
+     * @param  int|null $count The size of the content page returned for each section separately, so a value of 1 yields one entry per  section rather than one entry in total. (optional)
+     * @param  int|null $start_index The number of matching entries skipped in each section before its page begins; add `count` to it to ask for  the next page of every section. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the content of every section is filtered by: it is matched as a substring of entry titles  and, for files, against the indexed document content as well. Omit it to list the sections unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRootFolders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRootFolders($user_id_or_group_id = null, $filter_type = null, $without_trash = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRootFolders'][0])
     {
@@ -8546,19 +8634,19 @@ class FoldersApi
      * REST API Reference for getRootFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-root-folders/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $without_trash Specifies whether to return the Trash section or not. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter for searching or retrieving folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the content listed inside every returned section to a single kind of entry, such as documents, images  or one type of room. Omit it to list every kind the sections hold. (optional)
+     * @param  bool|null $without_trash Set it to `true` to leave the Trash section out of the returned set of sections; with `false`, or when the  parameter is omitted, the section is returned whenever the account has one of its own. (optional)
+     * @param  int|null $count The size of the content page returned for each section separately, so a value of 1 yields one entry per  section rather than one entry in total. (optional)
+     * @param  int|null $start_index The number of matching entries skipped in each section before its page begins; add `count` to it to ask for  the next page of every section. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the content of every section is filtered by: it is matched as a substring of entry titles  and, for files, against the indexed document content as well. Omit it to list the sections unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRootFolders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRootFoldersWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $without_trash = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRootFolders'][0])
     {
@@ -8590,7 +8678,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderContentArrayWrapper',
                         $request,
                         $response,
                     );
@@ -8636,7 +8724,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\FolderContentArrayWrapper',
                 $request,
                 $response,
             );
@@ -8645,7 +8733,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderContentArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8697,14 +8785,14 @@ class FoldersApi
      * REST API Reference for getRootFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-root-folders/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $without_trash Specifies whether to return the Trash section or not. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter for searching or retrieving folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the content listed inside every returned section to a single kind of entry, such as documents, images  or one type of room. Omit it to list every kind the sections hold. (optional)
+     * @param  bool|null $without_trash Set it to `true` to leave the Trash section out of the returned set of sections; with `false`, or when the  parameter is omitted, the section is returned whenever the account has one of its own. (optional)
+     * @param  int|null $count The size of the content page returned for each section separately, so a value of 1 yields one entry per  section rather than one entry in total. (optional)
+     * @param  int|null $start_index The number of matching entries skipped in each section before its page begins; add `count` to it to ask for  the next page of every section. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the content of every section is filtered by: it is matched as a substring of entry titles  and, for files, against the indexed document content as well. Omit it to list the sections unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRootFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8728,14 +8816,14 @@ class FoldersApi
      * REST API Reference for getRootFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-root-folders/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $without_trash Specifies whether to return the Trash section or not. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter for searching or retrieving folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the content listed inside every returned section to a single kind of entry, such as documents, images  or one type of room. Omit it to list every kind the sections hold. (optional)
+     * @param  bool|null $without_trash Set it to `true` to leave the Trash section out of the returned set of sections; with `false`, or when the  parameter is omitted, the section is returned whenever the account has one of its own. (optional)
+     * @param  int|null $count The size of the content page returned for each section separately, so a value of 1 yields one entry per  section rather than one entry in total. (optional)
+     * @param  int|null $start_index The number of matching entries skipped in each section before its page begins; add `count` to it to ask for  the next page of every section. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the content of every section is filtered by: it is matched as a substring of entry titles  and, for files, against the indexed document content as well. Omit it to list the sections unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRootFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8743,7 +8831,7 @@ class FoldersApi
      */
     public function getRootFoldersAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $without_trash = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRootFolders'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentArrayWrapper';
         $request = $this->getRootFoldersRequest($user_id_or_group_id, $filter_type, $without_trash, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -8785,14 +8873,14 @@ class FoldersApi
     /**
      * Create request for operation 'getRootFolders'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  bool|null $without_trash Specifies whether to return the Trash section or not. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by Specifies the field by which the folder content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used as a filter for searching or retrieving folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the content listed inside every returned section to a single kind of entry, such as documents, images  or one type of room. Omit it to list every kind the sections hold. (optional)
+     * @param  bool|null $without_trash Set it to `true` to leave the Trash section out of the returned set of sections; with `false`, or when the  parameter is omitted, the section is returned whenever the account has one of its own. (optional)
+     * @param  int|null $count The size of the content page returned for each section separately, so a value of 1 yields one entry per  section rather than one entry in total. (optional)
+     * @param  int|null $start_index The number of matching entries skipped in each section before its page begins; add `count` to it to ask for  the next page of every section. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the content of every section is filtered by: it is matched as a substring of entry titles  and, for files, against the indexed document content as well. Omit it to list the sections unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRootFolders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8984,19 +9072,19 @@ class FoldersApi
      * REST API Reference for getTrashFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-trash-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTrashFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
@@ -9012,19 +9100,19 @@ class FoldersApi
      * REST API Reference for getTrashFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-trash-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTrashFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
@@ -9056,7 +9144,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -9102,7 +9190,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -9111,7 +9199,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9163,14 +9251,14 @@ class FoldersApi
      * REST API Reference for getTrashFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-trash-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9194,14 +9282,14 @@ class FoldersApi
      * REST API Reference for getTrashFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-trash-folder/
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9209,7 +9297,7 @@ class FoldersApi
      */
     public function getTrashFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getTrashFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
 
         return $this->client
@@ -9251,14 +9339,14 @@ class FoldersApi
     /**
      * Create request for operation 'getTrashFolder'
      *
-     * @param  string|null $user_id_or_group_id The user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type The filter type. (optional)
-     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Specifies whether to return only files, only folders or all elements. (optional)
-     * @param  int|null $count The maximum number of items to retrieve in the response. (optional)
-     * @param  int|null $start_index The starting position of the items to be retrieved. (optional)
-     * @param  string|null $sort_by The property used to specify the sorting criteria for folder contents. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching folder contents. (optional)
+     * @param  string|null $user_id_or_group_id Restricts the listing to the entries authored by this portal member, or by the members of this group; the same  parameter accepts either kind of identifier. Omit it to list everything the caller can read. (optional)
+     * @param  \OpenAPI\Client\Model\FilterType|null $filter_type Narrows the listing to a single kind of entry, such as documents, images or one type of room. Omit it to list  every kind the section holds. (optional)
+     * @param  \OpenAPI\Client\Model\ApplyFilterOption|null $apply_filter_option Chooses which half of the listing `filterType` and `filterValue` are applied to: with `Files` the folders come  back unfiltered, with `Folders` the files do, and with `All` both halves are filtered. (optional)
+     * @param  int|null $count The size of one page of section content. Pair it with `startIndex` to walk the listing, and compare the two  with `total` in the response to see when the last page has been read. (optional)
+     * @param  int|null $start_index The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. (optional)
+     * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
+     * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9450,11 +9538,11 @@ class FoldersApi
      * REST API Reference for insertFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file/
      *
-     * @param  int $folder_id The folder ID for inserting a file. (required)
-     * @param  \SplFileObject|null $insert_file_file The file to be inserted. (optional)
-     * @param  string|null $insert_file_title The file title to be inserted. (optional)
-     * @param  bool|null $insert_file_create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $insert_file_keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \SplFileObject|null $insert_file_file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $insert_file_title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $insert_file_create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $insert_file_keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $insert_file_stream_can_read insert_file_stream_can_read (optional)
      * @param  bool|null $insert_file_stream_can_write insert_file_stream_can_write (optional)
      * @param  bool|null $insert_file_stream_can_seek insert_file_stream_can_seek (optional)
@@ -9467,7 +9555,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function insertFile($folder_id, $insert_file_file = null, $insert_file_title = null, $insert_file_create_new_if_exist = null, $insert_file_keep_convert_status = null, $insert_file_stream_can_read = null, $insert_file_stream_can_write = null, $insert_file_stream_can_seek = null, $insert_file_stream_can_timeout = null, $insert_file_stream_length = null, $insert_file_stream_position = null, $insert_file_stream_read_timeout = null, $insert_file_stream_write_timeout = null, string $contentType = self::contentTypes['insertFile'][0])
     {
@@ -9483,11 +9571,11 @@ class FoldersApi
      * REST API Reference for insertFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file/
      *
-     * @param  int $folder_id The folder ID for inserting a file. (required)
-     * @param  \SplFileObject|null $insert_file_file The file to be inserted. (optional)
-     * @param  string|null $insert_file_title The file title to be inserted. (optional)
-     * @param  bool|null $insert_file_create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $insert_file_keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \SplFileObject|null $insert_file_file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $insert_file_title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $insert_file_create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $insert_file_keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $insert_file_stream_can_read (optional)
      * @param  bool|null $insert_file_stream_can_write (optional)
      * @param  bool|null $insert_file_stream_can_seek (optional)
@@ -9500,7 +9588,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function insertFileWithHttpInfo($folder_id, $insert_file_file = null, $insert_file_title = null, $insert_file_create_new_if_exist = null, $insert_file_keep_convert_status = null, $insert_file_stream_can_read = null, $insert_file_stream_can_write = null, $insert_file_stream_can_seek = null, $insert_file_stream_can_timeout = null, $insert_file_stream_length = null, $insert_file_stream_position = null, $insert_file_stream_read_timeout = null, $insert_file_stream_write_timeout = null, string $contentType = self::contentTypes['insertFile'][0])
     {
@@ -9532,7 +9620,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -9578,7 +9666,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -9587,7 +9675,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9639,11 +9727,11 @@ class FoldersApi
      * REST API Reference for insertFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file/
      *
-     * @param  int $folder_id The folder ID for inserting a file. (required)
-     * @param  \SplFileObject|null $insert_file_file The file to be inserted. (optional)
-     * @param  string|null $insert_file_title The file title to be inserted. (optional)
-     * @param  bool|null $insert_file_create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $insert_file_keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \SplFileObject|null $insert_file_file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $insert_file_title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $insert_file_create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $insert_file_keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $insert_file_stream_can_read (optional)
      * @param  bool|null $insert_file_stream_can_write (optional)
      * @param  bool|null $insert_file_stream_can_seek (optional)
@@ -9675,11 +9763,11 @@ class FoldersApi
      * REST API Reference for insertFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file/
      *
-     * @param  int $folder_id The folder ID for inserting a file. (required)
-     * @param  \SplFileObject|null $insert_file_file The file to be inserted. (optional)
-     * @param  string|null $insert_file_title The file title to be inserted. (optional)
-     * @param  bool|null $insert_file_create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $insert_file_keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \SplFileObject|null $insert_file_file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $insert_file_title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $insert_file_create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $insert_file_keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $insert_file_stream_can_read (optional)
      * @param  bool|null $insert_file_stream_can_write (optional)
      * @param  bool|null $insert_file_stream_can_seek (optional)
@@ -9695,7 +9783,7 @@ class FoldersApi
      */
     public function insertFileAsyncWithHttpInfo($folder_id, $insert_file_file = null, $insert_file_title = null, $insert_file_create_new_if_exist = null, $insert_file_keep_convert_status = null, $insert_file_stream_can_read = null, $insert_file_stream_can_write = null, $insert_file_stream_can_seek = null, $insert_file_stream_can_timeout = null, $insert_file_stream_length = null, $insert_file_stream_position = null, $insert_file_stream_read_timeout = null, $insert_file_stream_write_timeout = null, string $contentType = self::contentTypes['insertFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->insertFileRequest($folder_id, $insert_file_file, $insert_file_title, $insert_file_create_new_if_exist, $insert_file_keep_convert_status, $insert_file_stream_can_read, $insert_file_stream_can_write, $insert_file_stream_can_seek, $insert_file_stream_can_timeout, $insert_file_stream_length, $insert_file_stream_position, $insert_file_stream_read_timeout, $insert_file_stream_write_timeout, $contentType);
 
         return $this->client
@@ -9737,11 +9825,11 @@ class FoldersApi
     /**
      * Create request for operation 'insertFile'
      *
-     * @param  int $folder_id The folder ID for inserting a file. (required)
-     * @param  \SplFileObject|null $insert_file_file The file to be inserted. (optional)
-     * @param  string|null $insert_file_title The file title to be inserted. (optional)
-     * @param  bool|null $insert_file_create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $insert_file_keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \SplFileObject|null $insert_file_file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $insert_file_title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $insert_file_create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $insert_file_keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $insert_file_stream_can_read (optional)
      * @param  bool|null $insert_file_stream_can_write (optional)
      * @param  bool|null $insert_file_stream_can_seek (optional)
@@ -9896,15 +9984,15 @@ class FoldersApi
     /**
      * Operation insertFileToMyFromBody
      *
-     * Insert a file to the My documents section
+     * Insert a file into My documents
      *
      * REST API Reference for insertFileToMyFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file-to-my-from-body/
      *
-     * @param  \SplFileObject|null $file The file to be inserted. (optional)
-     * @param  string|null $title The file title to be inserted. (optional)
-     * @param  bool|null $create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $stream_can_read stream_can_read (optional)
      * @param  bool|null $stream_can_write stream_can_write (optional)
      * @param  bool|null $stream_can_seek stream_can_seek (optional)
@@ -9917,7 +10005,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function insertFileToMyFromBody($file = null, $title = null, $create_new_if_exist = null, $keep_convert_status = null, $stream_can_read = null, $stream_can_write = null, $stream_can_seek = null, $stream_can_timeout = null, $stream_length = null, $stream_position = null, $stream_read_timeout = null, $stream_write_timeout = null, string $contentType = self::contentTypes['insertFileToMyFromBody'][0])
     {
@@ -9928,15 +10016,15 @@ class FoldersApi
     /**
      * Operation insertFileToMyFromBodyWithHttpInfo
      *
-     * Insert a file to the My documents section
+     * Insert a file into My documents
      *
      * REST API Reference for insertFileToMyFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file-to-my-from-body/
      *
-     * @param  \SplFileObject|null $file The file to be inserted. (optional)
-     * @param  string|null $title The file title to be inserted. (optional)
-     * @param  bool|null $create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $stream_can_read (optional)
      * @param  bool|null $stream_can_write (optional)
      * @param  bool|null $stream_can_seek (optional)
@@ -9949,7 +10037,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function insertFileToMyFromBodyWithHttpInfo($file = null, $title = null, $create_new_if_exist = null, $keep_convert_status = null, $stream_can_read = null, $stream_can_write = null, $stream_can_seek = null, $stream_can_timeout = null, $stream_length = null, $stream_position = null, $stream_read_timeout = null, $stream_write_timeout = null, string $contentType = self::contentTypes['insertFileToMyFromBody'][0])
     {
@@ -9981,7 +10069,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -10027,7 +10115,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -10036,7 +10124,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10083,15 +10171,15 @@ class FoldersApi
     /**
      * Operation insertFileToMyFromBodyAsync
      *
-     * Insert a file to the My documents section
+     * Insert a file into My documents
      *
      * REST API Reference for insertFileToMyFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file-to-my-from-body/
      *
-     * @param  \SplFileObject|null $file The file to be inserted. (optional)
-     * @param  string|null $title The file title to be inserted. (optional)
-     * @param  bool|null $create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $stream_can_read (optional)
      * @param  bool|null $stream_can_write (optional)
      * @param  bool|null $stream_can_seek (optional)
@@ -10118,15 +10206,15 @@ class FoldersApi
     /**
      * Operation insertFileToMyFromBodyAsyncWithHttpInfo
      *
-     * Insert a file to the My documents section
+     * Insert a file into My documents
      *
      * REST API Reference for insertFileToMyFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/insert-file-to-my-from-body/
      *
-     * @param  \SplFileObject|null $file The file to be inserted. (optional)
-     * @param  string|null $title The file title to be inserted. (optional)
-     * @param  bool|null $create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $stream_can_read (optional)
      * @param  bool|null $stream_can_write (optional)
      * @param  bool|null $stream_can_seek (optional)
@@ -10142,7 +10230,7 @@ class FoldersApi
      */
     public function insertFileToMyFromBodyAsyncWithHttpInfo($file = null, $title = null, $create_new_if_exist = null, $keep_convert_status = null, $stream_can_read = null, $stream_can_write = null, $stream_can_seek = null, $stream_can_timeout = null, $stream_length = null, $stream_position = null, $stream_read_timeout = null, $stream_write_timeout = null, string $contentType = self::contentTypes['insertFileToMyFromBody'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->insertFileToMyFromBodyRequest($file, $title, $create_new_if_exist, $keep_convert_status, $stream_can_read, $stream_can_write, $stream_can_seek, $stream_can_timeout, $stream_length, $stream_position, $stream_read_timeout, $stream_write_timeout, $contentType);
 
         return $this->client
@@ -10184,10 +10272,10 @@ class FoldersApi
     /**
      * Create request for operation 'insertFileToMyFromBody'
      *
-     * @param  \SplFileObject|null $file The file to be inserted. (optional)
-     * @param  string|null $title The file title to be inserted. (optional)
-     * @param  bool|null $create_new_if_exist Specifies whether to create a new file if it already exists or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part. The same content may instead be sent as the raw  request body, which is what a client that cannot build a form does; when both are present the form part wins. (optional)
+     * @param  string|null $title The name to store the file under, extension included. It wins over the name of the uploaded part, which is the  reason to choose this operation over the plain upload, and it is the only name available when the content  arrives as a raw body. Characters a title cannot hold are replaced with underscores and the name is cut to 170  characters before the file is stored. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
      * @param  bool|null $stream_can_read (optional)
      * @param  bool|null $stream_can_write (optional)
      * @param  bool|null $stream_can_seek (optional)
@@ -10332,13 +10420,13 @@ class FoldersApi
      * REST API Reference for renameFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function renameFolder($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
     {
@@ -10354,13 +10442,13 @@ class FoldersApi
      * REST API Reference for renameFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function renameFolderWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
     {
@@ -10392,7 +10480,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -10438,7 +10526,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -10447,7 +10535,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10499,8 +10587,8 @@ class FoldersApi
      * REST API Reference for renameFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10524,8 +10612,8 @@ class FoldersApi
      * REST API Reference for renameFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10533,7 +10621,7 @@ class FoldersApi
      */
     public function renameFolderAsyncWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->renameFolderRequest($folder_id, $create_folder, $contentType);
 
         return $this->client
@@ -10575,8 +10663,8 @@ class FoldersApi
     /**
      * Create request for operation 'renameFolder'
      *
-     * @param  int $folder_id The folder ID for the folder creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The parameters for creating a folder. (required)
+     * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10709,13 +10797,13 @@ class FoldersApi
      * REST API Reference for setFolderOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-order/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The folder order information. (optional)
+     * @param  int|string $folder_id The folder to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the folder is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFolderOrder($folder_id, $order_request_dto = null, string $contentType = self::contentTypes['setFolderOrder'][0])
     {
@@ -10731,13 +10819,13 @@ class FoldersApi
      * REST API Reference for setFolderOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-order/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The folder order information. (optional)
+     * @param  int|string $folder_id The folder to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the folder is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFolderOrderWithHttpInfo($folder_id, $order_request_dto = null, string $contentType = self::contentTypes['setFolderOrder'][0])
     {
@@ -10769,7 +10857,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -10815,7 +10903,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -10824,7 +10912,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10876,8 +10964,8 @@ class FoldersApi
      * REST API Reference for setFolderOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-order/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The folder order information. (optional)
+     * @param  int|string $folder_id The folder to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the folder is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10901,8 +10989,8 @@ class FoldersApi
      * REST API Reference for setFolderOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-order/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The folder order information. (optional)
+     * @param  int|string $folder_id The folder to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the folder is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10910,7 +10998,7 @@ class FoldersApi
      */
     public function setFolderOrderAsyncWithHttpInfo($folder_id, $order_request_dto = null, string $contentType = self::contentTypes['setFolderOrder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->setFolderOrderRequest($folder_id, $order_request_dto, $contentType);
 
         return $this->client
@@ -10952,8 +11040,8 @@ class FoldersApi
     /**
      * Create request for operation 'setFolderOrder'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The folder order information. (optional)
+     * @param  int|string $folder_id The folder to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the folder is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11080,8 +11168,8 @@ class FoldersApi
      * REST API Reference for setFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11102,8 +11190,8 @@ class FoldersApi
      * REST API Reference for setFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11247,8 +11335,8 @@ class FoldersApi
      * REST API Reference for setFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11272,8 +11360,8 @@ class FoldersApi
      * REST API Reference for setFolderPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-folder-primary-external-link/
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11323,8 +11411,8 @@ class FoldersApi
     /**
      * Create request for operation 'setFolderPrimaryExternalLink'
      *
-     * @param  int $id The folder ID. (required)
-     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The folder link parameters. (required)
+     * @param  int|string $id The folder or room the link belongs to. (required)
+     * @param  \OpenAPI\Client\Model\FolderLinkRequest $folder_link_request The link and the way it is to be shaped. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFolderPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11457,7 +11545,7 @@ class FoldersApi
      * REST API Reference for terminateReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose running history report is to be given up. It is the folder that              was passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11477,7 +11565,7 @@ class FoldersApi
      * REST API Reference for terminateReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose running history report is to be given up. It is the folder that              was passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11561,7 +11649,7 @@ class FoldersApi
      * REST API Reference for terminateReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose running history report is to be given up. It is the folder that              was passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11585,7 +11673,7 @@ class FoldersApi
      * REST API Reference for terminateReportFolderHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-report-folder-history/
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose running history report is to be given up. It is the folder that              was passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11622,7 +11710,7 @@ class FoldersApi
     /**
      * Create request for operation 'terminateReportFolderHistory'
      *
-     * @param  int $folder_id The folder unique identifier. (required)
+     * @param  int $folder_id The folder whose running history report is to be given up. It is the folder that              was passed to the operation that started the report. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateReportFolderHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11741,16 +11829,16 @@ class FoldersApi
      * REST API Reference for uploadFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file/
      *
-     * @param  int $folder_id The folder ID to upload a file. (required)
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadFile($folder_id, $create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
@@ -11766,16 +11854,16 @@ class FoldersApi
      * REST API Reference for uploadFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file/
      *
-     * @param  int $folder_id The folder ID to upload a file. (required)
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileWithHttpInfo($folder_id, $create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
@@ -11807,7 +11895,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $request,
                         $response,
                     );
@@ -11853,7 +11941,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                 $request,
                 $response,
             );
@@ -11862,7 +11950,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11914,11 +12002,11 @@ class FoldersApi
      * REST API Reference for uploadFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file/
      *
-     * @param  int $folder_id The folder ID to upload a file. (required)
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11942,11 +12030,11 @@ class FoldersApi
      * REST API Reference for uploadFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file/
      *
-     * @param  int $folder_id The folder ID to upload a file. (required)
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11954,7 +12042,7 @@ class FoldersApi
      */
     public function uploadFileAsyncWithHttpInfo($folder_id, $create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerArrayWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper';
         $request = $this->uploadFileRequest($folder_id, $create_new_if_exist, $store_original_file, $keep_convert_status, $file, $contentType);
 
         return $this->client
@@ -11996,11 +12084,11 @@ class FoldersApi
     /**
      * Create request for operation 'uploadFile'
      *
-     * @param  int $folder_id The folder ID to upload a file. (required)
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12155,20 +12243,20 @@ class FoldersApi
     /**
      * Operation uploadFileToMy
      *
-     * Upload a file to the My documents section
+     * Upload a file to My documents
      *
      * REST API Reference for uploadFileToMy Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file-to-my/
      *
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFileToMy'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadFileToMy($create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFileToMy'][0])
     {
@@ -12179,20 +12267,20 @@ class FoldersApi
     /**
      * Operation uploadFileToMyWithHttpInfo
      *
-     * Upload a file to the My documents section
+     * Upload a file to My documents
      *
      * REST API Reference for uploadFileToMy Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file-to-my/
      *
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFileToMy'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileToMyWithHttpInfo($create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFileToMy'][0])
     {
@@ -12224,7 +12312,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FileArrayWrapper',
                         $request,
                         $response,
                     );
@@ -12270,7 +12358,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\FileArrayWrapper',
                 $request,
                 $response,
             );
@@ -12279,7 +12367,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FileArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12326,15 +12414,15 @@ class FoldersApi
     /**
      * Operation uploadFileToMyAsync
      *
-     * Upload a file to the My documents section
+     * Upload a file to My documents
      *
      * REST API Reference for uploadFileToMy Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file-to-my/
      *
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFileToMy'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12353,15 +12441,15 @@ class FoldersApi
     /**
      * Operation uploadFileToMyAsyncWithHttpInfo
      *
-     * Upload a file to the My documents section
+     * Upload a file to My documents
      *
      * REST API Reference for uploadFileToMy Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-file-to-my/
      *
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFileToMy'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12369,7 +12457,7 @@ class FoldersApi
      */
     public function uploadFileToMyAsyncWithHttpInfo($create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFileToMy'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileArrayWrapper';
         $request = $this->uploadFileToMyRequest($create_new_if_exist, $store_original_file, $keep_convert_status, $file, $contentType);
 
         return $this->client
@@ -12411,10 +12499,10 @@ class FoldersApi
     /**
      * Create request for operation 'uploadFileToMy'
      *
-     * @param  bool|null $create_new_if_exist Specifies whether to create the new file if it already exists or not. (optional)
-     * @param  bool|null $store_original_file Specifies whether to upload documents in the original formats as well or not. (optional)
-     * @param  bool|null $keep_convert_status Specifies whether to keep the file converting status or not. (optional)
-     * @param  \SplFileObject|null $file The file to be uploaded. (optional)
+     * @param  bool|null $create_new_if_exist Settles the clash with a file already carrying that title: left out, the content is written as the next  version of that file; set to true, both survive and the new one gets a numeric suffix in its title. (optional)
+     * @param  bool|null $store_original_file Reaches further than this request: it writes a setting on the calling account, the same one  `PUT api/2.0/files/storeoriginal` writes, and it stays in force for later uploads. True keeps both the  uploaded file and the copy the portal converts it into, false replaces the uploaded file with the converted  one, and leaving it out keeps whatever the account already has. (optional)
+     * @param  bool|null $keep_convert_status Decides whether the outcome of the background conversion outlives the conversion itself. True keeps the queue  record, so `GET api/2.0/files/file/{fileId}/checkconversion` can still report the result or the error; left  out, the record is cleared the moment the conversion ends and that call finds nothing. (optional)
+     * @param  \SplFileObject|null $file The content to store, sent as a `multipart/form-data` part; the name of that part becomes the title of the  stored file, with characters a title cannot hold replaced and the name cut to 170 characters. A request  without it is rejected as invalid. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFileToMy'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

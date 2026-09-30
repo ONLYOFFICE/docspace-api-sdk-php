@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileLinkRequest Class Doc Comment
  *
  * @category Class
- * @description The external link request parameters.
+ * @description The settings of an external link to a file.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'link_id' => 'string',
         'access' => '\OpenAPI\Client\Model\FileShare',
-        'expiration_date' => '\DateTime',
+        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'title' => 'string',
         'internal' => 'bool',
         'primary' => 'bool',
@@ -78,7 +78,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'link_id' => 'uuid',
         'access' => null,
-        'expiration_date' => 'date-time',
+        'expiration_date' => null,
         'title' => null,
         'internal' => null,
         'primary' => null,
@@ -94,7 +94,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'link_id' => false,
         'access' => false,
-        'expiration_date' => true,
+        'expiration_date' => false,
         'title' => true,
         'internal' => false,
         'primary' => false,
@@ -368,7 +368,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link_id
      *
-     * @param string|null $link_id The external link ID.
+     * @param string|null $link_id The link to rewrite, as reported by `GET api/2.0/files/file/{id}/links`. An identifier that is not yet in use,  the empty one included, creates a link instead.
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The link sharing rights.
+     * @param \OpenAPI\Client\Model\FileShare|null $access The rights the link grants to whoever follows it. The value that denies everything revokes the link.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpirationDate()
     {
@@ -422,21 +422,14 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \DateTime|null $expiration_date The link expiration date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date The moment the link stops working, read in the time zone of the portal. A date more than a few years ahead is  rejected as an invalid request; left out, the link does not expire on its own.
      *
      * @return self
      */
     public function setExpirationDate($expiration_date)
     {
         if (is_null($expiration_date)) {
-            array_push($this->openAPINullablesSetToNull, 'expiration_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiration_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
         }
         $this->container['expiration_date'] = $expiration_date;
 
@@ -456,7 +449,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The link name.
+     * @param string|null $title The name the link carries in the sharing list of the file, for the people who manage it; it is not shown to  whoever follows the link.
      *
      * @return self
      */
@@ -497,7 +490,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets internal
      *
-     * @param bool|null $internal The link scope, whether it is internal or not.
+     * @param bool|null $internal Who may follow the link: `true` admits only accounts that are signed in to the portal, `false` admits anybody  who has the address.
      *
      * @return self
      */
@@ -524,7 +517,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary
      *
-     * @param bool|null $primary Specifies whether the file link is primary or not.
+     * @param bool|null $primary Whether this link becomes the primary link of the file - the one the Copy link action of a client hands out.  A file has one primary link at a time.
      *
      * @return self
      */
@@ -551,7 +544,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Specifies whether to deny downloading the file or not.
+     * @param bool|null $deny_download What a visitor may do with the content: `true` leaves them with viewing in the browser, `false` lets them  download and print it as their rights allow.
      *
      * @return self
      */
@@ -578,7 +571,7 @@ class FileLinkRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string|null $password Password for access via link.
+     * @param string|null $password The secret a visitor has to type before the file opens; left out, the link opens without one.
      *
      * @return self
      */

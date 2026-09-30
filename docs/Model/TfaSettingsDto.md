@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | The ID of the TFA configuration. |
-**title** | **string** | The display name or description of the TFA configuration. |
-**enabled** | **bool** | Indicates whether the TFA configuration is currently active. |
-**available** | **bool** | Indicates whether the TFA configuration can be used. |
-**trusted_ips** | **string[]** | The list of IP addresses that are exempt from TFA requirements. | [optional]
-**mandatory_users** | **string[]** | The list of user IDs that are required to use TFA. | [optional]
-**mandatory_groups** | **string[]** | The list of group IDs whose members are required to use TFA. | [optional]
+**id** | **string** | Which method this entry describes: `sms` for a code sent by text message, `app` for a code from an  authenticator application. It is the value `PUT api/2.0/settings/tfaapp` takes as its `type`, and no other  value ever appears here. |
+**title** | **string** | The label for the method in the portal language, meant for a button or a radio option. It is not stable  enough to branch on - match `id` for that. |
+**enabled** | **bool** | Whether this method is the portal's current policy. At most one entry can have it set, and none has it  while the portal challenges nobody. It says nothing about the caller's own account, which may be exempt  through `trustedIps` or forced through `mandatoryUsers`. |
+**available** | **bool** | Whether the method could be switched on at all. For `sms` it is `false` until the installation has a  working SMS provider, so a method can be offered here and still be impossible to enable; for `app` it is  always `true`. |
+**trusted_ips** | **string[]** | The addresses that skip the challenge, each either a single address, a `from-to` pair or a CIDR range. It  is empty when no address is exempt, which means every account is challenged. | [optional]
+**mandatory_users** | **string[]** | The accounts that are challenged even from a trusted address, by user ID. Empty means the exemption in  `trustedIps` holds for everyone. | [optional]
+**mandatory_groups** | **string[]** | The groups whose members are challenged even from a trusted address, by group ID, with the same reading of  an empty list as `mandatoryUsers`. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudUsersLimit Class Doc Comment
  *
  * @category Class
- * @description Represents the user limits of a DocsCloud license.
+ * @description Represents the user limits of a Docs Connect license.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

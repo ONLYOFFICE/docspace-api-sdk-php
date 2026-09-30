@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomNewItemsDto Class Doc Comment
  *
  * @category Class
- * @description The room new items information.
+ * @description The unseen entries of one room inside a day group.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class RoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets room
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto|null $room The room file entry.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto|null $room The room the entries were found in, in its short form: only the identifier, the title, the room type and the  logo are filled in.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class RoomNewItemsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $items The list of file entry items.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $items The files of that room the caller has not opened yet, the most recently changed first. Reading them here does  not clear the badges; opening the room itself does.
      *
      * @return self
      */

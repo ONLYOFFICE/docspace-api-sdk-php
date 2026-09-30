@@ -729,6 +729,28 @@ class SSOApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -763,7 +785,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSsoSettingsV2Constants(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
@@ -783,7 +805,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSsoSettingsV2ConstantsWithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
@@ -815,7 +837,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
                         $request,
                         $response,
                     );
@@ -855,7 +877,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
                 $request,
                 $response,
             );
@@ -864,7 +886,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -938,7 +960,7 @@ class SSOApi
      */
     public function getSsoSettingsV2ConstantsAsyncWithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper';
         $request = $this->getSsoSettingsV2ConstantsRequest($contentType);
 
         return $this->client

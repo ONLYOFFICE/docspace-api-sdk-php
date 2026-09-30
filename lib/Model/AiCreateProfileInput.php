@@ -66,6 +66,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => 'array<string,string>',
         'model_id' => 'string',
         'reasoning' => 'bool',
+        'reasoning_support' => '\OpenAPI\Client\Model\AiReasoningSupport',
         'capabilities' => 'float',
         'can_use_tool' => 'bool',
         'use_responses_api' => 'bool',
@@ -89,6 +90,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => null,
         'model_id' => null,
         'reasoning' => null,
+        'reasoning_support' => null,
         'capabilities' => null,
         'can_use_tool' => null,
         'use_responses_api' => null,
@@ -110,6 +112,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => false,
         'model_id' => false,
         'reasoning' => false,
+        'reasoning_support' => false,
         'capabilities' => false,
         'can_use_tool' => false,
         'use_responses_api' => false,
@@ -211,6 +214,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => 'headers',
         'model_id' => 'modelId',
         'reasoning' => 'reasoning',
+        'reasoning_support' => 'reasoningSupport',
         'capabilities' => 'capabilities',
         'can_use_tool' => 'canUseTool',
         'use_responses_api' => 'useResponsesApi',
@@ -232,6 +236,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => 'setHeaders',
         'model_id' => 'setModelId',
         'reasoning' => 'setReasoning',
+        'reasoning_support' => 'setReasoningSupport',
         'capabilities' => 'setCapabilities',
         'can_use_tool' => 'setCanUseTool',
         'use_responses_api' => 'setUseResponsesApi',
@@ -253,6 +258,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         'headers' => 'getHeaders',
         'model_id' => 'getModelId',
         'reasoning' => 'getReasoning',
+        'reasoning_support' => 'getReasoningSupport',
         'capabilities' => 'getCapabilities',
         'can_use_tool' => 'getCanUseTool',
         'use_responses_api' => 'getUseResponsesApi',
@@ -325,6 +331,7 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('headers', $data ?? [], null);
         $this->setIfExists('model_id', $data ?? [], null);
         $this->setIfExists('reasoning', $data ?? [], null);
+        $this->setIfExists('reasoning_support', $data ?? [], null);
         $this->setIfExists('capabilities', $data ?? [], null);
         $this->setIfExists('can_use_tool', $data ?? [], null);
         $this->setIfExists('use_responses_api', $data ?? [], null);
@@ -598,6 +605,33 @@ class AiCreateProfileInput implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable reasoning cannot be null');
         }
         $this->container['reasoning'] = $reasoning;
+
+        return $this;
+    }
+
+    /**
+     * Gets reasoning_support
+     *
+     * @return \OpenAPI\Client\Model\AiReasoningSupport|null
+     */
+    public function getReasoningSupport()
+    {
+        return $this->container['reasoning_support'];
+    }
+
+    /**
+     * Sets reasoning_support
+     *
+     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support Extended-thinking capabilities of the selected model as reported by the provider's catalogue at save time (see `Model.reasoningSupport`). When present the composer's Effort row follows it exactly; when absent the provider's id-based table answers. Hosts persist it with the rest of the profile.
+     *
+     * @return self
+     */
+    public function setReasoningSupport($reasoning_support)
+    {
+        if (is_null($reasoning_support)) {
+            throw new \InvalidArgumentException('non-nullable reasoning_support cannot be null');
+        }
+        $this->container['reasoning_support'] = $reasoning_support;
 
         return $this;
     }

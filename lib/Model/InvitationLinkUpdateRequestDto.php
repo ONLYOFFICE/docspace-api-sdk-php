@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InvitationLinkUpdateRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for updating an invitation link.
+ * @description The invitation link being changed, with the deadline and use limit it is to have afterwards.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -328,7 +328,7 @@ class InvitationLinkUpdateRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets id
      *
-     * @param string $id The ID of the invitation link.
+     * @param string $id The link to change, by the `id` that creating or reading it returned. The role behind that id cannot be  changed here.
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class InvitationLinkUpdateRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets expiration
      *
-     * @param \DateTime|null $expiration The expiration date of the invitation link.
+     * @param \DateTime|null $expiration The new deadline, read in the portal time zone. The body is applied as a whole, so leaving it out clears the  deadline rather than keeping the current one; a moment in the past is refused.
      *
      * @return self
      */
@@ -389,7 +389,7 @@ class InvitationLinkUpdateRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets max_use_count
      *
-     * @param int|null $max_use_count The maximum number of times the invitation link can be used.
+     * @param int|null $max_use_count The new total number of accounts that may join through the link. It may not be lower than the uses already  spent, which the link reports as `currentUseCount`, and leaving it out removes the limit rather than keeping  the current one.
      *
      * @return self
      */

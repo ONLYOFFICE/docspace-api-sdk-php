@@ -1835,7 +1835,7 @@ class TenantQuota implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets docs_cloud
      *
-     * @param int|null $docs_cloud The number of DocsCloud users.
+     * @param int|null $docs_cloud The number of Docs Connect users.
      *
      * @return self
      */
@@ -1862,7 +1862,7 @@ class TenantQuota implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets docs_cloud_dev_pack
      *
-     * @param bool|null $docs_cloud_dev_pack Specifies if the DocsCloudDevPack enabled or not.
+     * @param bool|null $docs_cloud_dev_pack Specifies if the Docs Connect Dev Pack enabled or not.
      *
      * @return self
      */
@@ -1889,7 +1889,7 @@ class TenantQuota implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets docs_cloud_trial
      *
-     * @param bool|null $docs_cloud_trial Specifies if the DocsCloudTrial enabled or not.
+     * @param bool|null $docs_cloud_trial Specifies if the Docs Connect trial enabled or not.
      *
      * @return self
      */

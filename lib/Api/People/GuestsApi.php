@@ -143,7 +143,7 @@ class GuestsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function approveGuestShareLink($email_member_request_dto = null, string $contentType = self::contentTypes['approveGuestShareLink'][0])
     {
@@ -164,7 +164,7 @@ class GuestsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function approveGuestShareLinkWithHttpInfo($email_member_request_dto = null, string $contentType = self::contentTypes['approveGuestShareLink'][0])
     {
@@ -213,12 +213,6 @@ class GuestsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -273,14 +267,6 @@ class GuestsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -484,7 +470,7 @@ class GuestsApi
     /**
      * Operation deleteGuests
      *
-     * Delete guests
+     * Remove guest relations
      *
      * REST API Reference for deleteGuests Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-guests/
@@ -504,7 +490,7 @@ class GuestsApi
     /**
      * Operation deleteGuestsWithHttpInfo
      *
-     * Delete guests
+     * Remove guest relations
      *
      * REST API Reference for deleteGuests Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-guests/
@@ -570,14 +556,6 @@ class GuestsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -588,7 +566,7 @@ class GuestsApi
     /**
      * Operation deleteGuestsAsync
      *
-     * Delete guests
+     * Remove guest relations
      *
      * REST API Reference for deleteGuests Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-guests/
@@ -612,7 +590,7 @@ class GuestsApi
     /**
      * Operation deleteGuestsAsyncWithHttpInfo
      *
-     * Delete guests
+     * Remove guest relations
      *
      * REST API Reference for deleteGuests Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-guests/

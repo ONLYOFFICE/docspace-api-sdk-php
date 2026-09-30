@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PasswordSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The password settings parameters.
+ * @description The password policy of the portal, with the expressions a client can check a password against.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -376,7 +376,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets min_length
      *
-     * @param int $min_length The minimum number of characters required for valid passwords.
+     * @param int $min_length The shortest password the portal accepts, 8 characters on a portal nobody has configured. Whatever the  policy says, a password longer than 30 characters is refused as well, and that ceiling is not reported  here.
      *
      * @return self
      */
@@ -403,7 +403,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets upper_case
      *
-     * @param bool $upper_case Specifies whether the password should contain the uppercase letters or not.
+     * @param bool $upper_case Whether at least one uppercase letter is demanded. While it is `false` an uppercase letter is still  allowed - the flag adds a requirement rather than permission.
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets digits
      *
-     * @param bool $digits Specifies whether the password should contain the digits or not.
+     * @param bool $digits Whether at least one digit is demanded, read the same way as `upperCase`.
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets spec_symbols
      *
-     * @param bool $spec_symbols Specifies whether the password should contain the special symbols or not.
+     * @param bool $spec_symbols Whether at least one special symbol is demanded, read the same way as `upperCase`. Which symbols count is  spelled out by `specSymbolsRegexStr`.
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets allowed_characters_regex_str
      *
-     * @param string|null $allowed_characters_regex_str The allowed password characters in the regex string format.
+     * @param string|null $allowed_characters_regex_str The expression the whole password has to match, which is what defines the alphabet the portal accepts at  all. It comes from the installation's configuration rather than from the portal policy, so it is the same  for every portal of an installation and unaffected by the flags above.
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets digits_regex_str
      *
-     * @param string|null $digits_regex_str The password digits in the regex string format.
+     * @param string|null $digits_regex_str The look-ahead expression that tests the digit requirement, meant to be applied only while `digits` is  `true`. It is always filled in, so its presence is not itself a requirement.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets upper_case_regex_str
      *
-     * @param string|null $upper_case_regex_str The password uppercase letters in the regex string format.
+     * @param string|null $upper_case_regex_str The look-ahead expression that tests the uppercase requirement, to be applied while `upperCase` is `true`.
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class PasswordSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets spec_symbols_regex_str
      *
-     * @param string|null $spec_symbols_regex_str The passaword special symbols in the regex string format.
+     * @param string|null $spec_symbols_regex_str The look-ahead expression that tests the special-symbol requirement, to be applied while `specSymbols` is  `true`. It also enumerates the symbols the portal treats as special.
      *
      * @return self
      */

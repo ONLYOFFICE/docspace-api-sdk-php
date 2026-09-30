@@ -310,7 +310,7 @@ class UpdateMembersRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets user_ids
      *
-     * @param string[]|null $user_ids The list of user IDs.
+     * @param string[]|null $user_ids The accounts the operation applies to. System accounts are dropped from the list without an error, and the  remaining ones are processed in the order they are given.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class UpdateMembersRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets resend_all
      *
-     * @param bool|null $resend_all Specifies whether to resend invitation letters to all the users or not.
+     * @param bool|null $resend_all Reaches every pending account of the portal instead of the ones in `userIds`. It is read only by  `PUT api/2.0/people/invite` and is ignored by every other operation that binds this body.
      *
      * @return self
      */

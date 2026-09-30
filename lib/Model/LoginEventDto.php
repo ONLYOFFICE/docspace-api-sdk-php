@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LoginEventDto Class Doc Comment
  *
  * @category Class
- * @description The login event parameters.
+ * @description One entry of the portal login history: a sign-in, a sign-out or a failed attempt, and where it came from.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\ApiDateTime',
         'user' => 'string',
         'user_id' => 'string',
         'login' => 'string',
@@ -82,7 +82,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'id' => 'int32',
-        'date' => 'date-time',
+        'date' => null,
         'user' => null,
         'user_id' => 'uuid',
         'login' => null,
@@ -103,7 +103,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'date' => true,
+        'date' => false,
         'user' => true,
         'user_id' => false,
         'login' => true,
@@ -387,7 +387,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id The login event ID.
+     * @param int|null $id The ID of the recorded sign-in. When the entry is a successful sign-in that is still open, this is also  the value `GET api/2.0/security/activeconnections` reports as the connection's `id`.
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getDate()
     {
@@ -414,21 +414,14 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The login event date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $date When the attempt was made, in the portal time zone. The `from` and `to` filters are read as UTC instants,  so the two do not line up on a portal that is not on UTC.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -448,7 +441,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param string|null $user The user name of the login event.
+     * @param string|null $user The display name of the account the attempt was made against, taken from the account as it stands now  rather than as it stood at the time. A localised placeholder stands in when there is no account to read,  which is the usual case for a failed attempt on an address nobody owns.
      *
      * @return self
      */
@@ -482,7 +475,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The user ID of the login event.
+     * @param string|null $user_id The ID of that account, which is what the `userId` filter of this operation matches on. It is the empty  GUID when the attempt could not be tied to an account.
      *
      * @return self
      */
@@ -509,7 +502,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets login
      *
-     * @param string|null $login The user login of the login event.
+     * @param string|null $login The login string as it was typed - normally the email address. It is the only field that survives a failed  attempt against an unknown account, which makes it the one to read when `user` is a placeholder.
      *
      * @return self
      */
@@ -543,7 +536,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param string|null $action The login event action.
+     * @param string|null $action The event as a readable sentence in the portal language. On `GET api/2.0/security/audit/login/last` each  substituted value is cut to 50 characters; the filtered operation substitutes them in full.
      *
      * @return self
      */
@@ -577,7 +570,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_id
      *
-     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The login-related action to filter events by.
+     * @param \OpenAPI\Client\Model\MessageAction|null $action_id What happened, as the `action` filter of this operation spells it: a successful sign-in, a failed one, a  sign-out. Use this rather than parsing `action`, which is prose and changes with the portal language.
      *
      * @return self
      */
@@ -604,7 +597,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ip
      *
-     * @param string|null $ip The login event IP.
+     * @param string|null $ip The IP address the attempt came from, with the port stripped off.
      *
      * @return self
      */
@@ -638,7 +631,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string|null $country The login event country.
+     * @param string|null $country The English name of the country the IP address is located in, empty when the address cannot be located -  the normal outcome for private and loopback addresses.
      *
      * @return self
      */
@@ -672,7 +665,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets city
      *
-     * @param string|null $city The login event city.
+     * @param string|null $city The city the IP address is located in, empty under the same conditions as `country`.
      *
      * @return self
      */
@@ -706,7 +699,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets browser
      *
-     * @param string|null $browser The login event browser.
+     * @param string|null $browser The browser and its version as parsed from the user agent of the attempt, empty when the client sent none  that could be parsed.
      *
      * @return self
      */
@@ -740,7 +733,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform
      *
-     * @param string|null $platform The login event platform.
+     * @param string|null $platform The operating system as parsed from the same user agent, empty under the same conditions as `browser`.
      *
      * @return self
      */
@@ -774,7 +767,7 @@ class LoginEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets page
      *
-     * @param string|null $page The login event page.
+     * @param string|null $page Where in the portal the attempt was made from: the referrer of the request, or that request's own path  when it carried no referrer. Long values are cut off at 512 characters.
      *
      * @return self
      */

@@ -323,7 +323,7 @@ class ExchangeToken200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets access_token
      *
-     * @param string|null $access_token The access token issued by the authorization server.
+     * @param string|null $access_token The token to send as a Bearer credential when calling the portal on the user behalf.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class ExchangeToken200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets token_type
      *
-     * @param string|null $token_type The type of token issued, typically 'Bearer'.
+     * @param string|null $token_type How the access token is to be presented. It is always Bearer.
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class ExchangeToken200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets expires_in
      *
-     * @param int|null $expires_in The number of seconds until the access token expires.
+     * @param int|null $expires_in How many seconds the access token stays valid, counted from the moment it was issued.
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class ExchangeToken200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets refresh_token
      *
-     * @param string|null $refresh_token The token used to obtain a new access token when the current one expires.
+     * @param string|null $refresh_token The token that buys a new access token once the current one expires. It is present only when the client is registered for the refresh token grant.
      *
      * @return self
      */

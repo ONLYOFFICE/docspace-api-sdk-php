@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocServiceUrlDto Class Doc Comment
  *
  * @category Class
- * @description The document service URL parameters.
+ * @description The document service location as this portal has it configured, together with the editor entry points a client  needs in order to open a document.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -386,7 +386,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param string|null $version The version of the document service.
+     * @param string|null $version The editor version the running Document Server reported. It is filled in only when the version was asked for,  and comes back empty otherwise. When the Document Server does not answer, a fallback version is reported  rather than an error, so a value here is no proof that the server is reachable.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_url_api
      *
-     * @param string|null $doc_service_url_api The document service URL API.
+     * @param string|null $doc_service_url_api The absolute URL of the editor api script that a client has to load before it can open a document. It is  derived from the public Document Server address unless the deployment overrides it separately.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_url
      *
-     * @param string|null $doc_service_url The document service URL.
+     * @param string|null $doc_service_url The public Document Server address a browser loads the editor from. Empty means no document server is  configured for this portal, and documents cannot be opened for editing or viewing.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_preload_url
      *
-     * @param string|null $doc_service_preload_url The URL used to preload the document service scripts.
+     * @param string|null $doc_service_preload_url The absolute URL of a page a client may load in advance to warm the editor scripts up. Loading it is optional  and changes nothing on the portal.
      *
      * @return self
      */
@@ -522,7 +522,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_url_internal
      *
-     * @param string|null $doc_service_url_internal The internal document service URL.
+     * @param string|null $doc_service_url_internal The address the portal uses for its own server-to-server calls to the Document Server. When no private-network  address is configured, it repeats the public one.
      *
      * @return self
      */
@@ -556,7 +556,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_portal_url
      *
-     * @param string|null $doc_service_portal_url The document service portal URL.
+     * @param string|null $doc_service_portal_url The address the Document Server is told to call this portal back on. Empty means nothing overrides it and the  portal's own resolved address is used.
      *
      * @return self
      */
@@ -590,7 +590,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_signature_header
      *
-     * @param string|null $doc_service_signature_header The document service signature header.
+     * @param string|null $doc_service_signature_header The name of the HTTP header that carries the signature on requests between the portal and the Document Server.  The secret itself is not part of the answer, so this only tells a client whether request signing is set up and  under which header.
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets doc_service_ssl_verification
      *
-     * @param bool $doc_service_ssl_verification Specifies if the document service SSL verification is enabled.
+     * @param bool $doc_service_ssl_verification Whether the portal validates the TLS certificate of the Document Server. False means any certificate is  accepted, which is expected only in a test deployment.
      *
      * @return self
      */
@@ -651,7 +651,7 @@ class DocServiceUrlDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_default
      *
-     * @param bool $is_default Specifies if the document service is default.
+     * @param bool $is_default Whether every one of these settings is still the one the deployment ships with. False means at least one of  the addresses, the signature settings or SSL verification has been overridden for this portal.
      *
      * @return self
      */

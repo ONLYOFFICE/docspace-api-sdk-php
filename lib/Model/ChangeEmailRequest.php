@@ -318,7 +318,7 @@ class ChangeEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets email
      *
-     * @param string|null $email The user email address.
+     * @param string|null $email The new address in plain text, up to 255 characters. It is stored in lowercase, and one of this field and  `encEmail` is required.
      *
      * @return self
      */
@@ -359,7 +359,7 @@ class ChangeEmailRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets enc_email
      *
-     * @param string|null $enc_email The user encrypted email address.
+     * @param string|null $enc_email The new address in the encrypted form the confirmation link carries. Pass the value from the link unchanged;  it is used only when `email` is empty.
      *
      * @return self
      */

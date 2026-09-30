@@ -306,7 +306,7 @@ class SetManagerRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets user_id
      *
-     * @param string $user_id The user ID.
+     * @param string $user_id The account to make the manager. It has to exist, otherwise the operation answers 404, and it is added to the  group at the same time, so it does not have to be a member beforehand.
      *
      * @return self
      */

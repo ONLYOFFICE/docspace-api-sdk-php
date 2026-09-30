@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuthData Class Doc Comment
  *
  * @category Class
- * @description The authentication data.
+ * @description The credentials of a third-party storage account. The portal takes them when an account is connected and does not  give them back afterwards.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets login
      *
-     * @param string|null $login The authentication login.
+     * @param string|null $login The account name at the storage service.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string|null $password The authentication password.
+     * @param string|null $password The password of the account at the storage service.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets raw_token
      *
-     * @param string|null $raw_token The authentication raw token.
+     * @param string|null $raw_token The token of the account, kept as the raw JSON document the storage service issued it in.
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The authentication URL.
+     * @param string|null $url The address of the storage server the account lives on.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider
      *
-     * @param string|null $provider The authentication provider.
+     * @param string|null $provider The storage service the credentials belong to, as the provider key the account was connected with.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class AuthData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets token
      *
-     * @param \OpenAPI\Client\Model\OAuth20Token|null $token The authentication token.
+     * @param \OpenAPI\Client\Model\OAuth20Token|null $token The same token as in `rawToken`, parsed into its OAuth 2.0 fields.
      *
      * @return self
      */

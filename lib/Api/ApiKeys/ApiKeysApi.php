@@ -155,7 +155,7 @@ class ApiKeysApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ApiKeyResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ApiKeyResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createApiKey($create_api_key_request_dto = null, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -176,7 +176,7 @@ class ApiKeysApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ApiKeyResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ApiKeyResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createApiKeyWithHttpInfo($create_api_key_request_dto = null, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -225,12 +225,6 @@ class ApiKeysApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -285,14 +279,6 @@ class ApiKeysApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -496,12 +482,12 @@ class ApiKeysApi
     /**
      * Operation deleteApiKey
      *
-     * Delete a user API key
+     * Delete an API key
      *
      * REST API Reference for deleteApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-api-key/
      *
-     * @param  string $key_id The API key ID. (required)
+     * @param  string $key_id The ID of the key to delete, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -517,12 +503,12 @@ class ApiKeysApi
     /**
      * Operation deleteApiKeyWithHttpInfo
      *
-     * Delete a user API key
+     * Delete an API key
      *
      * REST API Reference for deleteApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-api-key/
      *
-     * @param  string $key_id The API key ID. (required)
+     * @param  string $key_id The ID of the key to delete, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -661,12 +647,12 @@ class ApiKeysApi
     /**
      * Operation deleteApiKeyAsync
      *
-     * Delete a user API key
+     * Delete an API key
      *
      * REST API Reference for deleteApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-api-key/
      *
-     * @param  string $key_id The API key ID. (required)
+     * @param  string $key_id The ID of the key to delete, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -685,12 +671,12 @@ class ApiKeysApi
     /**
      * Operation deleteApiKeyAsyncWithHttpInfo
      *
-     * Delete a user API key
+     * Delete an API key
      *
      * REST API Reference for deleteApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-api-key/
      *
-     * @param  string $key_id The API key ID. (required)
+     * @param  string $key_id The ID of the key to delete, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -740,7 +726,7 @@ class ApiKeysApi
     /**
      * Create request for operation 'deleteApiKey'
      *
-     * @param  string $key_id The API key ID. (required)
+     * @param  string $key_id The ID of the key to delete, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1178,7 +1164,7 @@ class ApiKeysApi
     /**
      * Operation getApiKey
      *
-     * Get current user's API key
+     * Get the current API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1198,7 +1184,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyWithHttpInfo
      *
-     * Get current user's API key
+     * Get the current API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1327,7 +1313,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyAsync
      *
-     * Get current user's API key
+     * Get the current API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1350,7 +1336,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeyAsyncWithHttpInfo
      *
-     * Get current user's API key
+     * Get the current API key
      *
      * REST API Reference for getApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-key/
@@ -1502,7 +1488,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeys
      *
-     * Get current user's API keys
+     * Get the API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1522,7 +1508,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysWithHttpInfo
      *
-     * Get current user's API keys
+     * Get the API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1651,7 +1637,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysAsync
      *
-     * Get current user's API keys
+     * Get the API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1674,7 +1660,7 @@ class ApiKeysApi
     /**
      * Operation getApiKeysAsyncWithHttpInfo
      *
-     * Get current user's API keys
+     * Get the API keys
      *
      * REST API Reference for getApiKeys Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-api-keys/
@@ -1831,13 +1817,13 @@ class ApiKeysApi
      * REST API Reference for updateApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-api-key/
      *
-     * @param  string $key_id The unique identifier of the API key to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The request parameters for updating an existing API key. (required)
+     * @param  string $key_id The ID of the key to update, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateApiKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateApiKey($key_id, $update_api_key_request, string $contentType = self::contentTypes['updateApiKey'][0])
     {
@@ -1853,13 +1839,13 @@ class ApiKeysApi
      * REST API Reference for updateApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-api-key/
      *
-     * @param  string $key_id The unique identifier of the API key to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The request parameters for updating an existing API key. (required)
+     * @param  string $key_id The ID of the key to update, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateApiKey'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateApiKeyWithHttpInfo($key_id, $update_api_key_request, string $contentType = self::contentTypes['updateApiKey'][0])
     {
@@ -1908,12 +1894,6 @@ class ApiKeysApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1975,14 +1955,6 @@ class ApiKeysApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1998,8 +1970,8 @@ class ApiKeysApi
      * REST API Reference for updateApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-api-key/
      *
-     * @param  string $key_id The unique identifier of the API key to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The request parameters for updating an existing API key. (required)
+     * @param  string $key_id The ID of the key to update, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2023,8 +1995,8 @@ class ApiKeysApi
      * REST API Reference for updateApiKey Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-api-key/
      *
-     * @param  string $key_id The unique identifier of the API key to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The request parameters for updating an existing API key. (required)
+     * @param  string $key_id The ID of the key to update, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2074,8 +2046,8 @@ class ApiKeysApi
     /**
      * Create request for operation 'updateApiKey'
      *
-     * @param  string $key_id The unique identifier of the API key to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The request parameters for updating an existing API key. (required)
+     * @param  string $key_id The ID of the key to update, taken from the route. Read it from the `id` of an entry of  `GET api/2.0/keys` - it is not the secret and not the `keyPostfix`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateApiKeyRequest $update_api_key_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

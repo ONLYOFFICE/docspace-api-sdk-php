@@ -4,18 +4,18 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**aiEditorToolsCall()**](AIEditorToolsApi.md#aiEditorToolsCall) | **POST** /api/2.0/ai/editor-tools/call | Execute a DocSpace tool on behalf of the editor AI plugin |
-| [**aiEditorToolsList()**](AIEditorToolsApi.md#aiEditorToolsList) | **GET** /api/2.0/ai/editor-tools/list | Sanitized DocSpace tool catalog for the editor AI plugin |
+| [**aiEditorToolsCall()**](AIEditorToolsApi.md#aiEditorToolsCall) | **POST** /api/2.0/ai/editor-tools/call | Call an editor tool |
+| [**aiEditorToolsList()**](AIEditorToolsApi.md#aiEditorToolsList) | **GET** /api/2.0/ai/editor-tools/list | List editor tools |
 
 
 ## `aiEditorToolsCall()`
 
 ```php
-aiEditorToolsCall($request_body): \OpenAPI\Client\Model\AiSuccessResponse
+aiEditorToolsCall($ai_editor_tools_call_request): \OpenAPI\Client\Model\AiEditorToolsCall200Response
 ```
 
-Execute a DocSpace tool on behalf of the editor AI plugin
-Executes one DocSpace tool on behalf of the document editor's AI plugin, server-side and with the caller's forwarded credentials. Whatever the tool produced is returned for the plugin to relay to the model; a failure comes back as an error payload.
+Call an editor tool
+Executes one DocSpace tool on behalf of the document editor's AI plugin, server-side and under the caller's own credentials, so the browser never holds the transport. `name` has to be one of the tools `GET api/2.0/ai/editor-tools/list` reports; anything else, including a tool the editor is not allowed to reach, is refused. The result is always returned as a string - a structured result is serialised - because the plugin relays it to the model verbatim. A tool that fails does so inside that string as an error payload rather than as an HTTP status, so check the content before trusting it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-call/).
 
@@ -23,15 +23,15 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
+| **ai_editor_tools_call_request** | [**\OpenAPI\Client\Model\AiEditorToolsCallRequest**](../Model/AiEditorToolsCallRequest.md)| The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+[**\OpenAPI\Client\Model\AiEditorToolsCall200Response**](../Model/AiEditorToolsCall200Response.md)
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -40,15 +40,24 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\EditorToolsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$request_body = NULL; // array<string,mixed>
+$ai_editor_tools_call_request = new \OpenAPI\Client\Model\AiEditorToolsCallRequest(); // \OpenAPI\Client\Model\AiEditorToolsCallRequest | The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in.
 
 try {
-    $result = $apiInstance->aiEditorToolsCall($request_body);
+    $result = $apiInstance->aiEditorToolsCall($ai_editor_tools_call_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EditorToolsApi->aiEditorToolsCall: ', $e->getMessage(), PHP_EOL;
@@ -67,11 +76,11 @@ try {
 ## `aiEditorToolsList()`
 
 ```php
-aiEditorToolsList(): \OpenAPI\Client\Model\AiSuccessResponse
+aiEditorToolsList(): \OpenAPI\Client\Model\AiEditorToolsList200Response
 ```
 
-Sanitized DocSpace tool catalog for the editor AI plugin
-Returns the sanitized catalog of DocSpace tools available to the document editor's AI plugin - the same composed tool set the DocSpace chat sees, minus the web-search pair the editor already has through its own passthrough. Only the name, description, parameters and approval flag of each tool are exposed; transport details never reach the browser.
+List editor tools
+Returns the catalogue of DocSpace tools the document editor's AI plugin may offer the model - the same composed set the DocSpace chat sees, minus the two web-search tools the editor already reaches through its own passthrough. `entityId` scopes the catalogue to a room, which decides the room-specific tools it contains. Each entry carries exactly four fields: the tool name, its description, its input schema, and whether calling it requires an approval dialog; nothing else is exposed, because the raw listings of system servers carry transport details that must not reach a browser. The approval flag follows the same policy the chat engine applies, and a read-only tool comes back needing none - execute a tool with `POST api/2.0/ai/editor-tools/call`, which accepts only the names this catalogue reports.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-list/).
 
@@ -81,11 +90,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+[**\OpenAPI\Client\Model\AiEditorToolsList200Response**](../Model/AiEditorToolsList200Response.md)
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -94,10 +103,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\EditorToolsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {

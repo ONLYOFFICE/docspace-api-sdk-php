@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * XlsxReportResponseDto Class Doc Comment
  *
  * @category Class
- * @description The XLSX report task response parameters.
+ * @description The answer to a report generation request: the queued task, the form whose answers are collected, and whether the  report file is being created or refreshed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'form' => '\OpenAPI\Client\Model\FileDtoInteger',
+        'form' => '\OpenAPI\Client\Model\FileDto',
         'task' => '\OpenAPI\Client\Model\DocumentBuilderTaskDto',
         'is_new_file' => 'bool'
     ];
@@ -307,7 +307,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets form
      *
-     * @return \OpenAPI\Client\Model\FileDtoInteger|null
+     * @return \OpenAPI\Client\Model\FileDto|null
      */
     public function getForm()
     {
@@ -317,7 +317,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets form
      *
-     * @param \OpenAPI\Client\Model\FileDtoInteger|null $form The original form file information.
+     * @param \OpenAPI\Client\Model\FileDto|null $form The original form the answers are collected from. It is not the produced spreadsheet - that one arrives with  the task, once the task reports completion.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets task
      *
-     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $task The Document Builder task information.
+     * @param \OpenAPI\Client\Model\DocumentBuilderTaskDto|null $task The queued generation. Poll it with `GET api/2.0/files/file/{fileId}/xlsx` until it reports completion, and  take the produced file from it then.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class XlsxReportResponseDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_new_file
      *
-     * @param bool|null $is_new_file Specifies whether the XLSX report file is newly created or an existing file will be updated.
+     * @param bool|null $is_new_file True when this run creates the report file, false when an existing report is rewritten in place, which means  it keeps its id and the links already shared for it.
      *
      * @return self
      */

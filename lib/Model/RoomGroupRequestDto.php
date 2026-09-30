@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomGroupRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for creating a room group
+ * @description The name, the icon and the rooms of a room group to create.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'name' => 'string',
         'icon' => 'string',
-        'rooms' => '\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]'
+        'rooms' => '\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]',
+        'search_area' => '\OpenAPI\Client\Model\SearchArea'
     ];
 
     /**
@@ -73,7 +74,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'name' => null,
         'icon' => null,
-        'rooms' => null
+        'rooms' => null,
+        'search_area' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'name' => false,
         'icon' => false,
-        'rooms' => false
+        'rooms' => false,
+        'search_area' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'name' => 'name',
         'icon' => 'icon',
-        'rooms' => 'rooms'
+        'rooms' => 'rooms',
+        'search_area' => 'searchArea'
     ];
 
     /**
@@ -186,7 +190,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'name' => 'setName',
         'icon' => 'setIcon',
-        'rooms' => 'setRooms'
+        'rooms' => 'setRooms',
+        'search_area' => 'setSearchArea'
     ];
 
     /**
@@ -197,7 +202,8 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'name' => 'getName',
         'icon' => 'getIcon',
-        'rooms' => 'getRooms'
+        'rooms' => 'getRooms',
+        'search_area' => 'getSearchArea'
     ];
 
     /**
@@ -260,6 +266,7 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('icon', $data ?? [], null);
         $this->setIfExists('rooms', $data ?? [], null);
+        $this->setIfExists('search_area', $data ?? [], null);
     }
 
     /**
@@ -342,7 +349,7 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string $name Group name
+     * @param string $name The name to show the group under. Surrounding spaces are trimmed before it is stored, a name that is blank  once trimmed is refused, and the name does not have to differ from the names of the caller's other groups.
      *
      * @return self
      */
@@ -376,7 +383,7 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets icon
      *
-     * @param string $icon Group icon
+     * @param string $icon The icon of the group, given as the identifier of one of the built-in covers listed by  `GET api/2.0/files/rooms/covers`. An uploaded image cannot be used, and any value that is not one of those  identifiers is refused.
      *
      * @return self
      */
@@ -410,7 +417,7 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets rooms
      *
-     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[] $rooms The list of room IDs.
+     * @param \OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[] $rooms The rooms to gather in the group, each given as a number for a room stored in the portal or as a string for a  room on a connected third-party account. Every identifier has to name a room the caller can read; repeats are  collapsed, and an element of any other shape - a decimal number, a number sent as a string, null - is refused.
      *
      * @return self
      */
@@ -420,6 +427,33 @@ class RoomGroupRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable rooms cannot be null');
         }
         $this->container['rooms'] = $rooms;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_area
+     *
+     * @return \OpenAPI\Client\Model\SearchArea|null
+     */
+    public function getSearchArea()
+    {
+        return $this->container['search_area'];
+    }
+
+    /**
+     * Sets search_area
+     *
+     * @param \OpenAPI\Client\Model\SearchArea|null $search_area The section the group belongs to: Active for Rooms and Forms for Forms. Active when omitted.
+     *
+     * @return self
+     */
+    public function setSearchArea($search_area)
+    {
+        if (is_null($search_area)) {
+            throw new \InvalidArgumentException('non-nullable search_area cannot be null');
+        }
+        $this->container['search_area'] = $search_area;
 
         return $this;
     }

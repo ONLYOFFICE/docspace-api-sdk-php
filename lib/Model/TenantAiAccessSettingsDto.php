@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantAiAccessSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the tenant-level AI access settings.
+ * @description Whether AI functionality is available on the portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies whether AI functionality is enabled for the tenant.  Set to `true` to enable all AI features or `false` to disable them tenant-wide.
+     * @param bool|null $enabled Whether AI is available on the portal at all - chat, agents and vectorization together. Switching it off  hides the AI Agents folder and makes every AI endpoint unreachable for all members at once, not only for the  caller, and the change is pushed to connected clients rather than waiting for their next request.
      *
      * @return self
      */

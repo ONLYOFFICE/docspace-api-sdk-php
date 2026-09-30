@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AnonymousConfigDto Class Doc Comment
  *
  * @category Class
- * @description The anonymous config parameters.
+ * @description How the editors treat a participant who opened the document without an account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -306,7 +306,7 @@ class AnonymousConfigDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets request
      *
-     * @param bool $request Specifies if the anonymous is a request.
+     * @param bool $request Whether the editors ask an anonymous participant for a display name before letting them in. It follows the  chat permission of the document, since a nameless participant cannot take part in one.
      *
      * @return self
      */

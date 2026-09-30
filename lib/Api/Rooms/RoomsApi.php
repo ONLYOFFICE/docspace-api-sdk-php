@@ -260,18 +260,18 @@ class RoomsApi
     /**
      * Operation addRoomTags
      *
-     * Add the room tags
+     * Attach tags to a room
      *
      * REST API Reference for addRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRoomTags'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addRoomTags($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['addRoomTags'][0])
     {
@@ -282,18 +282,18 @@ class RoomsApi
     /**
      * Operation addRoomTagsWithHttpInfo
      *
-     * Add the room tags
+     * Attach tags to a room
      *
      * REST API Reference for addRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRoomTags'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addRoomTagsWithHttpInfo($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['addRoomTags'][0])
     {
@@ -325,7 +325,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -371,7 +371,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -380,7 +380,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -427,13 +427,13 @@ class RoomsApi
     /**
      * Operation addRoomTagsAsync
      *
-     * Add the room tags
+     * Attach tags to a room
      *
      * REST API Reference for addRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -452,13 +452,13 @@ class RoomsApi
     /**
      * Operation addRoomTagsAsyncWithHttpInfo
      *
-     * Add the room tags
+     * Attach tags to a room
      *
      * REST API Reference for addRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -466,7 +466,7 @@ class RoomsApi
      */
     public function addRoomTagsAsyncWithHttpInfo($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['addRoomTags'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->addRoomTagsRequest($id, $batch_tags_request_dto, $contentType);
 
         return $this->client
@@ -508,8 +508,8 @@ class RoomsApi
     /**
      * Create request for operation 'addRoomTags'
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -636,8 +636,8 @@ class RoomsApi
      * REST API Reference for archiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/archive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -658,8 +658,8 @@ class RoomsApi
      * REST API Reference for archiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/archive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -803,8 +803,8 @@ class RoomsApi
      * REST API Reference for archiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/archive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -828,8 +828,8 @@ class RoomsApi
      * REST API Reference for archiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/archive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -879,8 +879,8 @@ class RoomsApi
     /**
      * Create request for operation 'archiveRoom'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1007,13 +1007,13 @@ class RoomsApi
      * REST API Reference for changeRoomCover Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-cover/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The request parameters to change the room cover. (required)
+     * @param  int|string $id The room to change, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The cover and the colour to apply. Either half may be sent on its own, and an empty object leaves the room as  it is. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomCover'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function changeRoomCover($id, $cover_request_dto, string $contentType = self::contentTypes['changeRoomCover'][0])
     {
@@ -1029,13 +1029,13 @@ class RoomsApi
      * REST API Reference for changeRoomCover Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-cover/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The request parameters to change the room cover. (required)
+     * @param  int|string $id The room to change, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The cover and the colour to apply. Either half may be sent on its own, and an empty object leaves the room as  it is. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomCover'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeRoomCoverWithHttpInfo($id, $cover_request_dto, string $contentType = self::contentTypes['changeRoomCover'][0])
     {
@@ -1067,7 +1067,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -1113,7 +1113,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -1122,7 +1122,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1174,8 +1174,8 @@ class RoomsApi
      * REST API Reference for changeRoomCover Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-cover/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The request parameters to change the room cover. (required)
+     * @param  int|string $id The room to change, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The cover and the colour to apply. Either half may be sent on its own, and an empty object leaves the room as  it is. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomCover'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1199,8 +1199,8 @@ class RoomsApi
      * REST API Reference for changeRoomCover Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-room-cover/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The request parameters to change the room cover. (required)
+     * @param  int|string $id The room to change, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The cover and the colour to apply. Either half may be sent on its own, and an empty object leaves the room as  it is. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomCover'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1208,7 +1208,7 @@ class RoomsApi
      */
     public function changeRoomCoverAsyncWithHttpInfo($id, $cover_request_dto, string $contentType = self::contentTypes['changeRoomCover'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->changeRoomCoverRequest($id, $cover_request_dto, $contentType);
 
         return $this->client
@@ -1250,8 +1250,8 @@ class RoomsApi
     /**
      * Create request for operation 'changeRoomCover'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The request parameters to change the room cover. (required)
+     * @param  int|string $id The room to change, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\CoverRequestDto $cover_request_dto The cover and the colour to apply. Either half may be sent on its own, and an empty object leaves the room as  it is. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeRoomCover'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1389,7 +1389,7 @@ class RoomsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createRoom($create_room_request_dto = null, string $contentType = self::contentTypes['createRoom'][0])
     {
@@ -1410,7 +1410,7 @@ class RoomsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRoomWithHttpInfo($create_room_request_dto = null, string $contentType = self::contentTypes['createRoom'][0])
     {
@@ -1442,7 +1442,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -1488,7 +1488,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -1497,7 +1497,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1581,7 +1581,7 @@ class RoomsApi
      */
     public function createRoomAsyncWithHttpInfo($create_room_request_dto = null, string $contentType = self::contentTypes['createRoom'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->createRoomRequest($create_room_request_dto, $contentType);
 
         return $this->client
@@ -2081,18 +2081,18 @@ class RoomsApi
     /**
      * Operation createRoomLogo
      *
-     * Create a room logo
+     * Set the room logo
      *
      * REST API Reference for createRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-logo/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The logo request parameters. (required)
+     * @param  int|string $id The room the logo is set on. (required)
+     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The uploaded picture and the piece of it to use. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomLogo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createRoomLogo($id, $logo_request, string $contentType = self::contentTypes['createRoomLogo'][0])
     {
@@ -2103,18 +2103,18 @@ class RoomsApi
     /**
      * Operation createRoomLogoWithHttpInfo
      *
-     * Create a room logo
+     * Set the room logo
      *
      * REST API Reference for createRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-logo/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The logo request parameters. (required)
+     * @param  int|string $id The room the logo is set on. (required)
+     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The uploaded picture and the piece of it to use. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomLogo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRoomLogoWithHttpInfo($id, $logo_request, string $contentType = self::contentTypes['createRoomLogo'][0])
     {
@@ -2146,7 +2146,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -2192,7 +2192,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -2201,7 +2201,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2248,13 +2248,13 @@ class RoomsApi
     /**
      * Operation createRoomLogoAsync
      *
-     * Create a room logo
+     * Set the room logo
      *
      * REST API Reference for createRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-logo/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The logo request parameters. (required)
+     * @param  int|string $id The room the logo is set on. (required)
+     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The uploaded picture and the piece of it to use. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2273,13 +2273,13 @@ class RoomsApi
     /**
      * Operation createRoomLogoAsyncWithHttpInfo
      *
-     * Create a room logo
+     * Set the room logo
      *
      * REST API Reference for createRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-logo/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The logo request parameters. (required)
+     * @param  int|string $id The room the logo is set on. (required)
+     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The uploaded picture and the piece of it to use. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2287,7 +2287,7 @@ class RoomsApi
      */
     public function createRoomLogoAsyncWithHttpInfo($id, $logo_request, string $contentType = self::contentTypes['createRoomLogo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->createRoomLogoRequest($id, $logo_request, $contentType);
 
         return $this->client
@@ -2329,8 +2329,8 @@ class RoomsApi
     /**
      * Create request for operation 'createRoomLogo'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The logo request parameters. (required)
+     * @param  int|string $id The room the logo is set on. (required)
+     * @param  \OpenAPI\Client\Model\LogoRequest $logo_request The uploaded picture and the piece of it to use. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2809,7 +2809,7 @@ class RoomsApi
     /**
      * Operation createRoomTemplate
      *
-     * Start creating room template
+     * Create a room template
      *
      * REST API Reference for createRoomTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-template/
@@ -2830,7 +2830,7 @@ class RoomsApi
     /**
      * Operation createRoomTemplateWithHttpInfo
      *
-     * Start creating room template
+     * Create a room template
      *
      * REST API Reference for createRoomTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-template/
@@ -2974,7 +2974,7 @@ class RoomsApi
     /**
      * Operation createRoomTemplateAsync
      *
-     * Start creating room template
+     * Create a room template
      *
      * REST API Reference for createRoomTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-template/
@@ -2998,7 +2998,7 @@ class RoomsApi
     /**
      * Operation createRoomTemplateAsyncWithHttpInfo
      *
-     * Start creating room template
+     * Create a room template
      *
      * REST API Reference for createRoomTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-template/
@@ -3165,13 +3165,13 @@ class RoomsApi
      * REST API Reference for createRoomThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-third-party/
      *
-     * @param  string $id The ID of the folder in the third-party storage in which the contents of the room will be stored. (required)
-     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The third-party room information. (required)
+     * @param  string $id The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. (required)
+     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The settings of the room to be created out of the folder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomThirdParty'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createRoomThirdParty($id, $create_third_party_room, string $contentType = self::contentTypes['createRoomThirdParty'][0])
     {
@@ -3187,13 +3187,13 @@ class RoomsApi
      * REST API Reference for createRoomThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-third-party/
      *
-     * @param  string $id The ID of the folder in the third-party storage in which the contents of the room will be stored. (required)
-     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The third-party room information. (required)
+     * @param  string $id The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. (required)
+     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The settings of the room to be created out of the folder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomThirdParty'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createRoomThirdPartyWithHttpInfo($id, $create_third_party_room, string $contentType = self::contentTypes['createRoomThirdParty'][0])
     {
@@ -3225,7 +3225,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $request,
                         $response,
                     );
@@ -3271,7 +3271,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderStringWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                 $request,
                 $response,
             );
@@ -3280,7 +3280,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3332,8 +3332,8 @@ class RoomsApi
      * REST API Reference for createRoomThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-third-party/
      *
-     * @param  string $id The ID of the folder in the third-party storage in which the contents of the room will be stored. (required)
-     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The third-party room information. (required)
+     * @param  string $id The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. (required)
+     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The settings of the room to be created out of the folder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3357,8 +3357,8 @@ class RoomsApi
      * REST API Reference for createRoomThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-third-party/
      *
-     * @param  string $id The ID of the folder in the third-party storage in which the contents of the room will be stored. (required)
-     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The third-party room information. (required)
+     * @param  string $id The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. (required)
+     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The settings of the room to be created out of the folder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3366,7 +3366,7 @@ class RoomsApi
      */
     public function createRoomThirdPartyAsyncWithHttpInfo($id, $create_third_party_room, string $contentType = self::contentTypes['createRoomThirdParty'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderStringWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyFolderWrapper';
         $request = $this->createRoomThirdPartyRequest($id, $create_third_party_room, $contentType);
 
         return $this->client
@@ -3408,8 +3408,8 @@ class RoomsApi
     /**
      * Create request for operation 'createRoomThirdParty'
      *
-     * @param  string $id The ID of the folder in the third-party storage in which the contents of the room will be stored. (required)
-     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The third-party room information. (required)
+     * @param  string $id The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. (required)
+     * @param  \OpenAPI\Client\Model\CreateThirdPartyRoom $create_third_party_room The settings of the room to be created out of the folder. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRoomThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3819,8 +3819,8 @@ class RoomsApi
      * REST API Reference for deleteRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The parameters for deleting a room. (required)
+     * @param  int|string $id The room to delete, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The body of the request. It is required even though the deletion does not depend on what it holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3841,8 +3841,8 @@ class RoomsApi
      * REST API Reference for deleteRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The parameters for deleting a room. (required)
+     * @param  int|string $id The room to delete, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The body of the request. It is required even though the deletion does not depend on what it holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3986,8 +3986,8 @@ class RoomsApi
      * REST API Reference for deleteRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The parameters for deleting a room. (required)
+     * @param  int|string $id The room to delete, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The body of the request. It is required even though the deletion does not depend on what it holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4011,8 +4011,8 @@ class RoomsApi
      * REST API Reference for deleteRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The parameters for deleting a room. (required)
+     * @param  int|string $id The room to delete, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The body of the request. It is required even though the deletion does not depend on what it holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4062,8 +4062,8 @@ class RoomsApi
     /**
      * Create request for operation 'deleteRoom'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The parameters for deleting a room. (required)
+     * @param  int|string $id The room to delete, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\DeleteRoomRequest $delete_room_request The body of the request. It is required even though the deletion does not depend on what it holds. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4196,12 +4196,12 @@ class RoomsApi
      * REST API Reference for deleteRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-logo/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomLogo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteRoomLogo($id, string $contentType = self::contentTypes['deleteRoomLogo'][0])
     {
@@ -4217,12 +4217,12 @@ class RoomsApi
      * REST API Reference for deleteRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-logo/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomLogo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteRoomLogoWithHttpInfo($id, string $contentType = self::contentTypes['deleteRoomLogo'][0])
     {
@@ -4254,7 +4254,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -4300,7 +4300,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -4309,7 +4309,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4361,7 +4361,7 @@ class RoomsApi
      * REST API Reference for deleteRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-logo/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4385,7 +4385,7 @@ class RoomsApi
      * REST API Reference for deleteRoomLogo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-logo/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4393,7 +4393,7 @@ class RoomsApi
      */
     public function deleteRoomLogoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteRoomLogo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->deleteRoomLogoRequest($id, $contentType);
 
         return $this->client
@@ -4435,7 +4435,7 @@ class RoomsApi
     /**
      * Create request for operation 'deleteRoomLogo'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomLogo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4549,18 +4549,18 @@ class RoomsApi
     /**
      * Operation deleteRoomTags
      *
-     * Remove the room tags
+     * Detach tags from a room
      *
      * REST API Reference for deleteRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomTags'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteRoomTags($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['deleteRoomTags'][0])
     {
@@ -4571,18 +4571,18 @@ class RoomsApi
     /**
      * Operation deleteRoomTagsWithHttpInfo
      *
-     * Remove the room tags
+     * Detach tags from a room
      *
      * REST API Reference for deleteRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomTags'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteRoomTagsWithHttpInfo($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['deleteRoomTags'][0])
     {
@@ -4614,7 +4614,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -4660,7 +4660,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -4669,7 +4669,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4716,13 +4716,13 @@ class RoomsApi
     /**
      * Operation deleteRoomTagsAsync
      *
-     * Remove the room tags
+     * Detach tags from a room
      *
      * REST API Reference for deleteRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4741,13 +4741,13 @@ class RoomsApi
     /**
      * Operation deleteRoomTagsAsyncWithHttpInfo
      *
-     * Remove the room tags
+     * Detach tags from a room
      *
      * REST API Reference for deleteRoomTags Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-room-tags/
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4755,7 +4755,7 @@ class RoomsApi
      */
     public function deleteRoomTagsAsyncWithHttpInfo($id, $batch_tags_request_dto = null, string $contentType = self::contentTypes['deleteRoomTags'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->deleteRoomTagsRequest($id, $batch_tags_request_dto, $contentType);
 
         return $this->client
@@ -4797,8 +4797,8 @@ class RoomsApi
     /**
      * Create request for operation 'deleteRoomTags'
      *
-     * @param  int $id The room Id. (required)
-     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The parameters for managing tags. (optional)
+     * @param  int|string $id The room whose tags are changed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\BatchTagsRequestDto|null $batch_tags_request_dto The names to attach or to detach. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteRoomTags'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4925,7 +4925,7 @@ class RoomsApi
      * REST API Reference for getExternalDbSyncStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-db-sync-status/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalDbSyncStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4946,7 +4946,7 @@ class RoomsApi
      * REST API Reference for getExternalDbSyncStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-db-sync-status/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalDbSyncStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5090,7 +5090,7 @@ class RoomsApi
      * REST API Reference for getExternalDbSyncStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-db-sync-status/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalDbSyncStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5114,7 +5114,7 @@ class RoomsApi
      * REST API Reference for getExternalDbSyncStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-external-db-sync-status/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalDbSyncStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5164,7 +5164,7 @@ class RoomsApi
     /**
      * Create request for operation 'getExternalDbSyncStatus'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getExternalDbSyncStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5278,12 +5278,12 @@ class RoomsApi
     /**
      * Operation getNewRoomItems
      *
-     * Get the new room items
+     * Get new items in a room
      *
      * REST API Reference for getNewRoomItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-room-items/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewRoomItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5299,12 +5299,12 @@ class RoomsApi
     /**
      * Operation getNewRoomItemsWithHttpInfo
      *
-     * Get the new room items
+     * Get new items in a room
      *
      * REST API Reference for getNewRoomItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-room-items/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewRoomItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5443,12 +5443,12 @@ class RoomsApi
     /**
      * Operation getNewRoomItemsAsync
      *
-     * Get the new room items
+     * Get new items in a room
      *
      * REST API Reference for getNewRoomItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-room-items/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewRoomItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5467,12 +5467,12 @@ class RoomsApi
     /**
      * Operation getNewRoomItemsAsyncWithHttpInfo
      *
-     * Get the new room items
+     * Get new items in a room
      *
      * REST API Reference for getNewRoomItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-new-room-items/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewRoomItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5522,7 +5522,7 @@ class RoomsApi
     /**
      * Create request for operation 'getNewRoomItems'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNewRoomItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5636,12 +5636,12 @@ class RoomsApi
     /**
      * Operation getPublicSettings
      *
-     * Get public settings
+     * Get room template public access
      *
      * REST API Reference for getPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-settings/
      *
-     * @param  int $id The room template ID. (required)
+     * @param  int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5657,12 +5657,12 @@ class RoomsApi
     /**
      * Operation getPublicSettingsWithHttpInfo
      *
-     * Get public settings
+     * Get room template public access
      *
      * REST API Reference for getPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-settings/
      *
-     * @param  int $id The room template ID. (required)
+     * @param  int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5801,12 +5801,12 @@ class RoomsApi
     /**
      * Operation getPublicSettingsAsync
      *
-     * Get public settings
+     * Get room template public access
      *
      * REST API Reference for getPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-settings/
      *
-     * @param  int $id The room template ID. (required)
+     * @param  int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5825,12 +5825,12 @@ class RoomsApi
     /**
      * Operation getPublicSettingsAsyncWithHttpInfo
      *
-     * Get public settings
+     * Get room template public access
      *
      * REST API Reference for getPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-settings/
      *
-     * @param  int $id The room template ID. (required)
+     * @param  int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5880,7 +5880,7 @@ class RoomsApi
     /**
      * Create request for operation 'getPublicSettings'
      *
-     * @param  int $id The room template ID. (required)
+     * @param  int $id The identifier of the room template. Take it from `templateId` of `GET api/2.0/files/roomtemplate/status`, or  from the folder list of `GET api/2.0/files/rooms` called with `searchArea` set to 4; an identifier of an  ordinary room is not accepted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPublicSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6000,7 +6000,7 @@ class RoomsApi
     /**
      * Operation getRoomCovers
      *
-     * Get covers
+     * Get room cover gallery
      *
      * REST API Reference for getRoomCovers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-covers/
@@ -6020,7 +6020,7 @@ class RoomsApi
     /**
      * Operation getRoomCoversWithHttpInfo
      *
-     * Get covers
+     * Get room cover gallery
      *
      * REST API Reference for getRoomCovers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-covers/
@@ -6149,7 +6149,7 @@ class RoomsApi
     /**
      * Operation getRoomCoversAsync
      *
-     * Get covers
+     * Get room cover gallery
      *
      * REST API Reference for getRoomCovers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-covers/
@@ -6172,7 +6172,7 @@ class RoomsApi
     /**
      * Operation getRoomCoversAsyncWithHttpInfo
      *
-     * Get covers
+     * Get room cover gallery
      *
      * REST API Reference for getRoomCovers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-covers/
@@ -6977,12 +6977,12 @@ class RoomsApi
      * REST API Reference for getRoomInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-info/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRoomInfo($id, string $contentType = self::contentTypes['getRoomInfo'][0])
     {
@@ -6998,12 +6998,12 @@ class RoomsApi
      * REST API Reference for getRoomInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-info/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomInfoWithHttpInfo($id, string $contentType = self::contentTypes['getRoomInfo'][0])
     {
@@ -7035,7 +7035,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -7075,7 +7075,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -7084,7 +7084,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7128,7 +7128,7 @@ class RoomsApi
      * REST API Reference for getRoomInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-info/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7152,7 +7152,7 @@ class RoomsApi
      * REST API Reference for getRoomInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-info/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7160,7 +7160,7 @@ class RoomsApi
      */
     public function getRoomInfoAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getRoomInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->getRoomInfoRequest($id, $contentType);
 
         return $this->client
@@ -7202,7 +7202,7 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomInfo'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7269,6 +7269,28 @@ class RoomsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7299,8 +7321,8 @@ class RoomsApi
      * REST API Reference for getRoomLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-links/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LinkType|null $type The link type. (optional)
+     * @param  int|string $id The room whose links are listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\LinkType|null $type Narrows the answer to one kind of link: invitation links, which turn whoever opens them into a member, or  external links, which open the room without an account. Leaving it out returns both kinds together. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7321,8 +7343,8 @@ class RoomsApi
      * REST API Reference for getRoomLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-links/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LinkType|null $type The link type. (optional)
+     * @param  int|string $id The room whose links are listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\LinkType|null $type Narrows the answer to one kind of link: invitation links, which turn whoever opens them into a member, or  external links, which open the room without an account. Leaving it out returns both kinds together. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7466,8 +7488,8 @@ class RoomsApi
      * REST API Reference for getRoomLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-links/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LinkType|null $type The link type. (optional)
+     * @param  int|string $id The room whose links are listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\LinkType|null $type Narrows the answer to one kind of link: invitation links, which turn whoever opens them into a member, or  external links, which open the room without an account. Leaving it out returns both kinds together. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7491,8 +7513,8 @@ class RoomsApi
      * REST API Reference for getRoomLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-links/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LinkType|null $type The link type. (optional)
+     * @param  int|string $id The room whose links are listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\LinkType|null $type Narrows the answer to one kind of link: invitation links, which turn whoever opens them into a member, or  external links, which open the room without an account. Leaving it out returns both kinds together. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7542,8 +7564,8 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomLinks'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\LinkType|null $type The link type. (optional)
+     * @param  int|string $id The room whose links are listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\LinkType|null $type Narrows the answer to one kind of link: invitation links, which turn whoever opens them into a member, or  external links, which open the room without an account. Leaving it out returns both kinds together. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7672,11 +7694,11 @@ class RoomsApi
      * REST API Reference for getRoomSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-security-info/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type The filter type of the access rights. (optional)
-     * @param  int|null $count The number of items to be retrieved or processed. (optional)
-     * @param  int|null $start_index The starting index of the items to retrieve in a paginated request. (optional)
-     * @param  string|null $filter_value The text filter value used for filtering room security information. (optional)
+     * @param  int|string $id The room whose access list is read, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type What kind of access entries to list. The default covers accounts and groups and leaves the sharing links of  the room out; those are read with `GET api/2.0/files/rooms/{id}/links`. (optional)
+     * @param  int|null $count How many entries to return in one answer. The total number of matching entries comes back in the response  headers, so it is what tells the caller whether another page is needed. (optional)
+     * @param  int|null $start_index How many matching entries to skip before the page starts. Together with the page size it walks the list, which  is ordered by role and then by name and is therefore stable between calls. (optional)
+     * @param  string|null $filter_value Keeps only the entries whose displayed name contains this text. An invitation that has not been accepted yet  is listed under the email address it was sent to, so that is what has to be searched for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7697,11 +7719,11 @@ class RoomsApi
      * REST API Reference for getRoomSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-security-info/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type The filter type of the access rights. (optional)
-     * @param  int|null $count The number of items to be retrieved or processed. (optional)
-     * @param  int|null $start_index The starting index of the items to retrieve in a paginated request. (optional)
-     * @param  string|null $filter_value The text filter value used for filtering room security information. (optional)
+     * @param  int|string $id The room whose access list is read, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type What kind of access entries to list. The default covers accounts and groups and leaves the sharing links of  the room out; those are read with `GET api/2.0/files/rooms/{id}/links`. (optional)
+     * @param  int|null $count How many entries to return in one answer. The total number of matching entries comes back in the response  headers, so it is what tells the caller whether another page is needed. (optional)
+     * @param  int|null $start_index How many matching entries to skip before the page starts. Together with the page size it walks the list, which  is ordered by role and then by name and is therefore stable between calls. (optional)
+     * @param  string|null $filter_value Keeps only the entries whose displayed name contains this text. An invitation that has not been accepted yet  is listed under the email address it was sent to, so that is what has to be searched for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomSecurityInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7845,11 +7867,11 @@ class RoomsApi
      * REST API Reference for getRoomSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-security-info/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type The filter type of the access rights. (optional)
-     * @param  int|null $count The number of items to be retrieved or processed. (optional)
-     * @param  int|null $start_index The starting index of the items to retrieve in a paginated request. (optional)
-     * @param  string|null $filter_value The text filter value used for filtering room security information. (optional)
+     * @param  int|string $id The room whose access list is read, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type What kind of access entries to list. The default covers accounts and groups and leaves the sharing links of  the room out; those are read with `GET api/2.0/files/rooms/{id}/links`. (optional)
+     * @param  int|null $count How many entries to return in one answer. The total number of matching entries comes back in the response  headers, so it is what tells the caller whether another page is needed. (optional)
+     * @param  int|null $start_index How many matching entries to skip before the page starts. Together with the page size it walks the list, which  is ordered by role and then by name and is therefore stable between calls. (optional)
+     * @param  string|null $filter_value Keeps only the entries whose displayed name contains this text. An invitation that has not been accepted yet  is listed under the email address it was sent to, so that is what has to be searched for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7873,11 +7895,11 @@ class RoomsApi
      * REST API Reference for getRoomSecurityInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-security-info/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type The filter type of the access rights. (optional)
-     * @param  int|null $count The number of items to be retrieved or processed. (optional)
-     * @param  int|null $start_index The starting index of the items to retrieve in a paginated request. (optional)
-     * @param  string|null $filter_value The text filter value used for filtering room security information. (optional)
+     * @param  int|string $id The room whose access list is read, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type What kind of access entries to list. The default covers accounts and groups and leaves the sharing links of  the room out; those are read with `GET api/2.0/files/rooms/{id}/links`. (optional)
+     * @param  int|null $count How many entries to return in one answer. The total number of matching entries comes back in the response  headers, so it is what tells the caller whether another page is needed. (optional)
+     * @param  int|null $start_index How many matching entries to skip before the page starts. Together with the page size it walks the list, which  is ordered by role and then by name and is therefore stable between calls. (optional)
+     * @param  string|null $filter_value Keeps only the entries whose displayed name contains this text. An invitation that has not been accepted yet  is listed under the email address it was sent to, so that is what has to be searched for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7927,11 +7949,11 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomSecurityInfo'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type The filter type of the access rights. (optional)
-     * @param  int|null $count The number of items to be retrieved or processed. (optional)
-     * @param  int|null $start_index The starting index of the items to retrieve in a paginated request. (optional)
-     * @param  string|null $filter_value The text filter value used for filtering room security information. (optional)
+     * @param  int|string $id The room whose access list is read, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ShareFilterType|null $filter_type What kind of access entries to list. The default covers accounts and groups and leaves the sharing links of  the room out; those are read with `GET api/2.0/files/rooms/{id}/links`. (optional)
+     * @param  int|null $count How many entries to return in one answer. The total number of matching entries comes back in the response  headers, so it is what tells the caller whether another page is needed. (optional)
+     * @param  int|null $start_index How many matching entries to skip before the page starts. Together with the page size it walks the list, which  is ordered by role and then by name and is therefore stable between calls. (optional)
+     * @param  string|null $filter_value Keeps only the entries whose displayed name contains this text. An invitation that has not been accepted yet  is listed under the email address it was sent to, so that is what has to be searched for. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomSecurityInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8091,19 +8113,19 @@ class RoomsApi
     /**
      * Operation getRoomTagsInfo
      *
-     * Get the room tags
+     * Get available room tags
      *
      * REST API Reference for getRoomTagsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
-     * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
-     * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
+     * @param  int|null $count How many tag names one page may carry. The answer reports no total, so a page shorter than this is the sign  that the list is exhausted. (optional)
+     * @param  int|null $start_index How many tag names to skip before the page begins. Raise it by the number of names already received to read  the next page. (optional)
+     * @param  string|null $filter_value Keeps only the tag names that contain this text, ignoring case. It is a substring match, so a fragment from  the middle of a name is enough. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRoomTagsInfo($count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getRoomTagsInfo'][0])
     {
@@ -8114,19 +8136,19 @@ class RoomsApi
     /**
      * Operation getRoomTagsInfoWithHttpInfo
      *
-     * Get the room tags
+     * Get available room tags
      *
      * REST API Reference for getRoomTagsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
-     * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
-     * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
+     * @param  int|null $count How many tag names one page may carry. The answer reports no total, so a page shorter than this is the sign  that the list is exhausted. (optional)
+     * @param  int|null $start_index How many tag names to skip before the page begins. Raise it by the number of names already received to read  the next page. (optional)
+     * @param  string|null $filter_value Keeps only the tag names that contain this text, ignoring case. It is a substring match, so a fragment from  the middle of a name is enough. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomTagsInfoWithHttpInfo($count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getRoomTagsInfo'][0])
     {
@@ -8158,7 +8180,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectArrayWrapper',
+                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
                         $request,
                         $response,
                     );
@@ -8204,7 +8226,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectArrayWrapper',
+                '\OpenAPI\Client\Model\STRINGArrayWrapper',
                 $request,
                 $response,
             );
@@ -8213,7 +8235,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectArrayWrapper',
+                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8260,14 +8282,14 @@ class RoomsApi
     /**
      * Operation getRoomTagsInfoAsync
      *
-     * Get the room tags
+     * Get available room tags
      *
      * REST API Reference for getRoomTagsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
-     * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
-     * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
+     * @param  int|null $count How many tag names one page may carry. The answer reports no total, so a page shorter than this is the sign  that the list is exhausted. (optional)
+     * @param  int|null $start_index How many tag names to skip before the page begins. Raise it by the number of names already received to read  the next page. (optional)
+     * @param  string|null $filter_value Keeps only the tag names that contain this text, ignoring case. It is a substring match, so a fragment from  the middle of a name is enough. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8286,14 +8308,14 @@ class RoomsApi
     /**
      * Operation getRoomTagsInfoAsyncWithHttpInfo
      *
-     * Get the room tags
+     * Get available room tags
      *
      * REST API Reference for getRoomTagsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-tags-info/
      *
-     * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
-     * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
+     * @param  int|null $count How many tag names one page may carry. The answer reports no total, so a page shorter than this is the sign  that the list is exhausted. (optional)
+     * @param  int|null $start_index How many tag names to skip before the page begins. Raise it by the number of names already received to read  the next page. (optional)
+     * @param  string|null $filter_value Keeps only the tag names that contain this text, ignoring case. It is a substring match, so a fragment from  the middle of a name is enough. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8301,7 +8323,7 @@ class RoomsApi
      */
     public function getRoomTagsInfoAsyncWithHttpInfo($count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getRoomTagsInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\STRINGArrayWrapper';
         $request = $this->getRoomTagsInfoRequest($count, $start_index, $filter_value, $contentType);
 
         return $this->client
@@ -8343,9 +8365,9 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomTagsInfo'
      *
-     * @param  int|null $count Gets or sets the number of tag results to retrieve.  This property specifies the maximum amount of tag data to be included in the result set. (optional)
-     * @param  int|null $start_index Represents the starting index from which the tags' information will be retrieved.  This property is used to define the offset for pagination when retrieving a list of tags. It determines  the point in the data set from which the retrieval begins. (optional)
-     * @param  string|null $filter_value Gets or sets the text value used for searching tags.  This property is typically used as a filter value when retrieving tag information. (optional)
+     * @param  int|null $count How many tag names one page may carry. The answer reports no total, so a page shorter than this is the sign  that the list is exhausted. (optional)
+     * @param  int|null $start_index How many tag names to skip before the page begins. Raise it by the number of names already received to read  the next page. (optional)
+     * @param  string|null $filter_value Keeps only the tag names that contain this text, ignoring case. It is a substring match, so a fragment from  the middle of a name is enough. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomTagsInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8488,7 +8510,7 @@ class RoomsApi
     /**
      * Operation getRoomTemplateCreatingStatus
      *
-     * Get status of room template creation
+     * Get room template creation status
      *
      * REST API Reference for getRoomTemplateCreatingStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-template-creating-status/
@@ -8508,7 +8530,7 @@ class RoomsApi
     /**
      * Operation getRoomTemplateCreatingStatusWithHttpInfo
      *
-     * Get status of room template creation
+     * Get room template creation status
      *
      * REST API Reference for getRoomTemplateCreatingStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-template-creating-status/
@@ -8637,7 +8659,7 @@ class RoomsApi
     /**
      * Operation getRoomTemplateCreatingStatusAsync
      *
-     * Get status of room template creation
+     * Get room template creation status
      *
      * REST API Reference for getRoomTemplateCreatingStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-template-creating-status/
@@ -8660,7 +8682,7 @@ class RoomsApi
     /**
      * Operation getRoomTemplateCreatingStatusAsyncWithHttpInfo
      *
-     * Get status of room template creation
+     * Get room template creation status
      *
      * REST API Reference for getRoomTemplateCreatingStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-template-creating-status/
@@ -8817,28 +8839,28 @@ class RoomsApi
      * REST API Reference for getRoomsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-folder/
      *
-     * @param  \OpenAPI\Client\Model\RoomType[]|null $type The filter by room type. (optional)
-     * @param  string|null $subject_id The filter by user ID. (optional)
-     * @param  string|null $subject_owner_id The filter by room owner ID. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The room search area (Active, Archive, Any, Recent by links). (optional)
-     * @param  bool|null $without_tags Specifies whether to search by tags or not. (optional)
-     * @param  string|null $tags The tags in the serialized format. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider The filter by provider name (None, Box, DropBox, GoogleDrive, kDrive, OneDrive, SharePoint, WebDav, Yandex, Storage). (optional)
-     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter The filter by quota (All - 0, Default - 1, Custom - 2). (optional)
-     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter The filter by storage (None - 0, Internal - 1, ThirdParty - 2). (optional)
-     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter The filter by room privacy (None - 0, Private - 1, NotPrivate - 2). When omitted, all rooms are returned. (optional)
-     * @param  int|null $count Specifies the maximum number of items to retrieve. (optional)
-     * @param  int|null $start_index The index from which to start retrieving the room content. (optional)
-     * @param  string|null $sort_by Specifies the field by which the room content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text filter value used to refine search or query operations. (optional)
-     * @param  int|null $group_id The group ID (optional)
+     * @param  \OpenAPI\Client\Model\RoomType[]|null $type Keeps only the rooms of the listed kinds. Repeat the parameter to pass more than one value; they are combined  with OR, and omitting it returns the rooms of every kind. (optional)
+     * @param  string|null $subject_id Keeps only the rooms this account or group has access to, which is how the rooms of one member are listed. The  identifier comes from the portal people and group listings, and the exclude flag turns the filter into its  opposite. (optional)
+     * @param  string|null $subject_owner_id Keeps only the rooms created by this account, regardless of who else was invited to them. The identifier comes  from the portal people listing, and the exclude flag turns the filter into its opposite. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list. Every section is a separate root and a room belongs to exactly one of them at a time, so  archiving a room moves it out of the active section. The default is the active section, which leaves the  form-filling rooms to their own value. (optional)
+     * @param  bool|null $without_tags When true, keeps only the rooms that carry no tag at all, which is the complement of the tag filter. When  false or omitted, tags play no part in the selection. (optional)
+     * @param  string|null $tags A JSON array of tag names serialized into a single query value, for example [Important,Legal]. A room  matches when it carries any one of them. Take the names from `GET api/2.0/files/tags`; a name that is not in  the catalog simply matches nothing. (optional)
+     * @param  bool|null $exclude_subject Inverts the two subject filters: when true, the rooms of the named account are the ones left out of the answer  instead of the only ones kept. It does nothing on its own. (optional)
+     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider Keeps only the rooms whose content lives in the named third-party service, for portals where rooms may be  connected to external storage. The default keeps rooms of every origin. (optional)
+     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. (optional)
+     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. (optional)
+     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. (optional)
+     * @param  int|null $count How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. (optional)
+     * @param  int|null $start_index How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. (optional)
+     * @param  string|null $sort_by The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. (optional)
+     * @param  string|null $filter_value Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. (optional)
+     * @param  int|null $group_id Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRoomsFolder($type = null, $subject_id = null, $subject_owner_id = null, $search_area = null, $without_tags = null, $tags = null, $exclude_subject = null, $provider = null, $quota_filter = null, $storage_filter = null, $privacy_filter = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $group_id = null, string $contentType = self::contentTypes['getRoomsFolder'][0])
     {
@@ -8854,28 +8876,28 @@ class RoomsApi
      * REST API Reference for getRoomsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-folder/
      *
-     * @param  \OpenAPI\Client\Model\RoomType[]|null $type The filter by room type. (optional)
-     * @param  string|null $subject_id The filter by user ID. (optional)
-     * @param  string|null $subject_owner_id The filter by room owner ID. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The room search area (Active, Archive, Any, Recent by links). (optional)
-     * @param  bool|null $without_tags Specifies whether to search by tags or not. (optional)
-     * @param  string|null $tags The tags in the serialized format. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider The filter by provider name (None, Box, DropBox, GoogleDrive, kDrive, OneDrive, SharePoint, WebDav, Yandex, Storage). (optional)
-     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter The filter by quota (All - 0, Default - 1, Custom - 2). (optional)
-     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter The filter by storage (None - 0, Internal - 1, ThirdParty - 2). (optional)
-     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter The filter by room privacy (None - 0, Private - 1, NotPrivate - 2). When omitted, all rooms are returned. (optional)
-     * @param  int|null $count Specifies the maximum number of items to retrieve. (optional)
-     * @param  int|null $start_index The index from which to start retrieving the room content. (optional)
-     * @param  string|null $sort_by Specifies the field by which the room content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text filter value used to refine search or query operations. (optional)
-     * @param  int|null $group_id The group ID (optional)
+     * @param  \OpenAPI\Client\Model\RoomType[]|null $type Keeps only the rooms of the listed kinds. Repeat the parameter to pass more than one value; they are combined  with OR, and omitting it returns the rooms of every kind. (optional)
+     * @param  string|null $subject_id Keeps only the rooms this account or group has access to, which is how the rooms of one member are listed. The  identifier comes from the portal people and group listings, and the exclude flag turns the filter into its  opposite. (optional)
+     * @param  string|null $subject_owner_id Keeps only the rooms created by this account, regardless of who else was invited to them. The identifier comes  from the portal people listing, and the exclude flag turns the filter into its opposite. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list. Every section is a separate root and a room belongs to exactly one of them at a time, so  archiving a room moves it out of the active section. The default is the active section, which leaves the  form-filling rooms to their own value. (optional)
+     * @param  bool|null $without_tags When true, keeps only the rooms that carry no tag at all, which is the complement of the tag filter. When  false or omitted, tags play no part in the selection. (optional)
+     * @param  string|null $tags A JSON array of tag names serialized into a single query value, for example [Important,Legal]. A room  matches when it carries any one of them. Take the names from `GET api/2.0/files/tags`; a name that is not in  the catalog simply matches nothing. (optional)
+     * @param  bool|null $exclude_subject Inverts the two subject filters: when true, the rooms of the named account are the ones left out of the answer  instead of the only ones kept. It does nothing on its own. (optional)
+     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider Keeps only the rooms whose content lives in the named third-party service, for portals where rooms may be  connected to external storage. The default keeps rooms of every origin. (optional)
+     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. (optional)
+     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. (optional)
+     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. (optional)
+     * @param  int|null $count How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. (optional)
+     * @param  int|null $start_index How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. (optional)
+     * @param  string|null $sort_by The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. (optional)
+     * @param  string|null $filter_value Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. (optional)
+     * @param  int|null $group_id Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRoomsFolderWithHttpInfo($type = null, $subject_id = null, $subject_owner_id = null, $search_area = null, $without_tags = null, $tags = null, $exclude_subject = null, $provider = null, $quota_filter = null, $storage_filter = null, $privacy_filter = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $group_id = null, string $contentType = self::contentTypes['getRoomsFolder'][0])
     {
@@ -8907,7 +8929,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $request,
                         $response,
                     );
@@ -8953,7 +8975,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\FolderContentWrapper',
                 $request,
                 $response,
             );
@@ -8962,7 +8984,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\FolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9014,23 +9036,23 @@ class RoomsApi
      * REST API Reference for getRoomsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-folder/
      *
-     * @param  \OpenAPI\Client\Model\RoomType[]|null $type The filter by room type. (optional)
-     * @param  string|null $subject_id The filter by user ID. (optional)
-     * @param  string|null $subject_owner_id The filter by room owner ID. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The room search area (Active, Archive, Any, Recent by links). (optional)
-     * @param  bool|null $without_tags Specifies whether to search by tags or not. (optional)
-     * @param  string|null $tags The tags in the serialized format. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider The filter by provider name (None, Box, DropBox, GoogleDrive, kDrive, OneDrive, SharePoint, WebDav, Yandex, Storage). (optional)
-     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter The filter by quota (All - 0, Default - 1, Custom - 2). (optional)
-     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter The filter by storage (None - 0, Internal - 1, ThirdParty - 2). (optional)
-     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter The filter by room privacy (None - 0, Private - 1, NotPrivate - 2). When omitted, all rooms are returned. (optional)
-     * @param  int|null $count Specifies the maximum number of items to retrieve. (optional)
-     * @param  int|null $start_index The index from which to start retrieving the room content. (optional)
-     * @param  string|null $sort_by Specifies the field by which the room content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text filter value used to refine search or query operations. (optional)
-     * @param  int|null $group_id The group ID (optional)
+     * @param  \OpenAPI\Client\Model\RoomType[]|null $type Keeps only the rooms of the listed kinds. Repeat the parameter to pass more than one value; they are combined  with OR, and omitting it returns the rooms of every kind. (optional)
+     * @param  string|null $subject_id Keeps only the rooms this account or group has access to, which is how the rooms of one member are listed. The  identifier comes from the portal people and group listings, and the exclude flag turns the filter into its  opposite. (optional)
+     * @param  string|null $subject_owner_id Keeps only the rooms created by this account, regardless of who else was invited to them. The identifier comes  from the portal people listing, and the exclude flag turns the filter into its opposite. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list. Every section is a separate root and a room belongs to exactly one of them at a time, so  archiving a room moves it out of the active section. The default is the active section, which leaves the  form-filling rooms to their own value. (optional)
+     * @param  bool|null $without_tags When true, keeps only the rooms that carry no tag at all, which is the complement of the tag filter. When  false or omitted, tags play no part in the selection. (optional)
+     * @param  string|null $tags A JSON array of tag names serialized into a single query value, for example [Important,Legal]. A room  matches when it carries any one of them. Take the names from `GET api/2.0/files/tags`; a name that is not in  the catalog simply matches nothing. (optional)
+     * @param  bool|null $exclude_subject Inverts the two subject filters: when true, the rooms of the named account are the ones left out of the answer  instead of the only ones kept. It does nothing on its own. (optional)
+     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider Keeps only the rooms whose content lives in the named third-party service, for portals where rooms may be  connected to external storage. The default keeps rooms of every origin. (optional)
+     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. (optional)
+     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. (optional)
+     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. (optional)
+     * @param  int|null $count How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. (optional)
+     * @param  int|null $start_index How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. (optional)
+     * @param  string|null $sort_by The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. (optional)
+     * @param  string|null $filter_value Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. (optional)
+     * @param  int|null $group_id Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9054,23 +9076,23 @@ class RoomsApi
      * REST API Reference for getRoomsFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-folder/
      *
-     * @param  \OpenAPI\Client\Model\RoomType[]|null $type The filter by room type. (optional)
-     * @param  string|null $subject_id The filter by user ID. (optional)
-     * @param  string|null $subject_owner_id The filter by room owner ID. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The room search area (Active, Archive, Any, Recent by links). (optional)
-     * @param  bool|null $without_tags Specifies whether to search by tags or not. (optional)
-     * @param  string|null $tags The tags in the serialized format. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider The filter by provider name (None, Box, DropBox, GoogleDrive, kDrive, OneDrive, SharePoint, WebDav, Yandex, Storage). (optional)
-     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter The filter by quota (All - 0, Default - 1, Custom - 2). (optional)
-     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter The filter by storage (None - 0, Internal - 1, ThirdParty - 2). (optional)
-     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter The filter by room privacy (None - 0, Private - 1, NotPrivate - 2). When omitted, all rooms are returned. (optional)
-     * @param  int|null $count Specifies the maximum number of items to retrieve. (optional)
-     * @param  int|null $start_index The index from which to start retrieving the room content. (optional)
-     * @param  string|null $sort_by Specifies the field by which the room content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text filter value used to refine search or query operations. (optional)
-     * @param  int|null $group_id The group ID (optional)
+     * @param  \OpenAPI\Client\Model\RoomType[]|null $type Keeps only the rooms of the listed kinds. Repeat the parameter to pass more than one value; they are combined  with OR, and omitting it returns the rooms of every kind. (optional)
+     * @param  string|null $subject_id Keeps only the rooms this account or group has access to, which is how the rooms of one member are listed. The  identifier comes from the portal people and group listings, and the exclude flag turns the filter into its  opposite. (optional)
+     * @param  string|null $subject_owner_id Keeps only the rooms created by this account, regardless of who else was invited to them. The identifier comes  from the portal people listing, and the exclude flag turns the filter into its opposite. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list. Every section is a separate root and a room belongs to exactly one of them at a time, so  archiving a room moves it out of the active section. The default is the active section, which leaves the  form-filling rooms to their own value. (optional)
+     * @param  bool|null $without_tags When true, keeps only the rooms that carry no tag at all, which is the complement of the tag filter. When  false or omitted, tags play no part in the selection. (optional)
+     * @param  string|null $tags A JSON array of tag names serialized into a single query value, for example [Important,Legal]. A room  matches when it carries any one of them. Take the names from `GET api/2.0/files/tags`; a name that is not in  the catalog simply matches nothing. (optional)
+     * @param  bool|null $exclude_subject Inverts the two subject filters: when true, the rooms of the named account are the ones left out of the answer  instead of the only ones kept. It does nothing on its own. (optional)
+     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider Keeps only the rooms whose content lives in the named third-party service, for portals where rooms may be  connected to external storage. The default keeps rooms of every origin. (optional)
+     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. (optional)
+     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. (optional)
+     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. (optional)
+     * @param  int|null $count How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. (optional)
+     * @param  int|null $start_index How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. (optional)
+     * @param  string|null $sort_by The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. (optional)
+     * @param  string|null $filter_value Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. (optional)
+     * @param  int|null $group_id Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9078,7 +9100,7 @@ class RoomsApi
      */
     public function getRoomsFolderAsyncWithHttpInfo($type = null, $subject_id = null, $subject_owner_id = null, $search_area = null, $without_tags = null, $tags = null, $exclude_subject = null, $provider = null, $quota_filter = null, $storage_filter = null, $privacy_filter = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $group_id = null, string $contentType = self::contentTypes['getRoomsFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderContentIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
         $request = $this->getRoomsFolderRequest($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $quota_filter, $storage_filter, $privacy_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id, $contentType);
 
         return $this->client
@@ -9120,23 +9142,23 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomsFolder'
      *
-     * @param  \OpenAPI\Client\Model\RoomType[]|null $type The filter by room type. (optional)
-     * @param  string|null $subject_id The filter by user ID. (optional)
-     * @param  string|null $subject_owner_id The filter by room owner ID. (optional)
-     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The room search area (Active, Archive, Any, Recent by links). (optional)
-     * @param  bool|null $without_tags Specifies whether to search by tags or not. (optional)
-     * @param  string|null $tags The tags in the serialized format. (optional)
-     * @param  bool|null $exclude_subject Specifies whether to exclude search by user or group ID. (optional)
-     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider The filter by provider name (None, Box, DropBox, GoogleDrive, kDrive, OneDrive, SharePoint, WebDav, Yandex, Storage). (optional)
-     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter The filter by quota (All - 0, Default - 1, Custom - 2). (optional)
-     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter The filter by storage (None - 0, Internal - 1, ThirdParty - 2). (optional)
-     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter The filter by room privacy (None - 0, Private - 1, NotPrivate - 2). When omitted, all rooms are returned. (optional)
-     * @param  int|null $count Specifies the maximum number of items to retrieve. (optional)
-     * @param  int|null $start_index The index from which to start retrieving the room content. (optional)
-     * @param  string|null $sort_by Specifies the field by which the room content should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text filter value used to refine search or query operations. (optional)
-     * @param  int|null $group_id The group ID (optional)
+     * @param  \OpenAPI\Client\Model\RoomType[]|null $type Keeps only the rooms of the listed kinds. Repeat the parameter to pass more than one value; they are combined  with OR, and omitting it returns the rooms of every kind. (optional)
+     * @param  string|null $subject_id Keeps only the rooms this account or group has access to, which is how the rooms of one member are listed. The  identifier comes from the portal people and group listings, and the exclude flag turns the filter into its  opposite. (optional)
+     * @param  string|null $subject_owner_id Keeps only the rooms created by this account, regardless of who else was invited to them. The identifier comes  from the portal people listing, and the exclude flag turns the filter into its opposite. (optional)
+     * @param  \OpenAPI\Client\Model\SearchArea|null $search_area The section to list. Every section is a separate root and a room belongs to exactly one of them at a time, so  archiving a room moves it out of the active section. The default is the active section, which leaves the  form-filling rooms to their own value. (optional)
+     * @param  bool|null $without_tags When true, keeps only the rooms that carry no tag at all, which is the complement of the tag filter. When  false or omitted, tags play no part in the selection. (optional)
+     * @param  string|null $tags A JSON array of tag names serialized into a single query value, for example [Important,Legal]. A room  matches when it carries any one of them. Take the names from `GET api/2.0/files/tags`; a name that is not in  the catalog simply matches nothing. (optional)
+     * @param  bool|null $exclude_subject Inverts the two subject filters: when true, the rooms of the named account are the ones left out of the answer  instead of the only ones kept. It does nothing on its own. (optional)
+     * @param  \OpenAPI\Client\Model\ProviderFilter|null $provider Keeps only the rooms whose content lives in the named third-party service, for portals where rooms may be  connected to external storage. The default keeps rooms of every origin. (optional)
+     * @param  \OpenAPI\Client\Model\QuotaFilter|null $quota_filter Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. (optional)
+     * @param  \OpenAPI\Client\Model\StorageFilter|null $storage_filter Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. (optional)
+     * @param  \OpenAPI\Client\Model\RoomPrivacyFilter|null $privacy_filter Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. (optional)
+     * @param  int|null $count How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. (optional)
+     * @param  int|null $start_index How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. (optional)
+     * @param  string|null $sort_by The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. (optional)
+     * @param  string|null $filter_value Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. (optional)
+     * @param  int|null $group_id Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9413,7 +9435,7 @@ class RoomsApi
     /**
      * Operation getRoomsNewItems
      *
-     * Get the room new items
+     * Get new items in all rooms
      *
      * REST API Reference for getRoomsNewItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-new-items/
@@ -9433,7 +9455,7 @@ class RoomsApi
     /**
      * Operation getRoomsNewItemsWithHttpInfo
      *
-     * Get the room new items
+     * Get new items in all rooms
      *
      * REST API Reference for getRoomsNewItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-new-items/
@@ -9562,7 +9584,7 @@ class RoomsApi
     /**
      * Operation getRoomsNewItemsAsync
      *
-     * Get the room new items
+     * Get new items in all rooms
      *
      * REST API Reference for getRoomsNewItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-new-items/
@@ -9585,7 +9607,7 @@ class RoomsApi
     /**
      * Operation getRoomsNewItemsAsyncWithHttpInfo
      *
-     * Get the room new items
+     * Get new items in all rooms
      *
      * REST API Reference for getRoomsNewItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-new-items/
@@ -9742,7 +9764,7 @@ class RoomsApi
      * REST API Reference for getRoomsPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-primary-external-link/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9763,7 +9785,7 @@ class RoomsApi
      * REST API Reference for getRoomsPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-primary-external-link/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9907,7 +9929,7 @@ class RoomsApi
      * REST API Reference for getRoomsPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-primary-external-link/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9931,7 +9953,7 @@ class RoomsApi
      * REST API Reference for getRoomsPrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-rooms-primary-external-link/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9981,7 +10003,7 @@ class RoomsApi
     /**
      * Create request for operation 'getRoomsPrimaryExternalLink'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRoomsPrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10095,13 +10117,13 @@ class RoomsApi
     /**
      * Operation hasTagLinks
      *
-     * Has tag links
+     * Check room tag usage
      *
      * REST API Reference for hasTagLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/has-tag-links/
      *
      * @param  string $tag_name2 The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. (required)
-     * @param  string|null $tag_name Represents the name of a tag (optional)
+     * @param  string|null $tag_name The tag to check, spelled exactly as it is stored in the catalog. This query value is the one the handler  reads, so the path segment of the same name has to repeat it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hasTagLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10117,13 +10139,13 @@ class RoomsApi
     /**
      * Operation hasTagLinksWithHttpInfo
      *
-     * Has tag links
+     * Check room tag usage
      *
      * REST API Reference for hasTagLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/has-tag-links/
      *
      * @param  string $tag_name2 The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. (required)
-     * @param  string|null $tag_name Represents the name of a tag (optional)
+     * @param  string|null $tag_name The tag to check, spelled exactly as it is stored in the catalog. This query value is the one the handler  reads, so the path segment of the same name has to repeat it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hasTagLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10262,13 +10284,13 @@ class RoomsApi
     /**
      * Operation hasTagLinksAsync
      *
-     * Has tag links
+     * Check room tag usage
      *
      * REST API Reference for hasTagLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/has-tag-links/
      *
      * @param  string $tag_name2 The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. (required)
-     * @param  string|null $tag_name Represents the name of a tag (optional)
+     * @param  string|null $tag_name The tag to check, spelled exactly as it is stored in the catalog. This query value is the one the handler  reads, so the path segment of the same name has to repeat it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hasTagLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10287,13 +10309,13 @@ class RoomsApi
     /**
      * Operation hasTagLinksAsyncWithHttpInfo
      *
-     * Has tag links
+     * Check room tag usage
      *
      * REST API Reference for hasTagLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/has-tag-links/
      *
      * @param  string $tag_name2 The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. (required)
-     * @param  string|null $tag_name Represents the name of a tag (optional)
+     * @param  string|null $tag_name The tag to check, spelled exactly as it is stored in the catalog. This query value is the one the handler  reads, so the path segment of the same name has to repeat it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hasTagLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10344,7 +10366,7 @@ class RoomsApi
      * Create request for operation 'hasTagLinks'
      *
      * @param  string $tag_name2 The tag being checked. Send the same value as the `tagName` query parameter, which is the one the handler reads. (required)
-     * @param  string|null $tag_name Represents the name of a tag (optional)
+     * @param  string|null $tag_name The tag to check, spelled exactly as it is stored in the catalog. This query value is the one the handler  reads, so the path segment of the same name has to repeat it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hasTagLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10473,12 +10495,12 @@ class RoomsApi
      * REST API Reference for pinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/pin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function pinRoom($id, string $contentType = self::contentTypes['pinRoom'][0])
     {
@@ -10494,12 +10516,12 @@ class RoomsApi
      * REST API Reference for pinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/pin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function pinRoomWithHttpInfo($id, string $contentType = self::contentTypes['pinRoom'][0])
     {
@@ -10531,7 +10553,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -10577,7 +10599,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -10586,7 +10608,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10638,7 +10660,7 @@ class RoomsApi
      * REST API Reference for pinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/pin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10662,7 +10684,7 @@ class RoomsApi
      * REST API Reference for pinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/pin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10670,7 +10692,7 @@ class RoomsApi
      */
     public function pinRoomAsyncWithHttpInfo($id, string $contentType = self::contentTypes['pinRoom'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->pinRoomRequest($id, $contentType);
 
         return $this->client
@@ -10712,7 +10734,7 @@ class RoomsApi
     /**
      * Create request for operation 'pinRoom'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10826,17 +10848,17 @@ class RoomsApi
     /**
      * Operation reorderRoom
      *
-     * Reorder the room
+     * Reorder room contents
      *
      * REST API Reference for reorderRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reorder-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reorderRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function reorderRoom($id, string $contentType = self::contentTypes['reorderRoom'][0])
     {
@@ -10847,17 +10869,17 @@ class RoomsApi
     /**
      * Operation reorderRoomWithHttpInfo
      *
-     * Reorder the room
+     * Reorder room contents
      *
      * REST API Reference for reorderRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reorder-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reorderRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function reorderRoomWithHttpInfo($id, string $contentType = self::contentTypes['reorderRoom'][0])
     {
@@ -10889,7 +10911,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -10935,7 +10957,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -10944,7 +10966,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10991,12 +11013,12 @@ class RoomsApi
     /**
      * Operation reorderRoomAsync
      *
-     * Reorder the room
+     * Reorder room contents
      *
      * REST API Reference for reorderRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reorder-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reorderRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11015,12 +11037,12 @@ class RoomsApi
     /**
      * Operation reorderRoomAsyncWithHttpInfo
      *
-     * Reorder the room
+     * Reorder room contents
      *
      * REST API Reference for reorderRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reorder-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reorderRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11028,7 +11050,7 @@ class RoomsApi
      */
     public function reorderRoomAsyncWithHttpInfo($id, string $contentType = self::contentTypes['reorderRoom'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->reorderRoomRequest($id, $contentType);
 
         return $this->client
@@ -11070,7 +11092,7 @@ class RoomsApi
     /**
      * Create request for operation 'reorderRoom'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reorderRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11189,8 +11211,8 @@ class RoomsApi
      * REST API Reference for resendEmailInvitations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/resend-email-invitations/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation The user invitation parameters. (required)
+     * @param  int|string $id The room whose invitations are resent, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation Which pending invitations to send again. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEmailInvitations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11210,8 +11232,8 @@ class RoomsApi
      * REST API Reference for resendEmailInvitations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/resend-email-invitations/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation The user invitation parameters. (required)
+     * @param  int|string $id The room whose invitations are resent, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation Which pending invitations to send again. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEmailInvitations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11295,8 +11317,8 @@ class RoomsApi
      * REST API Reference for resendEmailInvitations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/resend-email-invitations/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation The user invitation parameters. (required)
+     * @param  int|string $id The room whose invitations are resent, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation Which pending invitations to send again. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEmailInvitations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11320,8 +11342,8 @@ class RoomsApi
      * REST API Reference for resendEmailInvitations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/resend-email-invitations/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation The user invitation parameters. (required)
+     * @param  int|string $id The room whose invitations are resent, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation Which pending invitations to send again. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEmailInvitations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11358,8 +11380,8 @@ class RoomsApi
     /**
      * Create request for operation 'resendEmailInvitations'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation The user invitation parameters. (required)
+     * @param  int|string $id The room whose invitations are resent, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UserInvitation $user_invitation Which pending invitations to send again. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resendEmailInvitations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11487,7 +11509,7 @@ class RoomsApi
     /**
      * Operation setPublicSettings
      *
-     * Set public settings
+     * Set room template public access
      *
      * REST API Reference for setPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-public-settings/
@@ -11507,7 +11529,7 @@ class RoomsApi
     /**
      * Operation setPublicSettingsWithHttpInfo
      *
-     * Set public settings
+     * Set room template public access
      *
      * REST API Reference for setPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-public-settings/
@@ -11591,7 +11613,7 @@ class RoomsApi
     /**
      * Operation setPublicSettingsAsync
      *
-     * Set public settings
+     * Set room template public access
      *
      * REST API Reference for setPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-public-settings/
@@ -11615,7 +11637,7 @@ class RoomsApi
     /**
      * Operation setPublicSettingsAsyncWithHttpInfo
      *
-     * Set public settings
+     * Set room template public access
      *
      * REST API Reference for setPublicSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-public-settings/
@@ -11769,8 +11791,8 @@ class RoomsApi
      * REST API Reference for setRoomLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-link/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The room link parameters. (required)
+     * @param  int|string $id The room the link belongs to, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The link to create, change or revoke. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11791,8 +11813,8 @@ class RoomsApi
      * REST API Reference for setRoomLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-link/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The room link parameters. (required)
+     * @param  int|string $id The room the link belongs to, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The link to create, change or revoke. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11936,8 +11958,8 @@ class RoomsApi
      * REST API Reference for setRoomLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-link/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The room link parameters. (required)
+     * @param  int|string $id The room the link belongs to, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The link to create, change or revoke. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11961,8 +11983,8 @@ class RoomsApi
      * REST API Reference for setRoomLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-link/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The room link parameters. (required)
+     * @param  int|string $id The room the link belongs to, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The link to create, change or revoke. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12012,8 +12034,8 @@ class RoomsApi
     /**
      * Create request for operation 'setRoomLink'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The room link parameters. (required)
+     * @param  int|string $id The room the link belongs to, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomLinkRequest $room_link_request The link to create, change or revoke. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12146,8 +12168,8 @@ class RoomsApi
      * REST API Reference for setRoomSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-security/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The room invitation request. (required)
+     * @param  int|string $id The room whose membership changes, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The membership changes to apply, together with how the people concerned are notified. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12168,8 +12190,8 @@ class RoomsApi
      * REST API Reference for setRoomSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-security/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The room invitation request. (required)
+     * @param  int|string $id The room whose membership changes, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The membership changes to apply, together with how the people concerned are notified. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12299,8 +12321,8 @@ class RoomsApi
      * REST API Reference for setRoomSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-security/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The room invitation request. (required)
+     * @param  int|string $id The room whose membership changes, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The membership changes to apply, together with how the people concerned are notified. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12324,8 +12346,8 @@ class RoomsApi
      * REST API Reference for setRoomSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-room-security/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The room invitation request. (required)
+     * @param  int|string $id The room whose membership changes, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The membership changes to apply, together with how the people concerned are notified. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12375,8 +12397,8 @@ class RoomsApi
     /**
      * Create request for operation 'setRoomSecurity'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The room invitation request. (required)
+     * @param  int|string $id The room whose membership changes, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\RoomInvitationRequest $room_invitation_request The membership changes to apply, together with how the people concerned are notified. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setRoomSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12509,7 +12531,7 @@ class RoomsApi
      * REST API Reference for startExternalDbSync Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-external-db-sync/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startExternalDbSync'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12530,7 +12552,7 @@ class RoomsApi
      * REST API Reference for startExternalDbSync Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-external-db-sync/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startExternalDbSync'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12660,7 +12682,7 @@ class RoomsApi
      * REST API Reference for startExternalDbSync Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-external-db-sync/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startExternalDbSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12684,7 +12706,7 @@ class RoomsApi
      * REST API Reference for startExternalDbSync Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-external-db-sync/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startExternalDbSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12734,7 +12756,7 @@ class RoomsApi
     /**
      * Create request for operation 'startExternalDbSync'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startExternalDbSync'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12853,7 +12875,7 @@ class RoomsApi
      * REST API Reference for startRoomIndexExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-room-index-export/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startRoomIndexExport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12874,7 +12896,7 @@ class RoomsApi
      * REST API Reference for startRoomIndexExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-room-index-export/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startRoomIndexExport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13018,7 +13040,7 @@ class RoomsApi
      * REST API Reference for startRoomIndexExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-room-index-export/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startRoomIndexExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13042,7 +13064,7 @@ class RoomsApi
      * REST API Reference for startRoomIndexExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-room-index-export/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startRoomIndexExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13092,7 +13114,7 @@ class RoomsApi
     /**
      * Create request for operation 'startRoomIndexExport'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startRoomIndexExport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13467,8 +13489,8 @@ class RoomsApi
      * REST API Reference for unarchiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unarchive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unarchiveRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13489,8 +13511,8 @@ class RoomsApi
      * REST API Reference for unarchiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unarchive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unarchiveRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13634,8 +13656,8 @@ class RoomsApi
      * REST API Reference for unarchiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unarchive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unarchiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13659,8 +13681,8 @@ class RoomsApi
      * REST API Reference for unarchiveRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unarchive-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unarchiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13710,8 +13732,8 @@ class RoomsApi
     /**
      * Create request for operation 'unarchiveRoom'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The parameters for archiving a room. (optional)
+     * @param  int|string $id The room to move, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\ArchiveRoomRequest|null $archive_room_request The body of the request. It carries only the lifetime of the job record, so an empty object is a normal  request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unarchiveRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13838,12 +13860,12 @@ class RoomsApi
      * REST API Reference for unpinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unpin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function unpinRoom($id, string $contentType = self::contentTypes['unpinRoom'][0])
     {
@@ -13859,12 +13881,12 @@ class RoomsApi
      * REST API Reference for unpinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unpin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function unpinRoomWithHttpInfo($id, string $contentType = self::contentTypes['unpinRoom'][0])
     {
@@ -13896,7 +13918,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -13942,7 +13964,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -13951,7 +13973,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14003,7 +14025,7 @@ class RoomsApi
      * REST API Reference for unpinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unpin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14027,7 +14049,7 @@ class RoomsApi
      * REST API Reference for unpinRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unpin-room/
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14035,7 +14057,7 @@ class RoomsApi
      */
     public function unpinRoomAsyncWithHttpInfo($id, string $contentType = self::contentTypes['unpinRoom'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->unpinRoomRequest($id, $contentType);
 
         return $this->client
@@ -14077,7 +14099,7 @@ class RoomsApi
     /**
      * Create request for operation 'unpinRoom'
      *
-     * @param  int $id The room ID. (required)
+     * @param  int|string $id The room to act on, named by the identifier that `GET api/2.0/files/rooms` reports for it. Rooms kept in the  portal itself use whole numbers, while a room backed by a connected third-party account uses the string form  of the same listing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14196,13 +14218,13 @@ class RoomsApi
      * REST API Reference for updateRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The request parameters for updating a room. (required)
+     * @param  int|string $id The room to update, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The fields to change. Only the properties present in the object are applied, and a property that the object  does not define is rejected instead of being ignored. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateRoom($id, $update_room_request, string $contentType = self::contentTypes['updateRoom'][0])
     {
@@ -14218,13 +14240,13 @@ class RoomsApi
      * REST API Reference for updateRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The request parameters for updating a room. (required)
+     * @param  int|string $id The room to update, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The fields to change. Only the properties present in the object are applied, and a property that the object  does not define is rejected instead of being ignored. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateRoomWithHttpInfo($id, $update_room_request, string $contentType = self::contentTypes['updateRoom'][0])
     {
@@ -14256,7 +14278,7 @@ class RoomsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $request,
                         $response,
                     );
@@ -14302,7 +14324,7 @@ class RoomsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                 $request,
                 $response,
             );
@@ -14311,7 +14333,7 @@ class RoomsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14363,8 +14385,8 @@ class RoomsApi
      * REST API Reference for updateRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The request parameters for updating a room. (required)
+     * @param  int|string $id The room to update, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The fields to change. Only the properties present in the object are applied, and a property that the object  does not define is rejected instead of being ignored. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14388,8 +14410,8 @@ class RoomsApi
      * REST API Reference for updateRoom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room/
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The request parameters for updating a room. (required)
+     * @param  int|string $id The room to update, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The fields to change. Only the properties present in the object are applied, and a property that the object  does not define is rejected instead of being ignored. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14397,7 +14419,7 @@ class RoomsApi
      */
     public function updateRoomAsyncWithHttpInfo($id, $update_room_request, string $contentType = self::contentTypes['updateRoom'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerWrapper';
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
         $request = $this->updateRoomRequest($id, $update_room_request, $contentType);
 
         return $this->client
@@ -14439,8 +14461,8 @@ class RoomsApi
     /**
      * Create request for operation 'updateRoom'
      *
-     * @param  int $id The room ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The request parameters for updating a room. (required)
+     * @param  int|string $id The room to update, named by the identifier that `GET api/2.0/files/rooms` reports for it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateRoomRequest $update_room_request The fields to change. Only the properties present in the object are applied, and a property that the object  does not define is rejected instead of being ignored. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14568,7 +14590,7 @@ class RoomsApi
     /**
      * Operation updateRoomTag
      *
-     * Update tag
+     * Rename a room tag
      *
      * REST API Reference for updateRoomTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-tag/
@@ -14589,7 +14611,7 @@ class RoomsApi
     /**
      * Operation updateRoomTagWithHttpInfo
      *
-     * Update tag
+     * Rename a room tag
      *
      * REST API Reference for updateRoomTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-tag/
@@ -14733,7 +14755,7 @@ class RoomsApi
     /**
      * Operation updateRoomTagAsync
      *
-     * Update tag
+     * Rename a room tag
      *
      * REST API Reference for updateRoomTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-tag/
@@ -14757,7 +14779,7 @@ class RoomsApi
     /**
      * Operation updateRoomTagAsyncWithHttpInfo
      *
-     * Update tag
+     * Rename a room tag
      *
      * REST API Reference for updateRoomTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-room-tag/

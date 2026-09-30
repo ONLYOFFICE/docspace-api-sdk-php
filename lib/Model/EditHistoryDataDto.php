@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EditHistoryDataDto Class Doc Comment
  *
  * @category Class
- * @description The file editing history data.
+ * @description Everything an editor needs in order to show what one revision of a file changed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -357,7 +357,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets changes_url
      *
-     * @param string|null $changes_url The URL address of the file with the document changes data.
+     * @param string|null $changes_url The address the editor downloads the recorded changes of this revision from. It is filled in only when the  portal has a change record for the revision; without it the revision can be shown as a whole document but not  as a set of changes.
      *
      * @return self
      */
@@ -391,7 +391,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets key
      *
-     * @param string|null $key The document identifier used to unambiguously identify the document file.
+     * @param string|null $key The document key of the revision being shown, which the editing service uses to identify it and to reuse the  copy it has cached.
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets previous
      *
-     * @param \OpenAPI\Client\Model\EditHistoryUrl|null $previous The object of the previous version of the document.
+     * @param \OpenAPI\Client\Model\EditHistoryUrl|null $previous The revision this one is compared against. It arrives together with `changesUrl`, and when the revision shown  is the first one the file ever had, it points at the blank template the file was created from instead of at an  earlier revision.
      *
      * @return self
      */
@@ -452,7 +452,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets token
      *
-     * @param string|null $token The encrypted signature added to the parameter in the form of a token.
+     * @param string|null $token The signature over the whole answer, as a JSON Web Token that the editing service verifies before it accepts  the addresses in it. Empty when the portal runs without a document-service secret.
      *
      * @return self
      */
@@ -486,7 +486,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets url
      *
-     * @param string|null $url The URL address of the current document version.
+     * @param string|null $url The address the content of this revision is served from. It is meant for the editing service and carries its  own key, which is valid for a limited time.
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets version
      *
-     * @param int $version The document version number.
+     * @param int $version Echoes the revision that was asked for, so it reports 0 when the request named no version and the current  revision was taken.
      *
      * @return self
      */
@@ -547,7 +547,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets file_type
      *
-     * @param string|null $file_type The document extension.
+     * @param string|null $file_type The format of the revision being shown, as an extension without the leading dot.
      *
      * @return self
      */

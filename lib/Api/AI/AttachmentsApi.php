@@ -87,6 +87,9 @@ class AttachmentsApi
         'aiAttachmentsGetMany' => [
             'application/json',
         ],
+        'aiAttachmentsGetSuggestedQuestions' => [
+            'application/json',
+        ],
         'aiAttachmentsLinkToMessage' => [
             'application/json',
         ],
@@ -148,17 +151,17 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsDelete
      *
-     * Delete
+     * Delete one attachment
      *
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsDelete($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
@@ -169,17 +172,17 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsDeleteWithHttpInfo
      *
-     * Delete
+     * Delete one attachment
      *
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
@@ -216,6 +219,24 @@ class AttachmentsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -261,6 +282,30 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -271,12 +316,12 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsDeleteAsync
      *
-     * Delete
+     * Delete one attachment
      *
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -295,12 +340,12 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsDeleteAsyncWithHttpInfo
      *
-     * Delete
+     * Delete one attachment
      *
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -350,7 +395,7 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsDelete'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -416,6 +461,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -446,12 +500,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsDeleteMany($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
@@ -467,12 +521,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsDeleteManyWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
@@ -509,6 +563,24 @@ class AttachmentsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -554,6 +626,30 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -569,7 +665,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -593,7 +689,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -643,7 +739,7 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsDeleteMany'
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -709,6 +805,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -734,17 +839,17 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsGet
      *
-     * Get
+     * Get one attachment
      *
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsGet($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
@@ -755,17 +860,17 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsGetWithHttpInfo
      *
-     * Get
+     * Get one attachment
      *
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsGetWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
@@ -801,7 +906,31 @@ class AttachmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -839,7 +968,39 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -857,12 +1018,12 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsGetAsync
      *
-     * Get
+     * Get one attachment
      *
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -881,12 +1042,12 @@ class AttachmentsApi
     /**
      * Operation aiAttachmentsGetAsyncWithHttpInfo
      *
-     * Get
+     * Get one attachment
      *
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -936,7 +1097,7 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGet'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1002,6 +1163,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1032,12 +1202,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsGetMany($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
@@ -1053,12 +1223,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsGetManyWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
@@ -1094,7 +1264,31 @@ class AttachmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1132,7 +1326,39 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1155,7 +1381,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1179,7 +1405,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1229,7 +1455,7 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGetMany'
      *
-     * @param  string[] $request_body (required)
+     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1295,6 +1521,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1318,44 +1553,44 @@ class AttachmentsApi
     }
 
     /**
-     * Operation aiAttachmentsLinkToMessage
+     * Operation aiAttachmentsGetSuggestedQuestions
      *
-     * Link to message
+     * Get suggested questions
      *
-     * REST API Reference for aiAttachmentsLinkToMessage Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-link-to-message/
+     * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  \OpenAPI\Client\Model\AiAttachmentsLinkToMessageRequest $ai_attachments_link_to_message_request ai_attachments_link_to_message_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsLinkToMessage'] to see the possible values for this operation
+     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsLinkToMessage($ai_attachments_link_to_message_request, string $contentType = self::contentTypes['aiAttachmentsLinkToMessage'][0])
+    public function aiAttachmentsGetSuggestedQuestions($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        list($response) = $this->aiAttachmentsLinkToMessageWithHttpInfo($ai_attachments_link_to_message_request, $contentType);
+        list($response) = $this->aiAttachmentsGetSuggestedQuestionsWithHttpInfo($request_body, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAttachmentsLinkToMessageWithHttpInfo
+     * Operation aiAttachmentsGetSuggestedQuestionsWithHttpInfo
      *
-     * Link to message
+     * Get suggested questions
      *
-     * REST API Reference for aiAttachmentsLinkToMessage Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-link-to-message/
+     * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  \OpenAPI\Client\Model\AiAttachmentsLinkToMessageRequest $ai_attachments_link_to_message_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsLinkToMessage'] to see the possible values for this operation
+     * @param  array<string,mixed> $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsLinkToMessageWithHttpInfo($ai_attachments_link_to_message_request, string $contentType = self::contentTypes['aiAttachmentsLinkToMessage'][0])
+    public function aiAttachmentsGetSuggestedQuestionsWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        $request = $this->aiAttachmentsLinkToMessageRequest($ai_attachments_link_to_message_request, $contentType);
+        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($request_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1388,6 +1623,24 @@ class AttachmentsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1426,6 +1679,402 @@ class AttachmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation aiAttachmentsGetSuggestedQuestionsAsync
+     *
+     * Get suggested questions
+     *
+     * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
+     *
+     * @param  array<string,mixed> $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiAttachmentsGetSuggestedQuestionsAsync($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    {
+        return $this->aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($request_body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo
+     *
+     * Get suggested questions
+     *
+     * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
+     *
+     * @param  array<string,mixed> $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($request_body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'aiAttachmentsGetSuggestedQuestions'
+     *
+     * @param  array<string,mixed> $request_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function aiAttachmentsGetSuggestedQuestionsRequest($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    {
+
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling aiAttachmentsGetSuggestedQuestions'
+            );
+        }
+
+
+        $resourcePath = '/api/2.0/ai/attachments/suggested-questions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($request_body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+            } else {
+                $httpBody = $request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation aiAttachmentsLinkToMessage
+     *
+     * Link to message
+     *
+     * REST API Reference for aiAttachmentsLinkToMessage Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-link-to-message/
+     *
+     * @param  \OpenAPI\Client\Model\AiAttachmentsLinkToMessageRequest $ai_attachments_link_to_message_request ai_attachments_link_to_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsLinkToMessage'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     */
+    public function aiAttachmentsLinkToMessage($ai_attachments_link_to_message_request, string $contentType = self::contentTypes['aiAttachmentsLinkToMessage'][0])
+    {
+        list($response) = $this->aiAttachmentsLinkToMessageWithHttpInfo($ai_attachments_link_to_message_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation aiAttachmentsLinkToMessageWithHttpInfo
+     *
+     * Link to message
+     *
+     * REST API Reference for aiAttachmentsLinkToMessage Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-link-to-message/
+     *
+     * @param  \OpenAPI\Client\Model\AiAttachmentsLinkToMessageRequest $ai_attachments_link_to_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsLinkToMessage'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function aiAttachmentsLinkToMessageWithHttpInfo($ai_attachments_link_to_message_request, string $contentType = self::contentTypes['aiAttachmentsLinkToMessage'][0])
+    {
+        $request = $this->aiAttachmentsLinkToMessageRequest($ai_attachments_link_to_message_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\AiSuccessResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1588,6 +2237,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1623,7 +2281,7 @@ class AttachmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAttachment|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsSaveFile($ai_attachments_save_file_request, string $contentType = self::contentTypes['aiAttachmentsSaveFile'][0])
     {
@@ -1644,7 +2302,7 @@ class AttachmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAttachment|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsSaveFileWithHttpInfo($ai_attachments_save_file_request, string $contentType = self::contentTypes['aiAttachmentsSaveFile'][0])
     {
@@ -1680,7 +2338,31 @@ class AttachmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1718,7 +2400,39 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1881,6 +2595,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1916,7 +2639,7 @@ class AttachmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsSaveFilesMany($ai_attachments_save_files_many_request, string $contentType = self::contentTypes['aiAttachmentsSaveFilesMany'][0])
     {
@@ -1937,7 +2660,7 @@ class AttachmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsSaveFilesManyWithHttpInfo($ai_attachments_save_files_many_request, string $contentType = self::contentTypes['aiAttachmentsSaveFilesMany'][0])
     {
@@ -1973,7 +2696,31 @@ class AttachmentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2011,7 +2758,39 @@ class AttachmentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2174,6 +2953,15 @@ class AttachmentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

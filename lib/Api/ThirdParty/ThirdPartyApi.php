@@ -130,17 +130,17 @@ class ThirdPartyApi
     /**
      * Operation getThirdPartyCode
      *
-     * Get the code request
+     * Get provider consent URL
      *
      * REST API Reference for getThirdPartyCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-third-party-code/
      *
-     * @param  \OpenAPI\Client\Model\LoginProvider $provider The identity provider used for authentication. (required)
+     * @param  \OpenAPI\Client\Model\LoginProvider $provider The provider whose consent screen is wanted. Only Google, Dropbox, Docusign, Box, OneDrive, Wordpress and  Github produce a URL; any other provider is answered with 200 and no URL rather than an error. The provider  credentials have to be saved with `POST api/2.0/settings/authservice` first, or the URL comes back without a  client identifier and the provider refuses it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getThirdPartyCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getThirdPartyCode($provider, string $contentType = self::contentTypes['getThirdPartyCode'][0])
     {
@@ -151,17 +151,17 @@ class ThirdPartyApi
     /**
      * Operation getThirdPartyCodeWithHttpInfo
      *
-     * Get the code request
+     * Get provider consent URL
      *
      * REST API Reference for getThirdPartyCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-third-party-code/
      *
-     * @param  \OpenAPI\Client\Model\LoginProvider $provider The identity provider used for authentication. (required)
+     * @param  \OpenAPI\Client\Model\LoginProvider $provider The provider whose consent screen is wanted. Only Google, Dropbox, Docusign, Box, OneDrive, Wordpress and  Github produce a URL; any other provider is answered with 200 and no URL rather than an error. The provider  credentials have to be saved with `POST api/2.0/settings/authservice` first, or the URL comes back without a  client identifier and the provider refuses it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getThirdPartyCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getThirdPartyCodeWithHttpInfo($provider, string $contentType = self::contentTypes['getThirdPartyCode'][0])
     {
@@ -193,7 +193,7 @@ class ThirdPartyApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $request,
                         $response,
                     );
@@ -239,7 +239,7 @@ class ThirdPartyApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\StringWrapper',
                 $request,
                 $response,
             );
@@ -248,7 +248,7 @@ class ThirdPartyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -295,12 +295,12 @@ class ThirdPartyApi
     /**
      * Operation getThirdPartyCodeAsync
      *
-     * Get the code request
+     * Get provider consent URL
      *
      * REST API Reference for getThirdPartyCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-third-party-code/
      *
-     * @param  \OpenAPI\Client\Model\LoginProvider $provider The identity provider used for authentication. (required)
+     * @param  \OpenAPI\Client\Model\LoginProvider $provider The provider whose consent screen is wanted. Only Google, Dropbox, Docusign, Box, OneDrive, Wordpress and  Github produce a URL; any other provider is answered with 200 and no URL rather than an error. The provider  credentials have to be saved with `POST api/2.0/settings/authservice` first, or the URL comes back without a  client identifier and the provider refuses it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getThirdPartyCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -319,12 +319,12 @@ class ThirdPartyApi
     /**
      * Operation getThirdPartyCodeAsyncWithHttpInfo
      *
-     * Get the code request
+     * Get provider consent URL
      *
      * REST API Reference for getThirdPartyCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-third-party-code/
      *
-     * @param  \OpenAPI\Client\Model\LoginProvider $provider The identity provider used for authentication. (required)
+     * @param  \OpenAPI\Client\Model\LoginProvider $provider The provider whose consent screen is wanted. Only Google, Dropbox, Docusign, Box, OneDrive, Wordpress and  Github produce a URL; any other provider is answered with 200 and no URL rather than an error. The provider  credentials have to be saved with `POST api/2.0/settings/authservice` first, or the URL comes back without a  client identifier and the provider refuses it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getThirdPartyCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -332,7 +332,7 @@ class ThirdPartyApi
      */
     public function getThirdPartyCodeAsyncWithHttpInfo($provider, string $contentType = self::contentTypes['getThirdPartyCode'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringWrapper';
         $request = $this->getThirdPartyCodeRequest($provider, $contentType);
 
         return $this->client
@@ -374,7 +374,7 @@ class ThirdPartyApi
     /**
      * Create request for operation 'getThirdPartyCode'
      *
-     * @param  \OpenAPI\Client\Model\LoginProvider $provider The identity provider used for authentication. (required)
+     * @param  \OpenAPI\Client\Model\LoginProvider $provider The provider whose consent screen is wanted. Only Google, Dropbox, Docusign, Box, OneDrive, Wordpress and  Github produce a URL; any other provider is answered with 200 and no URL rather than an error. The provider  credentials have to be saved with `POST api/2.0/settings/authservice` first, or the URL comes back without a  client identifier and the provider refuses it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getThirdPartyCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CurrentLicenseInfo Class Doc Comment
  *
  * @category Class
- * @description The current license information.
+ * @description The two facts about the subscription in force that a payment page needs.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class CurrentLicenseInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets trial
      *
-     * @param bool $trial Specifies whether the license is trial or not.
+     * @param bool $trial Whether the portal is on a trial rather than a paid subscription. A trial expires at `dueDate` and is not  extended by paying - a plan has to be bought instead.
      *
      * @return self
      */
@@ -343,7 +343,7 @@ class CurrentLicenseInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets due_date
      *
-     * @param \DateTime $due_date The date when the license expires.
+     * @param \DateTime $due_date The day the subscription runs out, with the time of day cut off. The largest value a date can hold means  it never runs out, which is how a free or unlimited plan is expressed.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomColorThemesSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The custom color themes settings.
+ * @description The colour themes the portal offers, which of them is applied, and how many the plan allows.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets themes
      *
-     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsItem[]|null $themes The list of the custom color themes.
+     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsItem[]|null $themes Every theme the portal can apply, ordered by ID, with the built-in ones first because they were created  first. It is never empty - the built-in themes cannot be deleted - and a custom theme is one whose ID is  higher than the built-in ones.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets selected
      *
-     * @param int|null $selected Specifies whether the custom color theme is selected.
+     * @param int|null $selected The ID of the theme in `themes` that is currently applied to the whole portal. Deleting the applied theme  moves it to the lowest remaining ID, so it can change without anyone having chosen a new one.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets limit
      *
-     * @param int|null $limit The maximum number of the custom color themes.
+     * @param int|null $limit How many entries `themes` may hold in total, built-in ones included; `0` means the plan caps nothing. Once  the cap is reached `PUT api/2.0/settings/colortheme` drops a new theme silently instead of failing, so  compare this with the length of `themes` to tell whether a save took effect.
      *
      * @return self
      */

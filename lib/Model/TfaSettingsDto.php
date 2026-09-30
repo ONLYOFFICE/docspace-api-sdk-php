@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TfaSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The parameters representing the Two-Factor Authentication (TFA) configuration settings.
+ * @description One two-factor authentication method the portal offers, with the portal-wide state of that method.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -357,7 +357,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The ID of the TFA configuration.
+     * @param string|null $id Which method this entry describes: `sms` for a code sent by text message, `app` for a code from an  authenticator application. It is the value `PUT api/2.0/settings/tfaapp` takes as its `type`, and no other  value ever appears here.
      *
      * @return self
      */
@@ -391,7 +391,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The display name or description of the TFA configuration.
+     * @param string|null $title The label for the method in the portal language, meant for a button or a radio option. It is not stable  enough to branch on - match `id` for that.
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool $enabled Indicates whether the TFA configuration is currently active.
+     * @param bool $enabled Whether this method is the portal's current policy. At most one entry can have it set, and none has it  while the portal challenges nobody. It says nothing about the caller's own account, which may be exempt  through `trustedIps` or forced through `mandatoryUsers`.
      *
      * @return self
      */
@@ -452,7 +452,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available
      *
-     * @param bool $available Indicates whether the TFA configuration can be used.
+     * @param bool $available Whether the method could be switched on at all. For `sms` it is `false` until the installation has a  working SMS provider, so a method can be offered here and still be impossible to enable; for `app` it is  always `true`.
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_ips
      *
-     * @param string[]|null $trusted_ips The list of IP addresses that are exempt from TFA requirements.
+     * @param string[]|null $trusted_ips The addresses that skip the challenge, each either a single address, a `from-to` pair or a CIDR range. It  is empty when no address is exempt, which means every account is challenged.
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mandatory_users
      *
-     * @param string[]|null $mandatory_users The list of user IDs that are required to use TFA.
+     * @param string[]|null $mandatory_users The accounts that are challenged even from a trusted address, by user ID. Empty means the exemption in  `trustedIps` holds for everyone.
      *
      * @return self
      */
@@ -547,7 +547,7 @@ class TfaSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mandatory_groups
      *
-     * @param string[]|null $mandatory_groups The list of group IDs whose members are required to use TFA.
+     * @param string[]|null $mandatory_groups The groups whose members are challenged even from a trusted address, by group ID, with the same reading of  an empty list as `mandatoryUsers`.
      *
      * @return self
      */

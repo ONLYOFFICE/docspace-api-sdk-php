@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CoverRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters to change the room cover.
+ * @description The picture and the colour a room is drawn with while it has no logo.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,7 +314,7 @@ class CoverRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets color
      *
-     * @param string|null $color The cover color.
+     * @param string|null $color The background colour the room is drawn with while it has no logo, as six hexadecimal digits with no leading  number sign. An empty value restores the default colour of the room type.
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class CoverRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cover
      *
-     * @param string|null $cover The cover name.
+     * @param string|null $cover The picture drawn on the room while it has no logo, named by an identifier from  `GET api/2.0/files/rooms/covers`. Any other value is rejected, and an empty value leaves the room without a  cover.
      *
      * @return self
      */

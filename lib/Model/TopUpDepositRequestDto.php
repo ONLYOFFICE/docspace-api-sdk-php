@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TopUpDepositRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for putting money on deposit.
+ * @description How much money is charged to the payment method on file and added to the portal wallet.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +326,7 @@ class TopUpDepositRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets amount
      *
-     * @param int|null $amount The amount of money for the operation.
+     * @param int|null $amount The sum to charge, as a whole number of units of `currency` - 10 means ten dollars and not ten cents. The  bounds are what one call may move, not what the wallet may hold, so a larger top-up is made of several calls.
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class TopUpDepositRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets currency
      *
-     * @param string|null $currency The three-character ISO 4217 currency symbol.
+     * @param string|null $currency The currency the charge is made in, as an ISO 4217 code in upper case. It has to be one of the accounting  currencies this installation supports, which `GET api/2.0/portal/payment/accounting/currencies` lists; any  other code is refused with 400. The money lands on the wallet sub-account of that currency, so topping up in  a second currency does not add to the first one.
      *
      * @return self
      */

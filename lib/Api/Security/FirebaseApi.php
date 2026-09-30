@@ -133,7 +133,7 @@ class FirebaseApi
     /**
      * Operation docRegisterPusnNotificationDevice
      *
-     * Save the Documents Firebase device token
+     * Register a push device
      *
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
@@ -154,7 +154,7 @@ class FirebaseApi
     /**
      * Operation docRegisterPusnNotificationDeviceWithHttpInfo
      *
-     * Save the Documents Firebase device token
+     * Register a push device
      *
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
@@ -298,7 +298,7 @@ class FirebaseApi
     /**
      * Operation docRegisterPusnNotificationDeviceAsync
      *
-     * Save the Documents Firebase device token
+     * Register a push device
      *
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
@@ -322,7 +322,7 @@ class FirebaseApi
     /**
      * Operation docRegisterPusnNotificationDeviceAsyncWithHttpInfo
      *
-     * Save the Documents Firebase device token
+     * Register a push device
      *
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
@@ -484,7 +484,7 @@ class FirebaseApi
     /**
      * Operation subscribeDocumentsPushNotification
      *
-     * Subscribe to Documents push notification
+     * Set push subscription
      *
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
@@ -505,7 +505,7 @@ class FirebaseApi
     /**
      * Operation subscribeDocumentsPushNotificationWithHttpInfo
      *
-     * Subscribe to Documents push notification
+     * Set push subscription
      *
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
@@ -649,7 +649,7 @@ class FirebaseApi
     /**
      * Operation subscribeDocumentsPushNotificationAsync
      *
-     * Subscribe to Documents push notification
+     * Set push subscription
      *
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
@@ -673,7 +673,7 @@ class FirebaseApi
     /**
      * Operation subscribeDocumentsPushNotificationAsyncWithHttpInfo
      *
-     * Subscribe to Documents push notification
+     * Set push subscription
      *
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/

@@ -166,7 +166,7 @@ class PromptsApi
     /**
      * Operation aiPromptsCreate
      *
-     * Create
+     * Save a prompt
      *
      * REST API Reference for aiPromptsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create/
@@ -176,7 +176,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsCreate($ai_create_prompt_input, string $contentType = self::contentTypes['aiPromptsCreate'][0])
     {
@@ -187,7 +187,7 @@ class PromptsApi
     /**
      * Operation aiPromptsCreateWithHttpInfo
      *
-     * Create
+     * Save a prompt
      *
      * REST API Reference for aiPromptsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create/
@@ -197,7 +197,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsCreateWithHttpInfo($ai_create_prompt_input, string $contentType = self::contentTypes['aiPromptsCreate'][0])
     {
@@ -234,6 +234,24 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -279,6 +297,30 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -289,7 +331,7 @@ class PromptsApi
     /**
      * Operation aiPromptsCreateAsync
      *
-     * Create
+     * Save a prompt
      *
      * REST API Reference for aiPromptsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create/
@@ -313,7 +355,7 @@ class PromptsApi
     /**
      * Operation aiPromptsCreateAsyncWithHttpInfo
      *
-     * Create
+     * Save a prompt
      *
      * REST API Reference for aiPromptsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create/
@@ -434,6 +476,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -464,12 +515,12 @@ class PromptsApi
      * REST API Reference for aiPromptsCreateFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create-folder/
      *
-     * @param  string $body body (required)
+     * @param  string $body The name of the folder to create, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsCreateFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsCreateFolder($body, string $contentType = self::contentTypes['aiPromptsCreateFolder'][0])
     {
@@ -485,12 +536,12 @@ class PromptsApi
      * REST API Reference for aiPromptsCreateFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The name of the folder to create, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsCreateFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsCreateFolderWithHttpInfo($body, string $contentType = self::contentTypes['aiPromptsCreateFolder'][0])
     {
@@ -527,6 +578,24 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -572,6 +641,30 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -587,7 +680,7 @@ class PromptsApi
      * REST API Reference for aiPromptsCreateFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The name of the folder to create, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsCreateFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -611,7 +704,7 @@ class PromptsApi
      * REST API Reference for aiPromptsCreateFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-create-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The name of the folder to create, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsCreateFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -661,7 +754,7 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsCreateFolder'
      *
-     * @param  string $body (required)
+     * @param  string $body The name of the folder to create, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsCreateFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -727,6 +820,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -752,17 +854,17 @@ class PromptsApi
     /**
      * Operation aiPromptsDelete
      *
-     * Delete
+     * Delete a saved prompt
      *
      * REST API Reference for aiPromptsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the prompt to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsDelete($body, string $contentType = self::contentTypes['aiPromptsDelete'][0])
     {
@@ -773,17 +875,17 @@ class PromptsApi
     /**
      * Operation aiPromptsDeleteWithHttpInfo
      *
-     * Delete
+     * Delete a saved prompt
      *
      * REST API Reference for aiPromptsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the prompt to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiPromptsDelete'][0])
     {
@@ -819,7 +921,31 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -857,7 +983,39 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -875,12 +1033,12 @@ class PromptsApi
     /**
      * Operation aiPromptsDeleteAsync
      *
-     * Delete
+     * Delete a saved prompt
      *
      * REST API Reference for aiPromptsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the prompt to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -899,12 +1057,12 @@ class PromptsApi
     /**
      * Operation aiPromptsDeleteAsyncWithHttpInfo
      *
-     * Delete
+     * Delete a saved prompt
      *
      * REST API Reference for aiPromptsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the prompt to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -954,7 +1112,7 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsDelete'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the prompt to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1020,6 +1178,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1050,12 +1217,12 @@ class PromptsApi
      * REST API Reference for aiPromptsDeleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete-folder/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the folder to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDeleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsDeleteFolder($body, string $contentType = self::contentTypes['aiPromptsDeleteFolder'][0])
     {
@@ -1071,12 +1238,12 @@ class PromptsApi
      * REST API Reference for aiPromptsDeleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the folder to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDeleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsDeleteFolderWithHttpInfo($body, string $contentType = self::contentTypes['aiPromptsDeleteFolder'][0])
     {
@@ -1112,7 +1279,37 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1150,7 +1347,47 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1173,7 +1410,7 @@ class PromptsApi
      * REST API Reference for aiPromptsDeleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the folder to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDeleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1197,7 +1434,7 @@ class PromptsApi
      * REST API Reference for aiPromptsDeleteFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-delete-folder/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the folder to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDeleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1247,7 +1484,7 @@ class PromptsApi
     /**
      * Create request for operation 'aiPromptsDeleteFolder'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the folder to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPromptsDeleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1313,6 +1550,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1338,7 +1584,7 @@ class PromptsApi
     /**
      * Operation aiPromptsExport
      *
-     * Export
+     * Export the prompt library
      *
      * REST API Reference for aiPromptsExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-export/
@@ -1347,7 +1593,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPromptBundle|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPromptBundle|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsExport(string $contentType = self::contentTypes['aiPromptsExport'][0])
     {
@@ -1358,7 +1604,7 @@ class PromptsApi
     /**
      * Operation aiPromptsExportWithHttpInfo
      *
-     * Export
+     * Export the prompt library
      *
      * REST API Reference for aiPromptsExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-export/
@@ -1367,7 +1613,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPromptBundle|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPromptBundle|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsExportWithHttpInfo(string $contentType = self::contentTypes['aiPromptsExport'][0])
     {
@@ -1404,6 +1650,18 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1449,6 +1707,22 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1459,7 +1733,7 @@ class PromptsApi
     /**
      * Operation aiPromptsExportAsync
      *
-     * Export
+     * Export the prompt library
      *
      * REST API Reference for aiPromptsExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-export/
@@ -1482,7 +1756,7 @@ class PromptsApi
     /**
      * Operation aiPromptsExportAsyncWithHttpInfo
      *
-     * Export
+     * Export the prompt library
      *
      * REST API Reference for aiPromptsExport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-export/
@@ -1587,6 +1861,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1612,7 +1895,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetById
      *
-     * Get by id
+     * Get a saved prompt
      *
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
@@ -1622,7 +1905,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiPrompt|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiPrompt|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsGetById($id, string $contentType = self::contentTypes['aiPromptsGetById'][0])
     {
@@ -1633,7 +1916,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetByIdWithHttpInfo
      *
-     * Get by id
+     * Get a saved prompt
      *
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
@@ -1643,7 +1926,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiPrompt|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiPrompt|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsGetByIdWithHttpInfo($id, string $contentType = self::contentTypes['aiPromptsGetById'][0])
     {
@@ -1679,7 +1962,25 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1717,7 +2018,31 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1735,7 +2060,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetByIdAsync
      *
-     * Get by id
+     * Get a saved prompt
      *
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
@@ -1759,7 +2084,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetByIdAsyncWithHttpInfo
      *
-     * Get by id
+     * Get a saved prompt
      *
      * REST API Reference for aiPromptsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-by-id/
@@ -1882,6 +2207,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1907,7 +2241,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetFolderById
      *
-     * Get folder by id
+     * Get a prompt folder
      *
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
@@ -1917,7 +2251,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiPromptFolder|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiPromptFolder|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsGetFolderById($id, string $contentType = self::contentTypes['aiPromptsGetFolderById'][0])
     {
@@ -1928,7 +2262,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetFolderByIdWithHttpInfo
      *
-     * Get folder by id
+     * Get a prompt folder
      *
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
@@ -1938,7 +2272,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiPromptFolder|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiPromptFolder|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsGetFolderByIdWithHttpInfo($id, string $contentType = self::contentTypes['aiPromptsGetFolderById'][0])
     {
@@ -1974,7 +2308,25 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2012,7 +2364,31 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2030,7 +2406,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetFolderByIdAsync
      *
-     * Get folder by id
+     * Get a prompt folder
      *
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
@@ -2054,7 +2430,7 @@ class PromptsApi
     /**
      * Operation aiPromptsGetFolderByIdAsyncWithHttpInfo
      *
-     * Get folder by id
+     * Get a prompt folder
      *
      * REST API Reference for aiPromptsGetFolderById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-get-folder-by-id/
@@ -2177,6 +2553,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2212,7 +2597,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiImportResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiImportResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsImportBundle($ai_prompts_import_bundle_request, string $contentType = self::contentTypes['aiPromptsImportBundle'][0])
     {
@@ -2233,7 +2618,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiImportResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiImportResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsImportBundleWithHttpInfo($ai_prompts_import_bundle_request, string $contentType = self::contentTypes['aiPromptsImportBundle'][0])
     {
@@ -2275,6 +2660,24 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2308,6 +2711,30 @@ class PromptsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2470,6 +2897,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2495,7 +2931,7 @@ class PromptsApi
     /**
      * Operation aiPromptsList
      *
-     * List
+     * List saved prompts
      *
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
@@ -2505,7 +2941,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsList($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
@@ -2516,7 +2952,7 @@ class PromptsApi
     /**
      * Operation aiPromptsListWithHttpInfo
      *
-     * List
+     * List saved prompts
      *
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
@@ -2526,7 +2962,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPrompt[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsListWithHttpInfo($folder_id = null, string $contentType = self::contentTypes['aiPromptsList'][0])
     {
@@ -2563,6 +2999,18 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2608,6 +3056,22 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2618,7 +3082,7 @@ class PromptsApi
     /**
      * Operation aiPromptsListAsync
      *
-     * List
+     * List saved prompts
      *
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
@@ -2642,7 +3106,7 @@ class PromptsApi
     /**
      * Operation aiPromptsListAsyncWithHttpInfo
      *
-     * List
+     * List saved prompts
      *
      * REST API Reference for aiPromptsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-list/
@@ -2759,6 +3223,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2793,7 +3266,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPromptFolder[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPromptFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsListFolders(string $contentType = self::contentTypes['aiPromptsListFolders'][0])
     {
@@ -2813,7 +3286,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPromptFolder[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPromptFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsListFoldersWithHttpInfo(string $contentType = self::contentTypes['aiPromptsListFolders'][0])
     {
@@ -2855,6 +3328,18 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2888,6 +3373,22 @@ class PromptsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3033,6 +3534,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3058,7 +3568,7 @@ class PromptsApi
     /**
      * Operation aiPromptsMove
      *
-     * Move
+     * Move a prompt to a folder
      *
      * REST API Reference for aiPromptsMove Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-move/
@@ -3068,7 +3578,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsMove($ai_prompts_move_request, string $contentType = self::contentTypes['aiPromptsMove'][0])
     {
@@ -3079,7 +3589,7 @@ class PromptsApi
     /**
      * Operation aiPromptsMoveWithHttpInfo
      *
-     * Move
+     * Move a prompt to a folder
      *
      * REST API Reference for aiPromptsMove Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-move/
@@ -3089,7 +3599,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsMoveWithHttpInfo($ai_prompts_move_request, string $contentType = self::contentTypes['aiPromptsMove'][0])
     {
@@ -3126,6 +3636,24 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3171,6 +3699,30 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -3181,7 +3733,7 @@ class PromptsApi
     /**
      * Operation aiPromptsMoveAsync
      *
-     * Move
+     * Move a prompt to a folder
      *
      * REST API Reference for aiPromptsMove Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-move/
@@ -3205,7 +3757,7 @@ class PromptsApi
     /**
      * Operation aiPromptsMoveAsyncWithHttpInfo
      *
-     * Move
+     * Move a prompt to a folder
      *
      * REST API Reference for aiPromptsMove Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-move/
@@ -3326,6 +3878,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3361,7 +3922,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsRenameFolder($ai_prompts_rename_folder_request, string $contentType = self::contentTypes['aiPromptsRenameFolder'][0])
     {
@@ -3382,7 +3943,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsRenameFolderWithHttpInfo($ai_prompts_rename_folder_request, string $contentType = self::contentTypes['aiPromptsRenameFolder'][0])
     {
@@ -3424,6 +3985,24 @@ class PromptsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -3457,6 +4036,30 @@ class PromptsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3619,6 +4222,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3644,7 +4256,7 @@ class PromptsApi
     /**
      * Operation aiPromptsUpdate
      *
-     * Update
+     * Update a saved prompt
      *
      * REST API Reference for aiPromptsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-update/
@@ -3654,7 +4266,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPromptsUpdate($ai_prompts_update_request, string $contentType = self::contentTypes['aiPromptsUpdate'][0])
     {
@@ -3665,7 +4277,7 @@ class PromptsApi
     /**
      * Operation aiPromptsUpdateWithHttpInfo
      *
-     * Update
+     * Update a saved prompt
      *
      * REST API Reference for aiPromptsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-update/
@@ -3675,7 +4287,7 @@ class PromptsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPromptMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPromptsUpdateWithHttpInfo($ai_prompts_update_request, string $contentType = self::contentTypes['aiPromptsUpdate'][0])
     {
@@ -3712,6 +4324,24 @@ class PromptsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3757,6 +4387,30 @@ class PromptsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -3767,7 +4421,7 @@ class PromptsApi
     /**
      * Operation aiPromptsUpdateAsync
      *
-     * Update
+     * Update a saved prompt
      *
      * REST API Reference for aiPromptsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-update/
@@ -3791,7 +4445,7 @@ class PromptsApi
     /**
      * Operation aiPromptsUpdateAsyncWithHttpInfo
      *
-     * Update
+     * Update a saved prompt
      *
      * REST API Reference for aiPromptsUpdate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-prompts-update/
@@ -3912,6 +4566,15 @@ class PromptsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

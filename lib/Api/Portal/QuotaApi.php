@@ -142,7 +142,7 @@ class QuotaApi
     /**
      * Operation getPortalQuota
      *
-     * Get a portal quota
+     * Get the portal quota
      *
      * REST API Reference for getPortalQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-quota/
@@ -162,7 +162,7 @@ class QuotaApi
     /**
      * Operation getPortalQuotaWithHttpInfo
      *
-     * Get a portal quota
+     * Get the portal quota
      *
      * REST API Reference for getPortalQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-quota/
@@ -291,7 +291,7 @@ class QuotaApi
     /**
      * Operation getPortalQuotaAsync
      *
-     * Get a portal quota
+     * Get the portal quota
      *
      * REST API Reference for getPortalQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-quota/
@@ -314,7 +314,7 @@ class QuotaApi
     /**
      * Operation getPortalQuotaAsyncWithHttpInfo
      *
-     * Get a portal quota
+     * Get the portal quota
      *
      * REST API Reference for getPortalQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-quota/
@@ -466,12 +466,12 @@ class QuotaApi
     /**
      * Operation getPortalTariff
      *
-     * Get a portal tariff
+     * Get the portal tariff
      *
      * REST API Reference for getPortalTariff Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-tariff/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalTariff'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -487,12 +487,12 @@ class QuotaApi
     /**
      * Operation getPortalTariffWithHttpInfo
      *
-     * Get a portal tariff
+     * Get the portal tariff
      *
      * REST API Reference for getPortalTariff Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-tariff/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalTariff'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -631,12 +631,12 @@ class QuotaApi
     /**
      * Operation getPortalTariffAsync
      *
-     * Get a portal tariff
+     * Get the portal tariff
      *
      * REST API Reference for getPortalTariff Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-tariff/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalTariff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -655,12 +655,12 @@ class QuotaApi
     /**
      * Operation getPortalTariffAsyncWithHttpInfo
      *
-     * Get a portal tariff
+     * Get the portal tariff
      *
      * REST API Reference for getPortalTariff Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-tariff/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalTariff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -710,7 +710,7 @@ class QuotaApi
     /**
      * Create request for operation 'getPortalTariff'
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalTariff'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1472,7 +1472,7 @@ class QuotaApi
      * REST API Reference for getUpcomingPayments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-upcoming-payments/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUpcomingPayments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1493,7 +1493,7 @@ class QuotaApi
      * REST API Reference for getUpcomingPayments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-upcoming-payments/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUpcomingPayments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1637,7 +1637,7 @@ class QuotaApi
      * REST API Reference for getUpcomingPayments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-upcoming-payments/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUpcomingPayments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1661,7 +1661,7 @@ class QuotaApi
      * REST API Reference for getUpcomingPayments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-upcoming-payments/
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUpcomingPayments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1711,7 +1711,7 @@ class QuotaApi
     /**
      * Create request for operation 'getUpcomingPayments'
      *
-     * @param  bool|null $refresh The value indicating whether the current portal tariff information should be refreshed. (optional)
+     * @param  bool|null $refresh Whether the tariff is re-read from the billing system instead of the portal cache. The remote read is slower,  so ask for it right after a payment and leave it off for ordinary page loads. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUpcomingPayments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -317,7 +317,7 @@ class StartUpdateUserTypeDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType|null $type The new user type.
+     * @param \OpenAPI\Client\Model\EmployeeType|null $type The type to convert the account to. Only `Guest` and `User` are accepted, because they are the types that  cannot own rooms; `RoomAdmin`, `DocSpaceAdmin` and `All` are rejected here and belong to  `PUT api/2.0/people/type/{type}`.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class StartUpdateUserTypeDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The user ID.
+     * @param string|null $user_id The ID of the account being converted. It has to be an active account other than the caller, and only the  portal owner may pass the ID of a DocSpace administrator.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class StartUpdateUserTypeDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets reassign_user_id
      *
-     * @param string|null $reassign_user_id The user ID to reassign.
+     * @param string|null $reassign_user_id The ID of the administrator who receives the rooms and the shared files of the converted account. It has to be  an active room admin or DocSpace admin other than the converted account, and when it is omitted the data goes  to the caller.
      *
      * @return self
      */

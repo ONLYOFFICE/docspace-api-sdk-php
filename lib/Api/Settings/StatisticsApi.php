@@ -135,7 +135,7 @@ class StatisticsApi
      * REST API Reference for getSpaceUsageStatistics Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-space-usage-statistics/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSpaceUsageStatistics'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -156,7 +156,7 @@ class StatisticsApi
      * REST API Reference for getSpaceUsageStatistics Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-space-usage-statistics/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSpaceUsageStatistics'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -300,7 +300,7 @@ class StatisticsApi
      * REST API Reference for getSpaceUsageStatistics Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-space-usage-statistics/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSpaceUsageStatistics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -324,7 +324,7 @@ class StatisticsApi
      * REST API Reference for getSpaceUsageStatistics Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-space-usage-statistics/
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSpaceUsageStatistics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -374,7 +374,7 @@ class StatisticsApi
     /**
      * Create request for operation 'getSpaceUsageStatistics'
      *
-     * @param  string $id The ID extracted from the route parameters. (required)
+     * @param  string $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSpaceUsageStatistics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

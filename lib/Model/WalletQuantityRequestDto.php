@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WalletQuantityRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for specifying wallet payment quantity.
+ * @description The wallet service being bought or scheduled, and the way its quantity is applied.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -285,6 +285,14 @@ class WalletQuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
+        if ((count($this->container['quantity']) > 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be less than or equal to 1.";
+        }
+
+        if ((count($this->container['quantity']) < 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,7 +321,7 @@ class WalletQuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets quantity
      *
-     * @param array<string,int> $quantity The mapping of item identifiers to their respective quantities in the payment.
+     * @param array<string,int> $quantity The wallet service and the number of units of it, as a single pair. The key is the `serviceName` of a service  from `GET api/2.0/portal/payment/walletservices`, and the value is read according to  `productQuantityType`: the units to add, or the total the service is to have in the next period. Minimum  quantities apply per service - disk storage starts at 100 units, the Docs Connect Dev Pack at 10, and the  administrators may not be fewer than the portal already has. Exactly one pair is accepted, and a null or zero  value cancels a change scheduled earlier rather than buying nothing.
      *
      * @return self
      */
@@ -322,7 +330,12 @@ class WalletQuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSeri
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
+        if ((count($quantity) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling WalletQuantityRequestDto., number of items must be less than or equal to 1.');
+        }
+        if ((count($quantity) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $quantity when calling WalletQuantityRequestDto., number of items must be greater than or equal to 1.');
+        }
         $this->container['quantity'] = $quantity;
 
         return $this;
@@ -341,7 +354,7 @@ class WalletQuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets product_quantity_type
      *
-     * @param \OpenAPI\Client\Model\ProductQuantityType|null $product_quantity_type The type of action performed on a product's quantity.
+     * @param \OpenAPI\Client\Model\ProductQuantityType|null $product_quantity_type How the number in `quantity` is applied. `Add` buys the units straight away and charges them to the portal  wallet, while `Set` charges nothing now and records the quantity the service is to have from the next period.  Only these two are accepted here; `Sub` and `Renew` are refused with 400.
      *
      * @return self
      */

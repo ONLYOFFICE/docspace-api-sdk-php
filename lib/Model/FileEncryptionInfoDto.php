@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileEncryptionInfoDto Class Doc Comment
  *
  * @category Class
- * @description The encryption information of a file: the user key pairs and the per-user file keys.
+ * @description The keys the calling account needs in order to open one file of an end-to-end encrypted private room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets user_keys
      *
-     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $user_keys The key pairs of the users who have access to the file.
+     * @param \OpenAPI\Client\Model\EncryptionKeyDto[]|null $user_keys The key pairs of the calling account, never those of the other people in the room. The private half of each  pair is stored encrypted with that person's own password and has to be decrypted on the client. An empty list  means the account has generated no key pair yet, and until it does no file key can be issued to it.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_keys
      *
-     * @param \OpenAPI\Client\Model\FileKeys[]|null $file_keys The file keys issued to those users.
+     * @param \OpenAPI\Client\Model\FileKeys[]|null $file_keys The keys of this file that were issued to the calling account, each naming the public key it was encrypted for  so that the client can pick the matching private half. An empty list means the file has not been shared with  this account rather than that the file is unencrypted.
      *
      * @return self
      */

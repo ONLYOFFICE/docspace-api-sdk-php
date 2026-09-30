@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupServiceStateDto Class Doc Comment
  *
  * @category Class
- * @description Backup service state.
+ * @description Whether the paid backup service is switched on for a portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class BackupServiceStateDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies if the backup service is enabled or not.
+     * @param bool|null $enabled Specifies whether the paid backup service is switched on for this portal, which is a setting of its  wallet rather than the health of the backup service. While it is true, backups beyond the free  monthly allowance are charged to the wallet.
      *
      * @return self
      */

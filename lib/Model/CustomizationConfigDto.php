@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomizationConfigDto Class Doc Comment
  *
  * @category Class
- * @description The customization config parameters.
+ * @description How the editor interface is dressed: branding, the buttons that lead back into the portal, and the behaviour of  review, mentions and form submission.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -68,7 +68,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => '\OpenAPI\Client\Model\LogoConfigDto',
         'mention_share' => 'bool',
         'submit_form' => '\OpenAPI\Client\Model\SubmitForm',
-        'start_filling_form' => '\OpenAPI\Client\Model\StartFillingForm'
+        'start_filling_form' => '\OpenAPI\Client\Model\StartFillingForm',
+        'ai' => '\OpenAPI\Client\Model\AIConfig'
     ];
 
     /**
@@ -89,7 +90,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => null,
         'mention_share' => null,
         'submit_form' => null,
-        'start_filling_form' => null
+        'start_filling_form' => null,
+        'ai' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => false,
         'mention_share' => false,
         'submit_form' => false,
-        'start_filling_form' => false
+        'start_filling_form' => false,
+        'ai' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => 'logo',
         'mention_share' => 'mentionShare',
         'submit_form' => 'submitForm',
-        'start_filling_form' => 'startFillingForm'
+        'start_filling_form' => 'startFillingForm',
+        'ai' => 'ai'
     ];
 
     /**
@@ -226,7 +230,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => 'setLogo',
         'mention_share' => 'setMentionShare',
         'submit_form' => 'setSubmitForm',
-        'start_filling_form' => 'setStartFillingForm'
+        'start_filling_form' => 'setStartFillingForm',
+        'ai' => 'setAi'
     ];
 
     /**
@@ -245,7 +250,8 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'logo' => 'getLogo',
         'mention_share' => 'getMentionShare',
         'submit_form' => 'getSubmitForm',
-        'start_filling_form' => 'getStartFillingForm'
+        'start_filling_form' => 'getStartFillingForm',
+        'ai' => 'getAi'
     ];
 
     /**
@@ -316,6 +322,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('mention_share', $data ?? [], null);
         $this->setIfExists('submit_form', $data ?? [], null);
         $this->setIfExists('start_filling_form', $data ?? [], null);
+        $this->setIfExists('ai', $data ?? [], null);
     }
 
     /**
@@ -373,7 +380,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets about
      *
-     * @param bool|null $about Specifies if the customization is about.
+     * @param bool|null $about Whether the About entry of the editor menu is shown.
      *
      * @return self
      */
@@ -400,7 +407,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets customer
      *
-     * @param \OpenAPI\Client\Model\CustomerConfigDto|null $customer The customization customer configuration.
+     * @param \OpenAPI\Client\Model\CustomerConfigDto|null $customer The branding of the organization running the portal. It is filled in on a server installation only and is  empty in the cloud.
      *
      * @return self
      */
@@ -427,7 +434,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets anonymous
      *
-     * @param \OpenAPI\Client\Model\AnonymousConfigDto|null $anonymous The anonymous configuration of the customization.
+     * @param \OpenAPI\Client\Model\AnonymousConfigDto|null $anonymous How an anonymous participant is treated in this session.
      *
      * @return self
      */
@@ -454,7 +461,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets feedback
      *
-     * @param \OpenAPI\Client\Model\FeedbackConfig|null $feedback The feedback configuration of the customization.
+     * @param \OpenAPI\Client\Model\FeedbackConfig|null $feedback The support link the editor offers behind its feedback button.
      *
      * @return self
      */
@@ -481,7 +488,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets forcesave
      *
-     * @param bool|null $forcesave Specifies if the customization should be force saved.
+     * @param bool|null $forcesave Whether the editors write intermediate revisions while the document stays open. It is empty when the portal  leaves the decision to the editors themselves.
      *
      * @return self
      */
@@ -515,7 +522,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets goback
      *
-     * @param \OpenAPI\Client\Model\GobackConfig|null $goback The go back configuration of the customization.
+     * @param \OpenAPI\Client\Model\GobackConfig|null $goback Where the editor returns the user to when they leave the document. It is empty when there is nowhere to go  back to, as in an embedded opening.
      *
      * @return self
      */
@@ -542,7 +549,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets review
      *
-     * @param \OpenAPI\Client\Model\ReviewConfig|null $review The review configuration of the customization.
+     * @param \OpenAPI\Client\Model\ReviewConfig|null $review How tracked changes are displayed when the document opens; it depends on whether this session may write.
      *
      * @return self
      */
@@ -569,7 +576,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoConfigDto|null $logo The logo of the customization.
+     * @param \OpenAPI\Client\Model\LogoConfigDto|null $logo The logo the editor shows, in the variants the current layout and file type need.
      *
      * @return self
      */
@@ -596,7 +603,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets mention_share
      *
-     * @param bool|null $mention_share Specifies if the share should be mentioned.
+     * @param bool|null $mention_share Whether mentioning a user who cannot yet open the document offers to share it with them, instead of silently  notifying nobody.
      *
      * @return self
      */
@@ -623,7 +630,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets submit_form
      *
-     * @param \OpenAPI\Client\Model\SubmitForm|null $submit_form The Complete & Submit button settings.
+     * @param \OpenAPI\Client\Model\SubmitForm|null $submit_form The submit button of a form: whether it is shown and what it says.
      *
      * @return self
      */
@@ -650,7 +657,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets start_filling_form
      *
-     * @param \OpenAPI\Client\Model\StartFillingForm|null $start_filling_form The parameters of the button that starts filling out the form.
+     * @param \OpenAPI\Client\Model\StartFillingForm|null $start_filling_form The button that starts filling out the form. It is empty when this opening offers no such button.
      *
      * @return self
      */
@@ -660,6 +667,33 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable start_filling_form cannot be null');
         }
         $this->container['start_filling_form'] = $start_filling_form;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai
+     *
+     * @return \OpenAPI\Client\Model\AIConfig|null
+     */
+    public function getAi()
+    {
+        return $this->container['ai'];
+    }
+
+    /**
+     * Sets ai
+     *
+     * @param \OpenAPI\Client\Model\AIConfig|null $ai The AI configuration settings.
+     *
+     * @return self
+     */
+    public function setAi($ai)
+    {
+        if (is_null($ai)) {
+            throw new \InvalidArgumentException('non-nullable ai cannot be null');
+        }
+        $this->container['ai'] = $ai;
 
         return $this;
     }

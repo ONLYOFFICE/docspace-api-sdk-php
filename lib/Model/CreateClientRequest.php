@@ -62,15 +62,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => 'string',
         'logo' => 'string',
         'scopes' => 'string[]',
-        'public' => 'bool',
         'allow_pkce' => 'bool',
-        'is_public' => 'bool',
         'website_url' => 'string',
         'terms_url' => 'string',
         'policy_url' => 'string',
         'redirect_uris' => 'string[]',
         'allowed_origins' => 'string[]',
-        'logout_redirect_uri' => 'string'
+        'logout_redirect_uri' => 'string',
+        'is_public' => 'bool'
     ];
 
     /**
@@ -85,15 +84,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => null,
         'logo' => null,
         'scopes' => null,
-        'public' => null,
         'allow_pkce' => null,
-        'is_public' => null,
         'website_url' => null,
         'terms_url' => null,
         'policy_url' => null,
         'redirect_uris' => null,
         'allowed_origins' => null,
-        'logout_redirect_uri' => null
+        'logout_redirect_uri' => null,
+        'is_public' => null
     ];
 
     /**
@@ -106,15 +104,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => false,
         'logo' => false,
         'scopes' => false,
-        'public' => false,
         'allow_pkce' => false,
-        'is_public' => false,
         'website_url' => false,
         'terms_url' => false,
         'policy_url' => false,
         'redirect_uris' => false,
         'allowed_origins' => false,
-        'logout_redirect_uri' => false
+        'logout_redirect_uri' => false,
+        'is_public' => false
     ];
 
     /**
@@ -207,15 +204,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => 'description',
         'logo' => 'logo',
         'scopes' => 'scopes',
-        'public' => 'public',
         'allow_pkce' => 'allow_pkce',
-        'is_public' => 'is_public',
         'website_url' => 'website_url',
         'terms_url' => 'terms_url',
         'policy_url' => 'policy_url',
         'redirect_uris' => 'redirect_uris',
         'allowed_origins' => 'allowed_origins',
-        'logout_redirect_uri' => 'logout_redirect_uri'
+        'logout_redirect_uri' => 'logout_redirect_uri',
+        'is_public' => 'is_public'
     ];
 
     /**
@@ -228,15 +224,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => 'setDescription',
         'logo' => 'setLogo',
         'scopes' => 'setScopes',
-        'public' => 'setPublic',
         'allow_pkce' => 'setAllowPkce',
-        'is_public' => 'setIsPublic',
         'website_url' => 'setWebsiteUrl',
         'terms_url' => 'setTermsUrl',
         'policy_url' => 'setPolicyUrl',
         'redirect_uris' => 'setRedirectUris',
         'allowed_origins' => 'setAllowedOrigins',
-        'logout_redirect_uri' => 'setLogoutRedirectUri'
+        'logout_redirect_uri' => 'setLogoutRedirectUri',
+        'is_public' => 'setIsPublic'
     ];
 
     /**
@@ -249,15 +244,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'description' => 'getDescription',
         'logo' => 'getLogo',
         'scopes' => 'getScopes',
-        'public' => 'getPublic',
         'allow_pkce' => 'getAllowPkce',
-        'is_public' => 'getIsPublic',
         'website_url' => 'getWebsiteUrl',
         'terms_url' => 'getTermsUrl',
         'policy_url' => 'getPolicyUrl',
         'redirect_uris' => 'getRedirectUris',
         'allowed_origins' => 'getAllowedOrigins',
-        'logout_redirect_uri' => 'getLogoutRedirectUri'
+        'logout_redirect_uri' => 'getLogoutRedirectUri',
+        'is_public' => 'getIsPublic'
     ];
 
     /**
@@ -321,15 +315,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('logo', $data ?? [], null);
         $this->setIfExists('scopes', $data ?? [], null);
-        $this->setIfExists('public', $data ?? [], null);
         $this->setIfExists('allow_pkce', $data ?? [], null);
-        $this->setIfExists('is_public', $data ?? [], null);
         $this->setIfExists('website_url', $data ?? [], null);
         $this->setIfExists('terms_url', $data ?? [], null);
         $this->setIfExists('policy_url', $data ?? [], null);
         $this->setIfExists('redirect_uris', $data ?? [], null);
         $this->setIfExists('allowed_origins', $data ?? [], null);
         $this->setIfExists('logout_redirect_uri', $data ?? [], null);
+        $this->setIfExists('is_public', $data ?? [], null);
     }
 
     /**
@@ -359,11 +352,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 256)) {
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 256)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 256.";
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 3)) {
+        if ((mb_strlen($this->container['name']) < 3)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 3.";
         }
 
@@ -375,39 +371,54 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['logo']) && (mb_strlen($this->container['logo']) < 1)) {
+        if ($this->container['logo'] === null) {
+            $invalidProperties[] = "'logo' can't be null";
+        }
+        if ((mb_strlen($this->container['logo']) < 1)) {
             $invalidProperties[] = "invalid value for 'logo', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['logo']) && !preg_match("/^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/", $this->container['logo'])) {
+        if (!preg_match("/^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/", $this->container['logo'])) {
             $invalidProperties[] = "invalid value for 'logo', must be conform to the pattern /^data:image\/(?:png|jpeg|jpg|svg\\+xml);base64,.*.{1,}/.";
         }
 
-        if (!is_null($this->container['scopes']) && (count($this->container['scopes']) < 1)) {
+        if ($this->container['scopes'] === null) {
+            $invalidProperties[] = "'scopes' can't be null";
+        }
+        if ((count($this->container['scopes']) < 1)) {
             $invalidProperties[] = "invalid value for 'scopes', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['website_url']) && (mb_strlen($this->container['website_url']) < 1)) {
+        if ($this->container['website_url'] === null) {
+            $invalidProperties[] = "'website_url' can't be null";
+        }
+        if ((mb_strlen($this->container['website_url']) < 1)) {
             $invalidProperties[] = "invalid value for 'website_url', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['website_url']) && !preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['website_url'])) {
+        if (!preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['website_url'])) {
             $invalidProperties[] = "invalid value for 'website_url', must be conform to the pattern /^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/.";
         }
 
-        if (!is_null($this->container['terms_url']) && (mb_strlen($this->container['terms_url']) < 1)) {
+        if ($this->container['terms_url'] === null) {
+            $invalidProperties[] = "'terms_url' can't be null";
+        }
+        if ((mb_strlen($this->container['terms_url']) < 1)) {
             $invalidProperties[] = "invalid value for 'terms_url', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['terms_url']) && !preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['terms_url'])) {
+        if (!preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['terms_url'])) {
             $invalidProperties[] = "invalid value for 'terms_url', must be conform to the pattern /^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/.";
         }
 
-        if (!is_null($this->container['policy_url']) && (mb_strlen($this->container['policy_url']) < 1)) {
+        if ($this->container['policy_url'] === null) {
+            $invalidProperties[] = "'policy_url' can't be null";
+        }
+        if ((mb_strlen($this->container['policy_url']) < 1)) {
             $invalidProperties[] = "invalid value for 'policy_url', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['policy_url']) && !preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['policy_url'])) {
+        if (!preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['policy_url'])) {
             $invalidProperties[] = "invalid value for 'policy_url', must be conform to the pattern /^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/.";
         }
 
@@ -433,11 +444,14 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'allowed_origins', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['logout_redirect_uri']) && (mb_strlen($this->container['logout_redirect_uri']) < 1)) {
+        if ($this->container['logout_redirect_uri'] === null) {
+            $invalidProperties[] = "'logout_redirect_uri' can't be null";
+        }
+        if ((mb_strlen($this->container['logout_redirect_uri']) < 1)) {
             $invalidProperties[] = "invalid value for 'logout_redirect_uri', the character length must be bigger than or equal to 1.";
         }
 
-        if (!is_null($this->container['logout_redirect_uri']) && !preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['logout_redirect_uri'])) {
+        if (!preg_match("/^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/", $this->container['logout_redirect_uri'])) {
             $invalidProperties[] = "invalid value for 'logout_redirect_uri', must be conform to the pattern /^(https?:\/\/)?([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$|^https?:\/\/(\\d{1,3}\\.){3}\\d{1,3}(:\\d+)?(\/[a-zA-Z0-9-._~:\/?#\\[\\]@!$&'()*+,;=]*)?$/.";
         }
 
@@ -459,7 +473,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -469,7 +483,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name The client name.
+     * @param string $name The display name shown to the user on the consent screen. It has to be between 3 and 256 characters long.
      *
      * @return self
      */
@@ -503,7 +517,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets description
      *
-     * @param string|null $description The description of the client
+     * @param string|null $description The free-text description shown next to the name on the consent screen, at most 255 characters.
      *
      * @return self
      */
@@ -527,7 +541,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets logo
      *
-     * @return string|null
+     * @return string
      */
     public function getLogo()
     {
@@ -537,7 +551,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets logo
      *
-     * @param string|null $logo The logo of the client in base64 format
+     * @param string $logo The client logo as a data URI carrying base64 image data, shown on the consent screen. Only png, jpeg, jpg and svg+xml are accepted, the whole string may not exceed 2000000 characters and the decoded image may not exceed 256000 bytes.
      *
      * @return self
      */
@@ -562,7 +576,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets scopes
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getScopes()
     {
@@ -572,7 +586,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets scopes
      *
-     * @param string[]|null $scopes The scopes for the client
+     * @param string[] $scopes The permissions the client may ask for, named as they appear in the tenant scope catalogue - for example files:read, rooms:write or openid. A client cannot request a scope that is not listed here.
      *
      * @return self
      */
@@ -591,33 +605,6 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets public
-     *
-     * @return bool|null
-     */
-    public function getPublic()
-    {
-        return $this->container['public'];
-    }
-
-    /**
-     * Sets public
-     *
-     * @param bool|null $public public
-     *
-     * @return self
-     */
-    public function setPublic($public)
-    {
-        if (is_null($public)) {
-            throw new \InvalidArgumentException('non-nullable public cannot be null');
-        }
-        $this->container['public'] = $public;
-
-        return $this;
-    }
-
-    /**
      * Gets allow_pkce
      *
      * @return bool|null
@@ -630,7 +617,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets allow_pkce
      *
-     * @param bool|null $allow_pkce Indicates whether PKCE is allowed for the client
+     * @param bool|null $allow_pkce Whether the client may use PKCE. Turning it on lets the client authenticate with the none method and prove itself with a code verifier instead of sending a secret, which is what a client that cannot keep a secret needs.
      *
      * @return self
      */
@@ -645,36 +632,9 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets is_public
-     *
-     * @return bool|null
-     */
-    public function getIsPublic()
-    {
-        return $this->container['is_public'];
-    }
-
-    /**
-     * Sets is_public
-     *
-     * @param bool|null $is_public Indicates if the client is public
-     *
-     * @return self
-     */
-    public function setIsPublic($is_public)
-    {
-        if (is_null($is_public)) {
-            throw new \InvalidArgumentException('non-nullable is_public cannot be null');
-        }
-        $this->container['is_public'] = $is_public;
-
-        return $this;
-    }
-
-    /**
      * Gets website_url
      *
-     * @return string|null
+     * @return string
      */
     public function getWebsiteUrl()
     {
@@ -684,7 +644,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets website_url
      *
-     * @param string|null $website_url The website URL of the client
+     * @param string $website_url The URL of the client home page, offered to the user before they consent. The value has to be an http or https URL.
      *
      * @return self
      */
@@ -709,7 +669,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets terms_url
      *
-     * @return string|null
+     * @return string
      */
     public function getTermsUrl()
     {
@@ -719,7 +679,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets terms_url
      *
-     * @param string|null $terms_url The terms URL of the client
+     * @param string $terms_url The URL of the client terms of service, linked from the consent screen. The value has to be an http or https URL.
      *
      * @return self
      */
@@ -744,7 +704,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets policy_url
      *
-     * @return string|null
+     * @return string
      */
     public function getPolicyUrl()
     {
@@ -754,7 +714,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets policy_url
      *
-     * @param string|null $policy_url The policy URL of the client
+     * @param string $policy_url The URL of the client privacy policy, linked from the consent screen. The value has to be an http or https URL.
      *
      * @return self
      */
@@ -789,7 +749,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets redirect_uris
      *
-     * @param string[] $redirect_uris The redirect URIs for the client
+     * @param string[] $redirect_uris The URIs an authorization code may be delivered to. An authorization request naming any other URI is refused, and the set holds between 1 and 12 addresses.
      *
      * @return self
      */
@@ -822,7 +782,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets allowed_origins
      *
-     * @param string[] $allowed_origins The allowed origins for the client
+     * @param string[] $allowed_origins The web origins allowed to call the portal on behalf of this client, used for the CORS check. The set holds between 1 and 12 addresses.
      *
      * @return self
      */
@@ -845,7 +805,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets logout_redirect_uri
      *
-     * @return string|null
+     * @return string
      */
     public function getLogoutRedirectUri()
     {
@@ -855,7 +815,7 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets logout_redirect_uri
      *
-     * @param string|null $logout_redirect_uri The logout redirect URI for the client
+     * @param string $logout_redirect_uri The single URI the user may be sent back to once they have logged out. The value has to be an http or https URL.
      *
      * @return self
      */
@@ -873,6 +833,33 @@ class CreateClientRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         $this->container['logout_redirect_uri'] = $logout_redirect_uri;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_public
+     *
+     * @return bool|null
+     */
+    public function getIsPublic()
+    {
+        return $this->container['is_public'];
+    }
+
+    /**
+     * Sets is_public
+     *
+     * @param bool|null $is_public Whether the client is offered to third-party tenants rather than only to the tenant that registers it.
+     *
+     * @return self
+     */
+    public function setIsPublic($is_public)
+    {
+        if (is_null($is_public)) {
+            throw new \InvalidArgumentException('non-nullable is_public cannot be null');
+        }
+        $this->container['is_public'] = $is_public;
 
         return $this;
     }

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TariffWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the Tariff object.
+ * @description The successful API response containing the TariffDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TariffWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\Tariff',
+        'response' => '\OpenAPI\Client\Model\TariffDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TariffWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\Tariff|null
+     * @return \OpenAPI\Client\Model\TariffDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TariffWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\Tariff|null $response The Tariff object returned by the operation.
+     * @param \OpenAPI\Client\Model\TariffDto|null $response The TariffDto object returned by the operation.
      *
      * @return self
      */

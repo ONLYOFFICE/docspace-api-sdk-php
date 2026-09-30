@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiFileEntryBaseDto Class Doc Comment
  *
  * @category Class
- * @description The file entry information.
+ * @description What every file and folder in an answer has in common; the concrete shape is a file or a folder, told apart by the  entry type.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -67,10 +67,10 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'shared_external' => 'bool',
         'parent_shared' => 'bool',
         'short_web_url' => 'string',
-        'created' => '\DateTime',
+        'created' => '\OpenAPI\Client\Model\AiApiDateTime',
         'created_by' => '\OpenAPI\Client\Model\AiEmployeeDto',
-        'updated' => '\DateTime',
-        'auto_delete' => '\DateTime',
+        'updated' => '\OpenAPI\Client\Model\AiApiDateTime',
+        'auto_delete' => '\OpenAPI\Client\Model\AiApiDateTime',
         'root_folder_type' => '\OpenAPI\Client\Model\AiFolderType',
         'parent_room_type' => '\OpenAPI\Client\Model\AiFolderType',
         'updated_by' => '\OpenAPI\Client\Model\AiEmployeeDto',
@@ -99,10 +99,10 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'shared_external' => null,
         'parent_shared' => null,
         'short_web_url' => 'uri',
-        'created' => 'date-time',
+        'created' => null,
         'created_by' => null,
-        'updated' => 'date-time',
-        'auto_delete' => 'date-time',
+        'updated' => null,
+        'auto_delete' => null,
         'root_folder_type' => null,
         'parent_room_type' => null,
         'updated_by' => null,
@@ -129,10 +129,10 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'shared_external' => false,
         'parent_shared' => false,
         'short_web_url' => true,
-        'created' => true,
+        'created' => false,
         'created_by' => false,
-        'updated' => true,
-        'auto_delete' => true,
+        'updated' => false,
+        'auto_delete' => false,
         'root_folder_type' => false,
         'parent_room_type' => false,
         'updated_by' => false,
@@ -450,7 +450,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets title
      *
-     * @param string|null $title The file entry title.
+     * @param string|null $title The name shown for the entry. For a file it carries the extension, which is how the format is recognised, and  for a room it is the room name.
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\AiFileShare|null $access The access rights to the file entry.
+     * @param \OpenAPI\Client\Model\AiFileShare|null $access The level the calling account holds on this entry, resolved from its own rights, the groups it belongs to and  any link it came in through. It is the level itself, not what the account may do with it - the action flags  below answer that.
      *
      * @return self
      */
@@ -511,7 +511,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets shared_by
      *
-     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $shared_by Provides information about the employee who shared the file or folder.
+     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $shared_by Who gave the calling account the access it is using. It is filled in only while the entry is being read  through a share, and never for a caller without an account.
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets owned_by
      *
-     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $owned_by The information about the employee who owns the file entry.
+     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $owned_by Who owns the place the entry is shared from - the creator of the room it lies in, or of the personal section  that holds it. It is filled in only while the entry is being read through a share, and never for a caller  without an account.
      *
      * @return self
      */
@@ -565,7 +565,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets shared
      *
-     * @param bool|null $shared Specifies if the file entry is shared via link or not.
+     * @param bool|null $shared Whether at least one external link exists for the entry, whichever kind. It says nothing about accounts and  groups - those are counted by the flag for members below.
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets shared_for_user
      *
-     * @param bool|null $shared_for_user Specifies if the file entry is shared for user or not.
+     * @param bool|null $shared_for_user Whether at least one account or group has been given rights on the entry directly, as opposed to reaching it  through a link or through the room around it.
      *
      * @return self
      */
@@ -619,7 +619,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets shared_external
      *
-     * @param bool|null $shared_external Specifies if the file entry is shared via a public (non-internal) external link.
+     * @param bool|null $shared_external Whether one of the entry's links is open to people outside the portal, as opposed to a link that only its own  members can follow. This is the flag to watch when the concern is who can reach the content from outside.
      *
      * @return self
      */
@@ -646,7 +646,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets parent_shared
      *
-     * @param bool|null $parent_shared Indicates whether the parent entity is shared.
+     * @param bool|null $parent_shared Whether the entry is reachable because the room or folder around it is shared, rather than through rights of  its own. A copy or a move takes the entry out of that scope.
      *
      * @return self
      */
@@ -673,7 +673,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets short_web_url
      *
-     * @param string|null $short_web_url The short Web URL.
+     * @param string|null $short_web_url A shortened address that opens the entry through the link it is being read with. It is an empty string  whenever no link applies, which is the usual case for a member browsing their own rooms.
      *
      * @return self
      */
@@ -697,7 +697,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets created
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\AiApiDateTime|null
      */
     public function getCreated()
     {
@@ -707,21 +707,14 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets created
      *
-     * @param \DateTime|null $created The creation date and time of the file entry.
+     * @param \OpenAPI\Client\Model\AiApiDateTime|null $created When the entry was created, written with the offset of the portal's time zone. For a file restored from an  older version this is still the moment the file first appeared.
      *
      * @return self
      */
     public function setCreated($created)
     {
         if (is_null($created)) {
-            array_push($this->openAPINullablesSetToNull, 'created');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
         }
         $this->container['created'] = $created;
 
@@ -741,7 +734,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets created_by
      *
-     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $created_by The file entry author.
+     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $created_by Who created the entry. It is null for a caller without an account, who is told nothing about the portal's  members.
      *
      * @return self
      */
@@ -758,7 +751,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\AiApiDateTime|null
      */
     public function getUpdated()
     {
@@ -768,21 +761,14 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated The last date and time when the file entry was updated.
+     * @param \OpenAPI\Client\Model\AiApiDateTime|null $updated When the entry last changed, written with the offset of the portal's time zone. It is never reported as  earlier than the creation moment, so the two can be compared safely.
      *
      * @return self
      */
     public function setUpdated($updated)
     {
         if (is_null($updated)) {
-            array_push($this->openAPINullablesSetToNull, 'updated');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable updated cannot be null');
         }
         $this->container['updated'] = $updated;
 
@@ -792,7 +778,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets auto_delete
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\AiApiDateTime|null
      */
     public function getAutoDelete()
     {
@@ -802,21 +788,14 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets auto_delete
      *
-     * @param \DateTime|null $auto_delete The date and time when the file entry will be automatically deleted.
+     * @param \OpenAPI\Client\Model\AiApiDateTime|null $auto_delete When the entry will disappear on its own, written with the offset of the portal's time zone. It is filled in  only where a removal is actually scheduled - something in the trash while the portal cleans it up  automatically, or a guest's own documents - so a null means nothing is scheduled rather than that the entry is  permanent.
      *
      * @return self
      */
     public function setAutoDelete($auto_delete)
     {
         if (is_null($auto_delete)) {
-            array_push($this->openAPINullablesSetToNull, 'auto_delete');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('auto_delete', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable auto_delete cannot be null');
         }
         $this->container['auto_delete'] = $auto_delete;
 
@@ -836,7 +815,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets root_folder_type
      *
-     * @param \OpenAPI\Client\Model\AiFolderType|null $root_folder_type The root folder type of the file entry.
+     * @param \OpenAPI\Client\Model\AiFolderType|null $root_folder_type The section the entry ultimately belongs to, which is what tells a personal document from one inside a room,  from a template and from something in the trash or the archive.
      *
      * @return self
      */
@@ -863,7 +842,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets parent_room_type
      *
-     * @param \OpenAPI\Client\Model\AiFolderType|null $parent_room_type The parent room type of the file entry.
+     * @param \OpenAPI\Client\Model\AiFolderType|null $parent_room_type The kind of room the entry lies in, which decides what the room allows - filling forms, public links,  indexing. It is null for an entry that is not inside a room at all.
      *
      * @return self
      */
@@ -890,7 +869,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets updated_by
      *
-     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $updated_by The user who updated the file entry.
+     * @param \OpenAPI\Client\Model\AiEmployeeDto|null $updated_by Who changed the entry last. It is null for a caller without an account.
      *
      * @return self
      */
@@ -917,7 +896,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets provider_item
      *
-     * @param bool|null $provider_item Specifies if the file entry provider is specified or not.
+     * @param bool|null $provider_item Set when the entry is stored on a connected third-party account rather than on the portal, and null when it is  stored on the portal. Such an entry is identified by a string rather than a number, and some operations skip  it.
      *
      * @return self
      */
@@ -951,7 +930,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets provider_key
      *
-     * @param string|null $provider_key The provider key of the file entry.
+     * @param string|null $provider_key Which third-party service holds the entry, matching the keys accepted by the third-party operations. It is  null for an entry stored on the portal.
      *
      * @return self
      */
@@ -985,7 +964,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets provider_id
      *
-     * @param int|null $provider_id The provider ID of the file entry.
+     * @param int|null $provider_id The connected account the entry comes from, for telling apart two connections to the same service. It is null  for an entry stored on the portal.
      *
      * @return self
      */
@@ -1019,7 +998,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets order
      *
-     * @param string|null $order The order of the file entry.
+     * @param string|null $order The place of the entry in a room where the members arrange the content themselves, given as the position of  the entry preceded by the positions of the folders leading to it, separated by dots. It is empty when nothing  has been arranged.
      *
      * @return self
      */
@@ -1053,7 +1032,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_favorite
      *
-     * @param bool|null $is_favorite Specifies if the file is a favorite or not.
+     * @param bool|null $is_favorite Set when the calling account has marked the entry as a favorite, which is what puts it into the favorites  listing. For a file that is not marked it is null rather than false.
      *
      * @return self
      */
@@ -1087,7 +1066,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets file_entry_type
      *
-     * @param \OpenAPI\Client\Model\AiFileEntryType|null $file_entry_type The file entry type.
+     * @param \OpenAPI\Client\Model\AiFileEntryType|null $file_entry_type Tells a folder from a file, and so which of the two shapes the rest of the object has. A room is reported as a  folder here.
      *
      * @return self
      */

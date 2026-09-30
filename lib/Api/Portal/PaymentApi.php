@@ -90,6 +90,9 @@ class PaymentApi
         'createCustomerServiceUsageReport' => [
             'application/json',
         ],
+        'getAccountingServicePrices' => [
+            'application/json',
+        ],
         'getActiveServices' => [
             'application/json',
         ],
@@ -578,7 +581,7 @@ class PaymentApi
     /**
      * Operation changeTenantWalletServiceState
      *
-     * Change tenant wallet service state
+     * Switch a wallet service
      *
      * REST API Reference for changeTenantWalletServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-tenant-wallet-service-state/
@@ -599,7 +602,7 @@ class PaymentApi
     /**
      * Operation changeTenantWalletServiceStateWithHttpInfo
      *
-     * Change tenant wallet service state
+     * Switch a wallet service
      *
      * REST API Reference for changeTenantWalletServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-tenant-wallet-service-state/
@@ -743,7 +746,7 @@ class PaymentApi
     /**
      * Operation changeTenantWalletServiceStateAsync
      *
-     * Change tenant wallet service state
+     * Switch a wallet service
      *
      * REST API Reference for changeTenantWalletServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-tenant-wallet-service-state/
@@ -767,7 +770,7 @@ class PaymentApi
     /**
      * Operation changeTenantWalletServiceStateAsyncWithHttpInfo
      *
-     * Change tenant wallet service state
+     * Switch a wallet service
      *
      * REST API Reference for changeTenantWalletServiceState Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-tenant-wallet-service-state/
@@ -929,7 +932,7 @@ class PaymentApi
     /**
      * Operation createCustomerMonthlyUsageReport
      *
-     * Start the customer monthly usage report generation
+     * Start the monthly usage report
      *
      * REST API Reference for createCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-monthly-usage-report/
@@ -950,7 +953,7 @@ class PaymentApi
     /**
      * Operation createCustomerMonthlyUsageReportWithHttpInfo
      *
-     * Start the customer monthly usage report generation
+     * Start the monthly usage report
      *
      * REST API Reference for createCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-monthly-usage-report/
@@ -1094,7 +1097,7 @@ class PaymentApi
     /**
      * Operation createCustomerMonthlyUsageReportAsync
      *
-     * Start the customer monthly usage report generation
+     * Start the monthly usage report
      *
      * REST API Reference for createCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-monthly-usage-report/
@@ -1118,7 +1121,7 @@ class PaymentApi
     /**
      * Operation createCustomerMonthlyUsageReportAsyncWithHttpInfo
      *
-     * Start the customer monthly usage report generation
+     * Start the monthly usage report
      *
      * REST API Reference for createCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-monthly-usage-report/
@@ -1280,7 +1283,7 @@ class PaymentApi
     /**
      * Operation createCustomerOperationsReport
      *
-     * Start the customer operations report generation
+     * Start the operations report
      *
      * REST API Reference for createCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-operations-report/
@@ -1301,7 +1304,7 @@ class PaymentApi
     /**
      * Operation createCustomerOperationsReportWithHttpInfo
      *
-     * Start the customer operations report generation
+     * Start the operations report
      *
      * REST API Reference for createCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-operations-report/
@@ -1445,7 +1448,7 @@ class PaymentApi
     /**
      * Operation createCustomerOperationsReportAsync
      *
-     * Start the customer operations report generation
+     * Start the operations report
      *
      * REST API Reference for createCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-operations-report/
@@ -1469,7 +1472,7 @@ class PaymentApi
     /**
      * Operation createCustomerOperationsReportAsyncWithHttpInfo
      *
-     * Start the customer operations report generation
+     * Start the operations report
      *
      * REST API Reference for createCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-operations-report/
@@ -1631,7 +1634,7 @@ class PaymentApi
     /**
      * Operation createCustomerServiceUsageReport
      *
-     * Start the customer service usage report generation
+     * Start the service usage report
      *
      * REST API Reference for createCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-service-usage-report/
@@ -1652,7 +1655,7 @@ class PaymentApi
     /**
      * Operation createCustomerServiceUsageReportWithHttpInfo
      *
-     * Start the customer service usage report generation
+     * Start the service usage report
      *
      * REST API Reference for createCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-service-usage-report/
@@ -1796,7 +1799,7 @@ class PaymentApi
     /**
      * Operation createCustomerServiceUsageReportAsync
      *
-     * Start the customer service usage report generation
+     * Start the service usage report
      *
      * REST API Reference for createCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-service-usage-report/
@@ -1820,7 +1823,7 @@ class PaymentApi
     /**
      * Operation createCustomerServiceUsageReportAsyncWithHttpInfo
      *
-     * Start the customer service usage report generation
+     * Start the service usage report
      *
      * REST API Reference for createCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-customer-service-usage-report/
@@ -1973,6 +1976,385 @@ class PaymentApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAccountingServicePrices
+     *
+     * Get the service prices from the accounting service
+     *
+     * REST API Reference for getAccountingServicePrices Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-accounting-service-prices/
+     *
+     * @param  string $service_name The service whose price list is read, named the way the billing catalogue names it, such as `ai-tools` or  `backup`. Take the value from the `serviceName` field of `GET api/2.0/portal/payment/walletservices`; a name  the accounting service does not price yields an empty list rather than an error. (required)
+     * @param  bool|null $active Whether the answer is narrowed to the prices in force at the moment of the call. Leaving it false also  returns the retired and the not yet started ones, which is what pricing a movement recorded in the past  needs. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountingServicePrices'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\ServicePriceInfoArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     */
+    public function getAccountingServicePrices($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
+    {
+        list($response) = $this->getAccountingServicePricesWithHttpInfo($service_name, $active, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAccountingServicePricesWithHttpInfo
+     *
+     * Get the service prices from the accounting service
+     *
+     * REST API Reference for getAccountingServicePrices Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-accounting-service-prices/
+     *
+     * @param  string $service_name The service whose price list is read, named the way the billing catalogue names it, such as `ai-tools` or  `backup`. Take the value from the `serviceName` field of `GET api/2.0/portal/payment/walletservices`; a name  the accounting service does not price yields an empty list rather than an error. (required)
+     * @param  bool|null $active Whether the answer is narrowed to the prices in force at the moment of the call. Leaving it false also  returns the retired and the not yet started ones, which is what pricing a movement recorded in the past  needs. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountingServicePrices'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\ServicePriceInfoArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAccountingServicePricesWithHttpInfo($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
+    {
+        $request = $this->getAccountingServicePricesRequest($service_name, $active, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAccountingServicePricesAsync
+     *
+     * Get the service prices from the accounting service
+     *
+     * REST API Reference for getAccountingServicePrices Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-accounting-service-prices/
+     *
+     * @param  string $service_name The service whose price list is read, named the way the billing catalogue names it, such as `ai-tools` or  `backup`. Take the value from the `serviceName` field of `GET api/2.0/portal/payment/walletservices`; a name  the accounting service does not price yields an empty list rather than an error. (required)
+     * @param  bool|null $active Whether the answer is narrowed to the prices in force at the moment of the call. Leaving it false also  returns the retired and the not yet started ones, which is what pricing a movement recorded in the past  needs. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountingServicePrices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountingServicePricesAsync($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
+    {
+        return $this->getAccountingServicePricesAsyncWithHttpInfo($service_name, $active, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAccountingServicePricesAsyncWithHttpInfo
+     *
+     * Get the service prices from the accounting service
+     *
+     * REST API Reference for getAccountingServicePrices Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-accounting-service-prices/
+     *
+     * @param  string $service_name The service whose price list is read, named the way the billing catalogue names it, such as `ai-tools` or  `backup`. Take the value from the `serviceName` field of `GET api/2.0/portal/payment/walletservices`; a name  the accounting service does not price yields an empty list rather than an error. (required)
+     * @param  bool|null $active Whether the answer is narrowed to the prices in force at the moment of the call. Leaving it false also  returns the retired and the not yet started ones, which is what pricing a movement recorded in the past  needs. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountingServicePrices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAccountingServicePricesAsyncWithHttpInfo($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper';
+        $request = $this->getAccountingServicePricesRequest($service_name, $active, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAccountingServicePrices'
+     *
+     * @param  string $service_name The service whose price list is read, named the way the billing catalogue names it, such as `ai-tools` or  `backup`. Take the value from the `serviceName` field of `GET api/2.0/portal/payment/walletservices`; a name  the accounting service does not price yields an empty list rather than an error. (required)
+     * @param  bool|null $active Whether the answer is narrowed to the prices in force at the moment of the call. Leaving it false also  returns the retired and the not yet started ones, which is what pricing a movement recorded in the past  needs. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountingServicePrices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAccountingServicePricesRequest($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
+    {
+
+        // verify the required parameter 'service_name' is set
+        if ($service_name === null || (is_array($service_name) && count($service_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $service_name when calling getAccountingServicePrices'
+            );
+        }
+        if (strlen($service_name) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$service_name" when calling PaymentApi.getAccountingServicePrices, must be smaller than or equal to 255.');
+        }
+        if (strlen($service_name) < 0) {
+            throw new \InvalidArgumentException('invalid length for "$service_name" when calling PaymentApi.getAccountingServicePrices, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/api/2.0/portal/payment/accounting/prices/{serviceName}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $active,
+            'active', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($service_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'serviceName' . '}',
+                ObjectSerializer::toPathValue($service_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2315,7 +2697,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPricesResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAiPrices(string $contentType = self::contentTypes['getAiPrices'][0])
     {
@@ -2335,7 +2717,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPricesResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAiPricesWithHttpInfo(string $contentType = self::contentTypes['getAiPrices'][0])
     {
@@ -2367,7 +2749,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiPricesResponseWrapper',
+                        '\OpenAPI\Client\Model\AiPricesWrapper',
                         $request,
                         $response,
                     );
@@ -2407,7 +2789,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiPricesResponseWrapper',
+                '\OpenAPI\Client\Model\AiPricesWrapper',
                 $request,
                 $response,
             );
@@ -2416,7 +2798,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiPricesResponseWrapper',
+                        '\OpenAPI\Client\Model\AiPricesWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2490,7 +2872,7 @@ class PaymentApi
      */
     public function getAiPricesAsyncWithHttpInfo(string $contentType = self::contentTypes['getAiPrices'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiPricesResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiPricesWrapper';
         $request = $this->getAiPricesRequest($contentType);
 
         return $this->client
@@ -2635,8 +3017,8 @@ class PaymentApi
      * REST API Reference for getCheckoutSetupUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-checkout-setup-url/
      *
-     * @param  string $back_url The URL where the user will be redirected after setup cancellation. (required)
-     * @param  string $success_url The URL where the user will be redirected after successful payment. (required)
+     * @param  string $back_url The absolute address the setup page sends the user back to when attaching a payment method is abandoned. It  has to be a well-formed URL and must be reachable by that user rather than by the portal. (required)
+     * @param  string $success_url The absolute address the setup page sends the user to once the payment provider has stored the payment  method. Reaching it means a method is now on file, which `GET api/2.0/portal/payment/customerinfo` confirms;  nothing has been charged. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCheckoutSetupUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2657,8 +3039,8 @@ class PaymentApi
      * REST API Reference for getCheckoutSetupUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-checkout-setup-url/
      *
-     * @param  string $back_url The URL where the user will be redirected after setup cancellation. (required)
-     * @param  string $success_url The URL where the user will be redirected after successful payment. (required)
+     * @param  string $back_url The absolute address the setup page sends the user back to when attaching a payment method is abandoned. It  has to be a well-formed URL and must be reachable by that user rather than by the portal. (required)
+     * @param  string $success_url The absolute address the setup page sends the user to once the payment provider has stored the payment  method. Reaching it means a method is now on file, which `GET api/2.0/portal/payment/customerinfo` confirms;  nothing has been charged. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCheckoutSetupUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2802,8 +3184,8 @@ class PaymentApi
      * REST API Reference for getCheckoutSetupUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-checkout-setup-url/
      *
-     * @param  string $back_url The URL where the user will be redirected after setup cancellation. (required)
-     * @param  string $success_url The URL where the user will be redirected after successful payment. (required)
+     * @param  string $back_url The absolute address the setup page sends the user back to when attaching a payment method is abandoned. It  has to be a well-formed URL and must be reachable by that user rather than by the portal. (required)
+     * @param  string $success_url The absolute address the setup page sends the user to once the payment provider has stored the payment  method. Reaching it means a method is now on file, which `GET api/2.0/portal/payment/customerinfo` confirms;  nothing has been charged. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCheckoutSetupUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2827,8 +3209,8 @@ class PaymentApi
      * REST API Reference for getCheckoutSetupUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-checkout-setup-url/
      *
-     * @param  string $back_url The URL where the user will be redirected after setup cancellation. (required)
-     * @param  string $success_url The URL where the user will be redirected after successful payment. (required)
+     * @param  string $back_url The absolute address the setup page sends the user back to when attaching a payment method is abandoned. It  has to be a well-formed URL and must be reachable by that user rather than by the portal. (required)
+     * @param  string $success_url The absolute address the setup page sends the user to once the payment provider has stored the payment  method. Reaching it means a method is now on file, which `GET api/2.0/portal/payment/customerinfo` confirms;  nothing has been charged. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCheckoutSetupUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2878,8 +3260,8 @@ class PaymentApi
     /**
      * Create request for operation 'getCheckoutSetupUrl'
      *
-     * @param  string $back_url The URL where the user will be redirected after setup cancellation. (required)
-     * @param  string $success_url The URL where the user will be redirected after successful payment. (required)
+     * @param  string $back_url The absolute address the setup page sends the user back to when attaching a payment method is abandoned. It  has to be a well-formed URL and must be reachable by that user rather than by the portal. (required)
+     * @param  string $success_url The absolute address the setup page sends the user to once the payment provider has stored the payment  method. Reaching it means a method is now on file, which `GET api/2.0/portal/payment/customerinfo` confirms;  nothing has been charged. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCheckoutSetupUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3027,7 +3409,7 @@ class PaymentApi
      * REST API Reference for getCustomerBalance Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-balance/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerBalance'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3048,7 +3430,7 @@ class PaymentApi
      * REST API Reference for getCustomerBalance Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-balance/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerBalance'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3192,7 +3574,7 @@ class PaymentApi
      * REST API Reference for getCustomerBalance Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-balance/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3216,7 +3598,7 @@ class PaymentApi
      * REST API Reference for getCustomerBalance Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-balance/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3266,7 +3648,7 @@ class PaymentApi
     /**
      * Create request for operation 'getCustomerBalance'
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerBalance'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3380,7 +3762,7 @@ class PaymentApi
      * REST API Reference for getCustomerInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-info/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3401,7 +3783,7 @@ class PaymentApi
      * REST API Reference for getCustomerInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-info/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3545,7 +3927,7 @@ class PaymentApi
      * REST API Reference for getCustomerInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-info/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3569,7 +3951,7 @@ class PaymentApi
      * REST API Reference for getCustomerInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-info/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3619,7 +4001,7 @@ class PaymentApi
     /**
      * Create request for operation 'getCustomerInfo'
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3733,8 +4115,8 @@ class PaymentApi
      * REST API Reference for getCustomerMonthlyUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage/
      *
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. The months are cut in the portal time zone rather than in  UTC, so spending at the turn of a month falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Cut in the portal time zone in the same way as `startDate`, and  defaults to the moment the call is made. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerMonthlyUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3755,8 +4137,8 @@ class PaymentApi
      * REST API Reference for getCustomerMonthlyUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage/
      *
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. The months are cut in the portal time zone rather than in  UTC, so spending at the turn of a month falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Cut in the portal time zone in the same way as `startDate`, and  defaults to the moment the call is made. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerMonthlyUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3900,8 +4282,8 @@ class PaymentApi
      * REST API Reference for getCustomerMonthlyUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage/
      *
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. The months are cut in the portal time zone rather than in  UTC, so spending at the turn of a month falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Cut in the portal time zone in the same way as `startDate`, and  defaults to the moment the call is made. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerMonthlyUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3925,8 +4307,8 @@ class PaymentApi
      * REST API Reference for getCustomerMonthlyUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage/
      *
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. The months are cut in the portal time zone rather than in  UTC, so spending at the turn of a month falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Cut in the portal time zone in the same way as `startDate`, and  defaults to the moment the call is made. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerMonthlyUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3976,8 +4358,8 @@ class PaymentApi
     /**
      * Create request for operation 'getCustomerMonthlyUsage'
      *
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. The months are cut in the portal time zone rather than in  UTC, so spending at the turn of a month falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Cut in the portal time zone in the same way as `startDate`, and  defaults to the moment the call is made. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerMonthlyUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4096,7 +4478,7 @@ class PaymentApi
     /**
      * Operation getCustomerMonthlyUsageReport
      *
-     * Get the status of the customer monthly usage report generation
+     * Get the monthly usage report status
      *
      * REST API Reference for getCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage-report/
@@ -4116,7 +4498,7 @@ class PaymentApi
     /**
      * Operation getCustomerMonthlyUsageReportWithHttpInfo
      *
-     * Get the status of the customer monthly usage report generation
+     * Get the monthly usage report status
      *
      * REST API Reference for getCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage-report/
@@ -4245,7 +4627,7 @@ class PaymentApi
     /**
      * Operation getCustomerMonthlyUsageReportAsync
      *
-     * Get the status of the customer monthly usage report generation
+     * Get the monthly usage report status
      *
      * REST API Reference for getCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage-report/
@@ -4268,7 +4650,7 @@ class PaymentApi
     /**
      * Operation getCustomerMonthlyUsageReportAsyncWithHttpInfo
      *
-     * Get the status of the customer monthly usage report generation
+     * Get the monthly usage report status
      *
      * REST API Reference for getCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-monthly-usage-report/
@@ -4420,23 +4802,23 @@ class PaymentApi
     /**
      * Operation getCustomerOperations
      *
-     * Get the customer operations
+     * Get the wallet operations
      *
      * REST API Reference for getCustomerOperations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations/
      *
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string[]|null $service_name The service name list. A single string is also accepted for backward compatibility. (optional)
-     * @param  \DateTime|null $start_date The report start date. (optional)
-     * @param  \DateTime|null $end_date The report end date. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  bool|null $credit Specifies whether to include credit operations in the report. (optional)
-     * @param  bool|null $debit Specifies whether to include debit operations in the report. (optional)
-     * @param  \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  int|null $offset The number of movements to skip before the first one returned, for walking through a long history page by  page. Counted after the filters and the ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of movements returned in one page. Defaults to 25 when omitted; the answer echoes the  window back next to `totalQuantity`, `totalPage` and `currentPage`, so the next `offset` can be computed  without counting the items. (optional)
+     * @param  string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant. (optional)
+     * @param  bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given. (optional)
+     * @param  bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given. (optional)
+     * @param  \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted. (optional)
+     * @param  string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOperations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4452,23 +4834,23 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsWithHttpInfo
      *
-     * Get the customer operations
+     * Get the wallet operations
      *
      * REST API Reference for getCustomerOperations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations/
      *
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string[]|null $service_name The service name list. A single string is also accepted for backward compatibility. (optional)
-     * @param  \DateTime|null $start_date The report start date. (optional)
-     * @param  \DateTime|null $end_date The report end date. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  bool|null $credit Specifies whether to include credit operations in the report. (optional)
-     * @param  bool|null $debit Specifies whether to include debit operations in the report. (optional)
-     * @param  \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  int|null $offset The number of movements to skip before the first one returned, for walking through a long history page by  page. Counted after the filters and the ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of movements returned in one page. Defaults to 25 when omitted; the answer echoes the  window back next to `totalQuantity`, `totalPage` and `currentPage`, so the next `offset` can be computed  without counting the items. (optional)
+     * @param  string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant. (optional)
+     * @param  bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given. (optional)
+     * @param  bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given. (optional)
+     * @param  \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted. (optional)
+     * @param  string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOperations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4607,23 +4989,23 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsAsync
      *
-     * Get the customer operations
+     * Get the wallet operations
      *
      * REST API Reference for getCustomerOperations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations/
      *
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string[]|null $service_name The service name list. A single string is also accepted for backward compatibility. (optional)
-     * @param  \DateTime|null $start_date The report start date. (optional)
-     * @param  \DateTime|null $end_date The report end date. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  bool|null $credit Specifies whether to include credit operations in the report. (optional)
-     * @param  bool|null $debit Specifies whether to include debit operations in the report. (optional)
-     * @param  \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  int|null $offset The number of movements to skip before the first one returned, for walking through a long history page by  page. Counted after the filters and the ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of movements returned in one page. Defaults to 25 when omitted; the answer echoes the  window back next to `totalQuantity`, `totalPage` and `currentPage`, so the next `offset` can be computed  without counting the items. (optional)
+     * @param  string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant. (optional)
+     * @param  bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given. (optional)
+     * @param  bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given. (optional)
+     * @param  \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted. (optional)
+     * @param  string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOperations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4642,23 +5024,23 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsAsyncWithHttpInfo
      *
-     * Get the customer operations
+     * Get the wallet operations
      *
      * REST API Reference for getCustomerOperations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations/
      *
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string[]|null $service_name The service name list. A single string is also accepted for backward compatibility. (optional)
-     * @param  \DateTime|null $start_date The report start date. (optional)
-     * @param  \DateTime|null $end_date The report end date. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  bool|null $credit Specifies whether to include credit operations in the report. (optional)
-     * @param  bool|null $debit Specifies whether to include debit operations in the report. (optional)
-     * @param  \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  int|null $offset The number of movements to skip before the first one returned, for walking through a long history page by  page. Counted after the filters and the ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of movements returned in one page. Defaults to 25 when omitted; the answer echoes the  window back next to `totalQuantity`, `totalPage` and `currentPage`, so the next `offset` can be computed  without counting the items. (optional)
+     * @param  string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant. (optional)
+     * @param  bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given. (optional)
+     * @param  bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given. (optional)
+     * @param  \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted. (optional)
+     * @param  string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOperations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4708,18 +5090,18 @@ class PaymentApi
     /**
      * Create request for operation 'getCustomerOperations'
      *
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string[]|null $service_name The service name list. A single string is also accepted for backward compatibility. (optional)
-     * @param  \DateTime|null $start_date The report start date. (optional)
-     * @param  \DateTime|null $end_date The report end date. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  bool|null $credit Specifies whether to include credit operations in the report. (optional)
-     * @param  bool|null $debit Specifies whether to include debit operations in the report. (optional)
-     * @param  \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  int|null $offset The number of movements to skip before the first one returned, for walking through a long history page by  page. Counted after the filters and the ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of movements returned in one page. Defaults to 25 when omitted; the answer echoes the  window back next to `totalQuantity`, `totalPage` and `currentPage`, so the next `offset` can be computed  without counting the items. (optional)
+     * @param  string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant. (optional)
+     * @param  bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given. (optional)
+     * @param  bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given. (optional)
+     * @param  \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted. (optional)
+     * @param  string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerOperations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4938,7 +5320,7 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsReport
      *
-     * Get the status of the customer operations report generation
+     * Get the operations report status
      *
      * REST API Reference for getCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations-report/
@@ -4958,7 +5340,7 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsReportWithHttpInfo
      *
-     * Get the status of the customer operations report generation
+     * Get the operations report status
      *
      * REST API Reference for getCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations-report/
@@ -5087,7 +5469,7 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsReportAsync
      *
-     * Get the status of the customer operations report generation
+     * Get the operations report status
      *
      * REST API Reference for getCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations-report/
@@ -5110,7 +5492,7 @@ class PaymentApi
     /**
      * Operation getCustomerOperationsReportAsyncWithHttpInfo
      *
-     * Get the status of the customer operations report generation
+     * Get the operations report status
      *
      * REST API Reference for getCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-operations-report/
@@ -5267,16 +5649,16 @@ class PaymentApi
      * REST API Reference for getCustomerServiceUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage/
      *
-     * @param  string[]|null $service_name The service name list. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
-     * @param  array<string,string>|null $metadata Metadata key-value pairs to filter by. (optional)
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  string[]|null $service_name The wallet services whose consumption is added up, named the way the billing catalogue names them -  `backup`, `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field  of `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not  sell fails the call with 404, and an omitted list covers every service. (optional)
+     * @param  string|null $participant_name The participant whose consumption is added up - the account the accounting service records as the consumer.  Consumption caused by a portal user carries that user ID here; surrounding whitespace is trimmed, and an  omitted value covers every participant. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. Consumption that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is counted when this is omitted. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, and  defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  array<string,string>|null $metadata The usage annotations a wallet service records alongside its consumption, as the key and value pairs that  must all match for a record to be counted. The keys are chosen by the service that writes them, so read them  off the `metadata` of the records already returned rather than guessing; an omitted map counts every record. (optional)
+     * @param  int|null $offset The number of per-service totals to skip before the first one returned. Counted after the filters and the  ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of per-service totals returned in one page. Defaults to 25 when omitted; the answer echoes  the window back with its paging information, so the next `offset` can be computed without counting the items. (optional)
+     * @param  string|null $order_by The name of the field the per-service totals are sorted by, spelled as the accounting service names it, such  as `ServiceName` or `StartDate`. Surrounding whitespace is trimmed, and the accounting service applies its  own ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerServiceUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5297,16 +5679,16 @@ class PaymentApi
      * REST API Reference for getCustomerServiceUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage/
      *
-     * @param  string[]|null $service_name The service name list. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
-     * @param  array<string,string>|null $metadata Metadata key-value pairs to filter by. (optional)
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  string[]|null $service_name The wallet services whose consumption is added up, named the way the billing catalogue names them -  `backup`, `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field  of `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not  sell fails the call with 404, and an omitted list covers every service. (optional)
+     * @param  string|null $participant_name The participant whose consumption is added up - the account the accounting service records as the consumer.  Consumption caused by a portal user carries that user ID here; surrounding whitespace is trimmed, and an  omitted value covers every participant. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. Consumption that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is counted when this is omitted. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, and  defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  array<string,string>|null $metadata The usage annotations a wallet service records alongside its consumption, as the key and value pairs that  must all match for a record to be counted. The keys are chosen by the service that writes them, so read them  off the `metadata` of the records already returned rather than guessing; an omitted map counts every record. (optional)
+     * @param  int|null $offset The number of per-service totals to skip before the first one returned. Counted after the filters and the  ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of per-service totals returned in one page. Defaults to 25 when omitted; the answer echoes  the window back with its paging information, so the next `offset` can be computed without counting the items. (optional)
+     * @param  string|null $order_by The name of the field the per-service totals are sorted by, spelled as the accounting service names it, such  as `ServiceName` or `StartDate`. Surrounding whitespace is trimmed, and the accounting service applies its  own ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerServiceUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5450,16 +5832,16 @@ class PaymentApi
      * REST API Reference for getCustomerServiceUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage/
      *
-     * @param  string[]|null $service_name The service name list. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
-     * @param  array<string,string>|null $metadata Metadata key-value pairs to filter by. (optional)
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  string[]|null $service_name The wallet services whose consumption is added up, named the way the billing catalogue names them -  `backup`, `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field  of `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not  sell fails the call with 404, and an omitted list covers every service. (optional)
+     * @param  string|null $participant_name The participant whose consumption is added up - the account the accounting service records as the consumer.  Consumption caused by a portal user carries that user ID here; surrounding whitespace is trimmed, and an  omitted value covers every participant. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. Consumption that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is counted when this is omitted. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, and  defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  array<string,string>|null $metadata The usage annotations a wallet service records alongside its consumption, as the key and value pairs that  must all match for a record to be counted. The keys are chosen by the service that writes them, so read them  off the `metadata` of the records already returned rather than guessing; an omitted map counts every record. (optional)
+     * @param  int|null $offset The number of per-service totals to skip before the first one returned. Counted after the filters and the  ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of per-service totals returned in one page. Defaults to 25 when omitted; the answer echoes  the window back with its paging information, so the next `offset` can be computed without counting the items. (optional)
+     * @param  string|null $order_by The name of the field the per-service totals are sorted by, spelled as the accounting service names it, such  as `ServiceName` or `StartDate`. Surrounding whitespace is trimmed, and the accounting service applies its  own ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerServiceUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5483,16 +5865,16 @@ class PaymentApi
      * REST API Reference for getCustomerServiceUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage/
      *
-     * @param  string[]|null $service_name The service name list. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
-     * @param  array<string,string>|null $metadata Metadata key-value pairs to filter by. (optional)
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  string[]|null $service_name The wallet services whose consumption is added up, named the way the billing catalogue names them -  `backup`, `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field  of `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not  sell fails the call with 404, and an omitted list covers every service. (optional)
+     * @param  string|null $participant_name The participant whose consumption is added up - the account the accounting service records as the consumer.  Consumption caused by a portal user carries that user ID here; surrounding whitespace is trimmed, and an  omitted value covers every participant. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. Consumption that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is counted when this is omitted. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, and  defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  array<string,string>|null $metadata The usage annotations a wallet service records alongside its consumption, as the key and value pairs that  must all match for a record to be counted. The keys are chosen by the service that writes them, so read them  off the `metadata` of the records already returned rather than guessing; an omitted map counts every record. (optional)
+     * @param  int|null $offset The number of per-service totals to skip before the first one returned. Counted after the filters and the  ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of per-service totals returned in one page. Defaults to 25 when omitted; the answer echoes  the window back with its paging information, so the next `offset` can be computed without counting the items. (optional)
+     * @param  string|null $order_by The name of the field the per-service totals are sorted by, spelled as the accounting service names it, such  as `ServiceName` or `StartDate`. Surrounding whitespace is trimmed, and the accounting service applies its  own ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerServiceUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5542,16 +5924,16 @@ class PaymentApi
     /**
      * Create request for operation 'getCustomerServiceUsage'
      *
-     * @param  string[]|null $service_name The service name list. (optional)
-     * @param  string|null $participant_name The participant name. (optional)
-     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by. (optional)
-     * @param  \DateTime|null $start_date Start of the period (inclusive). (optional)
-     * @param  \DateTime|null $end_date End of the period (inclusive). (optional)
-     * @param  array<string,string>|null $metadata Metadata key-value pairs to filter by. (optional)
-     * @param  int|null $offset The number of items to skip for pagination. The default value is 0. (optional)
-     * @param  int|null $limit The maximum number of items to return for pagination. The default value is 25. (optional)
-     * @param  string|null $order_by The field to order by. (optional)
-     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending. (optional)
+     * @param  string[]|null $service_name The wallet services whose consumption is added up, named the way the billing catalogue names them -  `backup`, `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field  of `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not  sell fails the call with 404, and an omitted list covers every service. (optional)
+     * @param  string|null $participant_name The participant whose consumption is added up - the account the accounting service records as the consumer.  Consumption caused by a portal user carries that user ID here; surrounding whitespace is trimmed, and an  omitted value covers every participant. (optional)
+     * @param  \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. Consumption that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is counted when this is omitted. (optional)
+     * @param  \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, and  defaults to the portal creation date. (optional)
+     * @param  \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made. (optional)
+     * @param  array<string,string>|null $metadata The usage annotations a wallet service records alongside its consumption, as the key and value pairs that  must all match for a record to be counted. The keys are chosen by the service that writes them, so read them  off the `metadata` of the records already returned rather than guessing; an omitted map counts every record. (optional)
+     * @param  int|null $offset The number of per-service totals to skip before the first one returned. Counted after the filters and the  ordering are applied, and starts at 0 when omitted. (optional)
+     * @param  int|null $limit The maximum number of per-service totals returned in one page. Defaults to 25 when omitted; the answer echoes  the window back with its paging information, so the next `offset` can be computed without counting the items. (optional)
+     * @param  string|null $order_by The name of the field the per-service totals are sorted by, spelled as the accounting service names it, such  as `ServiceName` or `StartDate`. Surrounding whitespace is trimmed, and the accounting service applies its  own ordering when this is omitted. (optional)
+     * @param  \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCustomerServiceUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5750,7 +6132,7 @@ class PaymentApi
     /**
      * Operation getCustomerServiceUsageReport
      *
-     * Get the status of the customer service usage report generation
+     * Get the service usage report status
      *
      * REST API Reference for getCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage-report/
@@ -5770,7 +6152,7 @@ class PaymentApi
     /**
      * Operation getCustomerServiceUsageReportWithHttpInfo
      *
-     * Get the status of the customer service usage report generation
+     * Get the service usage report status
      *
      * REST API Reference for getCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage-report/
@@ -5899,7 +6281,7 @@ class PaymentApi
     /**
      * Operation getCustomerServiceUsageReportAsync
      *
-     * Get the status of the customer service usage report generation
+     * Get the service usage report status
      *
      * REST API Reference for getCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage-report/
@@ -5922,7 +6304,7 @@ class PaymentApi
     /**
      * Operation getCustomerServiceUsageReportAsyncWithHttpInfo
      *
-     * Get the status of the customer service usage report generation
+     * Get the service usage report status
      *
      * REST API Reference for getCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-customer-service-usage-report/
@@ -6074,12 +6456,12 @@ class PaymentApi
     /**
      * Operation getPaymentAccount
      *
-     * Get the payment account
+     * Get the billing account page
      *
      * REST API Reference for getPaymentAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-account/
      *
-     * @param  string|null $back_url The URL where the user will be redirected after payment processing. (optional)
+     * @param  string|null $back_url The absolute address the billing account page should offer as its way back. It is appended to the returned  portal-relative address as a query parameter rather than followed here, and omitting it yields the bare  address of the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentAccount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6095,12 +6477,12 @@ class PaymentApi
     /**
      * Operation getPaymentAccountWithHttpInfo
      *
-     * Get the payment account
+     * Get the billing account page
      *
      * REST API Reference for getPaymentAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-account/
      *
-     * @param  string|null $back_url The URL where the user will be redirected after payment processing. (optional)
+     * @param  string|null $back_url The absolute address the billing account page should offer as its way back. It is appended to the returned  portal-relative address as a query parameter rather than followed here, and omitting it yields the bare  address of the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentAccount'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6239,12 +6621,12 @@ class PaymentApi
     /**
      * Operation getPaymentAccountAsync
      *
-     * Get the payment account
+     * Get the billing account page
      *
      * REST API Reference for getPaymentAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-account/
      *
-     * @param  string|null $back_url The URL where the user will be redirected after payment processing. (optional)
+     * @param  string|null $back_url The absolute address the billing account page should offer as its way back. It is appended to the returned  portal-relative address as a query parameter rather than followed here, and omitting it yields the bare  address of the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6263,12 +6645,12 @@ class PaymentApi
     /**
      * Operation getPaymentAccountAsyncWithHttpInfo
      *
-     * Get the payment account
+     * Get the billing account page
      *
      * REST API Reference for getPaymentAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-account/
      *
-     * @param  string|null $back_url The URL where the user will be redirected after payment processing. (optional)
+     * @param  string|null $back_url The absolute address the billing account page should offer as its way back. It is appended to the returned  portal-relative address as a query parameter rather than followed here, and omitting it yields the bare  address of the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6318,7 +6700,7 @@ class PaymentApi
     /**
      * Create request for operation 'getPaymentAccount'
      *
-     * @param  string|null $back_url The URL where the user will be redirected after payment processing. (optional)
+     * @param  string|null $back_url The absolute address the billing account page should offer as its way back. It is appended to the returned  portal-relative address as a query parameter rather than followed here, and omitting it yields the bare  address of the page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6433,7 +6815,7 @@ class PaymentApi
     /**
      * Operation getPaymentCurrencies
      *
-     * Get currencies
+     * Get the billing currencies
      *
      * REST API Reference for getPaymentCurrencies Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-currencies/
@@ -6453,7 +6835,7 @@ class PaymentApi
     /**
      * Operation getPaymentCurrenciesWithHttpInfo
      *
-     * Get currencies
+     * Get the billing currencies
      *
      * REST API Reference for getPaymentCurrencies Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-currencies/
@@ -6582,7 +6964,7 @@ class PaymentApi
     /**
      * Operation getPaymentCurrenciesAsync
      *
-     * Get currencies
+     * Get the billing currencies
      *
      * REST API Reference for getPaymentCurrencies Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-currencies/
@@ -6605,7 +6987,7 @@ class PaymentApi
     /**
      * Operation getPaymentCurrenciesAsyncWithHttpInfo
      *
-     * Get currencies
+     * Get the billing currencies
      *
      * REST API Reference for getPaymentCurrencies Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-currencies/
@@ -6757,13 +7139,13 @@ class PaymentApi
     /**
      * Operation getPaymentQuotas
      *
-     * Get quotas
+     * Get the purchasable quotas
      *
      * REST API Reference for getPaymentQuotas Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-quotas/
      *
-     * @param  bool|null $wallet Specifies whether to return the wallet quotas only. (optional)
-     * @param  bool|null $additional Specifies whether to return additional quotas only. (optional)
+     * @param  bool|null $wallet Which side of the catalogue is listed: `true` keeps the services paid out of the portal wallet, `false` keeps  the subscription plans, and omitting it keeps both. (optional)
+     * @param  bool|null $additional Which layer of the catalogue is listed: `true` keeps the add-ons that extend a plan, `false` keeps the plans  themselves, and omitting it keeps both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentQuotas'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6779,13 +7161,13 @@ class PaymentApi
     /**
      * Operation getPaymentQuotasWithHttpInfo
      *
-     * Get quotas
+     * Get the purchasable quotas
      *
      * REST API Reference for getPaymentQuotas Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-quotas/
      *
-     * @param  bool|null $wallet Specifies whether to return the wallet quotas only. (optional)
-     * @param  bool|null $additional Specifies whether to return additional quotas only. (optional)
+     * @param  bool|null $wallet Which side of the catalogue is listed: `true` keeps the services paid out of the portal wallet, `false` keeps  the subscription plans, and omitting it keeps both. (optional)
+     * @param  bool|null $additional Which layer of the catalogue is listed: `true` keeps the add-ons that extend a plan, `false` keeps the plans  themselves, and omitting it keeps both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentQuotas'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6924,13 +7306,13 @@ class PaymentApi
     /**
      * Operation getPaymentQuotasAsync
      *
-     * Get quotas
+     * Get the purchasable quotas
      *
      * REST API Reference for getPaymentQuotas Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-quotas/
      *
-     * @param  bool|null $wallet Specifies whether to return the wallet quotas only. (optional)
-     * @param  bool|null $additional Specifies whether to return additional quotas only. (optional)
+     * @param  bool|null $wallet Which side of the catalogue is listed: `true` keeps the services paid out of the portal wallet, `false` keeps  the subscription plans, and omitting it keeps both. (optional)
+     * @param  bool|null $additional Which layer of the catalogue is listed: `true` keeps the add-ons that extend a plan, `false` keeps the plans  themselves, and omitting it keeps both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentQuotas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6949,13 +7331,13 @@ class PaymentApi
     /**
      * Operation getPaymentQuotasAsyncWithHttpInfo
      *
-     * Get quotas
+     * Get the purchasable quotas
      *
      * REST API Reference for getPaymentQuotas Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-payment-quotas/
      *
-     * @param  bool|null $wallet Specifies whether to return the wallet quotas only. (optional)
-     * @param  bool|null $additional Specifies whether to return additional quotas only. (optional)
+     * @param  bool|null $wallet Which side of the catalogue is listed: `true` keeps the services paid out of the portal wallet, `false` keeps  the subscription plans, and omitting it keeps both. (optional)
+     * @param  bool|null $additional Which layer of the catalogue is listed: `true` keeps the add-ons that extend a plan, `false` keeps the plans  themselves, and omitting it keeps both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentQuotas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7005,8 +7387,8 @@ class PaymentApi
     /**
      * Create request for operation 'getPaymentQuotas'
      *
-     * @param  bool|null $wallet Specifies whether to return the wallet quotas only. (optional)
-     * @param  bool|null $additional Specifies whether to return additional quotas only. (optional)
+     * @param  bool|null $wallet Which side of the catalogue is listed: `true` keeps the services paid out of the portal wallet, `false` keeps  the subscription plans, and omitting it keeps both. (optional)
+     * @param  bool|null $additional Which layer of the catalogue is listed: `true` keeps the add-ons that extend a plan, `false` keeps the plans  themselves, and omitting it keeps both. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPaymentQuotas'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7462,7 +7844,7 @@ class PaymentApi
     /**
      * Operation getPortalPrices
      *
-     * Get prices
+     * Get the product prices
      *
      * REST API Reference for getPortalPrices Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-prices/
@@ -7482,7 +7864,7 @@ class PaymentApi
     /**
      * Operation getPortalPricesWithHttpInfo
      *
-     * Get prices
+     * Get the product prices
      *
      * REST API Reference for getPortalPrices Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-prices/
@@ -7611,7 +7993,7 @@ class PaymentApi
     /**
      * Operation getPortalPricesAsync
      *
-     * Get prices
+     * Get the product prices
      *
      * REST API Reference for getPortalPrices Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-prices/
@@ -7634,7 +8016,7 @@ class PaymentApi
     /**
      * Operation getPortalPricesAsyncWithHttpInfo
      *
-     * Get prices
+     * Get the product prices
      *
      * REST API Reference for getPortalPrices Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-prices/
@@ -7786,12 +8168,12 @@ class PaymentApi
     /**
      * Operation getQuotaPaymentInformation
      *
-     * Get quota payment information
+     * Get the current plan and limits
      *
      * REST API Reference for getQuotaPaymentInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-quota-payment-information/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuotaPaymentInformation'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7807,12 +8189,12 @@ class PaymentApi
     /**
      * Operation getQuotaPaymentInformationWithHttpInfo
      *
-     * Get quota payment information
+     * Get the current plan and limits
      *
      * REST API Reference for getQuotaPaymentInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-quota-payment-information/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuotaPaymentInformation'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7951,12 +8333,12 @@ class PaymentApi
     /**
      * Operation getQuotaPaymentInformationAsync
      *
-     * Get quota payment information
+     * Get the current plan and limits
      *
      * REST API Reference for getQuotaPaymentInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-quota-payment-information/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuotaPaymentInformation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7975,12 +8357,12 @@ class PaymentApi
     /**
      * Operation getQuotaPaymentInformationAsyncWithHttpInfo
      *
-     * Get quota payment information
+     * Get the current plan and limits
      *
      * REST API Reference for getQuotaPaymentInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-quota-payment-information/
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuotaPaymentInformation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8030,7 +8412,7 @@ class PaymentApi
     /**
      * Create request for operation 'getQuotaPaymentInformation'
      *
-     * @param  bool|null $refresh Specifies whether to refresh the payment information cache or not. (optional)
+     * @param  bool|null $refresh Whether the answer is fetched from the billing service instead of the portal cache. The cached copy is what a  start-up needs and costs nothing; asking for a fresh one makes a remote call, so use it right after a  purchase or a top-up and not on every read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getQuotaPaymentInformation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8787,7 +9169,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletServiceSettings
      *
-     * Gets the wallet service settings for the tenant.
+     * Get the wallet service settings
      *
      * REST API Reference for getTenantWalletServiceSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-service-settings/
@@ -8807,7 +9189,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletServiceSettingsWithHttpInfo
      *
-     * Gets the wallet service settings for the tenant.
+     * Get the wallet service settings
      *
      * REST API Reference for getTenantWalletServiceSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-service-settings/
@@ -8936,7 +9318,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletServiceSettingsAsync
      *
-     * Gets the wallet service settings for the tenant.
+     * Get the wallet service settings
      *
      * REST API Reference for getTenantWalletServiceSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-service-settings/
@@ -8959,7 +9341,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletServiceSettingsAsyncWithHttpInfo
      *
-     * Gets the wallet service settings for the tenant.
+     * Get the wallet service settings
      *
      * REST API Reference for getTenantWalletServiceSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-service-settings/
@@ -9111,7 +9493,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletSettings
      *
-     * Gets the tenant wallet auto top up settings
+     * Get the auto top-up settings
      *
      * REST API Reference for getTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-settings/
@@ -9131,7 +9513,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletSettingsWithHttpInfo
      *
-     * Gets the tenant wallet auto top up settings
+     * Get the auto top-up settings
      *
      * REST API Reference for getTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-settings/
@@ -9260,7 +9642,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletSettingsAsync
      *
-     * Gets the tenant wallet auto top up settings
+     * Get the auto top-up settings
      *
      * REST API Reference for getTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-settings/
@@ -9283,7 +9665,7 @@ class PaymentApi
     /**
      * Operation getTenantWalletSettingsAsyncWithHttpInfo
      *
-     * Gets the tenant wallet auto top up settings
+     * Get the auto top-up settings
      *
      * REST API Reference for getTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-settings/
@@ -9435,12 +9817,12 @@ class PaymentApi
     /**
      * Operation getWalletService
      *
-     * Get wallet service
+     * Get a wallet service
      *
      * REST API Reference for getWalletService Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-wallet-service/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletService $service The wallet service type. (required)
+     * @param  \OpenAPI\Client\Model\TenantWalletService $service The service to look up, given by its catalogue name. A service this installation does not sell answers 404,  and the whole catalogue is `GET api/2.0/portal/payment/walletservices`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWalletService'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9456,12 +9838,12 @@ class PaymentApi
     /**
      * Operation getWalletServiceWithHttpInfo
      *
-     * Get wallet service
+     * Get a wallet service
      *
      * REST API Reference for getWalletService Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-wallet-service/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletService $service The wallet service type. (required)
+     * @param  \OpenAPI\Client\Model\TenantWalletService $service The service to look up, given by its catalogue name. A service this installation does not sell answers 404,  and the whole catalogue is `GET api/2.0/portal/payment/walletservices`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWalletService'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9600,12 +9982,12 @@ class PaymentApi
     /**
      * Operation getWalletServiceAsync
      *
-     * Get wallet service
+     * Get a wallet service
      *
      * REST API Reference for getWalletService Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-wallet-service/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletService $service The wallet service type. (required)
+     * @param  \OpenAPI\Client\Model\TenantWalletService $service The service to look up, given by its catalogue name. A service this installation does not sell answers 404,  and the whole catalogue is `GET api/2.0/portal/payment/walletservices`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWalletService'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9624,12 +10006,12 @@ class PaymentApi
     /**
      * Operation getWalletServiceAsyncWithHttpInfo
      *
-     * Get wallet service
+     * Get a wallet service
      *
      * REST API Reference for getWalletService Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-wallet-service/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletService $service The wallet service type. (required)
+     * @param  \OpenAPI\Client\Model\TenantWalletService $service The service to look up, given by its catalogue name. A service this installation does not sell answers 404,  and the whole catalogue is `GET api/2.0/portal/payment/walletservices`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWalletService'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9679,7 +10061,7 @@ class PaymentApi
     /**
      * Create request for operation 'getWalletService'
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletService $service The wallet service type. (required)
+     * @param  \OpenAPI\Client\Model\TenantWalletService $service The service to look up, given by its catalogue name. A service this installation does not sell answers 404,  and the whole catalogue is `GET api/2.0/portal/payment/walletservices`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWalletService'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10118,7 +10500,7 @@ class PaymentApi
     /**
      * Operation moveSubscriptionToWallet
      *
-     * Move the subscription balance to the wallet and purchase admins
+     * Move the subscription to the wallet
      *
      * REST API Reference for moveSubscriptionToWallet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-subscription-to-wallet/
@@ -10139,7 +10521,7 @@ class PaymentApi
     /**
      * Operation moveSubscriptionToWalletWithHttpInfo
      *
-     * Move the subscription balance to the wallet and purchase admins
+     * Move the subscription to the wallet
      *
      * REST API Reference for moveSubscriptionToWallet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-subscription-to-wallet/
@@ -10269,7 +10651,7 @@ class PaymentApi
     /**
      * Operation moveSubscriptionToWalletAsync
      *
-     * Move the subscription balance to the wallet and purchase admins
+     * Move the subscription to the wallet
      *
      * REST API Reference for moveSubscriptionToWallet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-subscription-to-wallet/
@@ -10293,7 +10675,7 @@ class PaymentApi
     /**
      * Operation moveSubscriptionToWalletAsyncWithHttpInfo
      *
-     * Move the subscription balance to the wallet and purchase admins
+     * Move the subscription to the wallet
      *
      * REST API Reference for moveSubscriptionToWallet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-subscription-to-wallet/
@@ -10455,7 +10837,7 @@ class PaymentApi
     /**
      * Operation sendPaymentRequest
      *
-     * Send a payment request
+     * Contact the sales team
      *
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
@@ -10475,7 +10857,7 @@ class PaymentApi
     /**
      * Operation sendPaymentRequestWithHttpInfo
      *
-     * Send a payment request
+     * Contact the sales team
      *
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
@@ -10551,7 +10933,7 @@ class PaymentApi
     /**
      * Operation sendPaymentRequestAsync
      *
-     * Send a payment request
+     * Contact the sales team
      *
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
@@ -10575,7 +10957,7 @@ class PaymentApi
     /**
      * Operation sendPaymentRequestAsyncWithHttpInfo
      *
-     * Send a payment request
+     * Contact the sales team
      *
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
@@ -11075,7 +11457,7 @@ class PaymentApi
     /**
      * Operation setTenantWalletSettings
      *
-     * Set the wallet auto top up settings
+     * Set the auto top-up settings
      *
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
@@ -11096,7 +11478,7 @@ class PaymentApi
     /**
      * Operation setTenantWalletSettingsWithHttpInfo
      *
-     * Set the wallet auto top up settings
+     * Set the auto top-up settings
      *
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
@@ -11240,7 +11622,7 @@ class PaymentApi
     /**
      * Operation setTenantWalletSettingsAsync
      *
-     * Set the wallet auto top up settings
+     * Set the auto top-up settings
      *
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
@@ -11264,7 +11646,7 @@ class PaymentApi
     /**
      * Operation setTenantWalletSettingsAsyncWithHttpInfo
      *
-     * Set the wallet auto top up settings
+     * Set the auto top-up settings
      *
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
@@ -11426,7 +11808,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerMonthlyUsageReport
      *
-     * Terminate the customer monthly usage report generation
+     * Terminate the monthly usage report
      *
      * REST API Reference for terminateCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-monthly-usage-report/
@@ -11445,7 +11827,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerMonthlyUsageReportWithHttpInfo
      *
-     * Terminate the customer monthly usage report generation
+     * Terminate the monthly usage report
      *
      * REST API Reference for terminateCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-monthly-usage-report/
@@ -11520,7 +11902,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerMonthlyUsageReportAsync
      *
-     * Terminate the customer monthly usage report generation
+     * Terminate the monthly usage report
      *
      * REST API Reference for terminateCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-monthly-usage-report/
@@ -11543,7 +11925,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerMonthlyUsageReportAsyncWithHttpInfo
      *
-     * Terminate the customer monthly usage report generation
+     * Terminate the monthly usage report
      *
      * REST API Reference for terminateCustomerMonthlyUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-monthly-usage-report/
@@ -11682,7 +12064,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerOperationsReport
      *
-     * Terminate the customer operations report generation
+     * Terminate the operations report
      *
      * REST API Reference for terminateCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-operations-report/
@@ -11701,7 +12083,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerOperationsReportWithHttpInfo
      *
-     * Terminate the customer operations report generation
+     * Terminate the operations report
      *
      * REST API Reference for terminateCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-operations-report/
@@ -11776,7 +12158,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerOperationsReportAsync
      *
-     * Terminate the customer operations report generation
+     * Terminate the operations report
      *
      * REST API Reference for terminateCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-operations-report/
@@ -11799,7 +12181,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerOperationsReportAsyncWithHttpInfo
      *
-     * Terminate the customer operations report generation
+     * Terminate the operations report
      *
      * REST API Reference for terminateCustomerOperationsReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-operations-report/
@@ -11938,7 +12320,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerServiceUsageReport
      *
-     * Terminate the customer service usage report generation
+     * Terminate the service usage report
      *
      * REST API Reference for terminateCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-service-usage-report/
@@ -11957,7 +12339,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerServiceUsageReportWithHttpInfo
      *
-     * Terminate the customer service usage report generation
+     * Terminate the service usage report
      *
      * REST API Reference for terminateCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-service-usage-report/
@@ -12032,7 +12414,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerServiceUsageReportAsync
      *
-     * Terminate the customer service usage report generation
+     * Terminate the service usage report
      *
      * REST API Reference for terminateCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-service-usage-report/
@@ -12055,7 +12437,7 @@ class PaymentApi
     /**
      * Operation terminateCustomerServiceUsageReportAsyncWithHttpInfo
      *
-     * Terminate the customer service usage report generation
+     * Terminate the service usage report
      *
      * REST API Reference for terminateCustomerServiceUsageReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-customer-service-usage-report/
@@ -12194,7 +12576,7 @@ class PaymentApi
     /**
      * Operation topUpDeposit
      *
-     * Put money on deposit
+     * Top up the wallet
      *
      * REST API Reference for topUpDeposit Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/top-up-deposit/
@@ -12215,7 +12597,7 @@ class PaymentApi
     /**
      * Operation topUpDepositWithHttpInfo
      *
-     * Put money on deposit
+     * Top up the wallet
      *
      * REST API Reference for topUpDeposit Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/top-up-deposit/
@@ -12345,7 +12727,7 @@ class PaymentApi
     /**
      * Operation topUpDepositAsync
      *
-     * Put money on deposit
+     * Top up the wallet
      *
      * REST API Reference for topUpDeposit Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/top-up-deposit/
@@ -12369,7 +12751,7 @@ class PaymentApi
     /**
      * Operation topUpDepositAsyncWithHttpInfo
      *
-     * Put money on deposit
+     * Top up the wallet
      *
      * REST API Reference for topUpDeposit Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/top-up-deposit/
@@ -12531,7 +12913,7 @@ class PaymentApi
     /**
      * Operation updatePayment
      *
-     * Update the payment quantity
+     * Change the subscription quantity
      *
      * REST API Reference for updatePayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-payment/
@@ -12552,7 +12934,7 @@ class PaymentApi
     /**
      * Operation updatePaymentWithHttpInfo
      *
-     * Update the payment quantity
+     * Change the subscription quantity
      *
      * REST API Reference for updatePayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-payment/
@@ -12682,7 +13064,7 @@ class PaymentApi
     /**
      * Operation updatePaymentAsync
      *
-     * Update the payment quantity
+     * Change the subscription quantity
      *
      * REST API Reference for updatePayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-payment/
@@ -12706,7 +13088,7 @@ class PaymentApi
     /**
      * Operation updatePaymentAsyncWithHttpInfo
      *
-     * Update the payment quantity
+     * Change the subscription quantity
      *
      * REST API Reference for updatePayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-payment/
@@ -12868,7 +13250,7 @@ class PaymentApi
     /**
      * Operation updateWalletPayment
      *
-     * Update the wallet payment quantity
+     * Change a wallet service quantity
      *
      * REST API Reference for updateWalletPayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-wallet-payment/
@@ -12889,7 +13271,7 @@ class PaymentApi
     /**
      * Operation updateWalletPaymentWithHttpInfo
      *
-     * Update the wallet payment quantity
+     * Change a wallet service quantity
      *
      * REST API Reference for updateWalletPayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-wallet-payment/
@@ -13019,7 +13401,7 @@ class PaymentApi
     /**
      * Operation updateWalletPaymentAsync
      *
-     * Update the wallet payment quantity
+     * Change a wallet service quantity
      *
      * REST API Reference for updateWalletPayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-wallet-payment/
@@ -13043,7 +13425,7 @@ class PaymentApi
     /**
      * Operation updateWalletPaymentAsyncWithHttpInfo
      *
-     * Update the wallet payment quantity
+     * Change a wallet service quantity
      *
      * REST API Reference for updateWalletPayment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-wallet-payment/

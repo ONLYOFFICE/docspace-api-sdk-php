@@ -33,7 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SearchArea Class Doc Comment
  *
  * @category Class
- * @description [0 - Active, 1 - Archive, 2 - Any, 3 - Recent by links, 4 - Template, 5 - Knowledge, 6 - Result storage, 7 - AiAgents, 8 - Forms, 9 - Form templates]
+ * @description [Active - Active, Archive - Archive, Any - Any, RecentByLinks - Recent by links, Templates - Template, Knowledge - Knowledge, ResultStorage - Result storage, AiAgents - AiAgents, Forms - Forms, FormTemplates - Form templates]
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,25 +43,25 @@ class SearchArea
     /**
      * Possible values of this enum
      */
-    public const ACTIVE = 0;
+    public const ACTIVE = 'Active';
 
-    public const ARCHIVE = 1;
+    public const ARCHIVE = 'Archive';
 
-    public const ANY = 2;
+    public const ANY = 'Any';
 
-    public const RECENT_BY_LINKS = 3;
+    public const RECENT_BY_LINKS = 'RecentByLinks';
 
-    public const TEMPLATES = 4;
+    public const TEMPLATES = 'Templates';
 
-    public const KNOWLEDGE = 5;
+    public const KNOWLEDGE = 'Knowledge';
 
-    public const RESULT_STORAGE = 6;
+    public const RESULT_STORAGE = 'ResultStorage';
 
-    public const AI_AGENTS = 7;
+    public const AI_AGENTS = 'AiAgents';
 
-    public const FORMS = 8;
+    public const FORMS = 'Forms';
 
-    public const FORM_TEMPLATES = 9;
+    public const FORM_TEMPLATES = 'FormTemplates';
 
     /**
      * Gets allowable values of the enum

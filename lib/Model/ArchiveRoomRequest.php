@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ArchiveRoomRequest Class Doc Comment
  *
  * @category Class
- * @description The parameters for archiving a room.
+ * @description The body of a room archiving request.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class ArchiveRoomRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to archive a room after the editing session is finished or not.
+     * @param bool|null $delete_after Whether the record of the finished job may be dropped without being read. With it off the record waits for the  first poll, which is what lets the caller learn how the move ended; it has no effect on the room itself.
      *
      * @return self
      */

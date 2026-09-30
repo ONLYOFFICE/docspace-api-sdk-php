@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CompanyWhiteLabelSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The company white label settings.
+ * @description The vendor details the About page and the notification letters print, shared by the whole installation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -376,7 +376,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets company_name
      *
-     * @param string|null $company_name The company name.
+     * @param string|null $company_name The vendor name the About page shows and the letters sign off with. Until details are saved it holds  whatever the installation ships as its built-in vendor, and it is empty on an installation that ships none.
      *
      * @return self
      */
@@ -410,7 +410,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets site
      *
-     * @param string|null $site The company site.
+     * @param string|null $site The address the vendor name links to, as an absolute URL with its scheme. Empty under the same conditions  as `companyName`.
      *
      * @return self
      */
@@ -444,7 +444,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets email
      *
-     * @param string|null $email The company email address.
+     * @param string|null $email The mailbox the About page offers for reaching the vendor. It is not the portal's own support address, and  it is empty under the same conditions as `companyName`.
      *
      * @return self
      */
@@ -478,7 +478,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets address
      *
-     * @param string|null $address The company address.
+     * @param string|null $address The postal address of the vendor as one free-form line, in the shape it was saved in - no structure is  imposed on it.
      *
      * @return self
      */
@@ -512,7 +512,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets phone
      *
-     * @param string|null $phone The company phone number.
+     * @param string|null $phone The telephone number of the vendor in the shape it was saved in, with no dialling format enforced.
      *
      * @return self
      */
@@ -546,7 +546,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets is_licensor
      *
-     * @param bool $is_licensor Specifies if a company is a licensor or not.
+     * @param bool $is_licensor Whether these details are those of the licensor of the product itself rather than of a reseller. Saving  through `POST api/2.0/settings/rebranding/company` always clears it, so only details that came with the  installation can report `true`.
      *
      * @return self
      */
@@ -573,7 +573,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets hide_about
      *
-     * @param bool $hide_about Specifies if the About page is visible or not.
+     * @param bool $hide_about Whether the About page is hidden from the interface. A plan that does not include branding cannot switch it  on: the value is stored as `false` in that case, so it can come back different from what was saved.
      *
      * @return self
      */
@@ -600,7 +600,7 @@ class CompanyWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets is_default
      *
-     * @param bool $is_default Specifies if these settings are default or not.
+     * @param bool $is_default Whether every field above still matches the installation's built-in vendor details. It turns `false` as  soon as one of them is saved differently and `true` again after  `DELETE api/2.0/settings/rebranding/company`.
      *
      * @return self
      */

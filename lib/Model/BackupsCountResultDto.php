@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupsCountResultDto Class Doc Comment
  *
  * @category Class
- * @description The number of backups.
+ * @description The backups of a portal, split by who paid for them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class BackupsCountResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets free
      *
-     * @param int|null $free The number of free backups.
+     * @param int|null $free The number of backups covered by the free monthly allowance.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class BackupsCountResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets paid
      *
-     * @param int|null $paid The number of paid backups.
+     * @param int|null $paid The number of backups charged to the portal wallet.
      *
      * @return self
      */

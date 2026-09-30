@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DeleteRoomRequest Class Doc Comment
  *
  * @category Class
- * @description The parameters for deleting a room.
+ * @description The body of a room deletion request.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class DeleteRoomRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to delete a room after the editing session is finished or not.
+     * @param bool|null $delete_after Carried by the contract but not acted upon: the deletion behaves the same either way, and the record of the  finished job is kept until it is read once.
      *
      * @return self
      */

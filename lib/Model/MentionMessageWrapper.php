@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MentionMessageWrapper Class Doc Comment
  *
  * @category Class
- * @description The mention message parameters.
+ * @description The mention notification to send: what to say, whom to tell and where in the document the mention sits.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -325,7 +325,7 @@ class MentionMessageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets action_link
      *
-     * @param \OpenAPI\Client\Model\ActionLinkConfig|null $action_link The config parameter which contains the information about the action in the document that will be scrolled to.
+     * @param \OpenAPI\Client\Model\ActionLinkConfig|null $action_link The place in the document the notification link should open at, as the editor reports it when the mention is  made. Left out, the link opens the file at its beginning.
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class MentionMessageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets emails
      *
-     * @param string[]|null $emails A list of emails that will receive the mention message.
+     * @param string[]|null $emails The addresses to notify. Only an address that belongs to a portal account receives a mail; an unknown address  is skipped, and the answer then carries the access list of the file so that the client can invite its owner.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class MentionMessageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param string|null $message The mention message.
+     * @param string|null $message The note shown next to the link in the mail. Only its first 200 characters are sent, and a value longer than  the field allows is refused.
      *
      * @return self
      */

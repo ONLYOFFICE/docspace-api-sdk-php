@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ProblemDetail Class Doc Comment
  *
  * @category Class
+ * @description RFC 7807 problem details returned by the registration API for failed requests.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,7 +63,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'int',
         'detail' => 'string',
         'instance' => 'string',
-        'properties' => 'array<string,object>'
+        'properties' => 'array<string,mixed>',
+        'errors' => '\OpenAPI\Client\Model\FieldError[]'
     ];
 
     /**
@@ -78,7 +80,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'int32',
         'detail' => null,
         'instance' => 'uri',
-        'properties' => null
+        'properties' => null,
+        'errors' => null
     ];
 
     /**
@@ -92,7 +95,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => false,
         'detail' => false,
         'instance' => false,
-        'properties' => false
+        'properties' => false,
+        'errors' => false
     ];
 
     /**
@@ -186,7 +190,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'status',
         'detail' => 'detail',
         'instance' => 'instance',
-        'properties' => 'properties'
+        'properties' => 'properties',
+        'errors' => 'errors'
     ];
 
     /**
@@ -200,7 +205,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'setStatus',
         'detail' => 'setDetail',
         'instance' => 'setInstance',
-        'properties' => 'setProperties'
+        'properties' => 'setProperties',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -214,7 +220,8 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         'status' => 'getStatus',
         'detail' => 'getDetail',
         'instance' => 'getInstance',
-        'properties' => 'getProperties'
+        'properties' => 'getProperties',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -280,6 +287,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('detail', $data ?? [], null);
         $this->setIfExists('instance', $data ?? [], null);
         $this->setIfExists('properties', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -337,7 +345,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type A URI reference that identifies the problem type. This service sets it to the DocSpace API getting-started page.
      *
      * @return self
      */
@@ -364,7 +372,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title title
+     * @param string|null $title A short, human-readable summary of the problem type, typically the HTTP status reason phrase.
      *
      * @return self
      */
@@ -391,7 +399,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param int|null $status status
+     * @param int|null $status The HTTP status code for this occurrence of the problem.
      *
      * @return self
      */
@@ -418,7 +426,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets detail
      *
-     * @param string|null $detail detail
+     * @param string|null $detail A human-readable explanation specific to this occurrence of the problem.
      *
      * @return self
      */
@@ -445,7 +453,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets instance
      *
-     * @param string|null $instance instance
+     * @param string|null $instance A URI reference that identifies the specific occurrence, set to the request path.
      *
      * @return self
      */
@@ -462,7 +470,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return array<string,object>|null
+     * @return array<string,mixed>|null
      */
     public function getProperties()
     {
@@ -472,7 +480,7 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param array<string,object>|null $properties properties
+     * @param array<string,mixed>|null $properties Extension members carried on the problem. Usually empty; validation failures also surface as the top-level errors array.
      *
      * @return self
      */
@@ -482,6 +490,33 @@ class ProblemDetail implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
         $this->container['properties'] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \OpenAPI\Client\Model\FieldError[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \OpenAPI\Client\Model\FieldError[]|null $errors Field-specific validation errors. Present when the request body or parameters failed validation, or when a named scope is not in the tenant catalogue.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

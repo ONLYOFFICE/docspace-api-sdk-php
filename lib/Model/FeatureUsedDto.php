@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FeatureUsedDto Class Doc Comment
  *
  * @category Class
- * @description The used space parameters of the tenant quota feature.
+ * @description How much of one quota feature the portal has already consumed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -347,7 +347,7 @@ class FeatureUsedDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The used space title.
+     * @param string|null $title The same figure as a sentence in the portal language, ready to print. It is empty when this build ships no  wording for the feature.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MailDomainSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring trusted mail domains and visitor invitation settings.
+ * @description Which email domains the portal treats as already verified, and how their users join.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +326,7 @@ class MailDomainSettingsRequestsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType $type Defines how trusted domains are handled and validated.
+     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType $type How trusted domains are decided: no domain is trusted, every domain is, or only the ones listed in `domains`.  Only the custom mode reads `domains`; under the other two the list is ignored rather than refused.
      *
      * @return self
      */
@@ -353,7 +353,7 @@ class MailDomainSettingsRequestsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets domains
      *
-     * @param string[]|null $domains The list of authorized email domains that are considered trusted.
+     * @param string[]|null $domains The trusted domains, as bare hostnames such as `example.com` without a scheme or an `@`. This is the whole  list that is to hold afterwards and not a list of additions. Each entry is lowercased before it is stored,  and one entry that is not a valid hostname - or an empty list in the custom mode - fails the whole call  without saving anything.
      *
      * @return self
      */
@@ -387,7 +387,7 @@ class MailDomainSettingsRequestsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets invite_users_as_visitors
      *
-     * @param bool $invite_users_as_visitors Specifies the default permission level for the invited users (visitors or not).
+     * @param bool $invite_users_as_visitors What a user joining through a trusted domain becomes: `true` admits them as a guest, `false` as a full  member. It applies to joins made from now on and does not change anybody who has already joined.
      *
      * @return self
      */

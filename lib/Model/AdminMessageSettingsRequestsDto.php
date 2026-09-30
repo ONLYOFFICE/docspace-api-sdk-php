@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AdminMessageSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring the administrator message content.
+ * @description The message sent to the portal administrators, with the CAPTCHA proof that a person wrote it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -353,7 +353,7 @@ class AdminMessageSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets message
      *
-     * @param string|null $message The content of the administrator message to be sent.
+     * @param string|null $message What the sender wants to tell the portal administrators. Markup is stripped before the letter is written, so  a body that carries nothing but markup counts as empty and is refused with 400.
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class AdminMessageSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets email
      *
-     * @param string|null $email Email
+     * @param string|null $email The address the sender can be answered at, which the letter is signed with. It has to be a well-formed email  address.
      *
      * @return self
      */
@@ -435,7 +435,7 @@ class AdminMessageSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets culture
      *
-     * @param string|null $culture Culture
+     * @param string|null $culture The language the letter is written in, as a culture name such as `en-US`. A culture the installation does not  have falls back to the portal language rather than failing the call.
      *
      * @return self
      */
@@ -469,7 +469,7 @@ class AdminMessageSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets recaptcha_type
      *
-     * @param \OpenAPI\Client\Model\RecaptchaType|null $recaptcha_type The type of CAPTCHA validation used.
+     * @param \OpenAPI\Client\Model\RecaptchaType|null $recaptcha_type Which CAPTCHA service the proof in `recaptchaResponse` came from. It has to match the service the  installation is configured with, which `GET api/2.0/capabilities` reports; the default value means the  installation is left to decide.
      *
      * @return self
      */
@@ -496,7 +496,7 @@ class AdminMessageSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets recaptcha_response
      *
-     * @param string|null $recaptcha_response The user's response to the CAPTCHA challenge.
+     * @param string|null $recaptcha_response The token the CAPTCHA widget produced in the browser, passed on unchanged for the portal to verify with the  CAPTCHA service. It is single-use and short-lived, so it cannot be reused for a second message.
      *
      * @return self
      */

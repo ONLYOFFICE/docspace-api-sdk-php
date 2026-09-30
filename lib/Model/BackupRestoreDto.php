@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupRestoreDto Class Doc Comment
  *
  * @category Class
- * @description The backup restoring parameters.
+ * @description The request parameters for restoring a portal from a backup.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -334,7 +334,7 @@ class BackupRestoreDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets backup_id
      *
-     * @param string|null $backup_id The backup ID.
+     * @param string|null $backup_id The ID of the backup to restore from, as listed by `GET api/2.0/backup/getbackuphistory`. Send  anything that is not a GUID to restore from a file given by `storageParams` instead; an all-zero GUID  selects neither, because it parses as a GUID and then matches no record.
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class BackupRestoreDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets storage_type
      *
-     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The backup storage type.
+     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The storage the archive is read from. It defaults to `Documents` and is only used when `backupId` is  not a GUID, because a known backup carries the storage of its own record.
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class BackupRestoreDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets storage_params
      *
-     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The backup storage parameters.
+     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The location of the archive, as an array of key and value pairs. The key read here is `filePath` -  not the `folderId` a backup is started with - and it holds a file ID for `Documents`, a  provider-specific file ID for `ThridpartyDocuments` and a path on the server for `Local`. It is only  used when `backupId` is not a GUID.
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class BackupRestoreDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets notify
      *
-     * @param bool|null $notify Notifies users about the portal restoring process or not.
+     * @param bool|null $notify Chooses who is emailed when the restoring starts and when it finishes: every active user of the  portal when true, and its owner alone when false. Mail goes only to accounts that have been  activated, so this decides the audience rather than whether anybody is notified at all.
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class BackupRestoreDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dump
      *
-     * @param bool|null $dump Specifies if a dump will be created or not.
+     * @param bool|null $dump Restores the whole server rather than this one portal. It requires the space access permission.
      *
      * @return self
      */

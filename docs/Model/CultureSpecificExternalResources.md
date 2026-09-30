@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**admin_panel** | [**\OpenAPI\Client\Model\CultureSpecificExternalResource**](CultureSpecificExternalResource.md) | The link to the administration panel. It is returned only to the full administrators of a licensed (Enterprise) server (standalone) portal. | [optional]
 **api** | [**\OpenAPI\Client\Model\CultureSpecificExternalResource**](CultureSpecificExternalResource.md) | The link to the product API. | [optional]
 **common** | [**\OpenAPI\Client\Model\CultureSpecificExternalResource**](CultureSpecificExternalResource.md) | The link to the common product information. | [optional]
 **forum** | [**\OpenAPI\Client\Model\CultureSpecificExternalResource**](CultureSpecificExternalResource.md) | The link to the forum. | [optional]

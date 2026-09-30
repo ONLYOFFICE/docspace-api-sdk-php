@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudLicenseInfo Class Doc Comment
  *
  * @category Class
- * @description Represents the license information of a DocsCloud tenant.
+ * @description Represents the license information of a Docs Connect tenant.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

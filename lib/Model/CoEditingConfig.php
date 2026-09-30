@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CoEditingConfig Class Doc Comment
  *
  * @category Class
- * @description The co-editing configuration parameters.
+ * @description How co-editing is preset when the document opens, and whether the user may switch it afterwards.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class CoEditingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets change
      *
-     * @param bool|null $change Specifies if the co-editing mode can be changed in the editor interface or not.
+     * @param bool|null $change Whether the user may switch between the two co-editing modes from the editor interface, or is held to the one  the portal preset.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class CoEditingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fast
      *
-     * @param bool|null $fast Specifies if the co-editing mode is fast.
+     * @param bool|null $fast Whether other participants see each change as it is typed. Left off, changes are exchanged only when a  participant saves, and the paragraph being edited is locked for the others meanwhile.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class CoEditingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mode
      *
-     * @param \OpenAPI\Client\Model\CoEditingConfigMode|null $mode The co-editing mode (fast or strict).
+     * @param \OpenAPI\Client\Model\CoEditingConfigMode|null $mode The mode the two settings above amount to, as the editors name it.
      *
      * @return self
      */

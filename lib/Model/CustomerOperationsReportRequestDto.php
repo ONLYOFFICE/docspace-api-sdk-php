@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerOperationsReportRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for generating a report on client operations.
+ * @description The filters that select which wallet movements are reported: the services, the period, the participant, the  direction and the outcome of the movement, and the ordering.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -366,7 +366,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets service_name
      *
-     * @param string[]|null $service_name The service name list. A single string is also accepted for backward compatibility.
+     * @param string[]|null $service_name The wallet services whose movements are kept, named the way the billing catalogue names them - `backup`,  `ai-tools`, `ai-search`, `disk-storage`, `docscloud`. Take the values from the `serviceName` field of  `GET api/2.0/portal/payment/walletservices`; the match ignores case, a name this installation does not sell  fails the call with 404, and an omitted list keeps every service. A bare string is accepted in place of an  array for backward compatibility.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets start_date
      *
-     * @param \DateTime|null $start_date The report start date.
+     * @param \DateTime|null $start_date The beginning of the reported period, inclusive. Read in the portal time zone rather than in UTC, so a  movement at the edge of the period falls where the portal sees it; defaults to the portal creation date.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date The report end date.
+     * @param \DateTime|null $end_date The end of the reported period, inclusive. Read in the portal time zone rather than in UTC, and defaults to  the moment the call is made.
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets participant_name
      *
-     * @param string|null $participant_name The participant name.
+     * @param string|null $participant_name The participant whose movements are kept - the account the accounting service records as the cause of a  movement. A movement caused by a portal user carries that user ID here, and one caused by the portal itself  carries the customer name; surrounding whitespace is trimmed, and an omitted value keeps every participant.
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets credit
      *
-     * @param bool|null $credit Specifies whether to include credit operations in the report.
+     * @param bool|null $credit Whether movements that add money to the wallet - top-ups, refunds and corrections in the portal's favour -  are kept. Both directions are reported when neither this nor `debit` is given.
      *
      * @return self
      */
@@ -536,7 +536,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets debit
      *
-     * @param bool|null $debit Specifies whether to include debit operations in the report.
+     * @param bool|null $debit Whether movements that take money out of the wallet - the charges of the wallet services - are kept. Both  directions are reported when neither this nor `credit` is given.
      *
      * @return self
      */
@@ -570,7 +570,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\OperationType|null $type The operation type to filter by.
+     * @param \OpenAPI\Client\Model\OperationType|null $type The kind of movement to keep, which says what caused the money to move rather than how it ended. Every kind  is reported when it is omitted.
      *
      * @return self
      */
@@ -597,7 +597,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\OperationStatus|null $status The operation status to filter by.
+     * @param \OpenAPI\Client\Model\OperationStatus|null $status The outcome to keep. A movement that is still being settled is reported as pending and may change later,  while the other outcomes are final; every outcome is reported when this is omitted.
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets order_by
      *
-     * @param string|null $order_by The field to order by.
+     * @param string|null $order_by The name of the field the movements are sorted by, spelled as the accounting service names it, such as  `StartDate` or `ServiceName`. Surrounding whitespace is trimmed, and the accounting service applies its own  ordering when this is omitted.
      *
      * @return self
      */
@@ -658,7 +658,7 @@ class CustomerOperationsReportRequestDto implements ModelInterface, ArrayAccess,
     /**
      * Sets order_type
      *
-     * @param \OpenAPI\Client\Model\OperationOrderType|null $order_type Order direction: Ascending or Descending.
+     * @param \OpenAPI\Client\Model\OperationOrderType|null $order_type The direction the field named in `orderBy` is sorted in. Newest or largest first is what the accounting  service does by default, so leaving this out sorts the same way as asking for descending explicitly.
      *
      * @return self
      */

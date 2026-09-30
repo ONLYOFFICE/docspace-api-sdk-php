@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UserConfig Class Doc Comment
  *
  * @category Class
- * @description The configuration parameters of the user currently viewing or editing the document.
+ * @description The account the editors attribute the changes of this session to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class UserConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The user ID.
+     * @param string|null $id The account the changes are recorded under. Two sessions carrying the same value are taken by the editors for  the same person.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class UserConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The full name of the user.
+     * @param string|null $name The name shown next to the changes and in the list of participants.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class UserConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param string|null $image The path to the user's avatar.
+     * @param string|null $image An absolute address of the avatar shown for this participant.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class UserConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets roles
      *
-     * @param string[]|null $roles Roles
+     * @param string[]|null $roles The filling roles this participant holds in the form being filled out. It is set only for a form in a virtual  data room, where the role decides which fields open for them.
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class UserConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets customer_id
      *
-     * @param string|null $customer_id Customer identifier associated with the user.
+     * @param string|null $customer_id Identifies the paying customer this participant belongs to, on deployments where the editors are licensed per  customer.
      *
      * @return self
      */

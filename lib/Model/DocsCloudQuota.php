@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudQuota Class Doc Comment
  *
  * @category Class
- * @description Represents the current user quota of a DocsCloud tenant.
+ * @description Represents the current user quota of a Docs Connect tenant.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

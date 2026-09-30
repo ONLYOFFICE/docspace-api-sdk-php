@@ -63,10 +63,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => 'string',
         'key_postfix' => 'string',
         'permissions' => 'string[]',
-        'last_used' => '\DateTime',
-        'create_on' => '\DateTime',
+        'last_used' => '\OpenAPI\Client\Model\ApiDateTime',
+        'create_on' => '\OpenAPI\Client\Model\ApiDateTime',
         'create_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'expires_at' => '\DateTime',
+        'expires_at' => '\OpenAPI\Client\Model\ApiDateTime',
         'is_active' => 'bool'
     ];
 
@@ -83,10 +83,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => null,
         'key_postfix' => null,
         'permissions' => null,
-        'last_used' => 'date-time',
-        'create_on' => 'date-time',
+        'last_used' => null,
+        'create_on' => null,
         'create_by' => null,
-        'expires_at' => 'date-time',
+        'expires_at' => null,
         'is_active' => null
     ];
 
@@ -101,10 +101,10 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'key' => true,
         'key_postfix' => true,
         'permissions' => true,
-        'last_used' => true,
-        'create_on' => true,
+        'last_used' => false,
+        'create_on' => false,
         'create_by' => false,
-        'expires_at' => true,
+        'expires_at' => false,
         'is_active' => false
     ];
 
@@ -381,7 +381,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string $id The API key unique identifier.
+     * @param string $id The ID of the key. This is the value to pass to `PUT api/2.0/keys/{keyId}` and  `DELETE api/2.0/keys/{keyId}`.
      *
      * @return self
      */
@@ -408,7 +408,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string|null $name The API key name.
+     * @param string|null $name The label given to the key when it was created or last updated.
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets key
      *
-     * @param string|null $key The full API key value (only returned when creating a new key).
+     * @param string|null $key The secret to send in the `Authorization` header as `Bearer sk-...`. It is filled in only by the answer of  `POST api/2.0/keys` and cannot be read again afterwards, so it has to be stored at that moment.
      *
      * @return self
      */
@@ -476,7 +476,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets key_postfix
      *
-     * @param string|null $key_postfix The API key postfix (used for identification).
+     * @param string|null $key_postfix The last four characters of the secret. It is the only part of the secret that later reads expose, and it is  meant for telling keys apart in a list.
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets permissions
      *
-     * @param string[]|null $permissions The list of permissions granted to the API key.
+     * @param string[]|null $permissions The scopes the key may use, as accepted by `GET api/2.0/keys/permissions`. An empty list means the key has no  scope restrictions.
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets last_used
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getLastUsed()
     {
@@ -544,21 +544,14 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets last_used
      *
-     * @param \DateTime|null $last_used The date and time when the API key was last used.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $last_used The UTC moment the key was last used to authenticate a request. It is empty for a key that has never been  used.
      *
      * @return self
      */
     public function setLastUsed($last_used)
     {
         if (is_null($last_used)) {
-            array_push($this->openAPINullablesSetToNull, 'last_used');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('last_used', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable last_used cannot be null');
         }
         $this->container['last_used'] = $last_used;
 
@@ -568,7 +561,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets create_on
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getCreateOn()
     {
@@ -578,21 +571,14 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets create_on
      *
-     * @param \DateTime|null $create_on The date and time when the API key was created.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $create_on The UTC moment the key was created.
      *
      * @return self
      */
     public function setCreateOn($create_on)
     {
         if (is_null($create_on)) {
-            array_push($this->openAPINullablesSetToNull, 'create_on');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('create_on', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable create_on cannot be null');
         }
         $this->container['create_on'] = $create_on;
 
@@ -612,7 +598,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets create_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $create_by The identifier of the user who created the API key.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $create_by The portal member who created the key, and whose access the key acts with.
      *
      * @return self
      */
@@ -629,7 +615,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets expires_at
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpiresAt()
     {
@@ -639,21 +625,14 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expires_at
      *
-     * @param \DateTime|null $expires_at The date and time when the API key expires.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expires_at The UTC moment the key stops working. It is empty for a key created without `expiresInDays`, which never  expires.
      *
      * @return self
      */
     public function setExpiresAt($expires_at)
     {
         if (is_null($expires_at)) {
-            array_push($this->openAPINullablesSetToNull, 'expires_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expires_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
         }
         $this->container['expires_at'] = $expires_at;
 
@@ -673,7 +652,7 @@ class ApiKeyResponseDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_active
      *
-     * @param bool $is_active Indicates whether the API key is active or not.
+     * @param bool $is_active Whether the key may authenticate requests. A key deactivated through `PUT api/2.0/keys/{keyId}` stays in the  list with this field set to false.
      *
      * @return self
      */

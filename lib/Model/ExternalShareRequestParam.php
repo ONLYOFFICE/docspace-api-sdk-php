@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalShareRequestParam Class Doc Comment
  *
  * @category Class
- * @description The external data parameters.
+ * @description The password that unlocks a protected external share link.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class ExternalShareRequestParam implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets password
      *
-     * @param string|null $password The password to share external data.
+     * @param string|null $password The password chosen by the member who shared the entry, spelled exactly as they typed it. It is compared  against the stored value and never returned back; a mismatch is reported through the answer's status instead  of an error.
      *
      * @return self
      */

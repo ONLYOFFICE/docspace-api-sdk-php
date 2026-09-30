@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring notification settings.
+ * @description Which kind of notification the calling user switches, and which way.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class NotificationSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\NotificationType $type The notification to be configured.
+     * @param \OpenAPI\Client\Model\NotificationType $type The kind of notification being switched. A value outside the defined set is echoed back while nothing is  stored, so confirm the result with `GET api/2.0/settings/notification/{type}` rather than trusting the  answer.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class NotificationSettingsRequestsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets is_enabled
      *
-     * @param bool|null $is_enabled Specifies if the specified notification type is enabled or not.
+     * @param bool|null $is_enabled Whether that kind reaches the calling account. It applies to the caller own account alone and to every room  at once; a single room is silenced with `POST api/2.0/settings/notification/rooms` instead.
      *
      * @return self
      */

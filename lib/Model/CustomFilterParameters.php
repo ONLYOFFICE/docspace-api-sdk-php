@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomFilterParameters Class Doc Comment
  *
  * @category Class
- * @description The parameters for setting the Custom Filter editing mode.
+ * @description The Custom Filter state a spreadsheet is to be put into.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class CustomFilterParameters implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies whether the Custom Filter editing mode is enabled or not.
+     * @param bool|null $enabled The state to reach: `true` turns the mode on, so that the sorting and filtering each person applies stays  visible to that person alone, and drops the others out of a running editing session; `false` turns it off and  makes filtering shared again.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WhiteLabelItemDto Class Doc Comment
  *
  * @category Class
- * @description The white label item parameters.
+ * @description One branding logo slot of the portal: the size it is drawn at, and where its images are served from.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +324,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\WhiteLabelLogoType|null $type The white label logo type.
+     * @param \OpenAPI\Client\Model\WhiteLabelLogoType|null $type Which branding slot this entry describes. `Notification` is part of the type but never appears here: that  logo is derived from the login-page one and used only in letters.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string|null $name The white label file name.
+     * @param string|null $name The stable name of the same slot, which is what `GET api/2.0/settings/whitelabel/logos/isdefault` keys its  entries by. It is a name to match on, not a file name.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets size
      *
-     * @param \OpenAPI\Client\Model\WhiteLabelItemSizeDto|null $size The white label file size.
+     * @param \OpenAPI\Client\Model\WhiteLabelItemSizeDto|null $size The pixel box the slot is drawn in. Only `width` and `height` carry information here; the resize flags and  offsets alongside them are left at their defaults and say nothing about how an uploaded image is treated.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class WhiteLabelItemDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets path
      *
-     * @param \OpenAPI\Client\Model\WhiteLabelItemPathDto|null $path The white label file path.
+     * @param \OpenAPI\Client\Model\WhiteLabelItemPathDto|null $path The absolute URLs to render the slot from, one per theme.
      *
      * @return self
      */

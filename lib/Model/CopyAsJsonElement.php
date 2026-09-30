@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CopyAsJsonElement Class Doc Comment
  *
  * @category Class
- * @description The parameters for copying a file.
+ * @description The parameters of a file copy that may change the format on the way.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -337,7 +337,7 @@ class CopyAsJsonElement implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets dest_title
      *
-     * @param string|null $dest_title The copied file name.
+     * @param string|null $dest_title The title of the copy, extension included. That extension decides the format: the same one as the source  copies the content as it is, a different one has it converted first.
      *
      * @return self
      */
@@ -398,7 +398,7 @@ class CopyAsJsonElement implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets enable_external_ext
      *
-     * @param bool|null $enable_external_ext Specifies whether to allow creating the copied file of an external extension or not.
+     * @param bool|null $enable_external_ext Whether the extension of the new title may be one the portal does not edit itself.
      *
      * @return self
      */
@@ -425,7 +425,7 @@ class CopyAsJsonElement implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets password
      *
-     * @param string|null $password The copied file password.
+     * @param string|null $password The password that opens the source document, for a file that is protected by one.
      *
      * @return self
      */
@@ -459,7 +459,7 @@ class CopyAsJsonElement implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets to_form
      *
-     * @param bool|null $to_form Specifies whether to convert the file to form or not.
+     * @param bool|null $to_form Whether the copy is to become a PDF form rather than a plain document, which the conversion supports for the  text formats it can read.
      *
      * @return self
      */

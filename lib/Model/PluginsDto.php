@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PluginsDto Class Doc Comment
  *
  * @category Class
- * @description The plugins parameters.
+ * @description What the installation allows to be done with web plugins.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class PluginsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies if the plugins are enabled or not.
+     * @param bool|null $enabled Whether web plugins run on this portal at all. While it is `false` the operations under  `api/2.0/settings/webplugins` are of no use, whatever the other two flags say. All three are `false`  unless the installation switched plugins on in its configuration.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class PluginsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload
      *
-     * @param bool|null $upload Specifies if the plugins can be uploaded or not.
+     * @param bool|null $upload Whether an administrator may add a plugin of their own through  `POST api/2.0/settings/webplugins`. While it is `false` only the plugins that ship with the installation  are available.
      *
      * @return self
      */
@@ -371,7 +371,7 @@ class PluginsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delete
      *
-     * @param bool|null $delete Specifies if the plugins can be deleted or not.
+     * @param bool|null $delete Whether an added plugin may be removed again through `DELETE api/2.0/settings/webplugins/{name}`. The  plugins that ship with the installation cannot be removed regardless of this flag.
      *
      * @return self
      */

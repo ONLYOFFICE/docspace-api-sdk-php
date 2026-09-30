@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateTagRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for creating a tag.
+ * @description The parameters for adding a custom tag to the portal catalog of room tags.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,7 +314,7 @@ class CreateTagRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name The tag name.
+     * @param string|null $name The name of the tag to create, which is also its identity: tags are addressed by name everywhere, there is no  separate identifier. It is stored exactly as sent, spacing and case included, and a name that is already in  the catalog gives back that tag instead of a second one.
      *
      * @return self
      */

@@ -138,8 +138,8 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The request parameters for updating a user email. (required)
+     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -160,8 +160,8 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The request parameters for updating a user email. (required)
+     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -291,8 +291,8 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The request parameters for updating a user email. (required)
+     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -316,8 +316,8 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The request parameters for updating a user email. (required)
+     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -367,8 +367,8 @@ class EmailApi
     /**
      * Create request for operation 'changeUserEmail'
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The request parameters for updating a user email. (required)
+     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebPluginDto Class Doc Comment
  *
  * @category Class
- * @description The web plugin information.
+ * @description One web plugin available to the portal: its manifest, where to load it from, and the state the portal keeps.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -484,7 +484,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The web plugin name.
+     * @param string|null $name The plugin's manifest name, which is what every other operation of this group addresses it by and what  makes it unique within the portal - an installation-wide plugin wins the name over a portal one.
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param string|null $version The web plugin version.
+     * @param string|null $version The plugin's own version from its manifest. The portal does not compare it against anything; it is there  for a person to read.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets min_doc_space_version
      *
-     * @param string|null $min_doc_space_version The minimum version of DocSpace with which the plugin is guaranteed to work.
+     * @param string|null $min_doc_space_version The oldest portal version the plugin declares it works with. It is a claim from the manifest and is not  enforced, so a plugin can be loaded on an older portal and simply misbehave; compare it with the `version`  of `GET api/2.0/settings`.
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The web plugin description.
+     * @param string|null $description The plugin's description from its manifest, in the language the manifest was written in. The translations  of it are in `descriptionLocale`.
      *
      * @return self
      */
@@ -620,7 +620,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets license
      *
-     * @param string|null $license The web plugin license.
+     * @param string|null $license The licence the plugin is published under, as its manifest states it. Nothing checks it.
      *
      * @return self
      */
@@ -654,7 +654,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets author
      *
-     * @param string|null $author The web plugin author.
+     * @param string|null $author Who wrote the plugin, as its manifest states it - not the portal member who uploaded it, who is  `createBy`.
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets home_page
      *
-     * @param string|null $home_page The web plugin home page URL.
+     * @param string|null $home_page The plugin's own page, for a person to read more about it. It is empty when the manifest names none.
      *
      * @return self
      */
@@ -722,7 +722,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets plugin_name
      *
-     * @param string|null $plugin_name The name by which the web plugin is registered in the window object.
+     * @param string|null $plugin_name The global the plugin registers itself under in the browser once its script has run, which is how a  client reaches it. It is distinct from `name`, the identifier the portal uses.
      *
      * @return self
      */
@@ -756,7 +756,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets scopes
      *
-     * @param string|null $scopes The web plugin scopes.
+     * @param string|null $scopes Which parts of the interface the plugin hooks into, as one comma-separated string rather than a list.
      *
      * @return self
      */
@@ -790,7 +790,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param string|null $image The web plugin image.
+     * @param string|null $image The plugin's icon exactly as its manifest declares it, which is normally a file name inside the plugin's  own package rather than an absolute address - resolve it against the directory `url` points into.
      *
      * @return self
      */
@@ -824,7 +824,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto $create_by The user who created the web plugin.
+     * @param \OpenAPI\Client\Model\EmployeeDto $create_by The portal member who uploaded the plugin. For a plugin that ships with the installation it is an empty  profile, since no member put it there.
      *
      * @return self
      */
@@ -851,7 +851,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_on
      *
-     * @param \DateTime $create_on The date and time when the web plugin was created.
+     * @param \DateTime $create_on When the plugin was uploaded. It stays at its zero value for a plugin that ships with the installation.
      *
      * @return self
      */
@@ -878,7 +878,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool $enabled Specifies if the web plugin is enabled or not.
+     * @param bool $enabled Whether the portal loads the plugin. It is the state this portal stored, so an installation-wide plugin  can be on for one portal and off for another.
      *
      * @return self
      */
@@ -905,7 +905,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets system
      *
-     * @param bool $system Specifies if the web plugin is system or not.
+     * @param bool $system Whether the plugin ships with the installation rather than having been uploaded here. A system plugin  cannot be deleted through `DELETE api/2.0/settings/webplugins/{name}`, only switched off.
      *
      * @return self
      */
@@ -932,7 +932,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The web plugin URL.
+     * @param string|null $url The address of the plugin's script, which a client loads to run it. It ends in a `hash` query taken from  `version`, so the address changes whenever the plugin is updated and an old one may be cached.
      *
      * @return self
      */
@@ -966,7 +966,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets css_url
      *
-     * @param string|null $css_url The web plugin css URL.
+     * @param string|null $css_url The absolute address of the plugin's stylesheet, empty for a plugin that ships none.
      *
      * @return self
      */
@@ -1000,7 +1000,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets settings
      *
-     * @param string|null $settings The web plugin settings.
+     * @param string|null $settings The settings string the portal keeps for the plugin, stored and returned verbatim - only the plugin knows  its shape. It is empty until `PUT api/2.0/settings/webplugins/{name}` saves one.
      *
      * @return self
      */
@@ -1034,7 +1034,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name_locale
      *
-     * @param array<string,string>|null $name_locale The web plugin localized name.
+     * @param array<string,string>|null $name_locale The plugin's name translated, keyed by culture name. A culture that is missing falls back to `name`, and  the whole map is empty for a plugin that ships no translations.
      *
      * @return self
      */
@@ -1061,7 +1061,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description_locale
      *
-     * @param array<string,string>|null $description_locale The web plugin localized description.
+     * @param array<string,string>|null $description_locale The plugin's description translated, keyed the same way as `nameLocale` and falling back to  `description`.
      *
      * @return self
      */
@@ -1088,7 +1088,7 @@ class WebPluginDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets runtime
      *
-     * @param string|null $runtime The web plugin loading method
+     * @param string|null $runtime How the script at `url` is to be loaded - as an ES module or as a classic script. It is empty for a  plugin whose manifest does not say, which a client treats as a classic script.
      *
      * @return self
      */

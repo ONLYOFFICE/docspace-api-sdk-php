@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SecurityRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing user security and access permissions.
+ * @description Which member is granted or denied the administrator role of which portal module.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -323,7 +323,7 @@ class SecurityRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets product_id
      *
-     * @param string $product_id The product ID for which permissions are being set.
+     * @param string $product_id The module the role applies to, given by its GUID. The all-zero GUID stands for the portal itself and grants  or revokes the DocSpace administrator role, which covers every module at once; a GUID that names no module  group is stored without effect rather than refused.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class SecurityRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets user_id
      *
-     * @param string $user_id The ID of the user whose permissions are being configured.
+     * @param string $user_id The portal member the role is given to or taken from, by user ID. The member has to exist already - nobody is  created here - and promoting a guest or a plain member turns them into a paid one.
      *
      * @return self
      */
@@ -377,7 +377,7 @@ class SecurityRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets administrator
      *
-     * @param bool|null $administrator Specifies whether the user has administrative privileges.
+     * @param bool|null $administrator Which way the role goes: `true` adds the member to the module administrator group, `false` removes them from  it. Taking away the portal-wide role also drops the member from every product group.
      *
      * @return self
      */

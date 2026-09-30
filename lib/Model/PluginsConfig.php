@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PluginsConfig Class Doc Comment
  *
  * @category Class
- * @description The configuration settings to connect the special add-ons.
+ * @description Which editor add-ons the portal connects. It currently connects none.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

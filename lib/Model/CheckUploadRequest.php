@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CheckUploadRequest Class Doc Comment
  *
  * @category Class
- * @description The request parameters for checking file uploads.
+ * @description The names to test against the files the folder already holds.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class CheckUploadRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets files_title
      *
-     * @param string[]|null $files_title The list of file titles.
+     * @param string[]|null $files_title The names to test, extensions included, spelled as they would be sent to the upload. Matching ignores case,  and a name repeated in the list is answered once.
      *
      * @return self
      */

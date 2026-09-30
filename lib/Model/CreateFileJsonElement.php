@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateFileJsonElement Class Doc Comment
  *
  * @category Class
- * @description The parameters for creating a file.
+ * @description The parameters of a file that the portal creates from a template or a blank document.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -335,7 +335,7 @@ class CreateFileJsonElement implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets title
      *
-     * @param string|null $title The file title for creation.
+     * @param string|null $title The title of the new file. The extension in it decides the format, and one of a known text, spreadsheet or  presentation format is rewritten to the DOCX, XLSX or PPTX of the portal unless `enableExternalExt` says  otherwise; a title with no extension gets DOCX added.
      *
      * @return self
      */
@@ -403,7 +403,7 @@ class CreateFileJsonElement implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets enable_external_ext
      *
-     * @param bool|null $enable_external_ext Specifies whether to allow creating a file of an external extension or not.
+     * @param bool|null $enable_external_ext Whether the extension of the title is kept as it is: `true` stores the title verbatim, `false` rewrites a  known foreign format to the format the portal edits itself.
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class CreateFileJsonElement implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets form_id
      *
-     * @param int|null $form_id The form ID for creation.
+     * @param int|null $form_id A ready form from the form gallery of the portal to copy instead of a template, named by the identifier the  gallery reports for it. It takes precedence over `templateId`; 0 means no form.
      *
      * @return self
      */

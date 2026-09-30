@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SetAppEnabledBody Class Doc Comment
  *
  * @category Class
- * @description Request body for toggling an application enabled state.
+ * @description Whether a portal application is switched on.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class SetAppEnabledBody implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Whether the application should be enabled.
+     * @param bool|null $enabled Whether the application is available in this portal. Switching it off leaves its settings document stored, so  switching it back on restores the configuration it had; connected clients are told of the new state without a  reload.
      *
      * @return self
      */

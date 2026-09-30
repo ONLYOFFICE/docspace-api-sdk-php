@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**iso_country_code** | **string** | The ISO country code. | [optional]
-**iso_currency_symbol** | **string** | The ISO currency symbol. | [optional]
-**currency_native_name** | **string** | The currency native name. | [optional]
+**iso_country_code** | **string** | The two-letter ISO code of the country the currency is that of, which is the region the price list was  picked for rather than the country of the caller. | [optional]
+**iso_currency_symbol** | **string** | The three-letter ISO 4217 code of the currency. On the first item of the answer it is the currency the  amounts from `GET api/2.0/portal/payment/prices` are expressed in. | [optional]
+**currency_native_name** | **string** | The currency name in the language of its own region - not in the portal language, and not a symbol. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

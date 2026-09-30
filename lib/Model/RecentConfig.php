@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RecentConfig Class Doc Comment
  *
  * @category Class
- * @description The presence or absence of the documents in the Open Recent... menu option.
+ * @description One entry of the recent-documents list the editor offers.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class RecentConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folder
      *
-     * @param string|null $folder The folder where the document is stored.
+     * @param string|null $folder The folder shown next to the entry, as a readable name rather than an id.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class RecentConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The document title that will be displayed in the Open Recent... menu option.
+     * @param string|null $title The name shown for the entry.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class RecentConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The absolute URL to the document where it is stored.
+     * @param string|null $url Where the entry opens.
      *
      * @return self
      */

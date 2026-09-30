@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalSharingSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The Access Control external sharing settings.
+ * @description The external sharing policy of the portal as it now stands.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class ExternalSharingSettingsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets external_share
      *
-     * @param bool|null $external_share Specifies whether external (public) link creation is allowed.
+     * @param bool|null $external_share Whether links that open a file or a room without a portal account may be created. While it is false the portal  also reports sharing on social networks as off and the default link type as internal, whatever was asked for.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class ExternalSharingSettingsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets default_share_link_internal
      *
-     * @param bool|null $default_share_link_internal Specifies the default sharing link type: true = DocSpace users only, false = Anyone with the link.
+     * @param bool|null $default_share_link_internal The kind of link the portal offers first: true means a link only accounts of this portal can open, false one  that anyone holding it can open.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class ExternalSharingSettingsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets external_share_apply_to_documents
      *
-     * @param bool|null $external_share_apply_to_documents When external sharing is restricted, specifies whether the restriction applies to the My Documents section.
+     * @param bool|null $external_share_apply_to_documents Whether the restriction covers personal documents. It only has an effect while external sharing is off, so a  true here with sharing allowed restricts nothing.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class ExternalSharingSettingsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets external_share_apply_to_rooms
      *
-     * @param bool|null $external_share_apply_to_rooms When external sharing is restricted, specifies whether the restriction applies to the Rooms section.
+     * @param bool|null $external_share_apply_to_rooms Whether the restriction covers rooms, including the creation of new public ones. It only has an effect while  external sharing is off.
      *
      * @return self
      */
@@ -439,7 +439,7 @@ class ExternalSharingSettingsDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets block_existing_links_on_restrict
      *
-     * @param bool|null $block_existing_links_on_restrict When external sharing is restricted, specifies whether existing public links are blocked immediately.
+     * @param bool|null $block_existing_links_on_restrict Whether links created before the restriction stop opening as well. With false they keep working and only new  ones are refused.
      *
      * @return self
      */

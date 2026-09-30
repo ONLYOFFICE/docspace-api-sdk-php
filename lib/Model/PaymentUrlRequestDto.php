@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PaymentUrlRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for the payment URL configuration with quantity information.
+ * @description The plan being bought and the two pages the hosted checkout returns the buyer to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -314,6 +314,14 @@ class PaymentUrlRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
+        if ((count($this->container['quantity']) > 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be less than or equal to 1.";
+        }
+
+        if ((count($this->container['quantity']) < 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -342,7 +350,7 @@ class PaymentUrlRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets back_url
      *
-     * @param string $back_url The URL where the user will be redirected after payment cancellation.
+     * @param string $back_url The absolute address the hosted checkout page sends the buyer back to when the purchase is abandoned. It has  to be a well-formed URL and is carried into the checkout page as it is given, so it must be reachable by the  buyer rather than by the portal.
      *
      * @return self
      */
@@ -376,7 +384,7 @@ class PaymentUrlRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets success_url
      *
-     * @param string $success_url The URL where the user will be redirected after successful payment.
+     * @param string $success_url The absolute address the hosted checkout page sends the buyer to once the payment provider accepts the  purchase. Reaching it says the provider took the money, not that the portal has already been switched to the  new plan, so a client that lands here reads the plan back rather than assuming it.
      *
      * @return self
      */
@@ -410,7 +418,7 @@ class PaymentUrlRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets quantity
      *
-     * @param array<string,int> $quantity The payment quantity.
+     * @param array<string,int> $quantity The plan being bought, as a single pair of the plan name and the number of units of it. The key is the `name`  of a monthly, non-wallet quota from `GET api/2.0/portal/payment/quotas`, and the value is how many  administrators the plan is to cover, which has to be greater than zero. Exactly one pair is accepted; yearly  and wallet products are refused with 400, and wallet services are bought through  `PUT api/2.0/portal/payment/updatewallet` instead.
      *
      * @return self
      */
@@ -419,7 +427,12 @@ class PaymentUrlRequestDto implements ModelInterface, ArrayAccess, \JsonSerializ
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
+        if ((count($quantity) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling PaymentUrlRequestDto., number of items must be less than or equal to 1.');
+        }
+        if ((count($quantity) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $quantity when calling PaymentUrlRequestDto., number of items must be greater than or equal to 1.');
+        }
         $this->container['quantity'] = $quantity;
 
         return $this;

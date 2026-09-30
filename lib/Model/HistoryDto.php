@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * HistoryDto Class Doc Comment
  *
  * @category Class
- * @description The file history information.
+ * @description One record of the activity log of a file or a folder.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'action' => '\OpenAPI\Client\Model\HistoryAction',
         'initiator' => '\OpenAPI\Client\Model\EmployeeDto',
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\ApiDateTime',
         'data' => '\OpenAPI\Client\Model\HistoryData',
         'related' => '\OpenAPI\Client\Model\HistoryDto[]'
     ];
@@ -77,7 +77,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int32',
         'action' => null,
         'initiator' => null,
-        'date' => 'date-time',
+        'date' => null,
         'data' => null,
         'related' => null
     ];
@@ -91,7 +91,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'action' => false,
         'initiator' => false,
-        'date' => true,
+        'date' => false,
         'data' => false,
         'related' => true
     ];
@@ -319,11 +319,8 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['initiator'] === null) {
             $invalidProperties[] = "'initiator' can't be null";
         }
-        if ($this->container['date'] === null && !$this->isNullableSetToNull('date')) {
-            $invalidProperties[] = "'date' is required";
-        }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
         }
         return $invalidProperties;
     }
@@ -353,7 +350,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id The unique identifier for the file history entry.
+     * @param int $id The identifier of the record, which tells two records of the same action apart and stays stable as long as the  portal keeps the log.
      *
      * @return self
      */
@@ -380,7 +377,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \OpenAPI\Client\Model\HistoryAction $action The action performed on the file.
+     * @param \OpenAPI\Client\Model\HistoryAction $action What happened - the kind of event the record stands for, such as a file being uploaded, renamed, moved or  shared - with the key a client can key its own wording off.
      *
      * @return self
      */
@@ -407,7 +404,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets initiator
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto $initiator The action initiator.
+     * @param \OpenAPI\Client\Model\EmployeeDto $initiator Who caused the event. For an event caused by a visitor following an external link only the name they gave is  filled in, the account fields staying empty.
      *
      * @return self
      */
@@ -424,7 +421,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime
      */
     public function getDate()
     {
@@ -434,21 +431,14 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The date and time when an action on the file was performed.
+     * @param \OpenAPI\Client\Model\ApiDateTime $date When the event happened, written with the offset of the portal's time zone.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -458,7 +448,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\HistoryData
+     * @return \OpenAPI\Client\Model\HistoryData|null
      */
     public function getData()
     {
@@ -468,7 +458,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\HistoryData $data The history data.
+     * @param \OpenAPI\Client\Model\HistoryData|null $data The history data. Absent for actions that carry no payload of their own - changing a room's  logo, icon colour or cover, whose interpreter returns no data (see  `RoomLogoChangedInterpreter`). It used to be declared required, which put it in the  OpenAPI document's required list while the null-dropping serializer left it out of the  response, so a generated client threw on any history page holding one of those entries.
      *
      * @return self
      */
@@ -495,7 +485,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets related
      *
-     * @param \OpenAPI\Client\Model\HistoryDto[]|null $related The list of related history.
+     * @param \OpenAPI\Client\Model\HistoryDto[]|null $related The records folded into this one because they belong to the same action, the separate files of one upload for  instance. It is empty when the record stands alone, and the records inside it carry no further nesting.
      *
      * @return self
      */

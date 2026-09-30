@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomSecurityDto Class Doc Comment
  *
  * @category Class
- * @description The room security parameters.
+ * @description The outcome of a change of the room membership.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class RoomSecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets members
      *
-     * @param \OpenAPI\Client\Model\FileShareDto[]|null $members The list of room members.
+     * @param \OpenAPI\Client\Model\FileShareDto[]|null $members The access entries of the subjects named in the request, read back after the change was applied. A subject the  caller may not see is missing from it, so comparing this list with the request is the way to learn who was  skipped; it is null when nothing was applied at all.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class RoomSecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets warning
      *
-     * @param string|null $warning The warning message.
+     * @param string|null $warning The reason the first subject that could not be handled was skipped, in the language of the request, while the  rest of the list was still applied. Null when every named subject went through. The text is meant to be shown  to a person, not matched against.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class RoomSecurityDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\RoomSecurityError|null $error The error type.
+     * @param \OpenAPI\Client\Model\RoomSecurityError|null $error Reports the one case in which nothing at all was changed: a member being removed still holds a role in a form  of the room, and the request did not ask to remove them anyway. Repeat the call with `force` to remove them  together with the role.
      *
      * @return self
      */

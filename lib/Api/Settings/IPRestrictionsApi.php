@@ -139,7 +139,7 @@ class IPRestrictionsApi
     /**
      * Operation getIpRestrictions
      *
-     * Get the IP portal restrictions
+     * Get IP restrictions
      *
      * REST API Reference for getIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-ip-restrictions/
@@ -159,7 +159,7 @@ class IPRestrictionsApi
     /**
      * Operation getIpRestrictionsWithHttpInfo
      *
-     * Get the IP portal restrictions
+     * Get IP restrictions
      *
      * REST API Reference for getIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-ip-restrictions/
@@ -288,7 +288,7 @@ class IPRestrictionsApi
     /**
      * Operation getIpRestrictionsAsync
      *
-     * Get the IP portal restrictions
+     * Get IP restrictions
      *
      * REST API Reference for getIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-ip-restrictions/
@@ -311,7 +311,7 @@ class IPRestrictionsApi
     /**
      * Operation getIpRestrictionsAsyncWithHttpInfo
      *
-     * Get the IP portal restrictions
+     * Get IP restrictions
      *
      * REST API Reference for getIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-ip-restrictions/
@@ -463,7 +463,7 @@ class IPRestrictionsApi
     /**
      * Operation readIpRestrictionsSettings
      *
-     * Get the IP restriction settings
+     * Get IP restriction settings
      *
      * REST API Reference for readIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/read-ip-restrictions-settings/
@@ -483,7 +483,7 @@ class IPRestrictionsApi
     /**
      * Operation readIpRestrictionsSettingsWithHttpInfo
      *
-     * Get the IP restriction settings
+     * Get IP restriction settings
      *
      * REST API Reference for readIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/read-ip-restrictions-settings/
@@ -612,7 +612,7 @@ class IPRestrictionsApi
     /**
      * Operation readIpRestrictionsSettingsAsync
      *
-     * Get the IP restriction settings
+     * Get IP restriction settings
      *
      * REST API Reference for readIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/read-ip-restrictions-settings/
@@ -635,7 +635,7 @@ class IPRestrictionsApi
     /**
      * Operation readIpRestrictionsSettingsAsyncWithHttpInfo
      *
-     * Get the IP restriction settings
+     * Get IP restriction settings
      *
      * REST API Reference for readIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/read-ip-restrictions-settings/
@@ -787,7 +787,7 @@ class IPRestrictionsApi
     /**
      * Operation saveIpRestrictions
      *
-     * Update the IP restrictions
+     * Save IP restrictions
      *
      * REST API Reference for saveIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ip-restrictions/
@@ -808,7 +808,7 @@ class IPRestrictionsApi
     /**
      * Operation saveIpRestrictionsWithHttpInfo
      *
-     * Update the IP restrictions
+     * Save IP restrictions
      *
      * REST API Reference for saveIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ip-restrictions/
@@ -952,7 +952,7 @@ class IPRestrictionsApi
     /**
      * Operation saveIpRestrictionsAsync
      *
-     * Update the IP restrictions
+     * Save IP restrictions
      *
      * REST API Reference for saveIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ip-restrictions/
@@ -976,7 +976,7 @@ class IPRestrictionsApi
     /**
      * Operation saveIpRestrictionsAsyncWithHttpInfo
      *
-     * Update the IP restrictions
+     * Save IP restrictions
      *
      * REST API Reference for saveIpRestrictions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ip-restrictions/
@@ -1138,7 +1138,7 @@ class IPRestrictionsApi
     /**
      * Operation updateIpRestrictionsSettings
      *
-     * Update the IP restriction settings
+     * Update IP restriction settings
      *
      * REST API Reference for updateIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-ip-restrictions-settings/
@@ -1159,7 +1159,7 @@ class IPRestrictionsApi
     /**
      * Operation updateIpRestrictionsSettingsWithHttpInfo
      *
-     * Update the IP restriction settings
+     * Update IP restriction settings
      *
      * REST API Reference for updateIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-ip-restrictions-settings/
@@ -1303,7 +1303,7 @@ class IPRestrictionsApi
     /**
      * Operation updateIpRestrictionsSettingsAsync
      *
-     * Update the IP restriction settings
+     * Update IP restriction settings
      *
      * REST API Reference for updateIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-ip-restrictions-settings/
@@ -1327,7 +1327,7 @@ class IPRestrictionsApi
     /**
      * Operation updateIpRestrictionsSettingsAsyncWithHttpInfo
      *
-     * Update the IP restriction settings
+     * Update IP restriction settings
      *
      * REST API Reference for updateIpRestrictionsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-ip-restrictions-settings/

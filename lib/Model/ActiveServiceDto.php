@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActiveServiceDto Class Doc Comment
  *
  * @category Class
- * @description Represents an active wallet service (quota) of the current portal.
+ * @description One wallet service the portal is running right now, with the allowance it grants where that is counted.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service
      *
-     * @param string|null $service The name of the service.
+     * @param string|null $service The stable key of the service, which is what `POST api/2.0/portal/payment/servicestate` takes to switch  it off again.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_unit
      *
-     * @param string|null $service_unit The unit of measurement for the service.
+     * @param string|null $service_unit What `limit` and `used` count, in the portal language - gigabytes, editor seats, credits.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subscription
      *
-     * @param bool|null $subscription Indicates whether the service is subscription-based.
+     * @param bool|null $subscription Whether the service is billed as a standing subscription rather than per unit consumed. Only a  subscription can carry `limit` and `used`.
      *
      * @return self
      */
@@ -433,7 +433,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The title of the service.
+     * @param string|null $title The service name in the portal language, for printing rather than matching.
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets limit
      *
-     * @param int|null $limit The service limit. Populated only for the subscription-based services.
+     * @param int|null $limit How much of the service the portal is entitled to. It is empty for a service whose consumption is not  counted this way, which is not the same as a service without a limit.
      *
      * @return self
      */
@@ -501,7 +501,7 @@ class ActiveServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets used
      *
-     * @param int|null $used The current service usage. Populated only for the subscription-based services.
+     * @param int|null $used How much of that allowance is in use - the editors currently active for the cloud editors, the units  already consumed for disk storage. Empty under the same conditions as `limit`.
      *
      * @return self
      */

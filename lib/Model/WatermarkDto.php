@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WatermarkDto Class Doc Comment
  *
  * @category Class
- * @description The watermark settings.
+ * @description The watermark drawn over the documents of a room while they are viewed and printed.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -360,7 +360,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets additions
      *
-     * @param \OpenAPI\Client\Model\WatermarkAdditions $additions Specifies whether to display in the watermark: username, user email, user ip-adress, current date, and room name.
+     * @param \OpenAPI\Client\Model\WatermarkAdditions $additions Which details of the reader and of the room are stamped alongside the text. The values combine, so a number  that is not a member on its own is the sum of several of them, and 0 means that only the text is stamped.
      *
      * @return self
      */
@@ -387,7 +387,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets text
      *
-     * @param string|null $text The watermark text.
+     * @param string|null $text The fixed line drawn over the document, printed before the details selected alongside it. Empty when the room  stamps an image instead.
      *
      * @return self
      */
@@ -421,7 +421,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rotate
      *
-     * @param int $rotate The watermark text and image rotate.
+     * @param int $rotate How far the stamp is turned, in degrees, with negative values turning it anticlockwise and 0 drawing it  horizontally.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_scale
      *
-     * @param int $image_scale The watermark image scale.
+     * @param int $image_scale How large the image is drawn, as a percentage of its own size. It is 0 for a text watermark, where nothing is  scaled.
      *
      * @return self
      */
@@ -475,7 +475,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_url
      *
-     * @param string|null $image_url The watermark image url.
+     * @param string|null $image_url The address the stamped picture is served from, inside the storage of the room. Empty for a text watermark.
      *
      * @return self
      */
@@ -509,7 +509,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_height
      *
-     * @param float $image_height The watermark image height.
+     * @param float $image_height The height the picture is drawn with, in pixels, kept together with the width so that the proportions survive.  It is 0 for a text watermark.
      *
      * @return self
      */
@@ -536,7 +536,7 @@ class WatermarkDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_width
      *
-     * @param float $image_width The watermark image width.
+     * @param float $image_width The width the picture is drawn with, in pixels, kept together with the height so that the proportions survive.  It is 0 for a text watermark.
      *
      * @return self
      */

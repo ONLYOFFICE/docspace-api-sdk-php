@@ -136,7 +136,7 @@ class LoginSettingsApi
     /**
      * Operation getLoginSettings
      *
-     * Get the login settings
+     * Get login settings
      *
      * REST API Reference for getLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-settings/
@@ -156,7 +156,7 @@ class LoginSettingsApi
     /**
      * Operation getLoginSettingsWithHttpInfo
      *
-     * Get the login settings
+     * Get login settings
      *
      * REST API Reference for getLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-settings/
@@ -285,7 +285,7 @@ class LoginSettingsApi
     /**
      * Operation getLoginSettingsAsync
      *
-     * Get the login settings
+     * Get login settings
      *
      * REST API Reference for getLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-settings/
@@ -308,7 +308,7 @@ class LoginSettingsApi
     /**
      * Operation getLoginSettingsAsyncWithHttpInfo
      *
-     * Get the login settings
+     * Get login settings
      *
      * REST API Reference for getLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-settings/
@@ -460,7 +460,7 @@ class LoginSettingsApi
     /**
      * Operation setDefaultLoginSettings
      *
-     * Reset the login settings
+     * Reset login settings
      *
      * REST API Reference for setDefaultLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-default-login-settings/
@@ -480,7 +480,7 @@ class LoginSettingsApi
     /**
      * Operation setDefaultLoginSettingsWithHttpInfo
      *
-     * Reset the login settings
+     * Reset login settings
      *
      * REST API Reference for setDefaultLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-default-login-settings/
@@ -609,7 +609,7 @@ class LoginSettingsApi
     /**
      * Operation setDefaultLoginSettingsAsync
      *
-     * Reset the login settings
+     * Reset login settings
      *
      * REST API Reference for setDefaultLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-default-login-settings/
@@ -632,7 +632,7 @@ class LoginSettingsApi
     /**
      * Operation setDefaultLoginSettingsAsyncWithHttpInfo
      *
-     * Reset the login settings
+     * Reset login settings
      *
      * REST API Reference for setDefaultLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-default-login-settings/
@@ -784,7 +784,7 @@ class LoginSettingsApi
     /**
      * Operation updateLoginSettings
      *
-     * Update the login settings
+     * Update login settings
      *
      * REST API Reference for updateLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-login-settings/
@@ -805,7 +805,7 @@ class LoginSettingsApi
     /**
      * Operation updateLoginSettingsWithHttpInfo
      *
-     * Update the login settings
+     * Update login settings
      *
      * REST API Reference for updateLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-login-settings/
@@ -949,7 +949,7 @@ class LoginSettingsApi
     /**
      * Operation updateLoginSettingsAsync
      *
-     * Update the login settings
+     * Update login settings
      *
      * REST API Reference for updateLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-login-settings/
@@ -973,7 +973,7 @@ class LoginSettingsApi
     /**
      * Operation updateLoginSettingsAsyncWithHttpInfo
      *
-     * Update the login settings
+     * Update login settings
      *
      * REST API Reference for updateLoginSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-login-settings/

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpdateTagRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for creating a tag.
+ * @description The parameters for renaming a custom room tag in the portal catalog.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -332,7 +332,7 @@ class UpdateTagRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets old_name
      *
-     * @param string|null $old_name The old tag name.
+     * @param string|null $old_name The name of the tag to rename, matched against the catalog exactly as it is stored rather than searched for.  Read the stored spelling from `GET api/2.0/files/tags`.
      *
      * @return self
      */
@@ -373,7 +373,7 @@ class UpdateTagRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets new_name
      *
-     * @param string|null $new_name The new tag name.
+     * @param string|null $new_name The name to store instead. It has to be free: names are unique across the portal, so a name another tag  already carries is refused, and merging two tags this way is not possible.
      *
      * @return self
      */

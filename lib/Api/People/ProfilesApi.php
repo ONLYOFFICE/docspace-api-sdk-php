@@ -186,7 +186,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addMember($member_request_dto = null, string $contentType = self::contentTypes['addMember'][0])
     {
@@ -207,7 +207,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addMemberWithHttpInfo($member_request_dto = null, string $contentType = self::contentTypes['addMember'][0])
     {
@@ -256,12 +256,6 @@ class ProfilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -316,14 +310,6 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -527,7 +513,7 @@ class ProfilesApi
     /**
      * Operation checkUserExistsByEmail
      *
-     * Check if a user exists by email
+     * Check whether an email is taken
      *
      * REST API Reference for checkUserExistsByEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-user-exists-by-email/
@@ -550,7 +536,7 @@ class ProfilesApi
     /**
      * Operation checkUserExistsByEmailWithHttpInfo
      *
-     * Check if a user exists by email
+     * Check whether an email is taken
      *
      * REST API Reference for checkUserExistsByEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-user-exists-by-email/
@@ -682,7 +668,7 @@ class ProfilesApi
     /**
      * Operation checkUserExistsByEmailAsync
      *
-     * Check if a user exists by email
+     * Check whether an email is taken
      *
      * REST API Reference for checkUserExistsByEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-user-exists-by-email/
@@ -708,7 +694,7 @@ class ProfilesApi
     /**
      * Operation checkUserExistsByEmailAsyncWithHttpInfo
      *
-     * Check if a user exists by email
+     * Check whether an email is taken
      *
      * REST API Reference for checkUserExistsByEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-user-exists-by-email/
@@ -1260,7 +1246,7 @@ class ProfilesApi
     /**
      * Operation deleteProfile
      *
-     * Delete my profile
+     * Close my own profile
      *
      * REST API Reference for deleteProfile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-profile/
@@ -1280,7 +1266,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileWithHttpInfo
      *
-     * Delete my profile
+     * Close my own profile
      *
      * REST API Reference for deleteProfile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-profile/
@@ -1409,7 +1395,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileAsync
      *
-     * Delete my profile
+     * Close my own profile
      *
      * REST API Reference for deleteProfile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-profile/
@@ -1432,7 +1418,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileAsyncWithHttpInfo
      *
-     * Delete my profile
+     * Close my own profile
      *
      * REST API Reference for deleteProfile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-profile/
@@ -1584,18 +1570,18 @@ class ProfilesApi
     /**
      * Operation getAllProfiles
      *
-     * Get profiles
+     * Get the active profiles
      *
      * REST API Reference for getAllProfiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-profiles/
      *
-     * @param  int|null $count The maximum number of items to be retrieved in the response. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to be retrieved in a filtered result set. (optional)
-     * @param  string|null $filter_by Specifies the filter criteria for user-related queries. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator The character or string used to separate multiple filter values in a filtering query. (optional)
-     * @param  string|null $filter_value The text value used as an additional filter criterion for profiles retrieval. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProfiles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1611,18 +1597,18 @@ class ProfilesApi
     /**
      * Operation getAllProfilesWithHttpInfo
      *
-     * Get profiles
+     * Get the active profiles
      *
      * REST API Reference for getAllProfiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-profiles/
      *
-     * @param  int|null $count The maximum number of items to be retrieved in the response. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to be retrieved in a filtered result set. (optional)
-     * @param  string|null $filter_by Specifies the filter criteria for user-related queries. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator The character or string used to separate multiple filter values in a filtering query. (optional)
-     * @param  string|null $filter_value The text value used as an additional filter criterion for profiles retrieval. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProfiles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1761,18 +1747,18 @@ class ProfilesApi
     /**
      * Operation getAllProfilesAsync
      *
-     * Get profiles
+     * Get the active profiles
      *
      * REST API Reference for getAllProfiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-profiles/
      *
-     * @param  int|null $count The maximum number of items to be retrieved in the response. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to be retrieved in a filtered result set. (optional)
-     * @param  string|null $filter_by Specifies the filter criteria for user-related queries. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator The character or string used to separate multiple filter values in a filtering query. (optional)
-     * @param  string|null $filter_value The text value used as an additional filter criterion for profiles retrieval. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1791,18 +1777,18 @@ class ProfilesApi
     /**
      * Operation getAllProfilesAsyncWithHttpInfo
      *
-     * Get profiles
+     * Get the active profiles
      *
      * REST API Reference for getAllProfiles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-profiles/
      *
-     * @param  int|null $count The maximum number of items to be retrieved in the response. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to be retrieved in a filtered result set. (optional)
-     * @param  string|null $filter_by Specifies the filter criteria for user-related queries. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator The character or string used to separate multiple filter values in a filtering query. (optional)
-     * @param  string|null $filter_value The text value used as an additional filter criterion for profiles retrieval. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1852,13 +1838,13 @@ class ProfilesApi
     /**
      * Create request for operation 'getAllProfiles'
      *
-     * @param  int|null $count The maximum number of items to be retrieved in the response. (optional)
-     * @param  int|null $start_index The zero-based index of the first item to be retrieved in a filtered result set. (optional)
-     * @param  string|null $filter_by Specifies the filter criteria for user-related queries. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator The character or string used to separate multiple filter values in a filtering query. (optional)
-     * @param  string|null $filter_value The text value used as an additional filter criterion for profiles retrieval. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2044,7 +2030,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TokenDiagnosticsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getClaims(string $contentType = self::contentTypes['getClaims'][0])
     {
@@ -2064,7 +2050,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TokenDiagnosticsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getClaimsWithHttpInfo(string $contentType = self::contentTypes['getClaims'][0])
     {
@@ -2096,7 +2082,7 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\TokenDiagnosticsWrapper',
                         $request,
                         $response,
                     );
@@ -2136,7 +2122,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\TokenDiagnosticsWrapper',
                 $request,
                 $response,
             );
@@ -2145,7 +2131,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\TokenDiagnosticsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2219,7 +2205,7 @@ class ProfilesApi
      */
     public function getClaimsAsyncWithHttpInfo(string $contentType = self::contentTypes['getClaims'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\TokenDiagnosticsWrapper';
         $request = $this->getClaimsRequest($contentType);
 
         return $this->client
@@ -2744,7 +2730,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getProfileByUserId($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
@@ -2765,7 +2751,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProfileByUserIdWithHttpInfo($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
@@ -2814,6 +2800,12 @@ class ProfilesApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2868,6 +2860,14 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

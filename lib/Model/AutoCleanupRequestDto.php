@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AutoCleanupRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for updating the trash bin auto-clearing setting.
+ * @description The trash auto-clearing setting to store: the on/off flag together with the interval.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class AutoCleanupRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets set
      *
-     * @param bool|null $set Specifies whether to enable the auto-clearing or not.
+     * @param bool|null $set Whether the caller's trash is cleared automatically: with true an item is removed for good once it has been in  the trash longer than the interval below, with false the portal removes nothing and waits for the trash to be  emptied by hand.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class AutoCleanupRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets gap
      *
-     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap The time interval when the auto-clearing will be performed.
+     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap How long an item may stay in the trash before it is removed for good. It is written from every request,  including one that switches clearing off, so send it together with the flag instead of expecting the stored  interval to be kept.
      *
      * @return self
      */

@@ -18,7 +18,7 @@ aiSettingsGet(): \OpenAPI\Client\Model\AiAiSettingsWrapper
 ```
 
 Get AI settings
-Reports the portal's combined AI configuration and readiness.
+Reports the portal's AI configuration and whether AI is usable at all, which is the first call a client makes before offering any AI feature. It takes no parameters and is proxied unchanged to the DocSpace AI service, so the answer is that service's settings payload. Among other things it says whether the portal runs on the central AI gateway, which decides whether provider profiles can be edited here at all. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get/).
 
@@ -32,7 +32,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -41,10 +41,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -71,7 +80,7 @@ aiSettingsGetUser(): \OpenAPI\Client\Model\AiAiUserSettingsWrapper
 ```
 
 Get user AI settings
-Returns the current user's AI settings.
+Returns the AI settings of the calling user, as opposed to the portal-wide ones. It takes no parameters - the user is the authenticated caller, and there is no way to read somebody else's settings - and is proxied unchanged to the DocSpace AI service. Use `GET api/2.0/ai/config` for the portal-wide configuration. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get-user/).
 
@@ -85,7 +94,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -94,10 +103,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -124,7 +142,7 @@ aiSettingsGetVectorization(): \OpenAPI\Client\Model\AiVectorizationSettingsWrapp
 ```
 
 Get vectorization settings
-Returns the portal's vectorization settings.
+Returns the portal's vectorization settings - the embedding provider and the options used when portal content is indexed for retrieval. It takes no parameters and is proxied unchanged to the DocSpace AI service. Vectorization is a portal-wide setting, so there is no room-scoped form of it. Change it with `PUT api/2.0/ai/config/vectorization`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-get-vectorization/).
 
@@ -138,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -147,10 +165,19 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 
 try {
@@ -177,7 +204,7 @@ aiSettingsSetUser($request_body): \OpenAPI\Client\Model\AiAiUserSettingsWrapper
 ```
 
 Update user AI settings
-Updates the current user's AI settings.
+Replaces the AI settings of the calling user and returns the stored result. The body is proxied unchanged to the DocSpace AI service, which validates it, so a rejected value comes back with that service's verdict. Only the caller's own settings can be written. Portal-wide configuration is not touched by this operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-user/).
 
@@ -185,7 +212,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
+| **request_body** | [**array<string,mixed>**](../Model/mixed.md)| The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed. | |
 
 ### Return type
 
@@ -193,7 +220,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -202,12 +229,21 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$request_body = NULL; // array<string,mixed>
+$request_body = NULL; // array<string,mixed> | The user's AI settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/user` and send it back changed.
 
 try {
     $result = $apiInstance->aiSettingsSetUser($request_body);
@@ -233,7 +269,7 @@ aiSettingsSetVectorization($request_body): \OpenAPI\Client\Model\AiVectorization
 ```
 
 Update vectorization settings
-Updates the portal's vectorization settings.
+Replaces the portal's vectorization settings and returns the stored result. The body is proxied unchanged to the DocSpace AI service, which validates it, so a rejected value is reported with that service's own verdict rather than being checked here. Changing the embedding provider does not re-index anything already indexed - start that separately with `POST api/2.0/ai/vectorization/tasks`. This is a portal-wide setting and requires the permissions the AI service demands for it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-settings-set-vectorization/).
 
@@ -241,7 +277,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
+| **request_body** | [**array<string,mixed>**](../Model/mixed.md)| The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed. | |
 
 ### Return type
 
@@ -249,7 +285,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -258,12 +294,21 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: cookieAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
-$request_body = NULL; // array<string,mixed>
+$request_body = NULL; // array<string,mixed> | The portal's vectorization settings, proxied unchanged to the DocSpace AI service, which owns and validates the shape. Read the current one with `GET api/2.0/ai/config/vectorization` and send it back changed.
 
 try {
     $result = $apiInstance->aiSettingsSetVectorization($request_body);

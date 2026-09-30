@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ClientInfoResponse Class Doc Comment
  *
  * @category Class
- * @description The response containing public client information.
+ * @description The consent-facing subset of a client: everything needed to render a consent screen, and nothing that would let a caller act as the client.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,18 +61,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'string',
         'description' => 'string',
         'scopes' => 'string[]',
-        'public' => 'bool',
         'client_id' => 'string',
         'website_url' => 'string',
         'terms_url' => 'string',
         'policy_url' => 'string',
         'logo' => 'string',
         'authentication_methods' => 'string[]',
-        'is_public' => 'bool',
         'created_on' => '\DateTime',
         'created_by' => 'string',
         'modified_on' => '\DateTime',
-        'modified_by' => 'string'
+        'modified_by' => 'string',
+        'is_public' => 'bool'
     ];
 
     /**
@@ -86,18 +85,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => null,
         'description' => null,
         'scopes' => null,
-        'public' => null,
         'client_id' => null,
         'website_url' => null,
         'terms_url' => null,
         'policy_url' => null,
         'logo' => null,
         'authentication_methods' => null,
-        'is_public' => null,
         'created_on' => 'date-time',
         'created_by' => null,
         'modified_on' => 'date-time',
-        'modified_by' => null
+        'modified_by' => null,
+        'is_public' => null
     ];
 
     /**
@@ -109,18 +107,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => false,
         'description' => false,
         'scopes' => false,
-        'public' => false,
         'client_id' => false,
         'website_url' => false,
         'terms_url' => false,
         'policy_url' => false,
         'logo' => false,
         'authentication_methods' => false,
-        'is_public' => false,
         'created_on' => false,
         'created_by' => false,
         'modified_on' => false,
-        'modified_by' => false
+        'modified_by' => false,
+        'is_public' => false
     ];
 
     /**
@@ -212,18 +209,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'name',
         'description' => 'description',
         'scopes' => 'scopes',
-        'public' => 'public',
         'client_id' => 'client_id',
         'website_url' => 'website_url',
         'terms_url' => 'terms_url',
         'policy_url' => 'policy_url',
         'logo' => 'logo',
         'authentication_methods' => 'authentication_methods',
-        'is_public' => 'is_public',
         'created_on' => 'created_on',
         'created_by' => 'created_by',
         'modified_on' => 'modified_on',
-        'modified_by' => 'modified_by'
+        'modified_by' => 'modified_by',
+        'is_public' => 'is_public'
     ];
 
     /**
@@ -235,18 +231,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'setName',
         'description' => 'setDescription',
         'scopes' => 'setScopes',
-        'public' => 'setPublic',
         'client_id' => 'setClientId',
         'website_url' => 'setWebsiteUrl',
         'terms_url' => 'setTermsUrl',
         'policy_url' => 'setPolicyUrl',
         'logo' => 'setLogo',
         'authentication_methods' => 'setAuthenticationMethods',
-        'is_public' => 'setIsPublic',
         'created_on' => 'setCreatedOn',
         'created_by' => 'setCreatedBy',
         'modified_on' => 'setModifiedOn',
-        'modified_by' => 'setModifiedBy'
+        'modified_by' => 'setModifiedBy',
+        'is_public' => 'setIsPublic'
     ];
 
     /**
@@ -258,18 +253,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'getName',
         'description' => 'getDescription',
         'scopes' => 'getScopes',
-        'public' => 'getPublic',
         'client_id' => 'getClientId',
         'website_url' => 'getWebsiteUrl',
         'terms_url' => 'getTermsUrl',
         'policy_url' => 'getPolicyUrl',
         'logo' => 'getLogo',
         'authentication_methods' => 'getAuthenticationMethods',
-        'is_public' => 'getIsPublic',
         'created_on' => 'getCreatedOn',
         'created_by' => 'getCreatedBy',
         'modified_on' => 'getModifiedOn',
-        'modified_by' => 'getModifiedBy'
+        'modified_by' => 'getModifiedBy',
+        'is_public' => 'getIsPublic'
     ];
 
     /**
@@ -332,18 +326,17 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('scopes', $data ?? [], null);
-        $this->setIfExists('public', $data ?? [], null);
         $this->setIfExists('client_id', $data ?? [], null);
         $this->setIfExists('website_url', $data ?? [], null);
         $this->setIfExists('terms_url', $data ?? [], null);
         $this->setIfExists('policy_url', $data ?? [], null);
         $this->setIfExists('logo', $data ?? [], null);
         $this->setIfExists('authentication_methods', $data ?? [], null);
-        $this->setIfExists('is_public', $data ?? [], null);
         $this->setIfExists('created_on', $data ?? [], null);
         $this->setIfExists('created_by', $data ?? [], null);
         $this->setIfExists('modified_on', $data ?? [], null);
         $this->setIfExists('modified_by', $data ?? [], null);
+        $this->setIfExists('is_public', $data ?? [], null);
     }
 
     /**
@@ -401,7 +394,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets name
      *
-     * @param string|null $name The client name.
+     * @param string|null $name The display name shown to the user on the consent screen, between 3 and 256 characters.
      *
      * @return self
      */
@@ -428,7 +421,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets description
      *
-     * @param string|null $description The client description.
+     * @param string|null $description The free-text description shown next to the name on the consent screen, at most 255 characters.
      *
      * @return self
      */
@@ -455,7 +448,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets scopes
      *
-     * @param string[]|null $scopes The client scopes.
+     * @param string[]|null $scopes The permissions the client may ask for, named as they appear in the tenant scope catalogue - for example files:read, rooms:write or openid. A client cannot request a scope that is not listed here.
      *
      * @return self
      */
@@ -466,33 +459,6 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         }
 
         $this->container['scopes'] = $scopes;
-
-        return $this;
-    }
-
-    /**
-     * Gets public
-     *
-     * @return bool|null
-     */
-    public function getPublic()
-    {
-        return $this->container['public'];
-    }
-
-    /**
-     * Sets public
-     *
-     * @param bool|null $public public
-     *
-     * @return self
-     */
-    public function setPublic($public)
-    {
-        if (is_null($public)) {
-            throw new \InvalidArgumentException('non-nullable public cannot be null');
-        }
-        $this->container['public'] = $public;
 
         return $this;
     }
@@ -510,7 +476,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets client_id
      *
-     * @param string|null $client_id The client ID.
+     * @param string|null $client_id The generated identifier of the client, sent as client_id in every OAuth2 request. It is assigned when the client is registered and never changes afterwards.
      *
      * @return self
      */
@@ -537,7 +503,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets website_url
      *
-     * @param string|null $website_url The URL to the client's website
+     * @param string|null $website_url The URL of the client home page, offered to the user before they consent.
      *
      * @return self
      */
@@ -564,7 +530,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets terms_url
      *
-     * @param string|null $terms_url The URL to the client's terms of service.
+     * @param string|null $terms_url The URL of the client terms of service, linked from the consent screen.
      *
      * @return self
      */
@@ -591,7 +557,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets policy_url
      *
-     * @param string|null $policy_url The URL to the client's privacy policy.
+     * @param string|null $policy_url The URL of the client privacy policy, linked from the consent screen.
      *
      * @return self
      */
@@ -618,7 +584,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets logo
      *
-     * @param string|null $logo The client logo in base64 format.
+     * @param string|null $logo The client logo as a data URI carrying base64 image data, shown on the consent screen. Only png, jpeg, jpg and svg+xml are accepted, the whole string may not exceed 2000000 characters and the decoded image may not exceed 256000 bytes.
      *
      * @return self
      */
@@ -645,7 +611,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets authentication_methods
      *
-     * @param string[]|null $authentication_methods The authentication methods supported by the client.
+     * @param string[]|null $authentication_methods How the client authenticates itself at the token endpoint: client_secret_post for a confidential client that sends its secret, none for a public client that proves itself with PKCE instead.
      *
      * @return self
      */
@@ -656,33 +622,6 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         }
 
         $this->container['authentication_methods'] = $authentication_methods;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_public
-     *
-     * @return bool|null
-     */
-    public function getIsPublic()
-    {
-        return $this->container['is_public'];
-    }
-
-    /**
-     * Sets is_public
-     *
-     * @param bool|null $is_public Indicates whether the client is accessible by third-party tenants.
-     *
-     * @return self
-     */
-    public function setIsPublic($is_public)
-    {
-        if (is_null($is_public)) {
-            throw new \InvalidArgumentException('non-nullable is_public cannot be null');
-        }
-        $this->container['is_public'] = $is_public;
 
         return $this;
     }
@@ -700,7 +639,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets created_on
      *
-     * @param \DateTime|null $created_on The date and time when the client was created.
+     * @param \DateTime|null $created_on When the client was registered, as an ISO-8601 timestamp with a zone offset.
      *
      * @return self
      */
@@ -727,7 +666,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets created_by
      *
-     * @param string|null $created_by The user who created the client.
+     * @param string|null $created_by The identifier of the user who registered the client. A plain user may read and change only the clients where this is their own identifier.
      *
      * @return self
      */
@@ -754,7 +693,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets modified_on
      *
-     * @param \DateTime|null $modified_on The date and time when the client was last modified.
+     * @param \DateTime|null $modified_on When the client was last changed, as an ISO-8601 timestamp with a zone offset.
      *
      * @return self
      */
@@ -781,7 +720,7 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets modified_by
      *
-     * @param string|null $modified_by The user who last modified the client.
+     * @param string|null $modified_by The identifier of the user who last changed the client.
      *
      * @return self
      */
@@ -791,6 +730,33 @@ class ClientInfoResponse implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable modified_by cannot be null');
         }
         $this->container['modified_by'] = $modified_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_public
+     *
+     * @return bool|null
+     */
+    public function getIsPublic()
+    {
+        return $this->container['is_public'];
+    }
+
+    /**
+     * Sets is_public
+     *
+     * @param bool|null $is_public Whether the client is offered to third-party tenants rather than only to the tenant that registered it.
+     *
+     * @return self
+     */
+    public function setIsPublic($is_public)
+    {
+        if (is_null($is_public)) {
+            throw new \InvalidArgumentException('non-nullable is_public cannot be null');
+        }
+        $this->container['is_public'] = $is_public;
 
         return $this;
     }

@@ -138,8 +138,8 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The request parameters for updating a user password. (required)
+     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -160,8 +160,8 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The request parameters for updating a user password. (required)
+     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -291,8 +291,8 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The request parameters for updating a user password. (required)
+     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -316,8 +316,8 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The request parameters for updating a user password. (required)
+     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -367,8 +367,8 @@ class PasswordApi
     /**
      * Create request for operation 'changeUserPassword'
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The request parameters for updating a user password. (required)
+     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -786,6 +786,28 @@ class PasswordApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

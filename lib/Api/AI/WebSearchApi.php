@@ -151,17 +151,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchClear
      *
-     * Clear
+     * Clear the web-search configuration
      *
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body body (required)
+     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchClear($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
@@ -172,17 +172,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchClearWithHttpInfo
      *
-     * Clear
+     * Clear the web-search configuration
      *
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body (required)
+     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchClearWithHttpInfo($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
@@ -219,6 +219,24 @@ class WebSearchApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -264,6 +282,30 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -274,12 +316,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchClearAsync
      *
-     * Clear
+     * Clear the web-search configuration
      *
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body (required)
+     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -298,12 +340,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchClearAsyncWithHttpInfo
      *
-     * Clear
+     * Clear the web-search configuration
      *
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body (required)
+     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -353,7 +395,7 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchClear'
      *
-     * @param  string $body (required)
+     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -419,6 +461,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -444,7 +495,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchConfigure
      *
-     * Configure
+     * Configure and verify web search
      *
      * REST API Reference for aiWebSearchConfigure Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-configure/
@@ -454,7 +505,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchConfigure($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchConfigure'][0])
     {
@@ -465,7 +516,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchConfigureWithHttpInfo
      *
-     * Configure
+     * Configure and verify web search
      *
      * REST API Reference for aiWebSearchConfigure Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-configure/
@@ -475,7 +526,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchConfigureWithHttpInfo($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchConfigure'][0])
     {
@@ -511,7 +562,37 @@ class WebSearchApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -549,7 +630,47 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -567,7 +688,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchConfigureAsync
      *
-     * Configure
+     * Configure and verify web search
      *
      * REST API Reference for aiWebSearchConfigure Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-configure/
@@ -591,7 +712,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchConfigureAsyncWithHttpInfo
      *
-     * Configure
+     * Configure and verify web search
      *
      * REST API Reference for aiWebSearchConfigure Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-configure/
@@ -712,6 +833,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -747,7 +877,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchGetActiveConfig($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
@@ -768,7 +898,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiWebSearchConfig|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchGetActiveConfigWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchGetActiveConfig'][0])
     {
@@ -804,7 +934,31 @@ class WebSearchApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -842,7 +996,39 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1001,6 +1187,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1036,7 +1231,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return bool|\OpenAPI\Client\Model\AiErrorResponse
+     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchIsConfigured($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
@@ -1057,7 +1252,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchIsConfiguredWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiWebSearchIsConfigured'][0])
     {
@@ -1093,7 +1288,31 @@ class WebSearchApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1131,7 +1350,39 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1290,6 +1541,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1315,17 +1575,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughContents
      *
-     * Web page contents proxied to the portal's active web-search provider
+     * Web page contents passthrough
      *
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchPassthroughContents($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
@@ -1336,17 +1596,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughContentsWithHttpInfo
      *
-     * Web page contents proxied to the portal's active web-search provider
+     * Web page contents passthrough
      *
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchPassthroughContentsWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
@@ -1378,11 +1638,47 @@ class WebSearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'array<string,mixed>',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 502:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1406,7 +1702,7 @@ class WebSearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                'array<string,mixed>',
                 $request,
                 $response,
             );
@@ -1415,12 +1711,60 @@ class WebSearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'array<string,mixed>',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 502:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1438,12 +1782,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughContentsAsync
      *
-     * Web page contents proxied to the portal's active web-search provider
+     * Web page contents passthrough
      *
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1462,12 +1806,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughContentsAsyncWithHttpInfo
      *
-     * Web page contents proxied to the portal's active web-search provider
+     * Web page contents passthrough
      *
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1475,7 +1819,7 @@ class WebSearchApi
      */
     public function aiWebSearchPassthroughContentsAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = 'array<string,mixed>';
         $request = $this->aiWebSearchPassthroughContentsRequest($request_body, $contentType);
 
         return $this->client
@@ -1517,7 +1861,7 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchPassthroughContents'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1583,6 +1927,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1608,17 +1961,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughSearch
      *
-     * Web search proxied to the portal's active web-search provider
+     * Web search passthrough
      *
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchPassthroughSearch($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
@@ -1629,17 +1982,17 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughSearchWithHttpInfo
      *
-     * Web search proxied to the portal's active web-search provider
+     * Web search passthrough
      *
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchPassthroughSearchWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
@@ -1671,11 +2024,47 @@ class WebSearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'array<string,mixed>',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 502:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1699,7 +2088,7 @@ class WebSearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                'array<string,mixed>',
                 $request,
                 $response,
             );
@@ -1708,12 +2097,60 @@ class WebSearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'array<string,mixed>',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 502:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1731,12 +2168,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughSearchAsync
      *
-     * Web search proxied to the portal's active web-search provider
+     * Web search passthrough
      *
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1755,12 +2192,12 @@ class WebSearchApi
     /**
      * Operation aiWebSearchPassthroughSearchAsyncWithHttpInfo
      *
-     * Web search proxied to the portal's active web-search provider
+     * Web search passthrough
      *
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1768,7 +2205,7 @@ class WebSearchApi
      */
     public function aiWebSearchPassthroughSearchAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = 'array<string,mixed>';
         $request = $this->aiWebSearchPassthroughSearchRequest($request_body, $contentType);
 
         return $this->client
@@ -1810,7 +2247,7 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchPassthroughSearch'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1876,6 +2313,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1911,7 +2357,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchSetActiveConfig($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
@@ -1932,7 +2378,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchSetActiveConfigWithHttpInfo($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
@@ -1968,7 +2414,37 @@ class WebSearchApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2006,7 +2482,47 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2169,6 +2685,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2194,7 +2719,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchTestConnection
      *
-     * Test connection
+     * Test a web-search provider
      *
      * REST API Reference for aiWebSearchTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-test-connection/
@@ -2204,7 +2729,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchTestConnection($ai_web_search_config, string $contentType = self::contentTypes['aiWebSearchTestConnection'][0])
     {
@@ -2215,7 +2740,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchTestConnectionWithHttpInfo
      *
-     * Test connection
+     * Test a web-search provider
      *
      * REST API Reference for aiWebSearchTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-test-connection/
@@ -2225,7 +2750,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchTestConnectionWithHttpInfo($ai_web_search_config, string $contentType = self::contentTypes['aiWebSearchTestConnection'][0])
     {
@@ -2261,7 +2786,31 @@ class WebSearchApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2299,7 +2848,39 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2317,7 +2898,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchTestConnectionAsync
      *
-     * Test connection
+     * Test a web-search provider
      *
      * REST API Reference for aiWebSearchTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-test-connection/
@@ -2341,7 +2922,7 @@ class WebSearchApi
     /**
      * Operation aiWebSearchTestConnectionAsyncWithHttpInfo
      *
-     * Test connection
+     * Test a web-search provider
      *
      * REST API Reference for aiWebSearchTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-test-connection/
@@ -2462,6 +3043,15 @@ class WebSearchApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateTextOrHtmlFile Class Doc Comment
  *
  * @category Class
- * @description The parameters for creating an HTML or text file.
+ * @description The parameters of a text or HTML file created from content sent in the request.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -328,7 +328,7 @@ class CreateTextOrHtmlFile implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets title
      *
-     * @param string|null $title The file title for text or HTML file.
+     * @param string|null $title The title of the file. The extension the operation stands for is appended unless the title already ends with  it, so Notes becomes Notes.txt or Notes.html.
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class CreateTextOrHtmlFile implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets content
      *
-     * @param string|null $content The text or HTML file contents.
+     * @param string|null $content The content of the file, as plain text or as HTML markup. A request carrying none is rejected as an invalid  request, and for a text file content that looks like markup makes the portal store it as HTML instead.
      *
      * @return self
      */
@@ -403,7 +403,7 @@ class CreateTextOrHtmlFile implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets create_new_if_exist
      *
-     * @param bool|null $create_new_if_exist Specifies whether to create a new text or HTML file if it exists or not.
+     * @param bool|null $create_new_if_exist What to do when the folder already holds a file of this title, the other way round than the name reads: `true`  updates that file and adds a version to its history, `false` creates another file and makes its title unique,  as in Notes (1).txt.
      *
      * @return self
      */

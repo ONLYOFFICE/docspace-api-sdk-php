@@ -155,7 +155,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getClient($client_id, string $contentType = self::contentTypes['getClient'][0])
     {
@@ -176,7 +176,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getClientWithHttpInfo($client_id, string $contentType = self::contentTypes['getClient'][0])
     {
@@ -237,6 +237,18 @@ class ClientQueryingApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -307,6 +319,22 @@ class ClientQueryingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -423,7 +451,7 @@ class ClientQueryingApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -503,7 +531,7 @@ class ClientQueryingApi
     /**
      * Operation getClientInfo
      *
-     * Retrieves detailed information for a specific client
+     * Get client info
      *
      * REST API Reference for getClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-client-info/
@@ -513,7 +541,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getClientInfo($client_id, string $contentType = self::contentTypes['getClientInfo'][0])
     {
@@ -524,7 +552,7 @@ class ClientQueryingApi
     /**
      * Operation getClientInfoWithHttpInfo
      *
-     * Retrieves detailed information for a specific client
+     * Get client info
      *
      * REST API Reference for getClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-client-info/
@@ -534,7 +562,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getClientInfoWithHttpInfo($client_id, string $contentType = self::contentTypes['getClientInfo'][0])
     {
@@ -570,7 +598,43 @@ class ClientQueryingApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
                 case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -608,7 +672,55 @@ class ClientQueryingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -626,7 +738,7 @@ class ClientQueryingApi
     /**
      * Operation getClientInfoAsync
      *
-     * Retrieves detailed information for a specific client
+     * Get client info
      *
      * REST API Reference for getClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-client-info/
@@ -650,7 +762,7 @@ class ClientQueryingApi
     /**
      * Operation getClientInfoAsyncWithHttpInfo
      *
-     * Retrieves detailed information for a specific client
+     * Get client info
      *
      * REST API Reference for getClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-client-info/
@@ -725,7 +837,7 @@ class ClientQueryingApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}/info';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}/info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -810,16 +922,16 @@ class ClientQueryingApi
      * REST API Reference for getClients Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int|null $limit How many entries to return, between 1 and 50. Defaults to 30 when omitted. (optional, default to 30)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PageableResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\PageableClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
-    public function getClients($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
+    public function getClients($limit = 30, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
     {
         list($response) = $this->getClientsWithHttpInfo($limit, $last_client_id, $last_created_on, $contentType);
         return $response;
@@ -833,16 +945,16 @@ class ClientQueryingApi
      * REST API Reference for getClients Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int|null $limit How many entries to return, between 1 and 50. Defaults to 30 when omitted. (optional, default to 30)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PageableResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PageableClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getClientsWithHttpInfo($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsWithHttpInfo($limit = 30, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
     {
         $request = $this->getClientsRequest($limit, $last_client_id, $last_created_on, $contentType);
 
@@ -872,7 +984,7 @@ class ClientQueryingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageableResponse',
+                        '\OpenAPI\Client\Model\PageableClientResponse',
                         $request,
                         $response,
                     );
@@ -888,6 +1000,12 @@ class ClientQueryingApi
                         $request,
                         $response,
                     );
+                case 406:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
                 case 429:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -895,6 +1013,12 @@ class ClientQueryingApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -918,7 +1042,7 @@ class ClientQueryingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageableResponse',
+                '\OpenAPI\Client\Model\PageableClientResponse',
                 $request,
                 $response,
             );
@@ -927,7 +1051,7 @@ class ClientQueryingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageableResponse',
+                        '\OpenAPI\Client\Model\PageableClientResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -941,6 +1065,14 @@ class ClientQueryingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -964,6 +1096,14 @@ class ClientQueryingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -979,7 +1119,7 @@ class ClientQueryingApi
      * REST API Reference for getClients Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int|null $limit How many entries to return, between 1 and 50. Defaults to 30 when omitted. (optional, default to 30)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
@@ -987,7 +1127,7 @@ class ClientQueryingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getClientsAsync($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsAsync($limit = 30, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
     {
         return $this->getClientsAsyncWithHttpInfo($limit, $last_client_id, $last_created_on, $contentType)
             ->then(
@@ -1005,7 +1145,7 @@ class ClientQueryingApi
      * REST API Reference for getClients Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int|null $limit How many entries to return, between 1 and 50. Defaults to 30 when omitted. (optional, default to 30)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
@@ -1013,9 +1153,9 @@ class ClientQueryingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getClientsAsyncWithHttpInfo($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsAsyncWithHttpInfo($limit = 30, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PageableResponse';
+        $returnType = '\OpenAPI\Client\Model\PageableClientResponse';
         $request = $this->getClientsRequest($limit, $last_client_id, $last_created_on, $contentType);
 
         return $this->client
@@ -1057,7 +1197,7 @@ class ClientQueryingApi
     /**
      * Create request for operation 'getClients'
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int|null $limit How many entries to return, between 1 and 50. Defaults to 30 when omitted. (optional, default to 30)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClients'] to see the possible values for this operation
@@ -1065,26 +1205,20 @@ class ClientQueryingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getClientsRequest($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
+    public function getClientsRequest($limit = 30, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClients'][0])
     {
 
-        // verify the required parameter 'limit' is set
-        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $limit when calling getClients'
-            );
-        }
-        if ($limit > 50) {
+        if ($limit !== null && $limit > 50) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ClientQueryingApi.getClients, must be smaller than or equal to 50.');
         }
-        if ($limit < 1) {
+        if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling ClientQueryingApi.getClients, must be bigger than or equal to 1.');
         }
         
 
 
 
-        $resourcePath = '/api/2.0/clients';
+        $resourcePath = '/api/2.0/oauth2/clients';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1098,7 +1232,7 @@ class ClientQueryingApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1183,19 +1317,19 @@ class ClientQueryingApi
     /**
      * Operation getClientsInfo
      *
-     * Retrieves a pageable list of client information
+     * List client info
      *
      * REST API Reference for getClientsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients-info/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientsInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PageableResponseClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\PageableClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getClientsInfo($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClientsInfo'][0])
     {
@@ -1206,19 +1340,19 @@ class ClientQueryingApi
     /**
      * Operation getClientsInfoWithHttpInfo
      *
-     * Retrieves a pageable list of client information
+     * List client info
      *
      * REST API Reference for getClientsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients-info/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientsInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PageableResponseClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PageableClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getClientsInfoWithHttpInfo($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClientsInfo'][0])
     {
@@ -1250,11 +1384,41 @@ class ClientQueryingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\PageableResponseClientInfoResponse',
+                        '\OpenAPI\Client\Model\PageableClientInfoResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
                         $response,
                     );
                 case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -1278,7 +1442,7 @@ class ClientQueryingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\PageableResponseClientInfoResponse',
+                '\OpenAPI\Client\Model\PageableClientInfoResponse',
                 $request,
                 $response,
             );
@@ -1287,12 +1451,52 @@ class ClientQueryingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\PageableResponseClientInfoResponse',
+                        '\OpenAPI\Client\Model\PageableClientInfoResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -1310,12 +1514,12 @@ class ClientQueryingApi
     /**
      * Operation getClientsInfoAsync
      *
-     * Retrieves a pageable list of client information
+     * List client info
      *
      * REST API Reference for getClientsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients-info/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientsInfo'] to see the possible values for this operation
@@ -1336,12 +1540,12 @@ class ClientQueryingApi
     /**
      * Operation getClientsInfoAsyncWithHttpInfo
      *
-     * Retrieves a pageable list of client information
+     * List client info
      *
      * REST API Reference for getClientsInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-clients-info/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientsInfo'] to see the possible values for this operation
@@ -1351,7 +1555,7 @@ class ClientQueryingApi
      */
     public function getClientsInfoAsyncWithHttpInfo($limit, $last_client_id = null, $last_created_on = null, string $contentType = self::contentTypes['getClientsInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\PageableResponseClientInfoResponse';
+        $returnType = '\OpenAPI\Client\Model\PageableClientInfoResponse';
         $request = $this->getClientsInfoRequest($limit, $last_client_id, $last_created_on, $contentType);
 
         return $this->client
@@ -1393,7 +1597,7 @@ class ClientQueryingApi
     /**
      * Create request for operation 'getClientsInfo'
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  string|null $last_client_id ID of the last retrieved client (optional)
      * @param  \DateTime|null $last_created_on Date of the last retrieved client (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getClientsInfo'] to see the possible values for this operation
@@ -1420,7 +1624,7 @@ class ClientQueryingApi
 
 
 
-        $resourcePath = '/api/2.0/clients/info';
+        $resourcePath = '/api/2.0/oauth2/clients/info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1519,18 +1723,18 @@ class ClientQueryingApi
     /**
      * Operation getConsents
      *
-     * Retrieves a pageable list of consents
+     * List user consents
      *
      * REST API Reference for getConsents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-consents/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  \DateTime|null $last_modified_on Date of the last retrieved consent (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConsents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PageableModificationResponse
+     * @return \OpenAPI\Client\Model\PageableModificationResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getConsents($limit, $last_modified_on = null, string $contentType = self::contentTypes['getConsents'][0])
     {
@@ -1541,18 +1745,18 @@ class ClientQueryingApi
     /**
      * Operation getConsentsWithHttpInfo
      *
-     * Retrieves a pageable list of consents
+     * List user consents
      *
      * REST API Reference for getConsents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-consents/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  \DateTime|null $last_modified_on Date of the last retrieved consent (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConsents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PageableModificationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PageableModificationResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConsentsWithHttpInfo($limit, $last_modified_on = null, string $contentType = self::contentTypes['getConsents'][0])
     {
@@ -1588,6 +1792,48 @@ class ClientQueryingApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1620,6 +1866,62 @@ class ClientQueryingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1630,12 +1932,12 @@ class ClientQueryingApi
     /**
      * Operation getConsentsAsync
      *
-     * Retrieves a pageable list of consents
+     * List user consents
      *
      * REST API Reference for getConsents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-consents/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  \DateTime|null $last_modified_on Date of the last retrieved consent (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConsents'] to see the possible values for this operation
      *
@@ -1655,12 +1957,12 @@ class ClientQueryingApi
     /**
      * Operation getConsentsAsyncWithHttpInfo
      *
-     * Retrieves a pageable list of consents
+     * List user consents
      *
      * REST API Reference for getConsents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-consents/
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  \DateTime|null $last_modified_on Date of the last retrieved consent (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConsents'] to see the possible values for this operation
      *
@@ -1711,7 +2013,7 @@ class ClientQueryingApi
     /**
      * Create request for operation 'getConsents'
      *
-     * @param  int $limit Pagination limit (required)
+     * @param  int $limit How many entries to return, between 1 and 50. It has no default and has to be sent on every call. (required)
      * @param  \DateTime|null $last_modified_on Date of the last retrieved consent (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConsents'] to see the possible values for this operation
      *
@@ -1736,7 +2038,7 @@ class ClientQueryingApi
         
 
 
-        $resourcePath = '/api/2.0/clients/consents';
+        $resourcePath = '/api/2.0/oauth2/clients/consents';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1826,7 +2128,7 @@ class ClientQueryingApi
     /**
      * Operation getPublicClientInfo
      *
-     * Handles the GET request for public client information
+     * Get public client info
      *
      * REST API Reference for getPublicClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-client-info/
@@ -1836,7 +2138,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function getPublicClientInfo($client_id, string $contentType = self::contentTypes['getPublicClientInfo'][0])
     {
@@ -1847,7 +2149,7 @@ class ClientQueryingApi
     /**
      * Operation getPublicClientInfoWithHttpInfo
      *
-     * Handles the GET request for public client information
+     * Get public client info
      *
      * REST API Reference for getPublicClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-client-info/
@@ -1857,7 +2159,7 @@ class ClientQueryingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ClientInfoResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPublicClientInfoWithHttpInfo($client_id, string $contentType = self::contentTypes['getPublicClientInfo'][0])
     {
@@ -1893,7 +2195,37 @@ class ClientQueryingApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
                 case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -1931,7 +2263,47 @@ class ClientQueryingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -1949,7 +2321,7 @@ class ClientQueryingApi
     /**
      * Operation getPublicClientInfoAsync
      *
-     * Handles the GET request for public client information
+     * Get public client info
      *
      * REST API Reference for getPublicClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-client-info/
@@ -1973,7 +2345,7 @@ class ClientQueryingApi
     /**
      * Operation getPublicClientInfoAsyncWithHttpInfo
      *
-     * Handles the GET request for public client information
+     * Get public client info
      *
      * REST API Reference for getPublicClientInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-public-client-info/
@@ -2048,7 +2420,7 @@ class ClientQueryingApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}/public/info';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}/public/info';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

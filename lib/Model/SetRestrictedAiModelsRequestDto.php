@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SetRestrictedAiModelsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for setting restricted AI models.
+ * @description The complete set of AI chat models that are to be barred on the portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -306,7 +306,7 @@ class SetRestrictedAiModelsRequestDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets models
      *
-     * @param string[] $models The set of restricted AI model IDs.
+     * @param string[] $models The identifiers of the models no user of the portal may pick, taken from  `GET api/2.0/portal/payment/ai-prices`. This is the whole set that is to hold afterwards and not a list of  additions: send the models already barred together with the new one to add a restriction, leave one out to  lift it, and send an empty set to lift them all.
      *
      * @return self
      */

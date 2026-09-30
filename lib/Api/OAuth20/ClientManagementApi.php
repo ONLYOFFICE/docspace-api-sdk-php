@@ -162,12 +162,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function changeActivation($client_id, $change_client_activation_request, string $contentType = self::contentTypes['changeActivation'][0])
     {
-        list($response) = $this->changeActivationWithHttpInfo($client_id, $change_client_activation_request, $contentType);
-        return $response;
+        $this->changeActivationWithHttpInfo($client_id, $change_client_activation_request, $contentType);
     }
 
     /**
@@ -184,7 +183,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeActivationWithHttpInfo($client_id, $change_client_activation_request, string $contentType = self::contentTypes['changeActivation'][0])
     {
@@ -213,81 +212,9 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 415:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -329,6 +256,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -385,27 +328,14 @@ class ClientManagementApi
      */
     public function changeActivationAsyncWithHttpInfo($client_id, $change_client_activation_request, string $contentType = self::contentTypes['changeActivation'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->changeActivationRequest($client_id, $change_client_activation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -455,7 +385,7 @@ class ClientManagementApi
         }
 
 
-        $resourcePath = '/api/2.0/clients/{clientId}/activation';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}/activation';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -552,7 +482,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function createClient($create_client_request, string $contentType = self::contentTypes['createClient'][0])
     {
@@ -573,7 +503,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ClientResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function createClientWithHttpInfo($create_client_request, string $contentType = self::contentTypes['createClient'][0])
     {
@@ -634,6 +564,18 @@ class ClientManagementApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -704,6 +646,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -817,7 +775,7 @@ class ClientManagementApi
         }
 
 
-        $resourcePath = '/api/2.0/clients';
+        $resourcePath = '/api/2.0/oauth2/clients';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -906,12 +864,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function deleteClient($client_id, string $contentType = self::contentTypes['deleteClient'][0])
     {
-        list($response) = $this->deleteClientWithHttpInfo($client_id, $contentType);
-        return $response;
+        $this->deleteClientWithHttpInfo($client_id, $contentType);
     }
 
     /**
@@ -927,7 +884,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteClientWithHttpInfo($client_id, string $contentType = self::contentTypes['deleteClient'][0])
     {
@@ -956,75 +913,9 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1058,6 +949,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -1112,27 +1019,14 @@ class ClientManagementApi
      */
     public function deleteClientAsyncWithHttpInfo($client_id, string $contentType = self::contentTypes['deleteClient'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->deleteClientRequest($client_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1174,7 +1068,7 @@ class ClientManagementApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1263,12 +1157,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function deleteTenantClients(string $contentType = self::contentTypes['deleteTenantClients'][0])
     {
-        list($response) = $this->deleteTenantClientsWithHttpInfo($contentType);
-        return $response;
+        $this->deleteTenantClientsWithHttpInfo($contentType);
     }
 
     /**
@@ -1283,7 +1176,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteTenantClientsWithHttpInfo(string $contentType = self::contentTypes['deleteTenantClients'][0])
     {
@@ -1312,59 +1205,13 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\OpenAPI\Client\Model\ProblemDetail',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1386,6 +1233,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -1438,27 +1301,14 @@ class ClientManagementApi
      */
     public function deleteTenantClientsAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteTenantClients'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->deleteTenantClientsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1489,7 +1339,7 @@ class ClientManagementApi
     {
 
 
-        $resourcePath = '/api/2.0/clients/tenant';
+        $resourcePath = '/api/2.0/oauth2/clients/tenant';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1570,12 +1420,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function deleteUserClients(string $contentType = self::contentTypes['deleteUserClients'][0])
     {
-        list($response) = $this->deleteUserClientsWithHttpInfo($contentType);
-        return $response;
+        $this->deleteUserClientsWithHttpInfo($contentType);
     }
 
     /**
@@ -1590,7 +1439,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteUserClientsWithHttpInfo(string $contentType = self::contentTypes['deleteUserClients'][0])
     {
@@ -1619,59 +1468,13 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\OpenAPI\Client\Model\ProblemDetail',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1693,6 +1496,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -1745,27 +1564,14 @@ class ClientManagementApi
      */
     public function deleteUserClientsAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteUserClients'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->deleteUserClientsRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1796,7 +1602,7 @@ class ClientManagementApi
     {
 
 
-        $resourcePath = '/api/2.0/clients';
+        $resourcePath = '/api/2.0/oauth2/clients';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1878,7 +1684,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ClientSecretResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return \OpenAPI\Client\Model\ClientSecretResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
      */
     public function regenerateSecret($client_id, string $contentType = self::contentTypes['regenerateSecret'][0])
     {
@@ -1899,7 +1705,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ClientSecretResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ClientSecretResponse|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
      */
     public function regenerateSecretWithHttpInfo($client_id, string $contentType = self::contentTypes['regenerateSecret'][0])
     {
@@ -1960,6 +1766,18 @@ class ClientManagementApi
                         $response,
                     );
                 case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 405:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $request,
+                        $response,
+                    );
+                case 406:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ProblemDetail',
                         $request,
@@ -2030,6 +1848,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -2146,7 +1980,7 @@ class ClientManagementApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}/regenerate';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}/regenerate';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2236,12 +2070,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function revokeUserClient($client_id, string $contentType = self::contentTypes['revokeUserClient'][0])
     {
-        list($response) = $this->revokeUserClientWithHttpInfo($client_id, $contentType);
-        return $response;
+        $this->revokeUserClientWithHttpInfo($client_id, $contentType);
     }
 
     /**
@@ -2257,7 +2090,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function revokeUserClientWithHttpInfo($client_id, string $contentType = self::contentTypes['revokeUserClient'][0])
     {
@@ -2286,81 +2119,9 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 503:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2377,7 +2138,7 @@ class ClientManagementApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 404:
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -2385,7 +2146,7 @@ class ClientManagementApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 429:
+                case 503:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -2401,7 +2162,15 @@ class ClientManagementApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 503:
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -2456,27 +2225,14 @@ class ClientManagementApi
      */
     public function revokeUserClientAsyncWithHttpInfo($client_id, string $contentType = self::contentTypes['revokeUserClient'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->revokeUserClientRequest($client_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2518,7 +2274,7 @@ class ClientManagementApi
         }
         
 
-        $resourcePath = '/api/2.0/clients/{clientId}/revoke';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}/revoke';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2609,12 +2365,11 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail
+     * @return void
      */
     public function updateClient($client_id, $update_client_request, string $contentType = self::contentTypes['updateClient'][0])
     {
-        list($response) = $this->updateClientWithHttpInfo($client_id, $update_client_request, $contentType);
-        return $response;
+        $this->updateClientWithHttpInfo($client_id, $update_client_request, $contentType);
     }
 
     /**
@@ -2631,7 +2386,7 @@ class ClientManagementApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of object|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail|\OpenAPI\Client\Model\ProblemDetail, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateClientWithHttpInfo($client_id, $update_client_request, string $contentType = self::contentTypes['updateClient'][0])
     {
@@ -2660,81 +2415,9 @@ class ClientManagementApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        'object',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 415:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ProblemDetail',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                'object',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'object',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2776,6 +2459,22 @@ class ClientManagementApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ProblemDetail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 406:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ProblemDetail',
@@ -2832,27 +2531,14 @@ class ClientManagementApi
      */
     public function updateClientAsyncWithHttpInfo($client_id, $update_client_request, string $contentType = self::contentTypes['updateClient'][0])
     {
-        $returnType = 'object';
+        $returnType = '';
         $request = $this->updateClientRequest($client_id, $update_client_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2902,7 +2588,7 @@ class ClientManagementApi
         }
 
 
-        $resourcePath = '/api/2.0/clients/{clientId}';
+        $resourcePath = '/api/2.0/oauth2/clients/{clientId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

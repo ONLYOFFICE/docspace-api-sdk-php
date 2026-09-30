@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CheckFillFormDraft Class Doc Comment
  *
  * @category Class
- * @description The parameters for checking the form draft filling.
+ * @description The revision of the form to open and what the caller intends to do with it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -327,7 +327,7 @@ class CheckFillFormDraft implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets version
      *
-     * @param int $version The file version of the form draft.
+     * @param int $version The revision of the form to open. Pass 0 for the current revision; a positive number addresses that entry of  the file history and is accepted only from a caller who may read the history, so a member who only has  fill-forms access must send 0.
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class CheckFillFormDraft implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets action
      *
-     * @param string|null $action The action with the form draft.
+     * @param string|null $action What the caller intends to do with the form. `view` asks for a read-only address and `embedded` for an address  to be shown inside a frame; both only resolve the address and leave the file untouched. Leave it out to enter  the filling flow, where the personal draft is created or reused. The value is matched case-insensitively, and  anything else behaves like an empty value.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class CheckFillFormDraft implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets request_view
      *
-     * @param bool|null $request_view Specifies whether to request the form for viewing or not.
+     * @param bool|null $request_view Whether the caller asked for a read-only address. The server derives it from `action` being `view` and ignores  any value sent with the request.
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class CheckFillFormDraft implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets request_embedded
      *
-     * @param bool|null $request_embedded Specifies whether to request an embedded form or not.
+     * @param bool|null $request_embedded Whether the caller asked for an address to be shown inside a frame. The server derives it from `action` being  `embedded` and ignores any value sent with the request.
      *
      * @return self
      */

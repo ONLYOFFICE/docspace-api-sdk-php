@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AdminMessageBaseSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for the administrator message configuration.
+ * @description Who is invited to join the portal, and in which language the invitation is written.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -321,7 +321,7 @@ class AdminMessageBaseSettingsRequestsDto implements ModelInterface, ArrayAccess
     /**
      * Sets email
      *
-     * @param string|null $email The email address used for sending administrator messages.
+     * @param string|null $email The address the join link is sent to. It has to be a well-formed ASCII address rather than an  internationalized one, must not already belong to a member of the portal, and, where the portal trusts named  domains only, has to end with one of them; any of these faults is refused with 400.
      *
      * @return self
      */
@@ -362,7 +362,7 @@ class AdminMessageBaseSettingsRequestsDto implements ModelInterface, ArrayAccess
     /**
      * Sets culture
      *
-     * @param string|null $culture The locale identifier for message localization.
+     * @param string|null $culture The language the letter is written in, as a culture name such as `en-US`. A culture the installation does not  have falls back to the portal language rather than failing the call.
      *
      * @return self
      */

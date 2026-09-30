@@ -154,7 +154,7 @@ class TFASettingsApi
     /**
      * Operation getTfaAppCodes
      *
-     * Get the TFA codes
+     * Get the TFA backup codes
      *
      * REST API Reference for getTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-app-codes/
@@ -174,7 +174,7 @@ class TFASettingsApi
     /**
      * Operation getTfaAppCodesWithHttpInfo
      *
-     * Get the TFA codes
+     * Get the TFA backup codes
      *
      * REST API Reference for getTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-app-codes/
@@ -303,7 +303,7 @@ class TFASettingsApi
     /**
      * Operation getTfaAppCodesAsync
      *
-     * Get the TFA codes
+     * Get the TFA backup codes
      *
      * REST API Reference for getTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-app-codes/
@@ -326,7 +326,7 @@ class TFASettingsApi
     /**
      * Operation getTfaAppCodesAsyncWithHttpInfo
      *
-     * Get the TFA codes
+     * Get the TFA backup codes
      *
      * REST API Reference for getTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tfa-app-codes/
@@ -1126,7 +1126,7 @@ class TFASettingsApi
     /**
      * Operation tfaAppGenerateSetupCode
      *
-     * Generate setup code
+     * Generate the TFA setup code
      *
      * REST API Reference for tfaAppGenerateSetupCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-app-generate-setup-code/
@@ -1146,7 +1146,7 @@ class TFASettingsApi
     /**
      * Operation tfaAppGenerateSetupCodeWithHttpInfo
      *
-     * Generate setup code
+     * Generate the TFA setup code
      *
      * REST API Reference for tfaAppGenerateSetupCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-app-generate-setup-code/
@@ -1275,7 +1275,7 @@ class TFASettingsApi
     /**
      * Operation tfaAppGenerateSetupCodeAsync
      *
-     * Generate setup code
+     * Generate the TFA setup code
      *
      * REST API Reference for tfaAppGenerateSetupCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-app-generate-setup-code/
@@ -1298,7 +1298,7 @@ class TFASettingsApi
     /**
      * Operation tfaAppGenerateSetupCodeAsyncWithHttpInfo
      *
-     * Generate setup code
+     * Generate the TFA setup code
      *
      * REST API Reference for tfaAppGenerateSetupCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-app-generate-setup-code/
@@ -2152,7 +2152,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaAppCodes
      *
-     * Update the TFA codes
+     * Regenerate the TFA backup codes
      *
      * REST API Reference for updateTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-app-codes/
@@ -2172,7 +2172,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaAppCodesWithHttpInfo
      *
-     * Update the TFA codes
+     * Regenerate the TFA backup codes
      *
      * REST API Reference for updateTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-app-codes/
@@ -2301,7 +2301,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaAppCodesAsync
      *
-     * Update the TFA codes
+     * Regenerate the TFA backup codes
      *
      * REST API Reference for updateTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-app-codes/
@@ -2324,7 +2324,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaAppCodesAsyncWithHttpInfo
      *
-     * Update the TFA codes
+     * Regenerate the TFA backup codes
      *
      * REST API Reference for updateTfaAppCodes Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-app-codes/
@@ -2827,7 +2827,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaSettingsLink
      *
-     * Updates TFA settings
+     * Update TFA settings with a link
      *
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
@@ -2848,7 +2848,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaSettingsLinkWithHttpInfo
      *
-     * Updates TFA settings
+     * Update TFA settings with a link
      *
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
@@ -2992,7 +2992,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaSettingsLinkAsync
      *
-     * Updates TFA settings
+     * Update TFA settings with a link
      *
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
@@ -3016,7 +3016,7 @@ class TFASettingsApi
     /**
      * Operation updateTfaSettingsLinkAsyncWithHttpInfo
      *
-     * Updates TFA settings
+     * Update TFA settings with a link
      *
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/

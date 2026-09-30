@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ThirdPartyBackupRequestDto Class Doc Comment
  *
  * @category Class
- * @description The third-party backup request parameters.
+ * @description The credentials and the title of the third-party storage account the portal writes its backups to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets url
      *
-     * @param string|null $url The connection URL for the sharepoint.
+     * @param string|null $url The address of the storage server to connect to. It is needed by the WebDAV presets whose server is not known  in advance (`WebDav`, `Nextcloud`, `ownCloud`), where it points at the WebDAV endpoint of that server, and by  `SharePoint`; the presets with a fixed address and the OAuth services ignore it.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets login
      *
-     * @param string|null $login The login.
+     * @param string|null $login The account name at the storage service, used by the services that authenticate by login and password. A login  sent without a password is rejected as an invalid request.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets password
      *
-     * @param string|null $password The password.
+     * @param string|null $password The password, or the application password, for `login` at the storage service. Either this or `token` has to  be sent, and the credentials are verified against the service before the account is saved.
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets token
      *
-     * @param string|null $token The authentication token.
+     * @param string|null $token The OAuth 2.0 authorization code from the consent screen of `Box`, `DropboxV2`, `GoogleDrive` or `OneDrive` -  not an access token: the portal exchanges the code for its own token and keeps that. The client ID and  redirect URL the consent screen URL is built from come from `GET api/2.0/files/thirdparty/capabilities`.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets customer_title
      *
-     * @param string|null $customer_title The customer title.
+     * @param string|null $customer_title The name the backup account is shown under in the portal. Characters that a folder title cannot hold are  replaced and the value is truncated; on the first connection a title that comes out of that empty is refused.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets provider_key
      *
-     * @param string|null $provider_key The provider key.
+     * @param string|null $provider_key The storage service to connect, as the `key` of `GET api/2.0/files/thirdparty/providers`; the value is matched  case-insensitively. `Nextcloud` and `ownCloud` are presets over WebDAV and are stored and reported back as  `WebDav`.
      *
      * @return self
      */

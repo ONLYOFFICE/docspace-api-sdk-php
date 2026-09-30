@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantQuotaSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the tenant storage quota settings in a multi-tenant system.
+ * @description The storage limit set on one tenant of a self-hosted installation.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class TenantQuotaSettingsRequestsDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets tenant_id
      *
-     * @param int $tenant_id The ID of the tenant whose quota is being configured.
+     * @param int $tenant_id The tenant the limit applies to, by tenant ID. Only a self-hosted installation has more than one, which is  why the operation is refused on SaaS.
      *
      * @return self
      */
@@ -340,7 +340,7 @@ class TenantQuotaSettingsRequestsDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets quota
      *
-     * @param int|null $quota The storage quota limit in bytes allocated to the tenant.
+     * @param int|null $quota The limit in bytes. A negative value is not a smaller limit but the absence of one: it removes whatever limit  the tenant had. The value is a ceiling on stored data and says nothing about how much of it is already used.
      *
      * @return self
      */

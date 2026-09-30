@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * GroupMemberSecurityRequestDto Class Doc Comment
  *
  * @category Class
- * @description The group member security information.
+ * @description One member of a portal group together with the access that member has on the file or folder the group was granted  rights to. Every line of the answer describes the same file or folder and differs only in the member and in the  level that applies to them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -353,7 +353,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto $user The group member parameters.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto $user The member the line is about, as the portal reports the account: the display name, the avatar and the portal  role to show next to the access level.
      *
      * @return self
      */
@@ -380,7 +380,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets group_access
      *
-     * @param \OpenAPI\Client\Model\FileShare $group_access The group access rights to the files.
+     * @param \OpenAPI\Client\Model\FileShare $group_access The level granted to the group as a whole on this file or folder. It belongs to the group record rather than  to the member, so the same value repeats on every line of the answer; a group whose record was set back to  none is answered with an empty list instead.
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets user_access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $user_access The group member access rights to the files.
+     * @param \OpenAPI\Client\Model\FileShare|null $user_access The level granted to this member alone on the same file or folder, or `null` when the member has no record of  their own and the group level is what applies. The member who created the file or folder is always reported  here as a room manager, whatever their own record says.
      *
      * @return self
      */
@@ -434,7 +434,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets overridden
      *
-     * @param bool $overridden Specifies if the group access rights are overridden or not.
+     * @param bool $overridden Whether `userAccess` is the level that decides what the member may do. When it is false the member inherits  `groupAccess`, and the creator of the file or folder is always reported as overridden because of the room  manager level forced onto them.
      *
      * @return self
      */
@@ -461,7 +461,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets can_edit_access
      *
-     * @param bool $can_edit_access Specifies if the group member can edit the group access rights or not.
+     * @param bool $can_edit_access Whether the caller may still change the level of this member. It comes back false on the line of the member  who created the file or folder, on the line of the caller themselves, and on every line at once when the  caller may read the file or folder but not manage access to it.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class GroupMemberSecurityRequestDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets owner
      *
-     * @param bool $owner Specifies if the group member is a group owner or not.
+     * @param bool $owner Whether this member created the file or folder - the owner of the entry, not the owner of the group. Their  level is reported as a room manager one and cannot be taken away through this group.
      *
      * @return self
      */

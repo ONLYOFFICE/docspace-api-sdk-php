@@ -135,16 +135,16 @@ class VectorizationApi
      * REST API Reference for aiVectorizationStartTask Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  \OpenAPI\Client\Model\AiVectorizationStartTaskRequest $ai_vectorization_start_task_request The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiVectorizationStartTask'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiVectorizationStartTask200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiVectorizationStartTask($request_body, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
+    public function aiVectorizationStartTask($ai_vectorization_start_task_request, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
     {
-        list($response) = $this->aiVectorizationStartTaskWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiVectorizationStartTaskWithHttpInfo($ai_vectorization_start_task_request, $contentType);
         return $response;
     }
 
@@ -156,16 +156,16 @@ class VectorizationApi
      * REST API Reference for aiVectorizationStartTask Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiVectorizationStartTaskRequest $ai_vectorization_start_task_request The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiVectorizationStartTask'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiVectorizationStartTask200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiVectorizationStartTaskWithHttpInfo($request_body, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
+    public function aiVectorizationStartTaskWithHttpInfo($ai_vectorization_start_task_request, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
     {
-        $request = $this->aiVectorizationStartTaskRequest($request_body, $contentType);
+        $request = $this->aiVectorizationStartTaskRequest($ai_vectorization_start_task_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -193,11 +193,29 @@ class VectorizationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiVectorizationStartTask200Response',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -221,7 +239,7 @@ class VectorizationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiVectorizationStartTask200Response',
                 $request,
                 $response,
             );
@@ -230,12 +248,36 @@ class VectorizationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiVectorizationStartTask200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -258,15 +300,15 @@ class VectorizationApi
      * REST API Reference for aiVectorizationStartTask Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiVectorizationStartTaskRequest $ai_vectorization_start_task_request The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiVectorizationStartTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiVectorizationStartTaskAsync($request_body, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
+    public function aiVectorizationStartTaskAsync($ai_vectorization_start_task_request, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
     {
-        return $this->aiVectorizationStartTaskAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiVectorizationStartTaskAsyncWithHttpInfo($ai_vectorization_start_task_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -282,16 +324,16 @@ class VectorizationApi
      * REST API Reference for aiVectorizationStartTask Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiVectorizationStartTaskRequest $ai_vectorization_start_task_request The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiVectorizationStartTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiVectorizationStartTaskAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
+    public function aiVectorizationStartTaskAsyncWithHttpInfo($ai_vectorization_start_task_request, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiVectorizationStartTaskRequest($request_body, $contentType);
+        $returnType = '\OpenAPI\Client\Model\AiVectorizationStartTask200Response';
+        $request = $this->aiVectorizationStartTaskRequest($ai_vectorization_start_task_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -332,19 +374,19 @@ class VectorizationApi
     /**
      * Create request for operation 'aiVectorizationStartTask'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiVectorizationStartTaskRequest $ai_vectorization_start_task_request The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiVectorizationStartTask'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiVectorizationStartTaskRequest($request_body, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
+    public function aiVectorizationStartTaskRequest($ai_vectorization_start_task_request, string $contentType = self::contentTypes['aiVectorizationStartTask'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_vectorization_start_task_request' is set
+        if ($ai_vectorization_start_task_request === null || (is_array($ai_vectorization_start_task_request) && count($ai_vectorization_start_task_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiVectorizationStartTask'
+                'Missing the required parameter $ai_vectorization_start_task_request when calling aiVectorizationStartTask'
             );
         }
 
@@ -367,12 +409,12 @@ class VectorizationApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_vectorization_start_task_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_vectorization_start_task_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_vectorization_start_task_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -398,6 +440,15 @@ class VectorizationApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

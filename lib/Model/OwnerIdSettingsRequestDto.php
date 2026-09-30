@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * OwnerIdSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the owner-specific settings.
+ * @description The portal member named as the new owner of the portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -306,7 +306,7 @@ class OwnerIdSettingsRequestDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets owner_id
      *
-     * @param string $owner_id The ID of the owner whose settings are being managed.
+     * @param string $owner_id The member who is to become the portal owner, by user ID. They have to be an active member of this portal and  not a guest; a member who is not a DocSpace administrator yet is promoted to one as part of the transfer, so  the portal needs a paid seat for them.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * InvitationLinkDto Class Doc Comment
  *
  * @category Class
- * @description The invitation link parameters.
+ * @description The portal's standing invitation link for one role: what it grants, how long it lasts, how often it was used.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +60,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'id' => 'string',
         'employee_type' => '\OpenAPI\Client\Model\EmployeeType',
-        'expiration' => '\DateTime',
+        'expiration' => '\OpenAPI\Client\Model\ApiDateTime',
         'is_expired' => 'bool',
         'max_use_count' => 'int',
         'current_use_count' => 'int',
@@ -77,7 +77,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPIFormats = [
         'id' => 'uuid',
         'employee_type' => null,
-        'expiration' => 'date-time',
+        'expiration' => null,
         'is_expired' => null,
         'max_use_count' => 'int32',
         'current_use_count' => 'int32',
@@ -92,7 +92,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'id' => false,
         'employee_type' => false,
-        'expiration' => true,
+        'expiration' => false,
         'is_expired' => false,
         'max_use_count' => true,
         'current_use_count' => false,
@@ -348,7 +348,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets id
      *
-     * @param string|null $id The ID of the invitation link.
+     * @param string|null $id The identifier to address the link by in `PUT api/2.0/portal/users/invitationlink` and  `DELETE api/2.0/portal/users/invitationlink`. It survives a change of deadline or use limit, so it is  worth storing rather than re-reading.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets employee_type
      *
-     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link.
+     * @param \OpenAPI\Client\Model\EmployeeType $employee_type The role an account gets by joining through this link. A portal keeps at most one link per role, and the  role of an existing link cannot be changed - the link has to be deleted and created again.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets expiration
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpiration()
     {
@@ -402,21 +402,14 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets expiration
      *
-     * @param \DateTime|null $expiration The expiration date of the invitation link.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration When the link stops working, in the portal time zone. It is empty for a link that never expires, which is  what omitting the deadline on create or update leaves behind.
      *
      * @return self
      */
     public function setExpiration($expiration)
     {
         if (is_null($expiration)) {
-            array_push($this->openAPINullablesSetToNull, 'expiration');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiration', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiration cannot be null');
         }
         $this->container['expiration'] = $expiration;
 
@@ -436,7 +429,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_expired
      *
-     * @param bool|null $is_expired Indicates whether the invitation link has expired.
+     * @param bool|null $is_expired Whether that deadline has already passed. A link without a deadline always reports `false`, and an expired  link is still returned rather than treated as gone - it can be revived by moving `expiration`.
      *
      * @return self
      */
@@ -463,7 +456,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets max_use_count
      *
-     * @param int|null $max_use_count The maximum number of times the invitation link can be used.
+     * @param int|null $max_use_count How many accounts may join through the link in total. It is empty for a link with no use limit, and an  update may not lower it below `currentUseCount`.
      *
      * @return self
      */
@@ -497,7 +490,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets current_use_count
      *
-     * @param int|null $current_use_count The current number of times the invitation link has been used.
+     * @param int|null $current_use_count How many accounts have already joined through the link. It only ever grows, and reaching `maxUseCount`  retires the link as surely as a passed deadline.
      *
      * @return self
      */
@@ -524,7 +517,7 @@ class InvitationLinkDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets url
      *
-     * @param string|null $url The URL of the invitation link.
+     * @param string|null $url The shortened address to hand to the people being invited. It is signed for the account that read it, so  two administrators are given two different URLs for one and the same link and both of them work; the `id`  above, not this string, is what identifies the link.
      *
      * @return self
      */

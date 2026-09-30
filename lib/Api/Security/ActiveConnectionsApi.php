@@ -466,12 +466,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutActiveConnection
      *
-     * Log out from the connection
+     * Log out one connection
      *
      * REST API Reference for logOutActiveConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-active-connection/
      *
-     * @param  int $login_event_id The ID of the specific login event. (required)
+     * @param  int $login_event_id The sign-in to act on, by login event ID. Take it from the `id` of an item of  `GET api/2.0/security/activeconnections`, which also marks the connection the caller is using, so a client  can avoid picking its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutActiveConnection'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -487,12 +487,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutActiveConnectionWithHttpInfo
      *
-     * Log out from the connection
+     * Log out one connection
      *
      * REST API Reference for logOutActiveConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-active-connection/
      *
-     * @param  int $login_event_id The ID of the specific login event. (required)
+     * @param  int $login_event_id The sign-in to act on, by login event ID. Take it from the `id` of an item of  `GET api/2.0/security/activeconnections`, which also marks the connection the caller is using, so a client  can avoid picking its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutActiveConnection'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -631,12 +631,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutActiveConnectionAsync
      *
-     * Log out from the connection
+     * Log out one connection
      *
      * REST API Reference for logOutActiveConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-active-connection/
      *
-     * @param  int $login_event_id The ID of the specific login event. (required)
+     * @param  int $login_event_id The sign-in to act on, by login event ID. Take it from the `id` of an item of  `GET api/2.0/security/activeconnections`, which also marks the connection the caller is using, so a client  can avoid picking its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutActiveConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -655,12 +655,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutActiveConnectionAsyncWithHttpInfo
      *
-     * Log out from the connection
+     * Log out one connection
      *
      * REST API Reference for logOutActiveConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-active-connection/
      *
-     * @param  int $login_event_id The ID of the specific login event. (required)
+     * @param  int $login_event_id The sign-in to act on, by login event ID. Take it from the `id` of an item of  `GET api/2.0/security/activeconnections`, which also marks the connection the caller is using, so a client  can avoid picking its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutActiveConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -710,7 +710,7 @@ class ActiveConnectionsApi
     /**
      * Create request for operation 'logOutActiveConnection'
      *
-     * @param  int $login_event_id The ID of the specific login event. (required)
+     * @param  int $login_event_id The sign-in to act on, by login event ID. Take it from the `id` of an item of  `GET api/2.0/security/activeconnections`, which also marks the connection the caller is using, so a client  can avoid picking its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutActiveConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -824,7 +824,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsChangePassword
      *
-     * Log out and change password
+     * Log out and reset password
      *
      * REST API Reference for logOutAllActiveConnectionsChangePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-change-password/
@@ -844,7 +844,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsChangePasswordWithHttpInfo
      *
-     * Log out and change password
+     * Log out and reset password
      *
      * REST API Reference for logOutAllActiveConnectionsChangePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-change-password/
@@ -973,7 +973,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsChangePasswordAsync
      *
-     * Log out and change password
+     * Log out and reset password
      *
      * REST API Reference for logOutAllActiveConnectionsChangePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-change-password/
@@ -996,7 +996,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsChangePasswordAsyncWithHttpInfo
      *
-     * Log out and change password
+     * Log out and reset password
      *
      * REST API Reference for logOutAllActiveConnectionsChangePassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-change-password/
@@ -1148,12 +1148,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsForUser
      *
-     * Log out for the user by ID
+     * Log out a user everywhere
      *
      * REST API Reference for logOutAllActiveConnectionsForUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-for-user/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. Acting on an account  other than the caller's own generally needs administrator rights. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutAllActiveConnectionsForUser'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1168,12 +1168,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsForUserWithHttpInfo
      *
-     * Log out for the user by ID
+     * Log out a user everywhere
      *
      * REST API Reference for logOutAllActiveConnectionsForUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-for-user/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. Acting on an account  other than the caller's own generally needs administrator rights. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutAllActiveConnectionsForUser'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1252,12 +1252,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsForUserAsync
      *
-     * Log out for the user by ID
+     * Log out a user everywhere
      *
      * REST API Reference for logOutAllActiveConnectionsForUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-for-user/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. Acting on an account  other than the caller's own generally needs administrator rights. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutAllActiveConnectionsForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1276,12 +1276,12 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllActiveConnectionsForUserAsyncWithHttpInfo
      *
-     * Log out for the user by ID
+     * Log out a user everywhere
      *
      * REST API Reference for logOutAllActiveConnectionsForUser Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-active-connections-for-user/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. Acting on an account  other than the caller's own generally needs administrator rights. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutAllActiveConnectionsForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1318,7 +1318,7 @@ class ActiveConnectionsApi
     /**
      * Create request for operation 'logOutAllActiveConnectionsForUser'
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. Acting on an account  other than the caller's own generally needs administrator rights. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['logOutAllActiveConnectionsForUser'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1432,7 +1432,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllExceptThisConnection
      *
-     * Log out from all connections except the current one
+     * Log out other connections
      *
      * REST API Reference for logOutAllExceptThisConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-except-this-connection/
@@ -1452,7 +1452,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllExceptThisConnectionWithHttpInfo
      *
-     * Log out from all connections except the current one
+     * Log out other connections
      *
      * REST API Reference for logOutAllExceptThisConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-except-this-connection/
@@ -1581,7 +1581,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllExceptThisConnectionAsync
      *
-     * Log out from all connections except the current one
+     * Log out other connections
      *
      * REST API Reference for logOutAllExceptThisConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-except-this-connection/
@@ -1604,7 +1604,7 @@ class ActiveConnectionsApi
     /**
      * Operation logOutAllExceptThisConnectionAsyncWithHttpInfo
      *
-     * Log out from all connections except the current one
+     * Log out other connections
      *
      * REST API Reference for logOutAllExceptThisConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/log-out-all-except-this-connection/

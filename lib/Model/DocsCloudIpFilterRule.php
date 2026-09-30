@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudIpFilterRule Class Doc Comment
  *
  * @category Class
- * @description Represents the IP filter rule of a DocsCloud tenant.
+ * @description Represents the IP filter rule of a Docs Connect tenant.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

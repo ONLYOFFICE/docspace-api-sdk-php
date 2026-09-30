@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileShareDto Class Doc Comment
  *
  * @category Class
- * @description The file sharing information and access rights.
+ * @description One access entry on a file, a folder or a room: who holds it, at which level, and what the caller may change about  it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -411,7 +411,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The access rights type.
+     * @param \OpenAPI\Client\Model\FileShare|null $access The level the subject holds on the entry. On a link entry it is the level the link hands to whoever opens it,  and in a batch answer `Varies` means the subject holds different levels on the listed entries.
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shared_to_user
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $shared_to_user The user who has the access to the specified file.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $shared_to_user The account the entry belongs to. It is filled in only when `subjectType` says an account, and is null for a  group entry and for a link.
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shared_to_group
      *
-     * @param \OpenAPI\Client\Model\GroupSummaryDto|null $shared_to_group The user who has the access to the specified file.
+     * @param \OpenAPI\Client\Model\GroupSummaryDto|null $shared_to_group The portal group the entry belongs to, which hands the level to everybody in it. It is filled in only for a  group entry, and is null otherwise.
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shared_link
      *
-     * @param \OpenAPI\Client\Model\FileShareLink|null $shared_link The user who has the access to the specified file.
+     * @param \OpenAPI\Client\Model\FileShareLink|null $shared_link The sharing link the entry stands for, together with everything set on it. It is filled in only for a link  entry, and is null for an account or a group.
      *
      * @return self
      */
@@ -553,7 +553,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_locked
      *
-     * @param bool $is_locked Specifies if the access right is locked or not.
+     * @param bool $is_locked Whether this entry is the caller's own, which is why they cannot change its level. Link entries never report  it.
      *
      * @return self
      */
@@ -580,7 +580,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_owner
      *
-     * @param bool $is_owner Specifies if the user is an owner of the specified file or not.
+     * @param bool $is_owner Whether the subject created the entry the access is given on, and so cannot be removed from it.
      *
      * @return self
      */
@@ -607,7 +607,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_edit_access
      *
-     * @param bool $can_edit_access Specifies if the user can edit the access to the specified file or not.
+     * @param bool $can_edit_access Whether the caller may change the level of this entry. It is false on the caller's own entry, on every link,  and whenever the caller may not hand out access at all.
      *
      * @return self
      */
@@ -634,7 +634,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_edit_internal
      *
-     * @param bool $can_edit_internal Indicates whether internal editing permissions are granted.
+     * @param bool $can_edit_internal Whether the caller may switch this link between being open to anybody and asking the visitor to sign in to the  portal first.
      *
      * @return self
      */
@@ -661,7 +661,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_edit_deny_download
      *
-     * @param bool $can_edit_deny_download Determines whether the user has permission to modify the deny download setting for the file share.
+     * @param bool $can_edit_deny_download Whether the caller may forbid downloading through this link. Only a link of a virtual data room reports true,  and only while the room itself still allows downloads.
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_edit_expiration_date
      *
-     * @param bool $can_edit_expiration_date Indicates whether the expiration date of access permissions can be edited.
+     * @param bool $can_edit_expiration_date Whether the caller may move the moment this link stops working.
      *
      * @return self
      */
@@ -715,7 +715,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_revoke
      *
-     * @param bool $can_revoke Specifies whether the file sharing access can be revoked by the current user.
+     * @param bool $can_revoke Whether the caller may take this entry away altogether, which for a link means deleting the link.
      *
      * @return self
      */
@@ -742,7 +742,7 @@ class FileShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets subject_type
      *
-     * @param \OpenAPI\Client\Model\SubjectType $subject_type The subject type.
+     * @param \OpenAPI\Client\Model\SubjectType $subject_type What the entry was given to, which tells which of the three subject fields is filled in: an account, a group,  or one of the kinds of link.
      *
      * @return self
      */

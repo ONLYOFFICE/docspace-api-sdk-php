@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * QuotaSettingsRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the user storage quota configurations.
+ * @description The default storage limit given to newly created users, rooms or AI agents, and whether it is enforced.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -313,7 +313,7 @@ class QuotaSettingsRequestsDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets enable_quota
      *
-     * @param bool|null $enable_quota Specifies whether the storage quota restrictions are enabled.
+     * @param bool|null $enable_quota Whether the limit is enforced at all. While it is false the size is ignored and nothing created afterwards  carries a limit; objects that already have one keep it either way.
      *
      * @return self
      */

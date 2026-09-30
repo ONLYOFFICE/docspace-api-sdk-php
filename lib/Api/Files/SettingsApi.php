@@ -150,6 +150,9 @@ class SettingsApi
         'setOrganizeRoomsGrouping' => [
             'application/json',
         ],
+        'showQuickActions' => [
+            'application/json',
+        ],
         'storeForcesave' => [
             'application/json',
         ],
@@ -921,7 +924,7 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body Sharing rights (None, ReadWrite, Read, Restrict, Varies, Review, Comment, FillForms, CustomFilter, RoomAdmin, Editing, Collaborator). (optional)
+     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -942,7 +945,7 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body Sharing rights (None, ReadWrite, Read, Restrict, Varies, Review, Comment, FillForms, CustomFilter, RoomAdmin, Editing, Collaborator). (optional)
+     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1086,7 +1089,7 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body Sharing rights (None, ReadWrite, Read, Restrict, Varies, Review, Comment, FillForms, CustomFilter, RoomAdmin, Editing, Collaborator). (optional)
+     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1110,7 +1113,7 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body Sharing rights (None, ReadWrite, Read, Restrict, Varies, Review, Comment, FillForms, CustomFilter, RoomAdmin, Editing, Collaborator). (optional)
+     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1160,7 +1163,7 @@ class SettingsApi
     /**
      * Create request for operation 'changeDefaultAccessRights'
      *
-     * @param  int[]|null $request_body Sharing rights (None, ReadWrite, Read, Restrict, Varies, Review, Comment, FillForms, CustomFilter, RoomAdmin, Editing, Collaborator). (optional)
+     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1267,7 +1270,7 @@ class SettingsApi
     /**
      * Operation changeDeleteConfirm
      *
-     * Confirm the file deletion
+     * Ask for delete confirmation
      *
      * REST API Reference for changeDeleteConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-delete-confirm/
@@ -1288,7 +1291,7 @@ class SettingsApi
     /**
      * Operation changeDeleteConfirmWithHttpInfo
      *
-     * Confirm the file deletion
+     * Ask for delete confirmation
      *
      * REST API Reference for changeDeleteConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-delete-confirm/
@@ -1432,7 +1435,7 @@ class SettingsApi
     /**
      * Operation changeDeleteConfirmAsync
      *
-     * Confirm the file deletion
+     * Ask for delete confirmation
      *
      * REST API Reference for changeDeleteConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-delete-confirm/
@@ -1456,7 +1459,7 @@ class SettingsApi
     /**
      * Operation changeDeleteConfirmAsyncWithHttpInfo
      *
-     * Confirm the file deletion
+     * Ask for delete confirmation
      *
      * REST API Reference for changeDeleteConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-delete-confirm/
@@ -1618,7 +1621,7 @@ class SettingsApi
     /**
      * Operation changeDownloadZip
      *
-     * Change the archive format (using body parameters)
+     * Change the download archive format
      *
      * REST API Reference for changeDownloadZip Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-download-zip/
@@ -1639,7 +1642,7 @@ class SettingsApi
     /**
      * Operation changeDownloadZipWithHttpInfo
      *
-     * Change the archive format (using body parameters)
+     * Change the download archive format
      *
      * REST API Reference for changeDownloadZip Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-download-zip/
@@ -1783,7 +1786,7 @@ class SettingsApi
     /**
      * Operation changeDownloadZipAsync
      *
-     * Change the archive format (using body parameters)
+     * Change the download archive format
      *
      * REST API Reference for changeDownloadZip Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-download-zip/
@@ -1807,7 +1810,7 @@ class SettingsApi
     /**
      * Operation changeDownloadZipAsyncWithHttpInfo
      *
-     * Change the archive format (using body parameters)
+     * Change the download archive format
      *
      * REST API Reference for changeDownloadZip Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-download-zip/
@@ -1969,7 +1972,7 @@ class SettingsApi
     /**
      * Operation changeExternalSharingSettings
      *
-     * Change the Access Control external sharing settings
+     * Configure external sharing
      *
      * REST API Reference for changeExternalSharingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-external-sharing-settings/
@@ -1990,7 +1993,7 @@ class SettingsApi
     /**
      * Operation changeExternalSharingSettingsWithHttpInfo
      *
-     * Change the Access Control external sharing settings
+     * Configure external sharing
      *
      * REST API Reference for changeExternalSharingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-external-sharing-settings/
@@ -2134,7 +2137,7 @@ class SettingsApi
     /**
      * Operation changeExternalSharingSettingsAsync
      *
-     * Change the Access Control external sharing settings
+     * Configure external sharing
      *
      * REST API Reference for changeExternalSharingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-external-sharing-settings/
@@ -2158,7 +2161,7 @@ class SettingsApi
     /**
      * Operation changeExternalSharingSettingsAsyncWithHttpInfo
      *
-     * Change the Access Control external sharing settings
+     * Configure external sharing
      *
      * REST API Reference for changeExternalSharingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-external-sharing-settings/
@@ -2320,7 +2323,7 @@ class SettingsApi
     /**
      * Operation checkDocServiceUrl
      *
-     * Check the document service URL
+     * Set the document service address
      *
      * REST API Reference for checkDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-doc-service-url/
@@ -2341,7 +2344,7 @@ class SettingsApi
     /**
      * Operation checkDocServiceUrlWithHttpInfo
      *
-     * Check the document service URL
+     * Set the document service address
      *
      * REST API Reference for checkDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-doc-service-url/
@@ -2471,7 +2474,7 @@ class SettingsApi
     /**
      * Operation checkDocServiceUrlAsync
      *
-     * Check the document service URL
+     * Set the document service address
      *
      * REST API Reference for checkDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-doc-service-url/
@@ -2495,7 +2498,7 @@ class SettingsApi
     /**
      * Operation checkDocServiceUrlAsyncWithHttpInfo
      *
-     * Check the document service URL
+     * Set the document service address
      *
      * REST API Reference for checkDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-doc-service-url/
@@ -3008,7 +3011,7 @@ class SettingsApi
     /**
      * Operation displayRecent
      *
-     * Display the Recent folder
+     * Show the Recent section
      *
      * REST API Reference for displayRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/display-recent/
@@ -3029,7 +3032,7 @@ class SettingsApi
     /**
      * Operation displayRecentWithHttpInfo
      *
-     * Display the Recent folder
+     * Show the Recent section
      *
      * REST API Reference for displayRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/display-recent/
@@ -3173,7 +3176,7 @@ class SettingsApi
     /**
      * Operation displayRecentAsync
      *
-     * Display the Recent folder
+     * Show the Recent section
      *
      * REST API Reference for displayRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/display-recent/
@@ -3197,7 +3200,7 @@ class SettingsApi
     /**
      * Operation displayRecentAsyncWithHttpInfo
      *
-     * Display the Recent folder
+     * Show the Recent section
      *
      * REST API Reference for displayRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/display-recent/
@@ -5033,12 +5036,12 @@ class SettingsApi
     /**
      * Operation getDocServiceUrl
      *
-     * Get the document service URL
+     * Get the document service address
      *
      * REST API Reference for getDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-doc-service-url/
      *
-     * @param  bool|null $version Specifies whether to return the editor version or not. (optional)
+     * @param  bool|null $version Whether the running Document Server is asked for its editor version so that `version` can report it. Left off,  the portal answers from its own settings without contacting the Document Server and `version` comes back  empty. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocServiceUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5054,12 +5057,12 @@ class SettingsApi
     /**
      * Operation getDocServiceUrlWithHttpInfo
      *
-     * Get the document service URL
+     * Get the document service address
      *
      * REST API Reference for getDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-doc-service-url/
      *
-     * @param  bool|null $version Specifies whether to return the editor version or not. (optional)
+     * @param  bool|null $version Whether the running Document Server is asked for its editor version so that `version` can report it. Left off,  the portal answers from its own settings without contacting the Document Server and `version` comes back  empty. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocServiceUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5184,12 +5187,12 @@ class SettingsApi
     /**
      * Operation getDocServiceUrlAsync
      *
-     * Get the document service URL
+     * Get the document service address
      *
      * REST API Reference for getDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-doc-service-url/
      *
-     * @param  bool|null $version Specifies whether to return the editor version or not. (optional)
+     * @param  bool|null $version Whether the running Document Server is asked for its editor version so that `version` can report it. Left off,  the portal answers from its own settings without contacting the Document Server and `version` comes back  empty. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocServiceUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5208,12 +5211,12 @@ class SettingsApi
     /**
      * Operation getDocServiceUrlAsyncWithHttpInfo
      *
-     * Get the document service URL
+     * Get the document service address
      *
      * REST API Reference for getDocServiceUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-doc-service-url/
      *
-     * @param  bool|null $version Specifies whether to return the editor version or not. (optional)
+     * @param  bool|null $version Whether the running Document Server is asked for its editor version so that `version` can report it. Left off,  the portal answers from its own settings without contacting the Document Server and `version` comes back  empty. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocServiceUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5263,7 +5266,7 @@ class SettingsApi
     /**
      * Create request for operation 'getDocServiceUrl'
      *
-     * @param  bool|null $version Specifies whether to return the editor version or not. (optional)
+     * @param  bool|null $version Whether the running Document Server is asked for its editor version so that `version` can report it. Left off,  the portal answers from its own settings without contacting the Document Server and `version` comes back  empty. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDocServiceUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5325,6 +5328,28 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5350,7 +5375,7 @@ class SettingsApi
     /**
      * Operation getFilesModule
      *
-     * Get the Documents information
+     * Get the Documents module information
      *
      * REST API Reference for getFilesModule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-files-module/
@@ -5370,7 +5395,7 @@ class SettingsApi
     /**
      * Operation getFilesModuleWithHttpInfo
      *
-     * Get the Documents information
+     * Get the Documents module information
      *
      * REST API Reference for getFilesModule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-files-module/
@@ -5499,7 +5524,7 @@ class SettingsApi
     /**
      * Operation getFilesModuleAsync
      *
-     * Get the Documents information
+     * Get the Documents module information
      *
      * REST API Reference for getFilesModule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-files-module/
@@ -5522,7 +5547,7 @@ class SettingsApi
     /**
      * Operation getFilesModuleAsyncWithHttpInfo
      *
-     * Get the Documents information
+     * Get the Documents module information
      *
      * REST API Reference for getFilesModule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-files-module/
@@ -5937,6 +5962,28 @@ class SettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7015,7 +7062,7 @@ class SettingsApi
     /**
      * Operation keepNewFileName
      *
-     * Ask a new file name
+     * Keep the default file name
      *
      * REST API Reference for keepNewFileName Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/keep-new-file-name/
@@ -7036,7 +7083,7 @@ class SettingsApi
     /**
      * Operation keepNewFileNameWithHttpInfo
      *
-     * Ask a new file name
+     * Keep the default file name
      *
      * REST API Reference for keepNewFileName Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/keep-new-file-name/
@@ -7180,7 +7227,7 @@ class SettingsApi
     /**
      * Operation keepNewFileNameAsync
      *
-     * Ask a new file name
+     * Keep the default file name
      *
      * REST API Reference for keepNewFileName Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/keep-new-file-name/
@@ -7204,7 +7251,7 @@ class SettingsApi
     /**
      * Operation keepNewFileNameAsyncWithHttpInfo
      *
-     * Ask a new file name
+     * Keep the default file name
      *
      * REST API Reference for keepNewFileName Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/keep-new-file-name/
@@ -8754,6 +8801,357 @@ class SettingsApi
     }
 
     /**
+     * Operation showQuickActions
+     *
+     * Display quick actions
+     *
+     * REST API Reference for showQuickActions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/show-quick-actions/
+     *
+     * @param  \OpenAPI\Client\Model\SettingsRequestDto|null $settings_request_dto settings_request_dto (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showQuickActions'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     */
+    public function showQuickActions($settings_request_dto = null, string $contentType = self::contentTypes['showQuickActions'][0])
+    {
+        list($response) = $this->showQuickActionsWithHttpInfo($settings_request_dto, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation showQuickActionsWithHttpInfo
+     *
+     * Display quick actions
+     *
+     * REST API Reference for showQuickActions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/show-quick-actions/
+     *
+     * @param  \OpenAPI\Client\Model\SettingsRequestDto|null $settings_request_dto (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showQuickActions'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function showQuickActionsWithHttpInfo($settings_request_dto = null, string $contentType = self::contentTypes['showQuickActions'][0])
+    {
+        $request = $this->showQuickActionsRequest($settings_request_dto, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\BooleanWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\BooleanWrapper',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\BooleanWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation showQuickActionsAsync
+     *
+     * Display quick actions
+     *
+     * REST API Reference for showQuickActions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/show-quick-actions/
+     *
+     * @param  \OpenAPI\Client\Model\SettingsRequestDto|null $settings_request_dto (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showQuickActions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function showQuickActionsAsync($settings_request_dto = null, string $contentType = self::contentTypes['showQuickActions'][0])
+    {
+        return $this->showQuickActionsAsyncWithHttpInfo($settings_request_dto, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation showQuickActionsAsyncWithHttpInfo
+     *
+     * Display quick actions
+     *
+     * REST API Reference for showQuickActions Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/show-quick-actions/
+     *
+     * @param  \OpenAPI\Client\Model\SettingsRequestDto|null $settings_request_dto (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showQuickActions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function showQuickActionsAsyncWithHttpInfo($settings_request_dto = null, string $contentType = self::contentTypes['showQuickActions'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
+        $request = $this->showQuickActionsRequest($settings_request_dto, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'showQuickActions'
+     *
+     * @param  \OpenAPI\Client\Model\SettingsRequestDto|null $settings_request_dto (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['showQuickActions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function showQuickActionsRequest($settings_request_dto = null, string $contentType = self::contentTypes['showQuickActions'][0])
+    {
+
+
+
+        $resourcePath = '/api/2.0/files/showquickactions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($settings_request_dto)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($settings_request_dto));
+            } else {
+                $httpBody = $settings_request_dto;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation storeForcesave
      *
      * Change the ability to store the forcesaved files
@@ -9787,8 +10185,8 @@ class SettingsApi
      * REST API Reference for uploadDefaultTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-default-template/
      *
-     * @param  string $file_extension File extension of a template to replace (required)
-     * @param  \SplFileObject $file File to replace template with (required)
+     * @param  string $file_extension The extension the uploaded blank is set for, written in lower case with the leading dot, and travelling in the  query string rather than in the form. It must match the extension of the uploaded file name. Only the  extensions the portal's built-in template set covers are accepted, and  `GET api/2.0/files/settings/defaulttemplate` returns exactly that list; an extension outside it leaves the  settings unchanged instead of failing. (required)
+     * @param  \SplFileObject $file The template document itself. Its file name must end with the extension named above, a PDF must be a fillable  form, and the body is capped at 100 MB - a larger one is refused while it is still streaming in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDefaultTemplate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9809,8 +10207,8 @@ class SettingsApi
      * REST API Reference for uploadDefaultTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-default-template/
      *
-     * @param  string $file_extension File extension of a template to replace (required)
-     * @param  \SplFileObject $file File to replace template with (required)
+     * @param  string $file_extension The extension the uploaded blank is set for, written in lower case with the leading dot, and travelling in the  query string rather than in the form. It must match the extension of the uploaded file name. Only the  extensions the portal's built-in template set covers are accepted, and  `GET api/2.0/files/settings/defaulttemplate` returns exactly that list; an extension outside it leaves the  settings unchanged instead of failing. (required)
+     * @param  \SplFileObject $file The template document itself. Its file name must end with the extension named above, a PDF must be a fillable  form, and the body is capped at 100 MB - a larger one is refused while it is still streaming in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDefaultTemplate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9940,8 +10338,8 @@ class SettingsApi
      * REST API Reference for uploadDefaultTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-default-template/
      *
-     * @param  string $file_extension File extension of a template to replace (required)
-     * @param  \SplFileObject $file File to replace template with (required)
+     * @param  string $file_extension The extension the uploaded blank is set for, written in lower case with the leading dot, and travelling in the  query string rather than in the form. It must match the extension of the uploaded file name. Only the  extensions the portal's built-in template set covers are accepted, and  `GET api/2.0/files/settings/defaulttemplate` returns exactly that list; an extension outside it leaves the  settings unchanged instead of failing. (required)
+     * @param  \SplFileObject $file The template document itself. Its file name must end with the extension named above, a PDF must be a fillable  form, and the body is capped at 100 MB - a larger one is refused while it is still streaming in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDefaultTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9965,8 +10363,8 @@ class SettingsApi
      * REST API Reference for uploadDefaultTemplate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-default-template/
      *
-     * @param  string $file_extension File extension of a template to replace (required)
-     * @param  \SplFileObject $file File to replace template with (required)
+     * @param  string $file_extension The extension the uploaded blank is set for, written in lower case with the leading dot, and travelling in the  query string rather than in the form. It must match the extension of the uploaded file name. Only the  extensions the portal's built-in template set covers are accepted, and  `GET api/2.0/files/settings/defaulttemplate` returns exactly that list; an extension outside it leaves the  settings unchanged instead of failing. (required)
+     * @param  \SplFileObject $file The template document itself. Its file name must end with the extension named above, a PDF must be a fillable  form, and the body is capped at 100 MB - a larger one is refused while it is still streaming in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDefaultTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10016,8 +10414,8 @@ class SettingsApi
     /**
      * Create request for operation 'uploadDefaultTemplate'
      *
-     * @param  string $file_extension File extension of a template to replace (required)
-     * @param  \SplFileObject $file File to replace template with (required)
+     * @param  string $file_extension The extension the uploaded blank is set for, written in lower case with the leading dot, and travelling in the  query string rather than in the form. It must match the extension of the uploaded file name. Only the  extensions the portal's built-in template set covers are accepted, and  `GET api/2.0/files/settings/defaulttemplate` returns exactly that list; an extension outside it leaves the  settings unchanged instead of failing. (required)
+     * @param  \SplFileObject $file The template document itself. Its file name must end with the extension named above, a PDF must be a fillable  form, and the body is capped at 100 MB - a larger one is refused while it is still streaming in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadDefaultTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

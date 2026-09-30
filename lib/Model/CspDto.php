@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CspDto Class Doc Comment
  *
  * @category Class
- * @description The CSP (Content Security Policy) parameters.
+ * @description The Content Security Policy of the portal: the domains an administrator allowed, and the header built from them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class CspDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domains
      *
-     * @param string[]|null $domains The list of CSP domains.
+     * @param string[]|null $domains The external hosts an administrator has allowed, each in the form it was saved in - a bare host, a host  with a scheme, or a wildcard such as `*.example.com`. An empty list means nobody has added one, not that  the portal serves no policy.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class CspDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets header
      *
-     * @param string|null $header The CSP header.
+     * @param string|null $header The complete policy value the portal sends to browsers, assembled from `domains` together with the  portal's own sources and the integrations it has switched on. It is therefore wider than `domains` alone,  and is filled in even while that list is empty.
      *
      * @return self
      */

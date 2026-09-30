@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomInvitationRequest Class Doc Comment
  *
  * @category Class
- * @description The request parameters for inviting users to the room.
+ * @description One batch of membership changes for a room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class RoomInvitationRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets invitations
      *
-     * @param \OpenAPI\Client\Model\RoomInvitation[]|null $invitations The collection of invitation parameters.
+     * @param \OpenAPI\Client\Model\RoomInvitation[]|null $invitations Who is added, changed or removed, one entry per subject. The same subject named twice keeps the level of the  last entry, and an empty list is accepted and changes nothing.
      *
      * @return self
      */
@@ -365,7 +365,7 @@ class RoomInvitationRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets notify
      *
-     * @param bool|null $notify Specifies whether to notify users about the shared room or not.
+     * @param bool|null $notify Whether the subjects that gained access are told about it by email. With it off the change is silent, which is  the usual choice when membership is synchronised from another system.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class RoomInvitationRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param string|null $message The message to send when notifying about the shared room.
+     * @param string|null $message The line added to the invitation email. It is used only while the notification is on, and it reaches nobody  whose access was removed.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class RoomInvitationRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets culture
      *
-     * @param string|null $culture The language of the room invitation.
+     * @param string|null $culture The language of the invitation email, as a portal culture name such as en-US. Leaving it out sends each  message in the language of its recipient.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class RoomInvitationRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets force
      *
-     * @param bool|null $force Specifies whether to forcibly delete a user with form roles from the room.
+     * @param bool|null $force Whether a member who still holds a role in an unfinished form is removed anyway. With it off such a removal is  refused and reported through the error of the answer, so the form can be reassigned first.
      *
      * @return self
      */

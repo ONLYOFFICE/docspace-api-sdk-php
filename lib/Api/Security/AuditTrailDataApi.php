@@ -161,12 +161,12 @@ class AuditTrailDataApi
     /**
      * Operation createAuditTrailReport
      *
-     * Start the audit trail report generation
+     * Start audit trail report
      *
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -182,12 +182,12 @@ class AuditTrailDataApi
     /**
      * Operation createAuditTrailReportWithHttpInfo
      *
-     * Start the audit trail report generation
+     * Start audit trail report
      *
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -326,12 +326,12 @@ class AuditTrailDataApi
     /**
      * Operation createAuditTrailReportAsync
      *
-     * Start the audit trail report generation
+     * Start audit trail report
      *
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -350,12 +350,12 @@ class AuditTrailDataApi
     /**
      * Operation createAuditTrailReportAsyncWithHttpInfo
      *
-     * Start the audit trail report generation
+     * Start audit trail report
      *
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -405,7 +405,7 @@ class AuditTrailDataApi
     /**
      * Create request for operation 'createAuditTrailReport'
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -514,21 +514,21 @@ class AuditTrailDataApi
     /**
      * Operation getAuditEventsByFilter
      *
-     * Get filtered audit trail data
+     * Get filtered audit events
      *
      * REST API Reference for getAuditEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user who triggered the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location where the audit event occurred. (optional)
-     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete). (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
-     * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
-     * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
-     * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
+     * @param  string|null $user_id The user who performed the action, given by portal user ID. Leave it at the empty GUID to keep the events of  every user. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module the recorded action belongs to, spelled as `GET api/2.0/security/audit/types` lists it under  `moduleTypes`. `GET api/2.0/security/audit/mappers` shows which module records which action. The default  value keeps every module. (optional)
+     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action made, spelled as `GET api/2.0/security/audit/types` lists it under  `actionTypes`. The default value keeps every kind. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The exact action recorded, spelled as the `messageAction` of `GET api/2.0/security/audit/mappers`. Naming  one narrows the answer to that single action and overrides `moduleType` and `actionType`, which stop  narrowing anything once it is set. (optional)
+     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The kind of object the action was performed on, spelled as `GET api/2.0/security/audit/types` lists it under  `entryTypes`. Pair it with `target` to filter by object without pinning a single action. (optional)
+     * @param  string|null $target The object the action was performed on, as the audit trail recorded it - a file name, a user account, a room  title. It is matched in full and exactly as stored, so it narrows the answer only when `action` or  `entryType` is set as well. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; a full page means there may be further matches beyond it. (optional)
+     * @param  int|null $start_index How many matching events to skip before the page begins, counting from the newest. Advance it by `count` to  walk backwards through the trail. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -544,21 +544,21 @@ class AuditTrailDataApi
     /**
      * Operation getAuditEventsByFilterWithHttpInfo
      *
-     * Get filtered audit trail data
+     * Get filtered audit events
      *
      * REST API Reference for getAuditEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user who triggered the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location where the audit event occurred. (optional)
-     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete). (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
-     * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
-     * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
-     * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
+     * @param  string|null $user_id The user who performed the action, given by portal user ID. Leave it at the empty GUID to keep the events of  every user. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module the recorded action belongs to, spelled as `GET api/2.0/security/audit/types` lists it under  `moduleTypes`. `GET api/2.0/security/audit/mappers` shows which module records which action. The default  value keeps every module. (optional)
+     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action made, spelled as `GET api/2.0/security/audit/types` lists it under  `actionTypes`. The default value keeps every kind. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The exact action recorded, spelled as the `messageAction` of `GET api/2.0/security/audit/mappers`. Naming  one narrows the answer to that single action and overrides `moduleType` and `actionType`, which stop  narrowing anything once it is set. (optional)
+     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The kind of object the action was performed on, spelled as `GET api/2.0/security/audit/types` lists it under  `entryTypes`. Pair it with `target` to filter by object without pinning a single action. (optional)
+     * @param  string|null $target The object the action was performed on, as the audit trail recorded it - a file name, a user account, a room  title. It is matched in full and exactly as stored, so it narrows the answer only when `action` or  `entryType` is set as well. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; a full page means there may be further matches beyond it. (optional)
+     * @param  int|null $start_index How many matching events to skip before the page begins, counting from the newest. Advance it by `count` to  walk backwards through the trail. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -697,21 +697,21 @@ class AuditTrailDataApi
     /**
      * Operation getAuditEventsByFilterAsync
      *
-     * Get filtered audit trail data
+     * Get filtered audit events
      *
      * REST API Reference for getAuditEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user who triggered the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location where the audit event occurred. (optional)
-     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete). (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
-     * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
-     * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
-     * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
+     * @param  string|null $user_id The user who performed the action, given by portal user ID. Leave it at the empty GUID to keep the events of  every user. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module the recorded action belongs to, spelled as `GET api/2.0/security/audit/types` lists it under  `moduleTypes`. `GET api/2.0/security/audit/mappers` shows which module records which action. The default  value keeps every module. (optional)
+     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action made, spelled as `GET api/2.0/security/audit/types` lists it under  `actionTypes`. The default value keeps every kind. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The exact action recorded, spelled as the `messageAction` of `GET api/2.0/security/audit/mappers`. Naming  one narrows the answer to that single action and overrides `moduleType` and `actionType`, which stop  narrowing anything once it is set. (optional)
+     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The kind of object the action was performed on, spelled as `GET api/2.0/security/audit/types` lists it under  `entryTypes`. Pair it with `target` to filter by object without pinning a single action. (optional)
+     * @param  string|null $target The object the action was performed on, as the audit trail recorded it - a file name, a user account, a room  title. It is matched in full and exactly as stored, so it narrows the answer only when `action` or  `entryType` is set as well. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; a full page means there may be further matches beyond it. (optional)
+     * @param  int|null $start_index How many matching events to skip before the page begins, counting from the newest. Advance it by `count` to  walk backwards through the trail. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -730,21 +730,21 @@ class AuditTrailDataApi
     /**
      * Operation getAuditEventsByFilterAsyncWithHttpInfo
      *
-     * Get filtered audit trail data
+     * Get filtered audit events
      *
      * REST API Reference for getAuditEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user who triggered the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location where the audit event occurred. (optional)
-     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete). (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
-     * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
-     * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
-     * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
+     * @param  string|null $user_id The user who performed the action, given by portal user ID. Leave it at the empty GUID to keep the events of  every user. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module the recorded action belongs to, spelled as `GET api/2.0/security/audit/types` lists it under  `moduleTypes`. `GET api/2.0/security/audit/mappers` shows which module records which action. The default  value keeps every module. (optional)
+     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action made, spelled as `GET api/2.0/security/audit/types` lists it under  `actionTypes`. The default value keeps every kind. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The exact action recorded, spelled as the `messageAction` of `GET api/2.0/security/audit/mappers`. Naming  one narrows the answer to that single action and overrides `moduleType` and `actionType`, which stop  narrowing anything once it is set. (optional)
+     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The kind of object the action was performed on, spelled as `GET api/2.0/security/audit/types` lists it under  `entryTypes`. Pair it with `target` to filter by object without pinning a single action. (optional)
+     * @param  string|null $target The object the action was performed on, as the audit trail recorded it - a file name, a user account, a room  title. It is matched in full and exactly as stored, so it narrows the answer only when `action` or  `entryType` is set as well. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; a full page means there may be further matches beyond it. (optional)
+     * @param  int|null $start_index How many matching events to skip before the page begins, counting from the newest. Advance it by `count` to  walk backwards through the trail. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -794,16 +794,16 @@ class AuditTrailDataApi
     /**
      * Create request for operation 'getAuditEventsByFilter'
      *
-     * @param  string|null $user_id The ID of the user who triggered the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location where the audit event occurred. (optional)
-     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete). (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The specific action that occurred within the audit event. (optional)
-     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The type of audit entry (e.g., Folder, User, File). (optional)
-     * @param  string|null $target The target object affected by the audit event (e.g., document ID, user account). (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering audit events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering audit events. (optional)
-     * @param  int|null $count The maximum number of audit event records to retrieve. (optional)
-     * @param  int|null $start_index The index of the first audit event record to retrieve in a paged query. (optional)
+     * @param  string|null $user_id The user who performed the action, given by portal user ID. Leave it at the empty GUID to keep the events of  every user. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module the recorded action belongs to, spelled as `GET api/2.0/security/audit/types` lists it under  `moduleTypes`. `GET api/2.0/security/audit/mappers` shows which module records which action. The default  value keeps every module. (optional)
+     * @param  \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action made, spelled as `GET api/2.0/security/audit/types` lists it under  `actionTypes`. The default value keeps every kind. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The exact action recorded, spelled as the `messageAction` of `GET api/2.0/security/audit/mappers`. Naming  one narrows the answer to that single action and overrides `moduleType` and `actionType`, which stop  narrowing anything once it is set. (optional)
+     * @param  \OpenAPI\Client\Model\EntryType|null $entry_type The kind of object the action was performed on, spelled as `GET api/2.0/security/audit/types` lists it under  `entryTypes`. Pair it with `target` to filter by object without pinning a single action. (optional)
+     * @param  string|null $target The object the action was performed on, as the audit trail recorded it - a file name, a user account, a room  title. It is matched in full and exactly as stored, so it narrows the answer only when `action` or  `entryType` is set as well. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; a full page means there may be further matches beyond it. (optional)
+     * @param  int|null $start_index How many matching events to skip before the page begins, counting from the newest. Advance it by `count` to  walk backwards through the trail. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1010,7 +1010,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditSettings
      *
-     * Get the audit trail settings
+     * Get audit lifetime settings
      *
      * REST API Reference for getAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-settings/
@@ -1030,7 +1030,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditSettingsWithHttpInfo
      *
-     * Get the audit trail settings
+     * Get audit lifetime settings
      *
      * REST API Reference for getAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-settings/
@@ -1159,7 +1159,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditSettingsAsync
      *
-     * Get the audit trail settings
+     * Get audit lifetime settings
      *
      * REST API Reference for getAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-settings/
@@ -1182,7 +1182,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditSettingsAsyncWithHttpInfo
      *
-     * Get the audit trail settings
+     * Get audit lifetime settings
      *
      * REST API Reference for getAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-settings/
@@ -1339,13 +1339,13 @@ class AuditTrailDataApi
      * REST API Reference for getAuditTrailMappers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-mappers/
      *
-     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The type of product related to the audit trail. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location associated with the audit trail. (optional)
+     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The product to keep, spelled as `GET api/2.0/security/audit/types` lists it under `productTypes`. Omitting  it keeps every product; a value no product matches yields an empty list rather than an error. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module to keep inside the products that survive `productType`, spelled as  `GET api/2.0/security/audit/types` lists it under `moduleTypes`. Omitting it keeps every module of those  products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditTrailMappers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailMappers($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1361,13 +1361,13 @@ class AuditTrailDataApi
      * REST API Reference for getAuditTrailMappers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-mappers/
      *
-     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The type of product related to the audit trail. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location associated with the audit trail. (optional)
+     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The product to keep, spelled as `GET api/2.0/security/audit/types` lists it under `productTypes`. Omitting  it keeps every product; a value no product matches yields an empty list rather than an error. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module to keep inside the products that survive `productType`, spelled as  `GET api/2.0/security/audit/types` lists it under `moduleTypes`. Omitting it keeps every module of those  products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditTrailMappers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailMappersWithHttpInfo($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1399,7 +1399,7 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1445,7 +1445,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
                 $request,
                 $response,
             );
@@ -1454,7 +1454,7 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1506,8 +1506,8 @@ class AuditTrailDataApi
      * REST API Reference for getAuditTrailMappers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-mappers/
      *
-     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The type of product related to the audit trail. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location associated with the audit trail. (optional)
+     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The product to keep, spelled as `GET api/2.0/security/audit/types` lists it under `productTypes`. Omitting  it keeps every product; a value no product matches yields an empty list rather than an error. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module to keep inside the products that survive `productType`, spelled as  `GET api/2.0/security/audit/types` lists it under `moduleTypes`. Omitting it keeps every module of those  products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditTrailMappers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1531,8 +1531,8 @@ class AuditTrailDataApi
      * REST API Reference for getAuditTrailMappers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-mappers/
      *
-     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The type of product related to the audit trail. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location associated with the audit trail. (optional)
+     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The product to keep, spelled as `GET api/2.0/security/audit/types` lists it under `productTypes`. Omitting  it keeps every product; a value no product matches yields an empty list rather than an error. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module to keep inside the products that survive `productType`, spelled as  `GET api/2.0/security/audit/types` lists it under `moduleTypes`. Omitting it keeps every module of those  products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditTrailMappers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1540,7 +1540,7 @@ class AuditTrailDataApi
      */
     public function getAuditTrailMappersAsyncWithHttpInfo($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper';
         $request = $this->getAuditTrailMappersRequest($product_type, $module_type, $contentType);
 
         return $this->client
@@ -1582,8 +1582,8 @@ class AuditTrailDataApi
     /**
      * Create request for operation 'getAuditTrailMappers'
      *
-     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The type of product related to the audit trail. (optional)
-     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The location associated with the audit trail. (optional)
+     * @param  \OpenAPI\Client\Model\ProductType|null $product_type The product to keep, spelled as `GET api/2.0/security/audit/types` lists it under `productTypes`. Omitting  it keeps every product; a value no product matches yields an empty list rather than an error. (optional)
+     * @param  \OpenAPI\Client\Model\LocationType|null $module_type The module to keep inside the products that survive `productType`, spelled as  `GET api/2.0/security/audit/types` lists it under `moduleTypes`. Omitting it keeps every module of those  products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuditTrailMappers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1702,7 +1702,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditTrailReport
      *
-     * Get the audit trail report generation status
+     * Get audit trail report status
      *
      * REST API Reference for getAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-report/
@@ -1722,7 +1722,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditTrailReportWithHttpInfo
      *
-     * Get the audit trail report generation status
+     * Get audit trail report status
      *
      * REST API Reference for getAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-report/
@@ -1851,7 +1851,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditTrailReportAsync
      *
-     * Get the audit trail report generation status
+     * Get audit trail report status
      *
      * REST API Reference for getAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-report/
@@ -1874,7 +1874,7 @@ class AuditTrailDataApi
     /**
      * Operation getAuditTrailReportAsyncWithHttpInfo
      *
-     * Get the audit trail report generation status
+     * Get audit trail report status
      *
      * REST API Reference for getAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-report/
@@ -2035,7 +2035,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AuditTrailTypesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailTypes(string $contentType = self::contentTypes['getAuditTrailTypes'][0])
     {
@@ -2055,7 +2055,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditTrailTypesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailTypesWithHttpInfo(string $contentType = self::contentTypes['getAuditTrailTypes'][0])
     {
@@ -2087,7 +2087,7 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailTypesWrapper',
                         $request,
                         $response,
                     );
@@ -2127,7 +2127,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\AuditTrailTypesWrapper',
                 $request,
                 $response,
             );
@@ -2136,7 +2136,7 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailTypesWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2210,7 +2210,7 @@ class AuditTrailDataApi
      */
     public function getAuditTrailTypesAsyncWithHttpInfo(string $contentType = self::contentTypes['getAuditTrailTypes'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\AuditTrailTypesWrapper';
         $request = $this->getAuditTrailTypesRequest($contentType);
 
         return $this->client
@@ -2350,7 +2350,7 @@ class AuditTrailDataApi
     /**
      * Operation getLastAuditEvents
      *
-     * Get audit trail data
+     * Get recent audit events
      *
      * REST API Reference for getLastAuditEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-audit-events/
@@ -2370,7 +2370,7 @@ class AuditTrailDataApi
     /**
      * Operation getLastAuditEventsWithHttpInfo
      *
-     * Get audit trail data
+     * Get recent audit events
      *
      * REST API Reference for getLastAuditEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-audit-events/
@@ -2499,7 +2499,7 @@ class AuditTrailDataApi
     /**
      * Operation getLastAuditEventsAsync
      *
-     * Get audit trail data
+     * Get recent audit events
      *
      * REST API Reference for getLastAuditEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-audit-events/
@@ -2522,7 +2522,7 @@ class AuditTrailDataApi
     /**
      * Operation getLastAuditEventsAsyncWithHttpInfo
      *
-     * Get audit trail data
+     * Get recent audit events
      *
      * REST API Reference for getLastAuditEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-audit-events/
@@ -2674,7 +2674,7 @@ class AuditTrailDataApi
     /**
      * Operation setAuditSettings
      *
-     * Set the audit trail settings
+     * Set audit lifetime settings
      *
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
@@ -2695,7 +2695,7 @@ class AuditTrailDataApi
     /**
      * Operation setAuditSettingsWithHttpInfo
      *
-     * Set the audit trail settings
+     * Set audit lifetime settings
      *
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
@@ -2825,7 +2825,7 @@ class AuditTrailDataApi
     /**
      * Operation setAuditSettingsAsync
      *
-     * Set the audit trail settings
+     * Set audit lifetime settings
      *
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
@@ -2849,7 +2849,7 @@ class AuditTrailDataApi
     /**
      * Operation setAuditSettingsAsyncWithHttpInfo
      *
-     * Set the audit trail settings
+     * Set audit lifetime settings
      *
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
@@ -3011,7 +3011,7 @@ class AuditTrailDataApi
     /**
      * Operation terminateAuditTrailReport
      *
-     * Terminate the audit trail report generation
+     * Terminate audit trail report
      *
      * REST API Reference for terminateAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-audit-trail-report/
@@ -3030,7 +3030,7 @@ class AuditTrailDataApi
     /**
      * Operation terminateAuditTrailReportWithHttpInfo
      *
-     * Terminate the audit trail report generation
+     * Terminate audit trail report
      *
      * REST API Reference for terminateAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-audit-trail-report/
@@ -3105,7 +3105,7 @@ class AuditTrailDataApi
     /**
      * Operation terminateAuditTrailReportAsync
      *
-     * Terminate the audit trail report generation
+     * Terminate audit trail report
      *
      * REST API Reference for terminateAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-audit-trail-report/
@@ -3128,7 +3128,7 @@ class AuditTrailDataApi
     /**
      * Operation terminateAuditTrailReportAsyncWithHttpInfo
      *
-     * Terminate the audit trail report generation
+     * Terminate audit trail report
      *
      * REST API Reference for terminateAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-audit-trail-report/

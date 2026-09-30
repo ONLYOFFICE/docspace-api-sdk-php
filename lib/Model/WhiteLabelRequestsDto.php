@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WhiteLabelRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring the white label branding settings.
+ * @description The branding a portal is given: the wordmark, the logo images, or both.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +318,7 @@ class WhiteLabelRequestsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets logo_text
      *
-     * @param string|null $logo_text The text to display alongside or in place of the logo.
+     * @param string|null $logo_text The wordmark printed next to or instead of a logo image, on the login page, in the editors and in  notification letters. An empty or blank value, and the built-in `ONLYOFFICE` itself, clear the setting rather  than store it. The text is not rendered into the logo images, which carry their own wordmark.
      *
      * @return self
      */
@@ -359,7 +359,7 @@ class WhiteLabelRequestsDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\ItemKeyValuePairStringLogoRequestsDto[]|null $logo The white label tenant IDs with their logos (light or dark).
+     * @param \OpenAPI\Client\Model\ItemKeyValuePairStringLogoRequestsDto[]|null $logo The logo images to store, each entry naming a logo slot in its `key` - the numeric `type` published by  `GET api/2.0/settings/whitelabel/logos` - and carrying the two theme images in its value. A slot left out of  the list keeps the image it has, so this is a partial update rather than a replacement of the whole branding.  Saving the login-page slot also rebuilds the notification logo from it.
      *
      * @return self
      */

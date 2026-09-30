@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebItemsSecurityRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring security settings across multiple web modules.
+ * @description The modules switched on or off together, one entry per module.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class WebItemsSecurityRequestsDto implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets items
      *
-     * @param \OpenAPI\Client\Model\ItemKeyValuePairStringBoolean[]|null $items The list of module security configurations.
+     * @param \OpenAPI\Client\Model\ItemKeyValuePairStringBoolean[]|null $items The modules to switch, each entry pairing a module GUID as its `key` with the new enabled flag as its  `value`. A key that is not a GUID fails the whole request as invalid, and a module listed twice is applied  once, from its first entry. No allow-list travels here: switching a product module on restores the users and  groups it was last restricted to, and everything else is stored as a plain allow or deny for everyone.
      *
      * @return self
      */

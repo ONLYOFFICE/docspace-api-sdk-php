@@ -163,7 +163,7 @@ class DocsCloudApi
     /**
      * Operation calculateDevPack
      *
-     * Calculate the DocsCloud subscription switch cost
+     * Calculate the Docs Connect Dev Pack switch cost
      *
      * REST API Reference for calculateDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/calculate-dev-pack/
@@ -184,7 +184,7 @@ class DocsCloudApi
     /**
      * Operation calculateDevPackWithHttpInfo
      *
-     * Calculate the DocsCloud subscription switch cost
+     * Calculate the Docs Connect Dev Pack switch cost
      *
      * REST API Reference for calculateDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/calculate-dev-pack/
@@ -314,7 +314,7 @@ class DocsCloudApi
     /**
      * Operation calculateDevPackAsync
      *
-     * Calculate the DocsCloud subscription switch cost
+     * Calculate the Docs Connect Dev Pack switch cost
      *
      * REST API Reference for calculateDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/calculate-dev-pack/
@@ -338,7 +338,7 @@ class DocsCloudApi
     /**
      * Operation calculateDevPackAsyncWithHttpInfo
      *
-     * Calculate the DocsCloud subscription switch cost
+     * Calculate the Docs Connect Dev Pack switch cost
      *
      * REST API Reference for calculateDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/calculate-dev-pack/
@@ -500,7 +500,7 @@ class DocsCloudApi
     /**
      * Operation createTenantQuotaReport
      *
-     * Start the DocsCloud tenant quota report generation
+     * Start the Docs Connect quota report
      *
      * REST API Reference for createTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-tenant-quota-report/
@@ -520,7 +520,7 @@ class DocsCloudApi
     /**
      * Operation createTenantQuotaReportWithHttpInfo
      *
-     * Start the DocsCloud tenant quota report generation
+     * Start the Docs Connect quota report
      *
      * REST API Reference for createTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-tenant-quota-report/
@@ -649,7 +649,7 @@ class DocsCloudApi
     /**
      * Operation createTenantQuotaReportAsync
      *
-     * Start the DocsCloud tenant quota report generation
+     * Start the Docs Connect quota report
      *
      * REST API Reference for createTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-tenant-quota-report/
@@ -672,7 +672,7 @@ class DocsCloudApi
     /**
      * Operation createTenantQuotaReportAsyncWithHttpInfo
      *
-     * Start the DocsCloud tenant quota report generation
+     * Start the Docs Connect quota report
      *
      * REST API Reference for createTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-tenant-quota-report/
@@ -824,12 +824,12 @@ class DocsCloudApi
     /**
      * Operation getTenant
      *
-     * Get the DocsCloud tenant
+     * Get the Docs Connect tenant
      *
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the tenant from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old, or up to a minute old while the portal has no tenant. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -845,12 +845,12 @@ class DocsCloudApi
     /**
      * Operation getTenantWithHttpInfo
      *
-     * Get the DocsCloud tenant
+     * Get the Docs Connect tenant
      *
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the tenant from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old, or up to a minute old while the portal has no tenant. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -989,12 +989,12 @@ class DocsCloudApi
     /**
      * Operation getTenantAsync
      *
-     * Get the DocsCloud tenant
+     * Get the Docs Connect tenant
      *
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the tenant from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old, or up to a minute old while the portal has no tenant. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1013,12 +1013,12 @@ class DocsCloudApi
     /**
      * Operation getTenantAsyncWithHttpInfo
      *
-     * Get the DocsCloud tenant
+     * Get the Docs Connect tenant
      *
      * REST API Reference for getTenant Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the tenant from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old, or up to a minute old while the portal has no tenant. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1068,7 +1068,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenant'
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the tenant from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old, or up to a minute old while the portal has no tenant. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenant'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1177,12 +1177,12 @@ class DocsCloudApi
     /**
      * Operation getTenantConfig
      *
-     * Get the DocsCloud tenant configuration
+     * Get the Docs Connect tenant configuration
      *
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the configuration from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1198,12 +1198,12 @@ class DocsCloudApi
     /**
      * Operation getTenantConfigWithHttpInfo
      *
-     * Get the DocsCloud tenant configuration
+     * Get the Docs Connect tenant configuration
      *
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the configuration from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1328,12 +1328,12 @@ class DocsCloudApi
     /**
      * Operation getTenantConfigAsync
      *
-     * Get the DocsCloud tenant configuration
+     * Get the Docs Connect tenant configuration
      *
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the configuration from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1352,12 +1352,12 @@ class DocsCloudApi
     /**
      * Operation getTenantConfigAsyncWithHttpInfo
      *
-     * Get the DocsCloud tenant configuration
+     * Get the Docs Connect tenant configuration
      *
      * REST API Reference for getTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-config/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the configuration from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1407,7 +1407,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantConfig'
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant configuration from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the configuration from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to an hour old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1516,12 +1516,12 @@ class DocsCloudApi
     /**
      * Operation getTenantInfo
      *
-     * Get the DocsCloud tenant information
+     * Get the Docs Connect tenant information
      *
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the license, server and usage information from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1537,12 +1537,12 @@ class DocsCloudApi
     /**
      * Operation getTenantInfoWithHttpInfo
      *
-     * Get the DocsCloud tenant information
+     * Get the Docs Connect tenant information
      *
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the license, server and usage information from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1667,12 +1667,12 @@ class DocsCloudApi
     /**
      * Operation getTenantInfoAsync
      *
-     * Get the DocsCloud tenant information
+     * Get the Docs Connect tenant information
      *
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the license, server and usage information from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1691,12 +1691,12 @@ class DocsCloudApi
     /**
      * Operation getTenantInfoAsyncWithHttpInfo
      *
-     * Get the DocsCloud tenant information
+     * Get the Docs Connect tenant information
      *
      * REST API Reference for getTenantInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-info/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the license, server and usage information from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1746,7 +1746,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantInfo'
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the tenant information from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the license, server and usage information from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1855,12 +1855,12 @@ class DocsCloudApi
     /**
      * Operation getTenantQuota
      *
-     * Get the DocsCloud tenant quota
+     * Get the Docs Connect tenant quota
      *
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the user quota from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1876,12 +1876,12 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaWithHttpInfo
      *
-     * Get the DocsCloud tenant quota
+     * Get the Docs Connect tenant quota
      *
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the user quota from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2006,12 +2006,12 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaAsync
      *
-     * Get the DocsCloud tenant quota
+     * Get the Docs Connect tenant quota
      *
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the user quota from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2030,12 +2030,12 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaAsyncWithHttpInfo
      *
-     * Get the DocsCloud tenant quota
+     * Get the Docs Connect tenant quota
      *
      * REST API Reference for getTenantQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the user quota from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2085,7 +2085,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantQuota'
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the user quota from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the user quota from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2194,7 +2194,7 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaReport
      *
-     * Get the status of the DocsCloud tenant quota report generation
+     * Get the Docs Connect quota report status
      *
      * REST API Reference for getTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota-report/
@@ -2214,7 +2214,7 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaReportWithHttpInfo
      *
-     * Get the status of the DocsCloud tenant quota report generation
+     * Get the Docs Connect quota report status
      *
      * REST API Reference for getTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota-report/
@@ -2343,7 +2343,7 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaReportAsync
      *
-     * Get the status of the DocsCloud tenant quota report generation
+     * Get the Docs Connect quota report status
      *
      * REST API Reference for getTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota-report/
@@ -2366,7 +2366,7 @@ class DocsCloudApi
     /**
      * Operation getTenantQuotaReportAsyncWithHttpInfo
      *
-     * Get the status of the DocsCloud tenant quota report generation
+     * Get the Docs Connect quota report status
      *
      * REST API Reference for getTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-quota-report/
@@ -2518,12 +2518,12 @@ class DocsCloudApi
     /**
      * Operation getTenantUsage
      *
-     * Get the DocsCloud tenant usage
+     * Get the Docs Connect tenant usage
      *
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the usage statistics from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2539,12 +2539,12 @@ class DocsCloudApi
     /**
      * Operation getTenantUsageWithHttpInfo
      *
-     * Get the DocsCloud tenant usage
+     * Get the Docs Connect tenant usage
      *
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the usage statistics from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2669,12 +2669,12 @@ class DocsCloudApi
     /**
      * Operation getTenantUsageAsync
      *
-     * Get the DocsCloud tenant usage
+     * Get the Docs Connect tenant usage
      *
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the usage statistics from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2693,12 +2693,12 @@ class DocsCloudApi
     /**
      * Operation getTenantUsageAsyncWithHttpInfo
      *
-     * Get the DocsCloud tenant usage
+     * Get the Docs Connect tenant usage
      *
      * REST API Reference for getTenantUsage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-usage/
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the usage statistics from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2748,7 +2748,7 @@ class DocsCloudApi
     /**
      * Create request for operation 'getTenantUsage'
      *
-     * @param  bool|null $refresh Specifies whether to bypass the cache and request the usage statistics from DocsCloud again. (optional, default to false)
+     * @param  bool|null $refresh Pass `true` to skip the cached copy and request the usage statistics from Docs Connect again, replacing the cached one; with the default `false` the answer may be up to a minute old. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTenantUsage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2857,7 +2857,7 @@ class DocsCloudApi
     /**
      * Operation startDocsCloudTrial
      *
-     * Start the DocsCloud trial
+     * Start the Docs Connect trial
      *
      * REST API Reference for startDocsCloudTrial Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-docs-cloud-trial/
@@ -2877,7 +2877,7 @@ class DocsCloudApi
     /**
      * Operation startDocsCloudTrialWithHttpInfo
      *
-     * Start the DocsCloud trial
+     * Start the Docs Connect trial
      *
      * REST API Reference for startDocsCloudTrial Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-docs-cloud-trial/
@@ -3006,7 +3006,7 @@ class DocsCloudApi
     /**
      * Operation startDocsCloudTrialAsync
      *
-     * Start the DocsCloud trial
+     * Start the Docs Connect trial
      *
      * REST API Reference for startDocsCloudTrial Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-docs-cloud-trial/
@@ -3029,7 +3029,7 @@ class DocsCloudApi
     /**
      * Operation startDocsCloudTrialAsyncWithHttpInfo
      *
-     * Start the DocsCloud trial
+     * Start the Docs Connect trial
      *
      * REST API Reference for startDocsCloudTrial Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-docs-cloud-trial/
@@ -3181,7 +3181,7 @@ class DocsCloudApi
     /**
      * Operation switchToDevPack
      *
-     * Switch the DocsCloud subscription to DocsCloudDevPack
+     * Switch Docs Connect to Docs Connect Dev Pack
      *
      * REST API Reference for switchToDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/switch-to-dev-pack/
@@ -3202,7 +3202,7 @@ class DocsCloudApi
     /**
      * Operation switchToDevPackWithHttpInfo
      *
-     * Switch the DocsCloud subscription to DocsCloudDevPack
+     * Switch Docs Connect to Docs Connect Dev Pack
      *
      * REST API Reference for switchToDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/switch-to-dev-pack/
@@ -3332,7 +3332,7 @@ class DocsCloudApi
     /**
      * Operation switchToDevPackAsync
      *
-     * Switch the DocsCloud subscription to DocsCloudDevPack
+     * Switch Docs Connect to Docs Connect Dev Pack
      *
      * REST API Reference for switchToDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/switch-to-dev-pack/
@@ -3356,7 +3356,7 @@ class DocsCloudApi
     /**
      * Operation switchToDevPackAsyncWithHttpInfo
      *
-     * Switch the DocsCloud subscription to DocsCloudDevPack
+     * Switch Docs Connect to Docs Connect Dev Pack
      *
      * REST API Reference for switchToDevPack Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/switch-to-dev-pack/
@@ -3518,7 +3518,7 @@ class DocsCloudApi
     /**
      * Operation terminateTenantQuotaReport
      *
-     * Terminate the DocsCloud tenant quota report generation
+     * Terminate the Docs Connect quota report
      *
      * REST API Reference for terminateTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tenant-quota-report/
@@ -3537,7 +3537,7 @@ class DocsCloudApi
     /**
      * Operation terminateTenantQuotaReportWithHttpInfo
      *
-     * Terminate the DocsCloud tenant quota report generation
+     * Terminate the Docs Connect quota report
      *
      * REST API Reference for terminateTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tenant-quota-report/
@@ -3612,7 +3612,7 @@ class DocsCloudApi
     /**
      * Operation terminateTenantQuotaReportAsync
      *
-     * Terminate the DocsCloud tenant quota report generation
+     * Terminate the Docs Connect quota report
      *
      * REST API Reference for terminateTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tenant-quota-report/
@@ -3635,7 +3635,7 @@ class DocsCloudApi
     /**
      * Operation terminateTenantQuotaReportAsyncWithHttpInfo
      *
-     * Terminate the DocsCloud tenant quota report generation
+     * Terminate the Docs Connect quota report
      *
      * REST API Reference for terminateTenantQuotaReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tenant-quota-report/
@@ -3774,7 +3774,7 @@ class DocsCloudApi
     /**
      * Operation updateTenantConfig
      *
-     * Update the DocsCloud tenant configuration
+     * Update the Docs Connect tenant configuration
      *
      * REST API Reference for updateTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tenant-config/
@@ -3795,7 +3795,7 @@ class DocsCloudApi
     /**
      * Operation updateTenantConfigWithHttpInfo
      *
-     * Update the DocsCloud tenant configuration
+     * Update the Docs Connect tenant configuration
      *
      * REST API Reference for updateTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tenant-config/
@@ -3925,7 +3925,7 @@ class DocsCloudApi
     /**
      * Operation updateTenantConfigAsync
      *
-     * Update the DocsCloud tenant configuration
+     * Update the Docs Connect tenant configuration
      *
      * REST API Reference for updateTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tenant-config/
@@ -3949,7 +3949,7 @@ class DocsCloudApi
     /**
      * Operation updateTenantConfigAsyncWithHttpInfo
      *
-     * Update the DocsCloud tenant configuration
+     * Update the Docs Connect tenant configuration
      *
      * REST API Reference for updateTenantConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tenant-config/

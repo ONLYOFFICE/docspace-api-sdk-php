@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileShareParams Class Doc Comment
  *
  * @category Class
- * @description The collection of file sharing parameters.
+ * @description One sharing entry: an account, a group or an email address, and the access level it is given.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -321,7 +321,7 @@ class FileShareParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email The email address.
+     * @param string|null $email The address of somebody who has no portal account yet. An invitation is sent to it and an account is created  once it is accepted, so this is the field to use instead of an account identifier when the person is new to  the portal.
      *
      * @return self
      */
@@ -352,7 +352,7 @@ class FileShareParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets share_to
      *
-     * @param string|null $share_to The ID of the user to whom the file will be shared.
+     * @param string|null $share_to The account or the group the entry is about, taken from the portal people and group listings. Leave it out and  give an email address instead to share with somebody who has no account yet.
      *
      * @return self
      */
@@ -379,7 +379,7 @@ class FileShareParams implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets access
      *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The sharing access rights.
+     * @param \OpenAPI\Client\Model\FileShare|null $access What the subject may do with the shared item. The value 0 takes the access away again, and which of the other  levels are accepted depends on what is being shared.
      *
      * @return self
      */

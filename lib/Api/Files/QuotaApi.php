@@ -138,16 +138,16 @@ class QuotaApi
      * REST API Reference for resetRoomQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-room-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger|null $update_rooms_room_ids_request_dto_integer update_rooms_room_ids_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto|null $update_rooms_room_ids_request_dto update_rooms_room_ids_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetRoomQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function resetRoomQuota($update_rooms_room_ids_request_dto_integer = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
+    public function resetRoomQuota($update_rooms_room_ids_request_dto = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
     {
-        list($response) = $this->resetRoomQuotaWithHttpInfo($update_rooms_room_ids_request_dto_integer, $contentType);
+        list($response) = $this->resetRoomQuotaWithHttpInfo($update_rooms_room_ids_request_dto, $contentType);
         return $response;
     }
 
@@ -159,16 +159,16 @@ class QuotaApi
      * REST API Reference for resetRoomQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-room-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger|null $update_rooms_room_ids_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto|null $update_rooms_room_ids_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetRoomQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function resetRoomQuotaWithHttpInfo($update_rooms_room_ids_request_dto_integer = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
+    public function resetRoomQuotaWithHttpInfo($update_rooms_room_ids_request_dto = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
     {
-        $request = $this->resetRoomQuotaRequest($update_rooms_room_ids_request_dto_integer, $contentType);
+        $request = $this->resetRoomQuotaRequest($update_rooms_room_ids_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,7 +196,7 @@ class QuotaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderArrayWrapper',
                         $request,
                         $response,
                     );
@@ -242,7 +242,7 @@ class QuotaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\FolderArrayWrapper',
                 $request,
                 $response,
             );
@@ -251,7 +251,7 @@ class QuotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -303,15 +303,15 @@ class QuotaApi
      * REST API Reference for resetRoomQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-room-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger|null $update_rooms_room_ids_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto|null $update_rooms_room_ids_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetRoomQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetRoomQuotaAsync($update_rooms_room_ids_request_dto_integer = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
+    public function resetRoomQuotaAsync($update_rooms_room_ids_request_dto = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
     {
-        return $this->resetRoomQuotaAsyncWithHttpInfo($update_rooms_room_ids_request_dto_integer, $contentType)
+        return $this->resetRoomQuotaAsyncWithHttpInfo($update_rooms_room_ids_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -327,16 +327,16 @@ class QuotaApi
      * REST API Reference for resetRoomQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-room-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger|null $update_rooms_room_ids_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto|null $update_rooms_room_ids_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetRoomQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetRoomQuotaAsyncWithHttpInfo($update_rooms_room_ids_request_dto_integer = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
+    public function resetRoomQuotaAsyncWithHttpInfo($update_rooms_room_ids_request_dto = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerArrayWrapper';
-        $request = $this->resetRoomQuotaRequest($update_rooms_room_ids_request_dto_integer, $contentType);
+        $returnType = '\OpenAPI\Client\Model\FolderArrayWrapper';
+        $request = $this->resetRoomQuotaRequest($update_rooms_room_ids_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -377,13 +377,13 @@ class QuotaApi
     /**
      * Create request for operation 'resetRoomQuota'
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger|null $update_rooms_room_ids_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto|null $update_rooms_room_ids_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetRoomQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function resetRoomQuotaRequest($update_rooms_room_ids_request_dto_integer = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
+    public function resetRoomQuotaRequest($update_rooms_room_ids_request_dto = null, string $contentType = self::contentTypes['resetRoomQuota'][0])
     {
 
 
@@ -406,12 +406,12 @@ class QuotaApi
         );
 
         // for model (json/xml)
-        if (isset($update_rooms_room_ids_request_dto_integer)) {
+        if (isset($update_rooms_room_ids_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_rooms_room_ids_request_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_rooms_room_ids_request_dto));
             } else {
-                $httpBody = $update_rooms_room_ids_request_dto_integer;
+                $httpBody = $update_rooms_room_ids_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -489,16 +489,16 @@ class QuotaApi
      * REST API Reference for updateRoomsQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-rooms-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger|null $update_rooms_quota_request_dto_integer update_rooms_quota_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto|null $update_rooms_quota_request_dto update_rooms_quota_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomsQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateRoomsQuota($update_rooms_quota_request_dto_integer = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
+    public function updateRoomsQuota($update_rooms_quota_request_dto = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
     {
-        list($response) = $this->updateRoomsQuotaWithHttpInfo($update_rooms_quota_request_dto_integer, $contentType);
+        list($response) = $this->updateRoomsQuotaWithHttpInfo($update_rooms_quota_request_dto, $contentType);
         return $response;
     }
 
@@ -510,16 +510,16 @@ class QuotaApi
      * REST API Reference for updateRoomsQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-rooms-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger|null $update_rooms_quota_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto|null $update_rooms_quota_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomsQuota'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateRoomsQuotaWithHttpInfo($update_rooms_quota_request_dto_integer = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
+    public function updateRoomsQuotaWithHttpInfo($update_rooms_quota_request_dto = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
     {
-        $request = $this->updateRoomsQuotaRequest($update_rooms_quota_request_dto_integer, $contentType);
+        $request = $this->updateRoomsQuotaRequest($update_rooms_quota_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -547,7 +547,7 @@ class QuotaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderArrayWrapper',
                         $request,
                         $response,
                     );
@@ -593,7 +593,7 @@ class QuotaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\FolderArrayWrapper',
                 $request,
                 $response,
             );
@@ -602,7 +602,7 @@ class QuotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FolderArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -654,15 +654,15 @@ class QuotaApi
      * REST API Reference for updateRoomsQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-rooms-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger|null $update_rooms_quota_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto|null $update_rooms_quota_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomsQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRoomsQuotaAsync($update_rooms_quota_request_dto_integer = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
+    public function updateRoomsQuotaAsync($update_rooms_quota_request_dto = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
     {
-        return $this->updateRoomsQuotaAsyncWithHttpInfo($update_rooms_quota_request_dto_integer, $contentType)
+        return $this->updateRoomsQuotaAsyncWithHttpInfo($update_rooms_quota_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -678,16 +678,16 @@ class QuotaApi
      * REST API Reference for updateRoomsQuota Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-rooms-quota/
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger|null $update_rooms_quota_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto|null $update_rooms_quota_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomsQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRoomsQuotaAsyncWithHttpInfo($update_rooms_quota_request_dto_integer = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
+    public function updateRoomsQuotaAsyncWithHttpInfo($update_rooms_quota_request_dto = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderIntegerArrayWrapper';
-        $request = $this->updateRoomsQuotaRequest($update_rooms_quota_request_dto_integer, $contentType);
+        $returnType = '\OpenAPI\Client\Model\FolderArrayWrapper';
+        $request = $this->updateRoomsQuotaRequest($update_rooms_quota_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -728,13 +728,13 @@ class QuotaApi
     /**
      * Create request for operation 'updateRoomsQuota'
      *
-     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger|null $update_rooms_quota_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto|null $update_rooms_quota_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRoomsQuota'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRoomsQuotaRequest($update_rooms_quota_request_dto_integer = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
+    public function updateRoomsQuotaRequest($update_rooms_quota_request_dto = null, string $contentType = self::contentTypes['updateRoomsQuota'][0])
     {
 
 
@@ -757,12 +757,12 @@ class QuotaApi
         );
 
         // for model (json/xml)
-        if (isset($update_rooms_quota_request_dto_integer)) {
+        if (isset($update_rooms_quota_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_rooms_quota_request_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_rooms_quota_request_dto));
             } else {
-                $httpBody = $update_rooms_quota_request_dto_integer;
+                $httpBody = $update_rooms_quota_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

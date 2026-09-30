@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LogoRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for the theme-specific logo configurations.
+ * @description The two theme variants of one branding logo.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class LogoRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets light
      *
-     * @param string|null $light The URL or base64-encoded image data for the light theme logo.
+     * @param string|null $light The image used on a light background, either as a `data:image/png;base64,...` payload - `png`, `jpg` and  `svg` are accepted - or as the name of a file already put in the temporary store.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class LogoRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dark
      *
-     * @param string|null $dark The URL or base64-encoded image data for the dark theme logo.
+     * @param string|null $dark The image used on a dark background, in the same two forms as `light`. It is only stored for the slots that  have a dark variant and is ignored for the favicon and the editor logos.
      *
      * @return self
      */

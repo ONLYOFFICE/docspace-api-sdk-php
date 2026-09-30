@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AdditionalWhiteLabelSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The additional white label settings parameters.
+ * @description Which of the ONLYOFFICE help and community entries the interface may offer, installation-wide.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -366,7 +366,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets start_docs_enabled
      *
-     * @param bool $start_docs_enabled Specifies if the sample documents are displayed or hidden.
+     * @param bool $start_docs_enabled Whether the sample documents that ONLYOFFICE ships may be placed in a new user's Documents. Unlike the link  flags below it depends on nothing that has to be configured, so its built-in value is always `true`.
      *
      * @return self
      */
@@ -393,7 +393,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets help_center_enabled
      *
-     * @param bool $help_center_enabled Specifies if the Help Center link is available or not.
+     * @param bool $help_center_enabled Whether the interface may offer the Help Center entry. It is `false` both when the entry was switched off  for the installation and when the installation configures no Help Center address at all; the addresses  themselves are not part of this answer and arrive in `externalResources` of `GET api/2.0/settings`.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets feedback_and_support_enabled
      *
-     * @param bool $feedback_and_support_enabled Specifies if the Feedback & Support link is available or not.
+     * @param bool $feedback_and_support_enabled Whether the interface may offer the Feedback and Support entry, `false` for the same two reasons as  `helpCenterEnabled`.
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets user_forum_enabled
      *
-     * @param bool $user_forum_enabled Specifies if the user forum is available or not.
+     * @param bool $user_forum_enabled Whether the interface may offer the user forum entry, `false` for the same two reasons as  `helpCenterEnabled`.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets video_guides_enabled
      *
-     * @param bool $video_guides_enabled Specifies if the Video Guides link is available or not.
+     * @param bool $video_guides_enabled Whether the interface may offer the Video Guides entry, `false` for the same two reasons as  `helpCenterEnabled`.
      *
      * @return self
      */
@@ -501,7 +501,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets license_agreements_enabled
      *
-     * @param bool $license_agreements_enabled Specifies if the License Agreements link is available or not.
+     * @param bool $license_agreements_enabled Whether the interface may offer the License Agreements entry, `false` for the same two reasons as  `helpCenterEnabled`.
      *
      * @return self
      */
@@ -528,7 +528,7 @@ class AdditionalWhiteLabelSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets is_default
      *
-     * @param bool $is_default Specifies if the additional white label settings are default or not.
+     * @param bool $is_default Whether all six flags still hold the values the installation starts out with. It turns `false` as soon as  one of them is saved differently and `true` again after `DELETE api/2.0/settings/rebranding/additional`.  Because a link flag starts out off when no address is configured for it, `true` does not mean every entry  is on.
      *
      * @return self
      */

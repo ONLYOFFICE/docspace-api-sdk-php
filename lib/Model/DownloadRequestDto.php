@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DownloadRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for downloading files.
+ * @description The files and folders to pack into one archive, together with the formats they are converted to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +324,7 @@ class DownloadRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets return_single_operation
      *
-     * @param bool|null $return_single_operation Specifies whether to return only the current operation
+     * @param bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class DownloadRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\DownloadRequestDtoAllOfFolderIds[]|null $folder_ids The list of folder IDs to be downloaded.
+     * @param \OpenAPI\Client\Model\DownloadRequestDtoAllOfFolderIds[]|null $folder_ids The folders to pack, by id; everything inside them that the caller may read goes into the archive. A number  addresses a folder stored in the portal itself, a string addresses a folder on a connected third-party  account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class DownloadRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\DownloadRequestDtoAllOfFileIds[]|null $file_ids The list of file IDs to be downloaded.
+     * @param \OpenAPI\Client\Model\DownloadRequestDtoAllOfFileIds[]|null $file_ids The files to pack as they are, by id, without conversion. A number addresses a file stored in the portal  itself, a string addresses a file on a connected third-party account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class DownloadRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets file_convert_ids
      *
-     * @param \OpenAPI\Client\Model\DownloadRequestItemDto[]|null $file_convert_ids The list of file IDs which will be converted.
+     * @param \OpenAPI\Client\Model\DownloadRequestItemDto[]|null $file_convert_ids The files to convert before they are packed, each named together with the format it is converted to. A file  listed here does not have to be repeated in `fileIds`.
      *
      * @return self
      */

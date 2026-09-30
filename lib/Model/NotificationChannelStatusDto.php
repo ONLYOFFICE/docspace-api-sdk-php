@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationChannelStatusDto Class Doc Comment
  *
  * @category Class
- * @description The notification channel settings.
+ * @description The ways this installation can deliver a notification, and whether each of them is usable.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class NotificationChannelStatusDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets channels
      *
-     * @param \OpenAPI\Client\Model\NotificationChannelDto[]|null $channels The list of notification channels.
+     * @param \OpenAPI\Client\Model\NotificationChannelDto[]|null $channels The channels the running installation is configured with. A channel appears only when the notification  service names a sender for it, so the list can be shorter than the channels this build implements, and an  empty list means the configuration names none of them.
      *
      * @return self
      */

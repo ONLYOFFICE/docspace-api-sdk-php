@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantBannerSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the visibility settings of the promotional banners for the current tenant.
+ * @description Whether the portal promotional banners are hidden.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets hidden
      *
-     * @param bool|null $hidden The banners visibility flag.
+     * @param bool|null $hidden Whether the promotional banners are hidden from every user of the portal. The flag is only honoured on a  self-hosted installation; a SaaS portal keeps showing the banners whatever is stored here.
      *
      * @return self
      */

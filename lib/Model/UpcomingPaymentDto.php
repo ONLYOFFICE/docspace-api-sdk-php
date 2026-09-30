@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * UpcomingPaymentDto Class Doc Comment
  *
  * @category Class
- * @description The upcoming payment parameters.
+ * @description One charge the portal is going to be billed for at the start of the next period.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -64,7 +64,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => 'string',
         'quantity' => 'int',
         'wallet' => 'bool',
-        'due_date' => '\DateTime',
+        'due_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'amount' => 'float',
         'currency' => 'string'
     ];
@@ -83,7 +83,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => null,
         'quantity' => 'int32',
         'wallet' => null,
-        'due_date' => 'date-time',
+        'due_date' => null,
         'amount' => 'double',
         'currency' => null
     ];
@@ -100,7 +100,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'unit_of_measure' => true,
         'quantity' => false,
         'wallet' => false,
-        'due_date' => true,
+        'due_date' => false,
         'amount' => false,
         'currency' => true
     ];
@@ -359,7 +359,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param int|null $id The quota ID.
+     * @param int|null $id The quota that is going to be charged. When a switch to another quota is scheduled, this is the quota  being switched to, so it can differ from what `GET api/2.0/portal/tariff` reports for today.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets name
      *
-     * @param string|null $name The quota name.
+     * @param string|null $name The quota's stable key, which is the same identifier the wallet operations use for a service.
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets title
      *
-     * @param string|null $title The quota title.
+     * @param string|null $title The quota name in the portal language, meant to be printed on an invoice preview.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets unit_of_measure
      *
-     * @param string|null $unit_of_measure The quota unit of measure.
+     * @param string|null $unit_of_measure What `quantity` counts, in the portal language - seats, administrators, gigabytes. It is empty for a quota  that is simply on or off.
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets quantity
      *
-     * @param int|null $quantity The quantity that will be charged (the next quantity if set, otherwise the current quantity).
+     * @param int|null $quantity How much is going to be charged for, which is the quantity scheduled for the next period when one has been  scheduled and today's quantity otherwise.
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets wallet
      *
-     * @param bool|null $wallet The quota applies to the wallet or not.
+     * @param bool|null $wallet Whether the charge is paid out of the portal wallet rather than from the subscription.
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets due_date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getDueDate()
     {
@@ -542,21 +542,14 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets due_date
      *
-     * @param \DateTime|null $due_date The due date of the upcoming payment in the portal time zone.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $due_date When the charge falls due, in the portal time zone.
      *
      * @return self
      */
     public function setDueDate($due_date)
     {
         if (is_null($due_date)) {
-            array_push($this->openAPINullablesSetToNull, 'due_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('due_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable due_date cannot be null');
         }
         $this->container['due_date'] = $due_date;
 
@@ -576,7 +569,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets amount
      *
-     * @param float|null $amount The amount that will be charged (unit price multiplied by the quantity).
+     * @param float|null $amount What the charge comes to: the unit price of the quota multiplied by `quantity`. Taxes are not part of it,  and a quota with no price of its own is not listed at all rather than listed with a zero.
      *
      * @return self
      */
@@ -603,7 +596,7 @@ class UpcomingPaymentDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets currency
      *
-     * @param string|null $currency The three-character ISO 4217 currency symbol of the amount.
+     * @param string|null $currency The currency `amount` is expressed in, as a three-letter ISO 4217 code. It follows the portal's billing  account, so every entry of one answer carries the same code.
      *
      * @return self
      */

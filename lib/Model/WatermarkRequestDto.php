@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WatermarkRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for adding watermarks.
+ * @description The watermark drawn over the documents of a room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -360,7 +360,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Specifies whether watermarks are on or off.
+     * @param bool|null $enabled Whether the room draws a watermark at all. Sending the object with this turned off removes the watermark the  room has, and the rest of the fields are then irrelevant.
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets additions
      *
-     * @param \OpenAPI\Client\Model\WatermarkAdditions|null $additions Specifies whether to display the following addditional information or not: username, user email, user IP address, current date and room name.
+     * @param \OpenAPI\Client\Model\WatermarkAdditions|null $additions Which details of the reader and of the room are stamped into the watermark alongside the text. The values  combine, so several of them can be added together to stamp more than one.
      *
      * @return self
      */
@@ -421,7 +421,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets text
      *
-     * @param string|null $text The watermark text.
+     * @param string|null $text The fixed line drawn over the document, shown before the details selected alongside it. It is the whole  watermark when no details are added.
      *
      * @return self
      */
@@ -462,7 +462,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets rotate
      *
-     * @param int|null $rotate The watermark text and image rotate angle.
+     * @param int|null $rotate How far the watermark is turned, in degrees, with negative values turning it anticlockwise. Zero draws it  horizontally across the page.
      *
      * @return self
      */
@@ -489,7 +489,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets image_scale
      *
-     * @param int|null $image_scale The watermark image scale.
+     * @param int|null $image_scale How large the watermark image is drawn, as a percentage of its own size. It applies to the image form of the  watermark only.
      *
      * @return self
      */
@@ -516,7 +516,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets image_url
      *
-     * @param string|null $image_url The path to the temporary image file.
+     * @param string|null $image_url The picture to use instead of a text watermark, named by the path that `POST api/2.0/files/logos` returned for  an image uploaded beforehand. The portal copies it into the room when the setting is saved.
      *
      * @return self
      */
@@ -550,7 +550,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets image_height
      *
-     * @param float|null $image_height The watermark image height.
+     * @param float|null $image_height The height the watermark image is drawn with, in pixels, used together with the width to keep its proportions.
      *
      * @return self
      */
@@ -577,7 +577,7 @@ class WatermarkRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets image_width
      *
-     * @param float|null $image_width The watermark image width.
+     * @param float|null $image_width The width the watermark image is drawn with, in pixels, used together with the height to keep its proportions.
      *
      * @return self
      */

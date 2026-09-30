@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TerminateRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for terminating the reassignment/deletion process.
+ * @description The request parameters that address the queued job of a single user - a data reassignment, a data deletion or a  user type change.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -306,7 +306,7 @@ class TerminateRequestDto implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets user_id
      *
-     * @param string $user_id The user ID whose data is reassigned/removed.
+     * @param string $user_id The ID of the user whose job is addressed. For a terminate operation it has to be the same ID that was passed  when the job was started.
      *
      * @return self
      */

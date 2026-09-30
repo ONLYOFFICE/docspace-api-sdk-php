@@ -147,6 +147,13 @@ class AgentsApi
         return $this->config;
     }
 
+    private ?string $fields = null;
+
+    public function withFields(string $fields): self
+    {
+        $this->fields = $fields;
+        return $this;
+    }
 
     /**
      * Operation aiAgentsCreate
@@ -161,7 +168,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsCreate($ai_agents_create_request, string $contentType = self::contentTypes['aiAgentsCreate'][0])
     {
@@ -182,7 +189,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsCreateWithHttpInfo($ai_agents_create_request, string $contentType = self::contentTypes['aiAgentsCreate'][0])
     {
@@ -214,11 +221,35 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderWrapper',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -242,7 +273,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                '\OpenAPI\Client\Model\AiFolderWrapper',
                 $request,
                 $response,
             );
@@ -251,12 +282,44 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -311,7 +374,7 @@ class AgentsApi
      */
     public function aiAgentsCreateAsyncWithHttpInfo($ai_agents_create_request, string $contentType = self::contentTypes['aiAgentsCreate'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiFolderWrapper';
         $request = $this->aiAgentsCreateRequest($ai_agents_create_request, $contentType);
 
         return $this->client
@@ -419,6 +482,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -455,7 +527,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFileOperationWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFileOperationWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsDelete($id, $ai_agents_delete_request, string $contentType = self::contentTypes['aiAgentsDelete'][0])
     {
@@ -477,7 +549,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFileOperationWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFileOperationWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsDeleteWithHttpInfo($id, $ai_agents_delete_request, string $contentType = self::contentTypes['aiAgentsDelete'][0])
     {
@@ -513,7 +585,31 @@ class AgentsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -551,7 +647,39 @@ class AgentsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -732,6 +860,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -767,7 +904,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAgentsGet200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsGet($id, string $contentType = self::contentTypes['aiAgentsGet'][0])
     {
@@ -788,7 +925,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAgentsGet200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsGetWithHttpInfo($id, string $contentType = self::contentTypes['aiAgentsGet'][0])
     {
@@ -820,11 +957,29 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiAgentsGet200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -848,7 +1003,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                '\OpenAPI\Client\Model\AiAgentsGet200Response',
                 $request,
                 $response,
             );
@@ -857,12 +1012,36 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiAgentsGet200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -917,7 +1096,7 @@ class AgentsApi
      */
     public function aiAgentsGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['aiAgentsGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiAgentsGet200Response';
         $request = $this->aiAgentsGetRequest($id, $contentType);
 
         return $this->client
@@ -1026,6 +1205,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1056,15 +1244,26 @@ class AgentsApi
      * REST API Reference for aiAgentsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-list/
      *
+     * @param  string|null $subject_id Show only the agent rooms this user takes part in. (optional)
+     * @param  string|null $subject_owner_id Show only the agent rooms owned by this user. (optional)
+     * @param  bool|null $exclude_subject Invert the user filter: leave out what `subjectId` selects instead of keeping it. (optional)
+     * @param  string|null $tags Show only the agent rooms carrying these tags, comma-separated. (optional)
+     * @param  bool|null $without_tags Show only the agent rooms that carry no tags at all. (optional)
+     * @param  int|null $quota_filter Filter by quota kind: 0 for all, 1 for the default quota, 2 for a custom one. (optional)
+     * @param  string|null $filter_value Show only the agent rooms whose title matches this text. (optional)
+     * @param  string|null $sort_by Field to sort by, for example `DateAndTime`. (optional)
+     * @param  string|null $sort_order Sort direction, `ascending` or `descending`. (optional)
+     * @param  int|null $start_index Index of the first entry to return; 0 starts at the beginning. (optional)
+     * @param  int|null $count How many entries to return. The internal service applies its own default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderContentIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderContentWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAgentsList(string $contentType = self::contentTypes['aiAgentsList'][0])
+    public function aiAgentsList($subject_id = null, $subject_owner_id = null, $exclude_subject = null, $tags = null, $without_tags = null, $quota_filter = null, $filter_value = null, $sort_by = null, $sort_order = null, $start_index = null, $count = null, string $contentType = self::contentTypes['aiAgentsList'][0])
     {
-        list($response) = $this->aiAgentsListWithHttpInfo($contentType);
+        list($response) = $this->aiAgentsListWithHttpInfo($subject_id, $subject_owner_id, $exclude_subject, $tags, $without_tags, $quota_filter, $filter_value, $sort_by, $sort_order, $start_index, $count, $contentType);
         return $response;
     }
 
@@ -1076,15 +1275,26 @@ class AgentsApi
      * REST API Reference for aiAgentsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-list/
      *
+     * @param  string|null $subject_id Show only the agent rooms this user takes part in. (optional)
+     * @param  string|null $subject_owner_id Show only the agent rooms owned by this user. (optional)
+     * @param  bool|null $exclude_subject Invert the user filter: leave out what `subjectId` selects instead of keeping it. (optional)
+     * @param  string|null $tags Show only the agent rooms carrying these tags, comma-separated. (optional)
+     * @param  bool|null $without_tags Show only the agent rooms that carry no tags at all. (optional)
+     * @param  int|null $quota_filter Filter by quota kind: 0 for all, 1 for the default quota, 2 for a custom one. (optional)
+     * @param  string|null $filter_value Show only the agent rooms whose title matches this text. (optional)
+     * @param  string|null $sort_by Field to sort by, for example `DateAndTime`. (optional)
+     * @param  string|null $sort_order Sort direction, `ascending` or `descending`. (optional)
+     * @param  int|null $start_index Index of the first entry to return; 0 starts at the beginning. (optional)
+     * @param  int|null $count How many entries to return. The internal service applies its own default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderContentIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderContentWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAgentsListWithHttpInfo(string $contentType = self::contentTypes['aiAgentsList'][0])
+    public function aiAgentsListWithHttpInfo($subject_id = null, $subject_owner_id = null, $exclude_subject = null, $tags = null, $without_tags = null, $quota_filter = null, $filter_value = null, $sort_by = null, $sort_order = null, $start_index = null, $count = null, string $contentType = self::contentTypes['aiAgentsList'][0])
     {
-        $request = $this->aiAgentsListRequest($contentType);
+        $request = $this->aiAgentsListRequest($subject_id, $subject_owner_id, $exclude_subject, $tags, $without_tags, $quota_filter, $filter_value, $sort_by, $sort_order, $start_index, $count, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1112,11 +1322,23 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderContentWrapper',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1140,7 +1362,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderContentIntegerWrapper',
+                '\OpenAPI\Client\Model\AiFolderContentWrapper',
                 $request,
                 $response,
             );
@@ -1149,12 +1371,28 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderContentIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderContentWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1177,14 +1415,25 @@ class AgentsApi
      * REST API Reference for aiAgentsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-list/
      *
+     * @param  string|null $subject_id Show only the agent rooms this user takes part in. (optional)
+     * @param  string|null $subject_owner_id Show only the agent rooms owned by this user. (optional)
+     * @param  bool|null $exclude_subject Invert the user filter: leave out what `subjectId` selects instead of keeping it. (optional)
+     * @param  string|null $tags Show only the agent rooms carrying these tags, comma-separated. (optional)
+     * @param  bool|null $without_tags Show only the agent rooms that carry no tags at all. (optional)
+     * @param  int|null $quota_filter Filter by quota kind: 0 for all, 1 for the default quota, 2 for a custom one. (optional)
+     * @param  string|null $filter_value Show only the agent rooms whose title matches this text. (optional)
+     * @param  string|null $sort_by Field to sort by, for example `DateAndTime`. (optional)
+     * @param  string|null $sort_order Sort direction, `ascending` or `descending`. (optional)
+     * @param  int|null $start_index Index of the first entry to return; 0 starts at the beginning. (optional)
+     * @param  int|null $count How many entries to return. The internal service applies its own default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAgentsListAsync(string $contentType = self::contentTypes['aiAgentsList'][0])
+    public function aiAgentsListAsync($subject_id = null, $subject_owner_id = null, $exclude_subject = null, $tags = null, $without_tags = null, $quota_filter = null, $filter_value = null, $sort_by = null, $sort_order = null, $start_index = null, $count = null, string $contentType = self::contentTypes['aiAgentsList'][0])
     {
-        return $this->aiAgentsListAsyncWithHttpInfo($contentType)
+        return $this->aiAgentsListAsyncWithHttpInfo($subject_id, $subject_owner_id, $exclude_subject, $tags, $without_tags, $quota_filter, $filter_value, $sort_by, $sort_order, $start_index, $count, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1200,15 +1449,26 @@ class AgentsApi
      * REST API Reference for aiAgentsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-agents-list/
      *
+     * @param  string|null $subject_id Show only the agent rooms this user takes part in. (optional)
+     * @param  string|null $subject_owner_id Show only the agent rooms owned by this user. (optional)
+     * @param  bool|null $exclude_subject Invert the user filter: leave out what `subjectId` selects instead of keeping it. (optional)
+     * @param  string|null $tags Show only the agent rooms carrying these tags, comma-separated. (optional)
+     * @param  bool|null $without_tags Show only the agent rooms that carry no tags at all. (optional)
+     * @param  int|null $quota_filter Filter by quota kind: 0 for all, 1 for the default quota, 2 for a custom one. (optional)
+     * @param  string|null $filter_value Show only the agent rooms whose title matches this text. (optional)
+     * @param  string|null $sort_by Field to sort by, for example `DateAndTime`. (optional)
+     * @param  string|null $sort_order Sort direction, `ascending` or `descending`. (optional)
+     * @param  int|null $start_index Index of the first entry to return; 0 starts at the beginning. (optional)
+     * @param  int|null $count How many entries to return. The internal service applies its own default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAgentsListAsyncWithHttpInfo(string $contentType = self::contentTypes['aiAgentsList'][0])
+    public function aiAgentsListAsyncWithHttpInfo($subject_id = null, $subject_owner_id = null, $exclude_subject = null, $tags = null, $without_tags = null, $quota_filter = null, $filter_value = null, $sort_by = null, $sort_order = null, $start_index = null, $count = null, string $contentType = self::contentTypes['aiAgentsList'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderContentIntegerWrapper';
-        $request = $this->aiAgentsListRequest($contentType);
+        $returnType = '\OpenAPI\Client\Model\AiFolderContentWrapper';
+        $request = $this->aiAgentsListRequest($subject_id, $subject_owner_id, $exclude_subject, $tags, $without_tags, $quota_filter, $filter_value, $sort_by, $sort_order, $start_index, $count, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1249,13 +1509,35 @@ class AgentsApi
     /**
      * Create request for operation 'aiAgentsList'
      *
+     * @param  string|null $subject_id Show only the agent rooms this user takes part in. (optional)
+     * @param  string|null $subject_owner_id Show only the agent rooms owned by this user. (optional)
+     * @param  bool|null $exclude_subject Invert the user filter: leave out what `subjectId` selects instead of keeping it. (optional)
+     * @param  string|null $tags Show only the agent rooms carrying these tags, comma-separated. (optional)
+     * @param  bool|null $without_tags Show only the agent rooms that carry no tags at all. (optional)
+     * @param  int|null $quota_filter Filter by quota kind: 0 for all, 1 for the default quota, 2 for a custom one. (optional)
+     * @param  string|null $filter_value Show only the agent rooms whose title matches this text. (optional)
+     * @param  string|null $sort_by Field to sort by, for example `DateAndTime`. (optional)
+     * @param  string|null $sort_order Sort direction, `ascending` or `descending`. (optional)
+     * @param  int|null $start_index Index of the first entry to return; 0 starts at the beginning. (optional)
+     * @param  int|null $count How many entries to return. The internal service applies its own default. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAgentsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAgentsListRequest(string $contentType = self::contentTypes['aiAgentsList'][0])
+    public function aiAgentsListRequest($subject_id = null, $subject_owner_id = null, $exclude_subject = null, $tags = null, $without_tags = null, $quota_filter = null, $filter_value = null, $sort_by = null, $sort_order = null, $start_index = null, $count = null, string $contentType = self::contentTypes['aiAgentsList'][0])
     {
+
+
+
+
+
+
+
+
+
+
+
 
 
         $resourcePath = '/api/2.0/ai/agents';
@@ -1265,8 +1547,109 @@ class AgentsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subject_id,
+            'subjectId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $subject_owner_id,
+            'subjectOwnerId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $exclude_subject,
+            'excludeSubject', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $tags,
+            'tags', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $without_tags,
+            'withoutTags', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $quota_filter,
+            'quotaFilter', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter_value,
+            'filterValue', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort_by,
+            'sortBy', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort_order,
+            'sortOrder', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_index,
+            'startIndex', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $count,
+            'count', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
-
+        if ($this->fields !== null) {
+            $headerParams['fields'] = $this->fields;
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -1300,6 +1683,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1334,7 +1726,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiNewItemsAgentNewItemsArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiNewItemsAgentNewItemsArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsNews(string $contentType = self::contentTypes['aiAgentsNews'][0])
     {
@@ -1354,7 +1746,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiNewItemsAgentNewItemsArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiNewItemsAgentNewItemsArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsNewsWithHttpInfo(string $contentType = self::contentTypes['aiAgentsNews'][0])
     {
@@ -1396,6 +1788,18 @@ class AgentsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -1429,6 +1833,22 @@ class AgentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1574,6 +1994,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1609,7 +2038,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderIntegerArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsResetQuota($ai_agents_reset_quota_request, string $contentType = self::contentTypes['aiAgentsResetQuota'][0])
     {
@@ -1630,7 +2059,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderIntegerArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsResetQuotaWithHttpInfo($ai_agents_reset_quota_request, string $contentType = self::contentTypes['aiAgentsResetQuota'][0])
     {
@@ -1662,11 +2091,29 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1690,7 +2137,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                 $request,
                 $response,
             );
@@ -1699,12 +2146,36 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1759,7 +2230,7 @@ class AgentsApi
      */
     public function aiAgentsResetQuotaAsyncWithHttpInfo($ai_agents_reset_quota_request, string $contentType = self::contentTypes['aiAgentsResetQuota'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiFolderArrayWrapper';
         $request = $this->aiAgentsResetQuotaRequest($ai_agents_reset_quota_request, $contentType);
 
         return $this->client
@@ -1867,6 +2338,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1903,7 +2383,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsUpdate($id, $ai_agents_update_request, string $contentType = self::contentTypes['aiAgentsUpdate'][0])
     {
@@ -1925,7 +2405,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderIntegerWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsUpdateWithHttpInfo($id, $ai_agents_update_request, string $contentType = self::contentTypes['aiAgentsUpdate'][0])
     {
@@ -1957,11 +2437,35 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderWrapper',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1985,7 +2489,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                '\OpenAPI\Client\Model\AiFolderWrapper',
                 $request,
                 $response,
             );
@@ -1994,12 +2498,44 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderIntegerWrapper',
+                        '\OpenAPI\Client\Model\AiFolderWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2056,7 +2592,7 @@ class AgentsApi
      */
     public function aiAgentsUpdateAsyncWithHttpInfo($id, $ai_agents_update_request, string $contentType = self::contentTypes['aiAgentsUpdate'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiFolderWrapper';
         $request = $this->aiAgentsUpdateRequest($id, $ai_agents_update_request, $contentType);
 
         return $this->client
@@ -2180,6 +2716,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2215,7 +2760,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiFolderIntegerArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiFolderArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAgentsUpdateQuota($ai_agents_update_quota_request, string $contentType = self::contentTypes['aiAgentsUpdateQuota'][0])
     {
@@ -2236,7 +2781,7 @@ class AgentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiFolderIntegerArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiFolderArrayWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAgentsUpdateQuotaWithHttpInfo($ai_agents_update_quota_request, string $contentType = self::contentTypes['aiAgentsUpdateQuota'][0])
     {
@@ -2268,11 +2813,29 @@ class AgentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2296,7 +2859,7 @@ class AgentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                 $request,
                 $response,
             );
@@ -2305,12 +2868,36 @@ class AgentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\AiFolderArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2365,7 +2952,7 @@ class AgentsApi
      */
     public function aiAgentsUpdateQuotaAsyncWithHttpInfo($ai_agents_update_quota_request, string $contentType = self::contentTypes['aiAgentsUpdateQuota'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiFolderIntegerArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AiFolderArrayWrapper';
         $request = $this->aiAgentsUpdateQuotaRequest($ai_agents_update_quota_request, $contentType);
 
         return $this->client
@@ -2473,6 +3060,15 @@ class AgentsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

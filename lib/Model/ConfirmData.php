@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConfirmData Class Doc Comment
  *
  * @category Class
- * @description The additional confirmation data required for authentication.
+ * @description The confirmation link a sign-in is authorised with, in place of a password.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class ConfirmData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email The email address to confirm the user's identity.
+     * @param string|null $email The address the confirmation link was issued for. It has to be the same address the key was signed with, and  a value that is not an email address fails the request with 400.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class ConfirmData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets first
      *
-     * @param bool|null $first Specifies whether this is the first access to the user's account.
+     * @param bool|null $first Whether the link is being followed for the first time, taken from the `first` parameter of the confirmation  URL. It is part of what the key was signed over, so passing a different value invalidates the key rather than  changing behaviour.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class ConfirmData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key The unique confirmation key for validating user identity.
+     * @param string|null $key The `key` parameter of the confirmation URL, copied verbatim. It is bound to the address and to the moment it  was issued, so it stops being accepted once the portal email key lifetime has passed.
      *
      * @return self
      */

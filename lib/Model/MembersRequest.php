@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MembersRequest Class Doc Comment
  *
  * @category Class
- * @description The member request.
+ * @description The accounts a member operation applies to.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class MembersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets members
      *
-     * @param string[]|null $members The list of group member IDs.
+     * @param string[]|null $members The accounts the operation applies to. When adding or replacing members, an account that is a guest, is  disabled or does not exist is skipped without an error; when removing them, an ID that is not a member is  skipped as well.
      *
      * @return self
      */

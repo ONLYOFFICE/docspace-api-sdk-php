@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DownloadRequestItemDtoKey Class Doc Comment
  *
  * @category Class
- * @description The unique identifier or reference key for the file to be downloaded.
+ * @description The file to convert and pack, by id — a number for a file stored in the portal itself, a string for a file on  a connected third-party account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

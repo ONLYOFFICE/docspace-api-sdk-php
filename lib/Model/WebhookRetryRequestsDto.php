@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhookRetryRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The parameters for requesting the webhook delivery retries.
+ * @description Which past webhook deliveries are sent again.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class WebhookRetryRequestsDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ids
      *
-     * @param int[]|null $ids The list of webhook delivery IDs to retry.
+     * @param int[]|null $ids The delivery records to send again, by the identifiers `GET api/2.0/settings/webhooks/log` reports. An  identifier that exists nowhere, and one belonging to another member subscription when the caller is not a  DocSpace administrator, is skipped in silence rather than failing the call, so compare the number of records  that come back against the number sent. An empty list is accepted and queues nothing.
      *
      * @return self
      */

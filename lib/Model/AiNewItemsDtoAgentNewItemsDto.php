@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiNewItemsDtoAgentNewItemsDto Class Doc Comment
  *
  * @category Class
- * @description The new item parameters.
+ * @description One day of the entries the caller has not opened yet, the groups running from the most recent day backwards.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\AiApiDateTime',
         'items' => '\OpenAPI\Client\Model\AiAgentNewItemsDto[]'
     ];
 
@@ -70,7 +70,7 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'date' => 'date-time',
+        'date' => null,
         'items' => null
     ];
 
@@ -80,7 +80,7 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'date' => true,
+        'date' => false,
         'items' => true
     ];
 
@@ -282,8 +282,8 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['date'] === null && !$this->isNullableSetToNull('date')) {
-            $invalidProperties[] = "'date' is required";
+        if ($this->container['date'] === null) {
+            $invalidProperties[] = "'date' can't be null";
         }
         if ($this->container['items'] === null && !$this->isNullableSetToNull('items')) {
             $invalidProperties[] = "'items' is required";
@@ -306,7 +306,7 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\AiApiDateTime
      */
     public function getDate()
     {
@@ -316,21 +316,14 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The date and time when the new item was created.
+     * @param \OpenAPI\Client\Model\AiApiDateTime $date The day the grouped entries were last changed, written with the offset of the portal time zone. The time part  is the moment of the newest entry of the group.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -350,7 +343,7 @@ class AiNewItemsDtoAgentNewItemsDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets items
      *
-     * @param \OpenAPI\Client\Model\AiAgentNewItemsDto[]|null $items The list of items.
+     * @param \OpenAPI\Client\Model\AiAgentNewItemsDto[]|null $items What changed on that day, the most recent first. Folders are left out of it, so an entry here is always a file  or a room that holds them.
      *
      * @return self
      */

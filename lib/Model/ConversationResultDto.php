@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConversationResultDto Class Doc Comment
  *
  * @category Class
- * @description The result of file convertion operation.
+ * @description The progress of one file conversion, together with the converted file once it exists.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -354,7 +354,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id The conversion operation ID.
+     * @param string|null $id The identifier of the conversion entry. The portal leaves it empty for file conversions, so a caller follows  its own conversion by the file it queued rather than by this value.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets operation
      *
-     * @param \OpenAPI\Client\Model\FileOperationType $operation The conversion operation type.
+     * @param \OpenAPI\Client\Model\FileOperationType $operation Tells which kind of file operation the entry describes, so that a conversion can be told apart from the copy,  move and download entries that share this envelope. A conversion entry reports the conversion type.
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets progress
      *
-     * @param int $progress The conversion operation progress.
+     * @param int $progress How far the conversion has got, counted in percent from 0 while it is only queued to 100 once it is over -  whether it ended with a converted file or with an error. 100 is the value a polling caller waits for.
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets source
      *
-     * @param string|null $source The source file for the conversion.
+     * @param string|null $source Describes what is being converted: the identifier of the source file, the version that was taken and whether  an existing result may be overwritten, packed as a JSON object inside a string. It is what identifies the  entry when several conversions of the same caller are in flight.
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets error
      *
-     * @param string|null $error The conversion operation error message.
+     * @param string|null $error The reason the conversion stopped, in the language of the caller, and empty while it is running and after it  has succeeded. `progress` reaches 100 for a failure as well, so this field is what separates a converted file  from a broken conversion; a conversion still unfinished after ten minutes ends with a timeout reported here.
      *
      * @return self
      */
@@ -544,7 +544,7 @@ class ConversationResultDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets processed
      *
-     * @param string|null $processed Specifies if the conversion operation is processed or not.
+     * @param string|null $processed Reports whether the portal has taken the entry as far as it goes: `1` once the conversion has finished or  failed, and empty while it is still queued or still being converted. It is the bookkeeping of the conversion  queue rather than a result - what happened is in `progress`, `error` and `result`.
      *
      * @return self
      */

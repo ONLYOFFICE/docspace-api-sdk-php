@@ -728,7 +728,7 @@ class SettingsApi
     /**
      * Operation getPortalInformation
      *
-     * Get a portal
+     * Get portal information
      *
      * REST API Reference for getPortalInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-information/
@@ -748,7 +748,7 @@ class SettingsApi
     /**
      * Operation getPortalInformationWithHttpInfo
      *
-     * Get a portal
+     * Get portal information
      *
      * REST API Reference for getPortalInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-information/
@@ -877,7 +877,7 @@ class SettingsApi
     /**
      * Operation getPortalInformationAsync
      *
-     * Get a portal
+     * Get portal information
      *
      * REST API Reference for getPortalInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-information/
@@ -900,7 +900,7 @@ class SettingsApi
     /**
      * Operation getPortalInformationAsyncWithHttpInfo
      *
-     * Get a portal
+     * Get portal information
      *
      * REST API Reference for getPortalInformation Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-information/
@@ -1057,12 +1057,12 @@ class SettingsApi
      * REST API Reference for getPortalPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-path/
      *
-     * @param  string|null $virtual_path The virtual path for the portal resource access. (optional)
+     * @param  string|null $virtual_path The path to resolve. It is taken as it is: an omitted or empty value yields the portal root, a value starting  with `/` is appended to that root, a value starting with `~/` is resolved against the virtual root, and one  that already begins with `http://`, `https://` or `mailto:` is handed back unchanged. Nothing checks that the  path exists or that the caller may open it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalPath'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getPortalPath($virtual_path = null, string $contentType = self::contentTypes['getPortalPath'][0])
     {
@@ -1078,12 +1078,12 @@ class SettingsApi
      * REST API Reference for getPortalPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-path/
      *
-     * @param  string|null $virtual_path The virtual path for the portal resource access. (optional)
+     * @param  string|null $virtual_path The path to resolve. It is taken as it is: an omitted or empty value yields the portal root, a value starting  with `/` is appended to that root, a value starting with `~/` is resolved against the virtual root, and one  that already begins with `http://`, `https://` or `mailto:` is handed back unchanged. Nothing checks that the  path exists or that the caller may open it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalPath'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPortalPathWithHttpInfo($virtual_path = null, string $contentType = self::contentTypes['getPortalPath'][0])
     {
@@ -1115,7 +1115,7 @@ class SettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $request,
                         $response,
                     );
@@ -1161,7 +1161,7 @@ class SettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\StringWrapper',
                 $request,
                 $response,
             );
@@ -1170,7 +1170,7 @@ class SettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1222,7 +1222,7 @@ class SettingsApi
      * REST API Reference for getPortalPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-path/
      *
-     * @param  string|null $virtual_path The virtual path for the portal resource access. (optional)
+     * @param  string|null $virtual_path The path to resolve. It is taken as it is: an omitted or empty value yields the portal root, a value starting  with `/` is appended to that root, a value starting with `~/` is resolved against the virtual root, and one  that already begins with `http://`, `https://` or `mailto:` is handed back unchanged. Nothing checks that the  path exists or that the caller may open it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1246,7 +1246,7 @@ class SettingsApi
      * REST API Reference for getPortalPath Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-path/
      *
-     * @param  string|null $virtual_path The virtual path for the portal resource access. (optional)
+     * @param  string|null $virtual_path The path to resolve. It is taken as it is: an omitted or empty value yields the portal root, a value starting  with `/` is appended to that root, a value starting with `~/` is resolved against the virtual root, and one  that already begins with `http://`, `https://` or `mailto:` is handed back unchanged. Nothing checks that the  path exists or that the caller may open it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1254,7 +1254,7 @@ class SettingsApi
      */
     public function getPortalPathAsyncWithHttpInfo($virtual_path = null, string $contentType = self::contentTypes['getPortalPath'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringWrapper';
         $request = $this->getPortalPathRequest($virtual_path, $contentType);
 
         return $this->client
@@ -1296,7 +1296,7 @@ class SettingsApi
     /**
      * Create request for operation 'getPortalPath'
      *
-     * @param  string|null $virtual_path The virtual path for the portal resource access. (optional)
+     * @param  string|null $virtual_path The path to resolve. It is taken as it is: an omitted or empty value yields the portal root, a value starting  with `/` is appended to that root, a value starting with `~/` is resolved against the virtual root, and one  that already begins with `http://`, `https://` or `mailto:` is handed back unchanged. Nothing checks that the  path exists or that the caller may open it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalPath'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

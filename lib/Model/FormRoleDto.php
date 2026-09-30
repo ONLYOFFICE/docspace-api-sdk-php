@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormRoleDto Class Doc Comment
  *
  * @category Class
- * @description The form role parameters.
+ * @description One role of a PDF form, with the state the turn of that role is in.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -361,7 +361,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets role_name
      *
-     * @param string|null $role_name The role name.
+     * @param string|null $role_name The name the role was given when the form was laid out, unique within that form. It is the value that names  the role in the calls which change or stop the filling.
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets role_color
      *
-     * @param string|null $role_color The role color.
+     * @param string|null $role_color The colour a client paints the role with, as a hexadecimal RGB value; empty when the role mapping assigned  none.
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $user The user of the role.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $user The account the role was assigned to, which is the person expected to fill this part of the form.
      *
      * @return self
      */
@@ -456,7 +456,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sequence
      *
-     * @param int $sequence The role sequence.
+     * @param int $sequence The turn this role takes: the roles come back ordered by this number, roles sharing a number are filled in  parallel, and a role with a higher number waits until every lower one has been submitted.
      *
      * @return self
      */
@@ -483,7 +483,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets submitted
      *
-     * @param bool $submitted Specifies if the role is submitted.
+     * @param bool $submitted Reports whether this role has already handed in its part. The lowest sequence number that still holds an  unsubmitted role is the turn the form as a whole is waiting on.
      *
      * @return self
      */
@@ -510,7 +510,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets stoped_by
      *
-     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $stoped_by The user who stopped the role.
+     * @param \OpenAPI\Client\Model\EmployeeFullDto|null $stoped_by The account that interrupted the filling. It is filled in on the one role the filling was stopped at and stays  empty on every other role, and on all of them while the filling runs normally.
      *
      * @return self
      */
@@ -537,7 +537,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets history
      *
-     * @param array<string,\DateTime>|null $history The role history.
+     * @param array<string,\DateTime>|null $history When the role passed through the stages of its turn, keyed by stage: 0 is the moment the form was opened for  it, 1 the moment it was submitted and 2 the moment the filling was stopped at it. The times are given in the  time zone of the portal, and only the stages that have actually happened are present, so an empty object means  the role has not been opened yet.
      *
      * @return self
      */
@@ -564,7 +564,7 @@ class FormRoleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets role_status
      *
-     * @param \OpenAPI\Client\Model\FormFillingStatus|null $role_status The role status.
+     * @param \OpenAPI\Client\Model\FormFillingStatus|null $role_status Where the role stands in the queue: roles of earlier turns are reported as complete, roles of later turns as a  draft, and the role whose turn it is as either yours to fill or in progress, depending on whether that person  has already opened the form. The role the filling was stopped at is reported as stopped whatever its turn.
      *
      * @return self
      */

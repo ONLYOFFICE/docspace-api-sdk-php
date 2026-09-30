@@ -141,14 +141,14 @@ class UserStatusApi
      * REST API Reference for getByStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-by-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The user status. (required)
-     * @param  string|null $filter_by Specifies the criteria used to filter the profiles in the request. (optional)
-     * @param  int|null $count The maximum number of user profiles to retrieve. (optional)
-     * @param  int|null $start_index The starting index for retrieving data in a paginated request. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator Represents the separator used to split multiple filter criteria in a query string. (optional)
-     * @param  string|null $filter_value A string value representing additional filter criteria used in query parameters. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The account state to list, taken from the route: `Active` for working accounts, `Terminated` for disabled  ones, `Pending` for open invitations, or `All` for every state. (required)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -169,14 +169,14 @@ class UserStatusApi
      * REST API Reference for getByStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-by-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The user status. (required)
-     * @param  string|null $filter_by Specifies the criteria used to filter the profiles in the request. (optional)
-     * @param  int|null $count The maximum number of user profiles to retrieve. (optional)
-     * @param  int|null $start_index The starting index for retrieving data in a paginated request. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator Represents the separator used to split multiple filter criteria in a query string. (optional)
-     * @param  string|null $filter_value A string value representing additional filter criteria used in query parameters. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The account state to list, taken from the route: `Active` for working accounts, `Terminated` for disabled  ones, `Pending` for open invitations, or `All` for every state. (required)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -320,14 +320,14 @@ class UserStatusApi
      * REST API Reference for getByStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-by-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The user status. (required)
-     * @param  string|null $filter_by Specifies the criteria used to filter the profiles in the request. (optional)
-     * @param  int|null $count The maximum number of user profiles to retrieve. (optional)
-     * @param  int|null $start_index The starting index for retrieving data in a paginated request. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator Represents the separator used to split multiple filter criteria in a query string. (optional)
-     * @param  string|null $filter_value A string value representing additional filter criteria used in query parameters. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The account state to list, taken from the route: `Active` for working accounts, `Terminated` for disabled  ones, `Pending` for open invitations, or `All` for every state. (required)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -351,14 +351,14 @@ class UserStatusApi
      * REST API Reference for getByStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-by-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The user status. (required)
-     * @param  string|null $filter_by Specifies the criteria used to filter the profiles in the request. (optional)
-     * @param  int|null $count The maximum number of user profiles to retrieve. (optional)
-     * @param  int|null $start_index The starting index for retrieving data in a paginated request. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator Represents the separator used to split multiple filter criteria in a query string. (optional)
-     * @param  string|null $filter_value A string value representing additional filter criteria used in query parameters. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The account state to list, taken from the route: `Active` for working accounts, `Terminated` for disabled  ones, `Pending` for open invitations, or `All` for every state. (required)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -408,14 +408,14 @@ class UserStatusApi
     /**
      * Create request for operation 'getByStatus'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The user status. (required)
-     * @param  string|null $filter_by Specifies the criteria used to filter the profiles in the request. (optional)
-     * @param  int|null $count The maximum number of user profiles to retrieve. (optional)
-     * @param  int|null $start_index The starting index for retrieving data in a paginated request. (optional)
-     * @param  string|null $sort_by Specifies the property or field name by which the results should be sorted. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_separator Represents the separator used to split multiple filter criteria in a query string. (optional)
-     * @param  string|null $filter_value A string value representing additional filter criteria used in query parameters. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The account state to list, taken from the route: `Active` for working accounts, `Terminated` for disabled  ones, `Pending` for open invitations, or `All` for every state. (required)
+     * @param  string|null $filter_by The only recognised value is `group`, which makes `filterValue` the ID of the group to keep the members of.  Any other value, and omitting the field, applies no group filter. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_separator The character that splits `filterValue` into several terms, of which any one may match. Omit it to split  the value on spaces instead, in which case every term has to match. (optional)
+     * @param  string|null $filter_value The text to match against the name and the email of the account, case-insensitively. Omit it to apply no  text filter. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -605,18 +605,18 @@ class UserStatusApi
     /**
      * Operation updateUserActivationStatus
      *
-     * Set an activation status to the users
+     * Set my activation status
      *
      * REST API Reference for updateUserActivationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-activation-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The new user activation status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The activation state to set on the calling account, taken from the route: `NotActivated`, `Activated`,  `Pending` or `AutoGenerated`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The account to change. Only `userIds` is read, it has to hold exactly one entry, and that entry has to be the  calling account; `resendAll` is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserActivationStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateUserActivationStatus($activationstatus, $update_members_request_dto, string $contentType = self::contentTypes['updateUserActivationStatus'][0])
     {
@@ -627,18 +627,18 @@ class UserStatusApi
     /**
      * Operation updateUserActivationStatusWithHttpInfo
      *
-     * Set an activation status to the users
+     * Set my activation status
      *
      * REST API Reference for updateUserActivationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-activation-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The new user activation status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The activation state to set on the calling account, taken from the route: `NotActivated`, `Activated`,  `Pending` or `AutoGenerated`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The account to change. Only `userIds` is read, it has to hold exactly one entry, and that entry has to be the  calling account; `resendAll` is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserActivationStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateUserActivationStatusWithHttpInfo($activationstatus, $update_members_request_dto, string $contentType = self::contentTypes['updateUserActivationStatus'][0])
     {
@@ -687,12 +687,6 @@ class UserStatusApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -754,14 +748,6 @@ class UserStatusApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -772,13 +758,13 @@ class UserStatusApi
     /**
      * Operation updateUserActivationStatusAsync
      *
-     * Set an activation status to the users
+     * Set my activation status
      *
      * REST API Reference for updateUserActivationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-activation-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The new user activation status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The activation state to set on the calling account, taken from the route: `NotActivated`, `Activated`,  `Pending` or `AutoGenerated`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The account to change. Only `userIds` is read, it has to hold exactly one entry, and that entry has to be the  calling account; `resendAll` is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserActivationStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -797,13 +783,13 @@ class UserStatusApi
     /**
      * Operation updateUserActivationStatusAsyncWithHttpInfo
      *
-     * Set an activation status to the users
+     * Set my activation status
      *
      * REST API Reference for updateUserActivationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-activation-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The new user activation status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The activation state to set on the calling account, taken from the route: `NotActivated`, `Activated`,  `Pending` or `AutoGenerated`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The account to change. Only `userIds` is read, it has to hold exactly one entry, and that entry has to be the  calling account; `resendAll` is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserActivationStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -853,8 +839,8 @@ class UserStatusApi
     /**
      * Create request for operation 'updateUserActivationStatus'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The new user activation status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeActivationStatus $activationstatus The activation state to set on the calling account, taken from the route: `NotActivated`, `Activated`,  `Pending` or `AutoGenerated`. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The account to change. Only `userIds` is read, it has to hold exactly one entry, and that entry has to be the  calling account; `resendAll` is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserActivationStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -987,8 +973,8 @@ class UserStatusApi
      * REST API Reference for updateUserStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The new user status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The state to put the listed accounts into, taken from the route. Only `Active`, which enables an account,  and `Terminated`, which disables it, are accepted; any other value is rejected with 400. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to enable or disable. Only `userIds` is read by this operation; `resendAll` belongs to the  invitation operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1009,8 +995,8 @@ class UserStatusApi
      * REST API Reference for updateUserStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The new user status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The state to put the listed accounts into, taken from the route. Only `Active`, which enables an account,  and `Terminated`, which disables it, are accepted; any other value is rejected with 400. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to enable or disable. Only `userIds` is read by this operation; `resendAll` belongs to the  invitation operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1140,8 +1126,8 @@ class UserStatusApi
      * REST API Reference for updateUserStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The new user status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The state to put the listed accounts into, taken from the route. Only `Active`, which enables an account,  and `Terminated`, which disables it, are accepted; any other value is rejected with 400. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to enable or disable. Only `userIds` is read by this operation; `resendAll` belongs to the  invitation operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1165,8 +1151,8 @@ class UserStatusApi
      * REST API Reference for updateUserStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-user-status/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The new user status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The state to put the listed accounts into, taken from the route. Only `Active`, which enables an account,  and `Terminated`, which disables it, are accepted; any other value is rejected with 400. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to enable or disable. Only `userIds` is read by this operation; `resendAll` belongs to the  invitation operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1216,8 +1202,8 @@ class UserStatusApi
     /**
      * Create request for operation 'updateUserStatus'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The new user status. (required)
-     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The request parameters for updating the user information. (required)
+     * @param  \OpenAPI\Client\Model\EmployeeStatus $status The state to put the listed accounts into, taken from the route. Only `Active`, which enables an account,  and `Terminated`, which disables it, are accepted; any other value is rejected with 400. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMembersRequestDto $update_members_request_dto The accounts to enable or disable. Only `userIds` is read by this operation; `resendAll` belongs to the  invitation operations and is ignored here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateUserStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

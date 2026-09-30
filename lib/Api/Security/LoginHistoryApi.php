@@ -149,12 +149,12 @@ class LoginHistoryApi
     /**
      * Operation createLoginHistoryReport
      *
-     * Start the login history report generation
+     * Start login history report
      *
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -170,12 +170,12 @@ class LoginHistoryApi
     /**
      * Operation createLoginHistoryReportWithHttpInfo
      *
-     * Start the login history report generation
+     * Start login history report
      *
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -314,12 +314,12 @@ class LoginHistoryApi
     /**
      * Operation createLoginHistoryReportAsync
      *
-     * Start the login history report generation
+     * Start login history report
      *
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -338,12 +338,12 @@ class LoginHistoryApi
     /**
      * Operation createLoginHistoryReportAsyncWithHttpInfo
      *
-     * Start the login history report generation
+     * Start login history report
      *
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -393,7 +393,7 @@ class LoginHistoryApi
     /**
      * Create request for operation 'createLoginHistoryReport'
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The output file format of the report. Defaults to XLSX. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -502,7 +502,7 @@ class LoginHistoryApi
     /**
      * Operation getLastLoginEvents
      *
-     * Get login history
+     * Get recent login events
      *
      * REST API Reference for getLastLoginEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-login-events/
@@ -522,7 +522,7 @@ class LoginHistoryApi
     /**
      * Operation getLastLoginEventsWithHttpInfo
      *
-     * Get login history
+     * Get recent login events
      *
      * REST API Reference for getLastLoginEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-login-events/
@@ -651,7 +651,7 @@ class LoginHistoryApi
     /**
      * Operation getLastLoginEventsAsync
      *
-     * Get login history
+     * Get recent login events
      *
      * REST API Reference for getLastLoginEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-login-events/
@@ -674,7 +674,7 @@ class LoginHistoryApi
     /**
      * Operation getLastLoginEventsAsyncWithHttpInfo
      *
-     * Get login history
+     * Get recent login events
      *
      * REST API Reference for getLastLoginEvents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-last-login-events/
@@ -831,12 +831,12 @@ class LoginHistoryApi
      * REST API Reference for getLoginEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
-     * @param  int|null $count The number of login events to retrieve in the query. (optional)
-     * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
+     * @param  string|null $user_id The user whose sign-in attempts are kept, given by portal user ID. Leave it at the empty GUID to keep the  events of every user. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The sign-in action recorded, spelled as `GET api/2.0/security/audit/types` lists it under `actions` - a  successful login, a failed one, a logout. The default value keeps every action. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them. (optional)
+     * @param  int|null $start_index How many events to skip before the page begins, counting from the newest. It is applied to the log before  the filters, so a page can hold fewer events than `count` while older matches still exist. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -857,12 +857,12 @@ class LoginHistoryApi
      * REST API Reference for getLoginEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
-     * @param  int|null $count The number of login events to retrieve in the query. (optional)
-     * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
+     * @param  string|null $user_id The user whose sign-in attempts are kept, given by portal user ID. Leave it at the empty GUID to keep the  events of every user. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The sign-in action recorded, spelled as `GET api/2.0/security/audit/types` lists it under `actions` - a  successful login, a failed one, a logout. The default value keeps every action. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them. (optional)
+     * @param  int|null $start_index How many events to skip before the page begins, counting from the newest. It is applied to the log before  the filters, so a page can hold fewer events than `count` while older matches still exist. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1006,12 +1006,12 @@ class LoginHistoryApi
      * REST API Reference for getLoginEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
-     * @param  int|null $count The number of login events to retrieve in the query. (optional)
-     * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
+     * @param  string|null $user_id The user whose sign-in attempts are kept, given by portal user ID. Leave it at the empty GUID to keep the  events of every user. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The sign-in action recorded, spelled as `GET api/2.0/security/audit/types` lists it under `actions` - a  successful login, a failed one, a logout. The default value keeps every action. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them. (optional)
+     * @param  int|null $start_index How many events to skip before the page begins, counting from the newest. It is applied to the log before  the filters, so a page can hold fewer events than `count` while older matches still exist. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1035,12 +1035,12 @@ class LoginHistoryApi
      * REST API Reference for getLoginEventsByFilter Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-events-by-filter/
      *
-     * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
-     * @param  int|null $count The number of login events to retrieve in the query. (optional)
-     * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
+     * @param  string|null $user_id The user whose sign-in attempts are kept, given by portal user ID. Leave it at the empty GUID to keep the  events of every user. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The sign-in action recorded, spelled as `GET api/2.0/security/audit/types` lists it under `actions` - a  successful login, a failed one, a logout. The default value keeps every action. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them. (optional)
+     * @param  int|null $start_index How many events to skip before the page begins, counting from the newest. It is applied to the log before  the filters, so a page can hold fewer events than `count` while older matches still exist. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1090,12 +1090,12 @@ class LoginHistoryApi
     /**
      * Create request for operation 'getLoginEventsByFilter'
      *
-     * @param  string|null $user_id The ID of the user whose login events are being queried. (optional)
-     * @param  \OpenAPI\Client\Model\MessageAction|null $action The login-related action to filter events by. (optional)
-     * @param  \DateTime|null $from The starting date and time for filtering login events. (optional)
-     * @param  \DateTime|null $to The ending date and time for filtering login events. (optional)
-     * @param  int|null $count The number of login events to retrieve in the query. (optional)
-     * @param  int|null $start_index The starting index for fetching a subset of login events from the query results. (optional)
+     * @param  string|null $user_id The user whose sign-in attempts are kept, given by portal user ID. Leave it at the empty GUID to keep the  events of every user. (optional)
+     * @param  \OpenAPI\Client\Model\MessageAction|null $action The sign-in action recorded, spelled as `GET api/2.0/security/audit/types` lists it under `actions` - a  successful login, a failed one, a logout. The default value keeps every action. (optional)
+     * @param  \DateTime|null $from The earliest moment an event may have been recorded at, read as a UTC instant. The `date` of the events that  come back is in the portal time zone instead, so the two do not line up on a portal that is not on UTC. (optional)
+     * @param  \DateTime|null $to The latest moment an event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
+     * @param  int|null $count How many events one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them. (optional)
+     * @param  int|null $start_index How many events to skip before the page begins, counting from the newest. It is applied to the log before  the filters, so a page can hold fewer events than `count` while older matches still exist. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLoginEventsByFilter'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1262,7 +1262,7 @@ class LoginHistoryApi
     /**
      * Operation getLoginHistoryReport
      *
-     * Get the login history report generation status
+     * Get login history report status
      *
      * REST API Reference for getLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-history-report/
@@ -1282,7 +1282,7 @@ class LoginHistoryApi
     /**
      * Operation getLoginHistoryReportWithHttpInfo
      *
-     * Get the login history report generation status
+     * Get login history report status
      *
      * REST API Reference for getLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-history-report/
@@ -1411,7 +1411,7 @@ class LoginHistoryApi
     /**
      * Operation getLoginHistoryReportAsync
      *
-     * Get the login history report generation status
+     * Get login history report status
      *
      * REST API Reference for getLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-history-report/
@@ -1434,7 +1434,7 @@ class LoginHistoryApi
     /**
      * Operation getLoginHistoryReportAsyncWithHttpInfo
      *
-     * Get the login history report generation status
+     * Get login history report status
      *
      * REST API Reference for getLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-login-history-report/
@@ -1586,7 +1586,7 @@ class LoginHistoryApi
     /**
      * Operation terminateLoginHistoryReport
      *
-     * Terminate the login history report generation
+     * Terminate login history report
      *
      * REST API Reference for terminateLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-login-history-report/
@@ -1605,7 +1605,7 @@ class LoginHistoryApi
     /**
      * Operation terminateLoginHistoryReportWithHttpInfo
      *
-     * Terminate the login history report generation
+     * Terminate login history report
      *
      * REST API Reference for terminateLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-login-history-report/
@@ -1680,7 +1680,7 @@ class LoginHistoryApi
     /**
      * Operation terminateLoginHistoryReportAsync
      *
-     * Terminate the login history report generation
+     * Terminate login history report
      *
      * REST API Reference for terminateLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-login-history-report/
@@ -1703,7 +1703,7 @@ class LoginHistoryApi
     /**
      * Operation terminateLoginHistoryReportAsyncWithHttpInfo
      *
-     * Terminate the login history report generation
+     * Terminate login history report
      *
      * REST API Reference for terminateLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-login-history-report/

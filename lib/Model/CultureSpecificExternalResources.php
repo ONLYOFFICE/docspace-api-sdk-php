@@ -58,6 +58,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $openAPITypes = [
+        'admin_panel' => '\OpenAPI\Client\Model\CultureSpecificExternalResource',
         'api' => '\OpenAPI\Client\Model\CultureSpecificExternalResource',
         'common' => '\OpenAPI\Client\Model\CultureSpecificExternalResource',
         'forum' => '\OpenAPI\Client\Model\CultureSpecificExternalResource',
@@ -77,6 +78,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
+        'admin_panel' => null,
         'api' => null,
         'common' => null,
         'forum' => null,
@@ -94,6 +96,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @var boolean[]
      */
     protected static array $openAPINullables = [
+        'admin_panel' => false,
         'api' => false,
         'common' => false,
         'forum' => false,
@@ -191,6 +194,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
+        'admin_panel' => 'adminPanel',
         'api' => 'api',
         'common' => 'common',
         'forum' => 'forum',
@@ -208,6 +212,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
+        'admin_panel' => 'setAdminPanel',
         'api' => 'setApi',
         'common' => 'setCommon',
         'forum' => 'setForum',
@@ -225,6 +230,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
+        'admin_panel' => 'getAdminPanel',
         'api' => 'getApi',
         'common' => 'getCommon',
         'forum' => 'getForum',
@@ -293,6 +299,7 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('admin_panel', $data ?? [], null);
         $this->setIfExists('api', $data ?? [], null);
         $this->setIfExists('common', $data ?? [], null);
         $this->setIfExists('forum', $data ?? [], null);
@@ -345,6 +352,33 @@ class CultureSpecificExternalResources implements ModelInterface, ArrayAccess, \
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets admin_panel
+     *
+     * @return \OpenAPI\Client\Model\CultureSpecificExternalResource|null
+     */
+    public function getAdminPanel()
+    {
+        return $this->container['admin_panel'];
+    }
+
+    /**
+     * Sets admin_panel
+     *
+     * @param \OpenAPI\Client\Model\CultureSpecificExternalResource|null $admin_panel The link to the administration panel. It is returned only to the full administrators of a licensed (Enterprise) server (standalone) portal.
+     *
+     * @return self
+     */
+    public function setAdminPanel($admin_panel)
+    {
+        if (is_null($admin_panel)) {
+            throw new \InvalidArgumentException('non-nullable admin_panel cannot be null');
+        }
+        $this->container['admin_panel'] = $admin_panel;
+
+        return $this;
+    }
 
     /**
      * Gets api

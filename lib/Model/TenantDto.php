@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDto Class Doc Comment
  *
  * @category Class
- * @description The tenant parameters.
+ * @description The record of one portal: its name, owner, language, time zone and lifecycle state.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -464,7 +464,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets affiliate_id
      *
-     * @param string|null $affiliate_id The affiliate ID.
+     * @param string|null $affiliate_id The partner the portal was signed up through, empty for a portal that came in directly. It is bookkeeping  for the vendor and has no bearing on what the portal may do.
      *
      * @return self
      */
@@ -498,7 +498,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_alias
      *
-     * @param string|null $tenant_alias The tenant alias.
+     * @param string|null $tenant_alias The portal's own name within the installation, which together with the installation's base domain forms  the address it is reached at. A caller without the portal-settings right gets `tenantId` alone, so an  empty value here is the sign that the rest of this object was withheld rather than unset.
      *
      * @return self
      */
@@ -532,7 +532,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets calls
      *
-     * @param bool|null $calls Specifies if the calls are available for this tenant or not.
+     * @param bool|null $calls Whether telephony is switched on for the portal. It is carried over from portal registration and stays  `false` on a DocSpace portal, where the feature does not exist.
      *
      * @return self
      */
@@ -559,7 +559,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign
      *
-     * @param string|null $campaign The tenant campaign.
+     * @param string|null $campaign The marketing campaign the portal was signed up under, empty for a portal that came in outside one. Like  `affiliateId`, it is bookkeeping only.
      *
      * @return self
      */
@@ -593,7 +593,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creation_date_time
      *
-     * @param \DateTime|null $creation_date_time The tenant creation date and time.
+     * @param \DateTime|null $creation_date_time When the portal was created, in UTC rather than in the portal time zone.
      *
      * @return self
      */
@@ -620,7 +620,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosted_region
      *
-     * @param string|null $hosted_region The hosted region.
+     * @param string|null $hosted_region The data-centre region written on the portal record itself, as opposed to `region`, which is looked up  from the hosting service. It is empty on a server installation.
      *
      * @return self
      */
@@ -654,7 +654,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_id
      *
-     * @param int|null $tenant_id The tenant ID.
+     * @param int|null $tenant_id The numeric identifier of the portal inside the installation. It is the one field every caller gets,  whatever their rights.
      *
      * @return self
      */
@@ -681,7 +681,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets industry
      *
-     * @param \OpenAPI\Client\Model\TenantIndustry|null $industry The tenant industry.
+     * @param \OpenAPI\Client\Model\TenantIndustry|null $industry The line of business chosen when the portal was created. It only steers what the vendor suggests and  restricts nothing.
      *
      * @return self
      */
@@ -708,7 +708,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets language
      *
-     * @param string|null $language The tenant language.
+     * @param string|null $language The default language of the portal as a culture name, the same value `GET api/2.0/settings` reports as  `culture`. A member may have a language of their own, which this does not reflect.
      *
      * @return self
      */
@@ -742,7 +742,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_modified
      *
-     * @param \DateTime|null $last_modified The date and time when the tenant was last modified.
+     * @param \DateTime|null $last_modified When any field of this record last changed, in UTC. It does not move when portal settings outside this  record are changed.
      *
      * @return self
      */
@@ -769,7 +769,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mapped_domain
      *
-     * @param string|null $mapped_domain The tenant mapped domain.
+     * @param string|null $mapped_domain The custom domain the portal answers on in addition to its own address, empty when none has been set up.
      *
      * @return self
      */
@@ -803,7 +803,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name The tenant name.
+     * @param string|null $name The portal title as shown to people, which is what `GET api/2.0/settings` returns as  `greetingSettings`. It is free text, unlike `tenantAlias`, and empty until someone sets it.
      *
      * @return self
      */
@@ -837,7 +837,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner_id
      *
-     * @param string|null $owner_id The tenant owner ID.
+     * @param string|null $owner_id The portal owner, the one account that cannot be removed or demoted.  `PUT api/2.0/settings/owner` hands the role over.
      *
      * @return self
      */
@@ -864,7 +864,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_id
      *
-     * @param string|null $payment_id The tenant payment ID.
+     * @param string|null $payment_id The portal's identifier in the billing system, empty for a portal that has never been billed. The  subscription itself is read with `GET api/2.0/portal/tariff`.
      *
      * @return self
      */
@@ -898,7 +898,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets spam
      *
-     * @param bool|null $spam Specifies if the ONLYOFFICE newsletter is allowed or not.
+     * @param bool|null $spam Whether the owner agreed to receive the vendor's newsletter. Despite the name it does not mark the portal  as a spammer and affects nothing but marketing mail.
      *
      * @return self
      */
@@ -925,7 +925,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\TenantStatus|null $status The tenant status.
+     * @param \OpenAPI\Client\Model\TenantStatus|null $status The lifecycle state of the portal. Anything other than active means most operations are refused for the  moment, because the portal is being transferred, restored, encrypted or removed.
      *
      * @return self
      */
@@ -952,7 +952,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status_change_date
      *
-     * @param \DateTime|null $status_change_date The date and time when the tenant status was changed.
+     * @param \DateTime|null $status_change_date When `status` last changed, in UTC. For a portal pending removal it is the moment the countdown to  deletion started.
      *
      * @return self
      */
@@ -979,7 +979,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets time_zone
      *
-     * @param string|null $time_zone The tenant time zone.
+     * @param string|null $time_zone The portal time zone, which is the zone the dates this API calls portal time are expressed in. It may be  stored as a Windows identifier here, while `GET api/2.0/settings` always reports the IANA form.
      *
      * @return self
      */
@@ -1013,7 +1013,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_domains
      *
-     * @param string[]|null $trusted_domains The list of tenant trusted domains.
+     * @param string[]|null $trusted_domains The mail domains a new member may register or be invited from without confirming the address. It is empty  whenever `trustedDomainsType` is not `Custom`.
      *
      * @return self
      */
@@ -1047,7 +1047,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_domains_raw
      *
-     * @param string|null $trusted_domains_raw The tenant trusted domains in the string format.
+     * @param string|null $trusted_domains_raw The same domains as the single stored string they are kept in, separated by commas. Read  `trustedDomains` instead; this one exists because it is what the record holds.
      *
      * @return self
      */
@@ -1081,7 +1081,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_domains_type
      *
-     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType|null $trusted_domains_type The type of the tenant trusted domains.
+     * @param \OpenAPI\Client\Model\TenantTrustedDomainsType|null $trusted_domains_type How the mail domains are applied: no domain trusted, every domain trusted, or only the listed ones. Only  the last of the three makes `trustedDomains` meaningful.
      *
      * @return self
      */
@@ -1108,7 +1108,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int|null $version The tenant version
+     * @param int|null $version The identifier of the portal version the installation pins this portal to, which is an internal number  and not the product version string that `GET api/2.0/settings` reports as `version`.
      *
      * @return self
      */
@@ -1135,7 +1135,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version_changed
      *
-     * @param \DateTime|null $version_changed The date and time when the tenant version was changed.
+     * @param \DateTime|null $version_changed When `version` last changed, in UTC. It stays at its zero value on a portal whose version has never been  switched.
      *
      * @return self
      */
@@ -1162,7 +1162,7 @@ class TenantDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets region
      *
-     * @param string|null $region The tenant AWS region.
+     * @param string|null $region The data-centre region the portal is actually served from, looked up from the hosting service. It is  empty on a server installation and also whenever the installation's portal cache is switched off, so an  empty value does not mean the portal has no region - `hostedRegion` is the value from the record itself.
      *
      * @return self
      */

@@ -326,7 +326,7 @@ class AccountInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider
      *
-     * @param string|null $provider The account provider.
+     * @param string|null $provider The name of the identity provider, in lowercase, as every other operation of this group expects it: `google`,  `zoom`, `linkedin`, `facebook`, `twitter`, `microsoft`, `appleid`, `weixin` or `nextcloud`.
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class AccountInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The account URL.
+     * @param string|null $url The URL that starts the login with this provider. Open it as it is - it already carries the provider and the  popup or redirect mode the request asked for.
      *
      * @return self
      */
@@ -394,7 +394,7 @@ class AccountInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets linked
      *
-     * @param bool $linked Specifies if an account is linked with other profiles or not.
+     * @param bool $linked Whether this provider is already linked to the calling profile. It is always false for an anonymous caller,  because there is no profile to compare against.
      *
      * @return self
      */

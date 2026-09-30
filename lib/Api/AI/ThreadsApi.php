@@ -186,7 +186,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsAppendUserMessage($ai_threads_append_user_message_request, string $contentType = self::contentTypes['aiThreadsAppendUserMessage'][0])
     {
@@ -207,7 +207,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsAppendUserMessageWithHttpInfo($ai_threads_append_user_message_request, string $contentType = self::contentTypes['aiThreadsAppendUserMessage'][0])
     {
@@ -239,11 +239,35 @@ class ThreadsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiThreadMessageLike',
+                        '\OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -267,7 +291,7 @@ class ThreadsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiThreadMessageLike',
+                '\OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response',
                 $request,
                 $response,
             );
@@ -276,12 +300,44 @@ class ThreadsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiThreadMessageLike',
+                        '\OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -336,7 +392,7 @@ class ThreadsApi
      */
     public function aiThreadsAppendUserMessageAsyncWithHttpInfo($ai_threads_append_user_message_request, string $contentType = self::contentTypes['aiThreadsAppendUserMessage'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiThreadMessageLike';
+        $returnType = '\OpenAPI\Client\Model\AiThreadsAppendUserMessage200Response';
         $request = $this->aiThreadsAppendUserMessageRequest($ai_threads_append_user_message_request, $contentType);
 
         return $this->client
@@ -444,6 +500,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -474,12 +539,12 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsClearMessages($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
@@ -495,12 +560,12 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsClearMessagesWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
@@ -536,7 +601,31 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -574,7 +663,39 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -597,7 +718,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -621,7 +742,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -671,7 +792,7 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsClearMessages'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -737,6 +858,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -762,7 +892,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsCreate
      *
-     * Create
+     * Create a chat thread
      *
      * REST API Reference for aiThreadsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-create/
@@ -772,7 +902,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThread|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThread|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsCreate($ai_threads_create_request, string $contentType = self::contentTypes['aiThreadsCreate'][0])
     {
@@ -783,7 +913,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsCreateWithHttpInfo
      *
-     * Create
+     * Create a chat thread
      *
      * REST API Reference for aiThreadsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-create/
@@ -793,7 +923,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThread|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThread|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsCreateWithHttpInfo($ai_threads_create_request, string $contentType = self::contentTypes['aiThreadsCreate'][0])
     {
@@ -830,6 +960,30 @@ class ThreadsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -875,6 +1029,38 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -885,7 +1071,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsCreateAsync
      *
-     * Create
+     * Create a chat thread
      *
      * REST API Reference for aiThreadsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-create/
@@ -909,7 +1095,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsCreateAsyncWithHttpInfo
      *
-     * Create
+     * Create a chat thread
      *
      * REST API Reference for aiThreadsCreate Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-create/
@@ -1030,6 +1216,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1055,17 +1250,17 @@ class ThreadsApi
     /**
      * Operation aiThreadsDelete
      *
-     * Delete
+     * Delete a chat thread
      *
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsDelete($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
@@ -1076,17 +1271,17 @@ class ThreadsApi
     /**
      * Operation aiThreadsDeleteWithHttpInfo
      *
-     * Delete
+     * Delete a chat thread
      *
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
@@ -1122,7 +1317,37 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1160,7 +1385,47 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1178,12 +1443,12 @@ class ThreadsApi
     /**
      * Operation aiThreadsDeleteAsync
      *
-     * Delete
+     * Delete a chat thread
      *
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1202,12 +1467,12 @@ class ThreadsApi
     /**
      * Operation aiThreadsDeleteAsyncWithHttpInfo
      *
-     * Delete
+     * Delete a chat thread
      *
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1257,7 +1522,7 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsDelete'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1323,6 +1588,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1353,12 +1627,12 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body body (required)
+     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsDeleteMessage($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
@@ -1374,12 +1648,12 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsDeleteMessageWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
@@ -1415,7 +1689,31 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1453,7 +1751,39 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1476,7 +1806,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1500,7 +1830,7 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1550,7 +1880,7 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsDeleteMessage'
      *
-     * @param  string $body (required)
+     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1616,6 +1946,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1641,7 +1980,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetById
      *
-     * Get by id
+     * Get a chat thread
      *
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
@@ -1651,7 +1990,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiThread|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiThread|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsGetById($thread_id, string $contentType = self::contentTypes['aiThreadsGetById'][0])
     {
@@ -1662,7 +2001,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetByIdWithHttpInfo
      *
-     * Get by id
+     * Get a chat thread
      *
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
@@ -1672,7 +2011,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiThread|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiThread|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsGetByIdWithHttpInfo($thread_id, string $contentType = self::contentTypes['aiThreadsGetById'][0])
     {
@@ -1708,7 +2047,31 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1746,7 +2109,39 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1764,7 +2159,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetByIdAsync
      *
-     * Get by id
+     * Get a chat thread
      *
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
@@ -1788,7 +2183,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetByIdAsyncWithHttpInfo
      *
-     * Get by id
+     * Get a chat thread
      *
      * REST API Reference for aiThreadsGetById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-by-id/
@@ -1911,6 +2306,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1936,7 +2340,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetMessageById
      *
-     * Get message by id
+     * Get one chat message
      *
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
@@ -1946,7 +2350,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsGetMessageById($message_id, string $contentType = self::contentTypes['aiThreadsGetMessageById'][0])
     {
@@ -1957,7 +2361,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetMessageByIdWithHttpInfo
      *
-     * Get message by id
+     * Get one chat message
      *
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
@@ -1967,7 +2371,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsGetMessageByIdWithHttpInfo($message_id, string $contentType = self::contentTypes['aiThreadsGetMessageById'][0])
     {
@@ -2003,7 +2407,25 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2041,7 +2463,31 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2059,7 +2505,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetMessageByIdAsync
      *
-     * Get message by id
+     * Get one chat message
      *
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
@@ -2083,7 +2529,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsGetMessageByIdAsyncWithHttpInfo
      *
-     * Get message by id
+     * Get one chat message
      *
      * REST API Reference for aiThreadsGetMessageById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-get-message-by-id/
@@ -2206,6 +2652,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2231,20 +2686,20 @@ class ThreadsApi
     /**
      * Operation aiThreadsList
      *
-     * List
+     * List chat threads
      *
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsList($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
@@ -2255,20 +2710,20 @@ class ThreadsApi
     /**
      * Operation aiThreadsListWithHttpInfo
      *
-     * List
+     * List chat threads
      *
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThread[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsListWithHttpInfo($entity_id = null, $count = null, $cursor = null, $query = null, string $contentType = self::contentTypes['aiThreadsList'][0])
     {
@@ -2305,6 +2760,18 @@ class ThreadsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2350,6 +2817,22 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2360,13 +2843,13 @@ class ThreadsApi
     /**
      * Operation aiThreadsListAsync
      *
-     * List
+     * List chat threads
      *
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
@@ -2387,13 +2870,13 @@ class ThreadsApi
     /**
      * Operation aiThreadsListAsyncWithHttpInfo
      *
-     * List
+     * List chat threads
      *
      * REST API Reference for aiThreadsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-list/
      *
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
@@ -2446,7 +2929,7 @@ class ThreadsApi
      * Create request for operation 'aiThreadsList'
      *
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $query The full-text query the thread list is filtered by. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsList'] to see the possible values for this operation
@@ -2482,7 +2965,7 @@ class ThreadsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $count,
             'count', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2542,6 +3025,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2577,7 +3069,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiOpenOrCreateResult|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiOpenOrCreateResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsOpenOrCreate($ai_threads_open_or_create_request, string $contentType = self::contentTypes['aiThreadsOpenOrCreate'][0])
     {
@@ -2598,7 +3090,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiOpenOrCreateResult|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiOpenOrCreateResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsOpenOrCreateWithHttpInfo($ai_threads_open_or_create_request, string $contentType = self::contentTypes['aiThreadsOpenOrCreate'][0])
     {
@@ -2640,6 +3132,30 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -2673,6 +3189,38 @@ class ThreadsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2835,6 +3383,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2866,14 +3423,14 @@ class ThreadsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
      * @param  string $thread_id The chat thread identifier. (required)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsReadMessages($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
@@ -2890,14 +3447,14 @@ class ThreadsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
      * @param  string $thread_id The chat thread identifier. (required)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsReadMessagesWithHttpInfo($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
@@ -2934,6 +3491,18 @@ class ThreadsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2979,6 +3548,22 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -2995,7 +3580,7 @@ class ThreadsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
      * @param  string $thread_id The chat thread identifier. (required)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
@@ -3022,7 +3607,7 @@ class ThreadsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-read-messages/
      *
      * @param  string $thread_id The chat thread identifier. (required)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
@@ -3075,7 +3660,7 @@ class ThreadsApi
      * Create request for operation 'aiThreadsReadMessages'
      *
      * @param  string $thread_id The chat thread identifier. (required)
-     * @param  string|null $count The maximum number of items to return in one page. (optional)
+     * @param  int|null $count The maximum number of items to return in one page. (optional)
      * @param  string|null $cursor The keyset pagination cursor: the JSON-encoded sort key of the last item already received. Omit for the first page. (optional)
      * @param  string|null $direction The order the message page is read in. Only desc turns the read around and pages back from the newest message; omit for the forward read. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsReadMessages'] to see the possible values for this operation
@@ -3117,7 +3702,7 @@ class ThreadsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $count,
             'count', // param base name
-            'string', // openApiType
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3177,6 +3762,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3212,7 +3806,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return string|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsRegenerateTitle($ai_threads_regenerate_title_request, string $contentType = self::contentTypes['aiThreadsRegenerateTitle'][0])
     {
@@ -3233,7 +3827,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of string|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsRegenerateTitleWithHttpInfo($ai_threads_regenerate_title_request, string $contentType = self::contentTypes['aiThreadsRegenerateTitle'][0])
     {
@@ -3265,11 +3859,35 @@ class ThreadsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        'string',
+                        '\OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3293,7 +3911,7 @@ class ThreadsApi
             }
 
             return $this->handleResponseWithDataType(
-                'string',
+                '\OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response',
                 $request,
                 $response,
             );
@@ -3302,12 +3920,44 @@ class ThreadsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3362,7 +4012,7 @@ class ThreadsApi
      */
     public function aiThreadsRegenerateTitleAsyncWithHttpInfo($ai_threads_regenerate_title_request, string $contentType = self::contentTypes['aiThreadsRegenerateTitle'][0])
     {
-        $returnType = 'string';
+        $returnType = '\OpenAPI\Client\Model\AiThreadsRegenerateTitle200Response';
         $request = $this->aiThreadsRegenerateTitleRequest($ai_threads_regenerate_title_request, $contentType);
 
         return $this->client
@@ -3470,6 +4120,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3495,7 +4154,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsRename
      *
-     * Rename
+     * Rename a chat thread
      *
      * REST API Reference for aiThreadsRename Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-rename/
@@ -3505,7 +4164,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsRename($ai_threads_rename_request, string $contentType = self::contentTypes['aiThreadsRename'][0])
     {
@@ -3516,7 +4175,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsRenameWithHttpInfo
      *
-     * Rename
+     * Rename a chat thread
      *
      * REST API Reference for aiThreadsRename Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-rename/
@@ -3526,7 +4185,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsRenameWithHttpInfo($ai_threads_rename_request, string $contentType = self::contentTypes['aiThreadsRename'][0])
     {
@@ -3562,7 +4221,31 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3600,7 +4283,39 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3618,7 +4333,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsRenameAsync
      *
-     * Rename
+     * Rename a chat thread
      *
      * REST API Reference for aiThreadsRename Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-rename/
@@ -3642,7 +4357,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsRenameAsyncWithHttpInfo
      *
-     * Rename
+     * Rename a chat thread
      *
      * REST API Reference for aiThreadsRename Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-rename/
@@ -3763,6 +4478,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3788,7 +4512,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsTouch
      *
-     * Touch
+     * Bump a thread's activity
      *
      * REST API Reference for aiThreadsTouch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-touch/
@@ -3798,7 +4522,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsTouch($ai_threads_touch_request, string $contentType = self::contentTypes['aiThreadsTouch'][0])
     {
@@ -3809,7 +4533,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsTouchWithHttpInfo
      *
-     * Touch
+     * Bump a thread's activity
      *
      * REST API Reference for aiThreadsTouch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-touch/
@@ -3819,7 +4543,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsTouchWithHttpInfo($ai_threads_touch_request, string $contentType = self::contentTypes['aiThreadsTouch'][0])
     {
@@ -3856,6 +4580,24 @@ class ThreadsApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -3901,6 +4643,30 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -3911,7 +4677,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsTouchAsync
      *
-     * Touch
+     * Bump a thread's activity
      *
      * REST API Reference for aiThreadsTouch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-touch/
@@ -3935,7 +4701,7 @@ class ThreadsApi
     /**
      * Operation aiThreadsTouchAsyncWithHttpInfo
      *
-     * Touch
+     * Bump a thread's activity
      *
      * REST API Reference for aiThreadsTouch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-touch/
@@ -4056,6 +4822,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -4091,7 +4866,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsUpdateMessage($ai_threads_update_message_request, string $contentType = self::contentTypes['aiThreadsUpdateMessage'][0])
     {
@@ -4112,7 +4887,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsUpdateMessageWithHttpInfo($ai_threads_update_message_request, string $contentType = self::contentTypes['aiThreadsUpdateMessage'][0])
     {
@@ -4154,6 +4929,24 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
             }
 
             
@@ -4187,6 +4980,30 @@ class ThreadsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -4349,6 +5166,15 @@ class ThreadsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

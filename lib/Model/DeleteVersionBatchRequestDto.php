@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DeleteVersionBatchRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for deleting file versions.
+ * @description The file whose versions are deleted, and the versions to delete.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +330,7 @@ class DeleteVersionBatchRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets return_single_operation
      *
-     * @param bool|null $return_single_operation Specifies whether to return only the current operation
+     * @param bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
      *
      * @return self
      */
@@ -357,7 +357,7 @@ class DeleteVersionBatchRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to delete a file after the editing session is finished or not.
+     * @param bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It does not postpone the deletion and does not delete anything of its own.
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class DeleteVersionBatchRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets file_id
      *
-     * @param int $file_id The file ID to delete.
+     * @param int $file_id The file whose history the versions are taken from; only files stored in the portal itself are addressed here.
      *
      * @return self
      */
@@ -411,7 +411,7 @@ class DeleteVersionBatchRequestDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets versions
      *
-     * @param int[]|null $versions The collection of file versions to be deleted.
+     * @param int[]|null $versions The version numbers to remove, as reported by `GET api/2.0/files/file/{fileId}/history`. At least one number  has to be sent: an empty list removes the file itself instead of one of its versions. The number of the  current version is refused outright, while a number that no longer exists is passed over without a complaint.
      *
      * @return self
      */

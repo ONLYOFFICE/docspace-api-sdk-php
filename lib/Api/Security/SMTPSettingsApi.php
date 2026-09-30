@@ -142,7 +142,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpOperationStatus
      *
-     * Get the SMTP testing process status
+     * Get SMTP test status
      *
      * REST API Reference for getSmtpOperationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-operation-status/
@@ -162,7 +162,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpOperationStatusWithHttpInfo
      *
-     * Get the SMTP testing process status
+     * Get SMTP test status
      *
      * REST API Reference for getSmtpOperationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-operation-status/
@@ -291,7 +291,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpOperationStatusAsync
      *
-     * Get the SMTP testing process status
+     * Get SMTP test status
      *
      * REST API Reference for getSmtpOperationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-operation-status/
@@ -314,7 +314,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpOperationStatusAsyncWithHttpInfo
      *
-     * Get the SMTP testing process status
+     * Get SMTP test status
      *
      * REST API Reference for getSmtpOperationStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-operation-status/
@@ -466,7 +466,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpSettings
      *
-     * Get the SMTP settings
+     * Get SMTP settings
      *
      * REST API Reference for getSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-settings/
@@ -486,7 +486,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpSettingsWithHttpInfo
      *
-     * Get the SMTP settings
+     * Get SMTP settings
      *
      * REST API Reference for getSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-settings/
@@ -615,7 +615,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpSettingsAsync
      *
-     * Get the SMTP settings
+     * Get SMTP settings
      *
      * REST API Reference for getSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-settings/
@@ -638,7 +638,7 @@ class SMTPSettingsApi
     /**
      * Operation getSmtpSettingsAsyncWithHttpInfo
      *
-     * Get the SMTP settings
+     * Get SMTP settings
      *
      * REST API Reference for getSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-smtp-settings/
@@ -790,7 +790,7 @@ class SMTPSettingsApi
     /**
      * Operation resetSmtpSettings
      *
-     * Reset the SMTP settings
+     * Reset SMTP settings
      *
      * REST API Reference for resetSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-smtp-settings/
@@ -810,7 +810,7 @@ class SMTPSettingsApi
     /**
      * Operation resetSmtpSettingsWithHttpInfo
      *
-     * Reset the SMTP settings
+     * Reset SMTP settings
      *
      * REST API Reference for resetSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-smtp-settings/
@@ -939,7 +939,7 @@ class SMTPSettingsApi
     /**
      * Operation resetSmtpSettingsAsync
      *
-     * Reset the SMTP settings
+     * Reset SMTP settings
      *
      * REST API Reference for resetSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-smtp-settings/
@@ -962,7 +962,7 @@ class SMTPSettingsApi
     /**
      * Operation resetSmtpSettingsAsyncWithHttpInfo
      *
-     * Reset the SMTP settings
+     * Reset SMTP settings
      *
      * REST API Reference for resetSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-smtp-settings/
@@ -1114,7 +1114,7 @@ class SMTPSettingsApi
     /**
      * Operation saveSmtpSettings
      *
-     * Save the SMTP settings
+     * Save SMTP settings
      *
      * REST API Reference for saveSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-smtp-settings/
@@ -1135,7 +1135,7 @@ class SMTPSettingsApi
     /**
      * Operation saveSmtpSettingsWithHttpInfo
      *
-     * Save the SMTP settings
+     * Save SMTP settings
      *
      * REST API Reference for saveSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-smtp-settings/
@@ -1279,7 +1279,7 @@ class SMTPSettingsApi
     /**
      * Operation saveSmtpSettingsAsync
      *
-     * Save the SMTP settings
+     * Save SMTP settings
      *
      * REST API Reference for saveSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-smtp-settings/
@@ -1303,7 +1303,7 @@ class SMTPSettingsApi
     /**
      * Operation saveSmtpSettingsAsyncWithHttpInfo
      *
-     * Save the SMTP settings
+     * Save SMTP settings
      *
      * REST API Reference for saveSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-smtp-settings/
@@ -1465,7 +1465,7 @@ class SMTPSettingsApi
     /**
      * Operation testSmtpSettings
      *
-     * Test the SMTP settings
+     * Test SMTP settings
      *
      * REST API Reference for testSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/test-smtp-settings/
@@ -1485,7 +1485,7 @@ class SMTPSettingsApi
     /**
      * Operation testSmtpSettingsWithHttpInfo
      *
-     * Test the SMTP settings
+     * Test SMTP settings
      *
      * REST API Reference for testSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/test-smtp-settings/
@@ -1614,7 +1614,7 @@ class SMTPSettingsApi
     /**
      * Operation testSmtpSettingsAsync
      *
-     * Test the SMTP settings
+     * Test SMTP settings
      *
      * REST API Reference for testSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/test-smtp-settings/
@@ -1637,7 +1637,7 @@ class SMTPSettingsApi
     /**
      * Operation testSmtpSettingsAsyncWithHttpInfo
      *
-     * Test the SMTP settings
+     * Test SMTP settings
      *
      * REST API Reference for testSmtpSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/test-smtp-settings/

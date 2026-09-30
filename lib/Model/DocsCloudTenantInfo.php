@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudTenantInfo Class Doc Comment
  *
  * @category Class
- * @description Represents the license and server information of a DocsCloud tenant, with usage statistics for the current period.
+ * @description Represents the license and server information of a Docs Connect tenant, with usage statistics for the current period.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -351,7 +351,7 @@ class DocsCloudTenantInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets server
      *
-     * @param \OpenAPI\Client\Model\DocsCloudServerInfo|null $server The DocsCloud server information.
+     * @param \OpenAPI\Client\Model\DocsCloudServerInfo|null $server The Docs Connect server information.
      *
      * @return self
      */

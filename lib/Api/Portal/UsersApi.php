@@ -505,12 +505,12 @@ class UsersApi
     /**
      * Operation deleteInvitationLink
      *
-     * Deletes an invitation link.
+     * Delete an invitation link
      *
      * REST API Reference for deleteInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto The data transfer object containing the details of the invitation link to be deleted. (optional)
+     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto invitation_link_delete_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInvitationLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -526,12 +526,12 @@ class UsersApi
     /**
      * Operation deleteInvitationLinkWithHttpInfo
      *
-     * Deletes an invitation link.
+     * Delete an invitation link
      *
      * REST API Reference for deleteInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto The data transfer object containing the details of the invitation link to be deleted. (optional)
+     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInvitationLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -670,12 +670,12 @@ class UsersApi
     /**
      * Operation deleteInvitationLinkAsync
      *
-     * Deletes an invitation link.
+     * Delete an invitation link
      *
      * REST API Reference for deleteInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto The data transfer object containing the details of the invitation link to be deleted. (optional)
+     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -694,12 +694,12 @@ class UsersApi
     /**
      * Operation deleteInvitationLinkAsyncWithHttpInfo
      *
-     * Deletes an invitation link.
+     * Delete an invitation link
      *
      * REST API Reference for deleteInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto The data transfer object containing the details of the invitation link to be deleted. (optional)
+     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -749,7 +749,7 @@ class UsersApi
     /**
      * Create request for operation 'deleteInvitationLink'
      *
-     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto The data transfer object containing the details of the invitation link to be deleted. (optional)
+     * @param  \OpenAPI\Client\Model\InvitationLinkDeleteRequestDto|null $invitation_link_delete_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -856,12 +856,12 @@ class UsersApi
     /**
      * Operation getInvitationLink
      *
-     * Get an invitation link
+     * Get a legacy invitation link
      *
      * REST API Reference for getInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -878,12 +878,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkWithHttpInfo
      *
-     * Get an invitation link
+     * Get a legacy invitation link
      *
      * REST API Reference for getInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1023,12 +1023,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkAsync
      *
-     * Get an invitation link
+     * Get a legacy invitation link
      *
      * REST API Reference for getInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1048,12 +1048,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkAsyncWithHttpInfo
      *
-     * Get an invitation link
+     * Get a legacy invitation link
      *
      * REST API Reference for getInvitationLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1104,7 +1104,7 @@ class UsersApi
     /**
      * Create request for operation 'getInvitationLink'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1219,12 +1219,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkByEmployeeType
      *
-     * Get an invitation link
+     * Get an invitation link by role
      *
      * REST API Reference for getInvitationLinkByEmployeeType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link-by-employee-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLinkByEmployeeType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1240,12 +1240,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkByEmployeeTypeWithHttpInfo
      *
-     * Get an invitation link
+     * Get an invitation link by role
      *
      * REST API Reference for getInvitationLinkByEmployeeType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link-by-employee-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLinkByEmployeeType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1384,12 +1384,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkByEmployeeTypeAsync
      *
-     * Get an invitation link
+     * Get an invitation link by role
      *
      * REST API Reference for getInvitationLinkByEmployeeType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link-by-employee-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLinkByEmployeeType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1408,12 +1408,12 @@ class UsersApi
     /**
      * Operation getInvitationLinkByEmployeeTypeAsyncWithHttpInfo
      *
-     * Get an invitation link
+     * Get an invitation link by role
      *
      * REST API Reference for getInvitationLinkByEmployeeType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-invitation-link-by-employee-type/
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLinkByEmployeeType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1463,7 +1463,7 @@ class UsersApi
     /**
      * Create request for operation 'getInvitationLinkByEmployeeType'
      *
-     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The type of employee role for the invitation link (DocSpaceAdmin, RoomAdmin or User). (required)
+     * @param  \OpenAPI\Client\Model\EmployeeType $employee_type The role whoever follows the link joins with. Only `DocSpaceAdmin`, `RoomAdmin` and `User` have a link; any  other role is refused. The portal keeps at most one link per role, so this value alone identifies it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInvitationLinkByEmployeeType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1901,12 +1901,12 @@ class UsersApi
     /**
      * Operation getUserById
      *
-     * Get a user by ID
+     * Get a portal user
      *
      * REST API Reference for getUserById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-by-id/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. An ID belonging to  no account of this portal and an ID of an internal system account are both answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1922,12 +1922,12 @@ class UsersApi
     /**
      * Operation getUserByIdWithHttpInfo
      *
-     * Get a user by ID
+     * Get a portal user
      *
      * REST API Reference for getUserById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-by-id/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. An ID belonging to  no account of this portal and an ID of an internal system account are both answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserById'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2066,12 +2066,12 @@ class UsersApi
     /**
      * Operation getUserByIdAsync
      *
-     * Get a user by ID
+     * Get a portal user
      *
      * REST API Reference for getUserById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-by-id/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. An ID belonging to  no account of this portal and an ID of an internal system account are both answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2090,12 +2090,12 @@ class UsersApi
     /**
      * Operation getUserByIdAsyncWithHttpInfo
      *
-     * Get a user by ID
+     * Get a portal user
      *
      * REST API Reference for getUserById Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-by-id/
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. An ID belonging to  no account of this portal and an ID of an internal system account are both answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2145,7 +2145,7 @@ class UsersApi
     /**
      * Create request for operation 'getUserById'
      *
-     * @param  string $user_id The user ID extracted from the route parameters. (required)
+     * @param  string $user_id The portal account the operation acts on, by user ID as `GET api/2.0/people` reports it. An ID belonging to  no account of this portal and an ID of an internal system account are both answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2520,8 +2520,8 @@ class UsersApi
      * REST API Reference for sendCongratulations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-congratulations/
      *
-     * @param  string $userid The user ID to receive the congratulatory message. (required)
-     * @param  string $key The template identifier or email configuration key. (required)
+     * @param  string $userid The account the welcome letter is addressed to, by portal user ID. The key in `key` has to have been issued  for this same account, so the pair is what authorises the call. (required)
+     * @param  string $key The confirmation key from the sign-in link the portal issued for that account, which stands in for a token  here. It is accepted for one hour after it was created; a wrong, foreign or expired key answers 403 and sends  nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendCongratulations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2541,8 +2541,8 @@ class UsersApi
      * REST API Reference for sendCongratulations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-congratulations/
      *
-     * @param  string $userid The user ID to receive the congratulatory message. (required)
-     * @param  string $key The template identifier or email configuration key. (required)
+     * @param  string $userid The account the welcome letter is addressed to, by portal user ID. The key in `key` has to have been issued  for this same account, so the pair is what authorises the call. (required)
+     * @param  string $key The confirmation key from the sign-in link the portal issued for that account, which stands in for a token  here. It is accepted for one hour after it was created; a wrong, foreign or expired key answers 403 and sends  nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendCongratulations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2618,8 +2618,8 @@ class UsersApi
      * REST API Reference for sendCongratulations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-congratulations/
      *
-     * @param  string $userid The user ID to receive the congratulatory message. (required)
-     * @param  string $key The template identifier or email configuration key. (required)
+     * @param  string $userid The account the welcome letter is addressed to, by portal user ID. The key in `key` has to have been issued  for this same account, so the pair is what authorises the call. (required)
+     * @param  string $key The confirmation key from the sign-in link the portal issued for that account, which stands in for a token  here. It is accepted for one hour after it was created; a wrong, foreign or expired key answers 403 and sends  nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendCongratulations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2643,8 +2643,8 @@ class UsersApi
      * REST API Reference for sendCongratulations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-congratulations/
      *
-     * @param  string $userid The user ID to receive the congratulatory message. (required)
-     * @param  string $key The template identifier or email configuration key. (required)
+     * @param  string $userid The account the welcome letter is addressed to, by portal user ID. The key in `key` has to have been issued  for this same account, so the pair is what authorises the call. (required)
+     * @param  string $key The confirmation key from the sign-in link the portal issued for that account, which stands in for a token  here. It is accepted for one hour after it was created; a wrong, foreign or expired key answers 403 and sends  nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendCongratulations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2681,8 +2681,8 @@ class UsersApi
     /**
      * Create request for operation 'sendCongratulations'
      *
-     * @param  string $userid The user ID to receive the congratulatory message. (required)
-     * @param  string $key The template identifier or email configuration key. (required)
+     * @param  string $userid The account the welcome letter is addressed to, by portal user ID. The key in `key` has to have been issued  for this same account, so the pair is what authorises the call. (required)
+     * @param  string $key The confirmation key from the sign-in link the portal issued for that account, which stands in for a token  here. It is accepted for one hour after it was created; a wrong, foreign or expired key answers 403 and sends  nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendCongratulations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2766,6 +2766,28 @@ class UsersApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

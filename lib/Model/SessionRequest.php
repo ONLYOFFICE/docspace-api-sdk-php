@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SessionRequest Class Doc Comment
  *
  * @category Class
- * @description The session request parameters.
+ * @description The file a chunked upload session is opened for, and how a clash with an existing name is settled.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => 'string',
         'file_size' => 'int',
         'relative_path' => 'string',
-        'create_on' => '\DateTime',
+        'create_on' => '\OpenAPI\Client\Model\ApiDateTime',
         'encrypted' => 'bool',
         'create_new_if_exist' => 'bool'
     ];
@@ -77,7 +77,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => null,
         'file_size' => 'int64',
         'relative_path' => null,
-        'create_on' => 'date-time',
+        'create_on' => null,
         'encrypted' => null,
         'create_new_if_exist' => null
     ];
@@ -91,7 +91,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'file_name' => true,
         'file_size' => false,
         'relative_path' => true,
-        'create_on' => true,
+        'create_on' => false,
         'encrypted' => false,
         'create_new_if_exist' => false
     ];
@@ -341,7 +341,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_name
      *
-     * @param string|null $file_name The file name.
+     * @param string|null $file_name The name to store the file under, extension included. Characters a title cannot hold are replaced and the name  is truncated, so the stored title can differ from the one sent.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_size
      *
-     * @param int|null $file_size The file size.
+     * @param int|null $file_size The exact number of bytes that will be sent. The size is reserved when the session opens and compared with the  parts as they arrive; below the portal chunk size the session takes the whole payload in one part, and above  the portal limit for chunked uploads it is refused.
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets relative_path
      *
-     * @param string|null $relative_path The relative path to the file.
+     * @param string|null $relative_path A slash-separated chain of folder titles under the target folder to store the file in; folders in the chain  that do not exist yet are created. Leave it empty to store the file in the folder from the path itself.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets create_on
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getCreateOn()
     {
@@ -436,21 +436,14 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_on
      *
-     * @param \DateTime|null $create_on The date and time when the file was created.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $create_on The creation time to stamp on a newly created file instead of the moment the upload finishes. It is ignored  when the upload lands on a file that already exists.
      *
      * @return self
      */
     public function setCreateOn($create_on)
     {
         if (is_null($create_on)) {
-            array_push($this->openAPINullablesSetToNull, 'create_on');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('create_on', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable create_on cannot be null');
         }
         $this->container['create_on'] = $create_on;
 
@@ -470,7 +463,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets encrypted
      *
-     * @param bool|null $encrypted Specifies whether the file is encrypted or not.
+     * @param bool|null $encrypted Marks the stored file as client-side encrypted, which is how content uploaded into a private room is kept;  with false the bytes are stored as they arrive.
      *
      * @return self
      */
@@ -497,7 +490,7 @@ class SessionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets create_new_if_exist
      *
-     * @param bool|null $create_new_if_exist Specifies whether to create a new file if it already exists.
+     * @param bool|null $create_new_if_exist Settles the clash when the folder already holds a file with this name: true stores the upload beside it under  a name with a numeric suffix, false takes the existing file over and adds the content to it as a new version.
      *
      * @return self
      */

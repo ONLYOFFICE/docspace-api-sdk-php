@@ -283,17 +283,17 @@ class FilesApi
     /**
      * Operation addFileToRecent
      *
-     * Add a file to the Recent section
+     * Add a file to Recent
      *
      * REST API Reference for addFileToRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-file-to-recent/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addFileToRecent'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addFileToRecent($file_id, string $contentType = self::contentTypes['addFileToRecent'][0])
     {
@@ -304,17 +304,17 @@ class FilesApi
     /**
      * Operation addFileToRecentWithHttpInfo
      *
-     * Add a file to the Recent section
+     * Add a file to Recent
      *
      * REST API Reference for addFileToRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-file-to-recent/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addFileToRecent'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addFileToRecentWithHttpInfo($file_id, string $contentType = self::contentTypes['addFileToRecent'][0])
     {
@@ -346,7 +346,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -392,7 +392,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -401,7 +401,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -448,12 +448,12 @@ class FilesApi
     /**
      * Operation addFileToRecentAsync
      *
-     * Add a file to the Recent section
+     * Add a file to Recent
      *
      * REST API Reference for addFileToRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-file-to-recent/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addFileToRecent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -472,12 +472,12 @@ class FilesApi
     /**
      * Operation addFileToRecentAsyncWithHttpInfo
      *
-     * Add a file to the Recent section
+     * Add a file to Recent
      *
      * REST API Reference for addFileToRecent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-file-to-recent/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addFileToRecent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -485,7 +485,7 @@ class FilesApi
      */
     public function addFileToRecentAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['addFileToRecent'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->addFileToRecentRequest($file_id, $contentType);
 
         return $this->client
@@ -527,7 +527,7 @@ class FilesApi
     /**
      * Create request for operation 'addFileToRecent'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addFileToRecent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -997,13 +997,13 @@ class FilesApi
      * REST API Reference for changeVersionHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
-     * @param  int $file_id The file Id to change its version history. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The parameters for changing version history. (required)
+     * @param  int|string $file_id The file whose version history is changed. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function changeVersionHistory($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
@@ -1019,13 +1019,13 @@ class FilesApi
      * REST API Reference for changeVersionHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
-     * @param  int $file_id The file Id to change its version history. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The parameters for changing version history. (required)
+     * @param  int|string $file_id The file whose version history is changed. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeVersionHistoryWithHttpInfo($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
@@ -1057,7 +1057,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1103,7 +1103,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                 $request,
                 $response,
             );
@@ -1112,7 +1112,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1164,8 +1164,8 @@ class FilesApi
      * REST API Reference for changeVersionHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
-     * @param  int $file_id The file Id to change its version history. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The parameters for changing version history. (required)
+     * @param  int|string $file_id The file whose version history is changed. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1189,8 +1189,8 @@ class FilesApi
      * REST API Reference for changeVersionHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
-     * @param  int $file_id The file Id to change its version history. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The parameters for changing version history. (required)
+     * @param  int|string $file_id The file whose version history is changed. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1198,7 +1198,7 @@ class FilesApi
      */
     public function changeVersionHistoryAsyncWithHttpInfo($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerArrayWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper';
         $request = $this->changeVersionHistoryRequest($file_id, $change_history, $contentType);
 
         return $this->client
@@ -1240,8 +1240,8 @@ class FilesApi
     /**
      * Create request for operation 'changeVersionHistory'
      *
-     * @param  int $file_id The file Id to change its version history. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The parameters for changing version history. (required)
+     * @param  int|string $file_id The file whose version history is changed. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1369,13 +1369,13 @@ class FilesApi
     /**
      * Operation checkFillFormDraft
      *
-     * Check the form draft filling
+     * Open a form draft for filling
      *
      * REST API Reference for checkFillFormDraft Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
-     * @param  int $file_id The file ID of the form draft. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The parameters for checking the form draft filling. (required)
+     * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1391,13 +1391,13 @@ class FilesApi
     /**
      * Operation checkFillFormDraftWithHttpInfo
      *
-     * Check the form draft filling
+     * Open a form draft for filling
      *
      * REST API Reference for checkFillFormDraft Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
-     * @param  int $file_id The file ID of the form draft. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The parameters for checking the form draft filling. (required)
+     * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1522,13 +1522,13 @@ class FilesApi
     /**
      * Operation checkFillFormDraftAsync
      *
-     * Check the form draft filling
+     * Open a form draft for filling
      *
      * REST API Reference for checkFillFormDraft Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
-     * @param  int $file_id The file ID of the form draft. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The parameters for checking the form draft filling. (required)
+     * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1547,13 +1547,13 @@ class FilesApi
     /**
      * Operation checkFillFormDraftAsyncWithHttpInfo
      *
-     * Check the form draft filling
+     * Open a form draft for filling
      *
      * REST API Reference for checkFillFormDraft Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
-     * @param  int $file_id The file ID of the form draft. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The parameters for checking the form draft filling. (required)
+     * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1603,8 +1603,8 @@ class FilesApi
     /**
      * Create request for operation 'checkFillFormDraft'
      *
-     * @param  int $file_id The file ID of the form draft. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The parameters for checking the form draft filling. (required)
+     * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1685,6 +1685,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1715,8 +1737,8 @@ class FilesApi
      * REST API Reference for copyFileAs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
-     * @param  int $file_id The file ID to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The parameters for copying a file. (required)
+     * @param  int|string $file_id The file to copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1737,8 +1759,8 @@ class FilesApi
      * REST API Reference for copyFileAs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
-     * @param  int $file_id The file ID to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The parameters for copying a file. (required)
+     * @param  int|string $file_id The file to copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1868,8 +1890,8 @@ class FilesApi
      * REST API Reference for copyFileAs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
-     * @param  int $file_id The file ID to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The parameters for copying a file. (required)
+     * @param  int|string $file_id The file to copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1893,8 +1915,8 @@ class FilesApi
      * REST API Reference for copyFileAs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
-     * @param  int $file_id The file ID to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The parameters for copying a file. (required)
+     * @param  int|string $file_id The file to copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1944,8 +1966,8 @@ class FilesApi
     /**
      * Create request for operation 'copyFileAs'
      *
-     * @param  int $file_id The file ID to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The parameters for copying a file. (required)
+     * @param  int|string $file_id The file to copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2078,13 +2100,13 @@ class FilesApi
      * REST API Reference for createEditSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-edit-session/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $file_size The file size in bytes. (optional)
+     * @param  int|string $file_id The file whose content the session will replace; take the id from a folder listing or from the file itself. (required)
+     * @param  int|null $file_size The number of bytes the new content will take. It is checked against the portal limit for chunked uploads  before the session opens, and a session left at 0 takes the whole content in a single part. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEditSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createEditSession($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
@@ -2100,13 +2122,13 @@ class FilesApi
      * REST API Reference for createEditSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-edit-session/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $file_size The file size in bytes. (optional)
+     * @param  int|string $file_id The file whose content the session will replace; take the id from a folder listing or from the file itself. (required)
+     * @param  int|null $file_size The number of bytes the new content will take. It is checked against the portal limit for chunked uploads  before the session opens, and a session left at 0 takes the whole content in a single part. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEditSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createEditSessionWithHttpInfo($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
@@ -2138,7 +2160,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                         $request,
                         $response,
                     );
@@ -2184,7 +2206,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                 $request,
                 $response,
             );
@@ -2193,7 +2215,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2245,8 +2267,8 @@ class FilesApi
      * REST API Reference for createEditSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-edit-session/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $file_size The file size in bytes. (optional)
+     * @param  int|string $file_id The file whose content the session will replace; take the id from a folder listing or from the file itself. (required)
+     * @param  int|null $file_size The number of bytes the new content will take. It is checked against the portal limit for chunked uploads  before the session opens, and a session left at 0 takes the whole content in a single part. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2270,8 +2292,8 @@ class FilesApi
      * REST API Reference for createEditSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-edit-session/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $file_size The file size in bytes. (optional)
+     * @param  int|string $file_id The file whose content the session will replace; take the id from a folder listing or from the file itself. (required)
+     * @param  int|null $file_size The number of bytes the new content will take. It is checked against the portal limit for chunked uploads  before the session opens, and a session left at 0 takes the whole content in a single part. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2279,7 +2301,7 @@ class FilesApi
      */
     public function createEditSessionAsyncWithHttpInfo($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper';
         $request = $this->createEditSessionRequest($file_id, $file_size, $contentType);
 
         return $this->client
@@ -2321,8 +2343,8 @@ class FilesApi
     /**
      * Create request for operation 'createEditSession'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $file_size The file size in bytes. (optional)
+     * @param  int|string $file_id The file whose content the session will replace; take the id from a folder listing or from the file itself. (required)
+     * @param  int|null $file_size The number of bytes the new content will take. It is checked against the portal limit for chunked uploads  before the session opens, and a session left at 0 takes the whole content in a single part. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2451,13 +2473,13 @@ class FilesApi
      * REST API Reference for createFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
-     * @param  int $folder_id The folder ID for the file creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The parameters for creating a file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createFile($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
     {
@@ -2473,13 +2495,13 @@ class FilesApi
      * REST API Reference for createFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
-     * @param  int $folder_id The folder ID for the file creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The parameters for creating a file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFileWithHttpInfo($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
     {
@@ -2511,7 +2533,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -2557,7 +2579,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -2566,7 +2588,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2618,8 +2640,8 @@ class FilesApi
      * REST API Reference for createFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
-     * @param  int $folder_id The folder ID for the file creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The parameters for creating a file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2643,8 +2665,8 @@ class FilesApi
      * REST API Reference for createFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
-     * @param  int $folder_id The folder ID for the file creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The parameters for creating a file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2652,7 +2674,7 @@ class FilesApi
      */
     public function createFileAsyncWithHttpInfo($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createFileRequest($folder_id, $create_file_json_element, $contentType);
 
         return $this->client
@@ -2694,8 +2716,8 @@ class FilesApi
     /**
      * Create request for operation 'createFile'
      *
-     * @param  int $folder_id The folder ID for the file creation. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The parameters for creating a file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2823,7 +2845,7 @@ class FilesApi
     /**
      * Operation createFileInMyDocuments
      *
-     * Create a file in the My documents section
+     * Create a file in My documents
      *
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
@@ -2833,7 +2855,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createFileInMyDocuments($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
@@ -2844,7 +2866,7 @@ class FilesApi
     /**
      * Operation createFileInMyDocumentsWithHttpInfo
      *
-     * Create a file in the My documents section
+     * Create a file in My documents
      *
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
@@ -2854,7 +2876,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFileInMyDocumentsWithHttpInfo($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
@@ -2886,7 +2908,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -2932,7 +2954,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -2941,7 +2963,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2988,7 +3010,7 @@ class FilesApi
     /**
      * Operation createFileInMyDocumentsAsync
      *
-     * Create a file in the My documents section
+     * Create a file in My documents
      *
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
@@ -3012,7 +3034,7 @@ class FilesApi
     /**
      * Operation createFileInMyDocumentsAsyncWithHttpInfo
      *
-     * Create a file in the My documents section
+     * Create a file in My documents
      *
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
@@ -3025,7 +3047,7 @@ class FilesApi
      */
     public function createFileInMyDocumentsAsyncWithHttpInfo($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createFileInMyDocumentsRequest($create_file_json_element, $contentType);
 
         return $this->client
@@ -3174,13 +3196,13 @@ class FilesApi
     /**
      * Operation createFilePrimaryExternalLink
      *
-     * Create primary external link
+     * Create the file primary external link
      *
      * REST API Reference for createFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-primary-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3196,13 +3218,13 @@ class FilesApi
     /**
      * Operation createFilePrimaryExternalLinkWithHttpInfo
      *
-     * Create primary external link
+     * Create the file primary external link
      *
      * REST API Reference for createFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-primary-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3341,13 +3363,13 @@ class FilesApi
     /**
      * Operation createFilePrimaryExternalLinkAsync
      *
-     * Create primary external link
+     * Create the file primary external link
      *
      * REST API Reference for createFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-primary-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3366,13 +3388,13 @@ class FilesApi
     /**
      * Operation createFilePrimaryExternalLinkAsyncWithHttpInfo
      *
-     * Create primary external link
+     * Create the file primary external link
      *
      * REST API Reference for createFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-primary-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3422,8 +3444,8 @@ class FilesApi
     /**
      * Create request for operation 'createFilePrimaryExternalLink'
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3556,13 +3578,13 @@ class FilesApi
      * REST API Reference for createHtmlFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createHtmlFile($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
@@ -3578,13 +3600,13 @@ class FilesApi
      * REST API Reference for createHtmlFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createHtmlFileWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
@@ -3616,7 +3638,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -3662,7 +3684,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -3671,7 +3693,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3723,8 +3745,8 @@ class FilesApi
      * REST API Reference for createHtmlFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3748,8 +3770,8 @@ class FilesApi
      * REST API Reference for createHtmlFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3757,7 +3779,7 @@ class FilesApi
      */
     public function createHtmlFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createHtmlFileRequest($folder_id, $create_text_or_html_file, $contentType);
 
         return $this->client
@@ -3799,8 +3821,8 @@ class FilesApi
     /**
      * Create request for operation 'createHtmlFile'
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3928,7 +3950,7 @@ class FilesApi
     /**
      * Operation createHtmlFileInMyDocuments
      *
-     * Create an HTML file in the My documents section
+     * Create an HTML file in My documents
      *
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
@@ -3938,7 +3960,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createHtmlFileInMyDocuments($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
@@ -3949,7 +3971,7 @@ class FilesApi
     /**
      * Operation createHtmlFileInMyDocumentsWithHttpInfo
      *
-     * Create an HTML file in the My documents section
+     * Create an HTML file in My documents
      *
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
@@ -3959,7 +3981,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createHtmlFileInMyDocumentsWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
@@ -3991,7 +4013,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -4037,7 +4059,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -4046,7 +4068,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4093,7 +4115,7 @@ class FilesApi
     /**
      * Operation createHtmlFileInMyDocumentsAsync
      *
-     * Create an HTML file in the My documents section
+     * Create an HTML file in My documents
      *
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
@@ -4117,7 +4139,7 @@ class FilesApi
     /**
      * Operation createHtmlFileInMyDocumentsAsyncWithHttpInfo
      *
-     * Create an HTML file in the My documents section
+     * Create an HTML file in My documents
      *
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
@@ -4130,7 +4152,7 @@ class FilesApi
      */
     public function createHtmlFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createHtmlFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
 
         return $this->client
@@ -4284,13 +4306,13 @@ class FilesApi
      * REST API Reference for createTextFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createTextFile($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
     {
@@ -4306,13 +4328,13 @@ class FilesApi
      * REST API Reference for createTextFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTextFileWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
     {
@@ -4344,7 +4366,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -4390,7 +4412,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -4399,7 +4421,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4451,8 +4473,8 @@ class FilesApi
      * REST API Reference for createTextFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4476,8 +4498,8 @@ class FilesApi
      * REST API Reference for createTextFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4485,7 +4507,7 @@ class FilesApi
      */
     public function createTextFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createTextFileRequest($folder_id, $create_text_or_html_file, $contentType);
 
         return $this->client
@@ -4527,8 +4549,8 @@ class FilesApi
     /**
      * Create request for operation 'createTextFile'
      *
-     * @param  int $folder_id The folder ID to create the text or HTML file. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The parameters for creating an HTML or text file. (required)
+     * @param  int|string $folder_id The folder the file is created in. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4656,7 +4678,7 @@ class FilesApi
     /**
      * Operation createTextFileInMyDocuments
      *
-     * Create a text file in the My documents section
+     * Create a text file in My documents
      *
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
@@ -4666,7 +4688,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createTextFileInMyDocuments($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
@@ -4677,7 +4699,7 @@ class FilesApi
     /**
      * Operation createTextFileInMyDocumentsWithHttpInfo
      *
-     * Create a text file in the My documents section
+     * Create a text file in My documents
      *
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
@@ -4687,7 +4709,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTextFileInMyDocumentsWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
@@ -4719,7 +4741,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -4765,7 +4787,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -4774,7 +4796,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4821,7 +4843,7 @@ class FilesApi
     /**
      * Operation createTextFileInMyDocumentsAsync
      *
-     * Create a text file in the My documents section
+     * Create a text file in My documents
      *
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
@@ -4845,7 +4867,7 @@ class FilesApi
     /**
      * Operation createTextFileInMyDocumentsAsyncWithHttpInfo
      *
-     * Create a text file in the My documents section
+     * Create a text file in My documents
      *
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
@@ -4858,7 +4880,7 @@ class FilesApi
      */
     public function createTextFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->createTextFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
 
         return $this->client
@@ -5007,7 +5029,7 @@ class FilesApi
     /**
      * Operation createThumbnails
      *
-     * Create file thumbnails
+     * Queue file thumbnails
      *
      * REST API Reference for createThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-thumbnails/
@@ -5028,7 +5050,7 @@ class FilesApi
     /**
      * Operation createThumbnailsWithHttpInfo
      *
-     * Create file thumbnails
+     * Queue file thumbnails
      *
      * REST API Reference for createThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-thumbnails/
@@ -5158,7 +5180,7 @@ class FilesApi
     /**
      * Operation createThumbnailsAsync
      *
-     * Create file thumbnails
+     * Queue file thumbnails
      *
      * REST API Reference for createThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-thumbnails/
@@ -5182,7 +5204,7 @@ class FilesApi
     /**
      * Operation createThumbnailsAsyncWithHttpInfo
      *
-     * Create file thumbnails
+     * Queue file thumbnails
      *
      * REST API Reference for createThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-thumbnails/
@@ -5297,6 +5319,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5327,9 +5371,9 @@ class FilesApi
      * REST API Reference for deleteFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
-     * @param  int $file_id The file ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete The parameters for deleting a file. (required)
-     * @param  bool|null $return_single_operation Specifies whether to return only the current operation (optional)
+     * @param  int|string $file_id The file to delete. (required)
+     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5350,9 +5394,9 @@ class FilesApi
      * REST API Reference for deleteFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
-     * @param  int $file_id The file ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete The parameters for deleting a file. (required)
-     * @param  bool|null $return_single_operation Specifies whether to return only the current operation (optional)
+     * @param  int|string $file_id The file to delete. (required)
+     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5496,9 +5540,9 @@ class FilesApi
      * REST API Reference for deleteFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
-     * @param  int $file_id The file ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete The parameters for deleting a file. (required)
-     * @param  bool|null $return_single_operation Specifies whether to return only the current operation (optional)
+     * @param  int|string $file_id The file to delete. (required)
+     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5522,9 +5566,9 @@ class FilesApi
      * REST API Reference for deleteFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
-     * @param  int $file_id The file ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete The parameters for deleting a file. (required)
-     * @param  bool|null $return_single_operation Specifies whether to return only the current operation (optional)
+     * @param  int|string $file_id The file to delete. (required)
+     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5574,9 +5618,9 @@ class FilesApi
     /**
      * Create request for operation 'deleteFile'
      *
-     * @param  int $file_id The file ID to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete The parameters for deleting a file. (required)
-     * @param  bool|null $return_single_operation Specifies whether to return only the current operation (optional)
+     * @param  int|string $file_id The file to delete. (required)
+     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5996,7 +6040,7 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The file IDs. (optional)
+     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6017,7 +6061,7 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The file IDs. (optional)
+     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6161,7 +6205,7 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The file IDs. (optional)
+     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6185,7 +6229,7 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The file IDs. (optional)
+     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6235,7 +6279,7 @@ class FilesApi
     /**
      * Create request for operation 'deleteTemplates'
      *
-     * @param  int[]|null $request_body The file IDs. (optional)
+     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6342,12 +6386,12 @@ class FilesApi
     /**
      * Operation generateXlsx
      *
-     * Generate XLSX report
+     * Generate a form answers report
      *
      * REST API Reference for generateXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsx'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6363,12 +6407,12 @@ class FilesApi
     /**
      * Operation generateXlsxWithHttpInfo
      *
-     * Generate XLSX report
+     * Generate a form answers report
      *
      * REST API Reference for generateXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsx'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6507,12 +6551,12 @@ class FilesApi
     /**
      * Operation generateXlsxAsync
      *
-     * Generate XLSX report
+     * Generate a form answers report
      *
      * REST API Reference for generateXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6531,12 +6575,12 @@ class FilesApi
     /**
      * Operation generateXlsxAsyncWithHttpInfo
      *
-     * Generate XLSX report
+     * Generate a form answers report
      *
      * REST API Reference for generateXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/generate-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6586,7 +6630,7 @@ class FilesApi
     /**
      * Create request for operation 'generateXlsx'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6705,7 +6749,7 @@ class FilesApi
      * REST API Reference for getAllFormRoles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-form-roles/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFormRoles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6726,7 +6770,7 @@ class FilesApi
      * REST API Reference for getAllFormRoles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-form-roles/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFormRoles'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -6870,7 +6914,7 @@ class FilesApi
      * REST API Reference for getAllFormRoles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-form-roles/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFormRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6894,7 +6938,7 @@ class FilesApi
      * REST API Reference for getAllFormRoles Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-form-roles/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFormRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6944,7 +6988,7 @@ class FilesApi
     /**
      * Create request for operation 'getAllFormRoles'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllFormRoles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7063,8 +7107,8 @@ class FilesApi
      * REST API Reference for getEditDiffUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-diff-url/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file whose changes are read. (required)
+     * @param  int|null $version The version to show the changes of, as reported by `GET api/2.0/files/file/{fileId}/edit/history`; 0 means the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditDiffUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7085,8 +7129,8 @@ class FilesApi
      * REST API Reference for getEditDiffUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-diff-url/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file whose changes are read. (required)
+     * @param  int|null $version The version to show the changes of, as reported by `GET api/2.0/files/file/{fileId}/edit/history`; 0 means the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditDiffUrl'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7216,8 +7260,8 @@ class FilesApi
      * REST API Reference for getEditDiffUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-diff-url/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file whose changes are read. (required)
+     * @param  int|null $version The version to show the changes of, as reported by `GET api/2.0/files/file/{fileId}/edit/history`; 0 means the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditDiffUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7241,8 +7285,8 @@ class FilesApi
      * REST API Reference for getEditDiffUrl Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-diff-url/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file whose changes are read. (required)
+     * @param  int|null $version The version to show the changes of, as reported by `GET api/2.0/files/file/{fileId}/edit/history`; 0 means the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditDiffUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7292,8 +7336,8 @@ class FilesApi
     /**
      * Create request for operation 'getEditDiffUrl'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file whose changes are read. (required)
+     * @param  int|null $version The version to show the changes of, as reported by `GET api/2.0/files/file/{fileId}/edit/history`; 0 means the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditDiffUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7370,6 +7414,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7400,7 +7466,7 @@ class FilesApi
      * REST API Reference for getEditHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-history/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7421,7 +7487,7 @@ class FilesApi
      * REST API Reference for getEditHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-history/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7551,7 +7617,7 @@ class FilesApi
      * REST API Reference for getEditHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-history/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7575,7 +7641,7 @@ class FilesApi
      * REST API Reference for getEditHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-edit-history/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7625,7 +7691,7 @@ class FilesApi
     /**
      * Create request for operation 'getEditHistory'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEditHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7692,6 +7758,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7722,7 +7810,7 @@ class FilesApi
      * REST API Reference for getEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file whose encryption keys are read. Only a file in an end-to-end encrypted              private room has any. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7743,7 +7831,7 @@ class FilesApi
      * REST API Reference for getEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file whose encryption keys are read. Only a file in an end-to-end encrypted              private room has any. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7873,7 +7961,7 @@ class FilesApi
      * REST API Reference for getEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file whose encryption keys are read. Only a file in an end-to-end encrypted              private room has any. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7897,7 +7985,7 @@ class FilesApi
      * REST API Reference for getEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-encryption-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file whose encryption keys are read. Only a file in an end-to-end encrypted              private room has any. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7947,7 +8035,7 @@ class FilesApi
     /**
      * Create request for operation 'getEncryptionInfo'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file whose encryption keys are read. Only a file in an end-to-end encrypted              private room has any. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8066,11 +8154,11 @@ class FilesApi
      * REST API Reference for getFileHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-history/
      *
-     * @param  int $file_id The file ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history. (optional)
-     * @param  \DateTime|null $to_date The end date of the history. (optional)
-     * @param  int|null $count The number of history entries to retrieve for the file log. (optional)
-     * @param  int|null $start_index The starting index for retrieving a subset of file history entries. (optional)
+     * @param  int $file_id The file whose activity log is read; only files stored in the portal itself have one. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8091,11 +8179,11 @@ class FilesApi
      * REST API Reference for getFileHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-history/
      *
-     * @param  int $file_id The file ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history. (optional)
-     * @param  \DateTime|null $to_date The end date of the history. (optional)
-     * @param  int|null $count The number of history entries to retrieve for the file log. (optional)
-     * @param  int|null $start_index The starting index for retrieving a subset of file history entries. (optional)
+     * @param  int $file_id The file whose activity log is read; only files stored in the portal itself have one. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8239,11 +8327,11 @@ class FilesApi
      * REST API Reference for getFileHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-history/
      *
-     * @param  int $file_id The file ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history. (optional)
-     * @param  \DateTime|null $to_date The end date of the history. (optional)
-     * @param  int|null $count The number of history entries to retrieve for the file log. (optional)
-     * @param  int|null $start_index The starting index for retrieving a subset of file history entries. (optional)
+     * @param  int $file_id The file whose activity log is read; only files stored in the portal itself have one. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8267,11 +8355,11 @@ class FilesApi
      * REST API Reference for getFileHistory Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-history/
      *
-     * @param  int $file_id The file ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history. (optional)
-     * @param  \DateTime|null $to_date The end date of the history. (optional)
-     * @param  int|null $count The number of history entries to retrieve for the file log. (optional)
-     * @param  int|null $start_index The starting index for retrieving a subset of file history entries. (optional)
+     * @param  int $file_id The file whose activity log is read; only files stored in the portal itself have one. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8321,11 +8409,11 @@ class FilesApi
     /**
      * Create request for operation 'getFileHistory'
      *
-     * @param  int $file_id The file ID of the history request. (required)
-     * @param  \DateTime|null $from_date The start date of the history. (optional)
-     * @param  \DateTime|null $to_date The end date of the history. (optional)
-     * @param  int|null $count The number of history entries to retrieve for the file log. (optional)
-     * @param  int|null $start_index The starting index for retrieving a subset of file history entries. (optional)
+     * @param  int $file_id The file whose activity log is read; only files stored in the portal itself have one. (required)
+     * @param  \DateTime|null $from_date The earliest moment an entry may have, read in the time zone of the portal; left out, the log starts at the  oldest entry the portal still keeps. (optional)
+     * @param  \DateTime|null $to_date The latest moment an entry may have, read in the time zone of the portal; left out, the log ends at the newest  entry. (optional)
+     * @param  int|null $count How many entries one page holds. The number of entries that match the query is reported in the response  headers, not in the body. (optional)
+     * @param  int|null $start_index How many entries to skip before the page begins, counted from the newest one, so pages are taken by adding the  page size to it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8490,13 +8578,13 @@ class FilesApi
      * REST API Reference for getFileInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-info/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file to read. (required)
+     * @param  int|null $version The version to read, as reported by `GET api/2.0/files/file/{fileId}/history`; -1, the default, reads the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFileInfo($file_id, $version = null, string $contentType = self::contentTypes['getFileInfo'][0])
     {
@@ -8512,13 +8600,13 @@ class FilesApi
      * REST API Reference for getFileInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-info/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file to read. (required)
+     * @param  int|null $version The version to read, as reported by `GET api/2.0/files/file/{fileId}/history`; -1, the default, reads the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileInfoWithHttpInfo($file_id, $version = null, string $contentType = self::contentTypes['getFileInfo'][0])
     {
@@ -8550,7 +8638,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -8590,7 +8678,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -8599,7 +8687,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8643,8 +8731,8 @@ class FilesApi
      * REST API Reference for getFileInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-info/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file to read. (required)
+     * @param  int|null $version The version to read, as reported by `GET api/2.0/files/file/{fileId}/history`; -1, the default, reads the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8668,8 +8756,8 @@ class FilesApi
      * REST API Reference for getFileInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-info/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file to read. (required)
+     * @param  int|null $version The version to read, as reported by `GET api/2.0/files/file/{fileId}/history`; -1, the default, reads the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8677,7 +8765,7 @@ class FilesApi
      */
     public function getFileInfoAsyncWithHttpInfo($file_id, $version = null, string $contentType = self::contentTypes['getFileInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->getFileInfoRequest($file_id, $version, $contentType);
 
         return $this->client
@@ -8719,8 +8807,8 @@ class FilesApi
     /**
      * Create request for operation 'getFileInfo'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  int|null $version The file version. (optional)
+     * @param  int|string $file_id The file to read. (required)
+     * @param  int|null $version The version to read, as reported by `GET api/2.0/files/file/{fileId}/history`; -1, the default, reads the  current version. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8797,6 +8885,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -8827,9 +8937,9 @@ class FilesApi
      * REST API Reference for getFileLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-links/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8850,9 +8960,9 @@ class FilesApi
      * REST API Reference for getFileLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-links/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileLinks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -8996,9 +9106,9 @@ class FilesApi
      * REST API Reference for getFileLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-links/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9022,9 +9132,9 @@ class FilesApi
      * REST API Reference for getFileLinks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-links/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9074,9 +9184,9 @@ class FilesApi
     /**
      * Create request for operation 'getFileLinks'
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileLinks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9216,14 +9326,14 @@ class FilesApi
     /**
      * Operation getFilePrimaryExternalLink
      *
-     * Get primary external link
+     * Get the file primary external link
      *
      * REST API Reference for getFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-primary-external-link/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9239,14 +9349,14 @@ class FilesApi
     /**
      * Operation getFilePrimaryExternalLinkWithHttpInfo
      *
-     * Get primary external link
+     * Get the file primary external link
      *
      * REST API Reference for getFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-primary-external-link/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -9371,14 +9481,14 @@ class FilesApi
     /**
      * Operation getFilePrimaryExternalLinkAsync
      *
-     * Get primary external link
+     * Get the file primary external link
      *
      * REST API Reference for getFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-primary-external-link/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9397,14 +9507,14 @@ class FilesApi
     /**
      * Operation getFilePrimaryExternalLinkAsyncWithHttpInfo
      *
-     * Get primary external link
+     * Get the file primary external link
      *
      * REST API Reference for getFilePrimaryExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-primary-external-link/
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9454,9 +9564,9 @@ class FilesApi
     /**
      * Create request for operation 'getFilePrimaryExternalLink'
      *
-     * @param  int $id The file unique identifier. (required)
-     * @param  int|null $count The number of items to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index for the query results. (optional)
+     * @param  int|string $id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  int|null $count How many entries at most to answer with, in the operations of this file that return a list; an operation that  answers with a single object is not affected by it. (optional)
+     * @param  int|null $start_index How many entries of such a list to skip before answering, used together with `count` to walk through it page  by page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFilePrimaryExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9549,6 +9659,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -9579,12 +9711,12 @@ class FilesApi
      * REST API Reference for getFileVersionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-version-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileVersionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFileVersionInfo($file_id, string $contentType = self::contentTypes['getFileVersionInfo'][0])
     {
@@ -9600,12 +9732,12 @@ class FilesApi
      * REST API Reference for getFileVersionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-version-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileVersionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileVersionInfoWithHttpInfo($file_id, string $contentType = self::contentTypes['getFileVersionInfo'][0])
     {
@@ -9637,7 +9769,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $request,
                         $response,
                     );
@@ -9677,7 +9809,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                 $request,
                 $response,
             );
@@ -9686,7 +9818,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerArrayWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9730,7 +9862,7 @@ class FilesApi
      * REST API Reference for getFileVersionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-version-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileVersionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9754,7 +9886,7 @@ class FilesApi
      * REST API Reference for getFileVersionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-file-version-info/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileVersionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9762,7 +9894,7 @@ class FilesApi
      */
     public function getFileVersionInfoAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['getFileVersionInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerArrayWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper';
         $request = $this->getFileVersionInfoRequest($file_id, $contentType);
 
         return $this->client
@@ -9804,7 +9936,7 @@ class FilesApi
     /**
      * Create request for operation 'getFileVersionInfo'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFileVersionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9871,6 +10003,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -9901,12 +10055,12 @@ class FilesApi
      * REST API Reference for getFillResult Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-fill-result/
      *
-     * @param  string|null $filling_session_id The form-filling session ID. (optional)
+     * @param  string|null $filling_session_id The identifier of the finished filling session, the value the document service reports when the filling ends.  The portal remembers it only for a while afterwards, so an older session is answered as not found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFillResult'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FillingFormResultIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFillResult($filling_session_id = null, string $contentType = self::contentTypes['getFillResult'][0])
     {
@@ -9922,12 +10076,12 @@ class FilesApi
      * REST API Reference for getFillResult Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-fill-result/
      *
-     * @param  string|null $filling_session_id The form-filling session ID. (optional)
+     * @param  string|null $filling_session_id The identifier of the finished filling session, the value the document service reports when the filling ends.  The portal remembers it only for a while afterwards, so an older session is answered as not found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFillResult'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FillingFormResultIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFillResultWithHttpInfo($filling_session_id = null, string $contentType = self::contentTypes['getFillResult'][0])
     {
@@ -9959,7 +10113,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FillingFormResultIntegerWrapper',
+                        '\OpenAPI\Client\Model\FillingFormResultWrapper',
                         $request,
                         $response,
                     );
@@ -9999,7 +10153,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FillingFormResultIntegerWrapper',
+                '\OpenAPI\Client\Model\FillingFormResultWrapper',
                 $request,
                 $response,
             );
@@ -10008,7 +10162,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FillingFormResultIntegerWrapper',
+                        '\OpenAPI\Client\Model\FillingFormResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10052,7 +10206,7 @@ class FilesApi
      * REST API Reference for getFillResult Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-fill-result/
      *
-     * @param  string|null $filling_session_id The form-filling session ID. (optional)
+     * @param  string|null $filling_session_id The identifier of the finished filling session, the value the document service reports when the filling ends.  The portal remembers it only for a while afterwards, so an older session is answered as not found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFillResult'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10076,7 +10230,7 @@ class FilesApi
      * REST API Reference for getFillResult Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-fill-result/
      *
-     * @param  string|null $filling_session_id The form-filling session ID. (optional)
+     * @param  string|null $filling_session_id The identifier of the finished filling session, the value the document service reports when the filling ends.  The portal remembers it only for a while afterwards, so an older session is answered as not found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFillResult'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10084,7 +10238,7 @@ class FilesApi
      */
     public function getFillResultAsyncWithHttpInfo($filling_session_id = null, string $contentType = self::contentTypes['getFillResult'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FillingFormResultIntegerWrapper';
+        $returnType = '\OpenAPI\Client\Model\FillingFormResultWrapper';
         $request = $this->getFillResultRequest($filling_session_id, $contentType);
 
         return $this->client
@@ -10126,7 +10280,7 @@ class FilesApi
     /**
      * Create request for operation 'getFillResult'
      *
-     * @param  string|null $filling_session_id The form-filling session ID. (optional)
+     * @param  string|null $filling_session_id The identifier of the finished filling session, the value the document service reports when the filling ends.  The portal remembers it only for a while afterwards, so an older session is answered as not found. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFillResult'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10188,6 +10342,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -10218,7 +10394,7 @@ class FilesApi
      * REST API Reference for getFormSubmissions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-form-submissions/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormSubmissions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10239,7 +10415,7 @@ class FilesApi
      * REST API Reference for getFormSubmissions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-form-submissions/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormSubmissions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10383,7 +10559,7 @@ class FilesApi
      * REST API Reference for getFormSubmissions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-form-submissions/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormSubmissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10407,7 +10583,7 @@ class FilesApi
      * REST API Reference for getFormSubmissions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-form-submissions/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormSubmissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10457,7 +10633,7 @@ class FilesApi
     /**
      * Create request for operation 'getFormSubmissions'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormSubmissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10571,12 +10747,12 @@ class FilesApi
     /**
      * Operation getPresignedFileUri
      *
-     * Get file download link asynchronously
+     * Get a signed download address
      *
      * REST API Reference for getPresignedFileUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-file-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedFileUri'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10592,12 +10768,12 @@ class FilesApi
     /**
      * Operation getPresignedFileUriWithHttpInfo
      *
-     * Get file download link asynchronously
+     * Get a signed download address
      *
      * REST API Reference for getPresignedFileUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-file-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedFileUri'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10736,12 +10912,12 @@ class FilesApi
     /**
      * Operation getPresignedFileUriAsync
      *
-     * Get file download link asynchronously
+     * Get a signed download address
      *
      * REST API Reference for getPresignedFileUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-file-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedFileUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10760,12 +10936,12 @@ class FilesApi
     /**
      * Operation getPresignedFileUriAsyncWithHttpInfo
      *
-     * Get file download link asynchronously
+     * Get a signed download address
      *
      * REST API Reference for getPresignedFileUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-file-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedFileUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10815,7 +10991,7 @@ class FilesApi
     /**
      * Create request for operation 'getPresignedFileUri'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedFileUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10934,7 +11110,7 @@ class FilesApi
      * REST API Reference for getPresignedUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedUri'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -10955,7 +11131,7 @@ class FilesApi
      * REST API Reference for getPresignedUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedUri'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11099,7 +11275,7 @@ class FilesApi
      * REST API Reference for getPresignedUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11123,7 +11299,7 @@ class FilesApi
      * REST API Reference for getPresignedUri Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-presigned-uri/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11173,7 +11349,7 @@ class FilesApi
     /**
      * Create request for operation 'getPresignedUri'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPresignedUri'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11287,12 +11463,12 @@ class FilesApi
     /**
      * Operation getProtectedFileUsers
      *
-     * Get users access rights to the protected file
+     * Get users for document protection
      *
      * REST API Reference for getProtectedFileUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-protected-file-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProtectedFileUsers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11308,12 +11484,12 @@ class FilesApi
     /**
      * Operation getProtectedFileUsersWithHttpInfo
      *
-     * Get users access rights to the protected file
+     * Get users for document protection
      *
      * REST API Reference for getProtectedFileUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-protected-file-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProtectedFileUsers'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -11452,12 +11628,12 @@ class FilesApi
     /**
      * Operation getProtectedFileUsersAsync
      *
-     * Get users access rights to the protected file
+     * Get users for document protection
      *
      * REST API Reference for getProtectedFileUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-protected-file-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProtectedFileUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11476,12 +11652,12 @@ class FilesApi
     /**
      * Operation getProtectedFileUsersAsyncWithHttpInfo
      *
-     * Get users access rights to the protected file
+     * Get users for document protection
      *
      * REST API Reference for getProtectedFileUsers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-protected-file-users/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProtectedFileUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11531,7 +11707,7 @@ class FilesApi
     /**
      * Create request for operation 'getProtectedFileUsers'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProtectedFileUsers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -11645,42 +11821,42 @@ class FilesApi
     /**
      * Operation getReferenceData
      *
-     * Get reference data
+     * Resolve a spreadsheet reference
      *
      * REST API Reference for getReferenceData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reference-data/
      *
-     * @param  \OpenAPI\Client\Model\GetReferenceDataDtoInteger|null $get_reference_data_dto_integer get_reference_data_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\GetReferenceDataDto|null $get_reference_data_dto get_reference_data_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferenceData'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getReferenceData($get_reference_data_dto_integer = null, string $contentType = self::contentTypes['getReferenceData'][0])
+    public function getReferenceData($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
-        list($response) = $this->getReferenceDataWithHttpInfo($get_reference_data_dto_integer, $contentType);
+        list($response) = $this->getReferenceDataWithHttpInfo($get_reference_data_dto, $contentType);
         return $response;
     }
 
     /**
      * Operation getReferenceDataWithHttpInfo
      *
-     * Get reference data
+     * Resolve a spreadsheet reference
      *
      * REST API Reference for getReferenceData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reference-data/
      *
-     * @param  \OpenAPI\Client\Model\GetReferenceDataDtoInteger|null $get_reference_data_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\GetReferenceDataDto|null $get_reference_data_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferenceData'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getReferenceDataWithHttpInfo($get_reference_data_dto_integer = null, string $contentType = self::contentTypes['getReferenceData'][0])
+    public function getReferenceDataWithHttpInfo($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
-        $request = $this->getReferenceDataRequest($get_reference_data_dto_integer, $contentType);
+        $request = $this->getReferenceDataRequest($get_reference_data_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11810,20 +11986,20 @@ class FilesApi
     /**
      * Operation getReferenceDataAsync
      *
-     * Get reference data
+     * Resolve a spreadsheet reference
      *
      * REST API Reference for getReferenceData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reference-data/
      *
-     * @param  \OpenAPI\Client\Model\GetReferenceDataDtoInteger|null $get_reference_data_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\GetReferenceDataDto|null $get_reference_data_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferenceData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferenceDataAsync($get_reference_data_dto_integer = null, string $contentType = self::contentTypes['getReferenceData'][0])
+    public function getReferenceDataAsync($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
-        return $this->getReferenceDataAsyncWithHttpInfo($get_reference_data_dto_integer, $contentType)
+        return $this->getReferenceDataAsyncWithHttpInfo($get_reference_data_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11834,21 +12010,21 @@ class FilesApi
     /**
      * Operation getReferenceDataAsyncWithHttpInfo
      *
-     * Get reference data
+     * Resolve a spreadsheet reference
      *
      * REST API Reference for getReferenceData Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reference-data/
      *
-     * @param  \OpenAPI\Client\Model\GetReferenceDataDtoInteger|null $get_reference_data_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\GetReferenceDataDto|null $get_reference_data_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferenceData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReferenceDataAsyncWithHttpInfo($get_reference_data_dto_integer = null, string $contentType = self::contentTypes['getReferenceData'][0])
+    public function getReferenceDataAsyncWithHttpInfo($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileReferenceWrapper';
-        $request = $this->getReferenceDataRequest($get_reference_data_dto_integer, $contentType);
+        $request = $this->getReferenceDataRequest($get_reference_data_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11889,13 +12065,13 @@ class FilesApi
     /**
      * Create request for operation 'getReferenceData'
      *
-     * @param  \OpenAPI\Client\Model\GetReferenceDataDtoInteger|null $get_reference_data_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\GetReferenceDataDto|null $get_reference_data_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReferenceData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getReferenceDataRequest($get_reference_data_dto_integer = null, string $contentType = self::contentTypes['getReferenceData'][0])
+    public function getReferenceDataRequest($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
 
 
@@ -11918,12 +12094,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($get_reference_data_dto_integer)) {
+        if (isset($get_reference_data_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($get_reference_data_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($get_reference_data_dto));
             } else {
-                $httpBody = $get_reference_data_dto_integer;
+                $httpBody = $get_reference_data_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -11996,12 +12172,12 @@ class FilesApi
     /**
      * Operation getXlsx
      *
-     * Get XLSX report generation status
+     * Get form report generation status
      *
      * REST API Reference for getXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXlsx'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12017,12 +12193,12 @@ class FilesApi
     /**
      * Operation getXlsxWithHttpInfo
      *
-     * Get XLSX report generation status
+     * Get form report generation status
      *
      * REST API Reference for getXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXlsx'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12161,12 +12337,12 @@ class FilesApi
     /**
      * Operation getXlsxAsync
      *
-     * Get XLSX report generation status
+     * Get form report generation status
      *
      * REST API Reference for getXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12185,12 +12361,12 @@ class FilesApi
     /**
      * Operation getXlsxAsyncWithHttpInfo
      *
-     * Get XLSX report generation status
+     * Get form report generation status
      *
      * REST API Reference for getXlsx Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-xlsx/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12240,7 +12416,7 @@ class FilesApi
     /**
      * Create request for operation 'getXlsx'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getXlsx'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12359,7 +12535,7 @@ class FilesApi
      * REST API Reference for isFormPDF Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/is-form-pdf/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['isFormPDF'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12380,7 +12556,7 @@ class FilesApi
      * REST API Reference for isFormPDF Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/is-form-pdf/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['isFormPDF'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -12524,7 +12700,7 @@ class FilesApi
      * REST API Reference for isFormPDF Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/is-form-pdf/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['isFormPDF'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12548,7 +12724,7 @@ class FilesApi
      * REST API Reference for isFormPDF Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/is-form-pdf/
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['isFormPDF'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12598,7 +12774,7 @@ class FilesApi
     /**
      * Create request for operation 'isFormPDF'
      *
-     * @param  int $file_id The file unique identifier. (required)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['isFormPDF'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12717,13 +12893,13 @@ class FilesApi
      * REST API Reference for lockFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
-     * @param  int $file_id The file ID for locking. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The parameters for locking a file. (required)
+     * @param  int|string $file_id The file to lock or unlock. (required)
+     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function lockFile($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
     {
@@ -12739,13 +12915,13 @@ class FilesApi
      * REST API Reference for lockFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
-     * @param  int $file_id The file ID for locking. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The parameters for locking a file. (required)
+     * @param  int|string $file_id The file to lock or unlock. (required)
+     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function lockFileWithHttpInfo($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
     {
@@ -12777,7 +12953,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -12823,7 +12999,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -12832,7 +13008,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12884,8 +13060,8 @@ class FilesApi
      * REST API Reference for lockFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
-     * @param  int $file_id The file ID for locking. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The parameters for locking a file. (required)
+     * @param  int|string $file_id The file to lock or unlock. (required)
+     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12909,8 +13085,8 @@ class FilesApi
      * REST API Reference for lockFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
-     * @param  int $file_id The file ID for locking. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The parameters for locking a file. (required)
+     * @param  int|string $file_id The file to lock or unlock. (required)
+     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -12918,7 +13094,7 @@ class FilesApi
      */
     public function lockFileAsyncWithHttpInfo($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->lockFileRequest($file_id, $lock_file_parameters, $contentType);
 
         return $this->client
@@ -12960,8 +13136,8 @@ class FilesApi
     /**
      * Create request for operation 'lockFile'
      *
-     * @param  int $file_id The file ID for locking. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The parameters for locking a file. (required)
+     * @param  int|string $file_id The file to lock or unlock. (required)
+     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13095,16 +13271,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/manage-form-filling/
      *
      * @param  string $file_id The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\ManageFormFillingDtoInteger|null $manage_form_filling_dto_integer manage_form_filling_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\ManageFormFillingDto|null $manage_form_filling_dto manage_form_filling_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageFormFilling'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function manageFormFilling($file_id, $manage_form_filling_dto_integer = null, string $contentType = self::contentTypes['manageFormFilling'][0])
+    public function manageFormFilling($file_id, $manage_form_filling_dto = null, string $contentType = self::contentTypes['manageFormFilling'][0])
     {
-        $this->manageFormFillingWithHttpInfo($file_id, $manage_form_filling_dto_integer, $contentType);
+        $this->manageFormFillingWithHttpInfo($file_id, $manage_form_filling_dto, $contentType);
     }
 
     /**
@@ -13116,16 +13292,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/manage-form-filling/
      *
      * @param  string $file_id The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\ManageFormFillingDtoInteger|null $manage_form_filling_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\ManageFormFillingDto|null $manage_form_filling_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageFormFilling'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function manageFormFillingWithHttpInfo($file_id, $manage_form_filling_dto_integer = null, string $contentType = self::contentTypes['manageFormFilling'][0])
+    public function manageFormFillingWithHttpInfo($file_id, $manage_form_filling_dto = null, string $contentType = self::contentTypes['manageFormFilling'][0])
     {
-        $request = $this->manageFormFillingRequest($file_id, $manage_form_filling_dto_integer, $contentType);
+        $request = $this->manageFormFillingRequest($file_id, $manage_form_filling_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13201,15 +13377,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/manage-form-filling/
      *
      * @param  string $file_id The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\ManageFormFillingDtoInteger|null $manage_form_filling_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\ManageFormFillingDto|null $manage_form_filling_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageFormFilling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function manageFormFillingAsync($file_id, $manage_form_filling_dto_integer = null, string $contentType = self::contentTypes['manageFormFilling'][0])
+    public function manageFormFillingAsync($file_id, $manage_form_filling_dto = null, string $contentType = self::contentTypes['manageFormFilling'][0])
     {
-        return $this->manageFormFillingAsyncWithHttpInfo($file_id, $manage_form_filling_dto_integer, $contentType)
+        return $this->manageFormFillingAsyncWithHttpInfo($file_id, $manage_form_filling_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13226,16 +13402,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/manage-form-filling/
      *
      * @param  string $file_id The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\ManageFormFillingDtoInteger|null $manage_form_filling_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\ManageFormFillingDto|null $manage_form_filling_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageFormFilling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function manageFormFillingAsyncWithHttpInfo($file_id, $manage_form_filling_dto_integer = null, string $contentType = self::contentTypes['manageFormFilling'][0])
+    public function manageFormFillingAsyncWithHttpInfo($file_id, $manage_form_filling_dto = null, string $contentType = self::contentTypes['manageFormFilling'][0])
     {
         $returnType = '';
-        $request = $this->manageFormFillingRequest($file_id, $manage_form_filling_dto_integer, $contentType);
+        $request = $this->manageFormFillingRequest($file_id, $manage_form_filling_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13264,13 +13440,13 @@ class FilesApi
      * Create request for operation 'manageFormFilling'
      *
      * @param  string $file_id The form the action applies to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\ManageFormFillingDtoInteger|null $manage_form_filling_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\ManageFormFillingDto|null $manage_form_filling_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['manageFormFilling'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function manageFormFillingRequest($file_id, $manage_form_filling_dto_integer = null, string $contentType = self::contentTypes['manageFormFilling'][0])
+    public function manageFormFillingRequest($file_id, $manage_form_filling_dto = null, string $contentType = self::contentTypes['manageFormFilling'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -13308,12 +13484,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($manage_form_filling_dto_integer)) {
+        if (isset($manage_form_filling_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($manage_form_filling_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($manage_form_filling_dto));
             } else {
-                $httpBody = $manage_form_filling_dto_integer;
+                $httpBody = $manage_form_filling_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -13386,22 +13562,22 @@ class FilesApi
     /**
      * Operation openEditFile
      *
-     * Open a file configuration
+     * Get the editor configuration
      *
      * REST API Reference for openEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/open-edit-file/
      *
-     * @param  int $file_id The file ID to open. (required)
-     * @param  int|null $version The file version to open. (optional)
-     * @param  bool|null $view Specifies if the document will be opened for viewing only or not. (optional)
-     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type The editor type to open the file. (optional)
-     * @param  bool|null $edit Specifies if the document is opened in the editing mode or not. (optional)
-     * @param  bool|null $fill Specifies if the document is opened in the form-filling mode or not. (optional)
+     * @param  int|string $file_id The file the editor configuration is built for. Take the id from a folder listing such as  `GET api/2.0/files/{folderId}`. (required)
+     * @param  int|null $version Which entry of the file history to open, numbered the way the file versions are. Left out, the current  revision is opened; naming a version requires access to the history of the file. (optional)
+     * @param  bool|null $view Asks for a read-only configuration. Left off, the configuration is built for editing as far as the caller's  rights and the room the file lies in allow. (optional)
+     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type Which editor layout the configuration is built for: the full desktop interface, the reduced mobile one, or the  embedded viewer meant to be framed inside another page. (optional)
+     * @param  bool|null $edit Asks for editing rather than viewing. On a form in a form-filling room this also records that the form is  being edited; the room may still turn the request into viewing or into filling. (optional)
+     * @param  bool|null $fill Asks for a PDF form to open for filling out rather than for editing. It has no effect on a file that is not a  form. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['openEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ConfigurationIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function openEditFile($file_id, $version = null, $view = null, $editor_type = null, $edit = null, $fill = null, string $contentType = self::contentTypes['openEditFile'][0])
     {
@@ -13412,22 +13588,22 @@ class FilesApi
     /**
      * Operation openEditFileWithHttpInfo
      *
-     * Open a file configuration
+     * Get the editor configuration
      *
      * REST API Reference for openEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/open-edit-file/
      *
-     * @param  int $file_id The file ID to open. (required)
-     * @param  int|null $version The file version to open. (optional)
-     * @param  bool|null $view Specifies if the document will be opened for viewing only or not. (optional)
-     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type The editor type to open the file. (optional)
-     * @param  bool|null $edit Specifies if the document is opened in the editing mode or not. (optional)
-     * @param  bool|null $fill Specifies if the document is opened in the form-filling mode or not. (optional)
+     * @param  int|string $file_id The file the editor configuration is built for. Take the id from a folder listing such as  `GET api/2.0/files/{folderId}`. (required)
+     * @param  int|null $version Which entry of the file history to open, numbered the way the file versions are. Left out, the current  revision is opened; naming a version requires access to the history of the file. (optional)
+     * @param  bool|null $view Asks for a read-only configuration. Left off, the configuration is built for editing as far as the caller's  rights and the room the file lies in allow. (optional)
+     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type Which editor layout the configuration is built for: the full desktop interface, the reduced mobile one, or the  embedded viewer meant to be framed inside another page. (optional)
+     * @param  bool|null $edit Asks for editing rather than viewing. On a form in a form-filling room this also records that the form is  being edited; the room may still turn the request into viewing or into filling. (optional)
+     * @param  bool|null $fill Asks for a PDF form to open for filling out rather than for editing. It has no effect on a file that is not a  form. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['openEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ConfigurationIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function openEditFileWithHttpInfo($file_id, $version = null, $view = null, $editor_type = null, $edit = null, $fill = null, string $contentType = self::contentTypes['openEditFile'][0])
     {
@@ -13459,7 +13635,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ConfigurationIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper' : '\OpenAPI\Client\Model\ConfigurationWrapper',
                         $request,
                         $response,
                     );
@@ -13499,7 +13675,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ConfigurationIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper' : '\OpenAPI\Client\Model\ConfigurationWrapper',
                 $request,
                 $response,
             );
@@ -13508,7 +13684,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ConfigurationIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper' : '\OpenAPI\Client\Model\ConfigurationWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13547,17 +13723,17 @@ class FilesApi
     /**
      * Operation openEditFileAsync
      *
-     * Open a file configuration
+     * Get the editor configuration
      *
      * REST API Reference for openEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/open-edit-file/
      *
-     * @param  int $file_id The file ID to open. (required)
-     * @param  int|null $version The file version to open. (optional)
-     * @param  bool|null $view Specifies if the document will be opened for viewing only or not. (optional)
-     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type The editor type to open the file. (optional)
-     * @param  bool|null $edit Specifies if the document is opened in the editing mode or not. (optional)
-     * @param  bool|null $fill Specifies if the document is opened in the form-filling mode or not. (optional)
+     * @param  int|string $file_id The file the editor configuration is built for. Take the id from a folder listing such as  `GET api/2.0/files/{folderId}`. (required)
+     * @param  int|null $version Which entry of the file history to open, numbered the way the file versions are. Left out, the current  revision is opened; naming a version requires access to the history of the file. (optional)
+     * @param  bool|null $view Asks for a read-only configuration. Left off, the configuration is built for editing as far as the caller's  rights and the room the file lies in allow. (optional)
+     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type Which editor layout the configuration is built for: the full desktop interface, the reduced mobile one, or the  embedded viewer meant to be framed inside another page. (optional)
+     * @param  bool|null $edit Asks for editing rather than viewing. On a form in a form-filling room this also records that the form is  being edited; the room may still turn the request into viewing or into filling. (optional)
+     * @param  bool|null $fill Asks for a PDF form to open for filling out rather than for editing. It has no effect on a file that is not a  form. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['openEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13576,17 +13752,17 @@ class FilesApi
     /**
      * Operation openEditFileAsyncWithHttpInfo
      *
-     * Open a file configuration
+     * Get the editor configuration
      *
      * REST API Reference for openEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/open-edit-file/
      *
-     * @param  int $file_id The file ID to open. (required)
-     * @param  int|null $version The file version to open. (optional)
-     * @param  bool|null $view Specifies if the document will be opened for viewing only or not. (optional)
-     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type The editor type to open the file. (optional)
-     * @param  bool|null $edit Specifies if the document is opened in the editing mode or not. (optional)
-     * @param  bool|null $fill Specifies if the document is opened in the form-filling mode or not. (optional)
+     * @param  int|string $file_id The file the editor configuration is built for. Take the id from a folder listing such as  `GET api/2.0/files/{folderId}`. (required)
+     * @param  int|null $version Which entry of the file history to open, numbered the way the file versions are. Left out, the current  revision is opened; naming a version requires access to the history of the file. (optional)
+     * @param  bool|null $view Asks for a read-only configuration. Left off, the configuration is built for editing as far as the caller's  rights and the room the file lies in allow. (optional)
+     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type Which editor layout the configuration is built for: the full desktop interface, the reduced mobile one, or the  embedded viewer meant to be framed inside another page. (optional)
+     * @param  bool|null $edit Asks for editing rather than viewing. On a form in a form-filling room this also records that the form is  being edited; the room may still turn the request into viewing or into filling. (optional)
+     * @param  bool|null $fill Asks for a PDF form to open for filling out rather than for editing. It has no effect on a file that is not a  form. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['openEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13594,7 +13770,7 @@ class FilesApi
      */
     public function openEditFileAsyncWithHttpInfo($file_id, $version = null, $view = null, $editor_type = null, $edit = null, $fill = null, string $contentType = self::contentTypes['openEditFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ConfigurationIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper' : '\OpenAPI\Client\Model\ConfigurationWrapper';
         $request = $this->openEditFileRequest($file_id, $version, $view, $editor_type, $edit, $fill, $contentType);
 
         return $this->client
@@ -13636,12 +13812,12 @@ class FilesApi
     /**
      * Create request for operation 'openEditFile'
      *
-     * @param  int $file_id The file ID to open. (required)
-     * @param  int|null $version The file version to open. (optional)
-     * @param  bool|null $view Specifies if the document will be opened for viewing only or not. (optional)
-     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type The editor type to open the file. (optional)
-     * @param  bool|null $edit Specifies if the document is opened in the editing mode or not. (optional)
-     * @param  bool|null $fill Specifies if the document is opened in the form-filling mode or not. (optional)
+     * @param  int|string $file_id The file the editor configuration is built for. Take the id from a folder listing such as  `GET api/2.0/files/{folderId}`. (required)
+     * @param  int|null $version Which entry of the file history to open, numbered the way the file versions are. Left out, the current  revision is opened; naming a version requires access to the history of the file. (optional)
+     * @param  bool|null $view Asks for a read-only configuration. Left off, the configuration is built for editing as far as the caller's  rights and the room the file lies in allow. (optional)
+     * @param  \OpenAPI\Client\Model\EditorType|null $editor_type Which editor layout the configuration is built for: the full desktop interface, the reduced mobile one, or the  embedded viewer meant to be framed inside another page. (optional)
+     * @param  bool|null $edit Asks for editing rather than viewing. On a form in a form-filling room this also records that the form is  being edited; the room may still turn the request into viewing or into filling. (optional)
+     * @param  bool|null $fill Asks for a PDF form to open for filling out rather than for editing. It has no effect on a file that is not a  form. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['openEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13758,6 +13934,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -13788,9 +13986,9 @@ class FilesApi
      * REST API Reference for restoreFileVersion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-file-version/
      *
-     * @param  int $file_id The file ID of the restore version. (required)
-     * @param  int|null $version The file version of the restore. (optional)
-     * @param  string|null $url The file version URL of the restore. (optional)
+     * @param  int|string $file_id The file whose version is restored. (required)
+     * @param  int|null $version The version to restore, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. It has to name an  existing version that is not the current one. (optional)
+     * @param  string|null $url The address the content of the new version is fetched from instead of the stored version, which is how the  document service hands back a document with a set of changes rolled back; left out, the stored version is  used. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreFileVersion'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13811,9 +14009,9 @@ class FilesApi
      * REST API Reference for restoreFileVersion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-file-version/
      *
-     * @param  int $file_id The file ID of the restore version. (required)
-     * @param  int|null $version The file version of the restore. (optional)
-     * @param  string|null $url The file version URL of the restore. (optional)
+     * @param  int|string $file_id The file whose version is restored. (required)
+     * @param  int|null $version The version to restore, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. It has to name an  existing version that is not the current one. (optional)
+     * @param  string|null $url The address the content of the new version is fetched from instead of the stored version, which is how the  document service hands back a document with a set of changes rolled back; left out, the stored version is  used. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreFileVersion'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -13929,9 +14127,9 @@ class FilesApi
      * REST API Reference for restoreFileVersion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-file-version/
      *
-     * @param  int $file_id The file ID of the restore version. (required)
-     * @param  int|null $version The file version of the restore. (optional)
-     * @param  string|null $url The file version URL of the restore. (optional)
+     * @param  int|string $file_id The file whose version is restored. (required)
+     * @param  int|null $version The version to restore, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. It has to name an  existing version that is not the current one. (optional)
+     * @param  string|null $url The address the content of the new version is fetched from instead of the stored version, which is how the  document service hands back a document with a set of changes rolled back; left out, the stored version is  used. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreFileVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -13955,9 +14153,9 @@ class FilesApi
      * REST API Reference for restoreFileVersion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/restore-file-version/
      *
-     * @param  int $file_id The file ID of the restore version. (required)
-     * @param  int|null $version The file version of the restore. (optional)
-     * @param  string|null $url The file version URL of the restore. (optional)
+     * @param  int|string $file_id The file whose version is restored. (required)
+     * @param  int|null $version The version to restore, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. It has to name an  existing version that is not the current one. (optional)
+     * @param  string|null $url The address the content of the new version is fetched from instead of the stored version, which is how the  document service hands back a document with a set of changes rolled back; left out, the stored version is  used. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreFileVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14007,9 +14205,9 @@ class FilesApi
     /**
      * Create request for operation 'restoreFileVersion'
      *
-     * @param  int $file_id The file ID of the restore version. (required)
-     * @param  int|null $version The file version of the restore. (optional)
-     * @param  string|null $url The file version URL of the restore. (optional)
+     * @param  int|string $file_id The file whose version is restored. (required)
+     * @param  int|null $version The version to restore, as reported by `GET api/2.0/files/file/{fileId}/edit/history`. It has to name an  existing version that is not the current one. (optional)
+     * @param  string|null $url The address the content of the new version is fetched from instead of the stored version, which is how the  document service hands back a document with a set of changes rolled back; left out, the stored version is  used. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreFileVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14096,6 +14294,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -14121,21 +14341,21 @@ class FilesApi
     /**
      * Operation saveEditingFileFromForm
      *
-     * Save file edits
+     * Save edited file content
      *
      * REST API Reference for saveEditingFileFromForm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-editing-file-from-form/
      *
-     * @param  int $file_id The editing file ID from the request. (required)
-     * @param  string|null $download_uri The URI to download the editing file. (optional)
-     * @param  string|null $file_extension The editing file extension from the request. (optional)
-     * @param  \SplFileObject|null $file The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
-     * @param  bool|null $forcesave Specifies whether to force save the file or not. (optional)
+     * @param  int|string $file_id The file whose content is replaced. The submitted content is written onto this file, so it has to be the file  the editing session was opened on rather than a copy of it. (required)
+     * @param  string|null $download_uri An address the document service saved the document at. This operation does not fetch the content from it - the  content always comes from the request body - and reads it only for the extension, when no file extension is  given. (optional)
+     * @param  string|null $file_extension The format the submitted content is in, with the leading dot, as in `.docx`. When it differs from the format  the file is stored in, the portal converts the content before saving it. Left empty, the extension is read off  the download address, and failing that the stored format is assumed. (optional)
+     * @param  \SplFileObject|null $file The edited content, sent as the `File` part of a `multipart/form-data` body. When the part is missing the raw  request body is saved as the content instead, so an empty body empties the file. (optional)
+     * @param  bool|null $forcesave Records the write as an editor autosave: the file keeps its running editing session and the previous autosave  revision is overwritten. Left off, the write closes the solo editing session, is refused while somebody else  has the file open, and adds a version to the history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveEditingFileFromForm'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveEditingFileFromForm($file_id, $download_uri = null, $file_extension = null, $file = null, $forcesave = null, string $contentType = self::contentTypes['saveEditingFileFromForm'][0])
     {
@@ -14146,21 +14366,21 @@ class FilesApi
     /**
      * Operation saveEditingFileFromFormWithHttpInfo
      *
-     * Save file edits
+     * Save edited file content
      *
      * REST API Reference for saveEditingFileFromForm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-editing-file-from-form/
      *
-     * @param  int $file_id The editing file ID from the request. (required)
-     * @param  string|null $download_uri The URI to download the editing file. (optional)
-     * @param  string|null $file_extension The editing file extension from the request. (optional)
-     * @param  \SplFileObject|null $file The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
-     * @param  bool|null $forcesave Specifies whether to force save the file or not. (optional)
+     * @param  int|string $file_id The file whose content is replaced. The submitted content is written onto this file, so it has to be the file  the editing session was opened on rather than a copy of it. (required)
+     * @param  string|null $download_uri An address the document service saved the document at. This operation does not fetch the content from it - the  content always comes from the request body - and reads it only for the extension, when no file extension is  given. (optional)
+     * @param  string|null $file_extension The format the submitted content is in, with the leading dot, as in `.docx`. When it differs from the format  the file is stored in, the portal converts the content before saving it. Left empty, the extension is read off  the download address, and failing that the stored format is assumed. (optional)
+     * @param  \SplFileObject|null $file The edited content, sent as the `File` part of a `multipart/form-data` body. When the part is missing the raw  request body is saved as the content instead, so an empty body empties the file. (optional)
+     * @param  bool|null $forcesave Records the write as an editor autosave: the file keeps its running editing session and the previous autosave  revision is overwritten. Left off, the write closes the solo editing session, is refused while somebody else  has the file open, and adds a version to the history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveEditingFileFromForm'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveEditingFileFromFormWithHttpInfo($file_id, $download_uri = null, $file_extension = null, $file = null, $forcesave = null, string $contentType = self::contentTypes['saveEditingFileFromForm'][0])
     {
@@ -14192,7 +14412,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -14232,7 +14452,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -14241,7 +14461,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14280,16 +14500,16 @@ class FilesApi
     /**
      * Operation saveEditingFileFromFormAsync
      *
-     * Save file edits
+     * Save edited file content
      *
      * REST API Reference for saveEditingFileFromForm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-editing-file-from-form/
      *
-     * @param  int $file_id The editing file ID from the request. (required)
-     * @param  string|null $download_uri The URI to download the editing file. (optional)
-     * @param  string|null $file_extension The editing file extension from the request. (optional)
-     * @param  \SplFileObject|null $file The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
-     * @param  bool|null $forcesave Specifies whether to force save the file or not. (optional)
+     * @param  int|string $file_id The file whose content is replaced. The submitted content is written onto this file, so it has to be the file  the editing session was opened on rather than a copy of it. (required)
+     * @param  string|null $download_uri An address the document service saved the document at. This operation does not fetch the content from it - the  content always comes from the request body - and reads it only for the extension, when no file extension is  given. (optional)
+     * @param  string|null $file_extension The format the submitted content is in, with the leading dot, as in `.docx`. When it differs from the format  the file is stored in, the portal converts the content before saving it. Left empty, the extension is read off  the download address, and failing that the stored format is assumed. (optional)
+     * @param  \SplFileObject|null $file The edited content, sent as the `File` part of a `multipart/form-data` body. When the part is missing the raw  request body is saved as the content instead, so an empty body empties the file. (optional)
+     * @param  bool|null $forcesave Records the write as an editor autosave: the file keeps its running editing session and the previous autosave  revision is overwritten. Left off, the write closes the solo editing session, is refused while somebody else  has the file open, and adds a version to the history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveEditingFileFromForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14308,16 +14528,16 @@ class FilesApi
     /**
      * Operation saveEditingFileFromFormAsyncWithHttpInfo
      *
-     * Save file edits
+     * Save edited file content
      *
      * REST API Reference for saveEditingFileFromForm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-editing-file-from-form/
      *
-     * @param  int $file_id The editing file ID from the request. (required)
-     * @param  string|null $download_uri The URI to download the editing file. (optional)
-     * @param  string|null $file_extension The editing file extension from the request. (optional)
-     * @param  \SplFileObject|null $file The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
-     * @param  bool|null $forcesave Specifies whether to force save the file or not. (optional)
+     * @param  int|string $file_id The file whose content is replaced. The submitted content is written onto this file, so it has to be the file  the editing session was opened on rather than a copy of it. (required)
+     * @param  string|null $download_uri An address the document service saved the document at. This operation does not fetch the content from it - the  content always comes from the request body - and reads it only for the extension, when no file extension is  given. (optional)
+     * @param  string|null $file_extension The format the submitted content is in, with the leading dot, as in `.docx`. When it differs from the format  the file is stored in, the portal converts the content before saving it. Left empty, the extension is read off  the download address, and failing that the stored format is assumed. (optional)
+     * @param  \SplFileObject|null $file The edited content, sent as the `File` part of a `multipart/form-data` body. When the part is missing the raw  request body is saved as the content instead, so an empty body empties the file. (optional)
+     * @param  bool|null $forcesave Records the write as an editor autosave: the file keeps its running editing session and the previous autosave  revision is overwritten. Left off, the write closes the solo editing session, is refused while somebody else  has the file open, and adds a version to the history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveEditingFileFromForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14325,7 +14545,7 @@ class FilesApi
      */
     public function saveEditingFileFromFormAsyncWithHttpInfo($file_id, $download_uri = null, $file_extension = null, $file = null, $forcesave = null, string $contentType = self::contentTypes['saveEditingFileFromForm'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->saveEditingFileFromFormRequest($file_id, $download_uri, $file_extension, $file, $forcesave, $contentType);
 
         return $this->client
@@ -14367,11 +14587,11 @@ class FilesApi
     /**
      * Create request for operation 'saveEditingFileFromForm'
      *
-     * @param  int $file_id The editing file ID from the request. (required)
-     * @param  string|null $download_uri The URI to download the editing file. (optional)
-     * @param  string|null $file_extension The editing file extension from the request. (optional)
-     * @param  \SplFileObject|null $file The edited file to be saved, uploaded as part of the multipart/form-data request.  This property represents the modified file content from the HTTP request form after editing operations.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
-     * @param  bool|null $forcesave Specifies whether to force save the file or not. (optional)
+     * @param  int|string $file_id The file whose content is replaced. The submitted content is written onto this file, so it has to be the file  the editing session was opened on rather than a copy of it. (required)
+     * @param  string|null $download_uri An address the document service saved the document at. This operation does not fetch the content from it - the  content always comes from the request body - and reads it only for the extension, when no file extension is  given. (optional)
+     * @param  string|null $file_extension The format the submitted content is in, with the leading dot, as in `.docx`. When it differs from the format  the file is stored in, the portal converts the content before saving it. Left empty, the extension is read off  the download address, and failing that the stored format is assumed. (optional)
+     * @param  \SplFileObject|null $file The edited content, sent as the `File` part of a `multipart/form-data` body. When the part is missing the raw  request body is saved as the content instead, so an empty body empties the file. (optional)
+     * @param  bool|null $forcesave Records the write as an editor autosave: the file keeps its running editing session and the previous autosave  revision is overwritten. Left off, the write closes the solo editing session, is refused while somebody else  has the file open, and adds a version to the history. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveEditingFileFromForm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -14515,17 +14735,17 @@ class FilesApi
      * REST API Reference for saveFileAsPdf Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
-     * @param  int $id The file ID to save as PDF. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdfInteger $save_as_pdf_integer The parameters for saving the file as PDF. (required)
+     * @param  int|string $id The file to convert; it is left untouched. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveFileAsPdf($id, $save_as_pdf_integer, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdf($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        list($response) = $this->saveFileAsPdfWithHttpInfo($id, $save_as_pdf_integer, $contentType);
+        list($response) = $this->saveFileAsPdfWithHttpInfo($id, $save_as_pdf, $contentType);
         return $response;
     }
 
@@ -14537,17 +14757,17 @@ class FilesApi
      * REST API Reference for saveFileAsPdf Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
-     * @param  int $id The file ID to save as PDF. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdfInteger $save_as_pdf_integer The parameters for saving the file as PDF. (required)
+     * @param  int|string $id The file to convert; it is left untouched. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveFileAsPdfWithHttpInfo($id, $save_as_pdf_integer, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfWithHttpInfo($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf_integer, $contentType);
+        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14575,7 +14795,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -14621,7 +14841,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -14630,7 +14850,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -14682,16 +14902,16 @@ class FilesApi
      * REST API Reference for saveFileAsPdf Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
-     * @param  int $id The file ID to save as PDF. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdfInteger $save_as_pdf_integer The parameters for saving the file as PDF. (required)
+     * @param  int|string $id The file to convert; it is left untouched. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFileAsPdfAsync($id, $save_as_pdf_integer, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfAsync($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        return $this->saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf_integer, $contentType)
+        return $this->saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14707,17 +14927,17 @@ class FilesApi
      * REST API Reference for saveFileAsPdf Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
-     * @param  int $id The file ID to save as PDF. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdfInteger $save_as_pdf_integer The parameters for saving the file as PDF. (required)
+     * @param  int|string $id The file to convert; it is left untouched. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf_integer, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
-        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf_integer, $contentType);
+        $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
+        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14758,14 +14978,14 @@ class FilesApi
     /**
      * Create request for operation 'saveFileAsPdf'
      *
-     * @param  int $id The file ID to save as PDF. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdfInteger $save_as_pdf_integer The parameters for saving the file as PDF. (required)
+     * @param  int|string $id The file to convert; it is left untouched. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveFileAsPdfRequest($id, $save_as_pdf_integer, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfRequest($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -14775,10 +14995,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'save_as_pdf_integer' is set
-        if ($save_as_pdf_integer === null || (is_array($save_as_pdf_integer) && count($save_as_pdf_integer) === 0)) {
+        // verify the required parameter 'save_as_pdf' is set
+        if ($save_as_pdf === null || (is_array($save_as_pdf) && count($save_as_pdf) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $save_as_pdf_integer when calling saveFileAsPdf'
+                'Missing the required parameter $save_as_pdf when calling saveFileAsPdf'
             );
         }
 
@@ -14809,12 +15029,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($save_as_pdf_integer)) {
+        if (isset($save_as_pdf)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_as_pdf_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_as_pdf));
             } else {
-                $httpBody = $save_as_pdf_integer;
+                $httpBody = $save_as_pdf;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -14893,16 +15113,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-form-role-mapping/
      *
      * @param  string $file_id The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger|null $save_form_role_mapping_dto_integer save_form_role_mapping_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDto|null $save_form_role_mapping_dto save_form_role_mapping_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFormRoleMapping'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function saveFormRoleMapping($file_id, $save_form_role_mapping_dto_integer = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
+    public function saveFormRoleMapping($file_id, $save_form_role_mapping_dto = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
     {
-        $this->saveFormRoleMappingWithHttpInfo($file_id, $save_form_role_mapping_dto_integer, $contentType);
+        $this->saveFormRoleMappingWithHttpInfo($file_id, $save_form_role_mapping_dto, $contentType);
     }
 
     /**
@@ -14914,16 +15134,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-form-role-mapping/
      *
      * @param  string $file_id The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger|null $save_form_role_mapping_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDto|null $save_form_role_mapping_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFormRoleMapping'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveFormRoleMappingWithHttpInfo($file_id, $save_form_role_mapping_dto_integer = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
+    public function saveFormRoleMappingWithHttpInfo($file_id, $save_form_role_mapping_dto = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
     {
-        $request = $this->saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto_integer, $contentType);
+        $request = $this->saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14999,15 +15219,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-form-role-mapping/
      *
      * @param  string $file_id The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger|null $save_form_role_mapping_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDto|null $save_form_role_mapping_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFormRoleMapping'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFormRoleMappingAsync($file_id, $save_form_role_mapping_dto_integer = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
+    public function saveFormRoleMappingAsync($file_id, $save_form_role_mapping_dto = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
     {
-        return $this->saveFormRoleMappingAsyncWithHttpInfo($file_id, $save_form_role_mapping_dto_integer, $contentType)
+        return $this->saveFormRoleMappingAsyncWithHttpInfo($file_id, $save_form_role_mapping_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15024,16 +15244,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-form-role-mapping/
      *
      * @param  string $file_id The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger|null $save_form_role_mapping_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDto|null $save_form_role_mapping_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFormRoleMapping'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFormRoleMappingAsyncWithHttpInfo($file_id, $save_form_role_mapping_dto_integer = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
+    public function saveFormRoleMappingAsyncWithHttpInfo($file_id, $save_form_role_mapping_dto = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
     {
         $returnType = '';
-        $request = $this->saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto_integer, $contentType);
+        $request = $this->saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15062,13 +15282,13 @@ class FilesApi
      * Create request for operation 'saveFormRoleMapping'
      *
      * @param  string $file_id The form the role mapping belongs to. Send the same value as the `formId` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDtoInteger|null $save_form_role_mapping_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\SaveFormRoleMappingDto|null $save_form_role_mapping_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFormRoleMapping'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto_integer = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
+    public function saveFormRoleMappingRequest($file_id, $save_form_role_mapping_dto = null, string $contentType = self::contentTypes['saveFormRoleMapping'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -15106,12 +15326,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($save_form_role_mapping_dto_integer)) {
+        if (isset($save_form_role_mapping_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_form_role_mapping_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_form_role_mapping_dto));
             } else {
-                $httpBody = $save_form_role_mapping_dto_integer;
+                $httpBody = $save_form_role_mapping_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -15189,13 +15409,13 @@ class FilesApi
      * REST API Reference for setCustomFilterTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The parameters for setting the Custom Filter editing mode. (required)
+     * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setCustomFilterTag($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
@@ -15211,13 +15431,13 @@ class FilesApi
      * REST API Reference for setCustomFilterTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The parameters for setting the Custom Filter editing mode. (required)
+     * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setCustomFilterTagWithHttpInfo($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
@@ -15249,7 +15469,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -15295,7 +15515,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -15304,7 +15524,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15356,8 +15576,8 @@ class FilesApi
      * REST API Reference for setCustomFilterTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The parameters for setting the Custom Filter editing mode. (required)
+     * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15381,8 +15601,8 @@ class FilesApi
      * REST API Reference for setCustomFilterTag Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The parameters for setting the Custom Filter editing mode. (required)
+     * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15390,7 +15610,7 @@ class FilesApi
      */
     public function setCustomFilterTagAsyncWithHttpInfo($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->setCustomFilterTagRequest($file_id, $custom_filter_parameters, $contentType);
 
         return $this->client
@@ -15432,8 +15652,8 @@ class FilesApi
     /**
      * Create request for operation 'setCustomFilterTag'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The parameters for setting the Custom Filter editing mode. (required)
+     * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15566,8 +15786,8 @@ class FilesApi
      * REST API Reference for setEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-encryption-info/
      *
-     * @param  int $file_id File ID (required)
-     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto Collection of encryption key data for users with access to the file (optional)
+     * @param  int|string $file_id The file the keys are issued for; it has to lie in a private room. (required)
+     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto One key per account that is to open the file. The keys of the accounts named here are replaced and the keys of  everybody else are left as they are, so sending no entry for a person does not revoke that person's key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -15587,8 +15807,8 @@ class FilesApi
      * REST API Reference for setEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-encryption-info/
      *
-     * @param  int $file_id File ID (required)
-     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto Collection of encryption key data for users with access to the file (optional)
+     * @param  int|string $file_id The file the keys are issued for; it has to lie in a private room. (required)
+     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto One key per account that is to open the file. The keys of the accounts named here are replaced and the keys of  everybody else are left as they are, so sending no entry for a person does not revoke that person's key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -15672,8 +15892,8 @@ class FilesApi
      * REST API Reference for setEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-encryption-info/
      *
-     * @param  int $file_id File ID (required)
-     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto Collection of encryption key data for users with access to the file (optional)
+     * @param  int|string $file_id The file the keys are issued for; it has to lie in a private room. (required)
+     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto One key per account that is to open the file. The keys of the accounts named here are replaced and the keys of  everybody else are left as they are, so sending no entry for a person does not revoke that person's key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15697,8 +15917,8 @@ class FilesApi
      * REST API Reference for setEncryptionInfo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-encryption-info/
      *
-     * @param  int $file_id File ID (required)
-     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto Collection of encryption key data for users with access to the file (optional)
+     * @param  int|string $file_id The file the keys are issued for; it has to lie in a private room. (required)
+     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto One key per account that is to open the file. The keys of the accounts named here are replaced and the keys of  everybody else are left as they are, so sending no entry for a person does not revoke that person's key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15735,8 +15955,8 @@ class FilesApi
     /**
      * Create request for operation 'setEncryptionInfo'
      *
-     * @param  int $file_id File ID (required)
-     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto Collection of encryption key data for users with access to the file (optional)
+     * @param  int|string $file_id The file the keys are issued for; it has to lie in a private room. (required)
+     * @param  \OpenAPI\Client\Model\AccessRequestKeyDto[]|null $access_request_key_dto One key per account that is to open the file. The keys of the accounts named here are replaced and the keys of  everybody else are left as they are, so sending no entry for a person does not revoke that person's key. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEncryptionInfo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -15858,13 +16078,13 @@ class FilesApi
     /**
      * Operation setFileExternalLink
      *
-     * Set an external link
+     * Set a file external link
      *
      * REST API Reference for setFileExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -15880,13 +16100,13 @@ class FilesApi
     /**
      * Operation setFileExternalLinkWithHttpInfo
      *
-     * Set an external link
+     * Set a file external link
      *
      * REST API Reference for setFileExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileExternalLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -16025,13 +16245,13 @@ class FilesApi
     /**
      * Operation setFileExternalLinkAsync
      *
-     * Set an external link
+     * Set a file external link
      *
      * REST API Reference for setFileExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16050,13 +16270,13 @@ class FilesApi
     /**
      * Operation setFileExternalLinkAsyncWithHttpInfo
      *
-     * Set an external link
+     * Set a file external link
      *
      * REST API Reference for setFileExternalLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-external-link/
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16106,8 +16326,8 @@ class FilesApi
     /**
      * Create request for operation 'setFileExternalLink'
      *
-     * @param  int $id The file ID. (required)
-     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The file external link parameters. (required)
+     * @param  int|string $id The file the link points at. (required)
+     * @param  \OpenAPI\Client\Model\FileLinkRequest $file_link_request The settings of the link. They are applied in full, so a field left out is reset rather than kept. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileExternalLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16240,13 +16460,13 @@ class FilesApi
      * REST API Reference for setFileOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-order/
      *
-     * @param  int $file_id The file unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The file order information. (optional)
+     * @param  int|string $file_id The file to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the file is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFileOrder($file_id, $order_request_dto = null, string $contentType = self::contentTypes['setFileOrder'][0])
     {
@@ -16262,13 +16482,13 @@ class FilesApi
      * REST API Reference for setFileOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-order/
      *
-     * @param  int $file_id The file unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The file order information. (optional)
+     * @param  int|string $file_id The file to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the file is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFileOrderWithHttpInfo($file_id, $order_request_dto = null, string $contentType = self::contentTypes['setFileOrder'][0])
     {
@@ -16300,7 +16520,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -16346,7 +16566,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -16355,7 +16575,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -16407,8 +16627,8 @@ class FilesApi
      * REST API Reference for setFileOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-order/
      *
-     * @param  int $file_id The file unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The file order information. (optional)
+     * @param  int|string $file_id The file to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the file is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16432,8 +16652,8 @@ class FilesApi
      * REST API Reference for setFileOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-file-order/
      *
-     * @param  int $file_id The file unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The file order information. (optional)
+     * @param  int|string $file_id The file to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the file is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16441,7 +16661,7 @@ class FilesApi
      */
     public function setFileOrderAsyncWithHttpInfo($file_id, $order_request_dto = null, string $contentType = self::contentTypes['setFileOrder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->setFileOrderRequest($file_id, $order_request_dto, $contentType);
 
         return $this->client
@@ -16483,8 +16703,8 @@ class FilesApi
     /**
      * Create request for operation 'setFileOrder'
      *
-     * @param  int $file_id The file unique identifier. (required)
-     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The file order information. (optional)
+     * @param  int|string $file_id The file to move. (required)
+     * @param  \OpenAPI\Client\Model\OrderRequestDto|null $order_request_dto The position the file is to take. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFileOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -16611,16 +16831,16 @@ class FilesApi
      * REST API Reference for setFilesOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-files-order/
      *
-     * @param  \OpenAPI\Client\Model\OrdersRequestDtoInteger|null $orders_request_dto_integer orders_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\OrdersRequestDto|null $orders_request_dto orders_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFilesOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileEntryIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setFilesOrder($orders_request_dto_integer = null, string $contentType = self::contentTypes['setFilesOrder'][0])
+    public function setFilesOrder($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
-        list($response) = $this->setFilesOrderWithHttpInfo($orders_request_dto_integer, $contentType);
+        list($response) = $this->setFilesOrderWithHttpInfo($orders_request_dto, $contentType);
         return $response;
     }
 
@@ -16632,16 +16852,16 @@ class FilesApi
      * REST API Reference for setFilesOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-files-order/
      *
-     * @param  \OpenAPI\Client\Model\OrdersRequestDtoInteger|null $orders_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\OrdersRequestDto|null $orders_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFilesOrder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileEntryIntegerArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setFilesOrderWithHttpInfo($orders_request_dto_integer = null, string $contentType = self::contentTypes['setFilesOrder'][0])
+    public function setFilesOrderWithHttpInfo($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
-        $request = $this->setFilesOrderRequest($orders_request_dto_integer, $contentType);
+        $request = $this->setFilesOrderRequest($orders_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -16669,7 +16889,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileEntryIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FileEntryArrayWrapper',
                         $request,
                         $response,
                     );
@@ -16715,7 +16935,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileEntryIntegerArrayWrapper',
+                '\OpenAPI\Client\Model\FileEntryArrayWrapper',
                 $request,
                 $response,
             );
@@ -16724,7 +16944,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileEntryIntegerArrayWrapper',
+                        '\OpenAPI\Client\Model\FileEntryArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -16776,15 +16996,15 @@ class FilesApi
      * REST API Reference for setFilesOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-files-order/
      *
-     * @param  \OpenAPI\Client\Model\OrdersRequestDtoInteger|null $orders_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\OrdersRequestDto|null $orders_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFilesOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setFilesOrderAsync($orders_request_dto_integer = null, string $contentType = self::contentTypes['setFilesOrder'][0])
+    public function setFilesOrderAsync($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
-        return $this->setFilesOrderAsyncWithHttpInfo($orders_request_dto_integer, $contentType)
+        return $this->setFilesOrderAsyncWithHttpInfo($orders_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -16800,16 +17020,16 @@ class FilesApi
      * REST API Reference for setFilesOrder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-files-order/
      *
-     * @param  \OpenAPI\Client\Model\OrdersRequestDtoInteger|null $orders_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\OrdersRequestDto|null $orders_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFilesOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setFilesOrderAsyncWithHttpInfo($orders_request_dto_integer = null, string $contentType = self::contentTypes['setFilesOrder'][0])
+    public function setFilesOrderAsyncWithHttpInfo($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileEntryIntegerArrayWrapper';
-        $request = $this->setFilesOrderRequest($orders_request_dto_integer, $contentType);
+        $returnType = '\OpenAPI\Client\Model\FileEntryArrayWrapper';
+        $request = $this->setFilesOrderRequest($orders_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -16850,13 +17070,13 @@ class FilesApi
     /**
      * Create request for operation 'setFilesOrder'
      *
-     * @param  \OpenAPI\Client\Model\OrdersRequestDtoInteger|null $orders_request_dto_integer (optional)
+     * @param  \OpenAPI\Client\Model\OrdersRequestDto|null $orders_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setFilesOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setFilesOrderRequest($orders_request_dto_integer = null, string $contentType = self::contentTypes['setFilesOrder'][0])
+    public function setFilesOrderRequest($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
 
 
@@ -16879,12 +17099,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($orders_request_dto_integer)) {
+        if (isset($orders_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orders_request_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($orders_request_dto));
             } else {
-                $httpBody = $orders_request_dto_integer;
+                $httpBody = $orders_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -16957,13 +17177,13 @@ class FilesApi
     /**
      * Operation startEditFile
      *
-     * Start file editing
+     * Open an editing session
      *
      * REST API Reference for startEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
-     * @param  int $file_id The file ID to start editing. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The file parameters to start editing. (required)
+     * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
+     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -16979,13 +17199,13 @@ class FilesApi
     /**
      * Operation startEditFileWithHttpInfo
      *
-     * Start file editing
+     * Open an editing session
      *
      * REST API Reference for startEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
-     * @param  int $file_id The file ID to start editing. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The file parameters to start editing. (required)
+     * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
+     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -17110,13 +17330,13 @@ class FilesApi
     /**
      * Operation startEditFileAsync
      *
-     * Start file editing
+     * Open an editing session
      *
      * REST API Reference for startEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
-     * @param  int $file_id The file ID to start editing. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The file parameters to start editing. (required)
+     * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
+     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17135,13 +17355,13 @@ class FilesApi
     /**
      * Operation startEditFileAsyncWithHttpInfo
      *
-     * Start file editing
+     * Open an editing session
      *
      * REST API Reference for startEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
-     * @param  int $file_id The file ID to start editing. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The file parameters to start editing. (required)
+     * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
+     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17191,8 +17411,8 @@ class FilesApi
     /**
      * Create request for operation 'startEditFile'
      *
-     * @param  int $file_id The file ID to start editing. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The file parameters to start editing. (required)
+     * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
+     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17273,6 +17493,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -17298,17 +17540,17 @@ class FilesApi
     /**
      * Operation startFillingFile
      *
-     * Start file filling
+     * Start filling a form
      *
      * REST API Reference for startFillingFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-filling-file/
      *
-     * @param  int $file_id The file ID to start filling. (required)
+     * @param  int|string $file_id The PDF form to open for filling. It has to be the form as it lies in the form-filling room itself, not a copy  kept elsewhere and not a submitted result. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFillingFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function startFillingFile($file_id, string $contentType = self::contentTypes['startFillingFile'][0])
     {
@@ -17319,17 +17561,17 @@ class FilesApi
     /**
      * Operation startFillingFileWithHttpInfo
      *
-     * Start file filling
+     * Start filling a form
      *
      * REST API Reference for startFillingFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-filling-file/
      *
-     * @param  int $file_id The file ID to start filling. (required)
+     * @param  int|string $file_id The PDF form to open for filling. It has to be the form as it lies in the form-filling room itself, not a copy  kept elsewhere and not a submitted result. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFillingFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function startFillingFileWithHttpInfo($file_id, string $contentType = self::contentTypes['startFillingFile'][0])
     {
@@ -17361,7 +17603,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -17407,7 +17649,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -17416,7 +17658,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -17463,12 +17705,12 @@ class FilesApi
     /**
      * Operation startFillingFileAsync
      *
-     * Start file filling
+     * Start filling a form
      *
      * REST API Reference for startFillingFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-filling-file/
      *
-     * @param  int $file_id The file ID to start filling. (required)
+     * @param  int|string $file_id The PDF form to open for filling. It has to be the form as it lies in the form-filling room itself, not a copy  kept elsewhere and not a submitted result. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFillingFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17487,12 +17729,12 @@ class FilesApi
     /**
      * Operation startFillingFileAsyncWithHttpInfo
      *
-     * Start file filling
+     * Start filling a form
      *
      * REST API Reference for startFillingFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-filling-file/
      *
-     * @param  int $file_id The file ID to start filling. (required)
+     * @param  int|string $file_id The PDF form to open for filling. It has to be the form as it lies in the form-filling room itself, not a copy  kept elsewhere and not a submitted result. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFillingFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17500,7 +17742,7 @@ class FilesApi
      */
     public function startFillingFileAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['startFillingFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->startFillingFileRequest($file_id, $contentType);
 
         return $this->client
@@ -17542,7 +17784,7 @@ class FilesApi
     /**
      * Create request for operation 'startFillingFile'
      *
-     * @param  int $file_id The file ID to start filling. (required)
+     * @param  int|string $file_id The PDF form to open for filling. It has to be the form as it lies in the form-filling room itself, not a copy  kept elsewhere and not a submitted result. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFillingFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17656,13 +17898,13 @@ class FilesApi
     /**
      * Operation toggleFileFavorite
      *
-     * Change the file favorite status
+     * Set the file favorite status
      *
      * REST API Reference for toggleFileFavorite Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/toggle-file-favorite/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  bool|null $favorite Specifies if the file is marked as favorite or not. (optional)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  bool|null $favorite Which state to put the mark in: `true` adds the file to the favorites of the calling account, `false` removes  it from them. Leaving the field out of the request removes the mark rather than setting it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['toggleFileFavorite'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -17678,13 +17920,13 @@ class FilesApi
     /**
      * Operation toggleFileFavoriteWithHttpInfo
      *
-     * Change the file favorite status
+     * Set the file favorite status
      *
      * REST API Reference for toggleFileFavorite Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/toggle-file-favorite/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  bool|null $favorite Specifies if the file is marked as favorite or not. (optional)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  bool|null $favorite Which state to put the mark in: `true` adds the file to the favorites of the calling account, `false` removes  it from them. Leaving the field out of the request removes the mark rather than setting it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['toggleFileFavorite'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -17823,13 +18065,13 @@ class FilesApi
     /**
      * Operation toggleFileFavoriteAsync
      *
-     * Change the file favorite status
+     * Set the file favorite status
      *
      * REST API Reference for toggleFileFavorite Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/toggle-file-favorite/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  bool|null $favorite Specifies if the file is marked as favorite or not. (optional)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  bool|null $favorite Which state to put the mark in: `true` adds the file to the favorites of the calling account, `false` removes  it from them. Leaving the field out of the request removes the mark rather than setting it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['toggleFileFavorite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17848,13 +18090,13 @@ class FilesApi
     /**
      * Operation toggleFileFavoriteAsyncWithHttpInfo
      *
-     * Change the file favorite status
+     * Set the file favorite status
      *
      * REST API Reference for toggleFileFavorite Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/toggle-file-favorite/
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  bool|null $favorite Specifies if the file is marked as favorite or not. (optional)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  bool|null $favorite Which state to put the mark in: `true` adds the file to the favorites of the calling account, `false` removes  it from them. Leaving the field out of the request removes the mark rather than setting it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['toggleFileFavorite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -17904,8 +18146,8 @@ class FilesApi
     /**
      * Create request for operation 'toggleFileFavorite'
      *
-     * @param  int $file_id The file ID. (required)
-     * @param  bool|null $favorite Specifies if the file is marked as favorite or not. (optional)
+     * @param  int|string $file_id The file the operation addresses. Take the identifier from a listing such as `GET api/2.0/files/{folderId}`: a  file stored on the portal is numbered, while a file in a connected third-party account is named by an opaque  string. (required)
+     * @param  bool|null $favorite Which state to put the mark in: `true` adds the file to the favorites of the calling account, `false` removes  it from them. Leaving the field out of the request removes the mark rather than setting it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['toggleFileFavorite'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18029,15 +18271,15 @@ class FilesApi
     /**
      * Operation trackEditFile
      *
-     * Track file editing
+     * Track an editing session
      *
      * REST API Reference for trackEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/track-edit-file/
      *
-     * @param  int $file_id The file ID to track editing changes. (required)
-     * @param  string|null $tab_id The tab ID to track editing changes. (optional)
-     * @param  string|null $doc_key_for_track The document key for tracking changes. (optional)
-     * @param  bool|null $is_finish Specifies whether to finish file tracking or not. (optional)
+     * @param  int|string $file_id The file whose editing session is being tracked. (required)
+     * @param  string|null $tab_id The client tab that holds the session, a value the client makes up once and repeats on every call about that  tab. Two tabs sending different values are tracked as two sessions on the same file, while the all-zero value  belongs to a session claimed for a single editor. (optional)
+     * @param  string|null $doc_key_for_track The document key of the revision being edited, as `POST api/2.0/files/file/{fileId}/startedit` returned it. It  is checked against the file's current key on every call, so a key left over from an older revision is refused. (optional)
+     * @param  bool|null $is_finish Ends the session for this tab and tells the other clients that editing has stopped. Left off, the session is  refreshed and the file stays marked as being edited. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -18053,15 +18295,15 @@ class FilesApi
     /**
      * Operation trackEditFileWithHttpInfo
      *
-     * Track file editing
+     * Track an editing session
      *
      * REST API Reference for trackEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/track-edit-file/
      *
-     * @param  int $file_id The file ID to track editing changes. (required)
-     * @param  string|null $tab_id The tab ID to track editing changes. (optional)
-     * @param  string|null $doc_key_for_track The document key for tracking changes. (optional)
-     * @param  bool|null $is_finish Specifies whether to finish file tracking or not. (optional)
+     * @param  int|string $file_id The file whose editing session is being tracked. (required)
+     * @param  string|null $tab_id The client tab that holds the session, a value the client makes up once and repeats on every call about that  tab. Two tabs sending different values are tracked as two sessions on the same file, while the all-zero value  belongs to a session claimed for a single editor. (optional)
+     * @param  string|null $doc_key_for_track The document key of the revision being edited, as `POST api/2.0/files/file/{fileId}/startedit` returned it. It  is checked against the file's current key on every call, so a key left over from an older revision is refused. (optional)
+     * @param  bool|null $is_finish Ends the session for this tab and tells the other clients that editing has stopped. Left off, the session is  refreshed and the file stays marked as being edited. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -18186,15 +18428,15 @@ class FilesApi
     /**
      * Operation trackEditFileAsync
      *
-     * Track file editing
+     * Track an editing session
      *
      * REST API Reference for trackEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/track-edit-file/
      *
-     * @param  int $file_id The file ID to track editing changes. (required)
-     * @param  string|null $tab_id The tab ID to track editing changes. (optional)
-     * @param  string|null $doc_key_for_track The document key for tracking changes. (optional)
-     * @param  bool|null $is_finish Specifies whether to finish file tracking or not. (optional)
+     * @param  int|string $file_id The file whose editing session is being tracked. (required)
+     * @param  string|null $tab_id The client tab that holds the session, a value the client makes up once and repeats on every call about that  tab. Two tabs sending different values are tracked as two sessions on the same file, while the all-zero value  belongs to a session claimed for a single editor. (optional)
+     * @param  string|null $doc_key_for_track The document key of the revision being edited, as `POST api/2.0/files/file/{fileId}/startedit` returned it. It  is checked against the file's current key on every call, so a key left over from an older revision is refused. (optional)
+     * @param  bool|null $is_finish Ends the session for this tab and tells the other clients that editing has stopped. Left off, the session is  refreshed and the file stays marked as being edited. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18213,15 +18455,15 @@ class FilesApi
     /**
      * Operation trackEditFileAsyncWithHttpInfo
      *
-     * Track file editing
+     * Track an editing session
      *
      * REST API Reference for trackEditFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/track-edit-file/
      *
-     * @param  int $file_id The file ID to track editing changes. (required)
-     * @param  string|null $tab_id The tab ID to track editing changes. (optional)
-     * @param  string|null $doc_key_for_track The document key for tracking changes. (optional)
-     * @param  bool|null $is_finish Specifies whether to finish file tracking or not. (optional)
+     * @param  int|string $file_id The file whose editing session is being tracked. (required)
+     * @param  string|null $tab_id The client tab that holds the session, a value the client makes up once and repeats on every call about that  tab. Two tabs sending different values are tracked as two sessions on the same file, while the all-zero value  belongs to a session claimed for a single editor. (optional)
+     * @param  string|null $doc_key_for_track The document key of the revision being edited, as `POST api/2.0/files/file/{fileId}/startedit` returned it. It  is checked against the file's current key on every call, so a key left over from an older revision is refused. (optional)
+     * @param  bool|null $is_finish Ends the session for this tab and tells the other clients that editing has stopped. Left off, the session is  refreshed and the file stays marked as being edited. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18271,10 +18513,10 @@ class FilesApi
     /**
      * Create request for operation 'trackEditFile'
      *
-     * @param  int $file_id The file ID to track editing changes. (required)
-     * @param  string|null $tab_id The tab ID to track editing changes. (optional)
-     * @param  string|null $doc_key_for_track The document key for tracking changes. (optional)
-     * @param  bool|null $is_finish Specifies whether to finish file tracking or not. (optional)
+     * @param  int|string $file_id The file whose editing session is being tracked. (required)
+     * @param  string|null $tab_id The client tab that holds the session, a value the client makes up once and repeats on every call about that  tab. Two tabs sending different values are tracked as two sessions on the same file, while the all-zero value  belongs to a session claimed for a single editor. (optional)
+     * @param  string|null $doc_key_for_track The document key of the revision being edited, as `POST api/2.0/files/file/{fileId}/startedit` returned it. It  is checked against the file's current key on every call, so a key left over from an older revision is refused. (optional)
+     * @param  bool|null $is_finish Ends the session for this tab and tells the other clients that editing has stopped. Left off, the session is  refreshed and the file stays marked as being edited. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['trackEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18371,6 +18613,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -18401,13 +18665,13 @@ class FilesApi
      * REST API Reference for updateFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
-     * @param  int $file_id The file ID to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The parameters for updating a file. (required)
+     * @param  int|string $file_id The file to update. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateFile($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
     {
@@ -18423,13 +18687,13 @@ class FilesApi
      * REST API Reference for updateFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
-     * @param  int $file_id The file ID to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The parameters for updating a file. (required)
+     * @param  int|string $file_id The file to update. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFileWithHttpInfo($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
     {
@@ -18461,7 +18725,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $request,
                         $response,
                     );
@@ -18501,7 +18765,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileIntegerWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                 $request,
                 $response,
             );
@@ -18510,7 +18774,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileIntegerWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -18554,8 +18818,8 @@ class FilesApi
      * REST API Reference for updateFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
-     * @param  int $file_id The file ID to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The parameters for updating a file. (required)
+     * @param  int|string $file_id The file to update. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18579,8 +18843,8 @@ class FilesApi
      * REST API Reference for updateFile Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
-     * @param  int $file_id The file ID to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The parameters for updating a file. (required)
+     * @param  int|string $file_id The file to update. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18588,7 +18852,7 @@ class FilesApi
      */
     public function updateFileAsyncWithHttpInfo($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileIntegerWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
         $request = $this->updateFileRequest($file_id, $update_file, $contentType);
 
         return $this->client
@@ -18630,8 +18894,8 @@ class FilesApi
     /**
      * Create request for operation 'updateFile'
      *
-     * @param  int $file_id The file ID to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The parameters for updating a file. (required)
+     * @param  int|string $file_id The file to update. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -18712,6 +18976,28 @@ class FilesApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

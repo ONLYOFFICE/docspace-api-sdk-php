@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**height** | **int** | Gets or sets the height dimension of an object, typically measured in pixels or other unit.  It defines the vertical size of the object. | [optional]
-**width** | **int** | Gets or sets the width dimension of an object, typically measured in pixels or other unit. | [optional]
+**height** | **int** | The height of the image in pixels, read from the stored file rather than from any display setting. | [optional]
+**width** | **int** | The width of the image in pixels, read from the stored file rather than from any display setting. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

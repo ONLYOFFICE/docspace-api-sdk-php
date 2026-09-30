@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalSharingSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The Access Control external sharing settings request parameters.
+ * @description The complete external sharing policy of the portal. Every field is written, so an omitted one is stored as  false.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class ExternalSharingSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets external_share
      *
-     * @param bool|null $external_share Specifies whether external (public) link creation is allowed.
+     * @param bool|null $external_share Whether links that open a file or a room without a portal account may be created at all. This is the master  switch of the policy: while it is false the portal keeps the default link type internal, turns sharing on  social networks off, and applies the three restriction fields below.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class ExternalSharingSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets default_share_link_internal
      *
-     * @param bool|null $default_share_link_internal Specifies the default sharing link type: true = DocSpace users only, false = Anyone with the link.  Relevant only when ExternalShare is true.
+     * @param bool|null $default_share_link_internal The kind of link offered first when a new one is created: true offers a link only accounts of this portal can  open, false one that anyone holding it can open. The portal keeps it at true while external sharing is  switched off.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class ExternalSharingSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets external_share_apply_to_documents
      *
-     * @param bool|null $external_share_apply_to_documents When external sharing is restricted, specifies whether to apply the restriction to the My Documents section.  Relevant only when ExternalShare is false.
+     * @param bool|null $external_share_apply_to_documents Whether the restriction reaches personal documents: with true, no external link can be created for an entry in  the caller's own documents while external sharing is off. It has no effect while external sharing is allowed.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class ExternalSharingSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets external_share_apply_to_rooms
      *
-     * @param bool|null $external_share_apply_to_rooms When external sharing is restricted, specifies whether to apply the restriction to the Rooms section.  Relevant only when ExternalShare is false.
+     * @param bool|null $external_share_apply_to_rooms Whether the restriction reaches rooms: with true, no external link can be created for a room or its content  while external sharing is off, and a new room cannot be made public. It has no effect while external sharing  is allowed.
      *
      * @return self
      */
@@ -439,7 +439,7 @@ class ExternalSharingSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets block_existing_links_on_restrict
      *
-     * @param bool|null $block_existing_links_on_restrict When external sharing is restricted, specifies whether to block existing public links immediately.  Relevant only when ExternalShare is false.
+     * @param bool|null $block_existing_links_on_restrict What happens to the links that already exist once external sharing is switched off: with true they stop  opening for the sections named above, with false they keep working and only new ones are refused. This is the  field that changes access to data that is already shared.
      *
      * @return self
      */

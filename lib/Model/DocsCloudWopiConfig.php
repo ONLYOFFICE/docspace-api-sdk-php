@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudWopiConfig Class Doc Comment
  *
  * @category Class
- * @description Represents the WOPI configuration of a DocsCloud tenant.
+ * @description Represents the WOPI configuration of a Docs Connect tenant.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

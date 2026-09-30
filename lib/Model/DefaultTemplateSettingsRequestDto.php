@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DefaultTemplateSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description Default templates settings request parameters.
+ * @description The document to use as the blank the portal creates for one extension.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -343,7 +343,7 @@ class DefaultTemplateSettingsRequestDto implements ModelInterface, ArrayAccess, 
     /**
      * Sets file_extension
      *
-     * @param string|null $file_extension File extension of a template to replace
+     * @param string|null $file_extension The extension the blank is set for, written in lower case with the leading dot. Only the extensions the  portal's built-in template set covers are accepted, and `GET api/2.0/files/settings/defaulttemplate` returns  exactly that list; an extension outside it leaves the settings unchanged instead of failing.
      *
      * @return self
      */

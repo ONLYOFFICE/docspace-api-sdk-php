@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiChatSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The chat settings parameters.
+ * @description The chat configuration of an AI room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class AiChatSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets prompt
      *
-     * @param string|null $prompt The system prompt for the chat.
+     * @param string|null $prompt The instruction put in front of every conversation held in the room, which sets the role the assistant takes  and the way it answers. Empty when the room was left on the behaviour the portal provides by default.
      *
      * @return self
      */

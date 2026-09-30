@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TfaRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring the Two-Factor Authentication (TFA) settings.
+ * @description The portal two-factor policy: which method is in force, who must pass it, and from where it is waived.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class TfaRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\TfaRequestsDtoType|null $type The two-factor authentication type.
+     * @param \OpenAPI\Client\Model\TfaRequestsDtoType|null $type The second factor the portal demands. The two methods are mutually exclusive, so switching one on switches  the other off, and any value outside the defined set is read as switching TFA off rather than refused.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class TfaRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The ID of the user for whom the TFA settings are being configured.
+     * @param string|null $id The account the request concerns, by portal user ID. Naming the portal owner is refused unless it is the  caller's own account. Where an operation detaches an authenticator application, the empty GUID and the  caller's own ID both mean the caller.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class TfaRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trusted_ips
      *
-     * @param string[]|null $trusted_ips The list of IP addresses that bypass TFA verification. Each entry is a single address, an inclusive  from-to range or a CIDR block.
+     * @param string[]|null $trusted_ips The list of IP addresses that bypass TFA verification. Each entry is a single address, an inclusive  from-to range or a CIDR block. This is the whole list that is to hold afterwards, so send the addresses  already trusted along with a new one; an entry that cannot be parsed fails the call with 400, and accounts  named as mandatory still have to pass the challenge even from a trusted address.
      *
      * @return self
      */
@@ -419,7 +419,7 @@ class TfaRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mandatory_users
      *
-     * @param string[]|null $mandatory_users The list of user IDs for whom TFA is mandatory.
+     * @param string[]|null $mandatory_users The accounts that must pass the challenge whatever their address, by portal user ID. This is the whole list  that is to hold afterwards - leaving it out clears it rather than keeping it - and naming the portal owner is  refused unless the caller is the owner.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class TfaRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mandatory_groups
      *
-     * @param string[]|null $mandatory_groups The list group IDs whose members must use TFA.
+     * @param string[]|null $mandatory_groups The groups whose members must pass the challenge whatever their address, by group ID. This is the whole list  that is to hold afterwards - leaving it out clears it rather than keeping it.
      *
      * @return self
      */

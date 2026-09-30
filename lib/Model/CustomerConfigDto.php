@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerConfigDto Class Doc Comment
  *
  * @category Class
- * @description The customer config parameters.
+ * @description The branding of the organization running the portal, as the editor About panel shows it. It is reported on a  server installation only.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets address
      *
-     * @param string|null $address The address of the customer configuration.
+     * @param string|null $address The postal address from the portal branding settings; empty when none was entered.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets logo
      *
-     * @param string|null $logo The logo of the customer configuration.
+     * @param string|null $logo The About-panel logo of the organization.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets logo_dark
      *
-     * @param string|null $logo_dark The dark logo of the customer configuration.
+     * @param string|null $logo_dark The About-panel logo for a dark interface theme.
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets mail
      *
-     * @param string|null $mail The mail address of the customer configuration.
+     * @param string|null $mail The contact address from the portal branding settings.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets name
      *
-     * @param string|null $name The name of the customer configuration.
+     * @param string|null $name The organization name shown in the editor.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class CustomerConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets www
      *
-     * @param string|null $www The site web address of the customer configuration.
+     * @param string|null $www The website of the organization.
      *
      * @return self
      */

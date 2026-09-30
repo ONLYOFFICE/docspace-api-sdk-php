@@ -142,12 +142,12 @@ class AppsApi
     /**
      * Operation get
      *
-     * Get a single app
+     * Get an app
      *
      * REST API Reference for get Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -163,12 +163,12 @@ class AppsApi
     /**
      * Operation getWithHttpInfo
      *
-     * Get a single app
+     * Get an app
      *
      * REST API Reference for get Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -307,12 +307,12 @@ class AppsApi
     /**
      * Operation getAsync
      *
-     * Get a single app
+     * Get an app
      *
      * REST API Reference for get Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -331,12 +331,12 @@ class AppsApi
     /**
      * Operation getAsyncWithHttpInfo
      *
-     * Get a single app
+     * Get an app
      *
      * REST API Reference for get Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -386,7 +386,7 @@ class AppsApi
     /**
      * Create request for operation 'get'
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -829,12 +829,12 @@ class AppsApi
      * REST API Reference for getSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-settings/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\JsonValueWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSettings($id, string $contentType = self::contentTypes['getSettings'][0])
     {
@@ -850,12 +850,12 @@ class AppsApi
      * REST API Reference for getSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-settings/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\JsonValueWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSettingsWithHttpInfo($id, string $contentType = self::contentTypes['getSettings'][0])
     {
@@ -887,7 +887,7 @@ class AppsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\JsonValueWrapper',
                         $request,
                         $response,
                     );
@@ -933,7 +933,7 @@ class AppsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\JsonValueWrapper',
                 $request,
                 $response,
             );
@@ -942,7 +942,7 @@ class AppsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\JsonValueWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -994,7 +994,7 @@ class AppsApi
      * REST API Reference for getSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-settings/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1018,7 +1018,7 @@ class AppsApi
      * REST API Reference for getSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-settings/
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1026,7 +1026,7 @@ class AppsApi
      */
     public function getSettingsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\JsonValueWrapper';
         $request = $this->getSettingsRequest($id, $contentType);
 
         return $this->client
@@ -1068,7 +1068,7 @@ class AppsApi
     /**
      * Create request for operation 'getSettings'
      *
-     * @param  string $id The application identifier. (required)
+     * @param  string $id The application to read, by the identifier `GET api/2.0/apps` reports - one of the feature modules the portal  can turn on, such as `ai-room` or `docs-cloud`. An identifier not declared in the installation configuration  answers 404, which is also how a caller learns that an application does not exist here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1187,8 +1187,8 @@ class AppsApi
      * REST API Reference for setEnabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body New enabled state. (required)
+     * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1209,8 +1209,8 @@ class AppsApi
      * REST API Reference for setEnabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body New enabled state. (required)
+     * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1354,8 +1354,8 @@ class AppsApi
      * REST API Reference for setEnabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body New enabled state. (required)
+     * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1379,8 +1379,8 @@ class AppsApi
      * REST API Reference for setEnabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body New enabled state. (required)
+     * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1430,8 +1430,8 @@ class AppsApi
     /**
      * Create request for operation 'setEnabled'
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body New enabled state. (required)
+     * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1564,8 +1564,8 @@ class AppsApi
      * REST API Reference for setSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body New settings document. (required)
+     * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1586,8 +1586,8 @@ class AppsApi
      * REST API Reference for setSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body New settings document. (required)
+     * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1717,8 +1717,8 @@ class AppsApi
      * REST API Reference for setSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body New settings document. (required)
+     * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1742,8 +1742,8 @@ class AppsApi
      * REST API Reference for setSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body New settings document. (required)
+     * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1793,8 +1793,8 @@ class AppsApi
     /**
      * Create request for operation 'setSettings'
      *
-     * @param  string $id The application identifier. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body New settings document. (required)
+     * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

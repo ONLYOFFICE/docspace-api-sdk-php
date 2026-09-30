@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AutoCleanUpData Class Doc Comment
  *
  * @category Class
- * @description The auto-clearing setting parameters.
+ * @description The trash auto-clearing setting of an account.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class AutoCleanUpData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_auto_clean_up
      *
-     * @param bool|null $is_auto_clean_up Specifies whether to permanently delete files in the Trash folder.
+     * @param bool|null $is_auto_clean_up Whether the trash of the account is cleared automatically. While it is false nothing is removed by the portal  and the interval below is kept but unused.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class AutoCleanUpData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gap
      *
-     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap The period when the trash bin will be cleared.
+     * @param \OpenAPI\Client\Model\DateToAutoCleanUp|null $gap How long an item may stay in the trash before it is removed for good. It is reported even while clearing is  off, and it is what the moment in the `autoDelete` field of a trashed entry is computed from.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomsNotificationsSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for configuring notification settings for the chat or collaboration rooms.
+ * @description Which single room the calling user silences, and which way.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -344,7 +344,7 @@ class RoomsNotificationsSettingsRequestDto implements ModelInterface, ArrayAcces
     /**
      * Sets mute
      *
-     * @param bool|null $mute Specifies whether the notifications will be delivered to the specified room or not.
+     * @param bool|null $mute Which way the room goes: `true` adds it to the caller silenced list, `false` takes it off again. While a room  is silenced its activity is left out of the hourly and daily digests, the letters it would send at once are  not sent, and its new-item counters are hidden.
      *
      * @return self
      */

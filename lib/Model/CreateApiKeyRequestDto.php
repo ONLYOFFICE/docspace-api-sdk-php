@@ -336,7 +336,7 @@ class CreateApiKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string $name The API key name.
+     * @param string $name The label that tells this key apart in the key list. It is required, may be up to 30 characters long, and does  not have to be unique.
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class CreateApiKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets permissions
      *
-     * @param string[]|null $permissions The list of permissions granted to the API key.
+     * @param string[]|null $permissions The scopes the key may use. Every value has to come from `GET api/2.0/keys/permissions`, an unknown value or  an empty array is rejected, and passing `*` or omitting the field records a key without scope restrictions.
      *
      * @return self
      */
@@ -404,7 +404,7 @@ class CreateApiKeyRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets expires_in_days
      *
-     * @param int|null $expires_in_days The number of days until the API key expires (null for no expiration).
+     * @param int|null $expires_in_days The lifetime of the key in days, counted from the moment it is created, from 1 to 365. Omit it to create a key  that never expires.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * SalesRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for handling sales and payment inquiries in the portal.
+ * @description Who is writing to the ONLYOFFICE sales team, and what about.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -350,7 +350,7 @@ class SalesRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_name
      *
-     * @param string $user_name The name of the user submitting the sales request.
+     * @param string $user_name The name the sales team should address the reply to. It is sent as written and is not matched against any  portal account; an empty value fails the request with 400.
      *
      * @return self
      */
@@ -384,7 +384,7 @@ class SalesRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string $email The contact email address for the sales inquiry.
+     * @param string $email The address the answer is sent to. It has to be a well-formed email address and need not be the caller portal  address; an empty or malformed value fails the request with 400.
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class SalesRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message The details of the sales inquiry or payment request.
+     * @param string $message What is being asked of the sales team - a quote, an invoice, or a plan that cannot be bought online. An empty  value fails the request with 400.
      *
      * @return self
      */

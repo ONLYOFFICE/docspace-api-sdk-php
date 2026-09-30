@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudDevPackRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for switch the DocsCloud subscription to DocsCloudDevPack.
+ * @description The request parameters for switching the Docs Connect subscription to Docs Connect Dev Pack, or for calculating  the cost of that switch.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -311,7 +311,7 @@ class DocsCloudDevPackRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets quantity
      *
-     * @param int|null $quantity The number of users for DocsCloudDevPack subscription.
+     * @param int|null $quantity The number of users to subscribe to Docs Connect Dev Pack for. It must be at least the number of users of  the currently purchased Docs Connect subscription, and at least the Docs Connect Dev Pack minimum configured  for the installation, which is 10 users by default; a smaller value is rejected with 400.
      *
      * @return self
      */

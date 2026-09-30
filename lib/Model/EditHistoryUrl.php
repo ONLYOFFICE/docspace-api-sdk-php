@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EditHistoryUrl Class Doc Comment
  *
  * @category Class
- * @description The file editing history URL parameters.
+ * @description The address, document key and format of the revision a comparison is made against.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class EditHistoryUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key The document identifier of the previous version of the document.
+     * @param string|null $key The document key of that revision. When the file has no earlier revision the portal generates a fresh key for  the template it falls back to, so the value is not always one an earlier revision ever had.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class EditHistoryUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The url address of the previous version of the document.
+     * @param string|null $url The address that revision's content is served from. It is meant for the editing service and carries its own  key, which is valid for a limited time.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class EditHistoryUrl implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets file_type
      *
-     * @param string|null $file_type The document extension.
+     * @param string|null $file_type The format of that revision, as an extension without the leading dot.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * OperationDto Class Doc Comment
  *
  * @category Class
- * @description Represents an operation.
+ * @description One movement on the portal wallet: what it was for, who caused it, and how much money it moved.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\ApiDateTime',
         'service' => 'string',
         'description' => 'string',
         'details' => 'string',
@@ -69,8 +69,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => 'float',
         'participant_name' => 'string',
         'participant_display_name' => 'string',
-        'agent_id' => 'string',
-        'agent_title' => 'string',
+        'source_type' => 'string',
+        'source_title' => 'string',
+        'source_id' => 'string',
+        'token_usage' => '\OpenAPI\Client\Model\OperationTokenUsage',
         'type' => '\OpenAPI\Client\Model\OperationType'
     ];
 
@@ -82,7 +84,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'date' => 'date-time',
+        'date' => null,
         'service' => null,
         'description' => null,
         'details' => null,
@@ -93,8 +95,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => 'double',
         'participant_name' => null,
         'participant_display_name' => null,
-        'agent_id' => null,
-        'agent_title' => null,
+        'source_type' => null,
+        'source_title' => null,
+        'source_id' => null,
+        'token_usage' => null,
         'type' => null
     ];
 
@@ -104,7 +108,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'date' => true,
+        'date' => false,
         'service' => true,
         'description' => true,
         'details' => true,
@@ -115,8 +119,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => false,
         'participant_name' => true,
         'participant_display_name' => true,
-        'agent_id' => true,
-        'agent_title' => true,
+        'source_type' => true,
+        'source_title' => true,
+        'source_id' => true,
+        'token_usage' => false,
         'type' => false
     ];
 
@@ -217,8 +223,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => 'debit',
         'participant_name' => 'participantName',
         'participant_display_name' => 'participantDisplayName',
-        'agent_id' => 'agentId',
-        'agent_title' => 'agentTitle',
+        'source_type' => 'sourceType',
+        'source_title' => 'sourceTitle',
+        'source_id' => 'sourceId',
+        'token_usage' => 'tokenUsage',
         'type' => 'type'
     ];
 
@@ -239,8 +247,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => 'setDebit',
         'participant_name' => 'setParticipantName',
         'participant_display_name' => 'setParticipantDisplayName',
-        'agent_id' => 'setAgentId',
-        'agent_title' => 'setAgentTitle',
+        'source_type' => 'setSourceType',
+        'source_title' => 'setSourceTitle',
+        'source_id' => 'setSourceId',
+        'token_usage' => 'setTokenUsage',
         'type' => 'setType'
     ];
 
@@ -261,8 +271,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'debit' => 'getDebit',
         'participant_name' => 'getParticipantName',
         'participant_display_name' => 'getParticipantDisplayName',
-        'agent_id' => 'getAgentId',
-        'agent_title' => 'getAgentTitle',
+        'source_type' => 'getSourceType',
+        'source_title' => 'getSourceTitle',
+        'source_id' => 'getSourceId',
+        'token_usage' => 'getTokenUsage',
         'type' => 'getType'
     ];
 
@@ -334,8 +346,10 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('debit', $data ?? [], null);
         $this->setIfExists('participant_name', $data ?? [], null);
         $this->setIfExists('participant_display_name', $data ?? [], null);
-        $this->setIfExists('agent_id', $data ?? [], null);
-        $this->setIfExists('agent_title', $data ?? [], null);
+        $this->setIfExists('source_type', $data ?? [], null);
+        $this->setIfExists('source_title', $data ?? [], null);
+        $this->setIfExists('source_id', $data ?? [], null);
+        $this->setIfExists('token_usage', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -384,7 +398,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getDate()
     {
@@ -394,21 +408,14 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The date when the operation took place.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $date When the movement was booked, in the portal time zone - the same zone the `startDate` and `endDate`  filters are read in, so the two do line up here.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -428,7 +435,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service
      *
-     * @param string|null $service The service related to the operation.
+     * @param string|null $service The wallet service the movement belongs to, by its stable key. It is what the `serviceName` filter  matches on, and it is empty for a movement that belongs to no service, such as a top-up.
      *
      * @return self
      */
@@ -462,7 +469,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description The brief operation description.
+     * @param string|null $description A one-line summary of the movement in the portal language, already composed from the service and the  quantity - meant to be printed as it is rather than parsed.
      *
      * @return self
      */
@@ -496,7 +503,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets details
      *
-     * @param string|null $details The detailed information about the operation.
+     * @param string|null $details The longer explanation of the same movement, where the service recorded one. It is empty for a movement  that has nothing to add to `description`.
      *
      * @return self
      */
@@ -530,7 +537,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_unit
      *
-     * @param string|null $service_unit The service unit.
+     * @param string|null $service_unit What `quantity` counts for this service, in the portal language. AI consumption is reported in tokens  here rather than in the AI credits the service is sold in.
      *
      * @return self
      */
@@ -564,7 +571,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantity
      *
-     * @param int|null $quantity The quantity of the service used.
+     * @param int|null $quantity How many units the movement covers, in the unit named by `serviceUnit`. It is `0` for a movement that  moves money without consuming a service.
      *
      * @return self
      */
@@ -591,7 +598,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency The three-character ISO 4217 currency symbol of the operation.
+     * @param string|null $currency The currency `credit` and `debit` are expressed in, as a three-letter ISO 4217 code. It is the accounting  currency of the wallet, which need not be the currency the subscription is priced in.
      *
      * @return self
      */
@@ -625,7 +632,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credit
      *
-     * @param float|null $credit The credit amount of the operation.
+     * @param float|null $credit The amount that went into the wallet. It is `0` on a movement that only took money out, so the pair of  `credit` and `debit` is what shows which way the money went; the `credit` and `debit` filters of the  operation select the two directions by exactly this.
      *
      * @return self
      */
@@ -652,7 +659,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets debit
      *
-     * @param float|null $debit The debit amount of the operation.
+     * @param float|null $debit The amount that was taken out of the wallet, `0` on a movement that put money in.
      *
      * @return self
      */
@@ -679,7 +686,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets participant_name
      *
-     * @param string|null $participant_name The participant original name.
+     * @param string|null $participant_name Who caused the movement, as the billing service records them - an internal name, which is what the  `participantName` filter matches on. Show `participantDisplayName` instead.
      *
      * @return self
      */
@@ -713,7 +720,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets participant_display_name
      *
-     * @param string|null $participant_display_name The participant display name.
+     * @param string|null $participant_display_name The same person as their portal display name. It falls back to `participantName` when the name belongs to  no portal account, so it is never empty while `participantName` is filled.
      *
      * @return self
      */
@@ -735,69 +742,130 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets agent_id
+     * Gets source_type
      *
      * @return string|null
      */
-    public function getAgentId()
+    public function getSourceType()
     {
-        return $this->container['agent_id'];
+        return $this->container['source_type'];
     }
 
     /**
-     * Sets agent_id
+     * Sets source_type
      *
-     * @param string|null $agent_id AI Agent id.
+     * @param string|null $source_type What kind of thing an AI operation was run on - an agent, a file, a folder, a room or a form. It is empty  on any movement that is not an AI charge.
      *
      * @return self
      */
-    public function setAgentId($agent_id)
+    public function setSourceType($source_type)
     {
-        if (is_null($agent_id)) {
-            array_push($this->openAPINullablesSetToNull, 'agent_id');
+        if (is_null($source_type)) {
+            array_push($this->openAPINullablesSetToNull, 'source_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('agent_id', $nullablesSetToNull);
+            $index = array_search('source_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['agent_id'] = $agent_id;
+        $this->container['source_type'] = $source_type;
 
         return $this;
     }
 
     /**
-     * Gets agent_title
+     * Gets source_title
      *
      * @return string|null
      */
-    public function getAgentTitle()
+    public function getSourceTitle()
     {
-        return $this->container['agent_title'];
+        return $this->container['source_title'];
     }
 
     /**
-     * Sets agent_title
+     * Sets source_title
      *
-     * @param string|null $agent_title AI Agent name.
+     * @param string|null $source_title The title that thing had when the operation ran, kept as recorded, so it does not follow a later rename.  Empty under the same conditions as `sourceType`.
      *
      * @return self
      */
-    public function setAgentTitle($agent_title)
+    public function setSourceTitle($source_title)
     {
-        if (is_null($agent_title)) {
-            array_push($this->openAPINullablesSetToNull, 'agent_title');
+        if (is_null($source_title)) {
+            array_push($this->openAPINullablesSetToNull, 'source_title');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('agent_title', $nullablesSetToNull);
+            $index = array_search('source_title', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['agent_title'] = $agent_title;
+        $this->container['source_title'] = $source_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_id
+     *
+     * @return string|null
+     */
+    public function getSourceId()
+    {
+        return $this->container['source_id'];
+    }
+
+    /**
+     * Sets source_id
+     *
+     * @param string|null $source_id The identifier of that thing, to look it up in the module it belongs to. Empty under the same conditions  as `sourceType`.
+     *
+     * @return self
+     */
+    public function setSourceId($source_id)
+    {
+        if (is_null($source_id)) {
+            array_push($this->openAPINullablesSetToNull, 'source_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets token_usage
+     *
+     * @return \OpenAPI\Client\Model\OperationTokenUsage|null
+     */
+    public function getTokenUsage()
+    {
+        return $this->container['token_usage'];
+    }
+
+    /**
+     * Sets token_usage
+     *
+     * @param \OpenAPI\Client\Model\OperationTokenUsage|null $token_usage The tokens an AI operation consumed, broken down by kind - prompt, completion, cache reads and writes,  reasoning, images. It is `null` on any movement that is not an AI charge, and on an AI charge the billing  service recorded without token counts.
+     *
+     * @return self
+     */
+    public function setTokenUsage($token_usage)
+    {
+        if (is_null($token_usage)) {
+            throw new \InvalidArgumentException('non-nullable token_usage cannot be null');
+        }
+        $this->container['token_usage'] = $token_usage;
 
         return $this;
     }
@@ -815,7 +883,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param \OpenAPI\Client\Model\OperationType|null $type Type of the operation
+     * @param \OpenAPI\Client\Model\OperationType|null $type What kind of movement this is - a payment, a charge, a refund, a correction. It is what the `type` filter  matches on, and `Unknown` covers a movement the billing service reported under a kind this build does not  recognise.
      *
      * @return self
      */

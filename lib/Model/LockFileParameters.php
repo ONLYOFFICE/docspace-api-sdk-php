@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LockFileParameters Class Doc Comment
  *
  * @category Class
- * @description The parameters for locking a file.
+ * @description The lock state a file is to be put into.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class LockFileParameters implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets lock_file
      *
-     * @param bool|null $lock_file Specifies whether to lock a file or not.
+     * @param bool|null $lock_file The state to reach: `true` locks the file, which blocks editing, renaming and deleting for everybody but the  account that locked it and the room admins, and drops the others out of a running editing session; `false`  releases the lock.
      *
      * @return self
      */

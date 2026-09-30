@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Delete Class Doc Comment
  *
  * @category Class
- * @description The parameters for deleting a file.
+ * @description The parameters of a single file deletion.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class Delete implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to delete a file after the editing session is finished or not.
+     * @param bool|null $delete_after When to delete: `true` waits until the editing session on the file has ended, `false` deletes at once, pulling  the file away from whoever is working on it.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class Delete implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets immediately
      *
-     * @param bool|null $immediately Specifies whether to move a file to the \\Trash\\ folder or delete it immediately.
+     * @param bool|null $immediately Where the file goes: `false` moves it to Trash, from where it can be restored, `true` deletes it for good.  Inside a room, where there is no Trash, deletion is always final.
      *
      * @return self
      */

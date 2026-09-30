@@ -35,7 +35,6 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAiActionArgs Class Doc Comment
  *
  * @category Class
- * @description Wire-serializable subset of the engine's `ActionArgs` — drops the engine-injected `signal`/`fetch`; `profile`/`messages` are owned by the engine and never sent by the caller.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +59,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'tools' => '\OpenAPI\Client\Model\AiTMCPItem[]',
         'is_reasoning' => 'bool',
+        'reasoning_level' => '\OpenAPI\Client\Model\AiAiReasoningLevel',
         'prompt' => '\OpenAPI\Client\Model\AiAiActionArgsPrompt'
     ];
 
@@ -73,6 +73,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'tools' => null,
         'is_reasoning' => null,
+        'reasoning_level' => null,
         'prompt' => null
     ];
 
@@ -84,6 +85,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'tools' => false,
         'is_reasoning' => false,
+        'reasoning_level' => false,
         'prompt' => false
     ];
 
@@ -175,6 +177,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'tools' => 'tools',
         'is_reasoning' => 'isReasoning',
+        'reasoning_level' => 'reasoningLevel',
         'prompt' => 'prompt'
     ];
 
@@ -186,6 +189,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'tools' => 'setTools',
         'is_reasoning' => 'setIsReasoning',
+        'reasoning_level' => 'setReasoningLevel',
         'prompt' => 'setPrompt'
     ];
 
@@ -197,6 +201,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'tools' => 'getTools',
         'is_reasoning' => 'getIsReasoning',
+        'reasoning_level' => 'getReasoningLevel',
         'prompt' => 'getPrompt'
     ];
 
@@ -259,6 +264,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('tools', $data ?? [], null);
         $this->setIfExists('is_reasoning', $data ?? [], null);
+        $this->setIfExists('reasoning_level', $data ?? [], null);
         $this->setIfExists('prompt', $data ?? [], null);
     }
 
@@ -344,7 +350,7 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_reasoning
      *
-     * @param bool|null $is_reasoning Enable extended thinking / reasoning for this request.
+     * @param bool|null $is_reasoning Legacy extended-thinking switch; stands for `medium`. `reasoningLevel` wins when both are set.
      *
      * @return self
      */
@@ -354,6 +360,33 @@ class AiAiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_reasoning cannot be null');
         }
         $this->container['is_reasoning'] = $is_reasoning;
+
+        return $this;
+    }
+
+    /**
+     * Gets reasoning_level
+     *
+     * @return \OpenAPI\Client\Model\AiAiReasoningLevel|null
+     */
+    public function getReasoningLevel()
+    {
+        return $this->container['reasoning_level'];
+    }
+
+    /**
+     * Sets reasoning_level
+     *
+     * @param \OpenAPI\Client\Model\AiAiReasoningLevel|null $reasoning_level Depth of extended thinking for the round; providers clamp it to what the model accepts.
+     *
+     * @return self
+     */
+    public function setReasoningLevel($reasoning_level)
+    {
+        if (is_null($reasoning_level)) {
+            throw new \InvalidArgumentException('non-nullable reasoning_level cannot be null');
+        }
+        $this->container['reasoning_level'] = $reasoning_level;
 
         return $this;
     }

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * QuantityRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for specifying payment quantity.
+ * @description The new size of the portal subscription.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -278,6 +278,14 @@ class QuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['quantity'] === null) {
             $invalidProperties[] = "'quantity' can't be null";
         }
+        if ((count($this->container['quantity']) > 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be less than or equal to 1.";
+        }
+
+        if ((count($this->container['quantity']) < 1)) {
+            $invalidProperties[] = "invalid value for 'quantity', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -306,7 +314,7 @@ class QuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets quantity
      *
-     * @param array<string,int> $quantity The mapping of item identifiers to their respective quantities in the payment.
+     * @param array<string,int> $quantity The plan and the number of units it is to cover, as a single pair. While the portal is on a priced plan the  key has to be the `name` of that same plan, which `GET api/2.0/portal/payment/quota` reports, because the  subscription is resized rather than swapped; the value is the total the subscription is to have afterwards,  not the difference. Exactly one pair is accepted, and a value that is already in effect is refused with 400.
      *
      * @return self
      */
@@ -315,7 +323,12 @@ class QuantityRequestDto implements ModelInterface, ArrayAccess, \JsonSerializab
         if (is_null($quantity)) {
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-
+        if ((count($quantity) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling QuantityRequestDto., number of items must be less than or equal to 1.');
+        }
+        if ((count($quantity) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $quantity when calling QuantityRequestDto., number of items must be greater than or equal to 1.');
+        }
         $this->container['quantity'] = $quantity;
 
         return $this;

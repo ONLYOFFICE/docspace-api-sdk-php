@@ -1520,7 +1520,7 @@ class MigrationApi
     /**
      * Operation listMigrations
      *
-     * Get migrations
+     * Get available migrators
      *
      * REST API Reference for listMigrations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/list-migrations/
@@ -1540,7 +1540,7 @@ class MigrationApi
     /**
      * Operation listMigrationsWithHttpInfo
      *
-     * Get migrations
+     * Get available migrators
      *
      * REST API Reference for listMigrations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/list-migrations/
@@ -1669,7 +1669,7 @@ class MigrationApi
     /**
      * Operation listMigrationsAsync
      *
-     * Get migrations
+     * Get available migrators
      *
      * REST API Reference for listMigrations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/list-migrations/
@@ -1692,7 +1692,7 @@ class MigrationApi
     /**
      * Operation listMigrationsAsyncWithHttpInfo
      *
-     * Get migrations
+     * Get available migrators
      *
      * REST API Reference for listMigrations Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/list-migrations/
@@ -1930,14 +1930,6 @@ class MigrationApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2121,12 +2113,12 @@ class MigrationApi
     /**
      * Operation uploadAndInitializeMigration
      *
-     * Upload and initialize migration
+     * Parse migration archive
      *
      * REST API Reference for uploadAndInitializeMigration Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-and-initialize-migration/
      *
-     * @param  string $migrator_name The migrator name extracted from the route parameters. (required)
+     * @param  string $migrator_name The migrator that knows the format of the uploaded backup. It has to be one of the names  `GET api/2.0/migration/list` reports for this installation, spelled exactly as listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAndInitializeMigration'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2141,12 +2133,12 @@ class MigrationApi
     /**
      * Operation uploadAndInitializeMigrationWithHttpInfo
      *
-     * Upload and initialize migration
+     * Parse migration archive
      *
      * REST API Reference for uploadAndInitializeMigration Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-and-initialize-migration/
      *
-     * @param  string $migrator_name The migrator name extracted from the route parameters. (required)
+     * @param  string $migrator_name The migrator that knows the format of the uploaded backup. It has to be one of the names  `GET api/2.0/migration/list` reports for this installation, spelled exactly as listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAndInitializeMigration'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2225,12 +2217,12 @@ class MigrationApi
     /**
      * Operation uploadAndInitializeMigrationAsync
      *
-     * Upload and initialize migration
+     * Parse migration archive
      *
      * REST API Reference for uploadAndInitializeMigration Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-and-initialize-migration/
      *
-     * @param  string $migrator_name The migrator name extracted from the route parameters. (required)
+     * @param  string $migrator_name The migrator that knows the format of the uploaded backup. It has to be one of the names  `GET api/2.0/migration/list` reports for this installation, spelled exactly as listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAndInitializeMigration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2249,12 +2241,12 @@ class MigrationApi
     /**
      * Operation uploadAndInitializeMigrationAsyncWithHttpInfo
      *
-     * Upload and initialize migration
+     * Parse migration archive
      *
      * REST API Reference for uploadAndInitializeMigration Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-and-initialize-migration/
      *
-     * @param  string $migrator_name The migrator name extracted from the route parameters. (required)
+     * @param  string $migrator_name The migrator that knows the format of the uploaded backup. It has to be one of the names  `GET api/2.0/migration/list` reports for this installation, spelled exactly as listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAndInitializeMigration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2291,7 +2283,7 @@ class MigrationApi
     /**
      * Create request for operation 'uploadAndInitializeMigration'
      *
-     * @param  string $migrator_name The migrator name extracted from the route parameters. (required)
+     * @param  string $migrator_name The migrator that knows the format of the uploaded backup. It has to be one of the names  `GET api/2.0/migration/list` reports for this installation, spelled exactly as listed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAndInitializeMigration'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

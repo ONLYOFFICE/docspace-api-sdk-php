@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantUserInvitationSettingsRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for updating the user invitation settings.
+ * @description Whether the portal still lets its members invite new members and new guests.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class TenantUserInvitationSettingsRequestDto implements ModelInterface, ArrayAcc
     /**
      * Sets allow_inviting_members
      *
-     * @param bool|null $allow_inviting_members Specifies whether to allow inviting new DocSpace members through the Contacts section.
+     * @param bool|null $allow_inviting_members Whether new DocSpace members may be invited through the Contacts section. Switching it off only stops new  invitations being created; links already issued keep working and members already invited stay.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class TenantUserInvitationSettingsRequestDto implements ModelInterface, ArrayAcc
     /**
      * Sets allow_inviting_guests
      *
-     * @param bool|null $allow_inviting_guests Specifies whether to allow all DocSpace members to invite external guests to the rooms.
+     * @param bool|null $allow_inviting_guests Whether every DocSpace member, and not only an administrator, may invite external guests into rooms.  Switching it off leaves the guests already invited in place.
      *
      * @return self
      */

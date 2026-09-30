@@ -199,13 +199,13 @@ class OperationsApi
     /**
      * Operation abortUploadSession
      *
-     * Aborts an in-progress file upload session.
+     * Abort an upload session
      *
      * REST API Reference for abortUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/abort-upload-session/
      *
-     * @param  string $session_id The session ID. (required)
-     * @param  int $folder_id The folder ID. (required)
+     * @param  string $session_id The session to cancel, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['abortUploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -220,13 +220,13 @@ class OperationsApi
     /**
      * Operation abortUploadSessionWithHttpInfo
      *
-     * Aborts an in-progress file upload session.
+     * Abort an upload session
      *
      * REST API Reference for abortUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/abort-upload-session/
      *
-     * @param  string $session_id The session ID. (required)
-     * @param  int $folder_id The folder ID. (required)
+     * @param  string $session_id The session to cancel, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['abortUploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -305,13 +305,13 @@ class OperationsApi
     /**
      * Operation abortUploadSessionAsync
      *
-     * Aborts an in-progress file upload session.
+     * Abort an upload session
      *
      * REST API Reference for abortUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/abort-upload-session/
      *
-     * @param  string $session_id The session ID. (required)
-     * @param  int $folder_id The folder ID. (required)
+     * @param  string $session_id The session to cancel, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['abortUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -330,13 +330,13 @@ class OperationsApi
     /**
      * Operation abortUploadSessionAsyncWithHttpInfo
      *
-     * Aborts an in-progress file upload session.
+     * Abort an upload session
      *
      * REST API Reference for abortUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/abort-upload-session/
      *
-     * @param  string $session_id The session ID. (required)
-     * @param  int $folder_id The folder ID. (required)
+     * @param  string $session_id The session to cancel, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['abortUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -373,8 +373,8 @@ class OperationsApi
     /**
      * Create request for operation 'abortUploadSession'
      *
-     * @param  string $session_id The session ID. (required)
-     * @param  int $folder_id The folder ID. (required)
+     * @param  string $session_id The session to cancel, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['abortUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1144,6 +1144,28 @@ class OperationsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1174,8 +1196,8 @@ class OperationsApi
      * REST API Reference for checkConversionStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-conversion-status/
      *
-     * @param  int $file_id The file ID to check conversion status. (required)
-     * @param  bool|null $start Specifies whether a conversion operation is started or not. (optional)
+     * @param  int|string $file_id The file whose conversion is asked about. (required)
+     * @param  bool|null $start Whether to start the conversion as well: `true` queues it with the default output format and no password,  `false` only reports what the portal already knows. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConversionStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1196,8 +1218,8 @@ class OperationsApi
      * REST API Reference for checkConversionStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-conversion-status/
      *
-     * @param  int $file_id The file ID to check conversion status. (required)
-     * @param  bool|null $start Specifies whether a conversion operation is started or not. (optional)
+     * @param  int|string $file_id The file whose conversion is asked about. (required)
+     * @param  bool|null $start Whether to start the conversion as well: `true` queues it with the default output format and no password,  `false` only reports what the portal already knows. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConversionStatus'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1341,8 +1363,8 @@ class OperationsApi
      * REST API Reference for checkConversionStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-conversion-status/
      *
-     * @param  int $file_id The file ID to check conversion status. (required)
-     * @param  bool|null $start Specifies whether a conversion operation is started or not. (optional)
+     * @param  int|string $file_id The file whose conversion is asked about. (required)
+     * @param  bool|null $start Whether to start the conversion as well: `true` queues it with the default output format and no password,  `false` only reports what the portal already knows. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConversionStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1366,8 +1388,8 @@ class OperationsApi
      * REST API Reference for checkConversionStatus Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-conversion-status/
      *
-     * @param  int $file_id The file ID to check conversion status. (required)
-     * @param  bool|null $start Specifies whether a conversion operation is started or not. (optional)
+     * @param  int|string $file_id The file whose conversion is asked about. (required)
+     * @param  bool|null $start Whether to start the conversion as well: `true` queues it with the default output format and no password,  `false` only reports what the portal already knows. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConversionStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1417,8 +1439,8 @@ class OperationsApi
     /**
      * Create request for operation 'checkConversionStatus'
      *
-     * @param  int $file_id The file ID to check conversion status. (required)
-     * @param  bool|null $start Specifies whether a conversion operation is started or not. (optional)
+     * @param  int|string $file_id The file whose conversion is asked about. (required)
+     * @param  bool|null $start Whether to start the conversion as well: `true` queues it with the default output format and no password,  `false` only reports what the portal already knows. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConversionStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1542,12 +1564,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyBatchItems
      *
-     * Move or copy files to a folder
+     * Check move or copy conflicts
      *
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1563,12 +1585,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyBatchItemsWithHttpInfo
      *
-     * Move or copy files to a folder
+     * Check move or copy conflicts
      *
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1707,12 +1729,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyBatchItemsAsync
      *
-     * Move or copy files to a folder
+     * Check move or copy conflicts
      *
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1731,12 +1753,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyBatchItemsAsyncWithHttpInfo
      *
-     * Move or copy files to a folder
+     * Check move or copy conflicts
      *
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1786,7 +1808,7 @@ class OperationsApi
     /**
      * Create request for operation 'checkMoveOrCopyBatchItems'
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1895,12 +1917,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyDestFolder
      *
-     * Check for moving or copying files to a folder
+     * Check the destination folder
      *
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1916,12 +1938,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyDestFolderWithHttpInfo
      *
-     * Check for moving or copying files to a folder
+     * Check the destination folder
      *
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2060,12 +2082,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyDestFolderAsync
      *
-     * Check for moving or copying files to a folder
+     * Check the destination folder
      *
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2084,12 +2106,12 @@ class OperationsApi
     /**
      * Operation checkMoveOrCopyDestFolderAsyncWithHttpInfo
      *
-     * Check for moving or copying files to a folder
+     * Check the destination folder
      *
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2139,7 +2161,7 @@ class OperationsApi
     /**
      * Create request for operation 'checkMoveOrCopyDestFolder'
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The request parameters for copying/moving files. (optional)
+     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2248,7 +2270,7 @@ class OperationsApi
     /**
      * Operation copyBatchItems
      *
-     * Copy to the folder
+     * Copy files and folders
      *
      * REST API Reference for copyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-batch-items/
@@ -2269,7 +2291,7 @@ class OperationsApi
     /**
      * Operation copyBatchItemsWithHttpInfo
      *
-     * Copy to the folder
+     * Copy files and folders
      *
      * REST API Reference for copyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-batch-items/
@@ -2413,7 +2435,7 @@ class OperationsApi
     /**
      * Operation copyBatchItemsAsync
      *
-     * Copy to the folder
+     * Copy files and folders
      *
      * REST API Reference for copyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-batch-items/
@@ -2437,7 +2459,7 @@ class OperationsApi
     /**
      * Operation copyBatchItemsAsyncWithHttpInfo
      *
-     * Copy to the folder
+     * Copy files and folders
      *
      * REST API Reference for copyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-batch-items/
@@ -2604,13 +2626,13 @@ class OperationsApi
      * REST API Reference for createUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      * @deprecated
      */
     public function createUploadSession($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
@@ -2627,13 +2649,13 @@ class OperationsApi
      * REST API Reference for createUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function createUploadSessionWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
@@ -2666,7 +2688,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                         $request,
                         $response,
                     );
@@ -2712,7 +2734,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                 $request,
                 $response,
             );
@@ -2721,7 +2743,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2773,8 +2795,8 @@ class OperationsApi
      * REST API Reference for createUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2799,8 +2821,8 @@ class OperationsApi
      * REST API Reference for createUploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2809,7 +2831,7 @@ class OperationsApi
      */
     public function createUploadSessionAsyncWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper';
         $request = $this->createUploadSessionRequest($folder_id, $session_request, $contentType);
 
         return $this->client
@@ -2851,8 +2873,8 @@ class OperationsApi
     /**
      * Create request for operation 'createUploadSession'
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2981,18 +3003,18 @@ class OperationsApi
     /**
      * Operation createUploadSessionInFolder
      *
-     * Creates a session for uploading a file to a specific folder in chunks.
+     * Create an upload session
      *
      * REST API Reference for createUploadSessionInFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session-in-folder/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSessionInFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createUploadSessionInFolder($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
@@ -3003,18 +3025,18 @@ class OperationsApi
     /**
      * Operation createUploadSessionInFolderWithHttpInfo
      *
-     * Creates a session for uploading a file to a specific folder in chunks.
+     * Create an upload session
      *
      * REST API Reference for createUploadSessionInFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session-in-folder/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSessionInFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUploadSessionInFolderWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
@@ -3046,7 +3068,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                         $request,
                         $response,
                     );
@@ -3092,7 +3114,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                 $request,
                 $response,
             );
@@ -3101,7 +3123,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3148,13 +3170,13 @@ class OperationsApi
     /**
      * Operation createUploadSessionInFolderAsync
      *
-     * Creates a session for uploading a file to a specific folder in chunks.
+     * Create an upload session
      *
      * REST API Reference for createUploadSessionInFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session-in-folder/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSessionInFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3173,13 +3195,13 @@ class OperationsApi
     /**
      * Operation createUploadSessionInFolderAsyncWithHttpInfo
      *
-     * Creates a session for uploading a file to a specific folder in chunks.
+     * Create an upload session
      *
      * REST API Reference for createUploadSessionInFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-upload-session-in-folder/
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSessionInFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3187,7 +3209,7 @@ class OperationsApi
      */
     public function createUploadSessionInFolderAsyncWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper';
         $request = $this->createUploadSessionInFolderRequest($folder_id, $session_request, $contentType);
 
         return $this->client
@@ -3229,8 +3251,8 @@ class OperationsApi
     /**
      * Create request for operation 'createUploadSessionInFolder'
      *
-     * @param  int $folder_id The session folder ID. (required)
-     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The session parameters. (required)
+     * @param  int|string $folder_id The folder that receives the file; take the id from a listing such as `GET api/2.0/files/@root`. A room or an  ordinary folder inside one is accepted, a section root is not. (required)
+     * @param  \OpenAPI\Client\Model\SessionRequest $session_request The file the session is opened for, and how a clash with an existing name is settled. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createUploadSessionInFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3709,7 +3731,7 @@ class OperationsApi
     /**
      * Operation deleteFavoritesFromBody
      *
-     * Delete favorite files and folders (using body parameters)
+     * Delete favorite files and folders
      *
      * REST API Reference for deleteFavoritesFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-favorites-from-body/
@@ -3730,7 +3752,7 @@ class OperationsApi
     /**
      * Operation deleteFavoritesFromBodyWithHttpInfo
      *
-     * Delete favorite files and folders (using body parameters)
+     * Delete favorite files and folders
      *
      * REST API Reference for deleteFavoritesFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-favorites-from-body/
@@ -3874,7 +3896,7 @@ class OperationsApi
     /**
      * Operation deleteFavoritesFromBodyAsync
      *
-     * Delete favorite files and folders (using body parameters)
+     * Delete favorite files and folders
      *
      * REST API Reference for deleteFavoritesFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-favorites-from-body/
@@ -3898,7 +3920,7 @@ class OperationsApi
     /**
      * Operation deleteFavoritesFromBodyAsyncWithHttpInfo
      *
-     * Delete favorite files and folders (using body parameters)
+     * Delete favorite files and folders
      *
      * REST API Reference for deleteFavoritesFromBody Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-favorites-from-body/
@@ -4070,7 +4092,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteFileVersions($delete_version_batch_request_dto = null, string $contentType = self::contentTypes['deleteFileVersions'][0])
     {
@@ -4091,7 +4113,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFileVersionsWithHttpInfo($delete_version_batch_request_dto = null, string $contentType = self::contentTypes['deleteFileVersions'][0])
     {
@@ -4123,7 +4145,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FileOperationWrapper',
+                        '\OpenAPI\Client\Model\FileOperationArrayWrapper',
                         $request,
                         $response,
                     );
@@ -4169,7 +4191,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FileOperationWrapper',
+                '\OpenAPI\Client\Model\FileOperationArrayWrapper',
                 $request,
                 $response,
             );
@@ -4178,7 +4200,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FileOperationWrapper',
+                        '\OpenAPI\Client\Model\FileOperationArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4262,7 +4284,7 @@ class OperationsApi
      */
     public function deleteFileVersionsAsyncWithHttpInfo($delete_version_batch_request_dto = null, string $contentType = self::contentTypes['deleteFileVersions'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FileOperationWrapper';
+        $returnType = '\OpenAPI\Client\Model\FileOperationArrayWrapper';
         $request = $this->deleteFileVersionsRequest($delete_version_batch_request_dto, $contentType);
 
         return $this->client
@@ -4767,8 +4789,8 @@ class OperationsApi
      * REST API Reference for emptyTrash Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/empty-trash/
      *
-     * @param  bool|null $single Specifies whether to return only the current operation (optional)
-     * @param  int[]|null $folder_type The parent folder types used to empty the trash only from the items originally located in the sections of the specified types. (optional)
+     * @param  bool|null $single Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every delete operation that the caller has running or unread. (optional)
+     * @param  int[]|null $folder_type Limits the sweep to the items whose original location was inside a section or a room of one of the named  types, leaving the rest of the Trash untouched; without the parameter the whole Trash is emptied. `5` covers  what was deleted from personal documents, `14` what was deleted from rooms. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emptyTrash'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4789,8 +4811,8 @@ class OperationsApi
      * REST API Reference for emptyTrash Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/empty-trash/
      *
-     * @param  bool|null $single Specifies whether to return only the current operation (optional)
-     * @param  int[]|null $folder_type The parent folder types used to empty the trash only from the items originally located in the sections of the specified types. (optional)
+     * @param  bool|null $single Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every delete operation that the caller has running or unread. (optional)
+     * @param  int[]|null $folder_type Limits the sweep to the items whose original location was inside a section or a room of one of the named  types, leaving the rest of the Trash untouched; without the parameter the whole Trash is emptied. `5` covers  what was deleted from personal documents, `14` what was deleted from rooms. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emptyTrash'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4934,8 +4956,8 @@ class OperationsApi
      * REST API Reference for emptyTrash Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/empty-trash/
      *
-     * @param  bool|null $single Specifies whether to return only the current operation (optional)
-     * @param  int[]|null $folder_type The parent folder types used to empty the trash only from the items originally located in the sections of the specified types. (optional)
+     * @param  bool|null $single Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every delete operation that the caller has running or unread. (optional)
+     * @param  int[]|null $folder_type Limits the sweep to the items whose original location was inside a section or a room of one of the named  types, leaving the rest of the Trash untouched; without the parameter the whole Trash is emptied. `5` covers  what was deleted from personal documents, `14` what was deleted from rooms. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emptyTrash'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4959,8 +4981,8 @@ class OperationsApi
      * REST API Reference for emptyTrash Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/empty-trash/
      *
-     * @param  bool|null $single Specifies whether to return only the current operation (optional)
-     * @param  int[]|null $folder_type The parent folder types used to empty the trash only from the items originally located in the sections of the specified types. (optional)
+     * @param  bool|null $single Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every delete operation that the caller has running or unread. (optional)
+     * @param  int[]|null $folder_type Limits the sweep to the items whose original location was inside a section or a room of one of the named  types, leaving the rest of the Trash untouched; without the parameter the whole Trash is emptied. `5` covers  what was deleted from personal documents, `14` what was deleted from rooms. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emptyTrash'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5010,8 +5032,8 @@ class OperationsApi
     /**
      * Create request for operation 'emptyTrash'
      *
-     * @param  bool|null $single Specifies whether to return only the current operation (optional)
-     * @param  int[]|null $folder_type The parent folder types used to empty the trash only from the items originally located in the sections of the specified types. (optional)
+     * @param  bool|null $single Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every delete operation that the caller has running or unread. (optional)
+     * @param  int[]|null $folder_type Limits the sweep to the items whose original location was inside a section or a room of one of the named  types, leaving the rest of the Trash untouched; without the parameter the whole Trash is emptied. `5` covers  what was deleted from personal documents, `14` what was deleted from rooms. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['emptyTrash'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5135,13 +5157,13 @@ class OperationsApi
      * REST API Reference for finalizeSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/finalize-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The session ID. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session to assemble, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalizeSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function finalizeSession($folder_id, $session_id, string $contentType = self::contentTypes['finalizeSession'][0])
     {
@@ -5157,13 +5179,13 @@ class OperationsApi
      * REST API Reference for finalizeSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/finalize-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The session ID. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session to assemble, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalizeSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function finalizeSessionWithHttpInfo($folder_id, $session_id, string $contentType = self::contentTypes['finalizeSession'][0])
     {
@@ -5195,7 +5217,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                         $request,
                         $response,
                     );
@@ -5241,7 +5263,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                 $request,
                 $response,
             );
@@ -5250,7 +5272,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5302,8 +5324,8 @@ class OperationsApi
      * REST API Reference for finalizeSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/finalize-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The session ID. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session to assemble, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalizeSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5327,8 +5349,8 @@ class OperationsApi
      * REST API Reference for finalizeSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/finalize-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The session ID. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session to assemble, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalizeSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5336,7 +5358,7 @@ class OperationsApi
      */
     public function finalizeSessionAsyncWithHttpInfo($folder_id, $session_id, string $contentType = self::contentTypes['finalizeSession'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper';
         $request = $this->finalizeSessionRequest($folder_id, $session_id, $contentType);
 
         return $this->client
@@ -5378,8 +5400,8 @@ class OperationsApi
     /**
      * Create request for operation 'finalizeSession'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The session ID. (required)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session to assemble, as returned in `id` when it was created: a 32-character hexadecimal string that  identifies the session on its own. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['finalizeSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5513,7 +5535,7 @@ class OperationsApi
      * REST API Reference for getOperationStatuses Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses/
      *
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatuses'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5534,7 +5556,7 @@ class OperationsApi
      * REST API Reference for getOperationStatuses Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses/
      *
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatuses'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5664,7 +5686,7 @@ class OperationsApi
      * REST API Reference for getOperationStatuses Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses/
      *
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatuses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5688,7 +5710,7 @@ class OperationsApi
      * REST API Reference for getOperationStatuses Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses/
      *
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatuses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5738,7 +5760,7 @@ class OperationsApi
     /**
      * Create request for operation 'getOperationStatuses'
      *
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatuses'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -5800,6 +5822,28 @@ class OperationsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -5825,13 +5869,13 @@ class OperationsApi
     /**
      * Operation getOperationStatusesByType
      *
-     * Get file operation statuses
+     * Get file operations by type
      *
      * REST API Reference for getOperationStatusesByType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses-by-type/
      *
-     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type Specifies the type of file operation to be retrieved. (required)
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type The kind of operation the answer is limited to. Only the kinds that have a queue of their own ever carry  records — a copy, a deletion, a download, a mark-as-read and a duplication — and moves cannot be read through  this route at all, because its address belongs to another operation. (required)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatusesByType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5847,13 +5891,13 @@ class OperationsApi
     /**
      * Operation getOperationStatusesByTypeWithHttpInfo
      *
-     * Get file operation statuses
+     * Get file operations by type
      *
      * REST API Reference for getOperationStatusesByType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses-by-type/
      *
-     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type Specifies the type of file operation to be retrieved. (required)
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type The kind of operation the answer is limited to. Only the kinds that have a queue of their own ever carry  records — a copy, a deletion, a download, a mark-as-read and a duplication — and moves cannot be read through  this route at all, because its address belongs to another operation. (required)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatusesByType'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -5978,13 +6022,13 @@ class OperationsApi
     /**
      * Operation getOperationStatusesByTypeAsync
      *
-     * Get file operation statuses
+     * Get file operations by type
      *
      * REST API Reference for getOperationStatusesByType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses-by-type/
      *
-     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type Specifies the type of file operation to be retrieved. (required)
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type The kind of operation the answer is limited to. Only the kinds that have a queue of their own ever carry  records — a copy, a deletion, a download, a mark-as-read and a duplication — and moves cannot be read through  this route at all, because its address belongs to another operation. (required)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatusesByType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6003,13 +6047,13 @@ class OperationsApi
     /**
      * Operation getOperationStatusesByTypeAsyncWithHttpInfo
      *
-     * Get file operation statuses
+     * Get file operations by type
      *
      * REST API Reference for getOperationStatusesByType Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses-by-type/
      *
-     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type Specifies the type of file operation to be retrieved. (required)
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type The kind of operation the answer is limited to. Only the kinds that have a queue of their own ever carry  records — a copy, a deletion, a download, a mark-as-read and a duplication — and moves cannot be read through  this route at all, because its address belongs to another operation. (required)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatusesByType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6059,8 +6103,8 @@ class OperationsApi
     /**
      * Create request for operation 'getOperationStatusesByType'
      *
-     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type Specifies the type of file operation to be retrieved. (required)
-     * @param  string|null $id The ID of the file operation. (optional)
+     * @param  \OpenAPI\Client\Model\FileOperationType $operation_type The kind of operation the answer is limited to. Only the kinds that have a queue of their own ever carry  records — a copy, a deletion, a download, a mark-as-read and a duplication — and moves cannot be read through  this route at all, because its address belongs to another operation. (required)
+     * @param  string|null $id The operation to report on, as returned in `id` when it was started; without it every operation of the caller  is reported. An id that is not among the caller's operations gives an empty answer rather than an error. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getOperationStatusesByType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6137,6 +6181,28 @@ class OperationsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6162,7 +6228,7 @@ class OperationsApi
     /**
      * Operation markAsRead
      *
-     * Mark as read
+     * Mark files and folders as read
      *
      * REST API Reference for markAsRead Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/mark-as-read/
@@ -6183,7 +6249,7 @@ class OperationsApi
     /**
      * Operation markAsReadWithHttpInfo
      *
-     * Mark as read
+     * Mark files and folders as read
      *
      * REST API Reference for markAsRead Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/mark-as-read/
@@ -6327,7 +6393,7 @@ class OperationsApi
     /**
      * Operation markAsReadAsync
      *
-     * Mark as read
+     * Mark files and folders as read
      *
      * REST API Reference for markAsRead Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/mark-as-read/
@@ -6351,7 +6417,7 @@ class OperationsApi
     /**
      * Operation markAsReadAsyncWithHttpInfo
      *
-     * Mark as read
+     * Mark files and folders as read
      *
      * REST API Reference for markAsRead Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/mark-as-read/
@@ -6513,7 +6579,7 @@ class OperationsApi
     /**
      * Operation moveBatchItems
      *
-     * Move or copy to a folder
+     * Move files and folders
      *
      * REST API Reference for moveBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-batch-items/
@@ -6534,7 +6600,7 @@ class OperationsApi
     /**
      * Operation moveBatchItemsWithHttpInfo
      *
-     * Move or copy to a folder
+     * Move files and folders
      *
      * REST API Reference for moveBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-batch-items/
@@ -6678,7 +6744,7 @@ class OperationsApi
     /**
      * Operation moveBatchItemsAsync
      *
-     * Move or copy to a folder
+     * Move files and folders
      *
      * REST API Reference for moveBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-batch-items/
@@ -6702,7 +6768,7 @@ class OperationsApi
     /**
      * Operation moveBatchItemsAsyncWithHttpInfo
      *
-     * Move or copy to a folder
+     * Move files and folders
      *
      * REST API Reference for moveBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-batch-items/
@@ -6869,17 +6935,17 @@ class OperationsApi
      * REST API Reference for startFileConversion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-file-conversion/
      *
-     * @param  int $file_id The file ID to start conversion proccess. (required)
-     * @param  \OpenAPI\Client\Model\CheckConversionRequestDtoInteger|null $check_conversion_request_dto_integer The parameters for checking file conversion. (optional)
+     * @param  int|string $file_id The file to convert. (required)
+     * @param  \OpenAPI\Client\Model\CheckConversionRequestDto|\OpenAPI\Client\Model\ThirdPartyCheckConversionRequestDto|null $check_conversion_request_dto The parameters of the conversion. The whole body may be omitted, in which case the defaults of the portal  apply. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFileConversion'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ConversationResultArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function startFileConversion($file_id, $check_conversion_request_dto_integer = null, string $contentType = self::contentTypes['startFileConversion'][0])
+    public function startFileConversion($file_id, $check_conversion_request_dto = null, string $contentType = self::contentTypes['startFileConversion'][0])
     {
-        list($response) = $this->startFileConversionWithHttpInfo($file_id, $check_conversion_request_dto_integer, $contentType);
+        list($response) = $this->startFileConversionWithHttpInfo($file_id, $check_conversion_request_dto, $contentType);
         return $response;
     }
 
@@ -6891,17 +6957,17 @@ class OperationsApi
      * REST API Reference for startFileConversion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-file-conversion/
      *
-     * @param  int $file_id The file ID to start conversion proccess. (required)
-     * @param  \OpenAPI\Client\Model\CheckConversionRequestDtoInteger|null $check_conversion_request_dto_integer The parameters for checking file conversion. (optional)
+     * @param  int|string $file_id The file to convert. (required)
+     * @param  \OpenAPI\Client\Model\CheckConversionRequestDto|\OpenAPI\Client\Model\ThirdPartyCheckConversionRequestDto|null $check_conversion_request_dto The parameters of the conversion. The whole body may be omitted, in which case the defaults of the portal  apply. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFileConversion'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ConversationResultArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startFileConversionWithHttpInfo($file_id, $check_conversion_request_dto_integer = null, string $contentType = self::contentTypes['startFileConversion'][0])
+    public function startFileConversionWithHttpInfo($file_id, $check_conversion_request_dto = null, string $contentType = self::contentTypes['startFileConversion'][0])
     {
-        $request = $this->startFileConversionRequest($file_id, $check_conversion_request_dto_integer, $contentType);
+        $request = $this->startFileConversionRequest($file_id, $check_conversion_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7036,16 +7102,16 @@ class OperationsApi
      * REST API Reference for startFileConversion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-file-conversion/
      *
-     * @param  int $file_id The file ID to start conversion proccess. (required)
-     * @param  \OpenAPI\Client\Model\CheckConversionRequestDtoInteger|null $check_conversion_request_dto_integer The parameters for checking file conversion. (optional)
+     * @param  int|string $file_id The file to convert. (required)
+     * @param  \OpenAPI\Client\Model\CheckConversionRequestDto|\OpenAPI\Client\Model\ThirdPartyCheckConversionRequestDto|null $check_conversion_request_dto The parameters of the conversion. The whole body may be omitted, in which case the defaults of the portal  apply. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFileConversion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startFileConversionAsync($file_id, $check_conversion_request_dto_integer = null, string $contentType = self::contentTypes['startFileConversion'][0])
+    public function startFileConversionAsync($file_id, $check_conversion_request_dto = null, string $contentType = self::contentTypes['startFileConversion'][0])
     {
-        return $this->startFileConversionAsyncWithHttpInfo($file_id, $check_conversion_request_dto_integer, $contentType)
+        return $this->startFileConversionAsyncWithHttpInfo($file_id, $check_conversion_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7061,17 +7127,17 @@ class OperationsApi
      * REST API Reference for startFileConversion Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-file-conversion/
      *
-     * @param  int $file_id The file ID to start conversion proccess. (required)
-     * @param  \OpenAPI\Client\Model\CheckConversionRequestDtoInteger|null $check_conversion_request_dto_integer The parameters for checking file conversion. (optional)
+     * @param  int|string $file_id The file to convert. (required)
+     * @param  \OpenAPI\Client\Model\CheckConversionRequestDto|\OpenAPI\Client\Model\ThirdPartyCheckConversionRequestDto|null $check_conversion_request_dto The parameters of the conversion. The whole body may be omitted, in which case the defaults of the portal  apply. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFileConversion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startFileConversionAsyncWithHttpInfo($file_id, $check_conversion_request_dto_integer = null, string $contentType = self::contentTypes['startFileConversion'][0])
+    public function startFileConversionAsyncWithHttpInfo($file_id, $check_conversion_request_dto = null, string $contentType = self::contentTypes['startFileConversion'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ConversationResultArrayWrapper';
-        $request = $this->startFileConversionRequest($file_id, $check_conversion_request_dto_integer, $contentType);
+        $request = $this->startFileConversionRequest($file_id, $check_conversion_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7112,14 +7178,14 @@ class OperationsApi
     /**
      * Create request for operation 'startFileConversion'
      *
-     * @param  int $file_id The file ID to start conversion proccess. (required)
-     * @param  \OpenAPI\Client\Model\CheckConversionRequestDtoInteger|null $check_conversion_request_dto_integer The parameters for checking file conversion. (optional)
+     * @param  int|string $file_id The file to convert. (required)
+     * @param  \OpenAPI\Client\Model\CheckConversionRequestDto|\OpenAPI\Client\Model\ThirdPartyCheckConversionRequestDto|null $check_conversion_request_dto The parameters of the conversion. The whole body may be omitted, in which case the defaults of the portal  apply. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startFileConversion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function startFileConversionRequest($file_id, $check_conversion_request_dto_integer = null, string $contentType = self::contentTypes['startFileConversion'][0])
+    public function startFileConversionRequest($file_id, $check_conversion_request_dto = null, string $contentType = self::contentTypes['startFileConversion'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -7157,12 +7223,12 @@ class OperationsApi
         );
 
         // for model (json/xml)
-        if (isset($check_conversion_request_dto_integer)) {
+        if (isset($check_conversion_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($check_conversion_request_dto_integer));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($check_conversion_request_dto));
             } else {
-                $httpBody = $check_conversion_request_dto_integer;
+                $httpBody = $check_conversion_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -7235,12 +7301,12 @@ class OperationsApi
     /**
      * Operation terminateTasks
      *
-     * Finish active operations
+     * Cancel file operations
      *
      * REST API Reference for terminateTasks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tasks/
      *
-     * @param  string $id The operation unique identifier. (required)
+     * @param  string $id The operation to cancel, as returned in `id` when it was started. A call that leaves the route segment out  cancels every operation of the caller, and an id that is not among their operations cancels nothing without  being an error. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateTasks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7256,12 +7322,12 @@ class OperationsApi
     /**
      * Operation terminateTasksWithHttpInfo
      *
-     * Finish active operations
+     * Cancel file operations
      *
      * REST API Reference for terminateTasks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tasks/
      *
-     * @param  string $id The operation unique identifier. (required)
+     * @param  string $id The operation to cancel, as returned in `id` when it was started. A call that leaves the route segment out  cancels every operation of the caller, and an id that is not among their operations cancels nothing without  being an error. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateTasks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7386,12 +7452,12 @@ class OperationsApi
     /**
      * Operation terminateTasksAsync
      *
-     * Finish active operations
+     * Cancel file operations
      *
      * REST API Reference for terminateTasks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tasks/
      *
-     * @param  string $id The operation unique identifier. (required)
+     * @param  string $id The operation to cancel, as returned in `id` when it was started. A call that leaves the route segment out  cancels every operation of the caller, and an id that is not among their operations cancels nothing without  being an error. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7410,12 +7476,12 @@ class OperationsApi
     /**
      * Operation terminateTasksAsyncWithHttpInfo
      *
-     * Finish active operations
+     * Cancel file operations
      *
      * REST API Reference for terminateTasks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/terminate-tasks/
      *
-     * @param  string $id The operation unique identifier. (required)
+     * @param  string $id The operation to cancel, as returned in `id` when it was started. A call that leaves the route segment out  cancels every operation of the caller, and an id that is not among their operations cancels nothing without  being an error. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7465,7 +7531,7 @@ class OperationsApi
     /**
      * Create request for operation 'terminateTasks'
      *
-     * @param  string $id The operation unique identifier. (required)
+     * @param  string $id The operation to cancel, as returned in `id` when it was started. A call that leaves the route segment out  cancels every operation of the caller, and an id that is not among their operations cancels nothing without  being an error. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['terminateTasks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7532,6 +7598,28 @@ class OperationsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -7562,8 +7650,8 @@ class OperationsApi
      * REST API Reference for updateFileComment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
-     * @param  int $file_id The file ID where the comment is located. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The parameters for updating a comment. (required)
+     * @param  int|string $file_id The file whose version comment is replaced. (required)
+     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7584,8 +7672,8 @@ class OperationsApi
      * REST API Reference for updateFileComment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
-     * @param  int $file_id The file ID where the comment is located. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The parameters for updating a comment. (required)
+     * @param  int|string $file_id The file whose version comment is replaced. (required)
+     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -7729,8 +7817,8 @@ class OperationsApi
      * REST API Reference for updateFileComment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
-     * @param  int $file_id The file ID where the comment is located. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The parameters for updating a comment. (required)
+     * @param  int|string $file_id The file whose version comment is replaced. (required)
+     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7754,8 +7842,8 @@ class OperationsApi
      * REST API Reference for updateFileComment Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
-     * @param  int $file_id The file ID where the comment is located. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The parameters for updating a comment. (required)
+     * @param  int|string $file_id The file whose version comment is replaced. (required)
+     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7805,8 +7893,8 @@ class OperationsApi
     /**
      * Create request for operation 'updateFileComment'
      *
-     * @param  int $file_id The file ID where the comment is located. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The parameters for updating a comment. (required)
+     * @param  int|string $file_id The file whose version comment is replaced. (required)
+     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7934,20 +8022,20 @@ class OperationsApi
     /**
      * Operation uploadAsyncSession
      *
-     * Handles the upload of a chunk for an existing upload session.
+     * Upload a numbered chunk
      *
      * REST API Reference for uploadAsyncSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-async-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  int|null $chunk_number The chunk number. (optional)
-     * @param  \SplFileObject|null $file The file chunk to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file chunk content from the HTTP request form for chunked upload operations.  The file chunk is accessed via the IFormFile interface which provides access to the chunk content and length. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; a 32-character hexadecimal string. (required)
+     * @param  int|null $chunk_number The position of this part in the file, counted from 1. Sending the same number again replaces that part  instead of adding one, which is how a failed part is retried; leaving the number out makes the server count  the parts itself. (optional)
+     * @param  \SplFileObject|null $file The part of the file to store, sent as the multipart field of the same name. It is kept under the number given  beside it, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAsyncSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadAsyncSession($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
@@ -7958,20 +8046,20 @@ class OperationsApi
     /**
      * Operation uploadAsyncSessionWithHttpInfo
      *
-     * Handles the upload of a chunk for an existing upload session.
+     * Upload a numbered chunk
      *
      * REST API Reference for uploadAsyncSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-async-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  int|null $chunk_number The chunk number. (optional)
-     * @param  \SplFileObject|null $file The file chunk to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file chunk content from the HTTP request form for chunked upload operations.  The file chunk is accessed via the IFormFile interface which provides access to the chunk content and length. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; a 32-character hexadecimal string. (required)
+     * @param  int|null $chunk_number The position of this part in the file, counted from 1. Sending the same number again replaces that part  instead of adding one, which is how a failed part is retried; leaving the number out makes the server count  the parts itself. (optional)
+     * @param  \SplFileObject|null $file The part of the file to store, sent as the multipart field of the same name. It is kept under the number given  beside it, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAsyncSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadAsyncSessionWithHttpInfo($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
@@ -8003,7 +8091,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                         $request,
                         $response,
                     );
@@ -8049,7 +8137,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                 $request,
                 $response,
             );
@@ -8058,7 +8146,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8105,15 +8193,15 @@ class OperationsApi
     /**
      * Operation uploadAsyncSessionAsync
      *
-     * Handles the upload of a chunk for an existing upload session.
+     * Upload a numbered chunk
      *
      * REST API Reference for uploadAsyncSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-async-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  int|null $chunk_number The chunk number. (optional)
-     * @param  \SplFileObject|null $file The file chunk to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file chunk content from the HTTP request form for chunked upload operations.  The file chunk is accessed via the IFormFile interface which provides access to the chunk content and length. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; a 32-character hexadecimal string. (required)
+     * @param  int|null $chunk_number The position of this part in the file, counted from 1. Sending the same number again replaces that part  instead of adding one, which is how a failed part is retried; leaving the number out makes the server count  the parts itself. (optional)
+     * @param  \SplFileObject|null $file The part of the file to store, sent as the multipart field of the same name. It is kept under the number given  beside it, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAsyncSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8132,15 +8220,15 @@ class OperationsApi
     /**
      * Operation uploadAsyncSessionAsyncWithHttpInfo
      *
-     * Handles the upload of a chunk for an existing upload session.
+     * Upload a numbered chunk
      *
      * REST API Reference for uploadAsyncSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-async-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  int|null $chunk_number The chunk number. (optional)
-     * @param  \SplFileObject|null $file The file chunk to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file chunk content from the HTTP request form for chunked upload operations.  The file chunk is accessed via the IFormFile interface which provides access to the chunk content and length. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; a 32-character hexadecimal string. (required)
+     * @param  int|null $chunk_number The position of this part in the file, counted from 1. Sending the same number again replaces that part  instead of adding one, which is how a failed part is retried; leaving the number out makes the server count  the parts itself. (optional)
+     * @param  \SplFileObject|null $file The part of the file to store, sent as the multipart field of the same name. It is kept under the number given  beside it, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAsyncSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8148,7 +8236,7 @@ class OperationsApi
      */
     public function uploadAsyncSessionAsyncWithHttpInfo($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ChunkedUploadSessionResponseIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper';
         $request = $this->uploadAsyncSessionRequest($folder_id, $session_id, $chunk_number, $file, $contentType);
 
         return $this->client
@@ -8190,10 +8278,10 @@ class OperationsApi
     /**
      * Create request for operation 'uploadAsyncSession'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  int|null $chunk_number The chunk number. (optional)
-     * @param  \SplFileObject|null $file The file chunk to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file chunk content from the HTTP request form for chunked upload operations.  The file chunk is accessed via the IFormFile interface which provides access to the chunk content and length. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; a 32-character hexadecimal string. (required)
+     * @param  int|null $chunk_number The position of this part in the file, counted from 1. Sending the same number again replaces that part  instead of adding one, which is how a failed part is retried; leaving the number out makes the server count  the parts itself. (optional)
+     * @param  \SplFileObject|null $file The part of the file to store, sent as the multipart field of the same name. It is kept under the number given  beside it, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadAsyncSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8343,19 +8431,19 @@ class OperationsApi
     /**
      * Operation uploadSession
      *
-     * Resumes an ongoing file upload session for uploading additional chunks of data.
+     * Upload the next chunk
      *
      * REST API Reference for uploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  \SplFileObject|null $file The file to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file content from the HTTP request form.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; the parts of one session must be  sent one after another, not in parallel. (required)
+     * @param  \SplFileObject|null $file The next part of the file, sent as the multipart field of the same name. Parts are appended in the order they  arrive, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadSession($folder_id, $session_id, $file = null, string $contentType = self::contentTypes['uploadSession'][0])
     {
@@ -8366,19 +8454,19 @@ class OperationsApi
     /**
      * Operation uploadSessionWithHttpInfo
      *
-     * Resumes an ongoing file upload session for uploading additional chunks of data.
+     * Upload the next chunk
      *
      * REST API Reference for uploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  \SplFileObject|null $file The file to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file content from the HTTP request form.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; the parts of one session must be  sent one after another, not in parallel. (required)
+     * @param  \SplFileObject|null $file The next part of the file, sent as the multipart field of the same name. Parts are appended in the order they  arrive, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSession'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadSessionWithHttpInfo($folder_id, $session_id, $file = null, string $contentType = self::contentTypes['uploadSession'][0])
     {
@@ -8410,7 +8498,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                         $request,
                         $response,
                     );
@@ -8456,7 +8544,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                 $request,
                 $response,
             );
@@ -8465,7 +8553,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8512,14 +8600,14 @@ class OperationsApi
     /**
      * Operation uploadSessionAsync
      *
-     * Resumes an ongoing file upload session for uploading additional chunks of data.
+     * Upload the next chunk
      *
      * REST API Reference for uploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  \SplFileObject|null $file The file to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file content from the HTTP request form.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; the parts of one session must be  sent one after another, not in parallel. (required)
+     * @param  \SplFileObject|null $file The next part of the file, sent as the multipart field of the same name. Parts are appended in the order they  arrive, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8538,14 +8626,14 @@ class OperationsApi
     /**
      * Operation uploadSessionAsyncWithHttpInfo
      *
-     * Resumes an ongoing file upload session for uploading additional chunks of data.
+     * Upload the next chunk
      *
      * REST API Reference for uploadSession Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-session/
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  \SplFileObject|null $file The file to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file content from the HTTP request form.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; the parts of one session must be  sent one after another, not in parallel. (required)
+     * @param  \SplFileObject|null $file The next part of the file, sent as the multipart field of the same name. Parts are appended in the order they  arrive, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8553,7 +8641,7 @@ class OperationsApi
      */
     public function uploadSessionAsyncWithHttpInfo($folder_id, $session_id, $file = null, string $contentType = self::contentTypes['uploadSession'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\UploadSessionResponseIntegerWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper' : '\OpenAPI\Client\Model\UploadSessionResponseWrapper';
         $request = $this->uploadSessionRequest($folder_id, $session_id, $file, $contentType);
 
         return $this->client
@@ -8595,9 +8683,9 @@ class OperationsApi
     /**
      * Create request for operation 'uploadSession'
      *
-     * @param  int $folder_id The folder ID. (required)
-     * @param  string $session_id The upload session ID. (required)
-     * @param  \SplFileObject|null $file The file to be uploaded as part of the multipart/form-data request.  This property represents the uploaded file content from the HTTP request form.  The file is accessed via the IFormFile interface which provides access to the file name, content type, length, and stream. (optional)
+     * @param  int|string $folder_id The folder the session was opened against. It is part of the route only and is not matched against the  session, which is found by its own id. (required)
+     * @param  string $session_id The session this part belongs to, as returned in `id` when it was created; the parts of one session must be  sent one after another, not in parallel. (required)
+     * @param  \SplFileObject|null $file The next part of the file, sent as the multipart field of the same name. Parts are appended in the order they  arrive, and a part larger than the portal chunk size is refused. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

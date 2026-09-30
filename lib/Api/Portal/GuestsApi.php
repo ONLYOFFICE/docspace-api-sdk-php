@@ -135,12 +135,12 @@ class GuestsApi
      * REST API Reference for getGuestSharingLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-guest-sharing-link/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGuestSharingLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getGuestSharingLink($userid, string $contentType = self::contentTypes['getGuestSharingLink'][0])
     {
@@ -156,12 +156,12 @@ class GuestsApi
      * REST API Reference for getGuestSharingLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-guest-sharing-link/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGuestSharingLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGuestSharingLinkWithHttpInfo($userid, string $contentType = self::contentTypes['getGuestSharingLink'][0])
     {
@@ -210,12 +210,6 @@ class GuestsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -277,14 +271,6 @@ class GuestsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -300,7 +286,7 @@ class GuestsApi
      * REST API Reference for getGuestSharingLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-guest-sharing-link/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGuestSharingLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -324,7 +310,7 @@ class GuestsApi
      * REST API Reference for getGuestSharingLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-guest-sharing-link/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGuestSharingLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -374,7 +360,7 @@ class GuestsApi
     /**
      * Create request for operation 'getGuestSharingLink'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGuestSharingLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

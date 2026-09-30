@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ExternalDbSyncTaskDto Class Doc Comment
  *
  * @category Class
- * @description The external DB synchronization task parameters.
+ * @description The state of the job that exports the collected form data of a form filling room into the external database of the  portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -353,7 +353,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets id
      *
-     * @param string|null $id The task ID.
+     * @param string|null $id The identifier of the job, which stays the same while a job for this room exists and is worth quoting when a  failure has to be traced in the portal logs. Polling is done by room, so the value is not needed to read the  state again.
      *
      * @return self
      */
@@ -387,7 +387,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets error
      *
-     * @param string|null $error The error message if the synchronization failed.
+     * @param string|null $error The message of a failure that stopped the whole job. It is empty while the job is running and after a job that  ended without such a failure; a job that finished with individual forms rejected reports those in `forms` and  leaves this field empty.
      *
      * @return self
      */
@@ -421,7 +421,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets percentage
      *
-     * @param int $percentage The progress percentage of the synchronization.
+     * @param int $percentage How much of the work is done, from 0 to 100. It advances as the forms of the room are processed one by one, so  it is a usable progress indicator for a room with many forms and jumps straight to the end for a room with  one.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_completed
      *
-     * @param bool $is_completed Specifies whether the synchronization is completed or not.
+     * @param bool $is_completed Whether the job has ended. It is set both for a job that finished its work and for one that stopped on an  error, so this is the flag to poll for, and `status` and `error` are what tell the two apart.
      *
      * @return self
      */
@@ -475,7 +475,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\DistributedTaskStatus $status The status of the synchronization task.
+     * @param \OpenAPI\Client\Model\DistributedTaskStatus $status How the job ended, or how far it has got: queued, running, finished, cancelled or failed. It is the only field  that separates a successful end from a failed one once `isCompleted` is set.
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class ExternalDbSyncTaskDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets forms
      *
-     * @param \OpenAPI\Client\Model\ExternalDbSyncFormResultDto[]|null $forms The synchronization results for all original forms in the room.
+     * @param \OpenAPI\Client\Model\ExternalDbSyncFormResultDto[]|null $forms The outcome for every original form of the room, one entry each. The list is empty while the job is running  and is filled in only when the job ends, so it is what to read after `isCompleted` turns true; it stays empty  for a room that holds no forms at all.
      *
      * @return self
      */

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**\OpenAPI\Client\Model\UserInfo**](UserInfo.md) | The user information. | [optional]
-**email** | **string** | The user email address. | [optional] [readonly]
-**id** | **string** | The user unique identification. | [optional] [readonly]
-**image** | **string** | The path to the user's avatar. | [optional] [readonly]
-**has_access** | **bool** | Specifies whether the user has the access to the file where they are mentioned. | [optional] [readonly]
-**name** | **string** | The user full name. | [optional] [readonly]
+**user** | [**\OpenAPI\Client\Model\UserInfo**](UserInfo.md) | The account itself, in the shape the people listings use. | [optional]
+**email** | **string** | Where a mention notification for this user is delivered. | [optional] [readonly]
+**id** | **string** | The account id as text, the same value the account object carries; it is what identifies the user in a sharing  request built from this list. | [optional] [readonly]
+**image** | **string** | An absolute address of the medium-sized avatar. A generated default avatar is reported when the user never  uploaded one, so the field is never empty. | [optional] [readonly]
+**has_access** | **bool** | Not filled in by the operations that return this list: it always comes back false. Whether a user can already  open the document has to be read from the sharing settings of the file. | [optional] [readonly]
+**name** | **string** | The name to display, assembled the way the portal is configured to show names. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

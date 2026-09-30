@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CheckDestFolderDto Class Doc Comment
  *
  * @category Class
- * @description The result of checking whether files can be moved or copied to the specified folder.
+ * @description The verdict on placing the requested files in the destination folder.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class CheckDestFolderDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets result
      *
-     * @param \OpenAPI\Client\Model\CheckDestFolderResult|null $result The result of the validation operation.
+     * @param \OpenAPI\Client\Model\CheckDestFolderResult|null $result Whether the destination folder accepts all of the requested files, only some of them or none at all.
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class CheckDestFolderDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets files
      *
-     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $files The list of files in the destination folder.
+     * @param \OpenAPI\Client\Model\FileEntryBaseDto[]|null $files The requested files the destination accepts, each with the information it was listed under. The files it  rejects are absent, so an empty list means that none of them is accepted.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupProgress Class Doc Comment
  *
  * @category Class
- * @description The backup progress parameters.
+ * @description The state of one backup or restoring job.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -359,7 +359,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_completed
      *
-     * @param bool|null $is_completed Specifies if the backup is completed or not.
+     * @param bool|null $is_completed Specifies whether the job has stopped running. This is the field to poll: true means the job will not  change any more, whether it succeeded, failed or was cancelled, and `status` tells which of the three  it is.
      *
      * @return self
      */
@@ -386,7 +386,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets progress
      *
-     * @param int|null $progress The backup progress in percentage.
+     * @param int|null $progress The share of the job that is already done, from 0 to 100. A job that has only been queued reports 0,  because the work starts when a separate worker service picks it up.
      *
      * @return self
      */
@@ -413,7 +413,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string|null $error The backup error message.
+     * @param string|null $error The message of the error that stopped the job. It is an empty string, not null, while the job runs  and after a job that succeeded, so the sign of a failure is a non-empty value - and this is the only  place where the reason is reported.
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets warning
      *
-     * @param string|null $warning The backup warning message.
+     * @param string|null $warning A message about a job that stopped without failing: it names the entry inside the archive that lists  the files which could not be read, when a backup finished without some of them, and it says so when  the job was cancelled. It is an empty string otherwise, and it is only ever filled in for a backup  job - a cancelled restoring job leaves it empty.
      *
      * @return self
      */
@@ -481,7 +481,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link
      *
-     * @param string|null $link The backup link.
+     * @param string|null $link The link to download the stored archive. It is an empty string until the archive has been uploaded,  and it is only ever filled in for a backup job, never for a restoring one.
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_id
      *
-     * @param int|null $tenant_id The tenant ID.
+     * @param int|null $tenant_id The ID of the portal the job belongs to, or -1 for a job that covers the whole server.
      *
      * @return self
      */
@@ -542,7 +542,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets backup_progress_enum
      *
-     * @param \OpenAPI\Client\Model\BackupProgressEnum|null $backup_progress_enum The backup progress type.
+     * @param \OpenAPI\Client\Model\BackupProgressEnum|null $backup_progress_enum Whether this is a backup or a restoring job, reported as a number rather than as a name.
      *
      * @return self
      */
@@ -569,7 +569,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\DistributedTaskStatus|null $status The backup progress status.
+     * @param \OpenAPI\Client\Model\DistributedTaskStatus|null $status The state of the job: `Created` while it waits for a worker to pick it up, `Running` while it works,  `Completed` once it has finished on its own, `Canceled` after it was cancelled, and `Failted` when it  stopped on an error, in which case `error` carries the reason. Reported as a number rather than as a  name.
      *
      * @return self
      */
@@ -596,7 +596,7 @@ class BackupProgress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets task_id
      *
-     * @param string|null $task_id The task ID.
+     * @param string|null $task_id The ID of the job. It is the handle to poll this operation with, and for a backup job it also becomes  the `id` of the record in `GET api/2.0/backup/getbackuphistory`.
      *
      * @return self
      */

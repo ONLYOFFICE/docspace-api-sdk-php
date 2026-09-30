@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupScheduleDto Class Doc Comment
  *
  * @category Class
- * @description The backup schedule parameters.
+ * @description The request parameters for setting the backup schedule.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class BackupScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets storage_type
      *
-     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The backup storage type.
+     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The storage the scheduled archives are written to. It defaults to `Documents`, and it decides which  keys `storageParams` has to carry.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class BackupScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets storage_params
      *
-     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The backup storage parameters.
+     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The settings of the chosen storage, as an array of key and value pairs. `Documents` and  `ThridpartyDocuments` need `folderId`, `Local` needs `filePath`, `ThirdPartyConsumer` needs `module`  plus the settings of that consumer, and `DataStore` needs none.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class BackupScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets backups_stored
      *
-     * @param int|null $backups_stored The maximum number of the stored backup copies.
+     * @param int|null $backups_stored The number of scheduled copies to keep, from 1 to 30. It defaults to 1, and only the copies this  schedule creates are counted and removed - archives started by hand are left alone.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class BackupScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets cron_params
      *
-     * @param \OpenAPI\Client\Model\Cron|null $cron_params The backup cron parameters.
+     * @param \OpenAPI\Client\Model\Cron|null $cron_params When the backup runs. It is required: a request without it fails rather than falling back to a  default.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class BackupScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets dump
      *
-     * @param bool|null $dump Specifies if a dump will be created or not.
+     * @param bool|null $dump Schedules a backup of the whole server rather than of this one portal. It requires the space access  permission and works on a standalone installation only.
      *
      * @return self
      */

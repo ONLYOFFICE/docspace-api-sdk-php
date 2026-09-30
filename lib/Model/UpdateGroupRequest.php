@@ -332,7 +332,7 @@ class UpdateGroupRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets members_to_add
      *
-     * @param string[]|null $members_to_add The list of user IDs to add to the group.
+     * @param string[]|null $members_to_add The accounts to add to the group. An account that is a guest, is disabled or does not exist is skipped  without an error, so the answer has to be read to see what was applied.
      *
      * @return self
      */
@@ -366,7 +366,7 @@ class UpdateGroupRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets members_to_remove
      *
-     * @param string[]|null $members_to_remove The list of user IDs to remove from the group.
+     * @param string[]|null $members_to_remove The accounts to remove from the group. Removals are applied after the additions, so an account named in both  lists ends up removed, and an ID that is not a member is skipped without an error.
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class UpdateGroupRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets group_manager
      *
-     * @param string|null $group_manager The group manager ID.
+     * @param string|null $group_manager The account to make the manager of the group, which also adds it to the group. Omit it to keep the current  manager - it cannot be cleared through this operation.
      *
      * @return self
      */
@@ -427,7 +427,7 @@ class UpdateGroupRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets group_name
      *
-     * @param string|null $group_name The group name.
+     * @param string|null $group_name The new name of the group, up to 128 characters. Omit it to keep the current name.
      *
      * @return self
      */

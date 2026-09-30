@@ -1128,7 +1128,7 @@ class CommonSettingsApi
      * REST API Reference for deletePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-portal-color-theme/
      *
-     * @param  int $id The ID of the portal theme to delete. (required)
+     * @param  int $id The theme to remove, by theme ID. An ID belonging to a built-in theme leaves the list untouched, and so does  one that is already gone - neither is reported as an error. Removing the theme currently in use moves the  portal to the remaining theme with the lowest ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1149,7 +1149,7 @@ class CommonSettingsApi
      * REST API Reference for deletePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-portal-color-theme/
      *
-     * @param  int $id The ID of the portal theme to delete. (required)
+     * @param  int $id The theme to remove, by theme ID. An ID belonging to a built-in theme leaves the list untouched, and so does  one that is already gone - neither is reported as an error. Removing the theme currently in use moves the  portal to the remaining theme with the lowest ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1293,7 +1293,7 @@ class CommonSettingsApi
      * REST API Reference for deletePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-portal-color-theme/
      *
-     * @param  int $id The ID of the portal theme to delete. (required)
+     * @param  int $id The theme to remove, by theme ID. An ID belonging to a built-in theme leaves the list untouched, and so does  one that is already gone - neither is reported as an error. Removing the theme currently in use moves the  portal to the remaining theme with the lowest ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1317,7 +1317,7 @@ class CommonSettingsApi
      * REST API Reference for deletePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-portal-color-theme/
      *
-     * @param  int $id The ID of the portal theme to delete. (required)
+     * @param  int $id The theme to remove, by theme ID. An ID belonging to a built-in theme leaves the list untouched, and so does  one that is already gone - neither is reported as an error. Removing the theme currently in use moves the  portal to the remaining theme with the lowest ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1367,7 +1367,7 @@ class CommonSettingsApi
     /**
      * Create request for operation 'deletePortalColorTheme'
      *
-     * @param  int $id The ID of the portal theme to delete. (required)
+     * @param  int $id The theme to remove, by theme ID. An ID belonging to a built-in theme leaves the list untouched, and so does  one that is already gone - neither is reported as an error. Removing the theme currently in use moves the  portal to the remaining theme with the lowest ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1745,6 +1745,28 @@ class CommonSettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2357,6 +2379,28 @@ class CommonSettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -2382,7 +2426,7 @@ class CommonSettingsApi
     /**
      * Operation getPortalHostname
      *
-     * Get hostname
+     * Get the portal hostname
      *
      * REST API Reference for getPortalHostname Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-hostname/
@@ -2391,7 +2435,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getPortalHostname(string $contentType = self::contentTypes['getPortalHostname'][0])
     {
@@ -2402,7 +2446,7 @@ class CommonSettingsApi
     /**
      * Operation getPortalHostnameWithHttpInfo
      *
-     * Get hostname
+     * Get the portal hostname
      *
      * REST API Reference for getPortalHostname Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-hostname/
@@ -2411,7 +2455,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPortalHostnameWithHttpInfo(string $contentType = self::contentTypes['getPortalHostname'][0])
     {
@@ -2443,7 +2487,7 @@ class CommonSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $request,
                         $response,
                     );
@@ -2483,7 +2527,7 @@ class CommonSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\StringWrapper',
                 $request,
                 $response,
             );
@@ -2492,7 +2536,7 @@ class CommonSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\StringWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2531,7 +2575,7 @@ class CommonSettingsApi
     /**
      * Operation getPortalHostnameAsync
      *
-     * Get hostname
+     * Get the portal hostname
      *
      * REST API Reference for getPortalHostname Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-hostname/
@@ -2554,7 +2598,7 @@ class CommonSettingsApi
     /**
      * Operation getPortalHostnameAsyncWithHttpInfo
      *
-     * Get hostname
+     * Get the portal hostname
      *
      * REST API Reference for getPortalHostname Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-hostname/
@@ -2566,7 +2610,7 @@ class CommonSettingsApi
      */
     public function getPortalHostnameAsyncWithHttpInfo(string $contentType = self::contentTypes['getPortalHostname'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringWrapper';
         $request = $this->getPortalHostnameRequest($contentType);
 
         return $this->client
@@ -3035,7 +3079,7 @@ class CommonSettingsApi
      * REST API Reference for getPortalSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-settings/
      *
-     * @param  bool|null $withpassword Specifies whether to include the password hashing configuration in the response. (optional)
+     * @param  bool|null $withpassword Whether the answer also carries the salt, iteration count and hash size a client needs to hash a password  before sending it to the authentication operations. They are included for an anonymous caller anyway; for a  signed-in one they are left out unless this is set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3056,7 +3100,7 @@ class CommonSettingsApi
      * REST API Reference for getPortalSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-settings/
      *
-     * @param  bool|null $withpassword Specifies whether to include the password hashing configuration in the response. (optional)
+     * @param  bool|null $withpassword Whether the answer also carries the salt, iteration count and hash size a client needs to hash a password  before sending it to the authentication operations. They are included for an anonymous caller anyway; for a  signed-in one they are left out unless this is set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3186,7 +3230,7 @@ class CommonSettingsApi
      * REST API Reference for getPortalSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-settings/
      *
-     * @param  bool|null $withpassword Specifies whether to include the password hashing configuration in the response. (optional)
+     * @param  bool|null $withpassword Whether the answer also carries the salt, iteration count and hash size a client needs to hash a password  before sending it to the authentication operations. They are included for an anonymous caller anyway; for a  signed-in one they are left out unless this is set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3210,7 +3254,7 @@ class CommonSettingsApi
      * REST API Reference for getPortalSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-portal-settings/
      *
-     * @param  bool|null $withpassword Specifies whether to include the password hashing configuration in the response. (optional)
+     * @param  bool|null $withpassword Whether the answer also carries the salt, iteration count and hash size a client needs to hash a password  before sending it to the authentication operations. They are included for an anonymous caller anyway; for a  signed-in one they are left out unless this is set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3260,7 +3304,7 @@ class CommonSettingsApi
     /**
      * Create request for operation 'getPortalSettings'
      *
-     * @param  bool|null $withpassword Specifies whether to include the password hashing configuration in the response. (optional)
+     * @param  bool|null $withpassword Whether the answer also carries the salt, iteration count and hash size a client needs to hash a password  before sending it to the authentication operations. They are included for an anonymous caller anyway; for a  signed-in one they are left out unless this is set. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPortalSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3322,6 +3366,28 @@ class CommonSettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3356,7 +3422,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SocketSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSocketSettings(string $contentType = self::contentTypes['getSocketSettings'][0])
     {
@@ -3376,7 +3442,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ObjectWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SocketSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSocketSettingsWithHttpInfo(string $contentType = self::contentTypes['getSocketSettings'][0])
     {
@@ -3408,7 +3474,7 @@ class CommonSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\SocketSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -3448,7 +3514,7 @@ class CommonSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ObjectWrapper',
+                '\OpenAPI\Client\Model\SocketSettingsWrapper',
                 $request,
                 $response,
             );
@@ -3457,7 +3523,7 @@ class CommonSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ObjectWrapper',
+                        '\OpenAPI\Client\Model\SocketSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3531,7 +3597,7 @@ class CommonSettingsApi
      */
     public function getSocketSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getSocketSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ObjectWrapper';
+        $returnType = '\OpenAPI\Client\Model\SocketSettingsWrapper';
         $request = $this->getSocketSettingsRequest($contentType);
 
         return $this->client
@@ -3934,6 +4000,28 @@ class CommonSettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -3959,7 +4047,7 @@ class CommonSettingsApi
     /**
      * Operation getTenantAiAccessSettings
      *
-     * Get the AI access settings for the portal
+     * Get the AI access settings
      *
      * REST API Reference for getTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-ai-access-settings/
@@ -3979,7 +4067,7 @@ class CommonSettingsApi
     /**
      * Operation getTenantAiAccessSettingsWithHttpInfo
      *
-     * Get the AI access settings for the portal
+     * Get the AI access settings
      *
      * REST API Reference for getTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-ai-access-settings/
@@ -4108,7 +4196,7 @@ class CommonSettingsApi
     /**
      * Operation getTenantAiAccessSettingsAsync
      *
-     * Get the AI access settings for the portal
+     * Get the AI access settings
      *
      * REST API Reference for getTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-ai-access-settings/
@@ -4131,7 +4219,7 @@ class CommonSettingsApi
     /**
      * Operation getTenantAiAccessSettingsAsyncWithHttpInfo
      *
-     * Get the AI access settings for the portal
+     * Get the AI access settings
      *
      * REST API Reference for getTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-ai-access-settings/
@@ -4546,6 +4634,28 @@ class CommonSettingsApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -6285,7 +6395,7 @@ class CommonSettingsApi
     /**
      * Operation setTenantAiAccessSettings
      *
-     * Set the AI access for the portal
+     * Set the AI access settings
      *
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
@@ -6306,7 +6416,7 @@ class CommonSettingsApi
     /**
      * Operation setTenantAiAccessSettingsWithHttpInfo
      *
-     * Set the AI access for the portal
+     * Set the AI access settings
      *
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
@@ -6450,7 +6560,7 @@ class CommonSettingsApi
     /**
      * Operation setTenantAiAccessSettingsAsync
      *
-     * Set the AI access for the portal
+     * Set the AI access settings
      *
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
@@ -6474,7 +6584,7 @@ class CommonSettingsApi
     /**
      * Operation setTenantAiAccessSettingsAsyncWithHttpInfo
      *
-     * Set the AI access for the portal
+     * Set the AI access settings
      *
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
@@ -6987,7 +7097,7 @@ class CommonSettingsApi
     /**
      * Operation updateInvitationSettings
      *
-     * Update user invitation settings
+     * Update the user invitation settings
      *
      * REST API Reference for updateInvitationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-invitation-settings/
@@ -7008,7 +7118,7 @@ class CommonSettingsApi
     /**
      * Operation updateInvitationSettingsWithHttpInfo
      *
-     * Update user invitation settings
+     * Update the user invitation settings
      *
      * REST API Reference for updateInvitationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-invitation-settings/
@@ -7152,7 +7262,7 @@ class CommonSettingsApi
     /**
      * Operation updateInvitationSettingsAsync
      *
-     * Update user invitation settings
+     * Update the user invitation settings
      *
      * REST API Reference for updateInvitationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-invitation-settings/
@@ -7176,7 +7286,7 @@ class CommonSettingsApi
     /**
      * Operation updateInvitationSettingsAsyncWithHttpInfo
      *
-     * Update user invitation settings
+     * Update the user invitation settings
      *
      * REST API Reference for updateInvitationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-invitation-settings/

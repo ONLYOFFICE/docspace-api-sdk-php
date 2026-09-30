@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **contacts** | [**\OpenAPI\Client\Model\Contact[]**](Contact.md) | The list of user contacts. | [optional]
 **status** | [**\OpenAPI\Client\Model\EmployeeStatus**](EmployeeStatus.md) | The user status. | [optional]
 **activation_status** | [**\OpenAPI\Client\Model\EmployeeActivationStatus**](EmployeeActivationStatus.md) | The user activation status. | [optional]
-**terminated** | **\DateTime** | The date when the user account was terminated. | [optional]
+**terminated** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The date when the user account was terminated. | [optional]
 **department** | **string** | The user department. | [optional]
 **groups** | [**\OpenAPI\Client\Model\GroupSummaryDto[]**](GroupSummaryDto.md) | The list of user groups. | [optional]
 **location** | **string** | The user location. | [optional]
@@ -45,7 +45,7 @@ Name | Type | Description | Notes
 **login_event_id** | **int** | The current login event ID. | [optional]
 **auth_cookie_lifetime** | **float** | The auth cookie lifetime in seconds. | [optional]
 **created_by** | [**\OpenAPI\Client\Model\EmployeeDto**](EmployeeDto.md) | The user who created the current user. | [optional]
-**registration_date** | **\DateTime** | The user registration date. | [optional]
+**registration_date** | [**\OpenAPI\Client\Model\ApiDateTime**](ApiDateTime.md) | The user registration date. | [optional]
 **has_personal_folder** | **bool** | Specifies if the user has a personal folder or not. | [optional]
 **tfa_app_enabled** | **bool** | Indicates whether the user has enabled two-factor authentication (TFA) using an authentication app. | [optional]
 

@@ -498,7 +498,7 @@ class WebhooksApi
     /**
      * Operation enableWebhook
      *
-     * Enable a webhook
+     * Switch a webhook on or off
      *
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
@@ -519,7 +519,7 @@ class WebhooksApi
     /**
      * Operation enableWebhookWithHttpInfo
      *
-     * Enable a webhook
+     * Switch a webhook on or off
      *
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
@@ -649,7 +649,7 @@ class WebhooksApi
     /**
      * Operation enableWebhookAsync
      *
-     * Enable a webhook
+     * Switch a webhook on or off
      *
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
@@ -673,7 +673,7 @@ class WebhooksApi
     /**
      * Operation enableWebhookAsyncWithHttpInfo
      *
-     * Enable a webhook
+     * Switch a webhook on or off
      *
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
@@ -835,7 +835,7 @@ class WebhooksApi
     /**
      * Operation getTenantWebhooks
      *
-     * Get webhooks
+     * Get the portal webhooks
      *
      * REST API Reference for getTenantWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-webhooks/
@@ -855,7 +855,7 @@ class WebhooksApi
     /**
      * Operation getTenantWebhooksWithHttpInfo
      *
-     * Get webhooks
+     * Get the portal webhooks
      *
      * REST API Reference for getTenantWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-webhooks/
@@ -984,7 +984,7 @@ class WebhooksApi
     /**
      * Operation getTenantWebhooksAsync
      *
-     * Get webhooks
+     * Get the portal webhooks
      *
      * REST API Reference for getTenantWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-webhooks/
@@ -1007,7 +1007,7 @@ class WebhooksApi
     /**
      * Operation getTenantWebhooksAsyncWithHttpInfo
      *
-     * Get webhooks
+     * Get the portal webhooks
      *
      * REST API Reference for getTenantWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-webhooks/
@@ -1159,7 +1159,7 @@ class WebhooksApi
     /**
      * Operation getWebhookTriggers
      *
-     * Get webhook triggers
+     * Get the webhook triggers
      *
      * REST API Reference for getWebhookTriggers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhook-triggers/
@@ -1179,7 +1179,7 @@ class WebhooksApi
     /**
      * Operation getWebhookTriggersWithHttpInfo
      *
-     * Get webhook triggers
+     * Get the webhook triggers
      *
      * REST API Reference for getWebhookTriggers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhook-triggers/
@@ -1308,7 +1308,7 @@ class WebhooksApi
     /**
      * Operation getWebhookTriggersAsync
      *
-     * Get webhook triggers
+     * Get the webhook triggers
      *
      * REST API Reference for getWebhookTriggers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhook-triggers/
@@ -1331,7 +1331,7 @@ class WebhooksApi
     /**
      * Operation getWebhookTriggersAsyncWithHttpInfo
      *
-     * Get webhook triggers
+     * Get the webhook triggers
      *
      * REST API Reference for getWebhookTriggers Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhook-triggers/
@@ -1483,21 +1483,21 @@ class WebhooksApi
     /**
      * Operation getWebhooksLogs
      *
-     * Get webhook logs
+     * Get the webhook delivery log
      *
      * REST API Reference for getWebhooksLogs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhooks-logs/
      *
-     * @param  \DateTime|null $delivery_from The delivery start time for filtering webhook logs. (optional)
-     * @param  \DateTime|null $delivery_to The delivery end time for filtering webhook logs. (optional)
-     * @param  string|null $hook_uri The destination URL where webhooks are delivered. (optional)
-     * @param  int|null $config_id The webhook configuration identifier. (optional)
-     * @param  int|null $event_id The unique identifier of the event that triggered the webhook. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The status of the webhook delivery group. (optional)
-     * @param  string|null $user_id The identifier of the user associated with the webhook event. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The type of event that triggered the webhook. (optional)
-     * @param  int|null $count The maximum number of webhook log records to return in the query response. (optional)
-     * @param  int|null $start_index Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries. (optional)
+     * @param  \DateTime|null $delivery_from The earliest delivery moment a record may carry. Records of attempts still on their way have no delivery  moment yet and fall outside any bound set here. (optional)
+     * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
+     * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
+     * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
+     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
+     * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
+     * @param  int|null $count How many records one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; the number of records matching the filter comes back as `total` beside the page. (optional)
+     * @param  int|null $start_index How many matching records to skip before the page begins, counting from the newest. Advance it by `count` to  walk back through the log. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooksLogs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1513,21 +1513,21 @@ class WebhooksApi
     /**
      * Operation getWebhooksLogsWithHttpInfo
      *
-     * Get webhook logs
+     * Get the webhook delivery log
      *
      * REST API Reference for getWebhooksLogs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhooks-logs/
      *
-     * @param  \DateTime|null $delivery_from The delivery start time for filtering webhook logs. (optional)
-     * @param  \DateTime|null $delivery_to The delivery end time for filtering webhook logs. (optional)
-     * @param  string|null $hook_uri The destination URL where webhooks are delivered. (optional)
-     * @param  int|null $config_id The webhook configuration identifier. (optional)
-     * @param  int|null $event_id The unique identifier of the event that triggered the webhook. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The status of the webhook delivery group. (optional)
-     * @param  string|null $user_id The identifier of the user associated with the webhook event. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The type of event that triggered the webhook. (optional)
-     * @param  int|null $count The maximum number of webhook log records to return in the query response. (optional)
-     * @param  int|null $start_index Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries. (optional)
+     * @param  \DateTime|null $delivery_from The earliest delivery moment a record may carry. Records of attempts still on their way have no delivery  moment yet and fall outside any bound set here. (optional)
+     * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
+     * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
+     * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
+     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
+     * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
+     * @param  int|null $count How many records one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; the number of records matching the filter comes back as `total` beside the page. (optional)
+     * @param  int|null $start_index How many matching records to skip before the page begins, counting from the newest. Advance it by `count` to  walk back through the log. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooksLogs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1666,21 +1666,21 @@ class WebhooksApi
     /**
      * Operation getWebhooksLogsAsync
      *
-     * Get webhook logs
+     * Get the webhook delivery log
      *
      * REST API Reference for getWebhooksLogs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhooks-logs/
      *
-     * @param  \DateTime|null $delivery_from The delivery start time for filtering webhook logs. (optional)
-     * @param  \DateTime|null $delivery_to The delivery end time for filtering webhook logs. (optional)
-     * @param  string|null $hook_uri The destination URL where webhooks are delivered. (optional)
-     * @param  int|null $config_id The webhook configuration identifier. (optional)
-     * @param  int|null $event_id The unique identifier of the event that triggered the webhook. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The status of the webhook delivery group. (optional)
-     * @param  string|null $user_id The identifier of the user associated with the webhook event. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The type of event that triggered the webhook. (optional)
-     * @param  int|null $count The maximum number of webhook log records to return in the query response. (optional)
-     * @param  int|null $start_index Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries. (optional)
+     * @param  \DateTime|null $delivery_from The earliest delivery moment a record may carry. Records of attempts still on their way have no delivery  moment yet and fall outside any bound set here. (optional)
+     * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
+     * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
+     * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
+     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
+     * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
+     * @param  int|null $count How many records one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; the number of records matching the filter comes back as `total` beside the page. (optional)
+     * @param  int|null $start_index How many matching records to skip before the page begins, counting from the newest. Advance it by `count` to  walk back through the log. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooksLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1699,21 +1699,21 @@ class WebhooksApi
     /**
      * Operation getWebhooksLogsAsyncWithHttpInfo
      *
-     * Get webhook logs
+     * Get the webhook delivery log
      *
      * REST API Reference for getWebhooksLogs Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-webhooks-logs/
      *
-     * @param  \DateTime|null $delivery_from The delivery start time for filtering webhook logs. (optional)
-     * @param  \DateTime|null $delivery_to The delivery end time for filtering webhook logs. (optional)
-     * @param  string|null $hook_uri The destination URL where webhooks are delivered. (optional)
-     * @param  int|null $config_id The webhook configuration identifier. (optional)
-     * @param  int|null $event_id The unique identifier of the event that triggered the webhook. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The status of the webhook delivery group. (optional)
-     * @param  string|null $user_id The identifier of the user associated with the webhook event. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The type of event that triggered the webhook. (optional)
-     * @param  int|null $count The maximum number of webhook log records to return in the query response. (optional)
-     * @param  int|null $start_index Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries. (optional)
+     * @param  \DateTime|null $delivery_from The earliest delivery moment a record may carry. Records of attempts still on their way have no delivery  moment yet and fall outside any bound set here. (optional)
+     * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
+     * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
+     * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
+     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
+     * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
+     * @param  int|null $count How many records one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; the number of records matching the filter comes back as `total` beside the page. (optional)
+     * @param  int|null $start_index How many matching records to skip before the page begins, counting from the newest. Advance it by `count` to  walk back through the log. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooksLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1763,16 +1763,16 @@ class WebhooksApi
     /**
      * Create request for operation 'getWebhooksLogs'
      *
-     * @param  \DateTime|null $delivery_from The delivery start time for filtering webhook logs. (optional)
-     * @param  \DateTime|null $delivery_to The delivery end time for filtering webhook logs. (optional)
-     * @param  string|null $hook_uri The destination URL where webhooks are delivered. (optional)
-     * @param  int|null $config_id The webhook configuration identifier. (optional)
-     * @param  int|null $event_id The unique identifier of the event that triggered the webhook. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The status of the webhook delivery group. (optional)
-     * @param  string|null $user_id The identifier of the user associated with the webhook event. (optional)
-     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The type of event that triggered the webhook. (optional)
-     * @param  int|null $count The maximum number of webhook log records to return in the query response. (optional)
-     * @param  int|null $start_index Specifies the starting index for retrieving webhook logs.  Used for pagination in the webhook delivery log queries. (optional)
+     * @param  \DateTime|null $delivery_from The earliest delivery moment a record may carry. Records of attempts still on their way have no delivery  moment yet and fall outside any bound set here. (optional)
+     * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
+     * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
+     * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
+     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
+     * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
+     * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
+     * @param  int|null $count How many records one page may hold. The maximum is also the default, so a client that wants shorter pages has  to ask for them; the number of records matching the filter comes back as `total` beside the page. (optional)
+     * @param  int|null $start_index How many matching records to skip before the page begins, counting from the newest. Advance it by `count` to  walk back through the log. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhooksLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1984,7 +1984,7 @@ class WebhooksApi
      * REST API Reference for removeWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2005,7 +2005,7 @@ class WebhooksApi
      * REST API Reference for removeWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2149,7 +2149,7 @@ class WebhooksApi
      * REST API Reference for removeWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2173,7 +2173,7 @@ class WebhooksApi
      * REST API Reference for removeWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2223,7 +2223,7 @@ class WebhooksApi
     /**
      * Create request for operation 'removeWebhook'
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2337,12 +2337,12 @@ class WebhooksApi
     /**
      * Operation retryWebhook
      *
-     * Retry a webhook
+     * Retry a webhook delivery
      *
      * REST API Reference for retryWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2358,12 +2358,12 @@ class WebhooksApi
     /**
      * Operation retryWebhookWithHttpInfo
      *
-     * Retry a webhook
+     * Retry a webhook delivery
      *
      * REST API Reference for retryWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2488,12 +2488,12 @@ class WebhooksApi
     /**
      * Operation retryWebhookAsync
      *
-     * Retry a webhook
+     * Retry a webhook delivery
      *
      * REST API Reference for retryWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2512,12 +2512,12 @@ class WebhooksApi
     /**
      * Operation retryWebhookAsyncWithHttpInfo
      *
-     * Retry a webhook
+     * Retry a webhook delivery
      *
      * REST API Reference for retryWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhook/
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2567,7 +2567,7 @@ class WebhooksApi
     /**
      * Create request for operation 'retryWebhook'
      *
-     * @param  int $id The ID extracted from the route parameters. (required)
+     * @param  int $id The identifier of the object the operation acts on, as the listing operation of that kind of object reports  it. It has to match the shape the route declares - a GUID where the route is typed as one - since a value of  another shape does not match the route at all and is answered as not found. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2681,7 +2681,7 @@ class WebhooksApi
     /**
      * Operation retryWebhooks
      *
-     * Retry webhooks
+     * Retry webhook deliveries
      *
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
@@ -2702,7 +2702,7 @@ class WebhooksApi
     /**
      * Operation retryWebhooksWithHttpInfo
      *
-     * Retry webhooks
+     * Retry webhook deliveries
      *
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
@@ -2846,7 +2846,7 @@ class WebhooksApi
     /**
      * Operation retryWebhooksAsync
      *
-     * Retry webhooks
+     * Retry webhook deliveries
      *
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
@@ -2870,7 +2870,7 @@ class WebhooksApi
     /**
      * Operation retryWebhooksAsyncWithHttpInfo
      *
-     * Retry webhooks
+     * Retry webhook deliveries
      *
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/

@@ -136,16 +136,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFilesShared
      *
-     * Get groups with file sharing settings
+     * Search groups for a file
      *
      * REST API Reference for getGroupsWithFilesShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-files-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFilesShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -161,16 +161,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFilesSharedWithHttpInfo
      *
-     * Get groups with file sharing settings
+     * Search groups for a file
      *
      * REST API Reference for getGroupsWithFilesShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-files-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFilesShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -309,16 +309,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFilesSharedAsync
      *
-     * Get groups with file sharing settings
+     * Search groups for a file
      *
      * REST API Reference for getGroupsWithFilesShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-files-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFilesShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -337,16 +337,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFilesSharedAsyncWithHttpInfo
      *
-     * Get groups with file sharing settings
+     * Search groups for a file
      *
      * REST API Reference for getGroupsWithFilesShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-files-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFilesShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -396,11 +396,11 @@ class SearchApi
     /**
      * Create request for operation 'getGroupsWithFilesShared'
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFilesShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -560,16 +560,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFoldersShared
      *
-     * Get groups with folder sharing settings
+     * Search groups for a folder
      *
      * REST API Reference for getGroupsWithFoldersShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-folders-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFoldersShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -585,16 +585,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFoldersSharedWithHttpInfo
      *
-     * Get groups with folder sharing settings
+     * Search groups for a folder
      *
      * REST API Reference for getGroupsWithFoldersShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-folders-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFoldersShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -733,16 +733,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFoldersSharedAsync
      *
-     * Get groups with folder sharing settings
+     * Search groups for a folder
      *
      * REST API Reference for getGroupsWithFoldersShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-folders-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFoldersShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -761,16 +761,16 @@ class SearchApi
     /**
      * Operation getGroupsWithFoldersSharedAsyncWithHttpInfo
      *
-     * Get groups with folder sharing settings
+     * Search groups for a folder
      *
      * REST API Reference for getGroupsWithFoldersShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-folders-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFoldersShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -820,11 +820,11 @@ class SearchApi
     /**
      * Create request for operation 'getGroupsWithFoldersShared'
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithFoldersShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -984,16 +984,16 @@ class SearchApi
     /**
      * Operation getGroupsWithRoomsShared
      *
-     * Get groups with room sharing settings
+     * Search groups for a room
      *
      * REST API Reference for getGroupsWithRoomsShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-rooms-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithRoomsShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1009,16 +1009,16 @@ class SearchApi
     /**
      * Operation getGroupsWithRoomsSharedWithHttpInfo
      *
-     * Get groups with room sharing settings
+     * Search groups for a room
      *
      * REST API Reference for getGroupsWithRoomsShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-rooms-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithRoomsShared'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1157,16 +1157,16 @@ class SearchApi
     /**
      * Operation getGroupsWithRoomsSharedAsync
      *
-     * Get groups with room sharing settings
+     * Search groups for a room
      *
      * REST API Reference for getGroupsWithRoomsShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-rooms-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithRoomsShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1185,16 +1185,16 @@ class SearchApi
     /**
      * Operation getGroupsWithRoomsSharedAsyncWithHttpInfo
      *
-     * Get groups with room sharing settings
+     * Search groups for a room
      *
      * REST API Reference for getGroupsWithRoomsShared Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-rooms-shared/
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithRoomsShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1244,11 +1244,11 @@ class SearchApi
     /**
      * Create request for operation 'getGroupsWithRoomsShared'
      *
-     * @param  int $id The group ID. (required)
-     * @param  bool|null $exclude_shared Specifies whether to exclude the group sharing settings from the response. (optional)
-     * @param  int|null $count The number of groups to retrieve in the request. (optional)
-     * @param  int|null $start_index The starting index from which to begin retrieving groups with their sharing settings. (optional)
-     * @param  string|null $filter_value The text used as a filter for retrieving groups with their sharing settings. (optional)
+     * @param  int|string $id The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. (required)
+     * @param  bool|null $exclude_shared Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group the caller may grant access to. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupsWithRoomsShared'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerInfoDto Class Doc Comment
  *
  * @category Class
- * @description The customer information.
+ * @description The billing customer behind the portal, and which portal member pays for it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'portal_id' => 'string',
         'payment_method_status' => '\OpenAPI\Client\Model\PaymentMethodStatus',
+        'payment_method_type' => 'string',
+        'is_delayed_payment_method' => 'bool',
         'email' => 'string',
         'payer' => '\OpenAPI\Client\Model\EmployeeDto'
     ];
@@ -74,6 +76,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'portal_id' => null,
         'payment_method_status' => null,
+        'payment_method_type' => null,
+        'is_delayed_payment_method' => null,
         'email' => null,
         'payer' => null
     ];
@@ -86,6 +90,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'portal_id' => true,
         'payment_method_status' => false,
+        'payment_method_type' => true,
+        'is_delayed_payment_method' => false,
         'email' => true,
         'payer' => false
     ];
@@ -178,6 +184,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'portal_id' => 'portalId',
         'payment_method_status' => 'paymentMethodStatus',
+        'payment_method_type' => 'paymentMethodType',
+        'is_delayed_payment_method' => 'isDelayedPaymentMethod',
         'email' => 'email',
         'payer' => 'payer'
     ];
@@ -190,6 +198,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'portal_id' => 'setPortalId',
         'payment_method_status' => 'setPaymentMethodStatus',
+        'payment_method_type' => 'setPaymentMethodType',
+        'is_delayed_payment_method' => 'setIsDelayedPaymentMethod',
         'email' => 'setEmail',
         'payer' => 'setPayer'
     ];
@@ -202,6 +212,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'portal_id' => 'getPortalId',
         'payment_method_status' => 'getPaymentMethodStatus',
+        'payment_method_type' => 'getPaymentMethodType',
+        'is_delayed_payment_method' => 'getIsDelayedPaymentMethod',
         'email' => 'getEmail',
         'payer' => 'getPayer'
     ];
@@ -265,6 +277,8 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('portal_id', $data ?? [], null);
         $this->setIfExists('payment_method_status', $data ?? [], null);
+        $this->setIfExists('payment_method_type', $data ?? [], null);
+        $this->setIfExists('is_delayed_payment_method', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('payer', $data ?? [], null);
     }
@@ -324,7 +338,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets portal_id
      *
-     * @param string|null $portal_id The portal ID.
+     * @param string|null $portal_id The portal's identifier in the billing system, which is what support and invoices refer to. It is not the  portal alias.
      *
      * @return self
      */
@@ -358,7 +372,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method_status
      *
-     * @param \OpenAPI\Client\Model\PaymentMethodStatus|null $payment_method_status The customer's payment method.
+     * @param \OpenAPI\Client\Model\PaymentMethodStatus|null $payment_method_status Whether a payment method is stored for the account and usable. Without one the portal can hold a wallet  balance but cannot be charged automatically.
      *
      * @return self
      */
@@ -368,6 +382,67 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable payment_method_status cannot be null');
         }
         $this->container['payment_method_status'] = $payment_method_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_method_type
+     *
+     * @return string|null
+     */
+    public function getPaymentMethodType()
+    {
+        return $this->container['payment_method_type'];
+    }
+
+    /**
+     * Sets payment_method_type
+     *
+     * @param string|null $payment_method_type The customer's payment method type.
+     *
+     * @return self
+     */
+    public function setPaymentMethodType($payment_method_type)
+    {
+        if (is_null($payment_method_type)) {
+            array_push($this->openAPINullablesSetToNull, 'payment_method_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payment_method_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['payment_method_type'] = $payment_method_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_delayed_payment_method
+     *
+     * @return bool|null
+     */
+    public function getIsDelayedPaymentMethod()
+    {
+        return $this->container['is_delayed_payment_method'];
+    }
+
+    /**
+     * Sets is_delayed_payment_method
+     *
+     * @param bool|null $is_delayed_payment_method Indicates whether the customer's payment method is delayed, i.e. the money reaches the wallet only after  the transfer settles rather than immediately.
+     *
+     * @return self
+     */
+    public function setIsDelayedPaymentMethod($is_delayed_payment_method)
+    {
+        if (is_null($is_delayed_payment_method)) {
+            throw new \InvalidArgumentException('non-nullable is_delayed_payment_method cannot be null');
+        }
+        $this->container['is_delayed_payment_method'] = $is_delayed_payment_method;
 
         return $this;
     }
@@ -385,7 +460,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets email
      *
-     * @param string|null $email The customer email address.
+     * @param string|null $email The address the billing account is registered to, lower-cased. It need not belong to a portal member,  which is exactly when `payer` stays empty.
      *
      * @return self
      */
@@ -419,7 +494,7 @@ class CustomerInfoDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payer
      *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $payer The paying user.
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $payer The portal member whose account is behind the billing address. It is empty when `email` matches no member  of this portal, and while it is empty every operation of this group that only the payer may call is out  of reach for everybody.
      *
      * @return self
      */

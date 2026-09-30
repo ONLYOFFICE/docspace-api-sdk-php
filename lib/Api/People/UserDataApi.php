@@ -157,7 +157,7 @@ class UserDataApi
     /**
      * Operation getDeletePersonalFolderProgress
      *
-     * Get the progress of deleting the personal folder
+     * Get the personal folder deletion progress
      *
      * REST API Reference for getDeletePersonalFolderProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-delete-personal-folder-progress/
@@ -177,7 +177,7 @@ class UserDataApi
     /**
      * Operation getDeletePersonalFolderProgressWithHttpInfo
      *
-     * Get the progress of deleting the personal folder
+     * Get the personal folder deletion progress
      *
      * REST API Reference for getDeletePersonalFolderProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-delete-personal-folder-progress/
@@ -306,7 +306,7 @@ class UserDataApi
     /**
      * Operation getDeletePersonalFolderProgressAsync
      *
-     * Get the progress of deleting the personal folder
+     * Get the personal folder deletion progress
      *
      * REST API Reference for getDeletePersonalFolderProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-delete-personal-folder-progress/
@@ -329,7 +329,7 @@ class UserDataApi
     /**
      * Operation getDeletePersonalFolderProgressAsyncWithHttpInfo
      *
-     * Get the progress of deleting the personal folder
+     * Get the personal folder deletion progress
      *
      * REST API Reference for getDeletePersonalFolderProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-delete-personal-folder-progress/
@@ -486,7 +486,7 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -507,7 +507,7 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -651,7 +651,7 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -675,7 +675,7 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -725,7 +725,7 @@ class UserDataApi
     /**
      * Create request for operation 'getReassignProgress'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -844,7 +844,7 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -865,7 +865,7 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1009,7 +1009,7 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1033,7 +1033,7 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1083,7 +1083,7 @@ class UserDataApi
     /**
      * Create request for operation 'getRemoveProgress'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1202,8 +1202,8 @@ class UserDataApi
      * REST API Reference for necessaryReassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/necessary-reassign/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The expected user type. (optional)
+     * @param  string|null $user_id The ID of the user whose rooms and shared files are checked. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The type the user is about to be changed to, which decides what counts as data that has to be reassigned:  `RoomAdmin`, `DocSpaceAdmin` and `User` are checked for owned rooms only, while `Guest` is also checked for  files that are still shared. The default is `All`, which checks owned rooms only. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['necessaryReassign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1224,8 +1224,8 @@ class UserDataApi
      * REST API Reference for necessaryReassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/necessary-reassign/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The expected user type. (optional)
+     * @param  string|null $user_id The ID of the user whose rooms and shared files are checked. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The type the user is about to be changed to, which decides what counts as data that has to be reassigned:  `RoomAdmin`, `DocSpaceAdmin` and `User` are checked for owned rooms only, while `Guest` is also checked for  files that are still shared. The default is `All`, which checks owned rooms only. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['necessaryReassign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1369,8 +1369,8 @@ class UserDataApi
      * REST API Reference for necessaryReassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/necessary-reassign/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The expected user type. (optional)
+     * @param  string|null $user_id The ID of the user whose rooms and shared files are checked. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The type the user is about to be changed to, which decides what counts as data that has to be reassigned:  `RoomAdmin`, `DocSpaceAdmin` and `User` are checked for owned rooms only, while `Guest` is also checked for  files that are still shared. The default is `All`, which checks owned rooms only. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['necessaryReassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1394,8 +1394,8 @@ class UserDataApi
      * REST API Reference for necessaryReassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/necessary-reassign/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The expected user type. (optional)
+     * @param  string|null $user_id The ID of the user whose rooms and shared files are checked. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The type the user is about to be changed to, which decides what counts as data that has to be reassigned:  `RoomAdmin`, `DocSpaceAdmin` and `User` are checked for owned rooms only, while `Guest` is also checked for  files that are still shared. The default is `All`, which checks owned rooms only. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['necessaryReassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1445,8 +1445,8 @@ class UserDataApi
     /**
      * Create request for operation 'necessaryReassign'
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The expected user type. (optional)
+     * @param  string|null $user_id The ID of the user whose rooms and shared files are checked. (optional)
+     * @param  \OpenAPI\Client\Model\EmployeeType|null $type The type the user is about to be changed to, which decides what counts as data that has to be reassigned:  `RoomAdmin`, `DocSpaceAdmin` and `User` are checked for owned rooms only, while `Guest` is also checked for  files that are still shared. The default is `All`, which checks owned rooms only. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['necessaryReassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

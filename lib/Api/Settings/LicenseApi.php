@@ -463,7 +463,7 @@ class LicenseApi
     /**
      * Operation getIsLicenseRequired
      *
-     * Request a license
+     * Check if a license is required
      *
      * REST API Reference for getIsLicenseRequired Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-license-required/
@@ -483,7 +483,7 @@ class LicenseApi
     /**
      * Operation getIsLicenseRequiredWithHttpInfo
      *
-     * Request a license
+     * Check if a license is required
      *
      * REST API Reference for getIsLicenseRequired Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-license-required/
@@ -598,7 +598,7 @@ class LicenseApi
     /**
      * Operation getIsLicenseRequiredAsync
      *
-     * Request a license
+     * Check if a license is required
      *
      * REST API Reference for getIsLicenseRequired Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-license-required/
@@ -621,7 +621,7 @@ class LicenseApi
     /**
      * Operation getIsLicenseRequiredAsyncWithHttpInfo
      *
-     * Request a license
+     * Check if a license is required
      *
      * REST API Reference for getIsLicenseRequired Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-license-required/
@@ -726,6 +726,28 @@ class LicenseApi
             }
         }
 
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -1080,7 +1102,7 @@ class LicenseApi
      * REST API Reference for uploadLicense Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-license/
      *
-     * @param  \SplFileObject[] $files The list of license files to be uploaded. (required)
+     * @param  \SplFileObject[] $files The license file, sent as `multipart/form-data`. Only the first entry is read and the rest are ignored, and a  request carrying none is refused with 400. A file that cannot be read as a license, that carries no customer  id or signature, or that was issued for the other edition fails the call; one whose start date has not  arrived yet is refused, while one already past its due date is still accepted. Staging only stores the file -  `POST api/2.0/settings/license/accept` puts it in force - and a file staged earlier is overwritten. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadLicense'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1101,7 +1123,7 @@ class LicenseApi
      * REST API Reference for uploadLicense Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-license/
      *
-     * @param  \SplFileObject[] $files The list of license files to be uploaded. (required)
+     * @param  \SplFileObject[] $files The license file, sent as `multipart/form-data`. Only the first entry is read and the rest are ignored, and a  request carrying none is refused with 400. A file that cannot be read as a license, that carries no customer  id or signature, or that was issued for the other edition fails the call; one whose start date has not  arrived yet is refused, while one already past its due date is still accepted. Staging only stores the file -  `POST api/2.0/settings/license/accept` puts it in force - and a file staged earlier is overwritten. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadLicense'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1231,7 +1253,7 @@ class LicenseApi
      * REST API Reference for uploadLicense Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-license/
      *
-     * @param  \SplFileObject[] $files The list of license files to be uploaded. (required)
+     * @param  \SplFileObject[] $files The license file, sent as `multipart/form-data`. Only the first entry is read and the rest are ignored, and a  request carrying none is refused with 400. A file that cannot be read as a license, that carries no customer  id or signature, or that was issued for the other edition fails the call; one whose start date has not  arrived yet is refused, while one already past its due date is still accepted. Staging only stores the file -  `POST api/2.0/settings/license/accept` puts it in force - and a file staged earlier is overwritten. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadLicense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1255,7 +1277,7 @@ class LicenseApi
      * REST API Reference for uploadLicense Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-license/
      *
-     * @param  \SplFileObject[] $files The list of license files to be uploaded. (required)
+     * @param  \SplFileObject[] $files The license file, sent as `multipart/form-data`. Only the first entry is read and the rest are ignored, and a  request carrying none is refused with 400. A file that cannot be read as a license, that carries no customer  id or signature, or that was issued for the other edition fails the call; one whose start date has not  arrived yet is refused, while one already past its due date is still accepted. Staging only stores the file -  `POST api/2.0/settings/license/accept` puts it in force - and a file staged earlier is overwritten. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadLicense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1305,7 +1327,7 @@ class LicenseApi
     /**
      * Create request for operation 'uploadLicense'
      *
-     * @param  \SplFileObject[] $files The list of license files to be uploaded. (required)
+     * @param  \SplFileObject[] $files The license file, sent as `multipart/form-data`. Only the first entry is read and the rest are ignored, and a  request carrying none is refused with 400. A file that cannot be read as a license, that carries no customer  id or signature, or that was issued for the other edition fails the call; one whose start date has not  arrived yet is refused, while one already past its due date is still accepted. Staging only stores the file -  `POST api/2.0/settings/license/accept` puts it in force - and a file staged earlier is overwritten. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadLicense'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

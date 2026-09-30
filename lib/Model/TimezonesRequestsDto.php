@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TimezonesRequestsDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for managing the time zone configurations.
+ * @description One time zone the host offers, as its identifier and the label to show for it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class TimezonesRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets id
      *
-     * @param string|null $id The IANA time zone identifier.
+     * @param string|null $id The IANA identifier of the time zone. This is the value the portal time zone is set to, so pass it on  unchanged to `PUT api/2.0/settings/timeandlanguage`.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class TimezonesRequestsDto implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets display_name
      *
-     * @param string|null $display_name The user-friendly name for the time zone.
+     * @param string|null $display_name The label to show for the zone, carrying its UTC offset as it stood when the list was built. The offset is a  snapshot rather than a rule, so a zone observing daylight saving reads differently at other times of the  year; sort and match on `id` instead.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ChangeOwnerRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for changing the file owner.
+ * @description The rooms and files to hand over, together with the account that takes them.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -320,7 +320,7 @@ class ChangeOwnerRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $folder_ids The list of folder IDs to change the owner.
+     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $folder_ids The rooms to hand over, identified as `GET api/2.0/files/rooms` returns them - a number for a room stored on  the portal and a string for one that lives on a connected third-party account. Only rooms belong here; a  folder inside a room is refused.
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ChangeOwnerRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $file_ids The list of file IDs to change the owner.
+     * @param \OpenAPI\Client\Model\BatchRequestDtoAllOfFileIds[]|null $file_ids The files to hand over, identified as a listing operation returns them - a number for a file stored on the  portal and a string for one on a connected third-party account. Only a file kept in the portal's common  section is accepted.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class ChangeOwnerRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets user_id
      *
-     * @param string $user_id The new file owner ID.
+     * @param string $user_id The account that becomes the owner of every listed entry. It has to be an active member allowed to manage  rooms, so a deactivated account, a guest or a plain member is rejected, and for a private room the account  must have set up its encryption keys beforehand.
      *
      * @return self
      */

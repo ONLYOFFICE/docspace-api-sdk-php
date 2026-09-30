@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DeleteBatchRequestDto Class Doc Comment
  *
  * @category Class
- * @description The request parameters for deleting files.
+ * @description The files and folders to delete, and how final the deletion is.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class DeleteBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets return_single_operation
      *
-     * @param bool|null $return_single_operation Specifies whether to return only the current operation
+     * @param bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class DeleteBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets folder_ids
      *
-     * @param \OpenAPI\Client\Model\DeleteBatchRequestDtoAllOfFolderIds[]|null $folder_ids The list of folder IDs to be deleted.
+     * @param \OpenAPI\Client\Model\DeleteBatchRequestDtoAllOfFolderIds[]|null $folder_ids The folders to delete, by id, each with everything it contains. A number addresses a folder stored in the  portal itself, a string addresses a folder on a connected third-party account, and both kinds may be sent in  one list.
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class DeleteBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_ids
      *
-     * @param \OpenAPI\Client\Model\DeleteBatchRequestDtoAllOfFileIds[]|null $file_ids The list of file IDs to be deleted.
+     * @param \OpenAPI\Client\Model\DeleteBatchRequestDtoAllOfFileIds[]|null $file_ids The files to delete, by id. A number addresses a file stored in the portal itself, a string addresses a file  on a connected third-party account, and both kinds may be sent in one list.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class DeleteBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets delete_after
      *
-     * @param bool|null $delete_after Specifies whether to delete a file after the editing session is finished or not
+     * @param bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It does not postpone the deletion and does not delete anything of its own.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class DeleteBatchRequestDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets immediately
      *
-     * @param bool|null $immediately Specifies whether to move a file to the \\Trash\\ folder or delete it immediately.
+     * @param bool|null $immediately Where the deleted items go: `false` moves them to the Trash of the caller, from which they can be restored,  `true` removes them at once and for good.
      *
      * @return self
      */

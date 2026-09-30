@@ -177,7 +177,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addGroup($group_request_dto = null, string $contentType = self::contentTypes['addGroup'][0])
     {
@@ -198,7 +198,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addGroupWithHttpInfo($group_request_dto = null, string $contentType = self::contentTypes['addGroup'][0])
     {
@@ -247,12 +247,6 @@ class GroupApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -307,14 +301,6 @@ class GroupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -523,8 +509,8 @@ class GroupApi
      * REST API Reference for addMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -545,8 +531,8 @@ class GroupApi
      * REST API Reference for addMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -690,8 +676,8 @@ class GroupApi
      * REST API Reference for addMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -715,8 +701,8 @@ class GroupApi
      * REST API Reference for addMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/add-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -766,8 +752,8 @@ class GroupApi
     /**
      * Create request for operation 'addMembersTo'
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -900,7 +886,7 @@ class GroupApi
      * REST API Reference for deleteGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-group/
      *
-     * @param  string $id The group ID. (required)
+     * @param  string $id The ID of the group to delete, taken from the route. It has to be a group that has not been deleted already,  otherwise the operation answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -920,7 +906,7 @@ class GroupApi
      * REST API Reference for deleteGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-group/
      *
-     * @param  string $id The group ID. (required)
+     * @param  string $id The ID of the group to delete, taken from the route. It has to be a group that has not been deleted already,  otherwise the operation answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1004,7 +990,7 @@ class GroupApi
      * REST API Reference for deleteGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-group/
      *
-     * @param  string $id The group ID. (required)
+     * @param  string $id The ID of the group to delete, taken from the route. It has to be a group that has not been deleted already,  otherwise the operation answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1028,7 +1014,7 @@ class GroupApi
      * REST API Reference for deleteGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-group/
      *
-     * @param  string $id The group ID. (required)
+     * @param  string $id The ID of the group to delete, taken from the route. It has to be a group that has not been deleted already,  otherwise the operation answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1065,7 +1051,7 @@ class GroupApi
     /**
      * Create request for operation 'deleteGroup'
      *
-     * @param  string $id The group ID. (required)
+     * @param  string $id The ID of the group to delete, taken from the route. It has to be a group that has not been deleted already,  otherwise the operation answers 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1184,8 +1170,8 @@ class GroupApi
      * REST API Reference for getGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  bool|null $include_members Specifies whether to include the group members or not. (optional)
+     * @param  string $id The ID of the group to read, taken from the route. It has to be a group that has not been deleted, otherwise  the operation answers 404. (required)
+     * @param  bool|null $include_members Whether to fill in the member list of the group. It defaults to true, so set it to false when only the name  and the manager are needed and the group may be large. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1206,8 +1192,8 @@ class GroupApi
      * REST API Reference for getGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  bool|null $include_members Specifies whether to include the group members or not. (optional)
+     * @param  string $id The ID of the group to read, taken from the route. It has to be a group that has not been deleted, otherwise  the operation answers 404. (required)
+     * @param  bool|null $include_members Whether to fill in the member list of the group. It defaults to true, so set it to false when only the name  and the manager are needed and the group may be large. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1351,8 +1337,8 @@ class GroupApi
      * REST API Reference for getGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  bool|null $include_members Specifies whether to include the group members or not. (optional)
+     * @param  string $id The ID of the group to read, taken from the route. It has to be a group that has not been deleted, otherwise  the operation answers 404. (required)
+     * @param  bool|null $include_members Whether to fill in the member list of the group. It defaults to true, so set it to false when only the name  and the manager are needed and the group may be large. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1376,8 +1362,8 @@ class GroupApi
      * REST API Reference for getGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  bool|null $include_members Specifies whether to include the group members or not. (optional)
+     * @param  string $id The ID of the group to read, taken from the route. It has to be a group that has not been deleted, otherwise  the operation answers 404. (required)
+     * @param  bool|null $include_members Whether to fill in the member list of the group. It defaults to true, so set it to false when only the name  and the manager are needed and the group may be large. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1427,8 +1413,8 @@ class GroupApi
     /**
      * Create request for operation 'getGroup'
      *
-     * @param  string $id The group ID. (required)
-     * @param  bool|null $include_members Specifies whether to include the group members or not. (optional)
+     * @param  string $id The ID of the group to read, taken from the route. It has to be a group that has not been deleted, otherwise  the operation answers 404. (required)
+     * @param  bool|null $include_members Whether to fill in the member list of the group. It defaults to true, so set it to false when only the name  and the manager are needed and the group may be large. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1557,7 +1543,7 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1578,7 +1564,7 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1722,7 +1708,7 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1746,7 +1732,7 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1796,7 +1782,7 @@ class GroupApi
     /**
      * Create request for operation 'getGroupByUserId'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1915,13 +1901,13 @@ class GroupApi
      * REST API Reference for getGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  bool|null $manager Specifies if the user is a manager or not. (optional)
-     * @param  int|null $count The number of records to retrieve. (optional)
-     * @param  int|null $start_index The starting index for paginated results. (optional)
-     * @param  string|null $sort_by Specifies the property used to sort the query results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching group data. (optional)
+     * @param  string|null $user_id Keeps only the groups the account with this ID takes part in. Omit it to search every group of the portal. (optional)
+     * @param  bool|null $manager Narrows `userId` down to the groups that account manages, instead of every group it belongs to. It has no  effect on its own and defaults to false. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the groups by: `Title`, `Manager` or `MembersCount`, compared without regard to case. Any other  value, and omitting the field, orders by title. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroups'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1942,13 +1928,13 @@ class GroupApi
      * REST API Reference for getGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  bool|null $manager Specifies if the user is a manager or not. (optional)
-     * @param  int|null $count The number of records to retrieve. (optional)
-     * @param  int|null $start_index The starting index for paginated results. (optional)
-     * @param  string|null $sort_by Specifies the property used to sort the query results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching group data. (optional)
+     * @param  string|null $user_id Keeps only the groups the account with this ID takes part in. Omit it to search every group of the portal. (optional)
+     * @param  bool|null $manager Narrows `userId` down to the groups that account manages, instead of every group it belongs to. It has no  effect on its own and defaults to false. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the groups by: `Title`, `Manager` or `MembersCount`, compared without regard to case. Any other  value, and omitting the field, orders by title. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroups'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2092,13 +2078,13 @@ class GroupApi
      * REST API Reference for getGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  bool|null $manager Specifies if the user is a manager or not. (optional)
-     * @param  int|null $count The number of records to retrieve. (optional)
-     * @param  int|null $start_index The starting index for paginated results. (optional)
-     * @param  string|null $sort_by Specifies the property used to sort the query results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching group data. (optional)
+     * @param  string|null $user_id Keeps only the groups the account with this ID takes part in. Omit it to search every group of the portal. (optional)
+     * @param  bool|null $manager Narrows `userId` down to the groups that account manages, instead of every group it belongs to. It has no  effect on its own and defaults to false. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the groups by: `Title`, `Manager` or `MembersCount`, compared without regard to case. Any other  value, and omitting the field, orders by title. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2122,13 +2108,13 @@ class GroupApi
      * REST API Reference for getGroups Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups/
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  bool|null $manager Specifies if the user is a manager or not. (optional)
-     * @param  int|null $count The number of records to retrieve. (optional)
-     * @param  int|null $start_index The starting index for paginated results. (optional)
-     * @param  string|null $sort_by Specifies the property used to sort the query results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching group data. (optional)
+     * @param  string|null $user_id Keeps only the groups the account with this ID takes part in. Omit it to search every group of the portal. (optional)
+     * @param  bool|null $manager Narrows `userId` down to the groups that account manages, instead of every group it belongs to. It has no  effect on its own and defaults to false. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the groups by: `Title`, `Manager` or `MembersCount`, compared without regard to case. Any other  value, and omitting the field, orders by title. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2178,13 +2164,13 @@ class GroupApi
     /**
      * Create request for operation 'getGroups'
      *
-     * @param  string|null $user_id The user ID. (optional)
-     * @param  bool|null $manager Specifies if the user is a manager or not. (optional)
-     * @param  int|null $count The number of records to retrieve. (optional)
-     * @param  int|null $start_index The starting index for paginated results. (optional)
-     * @param  string|null $sort_by Specifies the property used to sort the query results. (optional)
-     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The order in which the results are sorted. (optional)
-     * @param  string|null $filter_value The text used for filtering or searching group data. (optional)
+     * @param  string|null $user_id Keeps only the groups the account with this ID takes part in. Omit it to search every group of the portal. (optional)
+     * @param  bool|null $manager Narrows `userId` down to the groups that account manages, instead of every group it belongs to. It has no  effect on its own and defaults to false. (optional)
+     * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
+     * @param  int|null $start_index The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. (optional)
+     * @param  string|null $sort_by What to order the groups by: `Title`, `Manager` or `MembersCount`, compared without regard to case. Any other  value, and omitting the field, orders by title. (optional)
+     * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction of the ordering: `Ascending`, which is the default, or `Descending`. (optional)
+     * @param  string|null $filter_value The text to match against the group name. Omit it to get every group. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2366,8 +2352,8 @@ class GroupApi
      * REST API Reference for moveMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-members-to/
      *
-     * @param  string $from_id The group ID to move from. (required)
-     * @param  string $to_id The group ID to move to. (required)
+     * @param  string $from_id The ID of the group the members are taken from. It is emptied but not deleted, and it has to be a group that  has not been deleted already. (required)
+     * @param  string $to_id The ID of the group the members are moved into. It is the group the answer describes, and it has to be a  group that has not been deleted already. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2388,8 +2374,8 @@ class GroupApi
      * REST API Reference for moveMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-members-to/
      *
-     * @param  string $from_id The group ID to move from. (required)
-     * @param  string $to_id The group ID to move to. (required)
+     * @param  string $from_id The ID of the group the members are taken from. It is emptied but not deleted, and it has to be a group that  has not been deleted already. (required)
+     * @param  string $to_id The ID of the group the members are moved into. It is the group the answer describes, and it has to be a  group that has not been deleted already. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2533,8 +2519,8 @@ class GroupApi
      * REST API Reference for moveMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-members-to/
      *
-     * @param  string $from_id The group ID to move from. (required)
-     * @param  string $to_id The group ID to move to. (required)
+     * @param  string $from_id The ID of the group the members are taken from. It is emptied but not deleted, and it has to be a group that  has not been deleted already. (required)
+     * @param  string $to_id The ID of the group the members are moved into. It is the group the answer describes, and it has to be a  group that has not been deleted already. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2558,8 +2544,8 @@ class GroupApi
      * REST API Reference for moveMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/move-members-to/
      *
-     * @param  string $from_id The group ID to move from. (required)
-     * @param  string $to_id The group ID to move to. (required)
+     * @param  string $from_id The ID of the group the members are taken from. It is emptied but not deleted, and it has to be a group that  has not been deleted already. (required)
+     * @param  string $to_id The ID of the group the members are moved into. It is the group the answer describes, and it has to be a  group that has not been deleted already. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2609,8 +2595,8 @@ class GroupApi
     /**
      * Create request for operation 'moveMembersTo'
      *
-     * @param  string $from_id The group ID to move from. (required)
-     * @param  string $to_id The group ID to move to. (required)
+     * @param  string $from_id The ID of the group the members are taken from. It is emptied but not deleted, and it has to be a group that  has not been deleted already. (required)
+     * @param  string $to_id The ID of the group the members are moved into. It is the group the answer describes, and it has to be a  group that has not been deleted already. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2744,8 +2730,8 @@ class GroupApi
      * REST API Reference for removeMembersFrom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-members-from/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembersFrom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2766,8 +2752,8 @@ class GroupApi
      * REST API Reference for removeMembersFrom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-members-from/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembersFrom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2911,8 +2897,8 @@ class GroupApi
      * REST API Reference for removeMembersFrom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-members-from/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembersFrom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2936,8 +2922,8 @@ class GroupApi
      * REST API Reference for removeMembersFrom Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/remove-members-from/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembersFrom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2987,8 +2973,8 @@ class GroupApi
     /**
      * Create request for operation 'removeMembersFrom'
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMembersFrom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3121,8 +3107,8 @@ class GroupApi
      * REST API Reference for setGroupManager Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-group-manager/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The request for setting a group manager. (required)
+     * @param  string $id The ID of the group whose manager is set, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The account to make the manager of the group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setGroupManager'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3143,8 +3129,8 @@ class GroupApi
      * REST API Reference for setGroupManager Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-group-manager/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The request for setting a group manager. (required)
+     * @param  string $id The ID of the group whose manager is set, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The account to make the manager of the group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setGroupManager'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3288,8 +3274,8 @@ class GroupApi
      * REST API Reference for setGroupManager Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-group-manager/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The request for setting a group manager. (required)
+     * @param  string $id The ID of the group whose manager is set, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The account to make the manager of the group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setGroupManager'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3313,8 +3299,8 @@ class GroupApi
      * REST API Reference for setGroupManager Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-group-manager/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The request for setting a group manager. (required)
+     * @param  string $id The ID of the group whose manager is set, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The account to make the manager of the group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setGroupManager'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3364,8 +3350,8 @@ class GroupApi
     /**
      * Create request for operation 'setGroupManager'
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The request for setting a group manager. (required)
+     * @param  string $id The ID of the group whose manager is set, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\SetManagerRequest $set_manager_request The account to make the manager of the group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setGroupManager'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3498,13 +3484,13 @@ class GroupApi
      * REST API Reference for setMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setMembersTo($id, $members_request, string $contentType = self::contentTypes['setMembersTo'][0])
     {
@@ -3520,13 +3506,13 @@ class GroupApi
      * REST API Reference for setMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMembersTo'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setMembersToWithHttpInfo($id, $members_request, string $contentType = self::contentTypes['setMembersTo'][0])
     {
@@ -3575,12 +3561,6 @@ class GroupApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3642,14 +3622,6 @@ class GroupApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3665,8 +3637,8 @@ class GroupApi
      * REST API Reference for setMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3690,8 +3662,8 @@ class GroupApi
      * REST API Reference for setMembersTo Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-members-to/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3741,8 +3713,8 @@ class GroupApi
     /**
      * Create request for operation 'setMembersTo'
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The member request. (required)
+     * @param  string $id The ID of the group whose members are changed, taken from the route. It has to be a group that has not been  deleted, otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\MembersRequest $members_request The accounts to add, replace with, or remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMembersTo'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3875,8 +3847,8 @@ class GroupApi
      * REST API Reference for updateGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The request for updating a group. (required)
+     * @param  string $id The ID of the group to update, taken from the route. It has to be a group that has not been deleted,  otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3897,8 +3869,8 @@ class GroupApi
      * REST API Reference for updateGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The request for updating a group. (required)
+     * @param  string $id The ID of the group to update, taken from the route. It has to be a group that has not been deleted,  otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -4042,8 +4014,8 @@ class GroupApi
      * REST API Reference for updateGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The request for updating a group. (required)
+     * @param  string $id The ID of the group to update, taken from the route. It has to be a group that has not been deleted,  otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4067,8 +4039,8 @@ class GroupApi
      * REST API Reference for updateGroup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-group/
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The request for updating a group. (required)
+     * @param  string $id The ID of the group to update, taken from the route. It has to be a group that has not been deleted,  otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4118,8 +4090,8 @@ class GroupApi
     /**
      * Create request for operation 'updateGroup'
      *
-     * @param  string $id The group ID. (required)
-     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The request for updating a group. (required)
+     * @param  string $id The ID of the group to update, taken from the route. It has to be a group that has not been deleted,  otherwise the operation answers 404. (required)
+     * @param  \OpenAPI\Client\Model\UpdateGroupRequest $update_group_request The fields to change. Every field is optional and the ones that are left out keep their current values, so an  empty object changes nothing. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

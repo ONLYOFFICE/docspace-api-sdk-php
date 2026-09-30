@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileShareLink Class Doc Comment
  *
  * @category Class
- * @description A shareable link for a file with its configuration and status.
+ * @description A sharing link of a file, a folder or a room, with everything set on it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'string',
         'title' => 'string',
         'share_link' => 'string',
-        'expiration_date' => '\DateTime',
+        'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'link_type' => '\OpenAPI\Client\Model\LinkType',
         'password' => 'string',
         'deny_download' => 'bool',
@@ -84,7 +84,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'uuid',
         'title' => null,
         'share_link' => null,
-        'expiration_date' => 'date-time',
+        'expiration_date' => null,
         'link_type' => null,
         'password' => null,
         'deny_download' => null,
@@ -105,7 +105,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'title' => true,
         'share_link' => true,
-        'expiration_date' => true,
+        'expiration_date' => false,
         'link_type' => false,
         'password' => true,
         'deny_download' => true,
@@ -387,7 +387,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id The unique identifier of the shared link.
+     * @param string|null $id The identifier of the link, the one to send back as `linkId` to change or delete it.
      *
      * @return self
      */
@@ -414,7 +414,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string|null $title The title of the shared content.
+     * @param string|null $title The name the link is listed under, which its author is free to choose and to leave empty.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets share_link
      *
-     * @param string|null $share_link The URL for accessing the shared content.
+     * @param string|null $share_link The shortened address to hand out. Opening it is what turns the link into access; the address stays the same  while the link exists.
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets expiration_date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getExpirationDate()
     {
@@ -482,21 +482,14 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expiration_date
      *
-     * @param \DateTime|null $expiration_date The date when the shared link expires.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $expiration_date The moment the link stops working, written with the offset of the portal time zone. Null when the link was  left without an end.
      *
      * @return self
      */
     public function setExpirationDate($expiration_date)
     {
         if (is_null($expiration_date)) {
-            array_push($this->openAPINullablesSetToNull, 'expiration_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiration_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
         }
         $this->container['expiration_date'] = $expiration_date;
 
@@ -516,7 +509,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets link_type
      *
-     * @param \OpenAPI\Client\Model\LinkType|null $link_type The sharing link type (e.g., Invitation).
+     * @param \OpenAPI\Client\Model\LinkType|null $link_type Which of the two jobs the link does: letting somebody into the room as a member, or handing out the entry  itself. The counters of uses are filled in for the first kind only.
      *
      * @return self
      */
@@ -543,7 +536,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password
      *
-     * @param string|null $password The password protection for accessing the shared content.
+     * @param string|null $password The password a visitor has to send before the link resolves, readable only by those who may manage the link.  Empty when the link asks for none.
      *
      * @return self
      */
@@ -577,7 +570,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets deny_download
      *
-     * @param bool|null $deny_download Indicates whether downloading of the shared content is prohibited.
+     * @param bool|null $deny_download Whether visitors coming through this link may only read the entry in the editor and not download or print it.
      *
      * @return self
      */
@@ -611,7 +604,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_expired
      *
-     * @param bool|null $is_expired Indicates whether the shared link has expired.
+     * @param bool|null $is_expired Whether the moment in `expirationDate` has already passed, which leaves the link in place but refuses  everybody who opens it.
      *
      * @return self
      */
@@ -645,7 +638,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary
      *
-     * @param bool|null $primary Indicates whether this is the primary shared link.
+     * @param bool|null $primary Whether this is the one link the entry always keeps: a public or a form-filling room is given it at creation,  and deleting it there only makes a new one.
      *
      * @return self
      */
@@ -672,7 +665,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets internal
      *
-     * @param bool|null $internal Indicates whether the link is for the internal sharing only.
+     * @param bool|null $internal Whether the visitor has to sign in to the portal before the link resolves, as opposed to it being open to  anybody who has the address.
      *
      * @return self
      */
@@ -706,7 +699,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_token
      *
-     * @param string|null $request_token The token for validating access requests.
+     * @param string|null $request_token The key that stands for this link in the calls that resolve it, such as `GET api/2.0/files/share/{key}`. It is  filled in for links that hand out the entry, and empty for the ones that invite into a room.
      *
      * @return self
      */
@@ -740,7 +733,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets max_use_count
      *
-     * @param int|null $max_use_count The maximum number of times the invitation link can be used.
+     * @param int|null $max_use_count How many accounts may still join the room through this invitation link in total. Null on a link that hands out  the entry, where nothing is counted.
      *
      * @return self
      */
@@ -774,7 +767,7 @@ class FileShareLink implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets current_use_count
      *
-     * @param int|null $current_use_count The current number of times the invitation link has been used.
+     * @param int|null $current_use_count How many accounts have already joined through this invitation link. Once it reaches `maxUseCount` the link  stops letting anybody else in. Null on a link that hands out the entry.
      *
      * @return self
      */

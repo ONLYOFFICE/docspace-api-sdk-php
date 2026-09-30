@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FormsItemDto Class Doc Comment
  *
  * @category Class
- * @description The forms item information.
+ * @description One field of a form, offered as a filter over the copies gathered in a form-filling room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class FormsItemDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key The form item key.              <example>field_name</example>
+     * @param string|null $key The name of the field as it is written in the form; send it back as `formsItemKey` to keep only              the completed copies whose field of that name holds a value.              <example>first_name</example>
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class FormsItemDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The form item type.              <example>text</example>
+     * @param string|null $type The kind of value the field holds, a text box or a checkbox for instance; send it back as              `formsItemType` beside the key.              <example>text</example>
      *
      * @return self
      */

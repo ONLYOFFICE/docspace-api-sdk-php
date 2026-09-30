@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudServerConfig Class Doc Comment
  *
  * @category Class
- * @description Represents the server configuration of a DocsCloud tenant.
+ * @description Represents the server configuration of a Docs Connect tenant.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CustomerServiceUsageReportDto Class Doc Comment
  *
  * @category Class
- * @description Represents a paged report of customer service usage statistics.
+ * @description One page of the per-service consumption totals, with the paging figures needed to walk the rest.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets collection
      *
-     * @param \OpenAPI\Client\Model\CustomerServiceUsageDto[]|null $collection A collection of service usage statistics.
+     * @param \OpenAPI\Client\Model\CustomerServiceUsageDto[]|null $collection The services on this page, one entry per service rather than per charge. It is empty for a period in  which nothing was consumed as well as for a page past the end of the report.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets offset
      *
-     * @param int|null $offset The report data offset.
+     * @param int|null $offset How many entries were skipped before this page, echoed from the request.
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets limit
      *
-     * @param int|null $limit The report data limit.
+     * @param int|null $limit How many entries one page may hold, echoed from the request; it is 25 unless another value was asked for.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets total_quantity
      *
-     * @param int|null $total_quantity The total quantity of records in the report.
+     * @param int|null $total_quantity How many services match the filters in total, across every page - services, not charges.
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets total_page
      *
-     * @param int|null $total_page The total number of pages in the report.
+     * @param int|null $total_page How many pages those entries come to at the current `limit`.
      *
      * @return self
      */
@@ -480,7 +480,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets current_page
      *
-     * @param int|null $current_page The current page number of the report.
+     * @param int|null $current_page Which of those pages this one is, as the billing service numbers them. Page through by advancing `offset`  rather than this value, which nothing accepts as an argument.
      *
      * @return self
      */

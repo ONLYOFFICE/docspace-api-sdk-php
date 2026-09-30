@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * MigrationStatusDto Class Doc Comment
  *
  * @category Class
- * @description The migration status parameters.
+ * @description How far the parse or the import queued for this portal has got, and what it produced once it stopped.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +324,7 @@ class MigrationStatusDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets progress
      *
-     * @param float|null $progress The migration progress.
+     * @param float|null $progress The share of the job that is done, from 0 to 100. It advances unevenly, since the stages differ in  length, so poll `isCompleted` rather than waiting for this to reach 100.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class MigrationStatusDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets error
      *
-     * @param string|null $error The migration error.
+     * @param string|null $error The message that ended the job, in the portal language. It stays empty while nothing has gone wrong, so  once `isCompleted` is `true` this field is what tells success from failure.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class MigrationStatusDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets parse_result
      *
-     * @param \OpenAPI\Client\Model\MigrationApiInfo|null $parse_result The migration API information.
+     * @param \OpenAPI\Client\Model\MigrationApiInfo|null $parse_result What the migrator has read so far. After a parse pass it holds the users, the groups and the archives it  could not read, which is the body to edit and post to `POST api/2.0/migration/migrate`; during an import it  also carries the accounts that were created and the ones that failed. Its own `operation` field, `parse`  or `migration`, is what tells the two stages apart.
      *
      * @return self
      */
@@ -412,7 +412,7 @@ class MigrationStatusDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_completed
      *
-     * @param bool|null $is_completed Specifies whether the migration is completed or not.
+     * @param bool|null $is_completed Whether the job has stopped, successfully or not. It is the field to poll on; the whole body comes back  empty instead when the portal has no job at all, which is not an error.
      *
      * @return self
      */

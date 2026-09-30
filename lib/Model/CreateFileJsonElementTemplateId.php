@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * CreateFileJsonElementTemplateId Class Doc Comment
  *
  * @category Class
- * @description The template file ID for creation.
+ * @description An existing file the new one copies its content from, as a number for a file in the portal and as a string for  one in a connected third-party storage; the caller has to be able to read it. Left out, a blank template for  the format and the language of the caller is used.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

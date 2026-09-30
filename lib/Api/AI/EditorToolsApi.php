@@ -133,42 +133,42 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsCall
      *
-     * Execute a DocSpace tool on behalf of the editor AI plugin
+     * Call an editor tool
      *
      * REST API Reference for aiEditorToolsCall Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-call/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  \OpenAPI\Client\Model\AiEditorToolsCallRequest $ai_editor_tools_call_request The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiEditorToolsCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiEditorToolsCall200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiEditorToolsCall($request_body, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
+    public function aiEditorToolsCall($ai_editor_tools_call_request, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
     {
-        list($response) = $this->aiEditorToolsCallWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiEditorToolsCallWithHttpInfo($ai_editor_tools_call_request, $contentType);
         return $response;
     }
 
     /**
      * Operation aiEditorToolsCallWithHttpInfo
      *
-     * Execute a DocSpace tool on behalf of the editor AI plugin
+     * Call an editor tool
      *
      * REST API Reference for aiEditorToolsCall Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-call/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiEditorToolsCallRequest $ai_editor_tools_call_request The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiEditorToolsCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiEditorToolsCall200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiEditorToolsCallWithHttpInfo($request_body, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
+    public function aiEditorToolsCallWithHttpInfo($ai_editor_tools_call_request, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
     {
-        $request = $this->aiEditorToolsCallRequest($request_body, $contentType);
+        $request = $this->aiEditorToolsCallRequest($ai_editor_tools_call_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,11 +196,35 @@ class EditorToolsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiEditorToolsCall200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -224,7 +248,7 @@ class EditorToolsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiEditorToolsCall200Response',
                 $request,
                 $response,
             );
@@ -233,12 +257,44 @@ class EditorToolsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiEditorToolsCall200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -256,20 +312,20 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsCallAsync
      *
-     * Execute a DocSpace tool on behalf of the editor AI plugin
+     * Call an editor tool
      *
      * REST API Reference for aiEditorToolsCall Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-call/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiEditorToolsCallRequest $ai_editor_tools_call_request The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiEditorToolsCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiEditorToolsCallAsync($request_body, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
+    public function aiEditorToolsCallAsync($ai_editor_tools_call_request, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
     {
-        return $this->aiEditorToolsCallAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiEditorToolsCallAsyncWithHttpInfo($ai_editor_tools_call_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -280,21 +336,21 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsCallAsyncWithHttpInfo
      *
-     * Execute a DocSpace tool on behalf of the editor AI plugin
+     * Call an editor tool
      *
      * REST API Reference for aiEditorToolsCall Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-call/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiEditorToolsCallRequest $ai_editor_tools_call_request The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiEditorToolsCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiEditorToolsCallAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
+    public function aiEditorToolsCallAsyncWithHttpInfo($ai_editor_tools_call_request, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiEditorToolsCallRequest($request_body, $contentType);
+        $returnType = '\OpenAPI\Client\Model\AiEditorToolsCall200Response';
+        $request = $this->aiEditorToolsCallRequest($ai_editor_tools_call_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -335,19 +391,19 @@ class EditorToolsApi
     /**
      * Create request for operation 'aiEditorToolsCall'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  \OpenAPI\Client\Model\AiEditorToolsCallRequest $ai_editor_tools_call_request The tool to run: `name` from `GET api/2.0/ai/editor-tools/list`, `arguments` matching that tool's input schema, and an optional `entityId` for the room to run it in. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiEditorToolsCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiEditorToolsCallRequest($request_body, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
+    public function aiEditorToolsCallRequest($ai_editor_tools_call_request, string $contentType = self::contentTypes['aiEditorToolsCall'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_editor_tools_call_request' is set
+        if ($ai_editor_tools_call_request === null || (is_array($ai_editor_tools_call_request) && count($ai_editor_tools_call_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiEditorToolsCall'
+                'Missing the required parameter $ai_editor_tools_call_request when calling aiEditorToolsCall'
             );
         }
 
@@ -370,12 +426,12 @@ class EditorToolsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_editor_tools_call_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_editor_tools_call_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_editor_tools_call_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -401,6 +457,15 @@ class EditorToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
@@ -426,7 +491,7 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsList
      *
-     * Sanitized DocSpace tool catalog for the editor AI plugin
+     * List editor tools
      *
      * REST API Reference for aiEditorToolsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-list/
@@ -435,7 +500,7 @@ class EditorToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiEditorToolsList200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiEditorToolsList(string $contentType = self::contentTypes['aiEditorToolsList'][0])
     {
@@ -446,7 +511,7 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsListWithHttpInfo
      *
-     * Sanitized DocSpace tool catalog for the editor AI plugin
+     * List editor tools
      *
      * REST API Reference for aiEditorToolsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-list/
@@ -455,7 +520,7 @@ class EditorToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiEditorToolsList200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiEditorToolsListWithHttpInfo(string $contentType = self::contentTypes['aiEditorToolsList'][0])
     {
@@ -487,11 +552,23 @@ class EditorToolsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiEditorToolsList200Response',
                         $request,
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -515,7 +592,7 @@ class EditorToolsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiEditorToolsList200Response',
                 $request,
                 $response,
             );
@@ -524,12 +601,28 @@ class EditorToolsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiEditorToolsList200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -547,7 +640,7 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsListAsync
      *
-     * Sanitized DocSpace tool catalog for the editor AI plugin
+     * List editor tools
      *
      * REST API Reference for aiEditorToolsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-list/
@@ -570,7 +663,7 @@ class EditorToolsApi
     /**
      * Operation aiEditorToolsListAsyncWithHttpInfo
      *
-     * Sanitized DocSpace tool catalog for the editor AI plugin
+     * List editor tools
      *
      * REST API Reference for aiEditorToolsList Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-editor-tools-list/
@@ -582,7 +675,7 @@ class EditorToolsApi
      */
     public function aiEditorToolsListAsyncWithHttpInfo(string $contentType = self::contentTypes['aiEditorToolsList'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiEditorToolsList200Response';
         $request = $this->aiEditorToolsListRequest($contentType);
 
         return $this->client
@@ -675,6 +768,15 @@ class EditorToolsApi
             }
         }
 
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {

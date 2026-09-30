@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomTemplateDto Class Doc Comment
  *
  * @category Class
- * @description The room template parameters.
+ * @description The parameters of a room template built from an existing room.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -403,7 +403,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets room_id
      *
-     * @param int $room_id The room template ID.
+     * @param int $room_id The identifier of the room the template is built from. Take it from the room listing of  `GET api/2.0/files/rooms`; a folder identifier is not accepted.
      *
      * @return self
      */
@@ -430,7 +430,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets title
      *
-     * @param string $title The room template title.
+     * @param string $title The title the template is saved under in the Templates section. Characters that a folder name cannot contain  are replaced with an underscore on save, and two templates may share a title.
      *
      * @return self
      */
@@ -464,7 +464,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\LogoRequest|null $logo The room template logo.
+     * @param \OpenAPI\Client\Model\LogoRequest|null $logo A picture of the caller's own for the template, cropped out of an image already placed in the temporary  storage.
      *
      * @return self
      */
@@ -491,7 +491,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets copy_logo
      *
-     * @param bool|null $copy_logo Specifies whether to copy room logo or not.
+     * @param bool|null $copy_logo Whether the template takes over the picture already set on the source room. When false the template gets no  picture from that room.
      *
      * @return self
      */
@@ -518,7 +518,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets share
      *
-     * @param string[]|null $share The collection of email addresses of users with whom to share a room.
+     * @param string[]|null $share The email addresses of the portal members who are granted read access to the finished template.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets groups
      *
-     * @param string[]|null $groups The collection of groups with whom to share a room.
+     * @param string[]|null $groups The identifiers of the portal groups whose members are granted read access to the finished template.
      *
      * @return self
      */
@@ -586,7 +586,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public
      *
-     * @param bool|null $public Specifies whether the room template is public or not.
+     * @param bool|null $public Whether the finished template is shared with everyone allowed to create rooms. When false it stays reachable  only for the recipients named for it.
      *
      * @return self
      */
@@ -613,7 +613,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tags
      *
-     * @param string[]|null $tags The collection of tags.
+     * @param string[]|null $tags The labels attached to the template and shown next to it in listings.
      *
      * @return self
      */
@@ -647,7 +647,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets color
      *
-     * @param string|null $color The color of the room template.
+     * @param string|null $color The accent colour of the generated cover, written as six hexadecimal digits with no leading hash sign. When it  is left empty a colour is picked at random.
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cover
      *
-     * @param string|null $cover The cover of the room template.
+     * @param string|null $cover The identifier of a built-in cover picture, as listed by `GET api/2.0/files/rooms/covers`. When it is left  empty the template gets no cover.
      *
      * @return self
      */
@@ -729,7 +729,7 @@ class RoomTemplateDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quota
      *
-     * @param int|null $quota Room quota
+     * @param int|null $quota The storage limit assigned to the template, in bytes. When it is not set the template keeps the limit of the  source room.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * NotificationChannelDto Class Doc Comment
  *
  * @category Class
- * @description The notification channel information.
+ * @description One delivery channel of the installation, with the state it is in for this portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class NotificationChannelDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string|null $name The notification channel name.
+     * @param string|null $name The internal name of the channel as the notification service knows it - `email.sender` for letters,  `telegram.sender` for Telegram messages. It is a key to match on, not a label to print.
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class NotificationChannelDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets is_enabled
      *
-     * @param bool $is_enabled Specifies whether the notification channel is enabled.
+     * @param bool $is_enabled Whether the channel can deliver for this portal. Letters are enabled whenever the channel is listed at  all, while Telegram is enabled only while the portal has a bot name and token stored. It says nothing  about the caller, who also has to connect their own Telegram account through  `GET api/2.0/settings/telegram/link`.
      *
      * @return self
      */

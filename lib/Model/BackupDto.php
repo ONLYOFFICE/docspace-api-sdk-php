@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupDto Class Doc Comment
  *
  * @category Class
- * @description The backup parameters.
+ * @description The request parameters for starting a backup.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class BackupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets storage_type
      *
-     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The backup storage type.
+     * @param \OpenAPI\Client\Model\BackupStorageType|null $storage_type The storage the archive is written to. It defaults to `Documents`, and it decides which keys  `storageParams` has to carry.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class BackupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets storage_params
      *
-     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The backup storage parameters.
+     * @param \OpenAPI\Client\Model\ItemKeyValuePairObjectObject[]|null $storage_params The settings of the chosen storage, as an array of key and value pairs. `Documents` needs an integer  `folderId`, `ThridpartyDocuments` a provider-specific non-integer `folderId`, `Local` a `filePath`,  `ThirdPartyConsumer` a `module` plus the settings of that consumer, and `DataStore` none. The  `subdir` key is added by the operation itself and must not be sent.
      *
      * @return self
      */
@@ -378,7 +378,7 @@ class BackupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dump
      *
-     * @param bool|null $dump Specifies if a dump will be created or not.
+     * @param bool|null $dump Backs up the whole server rather than this one portal. It requires the space access permission and  works on a standalone installation only.
      *
      * @return self
      */

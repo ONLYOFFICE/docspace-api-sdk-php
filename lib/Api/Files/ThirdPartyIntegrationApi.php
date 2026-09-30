@@ -156,7 +156,7 @@ class ThirdPartyIntegrationApi
      * REST API Reference for deleteThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-third-party/
      *
-     * @param  int $provider_id The provider ID. (required)
+     * @param  int $provider_id The ID of the connected third-party storage account, as `providerId` of `GET api/2.0/files/thirdparty`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteThirdParty'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -177,7 +177,7 @@ class ThirdPartyIntegrationApi
      * REST API Reference for deleteThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-third-party/
      *
-     * @param  int $provider_id The provider ID. (required)
+     * @param  int $provider_id The ID of the connected third-party storage account, as `providerId` of `GET api/2.0/files/thirdparty`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteThirdParty'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -321,7 +321,7 @@ class ThirdPartyIntegrationApi
      * REST API Reference for deleteThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-third-party/
      *
-     * @param  int $provider_id The provider ID. (required)
+     * @param  int $provider_id The ID of the connected third-party storage account, as `providerId` of `GET api/2.0/files/thirdparty`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -345,7 +345,7 @@ class ThirdPartyIntegrationApi
      * REST API Reference for deleteThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-third-party/
      *
-     * @param  int $provider_id The provider ID. (required)
+     * @param  int $provider_id The ID of the connected third-party storage account, as `providerId` of `GET api/2.0/files/thirdparty`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -395,7 +395,7 @@ class ThirdPartyIntegrationApi
     /**
      * Create request for operation 'deleteThirdParty'
      *
-     * @param  int $provider_id The provider ID. (required)
+     * @param  int $provider_id The ID of the connected third-party storage account, as `providerId` of `GET api/2.0/files/thirdparty`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteThirdParty'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -509,12 +509,12 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getAllProviders
      *
-     * Get all providers
+     * Get all third-party providers
      *
      * REST API Reference for getAllProviders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-providers/
      *
-     * @param  bool|null $excludewebdav Specifies whether WebDAV resources should be excluded from the result.. (optional)
+     * @param  bool|null $excludewebdav Set to true to leave out the whole WebDAV family, the kDrive and Yandex presets included, and keep only the  services that authenticate through OAuth 2.0; false lists all of them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProviders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -530,12 +530,12 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getAllProvidersWithHttpInfo
      *
-     * Get all providers
+     * Get all third-party providers
      *
      * REST API Reference for getAllProviders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-providers/
      *
-     * @param  bool|null $excludewebdav Specifies whether WebDAV resources should be excluded from the result.. (optional)
+     * @param  bool|null $excludewebdav Set to true to leave out the whole WebDAV family, the kDrive and Yandex presets included, and keep only the  services that authenticate through OAuth 2.0; false lists all of them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProviders'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -674,12 +674,12 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getAllProvidersAsync
      *
-     * Get all providers
+     * Get all third-party providers
      *
      * REST API Reference for getAllProviders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-providers/
      *
-     * @param  bool|null $excludewebdav Specifies whether WebDAV resources should be excluded from the result.. (optional)
+     * @param  bool|null $excludewebdav Set to true to leave out the whole WebDAV family, the kDrive and Yandex presets included, and keep only the  services that authenticate through OAuth 2.0; false lists all of them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProviders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -698,12 +698,12 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getAllProvidersAsyncWithHttpInfo
      *
-     * Get all providers
+     * Get all third-party providers
      *
      * REST API Reference for getAllProviders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-all-providers/
      *
-     * @param  bool|null $excludewebdav Specifies whether WebDAV resources should be excluded from the result.. (optional)
+     * @param  bool|null $excludewebdav Set to true to leave out the whole WebDAV family, the kDrive and Yandex presets included, and keep only the  services that authenticate through OAuth 2.0; false lists all of them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProviders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -753,7 +753,7 @@ class ThirdPartyIntegrationApi
     /**
      * Create request for operation 'getAllProviders'
      *
-     * @param  bool|null $excludewebdav Specifies whether WebDAV resources should be excluded from the result.. (optional)
+     * @param  bool|null $excludewebdav Set to true to leave out the whole WebDAV family, the kDrive and Yandex presets included, and keep only the  services that authenticate through OAuth 2.0; false lists all of them. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllProviders'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -862,7 +862,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getBackupThirdPartyAccount
      *
-     * Get a third-party account backup
+     * Get the third-party backup folder
      *
      * REST API Reference for getBackupThirdPartyAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-third-party-account/
@@ -871,7 +871,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getBackupThirdPartyAccount(string $contentType = self::contentTypes['getBackupThirdPartyAccount'][0])
     {
@@ -882,7 +882,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getBackupThirdPartyAccountWithHttpInfo
      *
-     * Get a third-party account backup
+     * Get the third-party backup folder
      *
      * REST API Reference for getBackupThirdPartyAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-third-party-account/
@@ -891,7 +891,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBackupThirdPartyAccountWithHttpInfo(string $contentType = self::contentTypes['getBackupThirdPartyAccount'][0])
     {
@@ -923,7 +923,7 @@ class ThirdPartyIntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $request,
                         $response,
                     );
@@ -963,7 +963,7 @@ class ThirdPartyIntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderStringWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                 $request,
                 $response,
             );
@@ -972,7 +972,7 @@ class ThirdPartyIntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1011,7 +1011,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getBackupThirdPartyAccountAsync
      *
-     * Get a third-party account backup
+     * Get the third-party backup folder
      *
      * REST API Reference for getBackupThirdPartyAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-third-party-account/
@@ -1034,7 +1034,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getBackupThirdPartyAccountAsyncWithHttpInfo
      *
-     * Get a third-party account backup
+     * Get the third-party backup folder
      *
      * REST API Reference for getBackupThirdPartyAccount Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-backup-third-party-account/
@@ -1046,7 +1046,7 @@ class ThirdPartyIntegrationApi
      */
     public function getBackupThirdPartyAccountAsyncWithHttpInfo(string $contentType = self::contentTypes['getBackupThirdPartyAccount'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderStringWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyFolderWrapper';
         $request = $this->getBackupThirdPartyAccountRequest($contentType);
 
         return $this->client
@@ -1186,7 +1186,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCapabilities
      *
-     * Get providers
+     * Get third-party provider capabilities
      *
      * REST API Reference for getCapabilities Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-capabilities/
@@ -1206,7 +1206,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCapabilitiesWithHttpInfo
      *
-     * Get providers
+     * Get third-party provider capabilities
      *
      * REST API Reference for getCapabilities Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-capabilities/
@@ -1335,7 +1335,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCapabilitiesAsync
      *
-     * Get providers
+     * Get third-party provider capabilities
      *
      * REST API Reference for getCapabilities Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-capabilities/
@@ -1358,7 +1358,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCapabilitiesAsyncWithHttpInfo
      *
-     * Get providers
+     * Get third-party provider capabilities
      *
      * REST API Reference for getCapabilities Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-capabilities/
@@ -1510,7 +1510,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCommonThirdPartyFolders
      *
-     * Get the common third-party services
+     * Get common third-party folders
      *
      * REST API Reference for getCommonThirdPartyFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-common-third-party-folders/
@@ -1519,7 +1519,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderStringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getCommonThirdPartyFolders(string $contentType = self::contentTypes['getCommonThirdPartyFolders'][0])
     {
@@ -1530,7 +1530,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCommonThirdPartyFoldersWithHttpInfo
      *
-     * Get the common third-party services
+     * Get common third-party folders
      *
      * REST API Reference for getCommonThirdPartyFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-common-third-party-folders/
@@ -1539,7 +1539,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderStringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommonThirdPartyFoldersWithHttpInfo(string $contentType = self::contentTypes['getCommonThirdPartyFolders'][0])
     {
@@ -1571,7 +1571,7 @@ class ThirdPartyIntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderStringArrayWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1611,7 +1611,7 @@ class ThirdPartyIntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderStringArrayWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper',
                 $request,
                 $response,
             );
@@ -1620,7 +1620,7 @@ class ThirdPartyIntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderStringArrayWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1659,7 +1659,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCommonThirdPartyFoldersAsync
      *
-     * Get the common third-party services
+     * Get common third-party folders
      *
      * REST API Reference for getCommonThirdPartyFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-common-third-party-folders/
@@ -1682,7 +1682,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation getCommonThirdPartyFoldersAsyncWithHttpInfo
      *
-     * Get the common third-party services
+     * Get common third-party folders
      *
      * REST API Reference for getCommonThirdPartyFolders Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-common-third-party-folders/
@@ -1694,7 +1694,7 @@ class ThirdPartyIntegrationApi
      */
     public function getCommonThirdPartyFoldersAsyncWithHttpInfo(string $contentType = self::contentTypes['getCommonThirdPartyFolders'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderStringArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyFolderArrayWrapper';
         $request = $this->getCommonThirdPartyFoldersRequest($contentType);
 
         return $this->client
@@ -2158,7 +2158,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdParty
      *
-     * Save a third-party account
+     * Connect a third-party account
      *
      * REST API Reference for saveThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party/
@@ -2168,7 +2168,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveThirdParty($third_party_request_dto = null, string $contentType = self::contentTypes['saveThirdParty'][0])
     {
@@ -2179,7 +2179,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyWithHttpInfo
      *
-     * Save a third-party account
+     * Connect a third-party account
      *
      * REST API Reference for saveThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party/
@@ -2189,7 +2189,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveThirdPartyWithHttpInfo($third_party_request_dto = null, string $contentType = self::contentTypes['saveThirdParty'][0])
     {
@@ -2221,7 +2221,7 @@ class ThirdPartyIntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $request,
                         $response,
                     );
@@ -2267,7 +2267,7 @@ class ThirdPartyIntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderStringWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                 $request,
                 $response,
             );
@@ -2276,7 +2276,7 @@ class ThirdPartyIntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2323,7 +2323,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyAsync
      *
-     * Save a third-party account
+     * Connect a third-party account
      *
      * REST API Reference for saveThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party/
@@ -2347,7 +2347,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyAsyncWithHttpInfo
      *
-     * Save a third-party account
+     * Connect a third-party account
      *
      * REST API Reference for saveThirdParty Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party/
@@ -2360,7 +2360,7 @@ class ThirdPartyIntegrationApi
      */
     public function saveThirdPartyAsyncWithHttpInfo($third_party_request_dto = null, string $contentType = self::contentTypes['saveThirdParty'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderStringWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyFolderWrapper';
         $request = $this->saveThirdPartyRequest($third_party_request_dto, $contentType);
 
         return $this->client
@@ -2509,7 +2509,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyBackup
      *
-     * Save a third-party account backup
+     * Connect the third-party backup storage
      *
      * REST API Reference for saveThirdPartyBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party-backup/
@@ -2519,7 +2519,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveThirdPartyBackup($third_party_backup_request_dto = null, string $contentType = self::contentTypes['saveThirdPartyBackup'][0])
     {
@@ -2530,7 +2530,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyBackupWithHttpInfo
      *
-     * Save a third-party account backup
+     * Connect the third-party backup storage
      *
      * REST API Reference for saveThirdPartyBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party-backup/
@@ -2540,7 +2540,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveThirdPartyBackupWithHttpInfo($third_party_backup_request_dto = null, string $contentType = self::contentTypes['saveThirdPartyBackup'][0])
     {
@@ -2572,7 +2572,7 @@ class ThirdPartyIntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $request,
                         $response,
                     );
@@ -2618,7 +2618,7 @@ class ThirdPartyIntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FolderStringWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                 $request,
                 $response,
             );
@@ -2627,7 +2627,7 @@ class ThirdPartyIntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FolderStringWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyFolderWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2674,7 +2674,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyBackupAsync
      *
-     * Save a third-party account backup
+     * Connect the third-party backup storage
      *
      * REST API Reference for saveThirdPartyBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party-backup/
@@ -2698,7 +2698,7 @@ class ThirdPartyIntegrationApi
     /**
      * Operation saveThirdPartyBackupAsyncWithHttpInfo
      *
-     * Save a third-party account backup
+     * Connect the third-party backup storage
      *
      * REST API Reference for saveThirdPartyBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-third-party-backup/
@@ -2711,7 +2711,7 @@ class ThirdPartyIntegrationApi
      */
     public function saveThirdPartyBackupAsyncWithHttpInfo($third_party_backup_request_dto = null, string $contentType = self::contentTypes['saveThirdPartyBackup'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FolderStringWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyFolderWrapper';
         $request = $this->saveThirdPartyBackupRequest($third_party_backup_request_dto, $contentType);
 
         return $this->client

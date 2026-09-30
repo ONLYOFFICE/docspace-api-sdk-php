@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActiveConnectionsItemDto Class Doc Comment
  *
  * @category Class
- * @description The active connection item parameters.
+ * @description One open connection of a user: where the sign-in behind it came from, and the ID it can be closed by.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -67,7 +67,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => 'string',
         'browser' => 'string',
         'platform' => 'string',
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\ApiDateTime',
         'page' => 'string'
     ];
 
@@ -88,7 +88,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => null,
         'browser' => null,
         'platform' => null,
-        'date' => 'date-time',
+        'date' => null,
         'page' => null
     ];
 
@@ -107,7 +107,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
         'city' => true,
         'browser' => true,
         'platform' => true,
-        'date' => true,
+        'date' => false,
         'page' => true
     ];
 
@@ -382,7 +382,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param int $id The active connection ID.
+     * @param int $id The ID of the sign-in this connection was opened by. Pass it as `loginEventId` to  `PUT api/2.0/security/activeconnections/logout/{loginEventId}` to end this one connection; the item whose  value equals `loginEvent` is the connection the current request uses.
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets tenant_id
      *
-     * @param int $tenant_id The tenant ID.
+     * @param int $tenant_id The portal the sign-in was made on. The operation never crosses portals, so it is the current one on every  item.
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets user_id
      *
-     * @param string $user_id The user ID.
+     * @param string $user_id The user the connection belongs to, which is the calling user on every item - the operation cannot report  anyone else's connections.
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets mobile
      *
-     * @param bool|null $mobile Specifies if the active connection has a mobile phone or not.
+     * @param bool|null $mobile Whether the sign-in came from a mobile client. No mobile marker is stored with a connection, so the value  is `false` on every item and tells a caller nothing about the device.
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets ip
      *
-     * @param string|null $ip The IP address of the active connection.
+     * @param string|null $ip The IP address the sign-in came from, with the port stripped off. On the item that matches `loginEvent` it  is taken from the address the current request arrives from instead of the one stored at sign-in.
      *
      * @return self
      */
@@ -524,7 +524,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets country
      *
-     * @param string|null $country The active connection country.
+     * @param string|null $country The English name of the country the IP address is located in. It is empty when the address cannot be  located, which is the normal outcome for private and loopback addresses.
      *
      * @return self
      */
@@ -558,7 +558,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets city
      *
-     * @param string|null $city The active connection city.
+     * @param string|null $city The city the IP address is located in, empty under the same conditions as `country`.
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets browser
      *
-     * @param string|null $browser The active connection browser.
+     * @param string|null $browser The browser and its version as parsed from the user agent of the sign-in, empty when the client sent no  recognisable one. It is refreshed from the current request on the item that matches `loginEvent`.
      *
      * @return self
      */
@@ -626,7 +626,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets platform
      *
-     * @param string|null $platform The active connection platform.
+     * @param string|null $platform The operating system as parsed from the user agent of the sign-in, refreshed and left empty under the same  conditions as `browser`.
      *
      * @return self
      */
@@ -650,7 +650,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getDate()
     {
@@ -660,21 +660,14 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The active connection date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $date When the sign-in happened, in the portal time zone rather than in UTC.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -694,7 +687,7 @@ class ActiveConnectionsItemDto implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets page
      *
-     * @param string|null $page The active connection page.
+     * @param string|null $page Where in the portal the sign-in was made from: the referrer of the request that created it, or that  request's own path when it carried no referrer. Long values are cut off at 512 characters.
      *
      * @return self
      */

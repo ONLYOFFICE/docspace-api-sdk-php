@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ActionConfig Class Doc Comment
  *
  * @category Class
- * @description The information about the action in the document that will be scrolled to.
+ * @description An anchor inside a document, as the editor writes it.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -326,7 +326,7 @@ class ActionConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param string|null $data The action data that will be scrolled to.
+     * @param string|null $data The anchor value produced by the editor, opaque to the portal: it names the comment, the mention or the  place the document is scrolled to.
      *
      * @return self
      */
@@ -367,7 +367,7 @@ class ActionConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The action type.
+     * @param string|null $type What the anchor points at, as the editor names it - a comment thread, for instance.
      *
      * @return self
      */

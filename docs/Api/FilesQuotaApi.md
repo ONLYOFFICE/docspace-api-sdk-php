@@ -11,11 +11,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `resetRoomQuota()`
 
 ```php
-resetRoomQuota($update_rooms_room_ids_request_dto_integer): \OpenAPI\Client\Model\FolderIntegerArrayWrapper
+resetRoomQuota($update_rooms_room_ids_request_dto): \OpenAPI\Client\Model\FolderArrayWrapper
 ```
 
 Reset the room quota limit
-Resets the quota limit for the rooms with the IDs specified in the request.
+Returns every listed room to the default room quota of the portal and streams the updated rooms back in the  order they were given. This is not the same as removing the limit: the room stops carrying its own value and  starts following the portal default, which a portal administrator can change at any time. The per-room quota  feature has to be on, the caller must be a manager of each listed room, and an archived room or a room in the  trash is refused. The list is not transactional, so rooms processed before a failing one keep the default and  the rest keep what they had. Only numeric room ids are processed, which means ids of rooms stored in a  connected third-party account are silently skipped. Use `PUT api/2.0/files/rooms/roomquota` to set an explicit  value, and a quota of -1 in `PUT api/2.0/files/rooms/{id}` to leave the room with no custom limit at all.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/reset-room-quota/).
 
@@ -23,11 +23,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_rooms_room_ids_request_dto_integer** | [**\OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger**](../Model/UpdateRoomsRoomIdsRequestDtoInteger.md)|  | [optional] |
+| **update_rooms_room_ids_request_dto** | [**\OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto**](../Model/UpdateRoomsRoomIdsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FolderIntegerArrayWrapper**](../Model/FolderIntegerArrayWrapper.md)
+[**\OpenAPI\Client\Model\FolderArrayWrapper**](../Model/FolderArrayWrapper.md)
 
 ### Authorization
 
@@ -68,10 +68,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_rooms_room_ids_request_dto_integer = new \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger(); // \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDtoInteger
+$update_rooms_room_ids_request_dto = new \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto(); // \OpenAPI\Client\Model\UpdateRoomsRoomIdsRequestDto
 
 try {
-    $result = $apiInstance->resetRoomQuota($update_rooms_room_ids_request_dto_integer);
+    $result = $apiInstance->resetRoomQuota($update_rooms_room_ids_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->resetRoomQuota: ', $e->getMessage(), PHP_EOL;
@@ -90,11 +90,11 @@ try {
 ## `updateRoomsQuota()`
 
 ```php
-updateRoomsQuota($update_rooms_quota_request_dto_integer): \OpenAPI\Client\Model\FolderIntegerArrayWrapper
+updateRoomsQuota($update_rooms_quota_request_dto): \OpenAPI\Client\Model\FolderArrayWrapper
 ```
 
 Change the room quota limit
-Changes the quota limit for the rooms with the IDs specified in the request.
+Sets the same custom storage limit, in bytes, on every listed room and streams the updated rooms back in the  order they were given. The per-room quota feature has to be on for the portal, and the value must stay within  the portal own limit, otherwise the call is refused before anything is written. The caller must be a manager  of each listed room, and an archived room or a room in the trash is refused. The list is not transactional:  rooms processed before the offending one keep their new limit, so a failed call has to be checked room by  room. Only numeric room ids are processed, which means ids of rooms stored in a connected third-party account  are silently skipped. A room whose limit already equals the requested value is left untouched and still  returned. To go back to the portal default use `PUT api/2.0/files/rooms/resetquota`, and to drop the custom  limit entirely send a quota of -1 to `PUT api/2.0/files/rooms/{id}`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/update-rooms-quota/).
 
@@ -102,11 +102,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_rooms_quota_request_dto_integer** | [**\OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger**](../Model/UpdateRoomsQuotaRequestDtoInteger.md)|  | [optional] |
+| **update_rooms_quota_request_dto** | [**\OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto**](../Model/UpdateRoomsQuotaRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FolderIntegerArrayWrapper**](../Model/FolderIntegerArrayWrapper.md)
+[**\OpenAPI\Client\Model\FolderArrayWrapper**](../Model/FolderArrayWrapper.md)
 
 ### Authorization
 
@@ -147,10 +147,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_rooms_quota_request_dto_integer = new \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger(); // \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDtoInteger
+$update_rooms_quota_request_dto = new \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto(); // \OpenAPI\Client\Model\UpdateRoomsQuotaRequestDto
 
 try {
-    $result = $apiInstance->updateRoomsQuota($update_rooms_quota_request_dto_integer);
+    $result = $apiInstance->updateRoomsQuota($update_rooms_quota_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->updateRoomsQuota: ', $e->getMessage(), PHP_EOL;

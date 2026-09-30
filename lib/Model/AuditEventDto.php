@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AuditEventDto Class Doc Comment
  *
  * @category Class
- * @description The audit event parameters.
+ * @description One entry of the portal audit trail: who changed what, from where, and where it belongs in the product.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
-        'date' => '\DateTime',
+        'date' => '\OpenAPI\Client\Model\ApiDateTime',
         'user' => 'string',
         'user_id' => 'string',
         'action' => 'string',
@@ -87,7 +87,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'id' => 'int32',
-        'date' => 'date-time',
+        'date' => null,
         'user' => null,
         'user_id' => 'uuid',
         'action' => null,
@@ -113,7 +113,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'id' => false,
-        'date' => true,
+        'date' => false,
         'user' => true,
         'user_id' => false,
         'action' => true,
@@ -422,7 +422,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id The audit event ID.
+     * @param int|null $id The ID of the recorded entry. Nothing accepts it as an argument - no operation fetches a single audit event  - so it serves only to tell two otherwise identical entries apart.
      *
      * @return self
      */
@@ -439,7 +439,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date
      *
-     * @return \DateTime|null
+     * @return \OpenAPI\Client\Model\ApiDateTime|null
      */
     public function getDate()
     {
@@ -449,21 +449,14 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date
      *
-     * @param \DateTime|null $date The audit event date.
+     * @param \OpenAPI\Client\Model\ApiDateTime|null $date When the action happened, in the portal time zone. The `from` and `to` filters are read as UTC instants, so  the two do not line up on a portal that is not on UTC.
      *
      * @return self
      */
     public function setDate($date)
     {
         if (is_null($date)) {
-            array_push($this->openAPINullablesSetToNull, 'date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable date cannot be null');
         }
         $this->container['date'] = $date;
 
@@ -483,7 +476,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param string|null $user The name of the user who triggered the audit event.
+     * @param string|null $user The display name of the user who acted, taken from the account as it stands now rather than as it stood  when the entry was written. A localised placeholder stands in when there is no account to read: a portal  background job, an anonymous guest, or a user who has since been deleted.
      *
      * @return self
      */
@@ -517,7 +510,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The ID of the user who triggered the audit event.
+     * @param string|null $user_id The ID of the user who acted, which is what the `userId` filter of this operation matches on. It stays  readable after the account is deleted, which is when `user` falls back to a placeholder.
      *
      * @return self
      */
@@ -544,7 +537,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param string|null $action The audit event action.
+     * @param string|null $action The whole event as a readable sentence in the portal language, with the names of the objects involved  substituted into it. On the two `audit/.../last` operations each substituted value is cut to 50 characters;  the filtered operations substitute them in full. It is empty when the build has no wording for the action.
      *
      * @return self
      */
@@ -578,7 +571,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_id
      *
-     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The specific action that occurred within the audit event.
+     * @param \OpenAPI\Client\Model\MessageAction|null $action_id The action itself, as the `action` filter of this operation spells it and as  `GET api/2.0/security/audit/mappers` lists it under `messageAction`. Use this rather than parsing `action`,  which is prose and changes with the portal language.
      *
      * @return self
      */
@@ -605,7 +598,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ip
      *
-     * @param string|null $ip The audit event IP.
+     * @param string|null $ip The IP address the request came from, with the port stripped off. It is empty for an action a portal  background job performed, which has no request behind it.
      *
      * @return self
      */
@@ -639,7 +632,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param string|null $country The audit event country.
+     * @param string|null $country The English name of the country the IP address is located in, empty when the address cannot be located -  the normal outcome for private and loopback addresses.
      *
      * @return self
      */
@@ -673,7 +666,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets city
      *
-     * @param string|null $city The audit event city.
+     * @param string|null $city The city the IP address is located in, empty under the same conditions as `country`.
      *
      * @return self
      */
@@ -707,7 +700,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets browser
      *
-     * @param string|null $browser The audit event browser.
+     * @param string|null $browser The browser and its version as parsed from the user agent of the request, empty when the client sent none  that could be parsed or when no request was involved.
      *
      * @return self
      */
@@ -741,7 +734,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform
      *
-     * @param string|null $platform The audit event platform.
+     * @param string|null $platform The operating system as parsed from the same user agent, empty under the same conditions as `browser`.
      *
      * @return self
      */
@@ -775,7 +768,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets page
      *
-     * @param string|null $page The audit event page.
+     * @param string|null $page Where in the portal the action was made from: the referrer of the request, or that request's own path when  it carried no referrer. Long values are cut off at 512 characters.
      *
      * @return self
      */
@@ -809,7 +802,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_type
      *
-     * @param \OpenAPI\Client\Model\ActionType|null $action_type The type of action performed in the audit event (e.g., Create, Update, Delete).
+     * @param \OpenAPI\Client\Model\ActionType|null $action_type The kind of change the action stands for, as the `actionType` filter of this operation spells it. It is  derived from `actionId`, not stored per entry, so it is the same on every entry of one action.
      *
      * @return self
      */
@@ -836,7 +829,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product
      *
-     * @param \OpenAPI\Client\Model\ProductType|null $product The type of product related to the audit event.
+     * @param \OpenAPI\Client\Model\ProductType|null $product The product the action belongs to. It cannot be filtered on here; the tree that groups actions by product  is `GET api/2.0/security/audit/mappers`.
      *
      * @return self
      */
@@ -863,7 +856,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets location
      *
-     * @param \OpenAPI\Client\Model\LocationType|null $location The location where the audit event occurred.
+     * @param \OpenAPI\Client\Model\LocationType|null $location The location inside that product, as the `moduleType` filter of this operation spells it. It is also  derived from `actionId` rather than stored per entry.
      *
      * @return self
      */
@@ -890,7 +883,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets target
      *
-     * @param string[]|null $target The list of target objects affected by the audit event (e.g., document ID, user account).
+     * @param string[]|null $target The objects the action was applied to, as the trail recorded them - a title, an account, an ID - one string  each. It is empty for an action that targets nothing, such as a settings change, and the `target` filter of  this operation matches one of these values in full.
      *
      * @return self
      */
@@ -924,7 +917,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets entries
      *
-     * @param \OpenAPI\Client\Model\EntryType[]|null $entries The list of audit entry types (e.g., Folder, User, File).
+     * @param \OpenAPI\Client\Model\EntryType[]|null $entries The kinds of object the action applies to, holding at most two entries and none at all for an action that  targets nothing. Only the first of them can be filtered on, through `entryType`.
      *
      * @return self
      */
@@ -958,7 +951,7 @@ class AuditEventDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets context
      *
-     * @param string|null $context The audit event context.
+     * @param string|null $context Where the action took place, spelled out in the portal language rather than as a code: for a Documents  event the room or the root folder it happened in, and for anything else the name of the module. Nothing  filters on it.
      *
      * @return self
      */

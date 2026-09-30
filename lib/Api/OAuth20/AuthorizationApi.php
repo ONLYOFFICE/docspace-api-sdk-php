@@ -136,15 +136,15 @@ class AuthorizationApi
     /**
      * Operation authorizeOAuth
      *
-     * OAuth2 Authorization Endpoint
+     * Start the authorization flow
      *
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
-     * @param  string $client_id The client identifier issued to the client during registration. (required)
-     * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
-     * @param  string $scope The space-separated list of requested scope permissions. (required)
+     * @param  string $response_type The OAuth 2.0 response type. Only code is supported: this server issues an authorization code, never a token, from this endpoint. (required)
+     * @param  string $client_id The identifier the client was given when it was registered. It selects both the client shown on the consent screen and the set of redirect URIs the request is checked against. (required)
+     * @param  string $redirect_uri Where to send the user once authorization is complete. It has to be one of the redirect URIs registered for the client, otherwise the request is refused. (required)
+     * @param  string $scope The permissions being asked for, as a space-separated list. Every scope has to be one the client is registered for, and the consent screen lists exactly these. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authorizeOAuth'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -159,15 +159,15 @@ class AuthorizationApi
     /**
      * Operation authorizeOAuthWithHttpInfo
      *
-     * OAuth2 Authorization Endpoint
+     * Start the authorization flow
      *
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
-     * @param  string $client_id The client identifier issued to the client during registration. (required)
-     * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
-     * @param  string $scope The space-separated list of requested scope permissions. (required)
+     * @param  string $response_type The OAuth 2.0 response type. Only code is supported: this server issues an authorization code, never a token, from this endpoint. (required)
+     * @param  string $client_id The identifier the client was given when it was registered. It selects both the client shown on the consent screen and the set of redirect URIs the request is checked against. (required)
+     * @param  string $redirect_uri Where to send the user once authorization is complete. It has to be one of the redirect URIs registered for the client, otherwise the request is refused. (required)
+     * @param  string $scope The permissions being asked for, as a space-separated list. Every scope has to be one the client is registered for, and the consent screen lists exactly these. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authorizeOAuth'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -214,15 +214,15 @@ class AuthorizationApi
     /**
      * Operation authorizeOAuthAsync
      *
-     * OAuth2 Authorization Endpoint
+     * Start the authorization flow
      *
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
-     * @param  string $client_id The client identifier issued to the client during registration. (required)
-     * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
-     * @param  string $scope The space-separated list of requested scope permissions. (required)
+     * @param  string $response_type The OAuth 2.0 response type. Only code is supported: this server issues an authorization code, never a token, from this endpoint. (required)
+     * @param  string $client_id The identifier the client was given when it was registered. It selects both the client shown on the consent screen and the set of redirect URIs the request is checked against. (required)
+     * @param  string $redirect_uri Where to send the user once authorization is complete. It has to be one of the redirect URIs registered for the client, otherwise the request is refused. (required)
+     * @param  string $scope The permissions being asked for, as a space-separated list. Every scope has to be one the client is registered for, and the consent screen lists exactly these. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authorizeOAuth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -241,15 +241,15 @@ class AuthorizationApi
     /**
      * Operation authorizeOAuthAsyncWithHttpInfo
      *
-     * OAuth2 Authorization Endpoint
+     * Start the authorization flow
      *
      * REST API Reference for authorizeOAuth Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authorize-oauth/
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
-     * @param  string $client_id The client identifier issued to the client during registration. (required)
-     * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
-     * @param  string $scope The space-separated list of requested scope permissions. (required)
+     * @param  string $response_type The OAuth 2.0 response type. Only code is supported: this server issues an authorization code, never a token, from this endpoint. (required)
+     * @param  string $client_id The identifier the client was given when it was registered. It selects both the client shown on the consent screen and the set of redirect URIs the request is checked against. (required)
+     * @param  string $redirect_uri Where to send the user once authorization is complete. It has to be one of the redirect URIs registered for the client, otherwise the request is refused. (required)
+     * @param  string $scope The permissions being asked for, as a space-separated list. Every scope has to be one the client is registered for, and the consent screen lists exactly these. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authorizeOAuth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -286,10 +286,10 @@ class AuthorizationApi
     /**
      * Create request for operation 'authorizeOAuth'
      *
-     * @param  string $response_type The OAuth 2.0 response type, must be 'code' for authorization code flow. (required)
-     * @param  string $client_id The client identifier issued to the client during registration. (required)
-     * @param  string $redirect_uri The URL to redirect to after authorization is complete. (required)
-     * @param  string $scope The space-separated list of requested scope permissions. (required)
+     * @param  string $response_type The OAuth 2.0 response type. Only code is supported: this server issues an authorization code, never a token, from this endpoint. (required)
+     * @param  string $client_id The identifier the client was given when it was registered. It selects both the client shown on the consent screen and the set of redirect URIs the request is checked against. (required)
+     * @param  string $redirect_uri Where to send the user once authorization is complete. It has to be one of the redirect URIs registered for the client, otherwise the request is refused. (required)
+     * @param  string $scope The permissions being asked for, as a space-separated list. Every scope has to be one the client is registered for, and the consent screen lists exactly these. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authorizeOAuth'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -435,16 +435,16 @@ class AuthorizationApi
     /**
      * Operation exchangeToken
      *
-     * OAuth2 Token Endpoint
+     * Exchange the authorization code
      *
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
-     * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
-     * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $client_secret The client secret issued to the client during registration. (optional)
+     * @param  string|null $grant_type Which exchange is being performed: authorization_code to redeem a code, refresh_token to renew an access token. (optional)
+     * @param  string|null $code The authorization code returned by the authorization endpoint. It may be redeemed once. (optional)
+     * @param  string|null $redirect_uri The same redirect URI that was used to obtain the code. The exchange fails when it differs. (optional)
+     * @param  string|null $client_id The identifier of the client redeeming the code. (optional)
+     * @param  string|null $client_secret The secret of the client redeeming the code. It is omitted by a public client, which proves itself with a PKCE code verifier instead. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exchangeToken'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -460,16 +460,16 @@ class AuthorizationApi
     /**
      * Operation exchangeTokenWithHttpInfo
      *
-     * OAuth2 Token Endpoint
+     * Exchange the authorization code
      *
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
-     * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
-     * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $client_secret The client secret issued to the client during registration. (optional)
+     * @param  string|null $grant_type Which exchange is being performed: authorization_code to redeem a code, refresh_token to renew an access token. (optional)
+     * @param  string|null $code The authorization code returned by the authorization endpoint. It may be redeemed once. (optional)
+     * @param  string|null $redirect_uri The same redirect URI that was used to obtain the code. The exchange fails when it differs. (optional)
+     * @param  string|null $client_id The identifier of the client redeeming the code. (optional)
+     * @param  string|null $client_secret The secret of the client redeeming the code. It is omitted by a public client, which proves itself with a PKCE code verifier instead. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exchangeToken'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -552,16 +552,16 @@ class AuthorizationApi
     /**
      * Operation exchangeTokenAsync
      *
-     * OAuth2 Token Endpoint
+     * Exchange the authorization code
      *
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
-     * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
-     * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $client_secret The client secret issued to the client during registration. (optional)
+     * @param  string|null $grant_type Which exchange is being performed: authorization_code to redeem a code, refresh_token to renew an access token. (optional)
+     * @param  string|null $code The authorization code returned by the authorization endpoint. It may be redeemed once. (optional)
+     * @param  string|null $redirect_uri The same redirect URI that was used to obtain the code. The exchange fails when it differs. (optional)
+     * @param  string|null $client_id The identifier of the client redeeming the code. (optional)
+     * @param  string|null $client_secret The secret of the client redeeming the code. It is omitted by a public client, which proves itself with a PKCE code verifier instead. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exchangeToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -580,16 +580,16 @@ class AuthorizationApi
     /**
      * Operation exchangeTokenAsyncWithHttpInfo
      *
-     * OAuth2 Token Endpoint
+     * Exchange the authorization code
      *
      * REST API Reference for exchangeToken Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/exchange-token/
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
-     * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
-     * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $client_secret The client secret issued to the client during registration. (optional)
+     * @param  string|null $grant_type Which exchange is being performed: authorization_code to redeem a code, refresh_token to renew an access token. (optional)
+     * @param  string|null $code The authorization code returned by the authorization endpoint. It may be redeemed once. (optional)
+     * @param  string|null $redirect_uri The same redirect URI that was used to obtain the code. The exchange fails when it differs. (optional)
+     * @param  string|null $client_id The identifier of the client redeeming the code. (optional)
+     * @param  string|null $client_secret The secret of the client redeeming the code. It is omitted by a public client, which proves itself with a PKCE code verifier instead. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exchangeToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -639,11 +639,11 @@ class AuthorizationApi
     /**
      * Create request for operation 'exchangeToken'
      *
-     * @param  string|null $grant_type The OAuth2 grant type, must be 'authorization_code' for the authorization code flow. (optional)
-     * @param  string|null $code A temporary authorization code that is sent to the client to be exchanged for a token. (optional)
-     * @param  string|null $redirect_uri The URL where the user will be redirected after successful or unsuccessful authentication. (optional)
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $client_secret The client secret issued to the client during registration. (optional)
+     * @param  string|null $grant_type Which exchange is being performed: authorization_code to redeem a code, refresh_token to renew an access token. (optional)
+     * @param  string|null $code The authorization code returned by the authorization endpoint. It may be redeemed once. (optional)
+     * @param  string|null $redirect_uri The same redirect URI that was used to obtain the code. The exchange fails when it differs. (optional)
+     * @param  string|null $client_id The identifier of the client redeeming the code. (optional)
+     * @param  string|null $client_secret The secret of the client redeeming the code. It is omitted by a public client, which proves itself with a PKCE code verifier instead. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exchangeToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -738,14 +738,14 @@ class AuthorizationApi
     /**
      * Operation submitConsent
      *
-     * OAuth2 consent endpoint
+     * Submit the consent decision
      *
      * REST API Reference for submitConsent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/submit-consent/
      *
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $state The random string used to solve the CSRF vulnerability problem. (optional)
-     * @param  string|null $scope The space-separated list of requested scope permissions. (optional)
+     * @param  string|null $client_id The client the consent is being given to. It has to be the same client the authorization request named. (optional)
+     * @param  string|null $state The opaque value carried through from the authorization request, returned unchanged on the redirect so the client can match the answer to its request. (optional)
+     * @param  string|null $scope The scopes the user agreed to, as a space-separated list. Anything the user declined is left out, so this may be narrower than what was requested. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitConsent'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -760,14 +760,14 @@ class AuthorizationApi
     /**
      * Operation submitConsentWithHttpInfo
      *
-     * OAuth2 consent endpoint
+     * Submit the consent decision
      *
      * REST API Reference for submitConsent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/submit-consent/
      *
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $state The random string used to solve the CSRF vulnerability problem. (optional)
-     * @param  string|null $scope The space-separated list of requested scope permissions. (optional)
+     * @param  string|null $client_id The client the consent is being given to. It has to be the same client the authorization request named. (optional)
+     * @param  string|null $state The opaque value carried through from the authorization request, returned unchanged on the redirect so the client can match the answer to its request. (optional)
+     * @param  string|null $scope The scopes the user agreed to, as a space-separated list. Anything the user declined is left out, so this may be narrower than what was requested. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitConsent'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
@@ -814,14 +814,14 @@ class AuthorizationApi
     /**
      * Operation submitConsentAsync
      *
-     * OAuth2 consent endpoint
+     * Submit the consent decision
      *
      * REST API Reference for submitConsent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/submit-consent/
      *
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $state The random string used to solve the CSRF vulnerability problem. (optional)
-     * @param  string|null $scope The space-separated list of requested scope permissions. (optional)
+     * @param  string|null $client_id The client the consent is being given to. It has to be the same client the authorization request named. (optional)
+     * @param  string|null $state The opaque value carried through from the authorization request, returned unchanged on the redirect so the client can match the answer to its request. (optional)
+     * @param  string|null $scope The scopes the user agreed to, as a space-separated list. Anything the user declined is left out, so this may be narrower than what was requested. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitConsent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -840,14 +840,14 @@ class AuthorizationApi
     /**
      * Operation submitConsentAsyncWithHttpInfo
      *
-     * OAuth2 consent endpoint
+     * Submit the consent decision
      *
      * REST API Reference for submitConsent Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/submit-consent/
      *
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $state The random string used to solve the CSRF vulnerability problem. (optional)
-     * @param  string|null $scope The space-separated list of requested scope permissions. (optional)
+     * @param  string|null $client_id The client the consent is being given to. It has to be the same client the authorization request named. (optional)
+     * @param  string|null $state The opaque value carried through from the authorization request, returned unchanged on the redirect so the client can match the answer to its request. (optional)
+     * @param  string|null $scope The scopes the user agreed to, as a space-separated list. Anything the user declined is left out, so this may be narrower than what was requested. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitConsent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -884,9 +884,9 @@ class AuthorizationApi
     /**
      * Create request for operation 'submitConsent'
      *
-     * @param  string|null $client_id The client identifier issued to the client during registration. (optional)
-     * @param  string|null $state The random string used to solve the CSRF vulnerability problem. (optional)
-     * @param  string|null $scope The space-separated list of requested scope permissions. (optional)
+     * @param  string|null $client_id The client the consent is being given to. It has to be the same client the authorization request named. (optional)
+     * @param  string|null $state The opaque value carried through from the authorization request, returned unchanged on the redirect so the client can match the answer to its request. (optional)
+     * @param  string|null $scope The scopes the user agreed to, as a space-separated list. Anything the user declined is left out, so this may be narrower than what was requested. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitConsent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

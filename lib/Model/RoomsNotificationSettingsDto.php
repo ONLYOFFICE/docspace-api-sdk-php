@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * RoomsNotificationSettingsDto Class Doc Comment
  *
  * @category Class
- * @description The rooms notification settings.
+ * @description The rooms the calling user has silenced.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -303,7 +303,7 @@ class RoomsNotificationSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets disabled_rooms
      *
-     * @param object[]|null $disabled_rooms The list of rooms with the disabled notifications.
+     * @param object[]|null $disabled_rooms The identifiers of the silenced rooms, in the order they were added, and belonging to the caller's own  account alone. They are kept as opaque values, so a numeric identifier of a portal room and a string  identifier of a room on a connected third-party account both appear here, and an identifier stays on the  list after its room is deleted. An empty list means nothing is silenced.
      *
      * @return self
      */

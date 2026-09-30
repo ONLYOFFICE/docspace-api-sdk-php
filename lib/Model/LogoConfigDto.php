@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * LogoConfigDto Class Doc Comment
  *
  * @category Class
- * @description The logo config parameters.
+ * @description The logo the editor shows, resolved for the file type and the layout of this opening.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -338,7 +338,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image
      *
-     * @param string|null $image The image of the logo.
+     * @param string|null $image The logo for the current layout and file type, as the portal branding defines it.
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_dark
      *
-     * @param string|null $image_dark The dark image of the logo.
+     * @param string|null $image_dark The variant for a dark interface theme.
      *
      * @return self
      */
@@ -406,7 +406,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_light
      *
-     * @param string|null $image_light The light image of the logo.
+     * @param string|null $image_light The variant for a light interface theme.
      *
      * @return self
      */
@@ -440,7 +440,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets image_embedded
      *
-     * @param string|null $image_embedded The embedded image of the logo.
+     * @param string|null $image_embedded The variant for the framed viewer. It is empty in every layout but the embedded one.
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url The url link of the logo.
+     * @param string|null $url Where clicking the logo takes the user.
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class LogoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets visible
      *
-     * @param bool|null $visible Specifies if the logo is visible.
+     * @param bool|null $visible Whether the logo is shown at all; the mobile layout hides it.
      *
      * @return self
      */
