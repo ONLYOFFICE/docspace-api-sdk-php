@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantBannerSettingsDto Class Doc Comment
  *
  * @category Class
- * @description Whether the portal promotional banners are hidden.
+ * @description Whether the portal hides its promotional banners.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $openAPITypes = [
-        'hidden' => 'bool'
+        'hidden' => 'bool',
+        'last_modified' => '\DateTime'
     ];
 
     /**
@@ -69,7 +70,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'hidden' => null
+        'hidden' => null,
+        'last_modified' => 'date-time'
     ];
 
     /**
@@ -78,7 +80,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'hidden' => false
+        'hidden' => false,
+        'last_modified' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'hidden' => 'hidden'
+        'hidden' => 'hidden',
+        'last_modified' => 'lastModified'
     ];
 
     /**
@@ -176,7 +180,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'hidden' => 'setHidden'
+        'hidden' => 'setHidden',
+        'last_modified' => 'setLastModified'
     ];
 
     /**
@@ -185,7 +190,8 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'hidden' => 'getHidden'
+        'hidden' => 'getHidden',
+        'last_modified' => 'getLastModified'
     ];
 
     /**
@@ -246,6 +252,7 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('hidden', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
     }
 
     /**
@@ -303,7 +310,7 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets hidden
      *
-     * @param bool|null $hidden Whether the promotional banners are hidden from every user of the portal. The flag is only honoured on a  self-hosted installation; a SaaS portal keeps showing the banners whatever is stored here.
+     * @param bool|null $hidden The banners visibility flag.
      *
      * @return self
      */
@@ -313,6 +320,33 @@ class TenantBannerSettingsDto implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable hidden cannot be null');
         }
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return \DateTime|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param \DateTime|null $last_modified The timestamp indicating when the settings were last modified.
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
+        }
+        $this->container['last_modified'] = $last_modified;
 
         return $this;
     }

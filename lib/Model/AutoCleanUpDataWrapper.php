@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AutoCleanUpDataWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the AutoCleanUpData object.
+ * @description The successful API response containing the AutoCleanUpDataDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class AutoCleanUpDataWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\AutoCleanUpData',
+        'response' => '\OpenAPI\Client\Model\AutoCleanUpDataDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class AutoCleanUpDataWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\AutoCleanUpData|null
+     * @return \OpenAPI\Client\Model\AutoCleanUpDataDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class AutoCleanUpDataWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\AutoCleanUpData|null $response The AutoCleanUpData object returned by the operation.
+     * @param \OpenAPI\Client\Model\AutoCleanUpDataDto|null $response The AutoCleanUpDataDto object returned by the operation.
      *
      * @return self
      */

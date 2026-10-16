@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * STRINGArrayWrapper Class Doc Comment
+ * StringArrayWrapper Class Doc Comment
  *
  * @category Class
  * @description The successful API response.
@@ -41,7 +41,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class STRINGArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
+class StringArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class STRINGArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @var string
      */
-    protected static $openAPIModelName = 'STRINGArrayWrapper';
+    protected static $openAPIModelName = 'StringArrayWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

@@ -11,7 +11,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `docRegisterPusnNotificationDevice()`
 
 ```php
-docRegisterPusnNotificationDevice($firebase_requests_dto): \OpenAPI\Client\Model\FireBaseUserWrapper
+docRegisterPusnNotificationDevice($firebase_request_dto): \OpenAPI\Client\Model\FirebaseDeviceWrapper
 ```
 
 Register a push device
@@ -23,11 +23,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firebase_requests_dto** | [**\OpenAPI\Client\Model\FirebaseRequestsDto**](../Model/FirebaseRequestsDto.md)|  | [optional] |
+| **firebase_request_dto** | [**\OpenAPI\Client\Model\FirebaseRequestDto**](../Model/FirebaseRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FireBaseUserWrapper**](../Model/FireBaseUserWrapper.md)
+[**\OpenAPI\Client\Model\FirebaseDeviceWrapper**](../Model/FirebaseDeviceWrapper.md)
 
 ### Authorization
 
@@ -68,10 +68,10 @@ $apiInstance = new OpenAPI\Client\Api\FirebaseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firebase_requests_dto = new \OpenAPI\Client\Model\FirebaseRequestsDto(); // \OpenAPI\Client\Model\FirebaseRequestsDto
+$firebase_request_dto = new \OpenAPI\Client\Model\FirebaseRequestDto(); // \OpenAPI\Client\Model\FirebaseRequestDto
 
 try {
-    $result = $apiInstance->docRegisterPusnNotificationDevice($firebase_requests_dto);
+    $result = $apiInstance->docRegisterPusnNotificationDevice($firebase_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FirebaseApi->docRegisterPusnNotificationDevice: ', $e->getMessage(), PHP_EOL;
@@ -90,7 +90,7 @@ try {
 ## `subscribeDocumentsPushNotification()`
 
 ```php
-subscribeDocumentsPushNotification($firebase_requests_dto): \OpenAPI\Client\Model\FireBaseUserWrapper
+subscribeDocumentsPushNotification($firebase_request_dto): \OpenAPI\Client\Model\FirebaseDeviceWrapper
 ```
 
 Set push subscription
@@ -102,11 +102,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **firebase_requests_dto** | [**\OpenAPI\Client\Model\FirebaseRequestsDto**](../Model/FirebaseRequestsDto.md)|  | [optional] |
+| **firebase_request_dto** | [**\OpenAPI\Client\Model\FirebaseRequestDto**](../Model/FirebaseRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\FireBaseUserWrapper**](../Model/FireBaseUserWrapper.md)
+[**\OpenAPI\Client\Model\FirebaseDeviceWrapper**](../Model/FirebaseDeviceWrapper.md)
 
 ### Authorization
 
@@ -147,10 +147,10 @@ $apiInstance = new OpenAPI\Client\Api\FirebaseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$firebase_requests_dto = new \OpenAPI\Client\Model\FirebaseRequestsDto(); // \OpenAPI\Client\Model\FirebaseRequestsDto
+$firebase_request_dto = new \OpenAPI\Client\Model\FirebaseRequestDto(); // \OpenAPI\Client\Model\FirebaseRequestDto
 
 try {
-    $result = $apiInstance->subscribeDocumentsPushNotification($firebase_requests_dto);
+    $result = $apiInstance->subscribeDocumentsPushNotification($firebase_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FirebaseApi->subscribeDocumentsPushNotification: ', $e->getMessage(), PHP_EOL;

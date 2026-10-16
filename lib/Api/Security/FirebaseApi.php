@@ -138,16 +138,16 @@ class FirebaseApi
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['docRegisterPusnNotificationDevice'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FireBaseUserWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FirebaseDeviceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function docRegisterPusnNotificationDevice($firebase_requests_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
+    public function docRegisterPusnNotificationDevice($firebase_request_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
     {
-        list($response) = $this->docRegisterPusnNotificationDeviceWithHttpInfo($firebase_requests_dto, $contentType);
+        list($response) = $this->docRegisterPusnNotificationDeviceWithHttpInfo($firebase_request_dto, $contentType);
         return $response;
     }
 
@@ -159,16 +159,16 @@ class FirebaseApi
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['docRegisterPusnNotificationDevice'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FireBaseUserWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FirebaseDeviceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function docRegisterPusnNotificationDeviceWithHttpInfo($firebase_requests_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
+    public function docRegisterPusnNotificationDeviceWithHttpInfo($firebase_request_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
     {
-        $request = $this->docRegisterPusnNotificationDeviceRequest($firebase_requests_dto, $contentType);
+        $request = $this->docRegisterPusnNotificationDeviceRequest($firebase_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -196,7 +196,7 @@ class FirebaseApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                        '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                         $request,
                         $response,
                     );
@@ -207,12 +207,6 @@ class FirebaseApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -242,7 +236,7 @@ class FirebaseApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                 $request,
                 $response,
             );
@@ -251,7 +245,7 @@ class FirebaseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                        '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -265,14 +259,6 @@ class FirebaseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -303,15 +289,15 @@ class FirebaseApi
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['docRegisterPusnNotificationDevice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function docRegisterPusnNotificationDeviceAsync($firebase_requests_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
+    public function docRegisterPusnNotificationDeviceAsync($firebase_request_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
     {
-        return $this->docRegisterPusnNotificationDeviceAsyncWithHttpInfo($firebase_requests_dto, $contentType)
+        return $this->docRegisterPusnNotificationDeviceAsyncWithHttpInfo($firebase_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -327,16 +313,16 @@ class FirebaseApi
      * REST API Reference for docRegisterPusnNotificationDevice Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/doc-register-pusn-notification-device/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['docRegisterPusnNotificationDevice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function docRegisterPusnNotificationDeviceAsyncWithHttpInfo($firebase_requests_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
+    public function docRegisterPusnNotificationDeviceAsyncWithHttpInfo($firebase_request_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FireBaseUserWrapper';
-        $request = $this->docRegisterPusnNotificationDeviceRequest($firebase_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\FirebaseDeviceWrapper';
+        $request = $this->docRegisterPusnNotificationDeviceRequest($firebase_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -377,13 +363,13 @@ class FirebaseApi
     /**
      * Create request for operation 'docRegisterPusnNotificationDevice'
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['docRegisterPusnNotificationDevice'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function docRegisterPusnNotificationDeviceRequest($firebase_requests_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
+    public function docRegisterPusnNotificationDeviceRequest($firebase_request_dto = null, string $contentType = self::contentTypes['docRegisterPusnNotificationDevice'][0])
     {
 
 
@@ -406,12 +392,12 @@ class FirebaseApi
         );
 
         // for model (json/xml)
-        if (isset($firebase_requests_dto)) {
+        if (isset($firebase_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($firebase_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($firebase_request_dto));
             } else {
-                $httpBody = $firebase_requests_dto;
+                $httpBody = $firebase_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -489,16 +475,16 @@ class FirebaseApi
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribeDocumentsPushNotification'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FireBaseUserWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FirebaseDeviceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function subscribeDocumentsPushNotification($firebase_requests_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
+    public function subscribeDocumentsPushNotification($firebase_request_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
     {
-        list($response) = $this->subscribeDocumentsPushNotificationWithHttpInfo($firebase_requests_dto, $contentType);
+        list($response) = $this->subscribeDocumentsPushNotificationWithHttpInfo($firebase_request_dto, $contentType);
         return $response;
     }
 
@@ -510,16 +496,16 @@ class FirebaseApi
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribeDocumentsPushNotification'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FireBaseUserWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FirebaseDeviceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function subscribeDocumentsPushNotificationWithHttpInfo($firebase_requests_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
+    public function subscribeDocumentsPushNotificationWithHttpInfo($firebase_request_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
     {
-        $request = $this->subscribeDocumentsPushNotificationRequest($firebase_requests_dto, $contentType);
+        $request = $this->subscribeDocumentsPushNotificationRequest($firebase_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -547,7 +533,7 @@ class FirebaseApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                        '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                         $request,
                         $response,
                     );
@@ -593,7 +579,7 @@ class FirebaseApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                 $request,
                 $response,
             );
@@ -602,7 +588,7 @@ class FirebaseApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\FireBaseUserWrapper',
+                        '\OpenAPI\Client\Model\FirebaseDeviceWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -654,15 +640,15 @@ class FirebaseApi
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribeDocumentsPushNotification'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscribeDocumentsPushNotificationAsync($firebase_requests_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
+    public function subscribeDocumentsPushNotificationAsync($firebase_request_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
     {
-        return $this->subscribeDocumentsPushNotificationAsyncWithHttpInfo($firebase_requests_dto, $contentType)
+        return $this->subscribeDocumentsPushNotificationAsyncWithHttpInfo($firebase_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -678,16 +664,16 @@ class FirebaseApi
      * REST API Reference for subscribeDocumentsPushNotification Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/subscribe-documents-push-notification/
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribeDocumentsPushNotification'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function subscribeDocumentsPushNotificationAsyncWithHttpInfo($firebase_requests_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
+    public function subscribeDocumentsPushNotificationAsyncWithHttpInfo($firebase_request_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\FireBaseUserWrapper';
-        $request = $this->subscribeDocumentsPushNotificationRequest($firebase_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\FirebaseDeviceWrapper';
+        $request = $this->subscribeDocumentsPushNotificationRequest($firebase_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -728,13 +714,13 @@ class FirebaseApi
     /**
      * Create request for operation 'subscribeDocumentsPushNotification'
      *
-     * @param  \OpenAPI\Client\Model\FirebaseRequestsDto|null $firebase_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\FirebaseRequestDto|null $firebase_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subscribeDocumentsPushNotification'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function subscribeDocumentsPushNotificationRequest($firebase_requests_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
+    public function subscribeDocumentsPushNotificationRequest($firebase_request_dto = null, string $contentType = self::contentTypes['subscribeDocumentsPushNotification'][0])
     {
 
 
@@ -757,12 +743,12 @@ class FirebaseApi
         );
 
         // for model (json/xml)
-        if (isset($firebase_requests_dto)) {
+        if (isset($firebase_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($firebase_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($firebase_request_dto));
             } else {
-                $httpBody = $firebase_requests_dto;
+                $httpBody = $firebase_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

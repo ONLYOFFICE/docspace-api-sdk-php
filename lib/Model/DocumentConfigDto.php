@@ -62,14 +62,14 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
         'info' => '\OpenAPI\Client\Model\InfoConfigDto',
         'is_linked_for_me' => 'bool',
         'key' => 'string',
-        'permissions' => '\OpenAPI\Client\Model\PermissionsConfig',
+        'permissions' => '\OpenAPI\Client\Model\PermissionsConfigDto',
         'shared_link_param' => 'string',
         'shared_link_key' => 'string',
-        'reference_data' => '\OpenAPI\Client\Model\FileReferenceData',
+        'reference_data' => '\OpenAPI\Client\Model\FileReferenceDataDto',
         'title' => 'string',
         'url' => 'string',
         'is_form' => 'bool',
-        'options' => '\OpenAPI\Client\Model\Options'
+        'options' => '\OpenAPI\Client\Model\DocumentOptionsDto'
     ];
 
     /**
@@ -492,7 +492,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets permissions
      *
-     * @return \OpenAPI\Client\Model\PermissionsConfig|null
+     * @return \OpenAPI\Client\Model\PermissionsConfigDto|null
      */
     public function getPermissions()
     {
@@ -502,7 +502,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets permissions
      *
-     * @param \OpenAPI\Client\Model\PermissionsConfig|null $permissions What this caller may do inside the editor - edit, comment, review, fill, download, print, copy and chat.
+     * @param \OpenAPI\Client\Model\PermissionsConfigDto|null $permissions What this caller may do inside the editor - edit, comment, review, fill, download, print, copy and chat.
      *
      * @return self
      */
@@ -587,7 +587,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets reference_data
      *
-     * @return \OpenAPI\Client\Model\FileReferenceData|null
+     * @return \OpenAPI\Client\Model\FileReferenceDataDto|null
      */
     public function getReferenceData()
     {
@@ -597,7 +597,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets reference_data
      *
-     * @param \OpenAPI\Client\Model\FileReferenceData|null $reference_data How another spreadsheet names this document in a formula. Pass it to `POST api/2.0/files/file/referencedata`  to resolve such a reference.
+     * @param \OpenAPI\Client\Model\FileReferenceDataDto|null $reference_data How another spreadsheet names this document in a formula. Pass it to `POST api/2.0/files/file/referencedata`  to resolve such a reference.
      *
      * @return self
      */
@@ -709,7 +709,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets options
      *
-     * @return \OpenAPI\Client\Model\Options|null
+     * @return \OpenAPI\Client\Model\DocumentOptionsDto|null
      */
     public function getOptions()
     {
@@ -719,7 +719,7 @@ class DocumentConfigDto implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets options
      *
-     * @param \OpenAPI\Client\Model\Options|null $options Extra instructions for the editors, currently the watermark to draw over the document. It is empty when the  room sets no watermark.
+     * @param \OpenAPI\Client\Model\DocumentOptionsDto|null $options Extra instructions for the editors, currently the watermark to draw over the document. It is empty when the  room sets no watermark.
      *
      * @return self
      */

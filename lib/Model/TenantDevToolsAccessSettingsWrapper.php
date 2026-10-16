@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDevToolsAccessSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantDevToolsAccessSettings object.
+ * @description The successful API response containing the TenantDevToolsAccessSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantDevToolsAccessSettingsWrapper implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantDevToolsAccessSettings',
+        'response' => '\OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantDevToolsAccessSettingsWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantDevToolsAccessSettings|null
+     * @return \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantDevToolsAccessSettingsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantDevToolsAccessSettings|null $response The TenantDevToolsAccessSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $response The TenantDevToolsAccessSettingsDto object returned by the operation.
      *
      * @return self
      */

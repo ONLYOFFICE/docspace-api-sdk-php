@@ -61,7 +61,7 @@ class AiThread implements ModelInterface, ArrayAccess, \JsonSerializable
         'thread_id' => 'string',
         'title' => 'string',
         'last_edit_date' => 'float',
-        'provider' => '\OpenAPI\Client\Model\AiTProvider',
+        'provider' => '\OpenAPI\Client\Model\AiProvider',
         'model' => '\OpenAPI\Client\Model\AiModel',
         'profile_id' => 'string'
     ];
@@ -412,7 +412,7 @@ class AiThread implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets provider
      *
-     * @return \OpenAPI\Client\Model\AiTProvider|null
+     * @return \OpenAPI\Client\Model\AiProvider|null
      */
     public function getProvider()
     {
@@ -422,7 +422,7 @@ class AiThread implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider
      *
-     * @param \OpenAPI\Client\Model\AiTProvider|null $provider Provider configuration at the time of last message. Used for thread-level provider display.
+     * @param \OpenAPI\Client\Model\AiProvider|null $provider Provider configuration at the time of last message. Used for thread-level provider display.
      *
      * @return self
      */

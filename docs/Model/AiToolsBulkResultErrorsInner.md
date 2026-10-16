@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**error** | [**\OpenAPI\Client\Model\AiTErrorData**](AiTErrorData.md) |  |
+**error** | [**\OpenAPI\Client\Model\AiErrorData**](AiErrorData.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

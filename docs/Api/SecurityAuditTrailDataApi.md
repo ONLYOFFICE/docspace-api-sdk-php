@@ -18,11 +18,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `createAuditTrailReport()`
 
 ```php
-createAuditTrailReport($format): \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
+createAuditTrailReport($format, $from, $to): \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
 ```
 
 Start audit trail report
-Queues a report of the portal's audit trail and returns the state of the background job that builds it. The  report covers the period reaching from now back by the audit trail lifetime that  `GET api/2.0/security/audit/settings/lifetime` reports and is never filtered: the query parameters of  `GET api/2.0/security/audit/events/filter` do not apply here. The caller needs the portal-settings right of a  DocSpace administrator plus the audit option of the portal's pricing plan, otherwise the call is answered with  402. The file is not ready when the response arrives - poll `GET api/2.0/security/audit/events/report` until  `isCompleted` is true, then take `resultFileUrl`, and treat a non-empty `error` as a failed build. The  finished file is saved to the caller's My documents section, as an XLSX workbook by default or as CSV when  `format=Csv`, in which case `resultFileId` stays empty and only the name and the URL identify it. One job runs  per caller and kind: calling again while the previous one is still building returns that job instead of  starting a second, and `DELETE api/2.0/security/audit/events/report` cancels it.
+Queues a report of the portal's audit trail and returns the state of the background job that builds it. By  default the report covers the period reaching from now back by the audit trail lifetime that  `GET api/2.0/security/audit/settings/lifetime` reports; `from` and `to` narrow it, a `from` older than that  window is moved up to its start, a `to` in the future is moved back to now, and a period that ends before it  starts is answered with 400. No other filter of `GET api/2.0/security/audit/events/filter` applies here. The  caller needs the portal-settings right of a DocSpace administrator plus the audit option of the portal's pricing  plan, otherwise the call is answered with 402. The file is not ready when the response arrives - poll  `GET api/2.0/security/audit/events/report` until `isCompleted` is true, then take `resultFileUrl`, and treat a  non-empty `error` as a failed build. The finished file is saved to the caller's My documents section, as an XLSX  workbook by default or as CSV when `format=Csv`, and `resultFileId` identifies it in either format;  `resultFileUrl` opens it in the editor, except for a CSV file too large for the editor, which it downloads  instead. An XLSX report keeps only the most recent events, at most 200,000 by default and fewer when the events  are long, and its header says how many were left out; `format=Csv` exports every event of the period. One job  runs per caller and kind: calling again while the previous one is still building returns that job instead of  starting a second, and `DELETE api/2.0/security/audit/events/report` cancels it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/).
 
@@ -30,7 +30,9 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **format** | [**\OpenAPI\Client\Model\AuditReportFormat**](../Model/.md)| The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. | [optional] |
+| **format** | [**\OpenAPI\Client\Model\AuditReportFormat**](../Model/.md)| The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. | [optional] |
+| **from** | **\DateTime**| The earliest moment a reported event may have been recorded at, read as a UTC instant. | [optional] |
+| **to** | **\DateTime**| The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. | [optional] |
 
 ### Return type
 
@@ -75,10 +77,12 @@ $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     new GuzzleHttp\Client(),
     $config
 );
-$format = Xlsx; // \OpenAPI\Client\Model\AuditReportFormat | The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`.
+$format = Xlsx; // \OpenAPI\Client\Model\AuditReportFormat | The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file.
+$from = 2026-09-01T00:00:00Z; // \DateTime | The earliest moment a reported event may have been recorded at, read as a UTC instant.
+$to = 2026-09-30T23:59:59Z; // \DateTime | The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`.
 
 try {
-    $result = $apiInstance->createAuditTrailReport($format);
+    $result = $apiInstance->createAuditTrailReport($format, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuditTrailDataApi->createAuditTrailReport: ', $e->getMessage(), PHP_EOL;
@@ -194,7 +198,7 @@ try {
 ## `getAuditSettings()`
 
 ```php
-getAuditSettings(): \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper
+getAuditSettings(): \OpenAPI\Client\Model\TenantAuditSettingsWrapper
 ```
 
 Get audit lifetime settings
@@ -208,7 +212,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper**](../Model/TenantAuditSettingsResponseWrapper.md)
+[**\OpenAPI\Client\Model\TenantAuditSettingsWrapper**](../Model/TenantAuditSettingsWrapper.md)
 
 ### Authorization
 
@@ -270,7 +274,7 @@ try {
 ## `getAuditTrailMappers()`
 
 ```php
-getAuditTrailMappers($product_type, $module_type): \OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper
+getAuditTrailMappers($product_type, $module_type): \OpenAPI\Client\Model\AuditTrailProductArrayWrapper
 ```
 
 Get audit trail mappers
@@ -287,7 +291,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper**](../Model/AuditTrailProductMapperArrayWrapper.md)
+[**\OpenAPI\Client\Model\AuditTrailProductArrayWrapper**](../Model/AuditTrailProductArrayWrapper.md)
 
 ### Authorization
 
@@ -355,7 +359,7 @@ getAuditTrailReport(): \OpenAPI\Client\Model\DocumentBuilderTaskWrapper
 ```
 
 Get audit trail report status
-Returns the state of the audit trail report the calling user has started, and is the operation to poll after  `POST api/2.0/security/audit/events/report`. The caller needs the portal-settings right of a DocSpace  administrator plus the audit option of the portal's pricing plan, otherwise the call is answered with 402.  Jobs are kept per user and per report kind: this operation never shows another administrator's report, nor the  login history report, which has its own status at `GET api/2.0/security/audit/login/report`. The answer is  empty when no report of this kind is known for the caller; otherwise `percentage` grows towards 100,  `isCompleted` turns true when the build has ended, `error` carries the failure message when it ended badly,  and `resultFileName` and `resultFileUrl` point at the file saved to the caller's My documents section, while  `resultFileId` is filled for an XLSX report only. The operation is read-only and safe to poll every few  seconds; a finished job is dropped as soon as the next report of this kind is started.
+Returns the state of the audit trail report the calling user has started, and is the operation to poll after  `POST api/2.0/security/audit/events/report`. The caller needs the portal-settings right of a DocSpace  administrator plus the audit option of the portal's pricing plan, otherwise the call is answered with 402. Jobs  are kept per user and per report kind: this operation never shows another administrator's report, nor the login  history report, which has its own status at `GET api/2.0/security/audit/login/report`. The answer is empty when  no report of this kind is known for the caller; otherwise `percentage` grows towards 100, `isCompleted` turns  true when the build has ended, `error` carries the failure message when it ended badly, and `resultFileId`,  `resultFileName` and `resultFileUrl` point at the file saved to the caller's My documents section. The operation  is read-only and safe to poll every few seconds; a finished job is dropped as soon as the next report of this  kind is started.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-audit-trail-report/).
 
@@ -579,7 +583,7 @@ try {
 ## `setAuditSettings()`
 
 ```php
-setAuditSettings($tenant_audit_settings_wrapper): \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper
+setAuditSettings($tenant_audit_settings_request_dto): \OpenAPI\Client\Model\TenantAuditSettingsWrapper
 ```
 
 Set audit lifetime settings
@@ -591,11 +595,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_audit_settings_wrapper** | [**\OpenAPI\Client\Model\TenantAuditSettingsWrapper**](../Model/TenantAuditSettingsWrapper.md)|  | [optional] |
+| **tenant_audit_settings_request_dto** | [**\OpenAPI\Client\Model\TenantAuditSettingsRequestDto**](../Model/TenantAuditSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper**](../Model/TenantAuditSettingsResponseWrapper.md)
+[**\OpenAPI\Client\Model\TenantAuditSettingsWrapper**](../Model/TenantAuditSettingsWrapper.md)
 
 ### Authorization
 
@@ -636,10 +640,10 @@ $apiInstance = new OpenAPI\Client\Api\AuditTrailDataApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_audit_settings_wrapper = new \OpenAPI\Client\Model\TenantAuditSettingsWrapper(); // \OpenAPI\Client\Model\TenantAuditSettingsWrapper
+$tenant_audit_settings_request_dto = new \OpenAPI\Client\Model\TenantAuditSettingsRequestDto(); // \OpenAPI\Client\Model\TenantAuditSettingsRequestDto
 
 try {
-    $result = $apiInstance->setAuditSettings($tenant_audit_settings_wrapper);
+    $result = $apiInstance->setAuditSettings($tenant_audit_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuditTrailDataApi->setAuditSettings: ', $e->getMessage(), PHP_EOL;

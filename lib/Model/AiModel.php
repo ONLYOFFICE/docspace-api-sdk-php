@@ -63,7 +63,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => '\OpenAPI\Client\Model\AiProviderType',
         'reasoning' => 'bool',
         'reasoning_support' => '\OpenAPI\Client\Model\AiReasoningSupport',
-        'capabilities' => 'float'
+        'capabilities' => 'float',
+        'created' => 'float'
     ];
 
     /**
@@ -79,7 +80,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => null,
         'reasoning' => null,
         'reasoning_support' => null,
-        'capabilities' => null
+        'capabilities' => null,
+        'created' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => false,
         'reasoning' => false,
         'reasoning_support' => false,
-        'capabilities' => false
+        'capabilities' => false,
+        'created' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => 'provider',
         'reasoning' => 'reasoning',
         'reasoning_support' => 'reasoningSupport',
-        'capabilities' => 'capabilities'
+        'capabilities' => 'capabilities',
+        'created' => 'created'
     ];
 
     /**
@@ -201,7 +205,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => 'setProvider',
         'reasoning' => 'setReasoning',
         'reasoning_support' => 'setReasoningSupport',
-        'capabilities' => 'setCapabilities'
+        'capabilities' => 'setCapabilities',
+        'created' => 'setCreated'
     ];
 
     /**
@@ -215,7 +220,8 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'provider' => 'getProvider',
         'reasoning' => 'getReasoning',
         'reasoning_support' => 'getReasoningSupport',
-        'capabilities' => 'getCapabilities'
+        'capabilities' => 'getCapabilities',
+        'created' => 'getCreated'
     ];
 
     /**
@@ -281,6 +287,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('reasoning', $data ?? [], null);
         $this->setIfExists('reasoning_support', $data ?? [], null);
         $this->setIfExists('capabilities', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
     }
 
     /**
@@ -492,6 +499,33 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable capabilities cannot be null');
         }
         $this->container['capabilities'] = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return float|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param float|null $created Release date as a Unix timestamp in **seconds**, when the provider's catalogue reports one (OpenAI-shaped `/models` responses and OpenRouter carry `created`; Anthropic carries an ISO `created_at`). The model picker sorts on it so the newest releases come first; entries without it fall back to alphabetical order.
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
 
         return $this;
     }

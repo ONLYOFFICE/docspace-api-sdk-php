@@ -77,7 +77,7 @@ class CustomerServiceUsageReportDto implements ModelInterface, ArrayAccess, \Jso
         'collection' => null,
         'offset' => 'int32',
         'limit' => 'int32',
-        'total_quantity' => 'int64',
+        'total_quantity' => 'int32',
         'total_page' => 'int32',
         'current_page' => 'int32'
     ];

@@ -514,16 +514,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
+     * @param  array<string,string> $ai_assignments_bulk_assign_request A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsBulkAssign($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
+    public function aiAssignmentsBulkAssign($ai_assignments_bulk_assign_request, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
-        list($response) = $this->aiAssignmentsBulkAssignWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiAssignmentsBulkAssignWithHttpInfo($ai_assignments_bulk_assign_request, $contentType);
         return $response;
     }
 
@@ -535,16 +535,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
+     * @param  array<string,string> $ai_assignments_bulk_assign_request A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiBulkAssignmentResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsBulkAssignWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
+    public function aiAssignmentsBulkAssignWithHttpInfo($ai_assignments_bulk_assign_request, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
-        $request = $this->aiAssignmentsBulkAssignRequest($request_body, $contentType);
+        $request = $this->aiAssignmentsBulkAssignRequest($ai_assignments_bulk_assign_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -693,15 +693,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
+     * @param  array<string,string> $ai_assignments_bulk_assign_request A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsBulkAssignAsync($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
+    public function aiAssignmentsBulkAssignAsync($ai_assignments_bulk_assign_request, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
-        return $this->aiAssignmentsBulkAssignAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiAssignmentsBulkAssignAsyncWithHttpInfo($ai_assignments_bulk_assign_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -717,16 +717,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsBulkAssign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-bulk-assign/
      *
-     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
+     * @param  array<string,string> $ai_assignments_bulk_assign_request A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsBulkAssignAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
+    public function aiAssignmentsBulkAssignAsyncWithHttpInfo($ai_assignments_bulk_assign_request, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiBulkAssignmentResult';
-        $request = $this->aiAssignmentsBulkAssignRequest($request_body, $contentType);
+        $request = $this->aiAssignmentsBulkAssignRequest($ai_assignments_bulk_assign_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -767,19 +767,19 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsBulkAssign'
      *
-     * @param  array<string,string> $request_body A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
+     * @param  array<string,string> $ai_assignments_bulk_assign_request A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsBulkAssign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsBulkAssignRequest($request_body, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
+    public function aiAssignmentsBulkAssignRequest($ai_assignments_bulk_assign_request, string $contentType = self::contentTypes['aiAssignmentsBulkAssign'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_assignments_bulk_assign_request' is set
+        if ($ai_assignments_bulk_assign_request === null || (is_array($ai_assignments_bulk_assign_request) && count($ai_assignments_bulk_assign_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiAssignmentsBulkAssign'
+                'Missing the required parameter $ai_assignments_bulk_assign_request when calling aiAssignmentsBulkAssign'
             );
         }
 
@@ -802,12 +802,12 @@ class AssignmentsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_assignments_bulk_assign_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_assignments_bulk_assign_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_assignments_bulk_assign_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1922,7 +1922,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
@@ -1944,7 +1944,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsResolveForAction'][0])
     {
@@ -1993,6 +1993,12 @@ class AssignmentsApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2053,6 +2059,14 @@ class AssignmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2283,7 +2297,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsTryResolveForAction($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
@@ -2305,7 +2319,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiResolvedAssignment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsTryResolveForActionWithHttpInfo($action_type, $entity_id = null, string $contentType = self::contentTypes['aiAssignmentsTryResolveForAction'][0])
     {
@@ -2354,6 +2368,12 @@ class AssignmentsApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2414,6 +2434,14 @@ class AssignmentsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2638,16 +2666,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
      *
-     * @param  string $body body (required)
+     * @param  string $ai_action_type ai_action_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsUnassign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAssignmentsUnassign($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
+    public function aiAssignmentsUnassign($ai_action_type, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
-        list($response) = $this->aiAssignmentsUnassignWithHttpInfo($body, $contentType);
+        list($response) = $this->aiAssignmentsUnassignWithHttpInfo($ai_action_type, $contentType);
         return $response;
     }
 
@@ -2659,16 +2687,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
      *
-     * @param  string $body (required)
+     * @param  string $ai_action_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsUnassign'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAssignmentsUnassignWithHttpInfo($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
+    public function aiAssignmentsUnassignWithHttpInfo($ai_action_type, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
-        $request = $this->aiAssignmentsUnassignRequest($body, $contentType);
+        $request = $this->aiAssignmentsUnassignRequest($ai_action_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2817,15 +2845,15 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
      *
-     * @param  string $body (required)
+     * @param  string $ai_action_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsUnassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsUnassignAsync($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
+    public function aiAssignmentsUnassignAsync($ai_action_type, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
-        return $this->aiAssignmentsUnassignAsyncWithHttpInfo($body, $contentType)
+        return $this->aiAssignmentsUnassignAsyncWithHttpInfo($ai_action_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2841,16 +2869,16 @@ class AssignmentsApi
      * REST API Reference for aiAssignmentsUnassign Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-unassign/
      *
-     * @param  string $body (required)
+     * @param  string $ai_action_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsUnassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAssignmentsUnassignAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
+    public function aiAssignmentsUnassignAsyncWithHttpInfo($ai_action_type, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiAssignmentsUnassignRequest($body, $contentType);
+        $request = $this->aiAssignmentsUnassignRequest($ai_action_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2891,19 +2919,19 @@ class AssignmentsApi
     /**
      * Create request for operation 'aiAssignmentsUnassign'
      *
-     * @param  string $body (required)
+     * @param  string $ai_action_type (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAssignmentsUnassign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAssignmentsUnassignRequest($body, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
+    public function aiAssignmentsUnassignRequest($ai_action_type, string $contentType = self::contentTypes['aiAssignmentsUnassign'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_action_type' is set
+        if ($ai_action_type === null || (is_array($ai_action_type) && count($ai_action_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiAssignmentsUnassign'
+                'Missing the required parameter $ai_action_type when calling aiAssignmentsUnassign'
             );
         }
 
@@ -2926,12 +2954,12 @@ class AssignmentsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_action_type)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_action_type));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_action_type;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

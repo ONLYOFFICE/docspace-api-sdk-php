@@ -60,7 +60,7 @@ class ScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'storage_type' => '\OpenAPI\Client\Model\BackupStorageType',
         'storage_params' => 'array<string,string>',
-        'cron_params' => '\OpenAPI\Client\Model\CronParams',
+        'cron_params' => '\OpenAPI\Client\Model\CronParamsDto',
         'backups_stored' => 'int',
         'last_backup_time' => '\DateTime',
         'dump' => 'bool'
@@ -397,7 +397,7 @@ class ScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cron_params
      *
-     * @return \OpenAPI\Client\Model\CronParams
+     * @return \OpenAPI\Client\Model\CronParamsDto
      */
     public function getCronParams()
     {
@@ -407,7 +407,7 @@ class ScheduleDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cron_params
      *
-     * @param \OpenAPI\Client\Model\CronParams $cron_params When the backup runs, read back from the stored cron expression. `day` is 0 for a daily schedule,  because a daily one has no day.
+     * @param \OpenAPI\Client\Model\CronParamsDto $cron_params When the backup runs, read back from the stored cron expression. `day` is 0 for a daily schedule,  because a daily one has no day.
      *
      * @return self
      */

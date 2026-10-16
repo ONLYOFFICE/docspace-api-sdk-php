@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PaymentCalculationWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the PaymentCalculation object.
+ * @description The successful API response containing the PaymentCalculationDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class PaymentCalculationWrapper implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\PaymentCalculation',
+        'response' => '\OpenAPI\Client\Model\PaymentCalculationDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class PaymentCalculationWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\PaymentCalculation|null
+     * @return \OpenAPI\Client\Model\PaymentCalculationDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class PaymentCalculationWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\PaymentCalculation|null $response The PaymentCalculation object returned by the operation.
+     * @param \OpenAPI\Client\Model\PaymentCalculationDto|null $response The PaymentCalculationDto object returned by the operation.
      *
      * @return self
      */

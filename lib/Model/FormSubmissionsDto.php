@@ -58,7 +58,7 @@ class FormSubmissionsDto implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'metadata' => '\OpenAPI\Client\Model\FormMetadata[]',
+        'metadata' => '\OpenAPI\Client\Model\FormMetadataDto[]',
         'submissions' => '\OpenAPI\Client\Model\FormResultsDto[]'
     ];
 
@@ -300,7 +300,7 @@ class FormSubmissionsDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets metadata
      *
-     * @return \OpenAPI\Client\Model\FormMetadata[]|null
+     * @return \OpenAPI\Client\Model\FormMetadataDto[]|null
      */
     public function getMetadata()
     {
@@ -310,7 +310,7 @@ class FormSubmissionsDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets metadata
      *
-     * @param \OpenAPI\Client\Model\FormMetadata[]|null $metadata Describes the fields of the form version that is being filled - the key each value is stored under, the type  and format of the field and, where the field offers a fixed set of answers, those answers - in the order the  fields are laid out, which is the order to build a results table in. It comes back empty when the portal holds  no indexed description of that version.
+     * @param \OpenAPI\Client\Model\FormMetadataDto[]|null $metadata Describes the fields of the form version that is being filled - the key each value is stored under, the type  and format of the field and, where the field offers a fixed set of answers, those answers - in the order the  fields are laid out, which is the order to build a results table in. It comes back empty when the portal holds  no indexed description of that version.
      *
      * @return self
      */

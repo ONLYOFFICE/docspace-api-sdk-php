@@ -49,7 +49,7 @@ class AiAttachmentsSaveFilesManyRequest implements ModelInterface, ArrayAccess, 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAttachmentsSaveFilesMany_request';
+    protected static $openAPIModelName = 'AiAttachmentsSaveFilesManyRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

@@ -545,7 +545,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function changeFileOwner($change_owner_request_dto = null, string $contentType = self::contentTypes['changeFileOwner'][0])
     {
@@ -566,7 +566,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeFileOwnerWithHttpInfo($change_owner_request_dto = null, string $contentType = self::contentTypes['changeFileOwner'][0])
     {
@@ -614,18 +614,6 @@ class SharingApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -667,22 +655,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1630,7 +1602,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFileSecurityInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileSecurityInfo'][0])
     {
@@ -1653,7 +1625,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileSecurityInfoWithHttpInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileSecurityInfo'][0])
     {
@@ -1702,12 +1674,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1762,14 +1728,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2024,7 +1982,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFolderSecurityInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderSecurityInfo'][0])
     {
@@ -2047,7 +2005,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderSecurityInfoWithHttpInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderSecurityInfo'][0])
     {
@@ -2096,12 +2054,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2156,14 +2108,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2420,7 +2364,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getGroupsMembersWithFileSecurity($file_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFileSecurity'][0])
     {
@@ -2445,7 +2389,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGroupsMembersWithFileSecurityWithHttpInfo($file_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFileSecurity'][0])
     {
@@ -2477,7 +2421,7 @@ class SharingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                        '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                         $request,
                         $response,
                     );
@@ -2494,12 +2438,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2523,7 +2461,7 @@ class SharingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                 $request,
                 $response,
             );
@@ -2532,7 +2470,7 @@ class SharingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                        '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2554,14 +2492,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2624,7 +2554,7 @@ class SharingApi
      */
     public function getGroupsMembersWithFileSecurityAsyncWithHttpInfo($file_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFileSecurity'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper';
         $request = $this->getGroupsMembersWithFileSecurityRequest($file_id, $group_id, $count, $start_index, $filter_value, $contentType);
 
         return $this->client
@@ -2849,7 +2779,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getGroupsMembersWithFolderSecurity($folder_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFolderSecurity'][0])
     {
@@ -2874,7 +2804,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGroupsMembersWithFolderSecurityWithHttpInfo($folder_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFolderSecurity'][0])
     {
@@ -2906,7 +2836,7 @@ class SharingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                        '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                         $request,
                         $response,
                     );
@@ -2923,12 +2853,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2952,7 +2876,7 @@ class SharingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                 $request,
                 $response,
             );
@@ -2961,7 +2885,7 @@ class SharingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper',
+                        '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2983,14 +2907,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3053,7 +2969,7 @@ class SharingApi
      */
     public function getGroupsMembersWithFolderSecurityAsyncWithHttpInfo($folder_id, $group_id, $count = null, $start_index = null, $filter_value = null, string $contentType = self::contentTypes['getGroupsMembersWithFolderSecurity'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper';
         $request = $this->getGroupsMembersWithFolderSecurityRequest($folder_id, $group_id, $count, $start_index, $filter_value, $contentType);
 
         return $this->client
@@ -3274,7 +3190,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSecurityInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['getSecurityInfo'][0])
     {
@@ -3295,7 +3211,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSecurityInfoWithHttpInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['getSecurityInfo'][0])
     {
@@ -3338,12 +3254,6 @@ class SharingApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3396,14 +3306,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3625,7 +3527,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\MentionWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\MentionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSharedUsers($file_id, string $contentType = self::contentTypes['getSharedUsers'][0])
     {
@@ -3646,7 +3548,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\MentionWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\MentionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSharedUsersWithHttpInfo($file_id, string $contentType = self::contentTypes['getSharedUsers'][0])
     {
@@ -3678,7 +3580,7 @@ class SharingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\MentionArrayWrapper',
                         $request,
                         $response,
                     );
@@ -3724,7 +3626,7 @@ class SharingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                '\OpenAPI\Client\Model\MentionArrayWrapper',
                 $request,
                 $response,
             );
@@ -3733,7 +3635,7 @@ class SharingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\MentionArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3817,7 +3719,7 @@ class SharingApi
      */
     public function getSharedUsersAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['getSharedUsers'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\MentionWrapperArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\MentionArrayWrapper';
         $request = $this->getSharedUsersRequest($file_id, $contentType);
 
         return $this->client
@@ -3983,7 +3885,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function removeSecurityInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['removeSecurityInfo'][0])
     {
@@ -4004,7 +3906,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeSecurityInfoWithHttpInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['removeSecurityInfo'][0])
     {
@@ -4047,12 +3949,6 @@ class SharingApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4105,14 +4001,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4330,16 +4218,16 @@ class SharingApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
      * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
+     * @param  \OpenAPI\Client\Model\MentionMessageRequest|null $mention_message_request The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AceShortWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AceShortArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function sendEditorNotify($file_id, $mention_message_wrapper = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
+    public function sendEditorNotify($file_id, $mention_message_request = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
     {
-        list($response) = $this->sendEditorNotifyWithHttpInfo($file_id, $mention_message_wrapper, $contentType);
+        list($response) = $this->sendEditorNotifyWithHttpInfo($file_id, $mention_message_request, $contentType);
         return $response;
     }
 
@@ -4352,16 +4240,16 @@ class SharingApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
      * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
+     * @param  \OpenAPI\Client\Model\MentionMessageRequest|null $mention_message_request The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AceShortWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AceShortArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendEditorNotifyWithHttpInfo($file_id, $mention_message_wrapper = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
+    public function sendEditorNotifyWithHttpInfo($file_id, $mention_message_request = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
     {
-        $request = $this->sendEditorNotifyRequest($file_id, $mention_message_wrapper, $contentType);
+        $request = $this->sendEditorNotifyRequest($file_id, $mention_message_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4389,7 +4277,7 @@ class SharingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AceShortWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\AceShortArrayWrapper',
                         $request,
                         $response,
                     );
@@ -4429,7 +4317,7 @@ class SharingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AceShortWrapperArrayWrapper',
+                '\OpenAPI\Client\Model\AceShortArrayWrapper',
                 $request,
                 $response,
             );
@@ -4438,7 +4326,7 @@ class SharingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AceShortWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\AceShortArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4483,15 +4371,15 @@ class SharingApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
      * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
+     * @param  \OpenAPI\Client\Model\MentionMessageRequest|null $mention_message_request The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendEditorNotifyAsync($file_id, $mention_message_wrapper = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
+    public function sendEditorNotifyAsync($file_id, $mention_message_request = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
     {
-        return $this->sendEditorNotifyAsyncWithHttpInfo($file_id, $mention_message_wrapper, $contentType)
+        return $this->sendEditorNotifyAsyncWithHttpInfo($file_id, $mention_message_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4508,16 +4396,16 @@ class SharingApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-editor-notify/
      *
      * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
+     * @param  \OpenAPI\Client\Model\MentionMessageRequest|null $mention_message_request The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendEditorNotifyAsyncWithHttpInfo($file_id, $mention_message_wrapper = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
+    public function sendEditorNotifyAsyncWithHttpInfo($file_id, $mention_message_request = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AceShortWrapperArrayWrapper';
-        $request = $this->sendEditorNotifyRequest($file_id, $mention_message_wrapper, $contentType);
+        $returnType = '\OpenAPI\Client\Model\AceShortArrayWrapper';
+        $request = $this->sendEditorNotifyRequest($file_id, $mention_message_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4559,13 +4447,13 @@ class SharingApi
      * Create request for operation 'sendEditorNotify'
      *
      * @param  int|string $file_id The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. (required)
-     * @param  \OpenAPI\Client\Model\MentionMessageWrapper|null $mention_message_wrapper The notification to send. (optional)
+     * @param  \OpenAPI\Client\Model\MentionMessageRequest|null $mention_message_request The notification to send. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendEditorNotify'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendEditorNotifyRequest($file_id, $mention_message_wrapper = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
+    public function sendEditorNotifyRequest($file_id, $mention_message_request = null, string $contentType = self::contentTypes['sendEditorNotify'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -4603,12 +4491,12 @@ class SharingApi
         );
 
         // for model (json/xml)
-        if (isset($mention_message_wrapper)) {
+        if (isset($mention_message_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mention_message_wrapper));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mention_message_request));
             } else {
-                $httpBody = $mention_message_wrapper;
+                $httpBody = $mention_message_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4692,7 +4580,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFileSecurityInfo($id, $security_info_simple_request_dto, string $contentType = self::contentTypes['setFileSecurityInfo'][0])
     {
@@ -4714,7 +4602,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFileSecurityInfoWithHttpInfo($id, $security_info_simple_request_dto, string $contentType = self::contentTypes['setFileSecurityInfo'][0])
     {
@@ -4763,12 +4651,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4823,14 +4705,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5069,7 +4943,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFolderSecurityInfo($id, $security_info_simple_request_dto, string $contentType = self::contentTypes['setFolderSecurityInfo'][0])
     {
@@ -5091,7 +4965,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFolderSecurityInfoWithHttpInfo($id, $security_info_simple_request_dto, string $contentType = self::contentTypes['setFolderSecurityInfo'][0])
     {
@@ -5140,12 +5014,6 @@ class SharingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5200,14 +5068,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5445,7 +5305,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setSecurityInfo($security_info_request_dto = null, string $contentType = self::contentTypes['setSecurityInfo'][0])
     {
@@ -5466,7 +5326,7 @@ class SharingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setSecurityInfoWithHttpInfo($security_info_request_dto = null, string $contentType = self::contentTypes['setSecurityInfo'][0])
     {
@@ -5514,18 +5374,6 @@ class SharingApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -5567,22 +5415,6 @@ class SharingApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

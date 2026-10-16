@@ -49,7 +49,7 @@ class AiThreadsTouchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsTouch_request';
+    protected static $openAPIModelName = 'AiThreadsTouchRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

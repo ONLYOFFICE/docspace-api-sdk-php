@@ -154,16 +154,18 @@ class LoginHistoryApi
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createLoginHistoryReport($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
+    public function createLoginHistoryReport($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
-        list($response) = $this->createLoginHistoryReportWithHttpInfo($format, $contentType);
+        list($response) = $this->createLoginHistoryReportWithHttpInfo($format, $from, $to, $contentType);
         return $response;
     }
 
@@ -175,16 +177,18 @@ class LoginHistoryApi
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createLoginHistoryReportWithHttpInfo($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
+    public function createLoginHistoryReportWithHttpInfo($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
-        $request = $this->createLoginHistoryReportRequest($format, $contentType);
+        $request = $this->createLoginHistoryReportRequest($format, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -229,12 +233,6 @@ class LoginHistoryApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -296,14 +294,6 @@ class LoginHistoryApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -319,15 +309,17 @@ class LoginHistoryApi
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLoginHistoryReportAsync($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
+    public function createLoginHistoryReportAsync($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
-        return $this->createLoginHistoryReportAsyncWithHttpInfo($format, $contentType)
+        return $this->createLoginHistoryReportAsyncWithHttpInfo($format, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -343,16 +335,18 @@ class LoginHistoryApi
      * REST API Reference for createLoginHistoryReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-login-history-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLoginHistoryReportAsyncWithHttpInfo($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
+    public function createLoginHistoryReportAsyncWithHttpInfo($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
         $returnType = '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper';
-        $request = $this->createLoginHistoryReportRequest($format, $contentType);
+        $request = $this->createLoginHistoryReportRequest($format, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -393,14 +387,18 @@ class LoginHistoryApi
     /**
      * Create request for operation 'createLoginHistoryReport'
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLoginHistoryReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createLoginHistoryReportRequest($format = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
+    public function createLoginHistoryReportRequest($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createLoginHistoryReport'][0])
     {
+
+
 
 
 
@@ -416,6 +414,24 @@ class LoginHistoryApi
             $format,
             'format', // param base name
             'AuditReportFormat', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -841,7 +857,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLoginEventsByFilter($user_id = null, $action = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getLoginEventsByFilter'][0])
     {
@@ -867,7 +883,7 @@ class LoginHistoryApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LoginEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLoginEventsByFilterWithHttpInfo($user_id = null, $action = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getLoginEventsByFilter'][0])
     {
@@ -916,12 +932,6 @@ class LoginHistoryApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -976,14 +986,6 @@ class LoginHistoryApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

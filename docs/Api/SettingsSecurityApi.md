@@ -7,7 +7,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getEnabledModules()**](SettingsSecurityApi.md#getEnabledModules) | **GET** /api/2.0/settings/security/modules | Get enabled modules |
 | [**getIsProductAdministrator()**](SettingsSecurityApi.md#getIsProductAdministrator) | **GET** /api/2.0/settings/security/administrator | Check product administrator |
 | [**getPasswordSettings()**](SettingsSecurityApi.md#getPasswordSettings) | **GET** /api/2.0/settings/security/password | Get password settings |
-| [**getProductAdministrators()**](SettingsSecurityApi.md#getProductAdministrators) | **GET** /api/2.0/settings/security/administrator/{productid} | Get product administrators |
+| [**getProductAdministrators()**](SettingsSecurityApi.md#getProductAdministrators) | **GET** /api/2.0/settings/security/administrator/{productId} | Get product administrators |
 | [**getWebItemSecurityInfo()**](SettingsSecurityApi.md#getWebItemSecurityInfo) | **GET** /api/2.0/settings/security/{id} | Check module availability |
 | [**getWebItemSettingsSecurityInfo()**](SettingsSecurityApi.md#getWebItemSettingsSecurityInfo) | **GET** /api/2.0/settings/security | Get module access settings |
 | [**setAccessToWebItems()**](SettingsSecurityApi.md#setAccessToWebItems) | **PUT** /api/2.0/settings/security/access | Set access to modules in bulk |
@@ -95,11 +95,11 @@ try {
 ## `getIsProductAdministrator()`
 
 ```php
-getIsProductAdministrator($productid, $userid): \OpenAPI\Client\Model\ProductAdministratorWrapper
+getIsProductAdministrator($product_id, $user_id): \OpenAPI\Client\Model\ProductAdministratorWrapper
 ```
 
 Check product administrator
-Reports whether one user administers one portal module, as the identifiers asked about plus an `administrator`  flag. Both `productid` and `userid` are query parameters and both are required; the all-zero product GUID asks  about the portal itself rather than about a single module. The caller needs the portal-settings right of a  DocSpace administrator, otherwise the call is refused. The operation is read-only. The flag is `true` when the  user belongs to the DocSpace administrator group or to the module's own group, so a portal-wide administrator  is reported as an administrator of every module, whatever the module identifier says. Identifiers that name no  user and no group are answered with `false` instead of a failure, so a `false` does not prove the user exists.  The verdict is read out of group membership alone and says nothing about whether the module is enabled for  this portal, which `GET api/2.0/settings/security/{id}` reports. Use  `GET api/2.0/settings/security/administrator/{productid}` to list everyone who administers a module, and  `PUT api/2.0/settings/security/administrator` to change the membership.
+Reports whether one user administers one portal module, as the identifiers asked about plus an `administrator`  flag. Both `productid` and `userid` are query parameters and both are required; the all-zero product GUID asks  about the portal itself rather than about a single module. The caller needs the portal-settings right of a  DocSpace administrator, otherwise the call is refused. The operation is read-only. The flag is `true` when the  user belongs to the DocSpace administrator group or to the module's own group, so a portal-wide administrator  is reported as an administrator of every module, whatever the module identifier says. Identifiers that name no  user and no group are answered with `false` instead of a failure, so a `false` does not prove the user exists.  The verdict is read out of group membership alone and says nothing about whether the module is enabled for  this portal, which `GET api/2.0/settings/security/{id}` reports. Use  `GET api/2.0/settings/security/administrator/{productId}` to list everyone who administers a module, and  `PUT api/2.0/settings/security/administrator` to change the membership.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/).
 
@@ -107,8 +107,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **productid** | **string**| The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. | |
-| **userid** | **string**| The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. | |
+| **product_id** | **string**| The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. | |
+| **user_id** | **string**| The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. | |
 
 ### Return type
 
@@ -153,11 +153,11 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$productid = 00000000-0000-0000-0000-000000000000; // string | The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module.
-$userid = 00000000-0000-0000-0000-000000000000; // string | The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists.
+$product_id = 00000000-0000-0000-0000-000000000000; // string | The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists.
 
 try {
-    $result = $apiInstance->getIsProductAdministrator($productid, $userid);
+    $result = $apiInstance->getIsProductAdministrator($product_id, $user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->getIsProductAdministrator: ', $e->getMessage(), PHP_EOL;
@@ -252,7 +252,7 @@ try {
 ## `getProductAdministrators()`
 
 ```php
-getProductAdministrators($productid): \OpenAPI\Client\Model\EmployeeArrayWrapper
+getProductAdministrators($product_id): \OpenAPI\Client\Model\EmployeeArrayWrapper
 ```
 
 Get product administrators
@@ -264,7 +264,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **productid** | **string**| The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. | |
+| **product_id** | **string**| The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. | |
 
 ### Return type
 
@@ -309,10 +309,10 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$productid = 00000000-0000-0000-0000-000000000000; // string | The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure.
+$product_id = 00000000-0000-0000-0000-000000000000; // string | The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure.
 
 try {
-    $result = $apiInstance->getProductAdministrators($productid);
+    $result = $apiInstance->getProductAdministrators($product_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->getProductAdministrators: ', $e->getMessage(), PHP_EOL;
@@ -489,7 +489,7 @@ try {
 ## `setAccessToWebItems()`
 
 ```php
-setAccessToWebItems($web_items_security_requests_dto): \OpenAPI\Client\Model\SecurityArrayWrapper
+setAccessToWebItems($web_items_security_request_dto): \OpenAPI\Client\Model\SecurityArrayWrapper
 ```
 
 Set access to modules in bulk
@@ -501,7 +501,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_items_security_requests_dto** | [**\OpenAPI\Client\Model\WebItemsSecurityRequestsDto**](../Model/WebItemsSecurityRequestsDto.md)|  | [optional] |
+| **web_items_security_request_dto** | [**\OpenAPI\Client\Model\WebItemsSecurityRequestDto**](../Model/WebItemsSecurityRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -546,10 +546,10 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_items_security_requests_dto = new \OpenAPI\Client\Model\WebItemsSecurityRequestsDto(); // \OpenAPI\Client\Model\WebItemsSecurityRequestsDto
+$web_items_security_request_dto = new \OpenAPI\Client\Model\WebItemsSecurityRequestDto(); // \OpenAPI\Client\Model\WebItemsSecurityRequestDto
 
 try {
-    $result = $apiInstance->setAccessToWebItems($web_items_security_requests_dto);
+    $result = $apiInstance->setAccessToWebItems($web_items_security_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->setAccessToWebItems: ', $e->getMessage(), PHP_EOL;
@@ -568,7 +568,7 @@ try {
 ## `setProductAdministrator()`
 
 ```php
-setProductAdministrator($security_requests_dto): \OpenAPI\Client\Model\ProductAdministratorWrapper
+setProductAdministrator($security_request_dto): \OpenAPI\Client\Model\ProductAdministratorWrapper
 ```
 
 Set product administrator
@@ -580,7 +580,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **security_requests_dto** | [**\OpenAPI\Client\Model\SecurityRequestsDto**](../Model/SecurityRequestsDto.md)|  | [optional] |
+| **security_request_dto** | [**\OpenAPI\Client\Model\SecurityRequestDto**](../Model/SecurityRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -625,10 +625,10 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$security_requests_dto = new \OpenAPI\Client\Model\SecurityRequestsDto(); // \OpenAPI\Client\Model\SecurityRequestsDto
+$security_request_dto = new \OpenAPI\Client\Model\SecurityRequestDto(); // \OpenAPI\Client\Model\SecurityRequestDto
 
 try {
-    $result = $apiInstance->setProductAdministrator($security_requests_dto);
+    $result = $apiInstance->setProductAdministrator($security_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->setProductAdministrator: ', $e->getMessage(), PHP_EOL;
@@ -647,7 +647,7 @@ try {
 ## `setWebItemSecurity()`
 
 ```php
-setWebItemSecurity($web_item_security_requests_dto): \OpenAPI\Client\Model\SecurityArrayWrapper
+setWebItemSecurity($web_item_security_request_dto): \OpenAPI\Client\Model\SecurityArrayWrapper
 ```
 
 Set module access
@@ -659,7 +659,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_item_security_requests_dto** | [**\OpenAPI\Client\Model\WebItemSecurityRequestsDto**](../Model/WebItemSecurityRequestsDto.md)|  | [optional] |
+| **web_item_security_request_dto** | [**\OpenAPI\Client\Model\WebItemSecurityRequestDto**](../Model/WebItemSecurityRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -704,10 +704,10 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_item_security_requests_dto = new \OpenAPI\Client\Model\WebItemSecurityRequestsDto(); // \OpenAPI\Client\Model\WebItemSecurityRequestsDto
+$web_item_security_request_dto = new \OpenAPI\Client\Model\WebItemSecurityRequestDto(); // \OpenAPI\Client\Model\WebItemSecurityRequestDto
 
 try {
-    $result = $apiInstance->setWebItemSecurity($web_item_security_requests_dto);
+    $result = $apiInstance->setWebItemSecurity($web_item_security_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->setWebItemSecurity: ', $e->getMessage(), PHP_EOL;
@@ -726,7 +726,7 @@ try {
 ## `updatePasswordSettings()`
 
 ```php
-updatePasswordSettings($password_settings_requests_dto): \OpenAPI\Client\Model\PasswordSettingsWrapper
+updatePasswordSettings($password_settings_request_dto): \OpenAPI\Client\Model\PasswordSettingsWrapper
 ```
 
 Update password settings
@@ -738,7 +738,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **password_settings_requests_dto** | [**\OpenAPI\Client\Model\PasswordSettingsRequestsDto**](../Model/PasswordSettingsRequestsDto.md)|  | [optional] |
+| **password_settings_request_dto** | [**\OpenAPI\Client\Model\PasswordSettingsRequestDto**](../Model/PasswordSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -783,10 +783,10 @@ $apiInstance = new OpenAPI\Client\Api\SecurityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$password_settings_requests_dto = new \OpenAPI\Client\Model\PasswordSettingsRequestsDto(); // \OpenAPI\Client\Model\PasswordSettingsRequestsDto
+$password_settings_request_dto = new \OpenAPI\Client\Model\PasswordSettingsRequestDto(); // \OpenAPI\Client\Model\PasswordSettingsRequestDto
 
 try {
-    $result = $apiInstance->updatePasswordSettings($password_settings_requests_dto);
+    $result = $apiInstance->updatePasswordSettings($password_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SecurityApi->updatePasswordSettings: ', $e->getMessage(), PHP_EOL;

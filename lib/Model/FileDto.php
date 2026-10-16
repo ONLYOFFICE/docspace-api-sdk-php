@@ -94,6 +94,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'bool',
         'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'is_link_expired' => 'bool',
+        'assigned_metadata_templates' => 'int[]',
+        'metadata_matches' => '\OpenAPI\Client\Model\MetadataMatchDto[]',
         'folder_id' => 'int',
         'version' => 'int',
         'version_group' => 'int',
@@ -128,7 +130,7 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'expired' => '\OpenAPI\Client\Model\ApiDateTime',
         'vectorization_status' => '\OpenAPI\Client\Model\VectorizationStatus',
         'external_db_table_name' => 'string',
-        'dimensions' => '\OpenAPI\Client\Model\Size'
+        'dimensions' => '\OpenAPI\Client\Model\ImageSizeDto'
     ];
 
     /**
@@ -175,6 +177,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => null,
         'expiration_date' => null,
         'is_link_expired' => null,
+        'assigned_metadata_templates' => 'int32',
+        'metadata_matches' => null,
         'folder_id' => 'int32',
         'version' => 'int32',
         'version_group' => 'int32',
@@ -254,6 +258,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => false,
         'expiration_date' => false,
         'is_link_expired' => false,
+        'assigned_metadata_templates' => false,
+        'metadata_matches' => false,
         'folder_id' => false,
         'version' => false,
         'version_group' => false,
@@ -413,6 +419,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'external',
         'expiration_date' => 'expirationDate',
         'is_link_expired' => 'isLinkExpired',
+        'assigned_metadata_templates' => 'assignedMetadataTemplates',
+        'metadata_matches' => 'metadataMatches',
         'folder_id' => 'folderId',
         'version' => 'version',
         'version_group' => 'versionGroup',
@@ -492,6 +500,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'setExternal',
         'expiration_date' => 'setExpirationDate',
         'is_link_expired' => 'setIsLinkExpired',
+        'assigned_metadata_templates' => 'setAssignedMetadataTemplates',
+        'metadata_matches' => 'setMetadataMatches',
         'folder_id' => 'setFolderId',
         'version' => 'setVersion',
         'version_group' => 'setVersionGroup',
@@ -571,6 +581,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'getExternal',
         'expiration_date' => 'getExpirationDate',
         'is_link_expired' => 'getIsLinkExpired',
+        'assigned_metadata_templates' => 'getAssignedMetadataTemplates',
+        'metadata_matches' => 'getMetadataMatches',
         'folder_id' => 'getFolderId',
         'version' => 'getVersion',
         'version_group' => 'getVersionGroup',
@@ -701,6 +713,8 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('external', $data ?? [], null);
         $this->setIfExists('expiration_date', $data ?? [], null);
         $this->setIfExists('is_link_expired', $data ?? [], null);
+        $this->setIfExists('assigned_metadata_templates', $data ?? [], null);
+        $this->setIfExists('metadata_matches', $data ?? [], null);
         $this->setIfExists('folder_id', $data ?? [], null);
         $this->setIfExists('version', $data ?? [], null);
         $this->setIfExists('version_group', $data ?? [], null);
@@ -1774,6 +1788,60 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets assigned_metadata_templates
+     *
+     * @return int[]|null
+     */
+    public function getAssignedMetadataTemplates()
+    {
+        return $this->container['assigned_metadata_templates'];
+    }
+
+    /**
+     * Sets assigned_metadata_templates
+     *
+     * @param int[]|null $assigned_metadata_templates The IDs of the metadata templates assigned to the file entry.
+     *
+     * @return self
+     */
+    public function setAssignedMetadataTemplates($assigned_metadata_templates)
+    {
+        if (is_null($assigned_metadata_templates)) {
+            throw new \InvalidArgumentException('non-nullable assigned_metadata_templates cannot be null');
+        }
+        $this->container['assigned_metadata_templates'] = $assigned_metadata_templates;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata_matches
+     *
+     * @return \OpenAPI\Client\Model\MetadataMatchDto[]|null
+     */
+    public function getMetadataMatches()
+    {
+        return $this->container['metadata_matches'];
+    }
+
+    /**
+     * Sets metadata_matches
+     *
+     * @param \OpenAPI\Client\Model\MetadataMatchDto[]|null $metadata_matches Where the search text of the listing was met in the metadata of the entry: one item per string value holding  the text, in the order of the fields. Present only in a listing filtered by text, and only for the entries whose  metadata contain it; an entry found by its title alone carries nothing here.
+     *
+     * @return self
+     */
+    public function setMetadataMatches($metadata_matches)
+    {
+        if (is_null($metadata_matches)) {
+            throw new \InvalidArgumentException('non-nullable metadata_matches cannot be null');
+        }
+        $this->container['metadata_matches'] = $metadata_matches;
+
+        return $this;
+    }
+
+    /**
      * Gets folder_id
      *
      * @return int|null
@@ -2841,7 +2909,7 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dimensions
      *
-     * @return \OpenAPI\Client\Model\Size|null
+     * @return \OpenAPI\Client\Model\ImageSizeDto|null
      */
     public function getDimensions()
     {
@@ -2851,7 +2919,7 @@ class FileDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param \OpenAPI\Client\Model\Size|null $dimensions The pixel size of the picture, measured by reading the stored file rather than taken from any stored metadata.  Null for anything that is not a picture the portal can show, and also when the file could not be read.
+     * @param \OpenAPI\Client\Model\ImageSizeDto|null $dimensions The pixel size of the picture, measured by reading the stored file rather than taken from any stored metadata.  Null for anything that is not a picture the portal can show, and also when the file could not be read.
      *
      * @return self
      */

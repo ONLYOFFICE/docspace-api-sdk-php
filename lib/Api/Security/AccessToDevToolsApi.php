@@ -135,16 +135,16 @@ class AccessToDevToolsApi
      * REST API Reference for setTenantDevToolsAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-dev-tools-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $tenant_dev_tools_access_settings_dto tenant_dev_tools_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto|null $tenant_dev_tools_access_settings_request_dto tenant_dev_tools_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantDevToolsAccessSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
+    public function setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
     {
-        list($response) = $this->setTenantDevToolsAccessSettingsWithHttpInfo($tenant_dev_tools_access_settings_dto, $contentType);
+        list($response) = $this->setTenantDevToolsAccessSettingsWithHttpInfo($tenant_dev_tools_access_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -156,16 +156,16 @@ class AccessToDevToolsApi
      * REST API Reference for setTenantDevToolsAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-dev-tools-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $tenant_dev_tools_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto|null $tenant_dev_tools_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantDevToolsAccessSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTenantDevToolsAccessSettingsWithHttpInfo($tenant_dev_tools_access_settings_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
+    public function setTenantDevToolsAccessSettingsWithHttpInfo($tenant_dev_tools_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
     {
-        $request = $this->setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_dto, $contentType);
+        $request = $this->setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -300,15 +300,15 @@ class AccessToDevToolsApi
      * REST API Reference for setTenantDevToolsAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-dev-tools-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $tenant_dev_tools_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto|null $tenant_dev_tools_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantDevToolsAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantDevToolsAccessSettingsAsync($tenant_dev_tools_access_settings_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
+    public function setTenantDevToolsAccessSettingsAsync($tenant_dev_tools_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
     {
-        return $this->setTenantDevToolsAccessSettingsAsyncWithHttpInfo($tenant_dev_tools_access_settings_dto, $contentType)
+        return $this->setTenantDevToolsAccessSettingsAsyncWithHttpInfo($tenant_dev_tools_access_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -324,16 +324,16 @@ class AccessToDevToolsApi
      * REST API Reference for setTenantDevToolsAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-dev-tools-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $tenant_dev_tools_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto|null $tenant_dev_tools_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantDevToolsAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantDevToolsAccessSettingsAsyncWithHttpInfo($tenant_dev_tools_access_settings_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
+    public function setTenantDevToolsAccessSettingsAsyncWithHttpInfo($tenant_dev_tools_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper';
-        $request = $this->setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_dto, $contentType);
+        $request = $this->setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -374,13 +374,13 @@ class AccessToDevToolsApi
     /**
      * Create request for operation 'setTenantDevToolsAccessSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto|null $tenant_dev_tools_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto|null $tenant_dev_tools_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantDevToolsAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
+    public function setTenantDevToolsAccessSettingsRequest($tenant_dev_tools_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantDevToolsAccessSettings'][0])
     {
 
 
@@ -403,12 +403,12 @@ class AccessToDevToolsApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_dev_tools_access_settings_dto)) {
+        if (isset($tenant_dev_tools_access_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_dev_tools_access_settings_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_dev_tools_access_settings_request_dto));
             } else {
-                $httpBody = $tenant_dev_tools_access_settings_dto;
+                $httpBody = $tenant_dev_tools_access_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

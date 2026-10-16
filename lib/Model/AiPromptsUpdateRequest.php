@@ -49,7 +49,7 @@ class AiPromptsUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPromptsUpdate_request';
+    protected static $openAPIModelName = 'AiPromptsUpdateRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

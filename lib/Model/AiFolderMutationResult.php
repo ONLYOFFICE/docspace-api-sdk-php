@@ -60,7 +60,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'success' => 'bool',
         'folder' => '\OpenAPI\Client\Model\AiPromptFolder',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -364,7 +364,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData|null
+     * @return \OpenAPI\Client\Model\AiErrorData|null
      */
     public function getError()
     {
@@ -374,7 +374,7 @@ class AiFolderMutationResult implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the folder was rejected. Present on failure.
+     * @param \OpenAPI\Client\Model\AiErrorData|null $error Why the folder was rejected. Present on failure.
      *
      * @return self
      */

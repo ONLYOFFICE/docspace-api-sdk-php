@@ -49,7 +49,7 @@ class AiToolsSetAllowAlwaysRequest implements ModelInterface, ArrayAccess, \Json
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiToolsSetAllowAlways_request';
+    protected static $openAPIModelName = 'AiToolsSetAllowAlwaysRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

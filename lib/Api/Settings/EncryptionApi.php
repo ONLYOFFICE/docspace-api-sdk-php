@@ -789,16 +789,16 @@ class EncryptionApi
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
      *
-     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestsDto|null $storage_encryption_requests_dto storage_encryption_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestDto|null $storage_encryption_request_dto storage_encryption_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startStorageEncryption'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function startStorageEncryption($storage_encryption_requests_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
+    public function startStorageEncryption($storage_encryption_request_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
     {
-        list($response) = $this->startStorageEncryptionWithHttpInfo($storage_encryption_requests_dto, $contentType);
+        list($response) = $this->startStorageEncryptionWithHttpInfo($storage_encryption_request_dto, $contentType);
         return $response;
     }
 
@@ -810,16 +810,16 @@ class EncryptionApi
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
      *
-     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestsDto|null $storage_encryption_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestDto|null $storage_encryption_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startStorageEncryption'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startStorageEncryptionWithHttpInfo($storage_encryption_requests_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
+    public function startStorageEncryptionWithHttpInfo($storage_encryption_request_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
     {
-        $request = $this->startStorageEncryptionRequest($storage_encryption_requests_dto, $contentType);
+        $request = $this->startStorageEncryptionRequest($storage_encryption_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -858,12 +858,6 @@ class EncryptionApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -923,14 +917,6 @@ class EncryptionApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -954,15 +940,15 @@ class EncryptionApi
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
      *
-     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestsDto|null $storage_encryption_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestDto|null $storage_encryption_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startStorageEncryption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startStorageEncryptionAsync($storage_encryption_requests_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
+    public function startStorageEncryptionAsync($storage_encryption_request_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
     {
-        return $this->startStorageEncryptionAsyncWithHttpInfo($storage_encryption_requests_dto, $contentType)
+        return $this->startStorageEncryptionAsyncWithHttpInfo($storage_encryption_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -978,16 +964,16 @@ class EncryptionApi
      * REST API Reference for startStorageEncryption Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-storage-encryption/
      *
-     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestsDto|null $storage_encryption_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestDto|null $storage_encryption_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startStorageEncryption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startStorageEncryptionAsyncWithHttpInfo($storage_encryption_requests_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
+    public function startStorageEncryptionAsyncWithHttpInfo($storage_encryption_request_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->startStorageEncryptionRequest($storage_encryption_requests_dto, $contentType);
+        $request = $this->startStorageEncryptionRequest($storage_encryption_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1028,13 +1014,13 @@ class EncryptionApi
     /**
      * Create request for operation 'startStorageEncryption'
      *
-     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestsDto|null $storage_encryption_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageEncryptionRequestDto|null $storage_encryption_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startStorageEncryption'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function startStorageEncryptionRequest($storage_encryption_requests_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
+    public function startStorageEncryptionRequest($storage_encryption_request_dto = null, string $contentType = self::contentTypes['startStorageEncryption'][0])
     {
 
 
@@ -1057,12 +1043,12 @@ class EncryptionApi
         );
 
         // for model (json/xml)
-        if (isset($storage_encryption_requests_dto)) {
+        if (isset($storage_encryption_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_encryption_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_encryption_request_dto));
             } else {
-                $httpBody = $storage_encryption_requests_dto;
+                $httpBody = $storage_encryption_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

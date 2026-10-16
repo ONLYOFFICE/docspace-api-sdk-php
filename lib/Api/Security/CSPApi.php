@@ -138,16 +138,16 @@ class CSPApi
      * REST API Reference for configureCsp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-csp/
      *
-     * @param  \OpenAPI\Client\Model\CspRequestsDto|null $csp_requests_dto csp_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CspRequestDto|null $csp_request_dto csp_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureCsp'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CspWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\CspWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function configureCsp($csp_requests_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
+    public function configureCsp($csp_request_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
     {
-        list($response) = $this->configureCspWithHttpInfo($csp_requests_dto, $contentType);
+        list($response) = $this->configureCspWithHttpInfo($csp_request_dto, $contentType);
         return $response;
     }
 
@@ -159,16 +159,16 @@ class CSPApi
      * REST API Reference for configureCsp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-csp/
      *
-     * @param  \OpenAPI\Client\Model\CspRequestsDto|null $csp_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CspRequestDto|null $csp_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureCsp'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CspWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CspWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function configureCspWithHttpInfo($csp_requests_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
+    public function configureCspWithHttpInfo($csp_request_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
     {
-        $request = $this->configureCspRequest($csp_requests_dto, $contentType);
+        $request = $this->configureCspRequest($csp_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,12 +207,6 @@ class CSPApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -266,14 +260,6 @@ class CSPApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -289,15 +275,15 @@ class CSPApi
      * REST API Reference for configureCsp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-csp/
      *
-     * @param  \OpenAPI\Client\Model\CspRequestsDto|null $csp_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CspRequestDto|null $csp_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureCsp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureCspAsync($csp_requests_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
+    public function configureCspAsync($csp_request_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
     {
-        return $this->configureCspAsyncWithHttpInfo($csp_requests_dto, $contentType)
+        return $this->configureCspAsyncWithHttpInfo($csp_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -313,16 +299,16 @@ class CSPApi
      * REST API Reference for configureCsp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-csp/
      *
-     * @param  \OpenAPI\Client\Model\CspRequestsDto|null $csp_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CspRequestDto|null $csp_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureCsp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureCspAsyncWithHttpInfo($csp_requests_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
+    public function configureCspAsyncWithHttpInfo($csp_request_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CspWrapper';
-        $request = $this->configureCspRequest($csp_requests_dto, $contentType);
+        $request = $this->configureCspRequest($csp_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -363,13 +349,13 @@ class CSPApi
     /**
      * Create request for operation 'configureCsp'
      *
-     * @param  \OpenAPI\Client\Model\CspRequestsDto|null $csp_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CspRequestDto|null $csp_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureCsp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function configureCspRequest($csp_requests_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
+    public function configureCspRequest($csp_request_dto = null, string $contentType = self::contentTypes['configureCsp'][0])
     {
 
 
@@ -392,12 +378,12 @@ class CSPApi
         );
 
         // for model (json/xml)
-        if (isset($csp_requests_dto)) {
+        if (isset($csp_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($csp_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($csp_request_dto));
             } else {
-                $httpBody = $csp_requests_dto;
+                $httpBody = $csp_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StorageSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the StorageSettings object.
+ * @description The successful API response containing the StorageSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class StorageSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\StorageSettings',
+        'response' => '\OpenAPI\Client\Model\StorageSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class StorageSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\StorageSettings|null
+     * @return \OpenAPI\Client\Model\StorageSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class StorageSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\StorageSettings|null $response The StorageSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\StorageSettingsDto|null $response The StorageSettingsDto object returned by the operation.
      *
      * @return self
      */

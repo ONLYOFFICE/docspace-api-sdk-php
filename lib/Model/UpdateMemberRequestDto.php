@@ -404,7 +404,7 @@ class UpdateMemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets user_id
      *
-     * @param string|null $user_id The account the change applies to. It is read from this body by `POST api/2.0/people/email`, while  `PUT api/2.0/people/{userid}` takes the account from the route and ignores this field.
+     * @param string|null $user_id The account the change applies to. It is read from this body by `POST api/2.0/people/email`, while  `PUT api/2.0/people/{userId}` takes the account from the route and ignores this field.
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class UpdateMemberRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets email
      *
-     * @param string|null $email The new email address, up to 255 characters. It is read only by `POST api/2.0/people/email`, which either  mails a confirmation letter or, for an administrator acting on somebody else, applies the address at once;  `PUT api/2.0/people/{userid}` ignores it.
+     * @param string|null $email The new email address, up to 255 characters. It is read only by `POST api/2.0/people/email`, which either  mails a confirmation letter or, for an administrator acting on somebody else, applies the address at once;  `PUT api/2.0/people/{userId}` ignores it.
      *
      * @return self
      */

@@ -61,15 +61,15 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
         'about' => 'bool',
         'customer' => '\OpenAPI\Client\Model\CustomerConfigDto',
         'anonymous' => '\OpenAPI\Client\Model\AnonymousConfigDto',
-        'feedback' => '\OpenAPI\Client\Model\FeedbackConfig',
+        'feedback' => '\OpenAPI\Client\Model\FeedbackConfigDto',
         'forcesave' => 'bool',
-        'goback' => '\OpenAPI\Client\Model\GobackConfig',
-        'review' => '\OpenAPI\Client\Model\ReviewConfig',
+        'goback' => '\OpenAPI\Client\Model\GobackConfigDto',
+        'review' => '\OpenAPI\Client\Model\ReviewConfigDto',
         'logo' => '\OpenAPI\Client\Model\LogoConfigDto',
         'mention_share' => 'bool',
-        'submit_form' => '\OpenAPI\Client\Model\SubmitForm',
+        'submit_form' => '\OpenAPI\Client\Model\SubmitFormDto',
         'start_filling_form' => '\OpenAPI\Client\Model\StartFillingForm',
-        'ai' => '\OpenAPI\Client\Model\AIConfig'
+        'ai' => '\OpenAPI\Client\Model\AiConfigDto'
     ];
 
     /**
@@ -451,7 +451,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets feedback
      *
-     * @return \OpenAPI\Client\Model\FeedbackConfig|null
+     * @return \OpenAPI\Client\Model\FeedbackConfigDto|null
      */
     public function getFeedback()
     {
@@ -461,7 +461,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets feedback
      *
-     * @param \OpenAPI\Client\Model\FeedbackConfig|null $feedback The support link the editor offers behind its feedback button.
+     * @param \OpenAPI\Client\Model\FeedbackConfigDto|null $feedback The support link the editor offers behind its feedback button.
      *
      * @return self
      */
@@ -512,7 +512,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets goback
      *
-     * @return \OpenAPI\Client\Model\GobackConfig|null
+     * @return \OpenAPI\Client\Model\GobackConfigDto|null
      */
     public function getGoback()
     {
@@ -522,7 +522,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets goback
      *
-     * @param \OpenAPI\Client\Model\GobackConfig|null $goback Where the editor returns the user to when they leave the document. It is empty when there is nowhere to go  back to, as in an embedded opening.
+     * @param \OpenAPI\Client\Model\GobackConfigDto|null $goback Where the editor returns the user to when they leave the document. It is empty when there is nowhere to go  back to, as in an embedded opening.
      *
      * @return self
      */
@@ -539,7 +539,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets review
      *
-     * @return \OpenAPI\Client\Model\ReviewConfig|null
+     * @return \OpenAPI\Client\Model\ReviewConfigDto|null
      */
     public function getReview()
     {
@@ -549,7 +549,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets review
      *
-     * @param \OpenAPI\Client\Model\ReviewConfig|null $review How tracked changes are displayed when the document opens; it depends on whether this session may write.
+     * @param \OpenAPI\Client\Model\ReviewConfigDto|null $review How tracked changes are displayed when the document opens; it depends on whether this session may write.
      *
      * @return self
      */
@@ -620,7 +620,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets submit_form
      *
-     * @return \OpenAPI\Client\Model\SubmitForm|null
+     * @return \OpenAPI\Client\Model\SubmitFormDto|null
      */
     public function getSubmitForm()
     {
@@ -630,7 +630,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets submit_form
      *
-     * @param \OpenAPI\Client\Model\SubmitForm|null $submit_form The submit button of a form: whether it is shown and what it says.
+     * @param \OpenAPI\Client\Model\SubmitFormDto|null $submit_form The submit button of a form: whether it is shown and what it says.
      *
      * @return self
      */
@@ -674,7 +674,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets ai
      *
-     * @return \OpenAPI\Client\Model\AIConfig|null
+     * @return \OpenAPI\Client\Model\AiConfigDto|null
      */
     public function getAi()
     {
@@ -684,7 +684,7 @@ class CustomizationConfigDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets ai
      *
-     * @param \OpenAPI\Client\Model\AIConfig|null $ai The AI configuration settings.
+     * @param \OpenAPI\Client\Model\AiConfigDto|null $ai The AI configuration settings.
      *
      * @return self
      */

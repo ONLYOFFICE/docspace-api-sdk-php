@@ -63,13 +63,13 @@ $apiInstance = new OpenAPI\Client\Api\AIAIApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ai_ai_approve_tool_call_request = new \OpenAPI\Client\Model\AiAiApproveToolCallRequest(); // \OpenAPI\Client\Model\AiAiApproveToolCallRequest
+$ai_approve_tool_call_request = new \OpenAPI\Client\Model\AiApproveToolCallRequest(); // \OpenAPI\Client\Model\AiApproveToolCallRequest
 
 try {
-    $result = $apiInstance->aiAiApproveToolCall($ai_ai_approve_tool_call_request);
+    $result = $apiInstance->aiApproveToolCall($ai_approve_tool_call_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AIAIApi->aiAiApproveToolCall: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AIAIApi->aiApproveToolCall: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -172,37 +172,37 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td colspan="3" style="text-align: center;"><strong>AIApi</strong></td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaiapprovetoolcall"><strong>aiAiApproveToolCall</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aiapprovetoolcall"><strong>aiApproveToolCall</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/approve-tool-call</td>
         <td>Approve tool call</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaidenytoolcall"><strong>aiAiDenyToolCall</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aidenytoolcall"><strong>aiDenyToolCall</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/deny-tool-call</td>
         <td>Deny tool call</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiairegeneratestream"><strong>aiAiRegenerateStream</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#airegeneratestream"><strong>aiRegenerateStream</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/regenerate-stream</td>
         <td>Regenerate stream</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaisend"><strong>aiAiSend</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aisend"><strong>aiSend</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/send</td>
         <td>Run an AI action</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaisendcustom"><strong>aiAiSendCustom</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aisendcustom"><strong>aiSendCustom</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/send-custom</td>
         <td>Send custom</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaisendwithstream"><strong>aiAiSendWithStream</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aisendwithstream"><strong>aiSendWithStream</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/send-with-stream</td>
         <td>Send with stream</td>
       </tr>
       <tr>
-        <td><a href="docs/ApiAIAIApi.md#aiaisendwithstreamopenai"><strong>aiAiSendWithStreamOpenAI</strong></a></td>
+        <td><a href="docs/ApiAIAIApi.md#aisendwithstreamopenai"><strong>aiSendWithStreamOpenAI</strong></a></td>
         <td><strong>POST</strong> /api/2.0/ai/ai/send-with-stream-openai</td>
         <td>Stream a chat in OpenAI format</td>
       </tr>
@@ -336,6 +336,24 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Save files many</td>
       </tr>
     <tr>
+        <td colspan="3" style="text-align: center;"><strong>ContextApi</strong></td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIContextApi.md#aicontextgetcontextfolders"><strong>aiContextGetContextFolders</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/context/get-context-folders</td>
+        <td>Get context folders</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIContextApi.md#aicontextgetroomskill"><strong>aiContextGetRoomSkill</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/context/get-room-skill</td>
+        <td>Get room skill</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIContextApi.md#aicontextgetroomskills"><strong>aiContextGetRoomSkills</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/context/get-room-skills</td>
+        <td>Get room skills</td>
+      </tr>
+    <tr>
         <td colspan="3" style="text-align: center;"><strong>EditorToolsApi</strong></td>
       </tr>
       <tr>
@@ -388,6 +406,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get reasoning level</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiAIPreferencesApi.md#aipreferencesgettoolpermissionmode"><strong>aiPreferencesGetToolPermissionMode</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/preferences/get-tool-permission-mode</td>
+        <td>Get tool permission mode</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiAIPreferencesApi.md#aipreferencesisdeepmodeset"><strong>aiPreferencesIsDeepModeSet</strong></a></td>
         <td><strong>GET</strong> /api/2.0/ai/preferences/is-deep-mode-set</td>
         <td>Is deep mode set</td>
@@ -401,6 +424,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiAIPreferencesApi.md#aipreferencessetreasoninglevel"><strong>aiPreferencesSetReasoningLevel</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/ai/preferences/set-reasoning-level</td>
         <td>Set reasoning level</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIPreferencesApi.md#aipreferencessettoolpermissionmode"><strong>aiPreferencesSetToolPermissionMode</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/ai/preferences/set-tool-permission-mode</td>
+        <td>Set tool permission mode</td>
       </tr>
     <tr>
         <td colspan="3" style="text-align: center;"><strong>ProfilesApi</strong></td>
@@ -522,6 +550,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get AI settings</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiAISettingsApi.md#aisettingsgettoolmode"><strong>aiSettingsGetToolMode</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/ai/config/tool-mode</td>
+        <td>Get the tool permission mode</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiAISettingsApi.md#aisettingsgetuser"><strong>aiSettingsGetUser</strong></a></td>
         <td><strong>GET</strong> /api/2.0/ai/config/user</td>
         <td>Get user AI settings</td>
@@ -530,6 +563,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiAISettingsApi.md#aisettingsgetvectorization"><strong>aiSettingsGetVectorization</strong></a></td>
         <td><strong>GET</strong> /api/2.0/ai/config/vectorization</td>
         <td>Get vectorization settings</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAISettingsApi.md#aisettingssettoolmode"><strong>aiSettingsSetToolMode</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/ai/config/tool-mode</td>
+        <td>Set the tool permission mode</td>
       </tr>
       <tr>
         <td><a href="docs/ApiAISettingsApi.md#aisettingssetuser"><strong>aiSettingsSetUser</strong></a></td>
@@ -988,6 +1026,33 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 </details>
 <details>
+  <summary>Docs</summary>
+
+  <table>
+    <tbody>
+      <tr>
+        <th>Method</th>
+        <th>HTTP request</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: center;"><strong>DocsApi</strong></td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiDocsApi.md#convertfile"><strong>convertFile</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/docs/converter</td>
+        <td>Convert a file</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiDocsApi.md#runbuilderscript"><strong>runBuilderScript</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/docs/builder</td>
+        <td>Run a document builder script</td>
+      </tr>
+    </tbody>
+  </table>
+
+</details>
+<details>
   <summary>Files</summary>
 
   <table>
@@ -1394,6 +1459,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Rename a folder</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiFilesFoldersApi.md#searchfolder"><strong>searchFolder</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/files/{folderId}/search</td>
+        <td>Search a folder by metadata</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiFilesFoldersApi.md#setfolderorder"><strong>setFolderOrder</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/files/folder/{folderId}/order</td>
         <td>Set folder order</td>
@@ -1417,6 +1487,109 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiFilesFoldersApi.md#uploadfiletomy"><strong>uploadFileToMy</strong></a></td>
         <td><strong>POST</strong> /api/2.0/files/@my/upload</td>
         <td>Upload a file to My documents</td>
+      </tr>
+    <tr>
+        <td colspan="3" style="text-align: center;"><strong>MetadataApi</strong></td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#assignfiletemplates"><strong>assignFileTemplates</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/file/{fileId}/templates</td>
+        <td>Assign templates to a file</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#assignfoldertemplates"><strong>assignFolderTemplates</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/folder/{folderId}/templates</td>
+        <td>Assign templates to a folder</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#createfield"><strong>createField</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/files/metadata/templates/{templateId}/fields</td>
+        <td>Add a metadata field</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#createtemplate"><strong>createTemplate</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/files/metadata/templates</td>
+        <td>Create a metadata template</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#deletefield"><strong>deleteField</strong></a></td>
+        <td><strong>DELETE</strong> /api/2.0/files/metadata/templates/{templateId}/fields/{fieldId}</td>
+        <td>Delete a metadata field</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#deletetemplate"><strong>deleteTemplate</strong></a></td>
+        <td><strong>DELETE</strong> /api/2.0/files/metadata/templates/{templateId}</td>
+        <td>Delete a metadata template</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#getcascadeprogress"><strong>getCascadeProgress</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/metadata/folder/{folderId}/templates/progress</td>
+        <td>Get cascade progress</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#getfilemetadata"><strong>getFileMetadata</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/metadata/file/{fileId}</td>
+        <td>Get file metadata</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#getfoldermetadata"><strong>getFolderMetadata</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/metadata/folder/{folderId}</td>
+        <td>Get folder metadata</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#gettemplate"><strong>getTemplate</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/metadata/templates/{templateId}</td>
+        <td>Get a metadata template</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#gettemplates"><strong>getTemplates</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/metadata/templates</td>
+        <td>Get metadata templates</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#setfilecustomfields"><strong>setFileCustomFields</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/file/{fileId}/customfields</td>
+        <td>Set file custom fields</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#setfilevalues"><strong>setFileValues</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/file/{fileId}/values</td>
+        <td>Set file metadata values</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#setfoldercustomfields"><strong>setFolderCustomFields</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/folder/{folderId}/customfields</td>
+        <td>Set folder custom fields</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#setfoldervalues"><strong>setFolderValues</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/folder/{folderId}/values</td>
+        <td>Set folder metadata values</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#unassignfiletemplate"><strong>unassignFileTemplate</strong></a></td>
+        <td><strong>DELETE</strong> /api/2.0/files/metadata/file/{fileId}/templates/{templateId}</td>
+        <td>Unassign a template from a file</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#unassignfoldertemplate"><strong>unassignFolderTemplate</strong></a></td>
+        <td><strong>DELETE</strong> /api/2.0/files/metadata/folder/{folderId}/templates/{templateId}</td>
+        <td>Unassign a template from a folder</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#updatefield"><strong>updateField</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/templates/{templateId}/fields/{fieldId}</td>
+        <td>Update a metadata field</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#updatefoldertemplate"><strong>updateFolderTemplate</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/folder/{folderId}/templates/{templateId}</td>
+        <td>Update a template assignment on a folder</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiFilesMetadataApi.md#updatetemplate"><strong>updateTemplate</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/files/metadata/templates/{templateId}</td>
+        <td>Update a metadata template</td>
       </tr>
     <tr>
         <td colspan="3" style="text-align: center;"><strong>OperationsApi</strong></td>
@@ -1867,7 +2040,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiGroupApi.md#getgroupbyuserid"><strong>getGroupByUserId</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/group/user/{userid}</td>
+        <td><strong>GET</strong> /api/2.0/group/user/{userId}</td>
         <td>Get user groups</td>
       </tr>
       <tr>
@@ -2118,7 +2291,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleEmailApi.md#changeuseremail"><strong>changeUserEmail</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/{userid}/email</td>
+        <td><strong>PUT</strong> /api/2.0/people/{userId}/email</td>
         <td>Change a user email</td>
       </tr>
       <tr>
@@ -2144,7 +2317,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePasswordApi.md#changeuserpassword"><strong>changeUserPassword</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/{userid}/password</td>
+        <td><strong>PUT</strong> /api/2.0/people/{userId}/password</td>
         <td>Change a user password</td>
       </tr>
       <tr>
@@ -2157,27 +2330,27 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePhotosApi.md#creatememberphotothumbnails"><strong>createMemberPhotoThumbnails</strong></a></td>
-        <td><strong>POST</strong> /api/2.0/people/{userid}/photo/thumbnails</td>
+        <td><strong>POST</strong> /api/2.0/people/{userId}/photo/thumbnails</td>
         <td>Create photo thumbnails</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePhotosApi.md#deletememberphoto"><strong>deleteMemberPhoto</strong></a></td>
-        <td><strong>DELETE</strong> /api/2.0/people/{userid}/photo</td>
+        <td><strong>DELETE</strong> /api/2.0/people/{userId}/photo</td>
         <td>Delete a user photo</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePhotosApi.md#getmemberphoto"><strong>getMemberPhoto</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/{userid}/photo</td>
+        <td><strong>GET</strong> /api/2.0/people/{userId}/photo</td>
         <td>Get a user photo</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePhotosApi.md#updatememberphoto"><strong>updateMemberPhoto</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/{userid}/photo</td>
+        <td><strong>PUT</strong> /api/2.0/people/{userId}/photo</td>
         <td>Update a user photo</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeoplePhotosApi.md#uploadmemberphoto"><strong>uploadMemberPhoto</strong></a></td>
-        <td><strong>POST</strong> /api/2.0/people/{userid}/photo</td>
+        <td><strong>POST</strong> /api/2.0/people/{userId}/photo</td>
         <td>Upload a user photo</td>
       </tr>
     <tr>
@@ -2195,7 +2368,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleProfilesApi.md#deletemember"><strong>deleteMember</strong></a></td>
-        <td><strong>DELETE</strong> /api/2.0/people/{userid}</td>
+        <td><strong>DELETE</strong> /api/2.0/people/{userId}</td>
         <td>Delete a user</td>
       </tr>
       <tr>
@@ -2220,7 +2393,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleProfilesApi.md#getprofilebyuserid"><strong>getProfileByUserId</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/{userid}</td>
+        <td><strong>GET</strong> /api/2.0/people/{userId}</td>
         <td>Get a profile by user ID</td>
       </tr>
       <tr>
@@ -2245,12 +2418,12 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleProfilesApi.md#updatemember"><strong>updateMember</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/{userid}</td>
+        <td><strong>PUT</strong> /api/2.0/people/{userId}</td>
         <td>Update a user</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleProfilesApi.md#updatememberculture"><strong>updateMemberCulture</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/{userid}/culture</td>
+        <td><strong>PUT</strong> /api/2.0/people/{userId}/culture</td>
         <td>Update a user culture</td>
       </tr>
     <tr>
@@ -2370,12 +2543,12 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleUserDataApi.md#getreassignprogress"><strong>getReassignProgress</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/reassign/progress/{userid}</td>
+        <td><strong>GET</strong> /api/2.0/people/reassign/progress/{userId}</td>
         <td>Get the reassignment progress</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleUserDataApi.md#getremoveprogress"><strong>getRemoveProgress</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/remove/progress/{userid}</td>
+        <td><strong>GET</strong> /api/2.0/people/remove/progress/{userId}</td>
         <td>Get the deletion progress</td>
       </tr>
       <tr>
@@ -2423,7 +2596,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleUserStatusApi.md#updateuseractivationstatus"><strong>updateUserActivationStatus</strong></a></td>
-        <td><strong>PUT</strong> /api/2.0/people/activationstatus/{activationstatus}</td>
+        <td><strong>PUT</strong> /api/2.0/people/activationstatus/{activationStatus}</td>
         <td>Set my activation status</td>
       </tr>
       <tr>
@@ -2436,7 +2609,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPeopleUserTypeApi.md#getusertypeupdateprogress"><strong>getUserTypeUpdateProgress</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/type/progress/{userid}</td>
+        <td><strong>GET</strong> /api/2.0/people/type/progress/{userId}</td>
         <td>Get the user type change progress</td>
       </tr>
       <tr>
@@ -2473,7 +2646,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPortalGuestsApi.md#getguestsharinglink"><strong>getGuestSharingLink</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/people/guests/{userid}/share</td>
+        <td><strong>GET</strong> /api/2.0/people/guests/{userId}/share</td>
         <td>Get a guest sharing link</td>
       </tr>
     <tr>
@@ -2740,6 +2913,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><strong>PUT</strong> /api/2.0/portal/suspend</td>
         <td>Deactivate a portal</td>
       </tr>
+      <tr>
+        <td><a href="docs/ApiPortalSettingsApi.md#unblockportal"><strong>unblockPortal</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/portal/unblock</td>
+        <td>Unblock a portal</td>
+      </tr>
     <tr>
         <td colspan="3" style="text-align: center;"><strong>UsersApi</strong></td>
       </tr>
@@ -2770,7 +2948,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiPortalUsersApi.md#getuserbyid"><strong>getUserById</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/portal/users/{userID}</td>
+        <td><strong>GET</strong> /api/2.0/portal/users/{userId}</td>
         <td>Get a portal user</td>
       </tr>
       <tr>
@@ -2886,6 +3064,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get room template public access</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiRoomsApi.md#getroomaifolder"><strong>getRoomAiFolder</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/files/rooms/{id}/ai</td>
+        <td>Get the .ai folder of a room</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiRoomsApi.md#getroomcovers"><strong>getRoomCovers</strong></a></td>
         <td><strong>GET</strong> /api/2.0/files/rooms/covers</td>
         <td>Get room cover gallery</td>
@@ -2959,6 +3142,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiRoomsApi.md#resendemailinvitations"><strong>resendEmailInvitations</strong></a></td>
         <td><strong>POST</strong> /api/2.0/files/rooms/{id}/resend</td>
         <td>Resend the room invitations</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiRoomsApi.md#searchrooms"><strong>searchRooms</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/files/rooms/search</td>
+        <td>Search the rooms by metadata</td>
       </tr>
       <tr>
         <td><a href="docs/ApiRoomsApi.md#setpublicsettings"><strong>setPublicSettings</strong></a></td>
@@ -3832,7 +4020,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
       </tr>
       <tr>
         <td><a href="docs/ApiSettingsSecurityApi.md#getproductadministrators"><strong>getProductAdministrators</strong></a></td>
-        <td><strong>GET</strong> /api/2.0/settings/security/administrator/{productid}</td>
+        <td><strong>GET</strong> /api/2.0/settings/security/administrator/{productId}</td>
         <td>Get product administrators</td>
       </tr>
       <tr>
@@ -4059,6 +4247,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get web plugins</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiSettingsWebpluginsApi.md#refreshwebplugin"><strong>refreshWebPlugin</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/settings/webplugins/{name}/refresh</td>
+        <td>Refresh a web plugin</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiSettingsWebpluginsApi.md#updatewebplugin"><strong>updateWebPlugin</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/settings/webplugins/{name}</td>
         <td>Update a web plugin</td>
@@ -4094,28 +4287,32 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 <details><summary>Models list</summary>
 
- - [OpenAPI\Client\Model.AIConfig](docs/ModelAIConfig.md)
  - [OpenAPI\Client\Model.AccessRequestKeyDto](docs/ModelAccessRequestKeyDto.md)
+ - [OpenAPI\Client\Model.AccountEntryArrayWrapper](docs/ModelAccountEntryArrayWrapper.md)
+ - [OpenAPI\Client\Model.AccountEntryDto](docs/ModelAccountEntryDto.md)
  - [OpenAPI\Client\Model.AccountInfoArrayWrapper](docs/ModelAccountInfoArrayWrapper.md)
  - [OpenAPI\Client\Model.AccountInfoDto](docs/ModelAccountInfoDto.md)
  - [OpenAPI\Client\Model.AccountLoginType](docs/ModelAccountLoginType.md)
- - [OpenAPI\Client\Model.AceShortWrapper](docs/ModelAceShortWrapper.md)
- - [OpenAPI\Client\Model.AceShortWrapperArrayWrapper](docs/ModelAceShortWrapperArrayWrapper.md)
- - [OpenAPI\Client\Model.ActionConfig](docs/ModelActionConfig.md)
- - [OpenAPI\Client\Model.ActionLinkConfig](docs/ModelActionLinkConfig.md)
+ - [OpenAPI\Client\Model.AccountSearchArea](docs/ModelAccountSearchArea.md)
+ - [OpenAPI\Client\Model.AceShortArrayWrapper](docs/ModelAceShortArrayWrapper.md)
+ - [OpenAPI\Client\Model.AceShortDto](docs/ModelAceShortDto.md)
+ - [OpenAPI\Client\Model.ActionLinkActionRequest](docs/ModelActionLinkActionRequest.md)
+ - [OpenAPI\Client\Model.ActionLinkRequest](docs/ModelActionLinkRequest.md)
  - [OpenAPI\Client\Model.ActionType](docs/ModelActionType.md)
  - [OpenAPI\Client\Model.ActiveConnectionsDto](docs/ModelActiveConnectionsDto.md)
  - [OpenAPI\Client\Model.ActiveConnectionsItemDto](docs/ModelActiveConnectionsItemDto.md)
  - [OpenAPI\Client\Model.ActiveConnectionsWrapper](docs/ModelActiveConnectionsWrapper.md)
  - [OpenAPI\Client\Model.ActiveServiceArrayWrapper](docs/ModelActiveServiceArrayWrapper.md)
  - [OpenAPI\Client\Model.ActiveServiceDto](docs/ModelActiveServiceDto.md)
- - [OpenAPI\Client\Model.AdditionalWhiteLabelSettings](docs/ModelAdditionalWhiteLabelSettings.md)
+ - [OpenAPI\Client\Model.AdditionalResourcesDto](docs/ModelAdditionalResourcesDto.md)
+ - [OpenAPI\Client\Model.AdditionalResourcesWrapper](docs/ModelAdditionalResourcesWrapper.md)
  - [OpenAPI\Client\Model.AdditionalWhiteLabelSettingsDto](docs/ModelAdditionalWhiteLabelSettingsDto.md)
- - [OpenAPI\Client\Model.AdditionalWhiteLabelSettingsDtoWrapper](docs/ModelAdditionalWhiteLabelSettingsDtoWrapper.md)
- - [OpenAPI\Client\Model.AdditionalWhiteLabelSettingsResponseWrapper](docs/ModelAdditionalWhiteLabelSettingsResponseWrapper.md)
+ - [OpenAPI\Client\Model.AdditionalWhiteLabelSettingsRequestDto](docs/ModelAdditionalWhiteLabelSettingsRequestDto.md)
  - [OpenAPI\Client\Model.AdditionalWhiteLabelSettingsWrapper](docs/ModelAdditionalWhiteLabelSettingsWrapper.md)
- - [OpenAPI\Client\Model.AdminMessageBaseSettingsRequestsDto](docs/ModelAdminMessageBaseSettingsRequestsDto.md)
- - [OpenAPI\Client\Model.AdminMessageSettingsRequestsDto](docs/ModelAdminMessageSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.AdminMessageBaseSettingsRequestDto](docs/ModelAdminMessageBaseSettingsRequestDto.md)
+ - [OpenAPI\Client\Model.AdminMessageSettingsRequestDto](docs/ModelAdminMessageSettingsRequestDto.md)
+ - [OpenAPI\Client\Model.AiActionArgs](docs/ModelAiActionArgs.md)
+ - [OpenAPI\Client\Model.AiActionArgsPrompt](docs/ModelAiActionArgsPrompt.md)
  - [OpenAPI\Client\Model.AiActionType](docs/ModelAiActionType.md)
  - [OpenAPI\Client\Model.AiAgentNewItemsDto](docs/ModelAiAgentNewItemsDto.md)
  - [OpenAPI\Client\Model.AiAgentsCreateRequest](docs/ModelAiAgentsCreateRequest.md)
@@ -4126,20 +4323,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiAgentsUpdateQuotaRequest](docs/ModelAiAgentsUpdateQuotaRequest.md)
  - [OpenAPI\Client\Model.AiAgentsUpdateQuotaRequestRoomIdsInner](docs/ModelAiAgentsUpdateQuotaRequestRoomIdsInner.md)
  - [OpenAPI\Client\Model.AiAgentsUpdateRequest](docs/ModelAiAgentsUpdateRequest.md)
- - [OpenAPI\Client\Model.AiAiActionArgs](docs/ModelAiAiActionArgs.md)
- - [OpenAPI\Client\Model.AiAiActionArgsPrompt](docs/ModelAiAiActionArgsPrompt.md)
- - [OpenAPI\Client\Model.AiAiApproveToolCallRequest](docs/ModelAiAiApproveToolCallRequest.md)
- - [OpenAPI\Client\Model.AiAiReasoningLevel](docs/ModelAiAiReasoningLevel.md)
- - [OpenAPI\Client\Model.AiAiRegenerateStreamRequest](docs/ModelAiAiRegenerateStreamRequest.md)
- - [OpenAPI\Client\Model.AiAiSendCustomRequest](docs/ModelAiAiSendCustomRequest.md)
- - [OpenAPI\Client\Model.AiAiSendRequest](docs/ModelAiAiSendRequest.md)
- - [OpenAPI\Client\Model.AiAiSendStreamBody](docs/ModelAiAiSendStreamBody.md)
- - [OpenAPI\Client\Model.AiAiSettingsDto](docs/ModelAiAiSettingsDto.md)
- - [OpenAPI\Client\Model.AiAiSettingsWrapper](docs/ModelAiAiSettingsWrapper.md)
- - [OpenAPI\Client\Model.AiAiToolCallData](docs/ModelAiAiToolCallData.md)
- - [OpenAPI\Client\Model.AiAiUserSettingsDto](docs/ModelAiAiUserSettingsDto.md)
- - [OpenAPI\Client\Model.AiAiUserSettingsWrapper](docs/ModelAiAiUserSettingsWrapper.md)
  - [OpenAPI\Client\Model.AiApiDateTime](docs/ModelAiApiDateTime.md)
+ - [OpenAPI\Client\Model.AiApproveToolCallRequest](docs/ModelAiApproveToolCallRequest.md)
  - [OpenAPI\Client\Model.AiAssignmentMutationResult](docs/ModelAiAssignmentMutationResult.md)
  - [OpenAPI\Client\Model.AiAssignmentsAssignRequest](docs/ModelAiAssignmentsAssignRequest.md)
  - [OpenAPI\Client\Model.AiAssignmentsCascadeProfileDeleteRequest](docs/ModelAiAssignmentsCascadeProfileDeleteRequest.md)
@@ -4155,6 +4340,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiChatEvent](docs/ModelAiChatEvent.md)
  - [OpenAPI\Client\Model.AiChatPriceDto](docs/ModelAiChatPriceDto.md)
  - [OpenAPI\Client\Model.AiChatSettingsDto](docs/ModelAiChatSettingsDto.md)
+ - [OpenAPI\Client\Model.AiChatToolPermissionMode](docs/ModelAiChatToolPermissionMode.md)
+ - [OpenAPI\Client\Model.AiChatToolPrefsScope](docs/ModelAiChatToolPrefsScope.md)
+ - [OpenAPI\Client\Model.AiConfigDto](docs/ModelAiConfigDto.md)
  - [OpenAPI\Client\Model.AiCreateProfileInput](docs/ModelAiCreateProfileInput.md)
  - [OpenAPI\Client\Model.AiCreatePromptInput](docs/ModelAiCreatePromptInput.md)
  - [OpenAPI\Client\Model.AiDistributedTaskStatus](docs/ModelAiDistributedTaskStatus.md)
@@ -4169,6 +4357,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiEntryPricingDtoAiEmbeddingPriceDto](docs/ModelAiEntryPricingDtoAiEmbeddingPriceDto.md)
  - [OpenAPI\Client\Model.AiEntryPricingDtoAiImagePriceDto](docs/ModelAiEntryPricingDtoAiImagePriceDto.md)
  - [OpenAPI\Client\Model.AiEntryPricingDtoDecimal](docs/ModelAiEntryPricingDtoDecimal.md)
+ - [OpenAPI\Client\Model.AiErrorCode](docs/ModelAiErrorCode.md)
+ - [OpenAPI\Client\Model.AiErrorData](docs/ModelAiErrorData.md)
  - [OpenAPI\Client\Model.AiErrorResponse](docs/ModelAiErrorResponse.md)
  - [OpenAPI\Client\Model.AiExportTextToDocx202Response](docs/ModelAiExportTextToDocx202Response.md)
  - [OpenAPI\Client\Model.AiExportTextToDocxRequest](docs/ModelAiExportTextToDocxRequest.md)
@@ -4195,8 +4385,10 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiImportMode](docs/ModelAiImportMode.md)
  - [OpenAPI\Client\Model.AiImportResult](docs/ModelAiImportResult.md)
  - [OpenAPI\Client\Model.AiImportResultImported](docs/ModelAiImportResultImported.md)
- - [OpenAPI\Client\Model.AiLogo](docs/ModelAiLogo.md)
- - [OpenAPI\Client\Model.AiLogoCover](docs/ModelAiLogoCover.md)
+ - [OpenAPI\Client\Model.AiLogoCoverDto](docs/ModelAiLogoCoverDto.md)
+ - [OpenAPI\Client\Model.AiLogoDto](docs/ModelAiLogoDto.md)
+ - [OpenAPI\Client\Model.AiMCPItem](docs/ModelAiMCPItem.md)
+ - [OpenAPI\Client\Model.AiMetadataMatchDto](docs/ModelAiMetadataMatchDto.md)
  - [OpenAPI\Client\Model.AiModel](docs/ModelAiModel.md)
  - [OpenAPI\Client\Model.AiNewItemsAgentNewItemsArrayWrapper](docs/ModelAiNewItemsAgentNewItemsArrayWrapper.md)
  - [OpenAPI\Client\Model.AiNewItemsDtoAgentNewItemsDto](docs/ModelAiNewItemsDtoAgentNewItemsDto.md)
@@ -4212,12 +4404,17 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiOpenOrCreateResult](docs/ModelAiOpenOrCreateResult.md)
  - [OpenAPI\Client\Model.AiOpenaiChatCompletions403Response](docs/ModelAiOpenaiChatCompletions403Response.md)
  - [OpenAPI\Client\Model.AiOpenaiChatCompletions403ResponseError](docs/ModelAiOpenaiChatCompletions403ResponseError.md)
+ - [OpenAPI\Client\Model.AiOpenaiImagesGenerations403Response](docs/ModelAiOpenaiImagesGenerations403Response.md)
+ - [OpenAPI\Client\Model.AiOpenaiImagesGenerations403ResponseError](docs/ModelAiOpenaiImagesGenerations403ResponseError.md)
  - [OpenAPI\Client\Model.AiPreferencesSetDeepModeRequest](docs/ModelAiPreferencesSetDeepModeRequest.md)
  - [OpenAPI\Client\Model.AiPreferencesSetReasoningLevelRequest](docs/ModelAiPreferencesSetReasoningLevelRequest.md)
+ - [OpenAPI\Client\Model.AiPreferencesSetToolPermissionModeRequest](docs/ModelAiPreferencesSetToolPermissionModeRequest.md)
+ - [OpenAPI\Client\Model.AiPriceCurrencyDto](docs/ModelAiPriceCurrencyDto.md)
  - [OpenAPI\Client\Model.AiPricesDto](docs/ModelAiPricesDto.md)
  - [OpenAPI\Client\Model.AiPricesWrapper](docs/ModelAiPricesWrapper.md)
  - [OpenAPI\Client\Model.AiProfile](docs/ModelAiProfile.md)
  - [OpenAPI\Client\Model.AiProfileMutationResult](docs/ModelAiProfileMutationResult.md)
+ - [OpenAPI\Client\Model.AiProfilesCreate400Response](docs/ModelAiProfilesCreate400Response.md)
  - [OpenAPI\Client\Model.AiProfilesGetById200Response](docs/ModelAiProfilesGetById200Response.md)
  - [OpenAPI\Client\Model.AiProfilesListProviderModels400Response](docs/ModelAiProfilesListProviderModels400Response.md)
  - [OpenAPI\Client\Model.AiProfilesListProviderModels400ResponseAnyOf](docs/ModelAiProfilesListProviderModels400ResponseAnyOf.md)
@@ -4234,17 +4431,22 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiPromptsRenameFolderRequest](docs/ModelAiPromptsRenameFolderRequest.md)
  - [OpenAPI\Client\Model.AiPromptsUpdateRequest](docs/ModelAiPromptsUpdateRequest.md)
  - [OpenAPI\Client\Model.AiPromptsUpdateRequestUpdates](docs/ModelAiPromptsUpdateRequestUpdates.md)
+ - [OpenAPI\Client\Model.AiProvider](docs/ModelAiProvider.md)
  - [OpenAPI\Client\Model.AiProviderType](docs/ModelAiProviderType.md)
  - [OpenAPI\Client\Model.AiReasoningDepth](docs/ModelAiReasoningDepth.md)
+ - [OpenAPI\Client\Model.AiReasoningLevel](docs/ModelAiReasoningLevel.md)
  - [OpenAPI\Client\Model.AiReasoningSupport](docs/ModelAiReasoningSupport.md)
+ - [OpenAPI\Client\Model.AiRegenerateStreamRequest](docs/ModelAiRegenerateStreamRequest.md)
  - [OpenAPI\Client\Model.AiResolvedAssignment](docs/ModelAiResolvedAssignment.md)
  - [OpenAPI\Client\Model.AiRoomDataLifetimeDto](docs/ModelAiRoomDataLifetimeDto.md)
  - [OpenAPI\Client\Model.AiRoomDataLifetimePeriod](docs/ModelAiRoomDataLifetimePeriod.md)
  - [OpenAPI\Client\Model.AiRoomType](docs/ModelAiRoomType.md)
+ - [OpenAPI\Client\Model.AiSendCustomRequest](docs/ModelAiSendCustomRequest.md)
+ - [OpenAPI\Client\Model.AiSendRequest](docs/ModelAiSendRequest.md)
+ - [OpenAPI\Client\Model.AiSendStreamBody](docs/ModelAiSendStreamBody.md)
+ - [OpenAPI\Client\Model.AiSettingsDto](docs/ModelAiSettingsDto.md)
+ - [OpenAPI\Client\Model.AiSettingsWrapper](docs/ModelAiSettingsWrapper.md)
  - [OpenAPI\Client\Model.AiSuccessResponse](docs/ModelAiSuccessResponse.md)
- - [OpenAPI\Client\Model.AiTErrorData](docs/ModelAiTErrorData.md)
- - [OpenAPI\Client\Model.AiTMCPItem](docs/ModelAiTMCPItem.md)
- - [OpenAPI\Client\Model.AiTProvider](docs/ModelAiTProvider.md)
  - [OpenAPI\Client\Model.AiThread](docs/ModelAiThread.md)
  - [OpenAPI\Client\Model.AiThreadMessageLike](docs/ModelAiThreadMessageLike.md)
  - [OpenAPI\Client\Model.AiThreadMessageLikeContent](docs/ModelAiThreadMessageLikeContent.md)
@@ -4260,6 +4462,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiThreadsRenameRequest](docs/ModelAiThreadsRenameRequest.md)
  - [OpenAPI\Client\Model.AiThreadsTouchRequest](docs/ModelAiThreadsTouchRequest.md)
  - [OpenAPI\Client\Model.AiThreadsUpdateMessageRequest](docs/ModelAiThreadsUpdateMessageRequest.md)
+ - [OpenAPI\Client\Model.AiToolAnnotations](docs/ModelAiToolAnnotations.md)
+ - [OpenAPI\Client\Model.AiToolCallData](docs/ModelAiToolCallData.md)
+ - [OpenAPI\Client\Model.AiToolPermissionMode](docs/ModelAiToolPermissionMode.md)
  - [OpenAPI\Client\Model.AiToolsAddCustomServerRequest](docs/ModelAiToolsAddCustomServerRequest.md)
  - [OpenAPI\Client\Model.AiToolsBulkResult](docs/ModelAiToolsBulkResult.md)
  - [OpenAPI\Client\Model.AiToolsBulkResultErrorsInner](docs/ModelAiToolsBulkResultErrorsInner.md)
@@ -4270,6 +4475,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiToolsSetAllowAlwaysRequest](docs/ModelAiToolsSetAllowAlwaysRequest.md)
  - [OpenAPI\Client\Model.AiToolsSetDisabledRequest](docs/ModelAiToolsSetDisabledRequest.md)
  - [OpenAPI\Client\Model.AiToolsUpdateCustomServerRequest](docs/ModelAiToolsUpdateCustomServerRequest.md)
+ - [OpenAPI\Client\Model.AiUserSettingsDto](docs/ModelAiUserSettingsDto.md)
+ - [OpenAPI\Client\Model.AiUserSettingsWrapper](docs/ModelAiUserSettingsWrapper.md)
  - [OpenAPI\Client\Model.AiVectorizationSettingsDto](docs/ModelAiVectorizationSettingsDto.md)
  - [OpenAPI\Client\Model.AiVectorizationSettingsWrapper](docs/ModelAiVectorizationSettingsWrapper.md)
  - [OpenAPI\Client\Model.AiVectorizationStartTask200Response](docs/ModelAiVectorizationStartTask200Response.md)
@@ -4277,8 +4484,10 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiWatermarkAdditions](docs/ModelAiWatermarkAdditions.md)
  - [OpenAPI\Client\Model.AiWatermarkDto](docs/ModelAiWatermarkDto.md)
  - [OpenAPI\Client\Model.AiWebSearchConfig](docs/ModelAiWebSearchConfig.md)
+ - [OpenAPI\Client\Model.AiWebSearchConfigure400Response](docs/ModelAiWebSearchConfigure400Response.md)
  - [OpenAPI\Client\Model.AiWebSearchConfigureRequest](docs/ModelAiWebSearchConfigureRequest.md)
  - [OpenAPI\Client\Model.AiWebSearchMutationResult](docs/ModelAiWebSearchMutationResult.md)
+ - [OpenAPI\Client\Model.AiWebSearchSetActiveConfigRequest](docs/ModelAiWebSearchSetActiveConfigRequest.md)
  - [OpenAPI\Client\Model.AmazonS3RegionArrayWrapper](docs/ModelAmazonS3RegionArrayWrapper.md)
  - [OpenAPI\Client\Model.AmazonS3RegionDto](docs/ModelAmazonS3RegionDto.md)
  - [OpenAPI\Client\Model.AnonymousConfigDto](docs/ModelAnonymousConfigDto.md)
@@ -4291,43 +4500,41 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AppWrapper](docs/ModelAppWrapper.md)
  - [OpenAPI\Client\Model.ApplyFilterOption](docs/ModelApplyFilterOption.md)
  - [OpenAPI\Client\Model.ArchiveRoomRequest](docs/ModelArchiveRoomRequest.md)
- - [OpenAPI\Client\Model.Area](docs/ModelArea.md)
  - [OpenAPI\Client\Model.ArrayArrayWrapper](docs/ModelArrayArrayWrapper.md)
+ - [OpenAPI\Client\Model.AssignMetadataTemplates](docs/ModelAssignMetadataTemplates.md)
  - [OpenAPI\Client\Model.AuditEventArrayWrapper](docs/ModelAuditEventArrayWrapper.md)
  - [OpenAPI\Client\Model.AuditEventDto](docs/ModelAuditEventDto.md)
  - [OpenAPI\Client\Model.AuditReportFormat](docs/ModelAuditReportFormat.md)
- - [OpenAPI\Client\Model.AuditTrailActionMapperDto](docs/ModelAuditTrailActionMapperDto.md)
- - [OpenAPI\Client\Model.AuditTrailModuleMapperDto](docs/ModelAuditTrailModuleMapperDto.md)
- - [OpenAPI\Client\Model.AuditTrailProductMapperArrayWrapper](docs/ModelAuditTrailProductMapperArrayWrapper.md)
- - [OpenAPI\Client\Model.AuditTrailProductMapperDto](docs/ModelAuditTrailProductMapperDto.md)
+ - [OpenAPI\Client\Model.AuditTrailActionDto](docs/ModelAuditTrailActionDto.md)
+ - [OpenAPI\Client\Model.AuditTrailModuleDto](docs/ModelAuditTrailModuleDto.md)
+ - [OpenAPI\Client\Model.AuditTrailProductArrayWrapper](docs/ModelAuditTrailProductArrayWrapper.md)
+ - [OpenAPI\Client\Model.AuditTrailProductDto](docs/ModelAuditTrailProductDto.md)
  - [OpenAPI\Client\Model.AuditTrailTypesDto](docs/ModelAuditTrailTypesDto.md)
  - [OpenAPI\Client\Model.AuditTrailTypesWrapper](docs/ModelAuditTrailTypesWrapper.md)
- - [OpenAPI\Client\Model.AuthData](docs/ModelAuthData.md)
- - [OpenAPI\Client\Model.AuthKey](docs/ModelAuthKey.md)
- - [OpenAPI\Client\Model.AuthRequestsDto](docs/ModelAuthRequestsDto.md)
- - [OpenAPI\Client\Model.AuthServiceRequestsArrayWrapper](docs/ModelAuthServiceRequestsArrayWrapper.md)
- - [OpenAPI\Client\Model.AuthServiceRequestsDto](docs/ModelAuthServiceRequestsDto.md)
- - [OpenAPI\Client\Model.AuthWithCodeRequestsDto](docs/ModelAuthWithCodeRequestsDto.md)
+ - [OpenAPI\Client\Model.AuthKeyDto](docs/ModelAuthKeyDto.md)
+ - [OpenAPI\Client\Model.AuthKeyRequest](docs/ModelAuthKeyRequest.md)
+ - [OpenAPI\Client\Model.AuthRequestDto](docs/ModelAuthRequestDto.md)
+ - [OpenAPI\Client\Model.AuthServiceArrayWrapper](docs/ModelAuthServiceArrayWrapper.md)
+ - [OpenAPI\Client\Model.AuthServiceDto](docs/ModelAuthServiceDto.md)
+ - [OpenAPI\Client\Model.AuthWithCodeRequestDto](docs/ModelAuthWithCodeRequestDto.md)
  - [OpenAPI\Client\Model.AuthenticationTokenDto](docs/ModelAuthenticationTokenDto.md)
  - [OpenAPI\Client\Model.AuthenticationTokenWrapper](docs/ModelAuthenticationTokenWrapper.md)
- - [OpenAPI\Client\Model.AutoCleanUpData](docs/ModelAutoCleanUpData.md)
+ - [OpenAPI\Client\Model.AutoCleanUpDataDto](docs/ModelAutoCleanUpDataDto.md)
  - [OpenAPI\Client\Model.AutoCleanUpDataWrapper](docs/ModelAutoCleanUpDataWrapper.md)
  - [OpenAPI\Client\Model.AutoCleanupRequestDto](docs/ModelAutoCleanupRequestDto.md)
- - [OpenAPI\Client\Model.BackupDto](docs/ModelBackupDto.md)
- - [OpenAPI\Client\Model.BackupHistoryRecord](docs/ModelBackupHistoryRecord.md)
+ - [OpenAPI\Client\Model.BackupCronRequest](docs/ModelBackupCronRequest.md)
  - [OpenAPI\Client\Model.BackupHistoryRecordArrayWrapper](docs/ModelBackupHistoryRecordArrayWrapper.md)
+ - [OpenAPI\Client\Model.BackupHistoryRecordDto](docs/ModelBackupHistoryRecordDto.md)
  - [OpenAPI\Client\Model.BackupPeriod](docs/ModelBackupPeriod.md)
- - [OpenAPI\Client\Model.BackupProgress](docs/ModelBackupProgress.md)
+ - [OpenAPI\Client\Model.BackupProgressDto](docs/ModelBackupProgressDto.md)
  - [OpenAPI\Client\Model.BackupProgressEnum](docs/ModelBackupProgressEnum.md)
  - [OpenAPI\Client\Model.BackupProgressWrapper](docs/ModelBackupProgressWrapper.md)
- - [OpenAPI\Client\Model.BackupRestoreDto](docs/ModelBackupRestoreDto.md)
- - [OpenAPI\Client\Model.BackupScheduleDto](docs/ModelBackupScheduleDto.md)
  - [OpenAPI\Client\Model.BackupServiceStateDto](docs/ModelBackupServiceStateDto.md)
  - [OpenAPI\Client\Model.BackupServiceStateWrapper](docs/ModelBackupServiceStateWrapper.md)
  - [OpenAPI\Client\Model.BackupStorageType](docs/ModelBackupStorageType.md)
  - [OpenAPI\Client\Model.BackupsCountResultDto](docs/ModelBackupsCountResultDto.md)
  - [OpenAPI\Client\Model.BackupsCountResultWrapper](docs/ModelBackupsCountResultWrapper.md)
- - [OpenAPI\Client\Model.Balance](docs/ModelBalance.md)
+ - [OpenAPI\Client\Model.BalanceDto](docs/ModelBalanceDto.md)
  - [OpenAPI\Client\Model.BalanceWrapper](docs/ModelBalanceWrapper.md)
  - [OpenAPI\Client\Model.BaseBatchRequestDto](docs/ModelBaseBatchRequestDto.md)
  - [OpenAPI\Client\Model.BaseBatchRequestDtoAllOfFileIds](docs/ModelBaseBatchRequestDtoAllOfFileIds.md)
@@ -4340,37 +4547,37 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.BooleanWrapper](docs/ModelBooleanWrapper.md)
  - [OpenAPI\Client\Model.CapabilitiesDto](docs/ModelCapabilitiesDto.md)
  - [OpenAPI\Client\Model.CapabilitiesWrapper](docs/ModelCapabilitiesWrapper.md)
- - [OpenAPI\Client\Model.CdnStorageSettings](docs/ModelCdnStorageSettings.md)
- - [OpenAPI\Client\Model.CdnStorageSettingsWrapper](docs/ModelCdnStorageSettingsWrapper.md)
  - [OpenAPI\Client\Model.ChangeClientActivationRequest](docs/ModelChangeClientActivationRequest.md)
  - [OpenAPI\Client\Model.ChangeEmailRequest](docs/ModelChangeEmailRequest.md)
- - [OpenAPI\Client\Model.ChangeHistory](docs/ModelChangeHistory.md)
+ - [OpenAPI\Client\Model.ChangeHistoryRequest](docs/ModelChangeHistoryRequest.md)
  - [OpenAPI\Client\Model.ChangeOwnerRequestDto](docs/ModelChangeOwnerRequestDto.md)
  - [OpenAPI\Client\Model.ChangePasswordRequest](docs/ModelChangePasswordRequest.md)
  - [OpenAPI\Client\Model.ChangeWalletServiceStateRequestDto](docs/ModelChangeWalletServiceStateRequestDto.md)
  - [OpenAPI\Client\Model.ChatSettings](docs/ModelChatSettings.md)
  - [OpenAPI\Client\Model.ChatSettingsDto](docs/ModelChatSettingsDto.md)
+ - [OpenAPI\Client\Model.CheckConfirmRequestDto](docs/ModelCheckConfirmRequestDto.md)
  - [OpenAPI\Client\Model.CheckConversionRequestDto](docs/ModelCheckConversionRequestDto.md)
  - [OpenAPI\Client\Model.CheckDestFolderDto](docs/ModelCheckDestFolderDto.md)
  - [OpenAPI\Client\Model.CheckDestFolderResult](docs/ModelCheckDestFolderResult.md)
  - [OpenAPI\Client\Model.CheckDestFolderWrapper](docs/ModelCheckDestFolderWrapper.md)
  - [OpenAPI\Client\Model.CheckDocServiceUrlRequestDto](docs/ModelCheckDocServiceUrlRequestDto.md)
- - [OpenAPI\Client\Model.CheckFillFormDraft](docs/ModelCheckFillFormDraft.md)
+ - [OpenAPI\Client\Model.CheckFillFormDraftRequest](docs/ModelCheckFillFormDraftRequest.md)
+ - [OpenAPI\Client\Model.CheckMoveOrCopyBatchItemsDestFolderIdParameter](docs/ModelCheckMoveOrCopyBatchItemsDestFolderIdParameter.md)
+ - [OpenAPI\Client\Model.CheckMoveOrCopyBatchItemsFolderIdsParameterInner](docs/ModelCheckMoveOrCopyBatchItemsFolderIdsParameterInner.md)
  - [OpenAPI\Client\Model.CheckUploadRequest](docs/ModelCheckUploadRequest.md)
- - [OpenAPI\Client\Model.ChunkedUploadSessionResponse](docs/ModelChunkedUploadSessionResponse.md)
- - [OpenAPI\Client\Model.ChunkedUploadSessionResponseResponseWrapper](docs/ModelChunkedUploadSessionResponseResponseWrapper.md)
- - [OpenAPI\Client\Model.ChunkedUploadSessionResponseWrapper](docs/ModelChunkedUploadSessionResponseWrapper.md)
- - [OpenAPI\Client\Model.ChunkedUploadSessionResponseWrapperWrapper](docs/ModelChunkedUploadSessionResponseWrapperWrapper.md)
+ - [OpenAPI\Client\Model.ChunkedUploadSessionDto](docs/ModelChunkedUploadSessionDto.md)
+ - [OpenAPI\Client\Model.ChunkedUploadSessionResultDto](docs/ModelChunkedUploadSessionResultDto.md)
+ - [OpenAPI\Client\Model.ChunkedUploadSessionResultWrapper](docs/ModelChunkedUploadSessionResultWrapper.md)
+ - [OpenAPI\Client\Model.ChunkedUploadSessionWrapper](docs/ModelChunkedUploadSessionWrapper.md)
  - [OpenAPI\Client\Model.ClientInfoResponse](docs/ModelClientInfoResponse.md)
  - [OpenAPI\Client\Model.ClientResponse](docs/ModelClientResponse.md)
  - [OpenAPI\Client\Model.ClientSecretResponse](docs/ModelClientSecretResponse.md)
- - [OpenAPI\Client\Model.CoEditingConfig](docs/ModelCoEditingConfig.md)
+ - [OpenAPI\Client\Model.CoEditingConfigDto](docs/ModelCoEditingConfigDto.md)
  - [OpenAPI\Client\Model.CoEditingConfigMode](docs/ModelCoEditingConfigMode.md)
- - [OpenAPI\Client\Model.CompanyWhiteLabelSettings](docs/ModelCompanyWhiteLabelSettings.md)
- - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsArrayWrapper](docs/ModelCompanyWhiteLabelSettingsArrayWrapper.md)
+ - [OpenAPI\Client\Model.ColorThemeColorsDto](docs/ModelColorThemeColorsDto.md)
+ - [OpenAPI\Client\Model.ColorThemeColorsRequestDto](docs/ModelColorThemeColorsRequestDto.md)
  - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsDto](docs/ModelCompanyWhiteLabelSettingsDto.md)
- - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsDtoWrapper](docs/ModelCompanyWhiteLabelSettingsDtoWrapper.md)
- - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsResponseWrapper](docs/ModelCompanyWhiteLabelSettingsResponseWrapper.md)
+ - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsRequestDto](docs/ModelCompanyWhiteLabelSettingsRequestDto.md)
  - [OpenAPI\Client\Model.CompanyWhiteLabelSettingsWrapper](docs/ModelCompanyWhiteLabelSettingsWrapper.md)
  - [OpenAPI\Client\Model.ConfigurationDto](docs/ModelConfigurationDto.md)
  - [OpenAPI\Client\Model.ConfigurationWrapper](docs/ModelConfigurationWrapper.md)
@@ -4378,50 +4585,56 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ConfirmDto](docs/ModelConfirmDto.md)
  - [OpenAPI\Client\Model.ConfirmType](docs/ModelConfirmType.md)
  - [OpenAPI\Client\Model.ConfirmWrapper](docs/ModelConfirmWrapper.md)
- - [OpenAPI\Client\Model.ConnectionTestResult](docs/ModelConnectionTestResult.md)
+ - [OpenAPI\Client\Model.ConnectionTestResultDto](docs/ModelConnectionTestResultDto.md)
  - [OpenAPI\Client\Model.ConnectionTestResultWrapper](docs/ModelConnectionTestResultWrapper.md)
  - [OpenAPI\Client\Model.Contact](docs/ModelContact.md)
  - [OpenAPI\Client\Model.ConversationResultArrayWrapper](docs/ModelConversationResultArrayWrapper.md)
  - [OpenAPI\Client\Model.ConversationResultDto](docs/ModelConversationResultDto.md)
+ - [OpenAPI\Client\Model.ConvertDocumentLayoutRequest](docs/ModelConvertDocumentLayoutRequest.md)
+ - [OpenAPI\Client\Model.ConvertDocumentRendererRequest](docs/ModelConvertDocumentRendererRequest.md)
+ - [OpenAPI\Client\Model.ConvertFileRequestDto](docs/ModelConvertFileRequestDto.md)
+ - [OpenAPI\Client\Model.ConvertPdfRequest](docs/ModelConvertPdfRequest.md)
+ - [OpenAPI\Client\Model.ConvertSpreadsheetLayoutRequest](docs/ModelConvertSpreadsheetLayoutRequest.md)
+ - [OpenAPI\Client\Model.ConvertSpreadsheetMarginsRequest](docs/ModelConvertSpreadsheetMarginsRequest.md)
+ - [OpenAPI\Client\Model.ConvertSpreadsheetPageSizeRequest](docs/ModelConvertSpreadsheetPageSizeRequest.md)
+ - [OpenAPI\Client\Model.ConvertThumbnailRequest](docs/ModelConvertThumbnailRequest.md)
  - [OpenAPI\Client\Model.CookieSettingsDto](docs/ModelCookieSettingsDto.md)
- - [OpenAPI\Client\Model.CookieSettingsRequestsDto](docs/ModelCookieSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.CookieSettingsRequestDto](docs/ModelCookieSettingsRequestDto.md)
  - [OpenAPI\Client\Model.CookieSettingsWrapper](docs/ModelCookieSettingsWrapper.md)
- - [OpenAPI\Client\Model.CopyAsJsonElement](docs/ModelCopyAsJsonElement.md)
- - [OpenAPI\Client\Model.CopyAsJsonElementDestFolderId](docs/ModelCopyAsJsonElementDestFolderId.md)
+ - [OpenAPI\Client\Model.CopyAsRequest](docs/ModelCopyAsRequest.md)
+ - [OpenAPI\Client\Model.CopyAsRequestDestFolderId](docs/ModelCopyAsRequestDestFolderId.md)
  - [OpenAPI\Client\Model.CoverRequestDto](docs/ModelCoverRequestDto.md)
  - [OpenAPI\Client\Model.CoversResultArrayWrapper](docs/ModelCoversResultArrayWrapper.md)
  - [OpenAPI\Client\Model.CoversResultDto](docs/ModelCoversResultDto.md)
  - [OpenAPI\Client\Model.CreateApiKeyRequestDto](docs/ModelCreateApiKeyRequestDto.md)
+ - [OpenAPI\Client\Model.CreateBackupScheduleRequestDto](docs/ModelCreateBackupScheduleRequestDto.md)
  - [OpenAPI\Client\Model.CreateClientRequest](docs/ModelCreateClientRequest.md)
- - [OpenAPI\Client\Model.CreateFileJsonElement](docs/ModelCreateFileJsonElement.md)
- - [OpenAPI\Client\Model.CreateFileJsonElementTemplateId](docs/ModelCreateFileJsonElementTemplateId.md)
- - [OpenAPI\Client\Model.CreateFolder](docs/ModelCreateFolder.md)
+ - [OpenAPI\Client\Model.CreateFileRequest](docs/ModelCreateFileRequest.md)
+ - [OpenAPI\Client\Model.CreateFileRequestTemplateId](docs/ModelCreateFileRequestTemplateId.md)
+ - [OpenAPI\Client\Model.CreateFolderRequest](docs/ModelCreateFolderRequest.md)
+ - [OpenAPI\Client\Model.CreateMetadataTemplateRequestDto](docs/ModelCreateMetadataTemplateRequestDto.md)
  - [OpenAPI\Client\Model.CreateRoomFromTemplateDto](docs/ModelCreateRoomFromTemplateDto.md)
  - [OpenAPI\Client\Model.CreateRoomRequestDto](docs/ModelCreateRoomRequestDto.md)
  - [OpenAPI\Client\Model.CreateTagRequestDto](docs/ModelCreateTagRequestDto.md)
- - [OpenAPI\Client\Model.CreateTextOrHtmlFile](docs/ModelCreateTextOrHtmlFile.md)
- - [OpenAPI\Client\Model.CreateThirdPartyRoom](docs/ModelCreateThirdPartyRoom.md)
- - [OpenAPI\Client\Model.CreateWebhooksConfigRequestsDto](docs/ModelCreateWebhooksConfigRequestsDto.md)
- - [OpenAPI\Client\Model.Cron](docs/ModelCron.md)
- - [OpenAPI\Client\Model.CronParams](docs/ModelCronParams.md)
+ - [OpenAPI\Client\Model.CreateTextOrHtmlFileRequest](docs/ModelCreateTextOrHtmlFileRequest.md)
+ - [OpenAPI\Client\Model.CreateThirdPartyRoomRequest](docs/ModelCreateThirdPartyRoomRequest.md)
+ - [OpenAPI\Client\Model.CreateWebhooksConfigRequestDto](docs/ModelCreateWebhooksConfigRequestDto.md)
+ - [OpenAPI\Client\Model.CronParamsDto](docs/ModelCronParamsDto.md)
  - [OpenAPI\Client\Model.CspDto](docs/ModelCspDto.md)
- - [OpenAPI\Client\Model.CspRequestsDto](docs/ModelCspRequestsDto.md)
+ - [OpenAPI\Client\Model.CspRequestDto](docs/ModelCspRequestDto.md)
  - [OpenAPI\Client\Model.CspWrapper](docs/ModelCspWrapper.md)
- - [OpenAPI\Client\Model.Culture](docs/ModelCulture.md)
- - [OpenAPI\Client\Model.CultureSpecificExternalResource](docs/ModelCultureSpecificExternalResource.md)
- - [OpenAPI\Client\Model.CultureSpecificExternalResources](docs/ModelCultureSpecificExternalResources.md)
  - [OpenAPI\Client\Model.CurrenciesArrayWrapper](docs/ModelCurrenciesArrayWrapper.md)
  - [OpenAPI\Client\Model.CurrenciesDto](docs/ModelCurrenciesDto.md)
- - [OpenAPI\Client\Model.CurrencyAmount](docs/ModelCurrencyAmount.md)
- - [OpenAPI\Client\Model.CurrencyCode](docs/ModelCurrencyCode.md)
- - [OpenAPI\Client\Model.CurrencyInfo](docs/ModelCurrencyInfo.md)
  - [OpenAPI\Client\Model.CurrentLicenseInfo](docs/ModelCurrentLicenseInfo.md)
- - [OpenAPI\Client\Model.CustomColorThemesSettingsColorItem](docs/ModelCustomColorThemesSettingsColorItem.md)
+ - [OpenAPI\Client\Model.CustomColorThemeDto](docs/ModelCustomColorThemeDto.md)
+ - [OpenAPI\Client\Model.CustomColorThemeRequestDto](docs/ModelCustomColorThemeRequestDto.md)
  - [OpenAPI\Client\Model.CustomColorThemesSettingsDto](docs/ModelCustomColorThemesSettingsDto.md)
- - [OpenAPI\Client\Model.CustomColorThemesSettingsItem](docs/ModelCustomColorThemesSettingsItem.md)
- - [OpenAPI\Client\Model.CustomColorThemesSettingsRequestsDto](docs/ModelCustomColorThemesSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.CustomColorThemesSettingsRequestDto](docs/ModelCustomColorThemesSettingsRequestDto.md)
  - [OpenAPI\Client\Model.CustomColorThemesSettingsWrapper](docs/ModelCustomColorThemesSettingsWrapper.md)
- - [OpenAPI\Client\Model.CustomFilterParameters](docs/ModelCustomFilterParameters.md)
+ - [OpenAPI\Client\Model.CustomFieldRequest](docs/ModelCustomFieldRequest.md)
+ - [OpenAPI\Client\Model.CustomFieldValueArrayWrapper](docs/ModelCustomFieldValueArrayWrapper.md)
+ - [OpenAPI\Client\Model.CustomFieldValueDto](docs/ModelCustomFieldValueDto.md)
+ - [OpenAPI\Client\Model.CustomFilterRequest](docs/ModelCustomFilterRequest.md)
  - [OpenAPI\Client\Model.CustomerConfigDto](docs/ModelCustomerConfigDto.md)
  - [OpenAPI\Client\Model.CustomerInfoDto](docs/ModelCustomerInfoDto.md)
  - [OpenAPI\Client\Model.CustomerInfoWrapper](docs/ModelCustomerInfoWrapper.md)
@@ -4434,16 +4647,15 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.CustomerServiceUsageReportRequestDto](docs/ModelCustomerServiceUsageReportRequestDto.md)
  - [OpenAPI\Client\Model.CustomerServiceUsageReportWrapper](docs/ModelCustomerServiceUsageReportWrapper.md)
  - [OpenAPI\Client\Model.CustomizationConfigDto](docs/ModelCustomizationConfigDto.md)
- - [OpenAPI\Client\Model.DarkThemeSettings](docs/ModelDarkThemeSettings.md)
+ - [OpenAPI\Client\Model.DarkThemeSettingsDto](docs/ModelDarkThemeSettingsDto.md)
  - [OpenAPI\Client\Model.DarkThemeSettingsRequestDto](docs/ModelDarkThemeSettingsRequestDto.md)
  - [OpenAPI\Client\Model.DarkThemeSettingsType](docs/ModelDarkThemeSettingsType.md)
  - [OpenAPI\Client\Model.DarkThemeSettingsWrapper](docs/ModelDarkThemeSettingsWrapper.md)
  - [OpenAPI\Client\Model.DateToAutoCleanUp](docs/ModelDateToAutoCleanUp.md)
- - [OpenAPI\Client\Model.DbTenant](docs/ModelDbTenant.md)
- - [OpenAPI\Client\Model.DbTenantPartner](docs/ModelDbTenantPartner.md)
- - [OpenAPI\Client\Model.DeepLinkConfigurationRequestsDto](docs/ModelDeepLinkConfigurationRequestsDto.md)
+ - [OpenAPI\Client\Model.DeepLinkConfigurationRequestDto](docs/ModelDeepLinkConfigurationRequestDto.md)
  - [OpenAPI\Client\Model.DeepLinkDto](docs/ModelDeepLinkDto.md)
  - [OpenAPI\Client\Model.DeepLinkHandlingMode](docs/ModelDeepLinkHandlingMode.md)
+ - [OpenAPI\Client\Model.DeepLinkSettingsRequestDto](docs/ModelDeepLinkSettingsRequestDto.md)
  - [OpenAPI\Client\Model.DefaultProductRequestDto](docs/ModelDefaultProductRequestDto.md)
  - [OpenAPI\Client\Model.DefaultTemplateItemDto](docs/ModelDefaultTemplateItemDto.md)
  - [OpenAPI\Client\Model.DefaultTemplateSettingsDto](docs/ModelDefaultTemplateSettingsDto.md)
@@ -4451,45 +4663,53 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.DefaultTemplateSettingsRequestDtoSelectedFile](docs/ModelDefaultTemplateSettingsRequestDtoSelectedFile.md)
  - [OpenAPI\Client\Model.DefaultTemplateSettingsResetRequestDto](docs/ModelDefaultTemplateSettingsResetRequestDto.md)
  - [OpenAPI\Client\Model.DefaultTemplateSettingsWrapper](docs/ModelDefaultTemplateSettingsWrapper.md)
- - [OpenAPI\Client\Model.Delete](docs/ModelDelete.md)
  - [OpenAPI\Client\Model.DeleteBatchRequestDto](docs/ModelDeleteBatchRequestDto.md)
  - [OpenAPI\Client\Model.DeleteBatchRequestDtoAllOfFileIds](docs/ModelDeleteBatchRequestDtoAllOfFileIds.md)
  - [OpenAPI\Client\Model.DeleteBatchRequestDtoAllOfFolderIds](docs/ModelDeleteBatchRequestDtoAllOfFolderIds.md)
- - [OpenAPI\Client\Model.DeleteFolder](docs/ModelDeleteFolder.md)
+ - [OpenAPI\Client\Model.DeleteFileRequest](docs/ModelDeleteFileRequest.md)
+ - [OpenAPI\Client\Model.DeleteFolderRequest](docs/ModelDeleteFolderRequest.md)
  - [OpenAPI\Client\Model.DeleteRoomRequest](docs/ModelDeleteRoomRequest.md)
  - [OpenAPI\Client\Model.DeleteVersionBatchRequestDto](docs/ModelDeleteVersionBatchRequestDto.md)
- - [OpenAPI\Client\Model.DiscountCategory](docs/ModelDiscountCategory.md)
+ - [OpenAPI\Client\Model.DiscountCategoryDto](docs/ModelDiscountCategoryDto.md)
  - [OpenAPI\Client\Model.DisplayRequestDto](docs/ModelDisplayRequestDto.md)
  - [OpenAPI\Client\Model.DistributedTaskStatus](docs/ModelDistributedTaskStatus.md)
- - [OpenAPI\Client\Model.DnsSettingsRequestsDto](docs/ModelDnsSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.DnsSettingsRequestDto](docs/ModelDnsSettingsRequestDto.md)
  - [OpenAPI\Client\Model.DocServiceUrlDto](docs/ModelDocServiceUrlDto.md)
  - [OpenAPI\Client\Model.DocServiceUrlWrapper](docs/ModelDocServiceUrlWrapper.md)
- - [OpenAPI\Client\Model.DocsCloudConfig](docs/ModelDocsCloudConfig.md)
+ - [OpenAPI\Client\Model.DocsCloudConfigDto](docs/ModelDocsCloudConfigDto.md)
+ - [OpenAPI\Client\Model.DocsCloudConfigRequestDto](docs/ModelDocsCloudConfigRequestDto.md)
  - [OpenAPI\Client\Model.DocsCloudConfigWrapper](docs/ModelDocsCloudConfigWrapper.md)
  - [OpenAPI\Client\Model.DocsCloudDevPackRequestDto](docs/ModelDocsCloudDevPackRequestDto.md)
- - [OpenAPI\Client\Model.DocsCloudIpFilterConfig](docs/ModelDocsCloudIpFilterConfig.md)
- - [OpenAPI\Client\Model.DocsCloudIpFilterRule](docs/ModelDocsCloudIpFilterRule.md)
- - [OpenAPI\Client\Model.DocsCloudLicenseInfo](docs/ModelDocsCloudLicenseInfo.md)
- - [OpenAPI\Client\Model.DocsCloudPayment](docs/ModelDocsCloudPayment.md)
- - [OpenAPI\Client\Model.DocsCloudQuota](docs/ModelDocsCloudQuota.md)
- - [OpenAPI\Client\Model.DocsCloudQuotaUser](docs/ModelDocsCloudQuotaUser.md)
+ - [OpenAPI\Client\Model.DocsCloudIpFilterConfigDto](docs/ModelDocsCloudIpFilterConfigDto.md)
+ - [OpenAPI\Client\Model.DocsCloudIpFilterConfigRequest](docs/ModelDocsCloudIpFilterConfigRequest.md)
+ - [OpenAPI\Client\Model.DocsCloudIpFilterRuleDto](docs/ModelDocsCloudIpFilterRuleDto.md)
+ - [OpenAPI\Client\Model.DocsCloudIpFilterRuleRequest](docs/ModelDocsCloudIpFilterRuleRequest.md)
+ - [OpenAPI\Client\Model.DocsCloudLicenseInfoDto](docs/ModelDocsCloudLicenseInfoDto.md)
+ - [OpenAPI\Client\Model.DocsCloudPaymentDto](docs/ModelDocsCloudPaymentDto.md)
+ - [OpenAPI\Client\Model.DocsCloudQuotaDto](docs/ModelDocsCloudQuotaDto.md)
+ - [OpenAPI\Client\Model.DocsCloudQuotaUserDto](docs/ModelDocsCloudQuotaUserDto.md)
  - [OpenAPI\Client\Model.DocsCloudQuotaWrapper](docs/ModelDocsCloudQuotaWrapper.md)
- - [OpenAPI\Client\Model.DocsCloudSecurityConfig](docs/ModelDocsCloudSecurityConfig.md)
- - [OpenAPI\Client\Model.DocsCloudServerConfig](docs/ModelDocsCloudServerConfig.md)
- - [OpenAPI\Client\Model.DocsCloudServerInfo](docs/ModelDocsCloudServerInfo.md)
- - [OpenAPI\Client\Model.DocsCloudStats](docs/ModelDocsCloudStats.md)
- - [OpenAPI\Client\Model.DocsCloudTenant](docs/ModelDocsCloudTenant.md)
- - [OpenAPI\Client\Model.DocsCloudTenantInfo](docs/ModelDocsCloudTenantInfo.md)
+ - [OpenAPI\Client\Model.DocsCloudSecurityConfigDto](docs/ModelDocsCloudSecurityConfigDto.md)
+ - [OpenAPI\Client\Model.DocsCloudSecurityConfigRequest](docs/ModelDocsCloudSecurityConfigRequest.md)
+ - [OpenAPI\Client\Model.DocsCloudServerConfigDto](docs/ModelDocsCloudServerConfigDto.md)
+ - [OpenAPI\Client\Model.DocsCloudServerConfigRequest](docs/ModelDocsCloudServerConfigRequest.md)
+ - [OpenAPI\Client\Model.DocsCloudServerInfoDto](docs/ModelDocsCloudServerInfoDto.md)
+ - [OpenAPI\Client\Model.DocsCloudStatsDto](docs/ModelDocsCloudStatsDto.md)
+ - [OpenAPI\Client\Model.DocsCloudTenantDto](docs/ModelDocsCloudTenantDto.md)
+ - [OpenAPI\Client\Model.DocsCloudTenantInfoDto](docs/ModelDocsCloudTenantInfoDto.md)
  - [OpenAPI\Client\Model.DocsCloudTenantInfoWrapper](docs/ModelDocsCloudTenantInfoWrapper.md)
  - [OpenAPI\Client\Model.DocsCloudTenantWrapper](docs/ModelDocsCloudTenantWrapper.md)
- - [OpenAPI\Client\Model.DocsCloudUsage](docs/ModelDocsCloudUsage.md)
+ - [OpenAPI\Client\Model.DocsCloudUsageDto](docs/ModelDocsCloudUsageDto.md)
  - [OpenAPI\Client\Model.DocsCloudUsageWrapper](docs/ModelDocsCloudUsageWrapper.md)
- - [OpenAPI\Client\Model.DocsCloudUserStats](docs/ModelDocsCloudUserStats.md)
- - [OpenAPI\Client\Model.DocsCloudUsersLimit](docs/ModelDocsCloudUsersLimit.md)
- - [OpenAPI\Client\Model.DocsCloudWopiConfig](docs/ModelDocsCloudWopiConfig.md)
+ - [OpenAPI\Client\Model.DocsCloudUserStatsDto](docs/ModelDocsCloudUserStatsDto.md)
+ - [OpenAPI\Client\Model.DocsCloudUsersLimitDto](docs/ModelDocsCloudUsersLimitDto.md)
+ - [OpenAPI\Client\Model.DocsCloudWopiConfigDto](docs/ModelDocsCloudWopiConfigDto.md)
+ - [OpenAPI\Client\Model.DocsCloudWopiConfigRequest](docs/ModelDocsCloudWopiConfigRequest.md)
  - [OpenAPI\Client\Model.DocumentBuilderTaskDto](docs/ModelDocumentBuilderTaskDto.md)
  - [OpenAPI\Client\Model.DocumentBuilderTaskWrapper](docs/ModelDocumentBuilderTaskWrapper.md)
  - [OpenAPI\Client\Model.DocumentConfigDto](docs/ModelDocumentConfigDto.md)
+ - [OpenAPI\Client\Model.DocumentOptionsDto](docs/ModelDocumentOptionsDto.md)
+ - [OpenAPI\Client\Model.DomainNameRulesDto](docs/ModelDomainNameRulesDto.md)
  - [OpenAPI\Client\Model.DoubleNullableWrapper](docs/ModelDoubleNullableWrapper.md)
  - [OpenAPI\Client\Model.DoubleWrapper](docs/ModelDoubleWrapper.md)
  - [OpenAPI\Client\Model.DownloadRequestDto](docs/ModelDownloadRequestDto.md)
@@ -4502,22 +4722,22 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.DuplicateRequestDtoAllOfFileIds](docs/ModelDuplicateRequestDtoAllOfFileIds.md)
  - [OpenAPI\Client\Model.DuplicateRequestDtoAllOfFolderIds](docs/ModelDuplicateRequestDtoAllOfFolderIds.md)
  - [OpenAPI\Client\Model.EditHistoryArrayWrapper](docs/ModelEditHistoryArrayWrapper.md)
- - [OpenAPI\Client\Model.EditHistoryAuthor](docs/ModelEditHistoryAuthor.md)
- - [OpenAPI\Client\Model.EditHistoryChangesWrapper](docs/ModelEditHistoryChangesWrapper.md)
+ - [OpenAPI\Client\Model.EditHistoryAuthorDto](docs/ModelEditHistoryAuthorDto.md)
+ - [OpenAPI\Client\Model.EditHistoryChangesDto](docs/ModelEditHistoryChangesDto.md)
  - [OpenAPI\Client\Model.EditHistoryDataDto](docs/ModelEditHistoryDataDto.md)
  - [OpenAPI\Client\Model.EditHistoryDataWrapper](docs/ModelEditHistoryDataWrapper.md)
  - [OpenAPI\Client\Model.EditHistoryDto](docs/ModelEditHistoryDto.md)
- - [OpenAPI\Client\Model.EditHistoryUrl](docs/ModelEditHistoryUrl.md)
+ - [OpenAPI\Client\Model.EditHistoryUrlDto](docs/ModelEditHistoryUrlDto.md)
  - [OpenAPI\Client\Model.EditorConfigurationDto](docs/ModelEditorConfigurationDto.md)
  - [OpenAPI\Client\Model.EditorToolCallParametersDto](docs/ModelEditorToolCallParametersDto.md)
  - [OpenAPI\Client\Model.EditorToolCallStateDto](docs/ModelEditorToolCallStateDto.md)
  - [OpenAPI\Client\Model.EditorType](docs/ModelEditorType.md)
- - [OpenAPI\Client\Model.EmailActivationSettings](docs/ModelEmailActivationSettings.md)
+ - [OpenAPI\Client\Model.EmailActivationSettingsDto](docs/ModelEmailActivationSettingsDto.md)
+ - [OpenAPI\Client\Model.EmailActivationSettingsRequestDto](docs/ModelEmailActivationSettingsRequestDto.md)
  - [OpenAPI\Client\Model.EmailActivationSettingsWrapper](docs/ModelEmailActivationSettingsWrapper.md)
  - [OpenAPI\Client\Model.EmailInvitationDto](docs/ModelEmailInvitationDto.md)
  - [OpenAPI\Client\Model.EmailMemberRequestDto](docs/ModelEmailMemberRequestDto.md)
- - [OpenAPI\Client\Model.EmailValidationKeyModel](docs/ModelEmailValidationKeyModel.md)
- - [OpenAPI\Client\Model.EmbeddedConfig](docs/ModelEmbeddedConfig.md)
+ - [OpenAPI\Client\Model.EmbeddedConfigDto](docs/ModelEmbeddedConfigDto.md)
  - [OpenAPI\Client\Model.EmployeeActivationStatus](docs/ModelEmployeeActivationStatus.md)
  - [OpenAPI\Client\Model.EmployeeArrayWrapper](docs/ModelEmployeeArrayWrapper.md)
  - [OpenAPI\Client\Model.EmployeeDto](docs/ModelEmployeeDto.md)
@@ -4529,29 +4749,39 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.EmployeeWrapper](docs/ModelEmployeeWrapper.md)
  - [OpenAPI\Client\Model.EnabledModuleArrayWrapper](docs/ModelEnabledModuleArrayWrapper.md)
  - [OpenAPI\Client\Model.EnabledModuleDto](docs/ModelEnabledModuleDto.md)
- - [OpenAPI\Client\Model.EncryprtionStatus](docs/ModelEncryprtionStatus.md)
  - [OpenAPI\Client\Model.EncryptionKeyArrayWrapper](docs/ModelEncryptionKeyArrayWrapper.md)
  - [OpenAPI\Client\Model.EncryptionKeyDto](docs/ModelEncryptionKeyDto.md)
  - [OpenAPI\Client\Model.EncryptionKeyRequestDto](docs/ModelEncryptionKeyRequestDto.md)
- - [OpenAPI\Client\Model.EncryptionSettings](docs/ModelEncryptionSettings.md)
+ - [OpenAPI\Client\Model.EncryptionSettingsDto](docs/ModelEncryptionSettingsDto.md)
  - [OpenAPI\Client\Model.EncryptionSettingsWrapper](docs/ModelEncryptionSettingsWrapper.md)
+ - [OpenAPI\Client\Model.EncryptionStatus](docs/ModelEncryptionStatus.md)
+ - [OpenAPI\Client\Model.EntityQuotaDto](docs/ModelEntityQuotaDto.md)
+ - [OpenAPI\Client\Model.EntityQuotaSettingsDto](docs/ModelEntityQuotaSettingsDto.md)
+ - [OpenAPI\Client\Model.EntityQuotaSettingsWrapper](docs/ModelEntityQuotaSettingsWrapper.md)
+ - [OpenAPI\Client\Model.EntryFieldDto](docs/ModelEntryFieldDto.md)
+ - [OpenAPI\Client\Model.EntryMetadataDto](docs/ModelEntryMetadataDto.md)
+ - [OpenAPI\Client\Model.EntryMetadataWrapper](docs/ModelEntryMetadataWrapper.md)
+ - [OpenAPI\Client\Model.EntryTemplateDto](docs/ModelEntryTemplateDto.md)
  - [OpenAPI\Client\Model.EntryType](docs/ModelEntryType.md)
  - [OpenAPI\Client\Model.ErrorApiResponse](docs/ModelErrorApiResponse.md)
  - [OpenAPI\Client\Model.ErrorApiResponseError](docs/ModelErrorApiResponseError.md)
  - [OpenAPI\Client\Model.ExchangeToken200Response](docs/ModelExchangeToken200Response.md)
- - [OpenAPI\Client\Model.ExternalDatabaseSettings](docs/ModelExternalDatabaseSettings.md)
+ - [OpenAPI\Client\Model.ExternalDatabaseConnectionRequestDto](docs/ModelExternalDatabaseConnectionRequestDto.md)
  - [OpenAPI\Client\Model.ExternalDatabaseType](docs/ModelExternalDatabaseType.md)
  - [OpenAPI\Client\Model.ExternalDbSyncFormResultDto](docs/ModelExternalDbSyncFormResultDto.md)
  - [OpenAPI\Client\Model.ExternalDbSyncTaskDto](docs/ModelExternalDbSyncTaskDto.md)
  - [OpenAPI\Client\Model.ExternalDbSyncTaskWrapper](docs/ModelExternalDbSyncTaskWrapper.md)
+ - [OpenAPI\Client\Model.ExternalResourceDto](docs/ModelExternalResourceDto.md)
+ - [OpenAPI\Client\Model.ExternalResourcesDto](docs/ModelExternalResourcesDto.md)
  - [OpenAPI\Client\Model.ExternalShareDto](docs/ModelExternalShareDto.md)
  - [OpenAPI\Client\Model.ExternalShareRequestParam](docs/ModelExternalShareRequestParam.md)
+ - [OpenAPI\Client\Model.ExternalShareStatus](docs/ModelExternalShareStatus.md)
  - [OpenAPI\Client\Model.ExternalShareWrapper](docs/ModelExternalShareWrapper.md)
  - [OpenAPI\Client\Model.ExternalSharingSettingsDto](docs/ModelExternalSharingSettingsDto.md)
  - [OpenAPI\Client\Model.ExternalSharingSettingsRequestDto](docs/ModelExternalSharingSettingsRequestDto.md)
  - [OpenAPI\Client\Model.ExternalSharingSettingsWrapper](docs/ModelExternalSharingSettingsWrapper.md)
  - [OpenAPI\Client\Model.FeatureUsedDto](docs/ModelFeatureUsedDto.md)
- - [OpenAPI\Client\Model.FeedbackConfig](docs/ModelFeedbackConfig.md)
+ - [OpenAPI\Client\Model.FeedbackConfigDto](docs/ModelFeedbackConfigDto.md)
  - [OpenAPI\Client\Model.FieldError](docs/ModelFieldError.md)
  - [OpenAPI\Client\Model.FileArrayWrapper](docs/ModelFileArrayWrapper.md)
  - [OpenAPI\Client\Model.FileConflictResolveType](docs/ModelFileConflictResolveType.md)
@@ -4565,8 +4795,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.FileEntryBaseWrapper](docs/ModelFileEntryBaseWrapper.md)
  - [OpenAPI\Client\Model.FileEntryDto](docs/ModelFileEntryDto.md)
  - [OpenAPI\Client\Model.FileEntryType](docs/ModelFileEntryType.md)
- - [OpenAPI\Client\Model.FileKeys](docs/ModelFileKeys.md)
- - [OpenAPI\Client\Model.FileLink](docs/ModelFileLink.md)
+ - [OpenAPI\Client\Model.FileKeysDto](docs/ModelFileKeysDto.md)
+ - [OpenAPI\Client\Model.FileLinkDto](docs/ModelFileLinkDto.md)
  - [OpenAPI\Client\Model.FileLinkRequest](docs/ModelFileLinkRequest.md)
  - [OpenAPI\Client\Model.FileLinkWrapper](docs/ModelFileLinkWrapper.md)
  - [OpenAPI\Client\Model.FileOperationArrayWrapper](docs/ModelFileOperationArrayWrapper.md)
@@ -4574,8 +4804,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.FileOperationRequestBaseDto](docs/ModelFileOperationRequestBaseDto.md)
  - [OpenAPI\Client\Model.FileOperationType](docs/ModelFileOperationType.md)
  - [OpenAPI\Client\Model.FileOperationWrapper](docs/ModelFileOperationWrapper.md)
- - [OpenAPI\Client\Model.FileReference](docs/ModelFileReference.md)
- - [OpenAPI\Client\Model.FileReferenceData](docs/ModelFileReferenceData.md)
+ - [OpenAPI\Client\Model.FileReferenceDataDto](docs/ModelFileReferenceDataDto.md)
+ - [OpenAPI\Client\Model.FileReferenceDto](docs/ModelFileReferenceDto.md)
  - [OpenAPI\Client\Model.FileReferenceWrapper](docs/ModelFileReferenceWrapper.md)
  - [OpenAPI\Client\Model.FileShare](docs/ModelFileShare.md)
  - [OpenAPI\Client\Model.FileShareArrayWrapper](docs/ModelFileShareArrayWrapper.md)
@@ -4599,30 +4829,31 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.FillingFormResultWrapper](docs/ModelFillingFormResultWrapper.md)
  - [OpenAPI\Client\Model.FilterType](docs/ModelFilterType.md)
  - [OpenAPI\Client\Model.FinishDto](docs/ModelFinishDto.md)
- - [OpenAPI\Client\Model.FireBaseUser](docs/ModelFireBaseUser.md)
- - [OpenAPI\Client\Model.FireBaseUserWrapper](docs/ModelFireBaseUserWrapper.md)
+ - [OpenAPI\Client\Model.FirebaseDeviceDto](docs/ModelFirebaseDeviceDto.md)
+ - [OpenAPI\Client\Model.FirebaseDeviceWrapper](docs/ModelFirebaseDeviceWrapper.md)
  - [OpenAPI\Client\Model.FirebaseDto](docs/ModelFirebaseDto.md)
- - [OpenAPI\Client\Model.FirebaseRequestsDto](docs/ModelFirebaseRequestsDto.md)
+ - [OpenAPI\Client\Model.FirebaseRequestDto](docs/ModelFirebaseRequestDto.md)
  - [OpenAPI\Client\Model.FolderArrayWrapper](docs/ModelFolderArrayWrapper.md)
  - [OpenAPI\Client\Model.FolderContentArrayWrapper](docs/ModelFolderContentArrayWrapper.md)
  - [OpenAPI\Client\Model.FolderContentDto](docs/ModelFolderContentDto.md)
  - [OpenAPI\Client\Model.FolderContentWrapper](docs/ModelFolderContentWrapper.md)
  - [OpenAPI\Client\Model.FolderDto](docs/ModelFolderDto.md)
  - [OpenAPI\Client\Model.FolderLinkRequest](docs/ModelFolderLinkRequest.md)
+ - [OpenAPI\Client\Model.FolderMetadataSearch](docs/ModelFolderMetadataSearch.md)
  - [OpenAPI\Client\Model.FolderType](docs/ModelFolderType.md)
  - [OpenAPI\Client\Model.FolderWrapper](docs/ModelFolderWrapper.md)
  - [OpenAPI\Client\Model.FormFillingManageAction](docs/ModelFormFillingManageAction.md)
  - [OpenAPI\Client\Model.FormFillingStatus](docs/ModelFormFillingStatus.md)
  - [OpenAPI\Client\Model.FormGalleryDto](docs/ModelFormGalleryDto.md)
- - [OpenAPI\Client\Model.FormMetadata](docs/ModelFormMetadata.md)
+ - [OpenAPI\Client\Model.FormMetadataDto](docs/ModelFormMetadataDto.md)
  - [OpenAPI\Client\Model.FormResultsDto](docs/ModelFormResultsDto.md)
- - [OpenAPI\Client\Model.FormRole](docs/ModelFormRole.md)
  - [OpenAPI\Client\Model.FormRoleArrayWrapper](docs/ModelFormRoleArrayWrapper.md)
  - [OpenAPI\Client\Model.FormRoleDto](docs/ModelFormRoleDto.md)
+ - [OpenAPI\Client\Model.FormRoleRequest](docs/ModelFormRoleRequest.md)
  - [OpenAPI\Client\Model.FormSubmissionsDto](docs/ModelFormSubmissionsDto.md)
  - [OpenAPI\Client\Model.FormSubmissionsWrapper](docs/ModelFormSubmissionsWrapper.md)
  - [OpenAPI\Client\Model.FormsItemArrayWrapper](docs/ModelFormsItemArrayWrapper.md)
- - [OpenAPI\Client\Model.FormsItemData](docs/ModelFormsItemData.md)
+ - [OpenAPI\Client\Model.FormsItemDataDto](docs/ModelFormsItemDataDto.md)
  - [OpenAPI\Client\Model.FormsItemDto](docs/ModelFormsItemDto.md)
  - [OpenAPI\Client\Model.GenerateDocxToolCallParametersDto](docs/ModelGenerateDocxToolCallParametersDto.md)
  - [OpenAPI\Client\Model.GenerateFormToolCallParametersDto](docs/ModelGenerateFormToolCallParametersDto.md)
@@ -4630,29 +4861,24 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.GetPortalPrices200Response](docs/ModelGetPortalPrices200Response.md)
  - [OpenAPI\Client\Model.GetPortalPrices200ResponseLinksInner](docs/ModelGetPortalPrices200ResponseLinksInner.md)
  - [OpenAPI\Client\Model.GetReferenceDataDto](docs/ModelGetReferenceDataDto.md)
- - [OpenAPI\Client\Model.GobackConfig](docs/ModelGobackConfig.md)
- - [OpenAPI\Client\Model.GreetingSettingsRequestsDto](docs/ModelGreetingSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.GobackConfigDto](docs/ModelGobackConfigDto.md)
+ - [OpenAPI\Client\Model.GreetingSettingsRequestDto](docs/ModelGreetingSettingsRequestDto.md)
  - [OpenAPI\Client\Model.GroupArrayWrapper](docs/ModelGroupArrayWrapper.md)
  - [OpenAPI\Client\Model.GroupDto](docs/ModelGroupDto.md)
- - [OpenAPI\Client\Model.GroupMemberSecurityRequestArrayWrapper](docs/ModelGroupMemberSecurityRequestArrayWrapper.md)
- - [OpenAPI\Client\Model.GroupMemberSecurityRequestDto](docs/ModelGroupMemberSecurityRequestDto.md)
+ - [OpenAPI\Client\Model.GroupMemberSecurityArrayWrapper](docs/ModelGroupMemberSecurityArrayWrapper.md)
+ - [OpenAPI\Client\Model.GroupMemberSecurityDto](docs/ModelGroupMemberSecurityDto.md)
  - [OpenAPI\Client\Model.GroupRequestDto](docs/ModelGroupRequestDto.md)
  - [OpenAPI\Client\Model.GroupSummaryArrayWrapper](docs/ModelGroupSummaryArrayWrapper.md)
  - [OpenAPI\Client\Model.GroupSummaryDto](docs/ModelGroupSummaryDto.md)
  - [OpenAPI\Client\Model.GroupWrapper](docs/ModelGroupWrapper.md)
  - [OpenAPI\Client\Model.HideConfirmConvertRequestDto](docs/ModelHideConfirmConvertRequestDto.md)
- - [OpenAPI\Client\Model.HistoryAction](docs/ModelHistoryAction.md)
+ - [OpenAPI\Client\Model.HistoryActionDto](docs/ModelHistoryActionDto.md)
  - [OpenAPI\Client\Model.HistoryArrayWrapper](docs/ModelHistoryArrayWrapper.md)
- - [OpenAPI\Client\Model.HistoryData](docs/ModelHistoryData.md)
+ - [OpenAPI\Client\Model.HistoryDataDto](docs/ModelHistoryDataDto.md)
  - [OpenAPI\Client\Model.HistoryDto](docs/ModelHistoryDto.md)
- - [OpenAPI\Client\Model.IAccountEntryArrayWrapper](docs/ModelIAccountEntryArrayWrapper.md)
- - [OpenAPI\Client\Model.IAccountEntryDto](docs/ModelIAccountEntryDto.md)
  - [OpenAPI\Client\Model.ICompressWrapper](docs/ModelICompressWrapper.md)
- - [OpenAPI\Client\Model.IPRestriction](docs/ModelIPRestriction.md)
- - [OpenAPI\Client\Model.IPRestrictionArrayWrapper](docs/ModelIPRestrictionArrayWrapper.md)
- - [OpenAPI\Client\Model.IPRestrictionsSettings](docs/ModelIPRestrictionsSettings.md)
- - [OpenAPI\Client\Model.IPRestrictionsSettingsWrapper](docs/ModelIPRestrictionsSettingsWrapper.md)
  - [OpenAPI\Client\Model.IconRequest](docs/ModelIconRequest.md)
+ - [OpenAPI\Client\Model.ImageSizeDto](docs/ModelImageSizeDto.md)
  - [OpenAPI\Client\Model.ImportableApiEntity](docs/ModelImportableApiEntity.md)
  - [OpenAPI\Client\Model.InfoConfigDto](docs/ModelInfoConfigDto.md)
  - [OpenAPI\Client\Model.Int32Wrapper](docs/ModelInt32Wrapper.md)
@@ -4663,8 +4889,12 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.InvitationLinkUpdateRequestDto](docs/ModelInvitationLinkUpdateRequestDto.md)
  - [OpenAPI\Client\Model.InvitationLinkWrapper](docs/ModelInvitationLinkWrapper.md)
  - [OpenAPI\Client\Model.InviteUsersRequestDto](docs/ModelInviteUsersRequestDto.md)
- - [OpenAPI\Client\Model.IpRestrictionBase](docs/ModelIpRestrictionBase.md)
+ - [OpenAPI\Client\Model.IpRestrictionArrayWrapper](docs/ModelIpRestrictionArrayWrapper.md)
+ - [OpenAPI\Client\Model.IpRestrictionDto](docs/ModelIpRestrictionDto.md)
+ - [OpenAPI\Client\Model.IpRestrictionEntryDto](docs/ModelIpRestrictionEntryDto.md)
  - [OpenAPI\Client\Model.IpRestrictionsDto](docs/ModelIpRestrictionsDto.md)
+ - [OpenAPI\Client\Model.IpRestrictionsSettingsDto](docs/ModelIpRestrictionsSettingsDto.md)
+ - [OpenAPI\Client\Model.IpRestrictionsSettingsWrapper](docs/ModelIpRestrictionsSettingsWrapper.md)
  - [OpenAPI\Client\Model.IpRestrictionsWrapper](docs/ModelIpRestrictionsWrapper.md)
  - [OpenAPI\Client\Model.IsDefaultWhiteLabelLogosArrayWrapper](docs/ModelIsDefaultWhiteLabelLogosArrayWrapper.md)
  - [OpenAPI\Client\Model.IsDefaultWhiteLabelLogosDto](docs/ModelIsDefaultWhiteLabelLogosDto.md)
@@ -4673,33 +4903,51 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ItemKeyValuePairBooleanStringWrapper](docs/ModelItemKeyValuePairBooleanStringWrapper.md)
  - [OpenAPI\Client\Model.ItemKeyValuePairObjectObject](docs/ModelItemKeyValuePairObjectObject.md)
  - [OpenAPI\Client\Model.ItemKeyValuePairStringBoolean](docs/ModelItemKeyValuePairStringBoolean.md)
- - [OpenAPI\Client\Model.ItemKeyValuePairStringLogoRequestsDto](docs/ModelItemKeyValuePairStringLogoRequestsDto.md)
+ - [OpenAPI\Client\Model.ItemKeyValuePairStringLogoRequestDto](docs/ModelItemKeyValuePairStringLogoRequestDto.md)
  - [OpenAPI\Client\Model.ItemKeyValuePairStringString](docs/ModelItemKeyValuePairStringString.md)
  - [OpenAPI\Client\Model.JsonValueWrapper](docs/ModelJsonValueWrapper.md)
+ - [OpenAPI\Client\Model.LicensorDetailsArrayWrapper](docs/ModelLicensorDetailsArrayWrapper.md)
+ - [OpenAPI\Client\Model.LicensorDetailsDto](docs/ModelLicensorDetailsDto.md)
+ - [OpenAPI\Client\Model.LicensorDetailsWrapper](docs/ModelLicensorDetailsWrapper.md)
  - [OpenAPI\Client\Model.LinkAccountRequestDto](docs/ModelLinkAccountRequestDto.md)
  - [OpenAPI\Client\Model.LinkType](docs/ModelLinkType.md)
- - [OpenAPI\Client\Model.Location](docs/ModelLocation.md)
  - [OpenAPI\Client\Model.LocationType](docs/ModelLocationType.md)
- - [OpenAPI\Client\Model.LockFileParameters](docs/ModelLockFileParameters.md)
+ - [OpenAPI\Client\Model.LockFileRequest](docs/ModelLockFileRequest.md)
  - [OpenAPI\Client\Model.LoginEventArrayWrapper](docs/ModelLoginEventArrayWrapper.md)
  - [OpenAPI\Client\Model.LoginEventDto](docs/ModelLoginEventDto.md)
  - [OpenAPI\Client\Model.LoginProvider](docs/ModelLoginProvider.md)
  - [OpenAPI\Client\Model.LoginSettingsDto](docs/ModelLoginSettingsDto.md)
  - [OpenAPI\Client\Model.LoginSettingsRequestDto](docs/ModelLoginSettingsRequestDto.md)
  - [OpenAPI\Client\Model.LoginSettingsWrapper](docs/ModelLoginSettingsWrapper.md)
- - [OpenAPI\Client\Model.Logo](docs/ModelLogo.md)
  - [OpenAPI\Client\Model.LogoConfigDto](docs/ModelLogoConfigDto.md)
- - [OpenAPI\Client\Model.LogoCover](docs/ModelLogoCover.md)
+ - [OpenAPI\Client\Model.LogoCoverDto](docs/ModelLogoCoverDto.md)
+ - [OpenAPI\Client\Model.LogoDto](docs/ModelLogoDto.md)
  - [OpenAPI\Client\Model.LogoRequest](docs/ModelLogoRequest.md)
- - [OpenAPI\Client\Model.LogoRequestsDto](docs/ModelLogoRequestsDto.md)
- - [OpenAPI\Client\Model.MailDomainSettingsRequestsDto](docs/ModelMailDomainSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.LogoRequestDto](docs/ModelLogoRequestDto.md)
+ - [OpenAPI\Client\Model.MailDomainSettingsRequestDto](docs/ModelMailDomainSettingsRequestDto.md)
  - [OpenAPI\Client\Model.ManageFormFillingDto](docs/ModelManageFormFillingDto.md)
  - [OpenAPI\Client\Model.MemberRequestDto](docs/ModelMemberRequestDto.md)
  - [OpenAPI\Client\Model.MembersRequest](docs/ModelMembersRequest.md)
- - [OpenAPI\Client\Model.MentionMessageWrapper](docs/ModelMentionMessageWrapper.md)
- - [OpenAPI\Client\Model.MentionWrapper](docs/ModelMentionWrapper.md)
- - [OpenAPI\Client\Model.MentionWrapperArrayWrapper](docs/ModelMentionWrapperArrayWrapper.md)
+ - [OpenAPI\Client\Model.MentionArrayWrapper](docs/ModelMentionArrayWrapper.md)
+ - [OpenAPI\Client\Model.MentionDto](docs/ModelMentionDto.md)
+ - [OpenAPI\Client\Model.MentionMessageRequest](docs/ModelMentionMessageRequest.md)
  - [OpenAPI\Client\Model.MessageAction](docs/ModelMessageAction.md)
+ - [OpenAPI\Client\Model.MetadataConflictResolveType](docs/ModelMetadataConflictResolveType.md)
+ - [OpenAPI\Client\Model.MetadataFieldDto](docs/ModelMetadataFieldDto.md)
+ - [OpenAPI\Client\Model.MetadataFieldOptionDto](docs/ModelMetadataFieldOptionDto.md)
+ - [OpenAPI\Client\Model.MetadataFieldOptionRequest](docs/ModelMetadataFieldOptionRequest.md)
+ - [OpenAPI\Client\Model.MetadataFieldRequest](docs/ModelMetadataFieldRequest.md)
+ - [OpenAPI\Client\Model.MetadataFieldType](docs/ModelMetadataFieldType.md)
+ - [OpenAPI\Client\Model.MetadataFieldWrapper](docs/ModelMetadataFieldWrapper.md)
+ - [OpenAPI\Client\Model.MetadataFilterConditionRequest](docs/ModelMetadataFilterConditionRequest.md)
+ - [OpenAPI\Client\Model.MetadataMatchDto](docs/ModelMetadataMatchDto.md)
+ - [OpenAPI\Client\Model.MetadataOperationDto](docs/ModelMetadataOperationDto.md)
+ - [OpenAPI\Client\Model.MetadataOperationWrapper](docs/ModelMetadataOperationWrapper.md)
+ - [OpenAPI\Client\Model.MetadataTemplateArrayWrapper](docs/ModelMetadataTemplateArrayWrapper.md)
+ - [OpenAPI\Client\Model.MetadataTemplateDto](docs/ModelMetadataTemplateDto.md)
+ - [OpenAPI\Client\Model.MetadataTemplateWrapper](docs/ModelMetadataTemplateWrapper.md)
+ - [OpenAPI\Client\Model.MetadataValueDto](docs/ModelMetadataValueDto.md)
+ - [OpenAPI\Client\Model.MetadataValueRequest](docs/ModelMetadataValueRequest.md)
  - [OpenAPI\Client\Model.MigratingApiFiles](docs/ModelMigratingApiFiles.md)
  - [OpenAPI\Client\Model.MigratingApiGroup](docs/ModelMigratingApiGroup.md)
  - [OpenAPI\Client\Model.MigratingApiUser](docs/ModelMigratingApiUser.md)
@@ -4707,10 +4955,10 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.MigrationStatusDto](docs/ModelMigrationStatusDto.md)
  - [OpenAPI\Client\Model.MigrationStatusWrapper](docs/ModelMigrationStatusWrapper.md)
  - [OpenAPI\Client\Model.MobilePhoneActivationStatus](docs/ModelMobilePhoneActivationStatus.md)
- - [OpenAPI\Client\Model.MobileRequestsDto](docs/ModelMobileRequestsDto.md)
+ - [OpenAPI\Client\Model.MobileRequestDto](docs/ModelMobileRequestDto.md)
  - [OpenAPI\Client\Model.Module](docs/ModelModule.md)
  - [OpenAPI\Client\Model.ModuleWrapper](docs/ModelModuleWrapper.md)
- - [OpenAPI\Client\Model.MultiSizeLogoCover](docs/ModelMultiSizeLogoCover.md)
+ - [OpenAPI\Client\Model.MultiSizeLogoCoverDto](docs/ModelMultiSizeLogoCoverDto.md)
  - [OpenAPI\Client\Model.NewItemsDtoFileEntryBaseDto](docs/ModelNewItemsDtoFileEntryBaseDto.md)
  - [OpenAPI\Client\Model.NewItemsDtoRoomNewItemsDto](docs/ModelNewItemsDtoRoomNewItemsDto.md)
  - [OpenAPI\Client\Model.NewItemsFileEntryBaseArrayWrapper](docs/ModelNewItemsFileEntryBaseArrayWrapper.md)
@@ -4719,18 +4967,16 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.NotificationChannelStatusDto](docs/ModelNotificationChannelStatusDto.md)
  - [OpenAPI\Client\Model.NotificationChannelStatusWrapper](docs/ModelNotificationChannelStatusWrapper.md)
  - [OpenAPI\Client\Model.NotificationSettingsDto](docs/ModelNotificationSettingsDto.md)
- - [OpenAPI\Client\Model.NotificationSettingsRequestsDto](docs/ModelNotificationSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.NotificationSettingsRequestDto](docs/ModelNotificationSettingsRequestDto.md)
  - [OpenAPI\Client\Model.NotificationSettingsWrapper](docs/ModelNotificationSettingsWrapper.md)
  - [OpenAPI\Client\Model.NotificationType](docs/ModelNotificationType.md)
- - [OpenAPI\Client\Model.OAuth20Token](docs/ModelOAuth20Token.md)
  - [OpenAPI\Client\Model.ObjectArrayWrapper](docs/ModelObjectArrayWrapper.md)
  - [OpenAPI\Client\Model.OperationDto](docs/ModelOperationDto.md)
  - [OpenAPI\Client\Model.OperationOrderType](docs/ModelOperationOrderType.md)
  - [OpenAPI\Client\Model.OperationStatus](docs/ModelOperationStatus.md)
- - [OpenAPI\Client\Model.OperationTokenUsage](docs/ModelOperationTokenUsage.md)
+ - [OpenAPI\Client\Model.OperationTokenUsageDto](docs/ModelOperationTokenUsageDto.md)
  - [OpenAPI\Client\Model.OperationType](docs/ModelOperationType.md)
- - [OpenAPI\Client\Model.Options](docs/ModelOptions.md)
- - [OpenAPI\Client\Model.OrderBy](docs/ModelOrderBy.md)
+ - [OpenAPI\Client\Model.OrderByDto](docs/ModelOrderByDto.md)
  - [OpenAPI\Client\Model.OrderRequestDto](docs/ModelOrderRequestDto.md)
  - [OpenAPI\Client\Model.OrdersItemRequestDto](docs/ModelOrdersItemRequestDto.md)
  - [OpenAPI\Client\Model.OrdersRequestDto](docs/ModelOrdersRequestDto.md)
@@ -4741,21 +4987,22 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.PageableClientResponse](docs/ModelPageableClientResponse.md)
  - [OpenAPI\Client\Model.PageableModificationResponse](docs/ModelPageableModificationResponse.md)
  - [OpenAPI\Client\Model.PageableResponse](docs/ModelPageableResponse.md)
- - [OpenAPI\Client\Model.Paragraph](docs/ModelParagraph.md)
- - [OpenAPI\Client\Model.PasswordHasher](docs/ModelPasswordHasher.md)
+ - [OpenAPI\Client\Model.PasswordHashSettingsDto](docs/ModelPasswordHashSettingsDto.md)
  - [OpenAPI\Client\Model.PasswordSettingsDto](docs/ModelPasswordSettingsDto.md)
- - [OpenAPI\Client\Model.PasswordSettingsRequestsDto](docs/ModelPasswordSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.PasswordSettingsRequestDto](docs/ModelPasswordSettingsRequestDto.md)
  - [OpenAPI\Client\Model.PasswordSettingsWrapper](docs/ModelPasswordSettingsWrapper.md)
- - [OpenAPI\Client\Model.PaymentCalculation](docs/ModelPaymentCalculation.md)
+ - [OpenAPI\Client\Model.PaymentCalculationDto](docs/ModelPaymentCalculationDto.md)
  - [OpenAPI\Client\Model.PaymentCalculationWrapper](docs/ModelPaymentCalculationWrapper.md)
  - [OpenAPI\Client\Model.PaymentMethodStatus](docs/ModelPaymentMethodStatus.md)
  - [OpenAPI\Client\Model.PaymentSettingsDto](docs/ModelPaymentSettingsDto.md)
  - [OpenAPI\Client\Model.PaymentSettingsWrapper](docs/ModelPaymentSettingsWrapper.md)
  - [OpenAPI\Client\Model.PaymentUrlRequestDto](docs/ModelPaymentUrlRequestDto.md)
  - [OpenAPI\Client\Model.Payments](docs/ModelPayments.md)
- - [OpenAPI\Client\Model.PermissionsConfig](docs/ModelPermissionsConfig.md)
- - [OpenAPI\Client\Model.PluginsConfig](docs/ModelPluginsConfig.md)
+ - [OpenAPI\Client\Model.PermissionsConfigDto](docs/ModelPermissionsConfigDto.md)
+ - [OpenAPI\Client\Model.PluginsConfigDto](docs/ModelPluginsConfigDto.md)
  - [OpenAPI\Client\Model.PluginsDto](docs/ModelPluginsDto.md)
+ - [OpenAPI\Client\Model.PortalUserDto](docs/ModelPortalUserDto.md)
+ - [OpenAPI\Client\Model.PortalUserWrapper](docs/ModelPortalUserWrapper.md)
  - [OpenAPI\Client\Model.PriceDto](docs/ModelPriceDto.md)
  - [OpenAPI\Client\Model.PriceStatus](docs/ModelPriceStatus.md)
  - [OpenAPI\Client\Model.PriceTimeUnit](docs/ModelPriceTimeUnit.md)
@@ -4772,18 +5019,19 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.QuotaDto](docs/ModelQuotaDto.md)
  - [OpenAPI\Client\Model.QuotaFilter](docs/ModelQuotaFilter.md)
  - [OpenAPI\Client\Model.QuotaScope](docs/ModelQuotaScope.md)
- - [OpenAPI\Client\Model.QuotaSettingsRequestsDto](docs/ModelQuotaSettingsRequestsDto.md)
- - [OpenAPI\Client\Model.QuotaSettingsRequestsDtoDefaultQuota](docs/ModelQuotaSettingsRequestsDtoDefaultQuota.md)
+ - [OpenAPI\Client\Model.QuotaSettingsRequestDto](docs/ModelQuotaSettingsRequestDto.md)
+ - [OpenAPI\Client\Model.QuotaSettingsRequestDtoDefaultQuota](docs/ModelQuotaSettingsRequestDtoDefaultQuota.md)
  - [OpenAPI\Client\Model.QuotaState](docs/ModelQuotaState.md)
  - [OpenAPI\Client\Model.QuotaWrapper](docs/ModelQuotaWrapper.md)
  - [OpenAPI\Client\Model.RecaptchaType](docs/ModelRecaptchaType.md)
- - [OpenAPI\Client\Model.RecentConfig](docs/ModelRecentConfig.md)
+ - [OpenAPI\Client\Model.RecentConfigDto](docs/ModelRecentConfigDto.md)
  - [OpenAPI\Client\Model.RegStatus](docs/ModelRegStatus.md)
  - [OpenAPI\Client\Model.ReportDto](docs/ModelReportDto.md)
  - [OpenAPI\Client\Model.ReportWrapper](docs/ModelReportWrapper.md)
- - [OpenAPI\Client\Model.RestrictedModelsResponse](docs/ModelRestrictedModelsResponse.md)
- - [OpenAPI\Client\Model.RestrictedModelsResponseWrapper](docs/ModelRestrictedModelsResponseWrapper.md)
- - [OpenAPI\Client\Model.ReviewConfig](docs/ModelReviewConfig.md)
+ - [OpenAPI\Client\Model.RequestLocation](docs/ModelRequestLocation.md)
+ - [OpenAPI\Client\Model.RestrictedAiModelsDto](docs/ModelRestrictedAiModelsDto.md)
+ - [OpenAPI\Client\Model.RestrictedAiModelsWrapper](docs/ModelRestrictedAiModelsWrapper.md)
+ - [OpenAPI\Client\Model.ReviewConfigDto](docs/ModelReviewConfigDto.md)
  - [OpenAPI\Client\Model.RoomDataLifetimeDto](docs/ModelRoomDataLifetimeDto.md)
  - [OpenAPI\Client\Model.RoomDataLifetimePeriod](docs/ModelRoomDataLifetimePeriod.md)
  - [OpenAPI\Client\Model.RoomFromTemplateStatusDto](docs/ModelRoomFromTemplateStatusDto.md)
@@ -4804,13 +5052,18 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.RoomTemplateStatusDto](docs/ModelRoomTemplateStatusDto.md)
  - [OpenAPI\Client\Model.RoomTemplateStatusWrapper](docs/ModelRoomTemplateStatusWrapper.md)
  - [OpenAPI\Client\Model.RoomType](docs/ModelRoomType.md)
+ - [OpenAPI\Client\Model.RoomsMetadataSearchRequestDto](docs/ModelRoomsMetadataSearchRequestDto.md)
  - [OpenAPI\Client\Model.RoomsNotificationSettingsDto](docs/ModelRoomsNotificationSettingsDto.md)
  - [OpenAPI\Client\Model.RoomsNotificationSettingsWrapper](docs/ModelRoomsNotificationSettingsWrapper.md)
  - [OpenAPI\Client\Model.RoomsNotificationsSettingsRequestDto](docs/ModelRoomsNotificationsSettingsRequestDto.md)
- - [OpenAPI\Client\Model.Run](docs/ModelRun.md)
- - [OpenAPI\Client\Model.STRINGArrayWrapper](docs/ModelSTRINGArrayWrapper.md)
- - [OpenAPI\Client\Model.SalesRequestsDto](docs/ModelSalesRequestsDto.md)
- - [OpenAPI\Client\Model.SaveAsPdf](docs/ModelSaveAsPdf.md)
+ - [OpenAPI\Client\Model.RunBuilderScriptOutputRequest](docs/ModelRunBuilderScriptOutputRequest.md)
+ - [OpenAPI\Client\Model.RunBuilderScriptRequestDto](docs/ModelRunBuilderScriptRequestDto.md)
+ - [OpenAPI\Client\Model.RunBuilderScriptRequestDtoArgument](docs/ModelRunBuilderScriptRequestDtoArgument.md)
+ - [OpenAPI\Client\Model.SalesRequestDto](docs/ModelSalesRequestDto.md)
+ - [OpenAPI\Client\Model.SaveAdditionalResourcesRequest](docs/ModelSaveAdditionalResourcesRequest.md)
+ - [OpenAPI\Client\Model.SaveAsPdfRequest](docs/ModelSaveAsPdfRequest.md)
+ - [OpenAPI\Client\Model.SaveAuthKeysRequestDto](docs/ModelSaveAuthKeysRequestDto.md)
+ - [OpenAPI\Client\Model.SaveCompanyInfoRequest](docs/ModelSaveCompanyInfoRequest.md)
  - [OpenAPI\Client\Model.SaveFormRoleMappingDto](docs/ModelSaveFormRoleMappingDto.md)
  - [OpenAPI\Client\Model.ScheduleDto](docs/ModelScheduleDto.md)
  - [OpenAPI\Client\Model.ScheduleWrapper](docs/ModelScheduleWrapper.md)
@@ -4820,23 +5073,26 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.SecurityDto](docs/ModelSecurityDto.md)
  - [OpenAPI\Client\Model.SecurityInfoRequestDto](docs/ModelSecurityInfoRequestDto.md)
  - [OpenAPI\Client\Model.SecurityInfoSimpleRequestDto](docs/ModelSecurityInfoSimpleRequestDto.md)
- - [OpenAPI\Client\Model.SecurityRequestsDto](docs/ModelSecurityRequestsDto.md)
- - [OpenAPI\Client\Model.ServicePriceInfo](docs/ModelServicePriceInfo.md)
- - [OpenAPI\Client\Model.ServicePriceInfoArrayWrapper](docs/ModelServicePriceInfoArrayWrapper.md)
+ - [OpenAPI\Client\Model.SecurityRequestDto](docs/ModelSecurityRequestDto.md)
+ - [OpenAPI\Client\Model.ServicePriceArrayWrapper](docs/ModelServicePriceArrayWrapper.md)
+ - [OpenAPI\Client\Model.ServicePriceDto](docs/ModelServicePriceDto.md)
  - [OpenAPI\Client\Model.SessionRequest](docs/ModelSessionRequest.md)
- - [OpenAPI\Client\Model.SetAppEnabledBody](docs/ModelSetAppEnabledBody.md)
- - [OpenAPI\Client\Model.SetAppSettingsBody](docs/ModelSetAppSettingsBody.md)
+ - [OpenAPI\Client\Model.SetAppEnabledRequest](docs/ModelSetAppEnabledRequest.md)
+ - [OpenAPI\Client\Model.SetAppSettingsRequest](docs/ModelSetAppSettingsRequest.md)
+ - [OpenAPI\Client\Model.SetAuditLifetimeSettingsRequest](docs/ModelSetAuditLifetimeSettingsRequest.md)
+ - [OpenAPI\Client\Model.SetCustomFields](docs/ModelSetCustomFields.md)
  - [OpenAPI\Client\Model.SetManagerRequest](docs/ModelSetManagerRequest.md)
+ - [OpenAPI\Client\Model.SetMetadataValues](docs/ModelSetMetadataValues.md)
  - [OpenAPI\Client\Model.SetPublicDto](docs/ModelSetPublicDto.md)
  - [OpenAPI\Client\Model.SetRestrictedAiModelsRequestDto](docs/ModelSetRestrictedAiModelsRequestDto.md)
+ - [OpenAPI\Client\Model.SetWalletTopUpSettingsRequest](docs/ModelSetWalletTopUpSettingsRequest.md)
  - [OpenAPI\Client\Model.SettingsDto](docs/ModelSettingsDto.md)
  - [OpenAPI\Client\Model.SettingsRequestDto](docs/ModelSettingsRequestDto.md)
  - [OpenAPI\Client\Model.SettingsWrapper](docs/ModelSettingsWrapper.md)
  - [OpenAPI\Client\Model.ShareFilterType](docs/ModelShareFilterType.md)
  - [OpenAPI\Client\Model.SignupAccountRequestDto](docs/ModelSignupAccountRequestDto.md)
- - [OpenAPI\Client\Model.Size](docs/ModelSize.md)
- - [OpenAPI\Client\Model.SmtpOperationStatusRequestsDto](docs/ModelSmtpOperationStatusRequestsDto.md)
- - [OpenAPI\Client\Model.SmtpOperationStatusRequestsWrapper](docs/ModelSmtpOperationStatusRequestsWrapper.md)
+ - [OpenAPI\Client\Model.SmtpOperationStatusDto](docs/ModelSmtpOperationStatusDto.md)
+ - [OpenAPI\Client\Model.SmtpOperationStatusWrapper](docs/ModelSmtpOperationStatusWrapper.md)
  - [OpenAPI\Client\Model.SmtpSettingsDto](docs/ModelSmtpSettingsDto.md)
  - [OpenAPI\Client\Model.SmtpSettingsWrapper](docs/ModelSmtpSettingsWrapper.md)
  - [OpenAPI\Client\Model.SocketSettingsDto](docs/ModelSocketSettingsDto.md)
@@ -4844,42 +5100,44 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.SortOrder](docs/ModelSortOrder.md)
  - [OpenAPI\Client\Model.SortedByType](docs/ModelSortedByType.md)
  - [OpenAPI\Client\Model.SsoBindingTypeDto](docs/ModelSsoBindingTypeDto.md)
- - [OpenAPI\Client\Model.SsoCertificate](docs/ModelSsoCertificate.md)
+ - [OpenAPI\Client\Model.SsoCertificateDto](docs/ModelSsoCertificateDto.md)
  - [OpenAPI\Client\Model.SsoEncryptAlgorithmTypeDto](docs/ModelSsoEncryptAlgorithmTypeDto.md)
- - [OpenAPI\Client\Model.SsoFieldMapping](docs/ModelSsoFieldMapping.md)
+ - [OpenAPI\Client\Model.SsoFieldMappingDto](docs/ModelSsoFieldMappingDto.md)
  - [OpenAPI\Client\Model.SsoIdpCertificateActionTypeDto](docs/ModelSsoIdpCertificateActionTypeDto.md)
- - [OpenAPI\Client\Model.SsoIdpCertificateAdvanced](docs/ModelSsoIdpCertificateAdvanced.md)
- - [OpenAPI\Client\Model.SsoIdpSettings](docs/ModelSsoIdpSettings.md)
+ - [OpenAPI\Client\Model.SsoIdpCertificateAdvancedDto](docs/ModelSsoIdpCertificateAdvancedDto.md)
+ - [OpenAPI\Client\Model.SsoIdpSettingsDto](docs/ModelSsoIdpSettingsDto.md)
  - [OpenAPI\Client\Model.SsoNameIdFormatTypeDto](docs/ModelSsoNameIdFormatTypeDto.md)
- - [OpenAPI\Client\Model.SsoSettingsRequestsDto](docs/ModelSsoSettingsRequestsDto.md)
- - [OpenAPI\Client\Model.SsoSettingsV2](docs/ModelSsoSettingsV2.md)
- - [OpenAPI\Client\Model.SsoSettingsV2ConstantsDto](docs/ModelSsoSettingsV2ConstantsDto.md)
- - [OpenAPI\Client\Model.SsoSettingsV2ConstantsWrapper](docs/ModelSsoSettingsV2ConstantsWrapper.md)
- - [OpenAPI\Client\Model.SsoSettingsV2Wrapper](docs/ModelSsoSettingsV2Wrapper.md)
+ - [OpenAPI\Client\Model.SsoSettingsConstantsDto](docs/ModelSsoSettingsConstantsDto.md)
+ - [OpenAPI\Client\Model.SsoSettingsConstantsWrapper](docs/ModelSsoSettingsConstantsWrapper.md)
+ - [OpenAPI\Client\Model.SsoSettingsDto](docs/ModelSsoSettingsDto.md)
+ - [OpenAPI\Client\Model.SsoSettingsRequestDto](docs/ModelSsoSettingsRequestDto.md)
+ - [OpenAPI\Client\Model.SsoSettingsWrapper](docs/ModelSsoSettingsWrapper.md)
  - [OpenAPI\Client\Model.SsoSigningAlgorithmTypeDto](docs/ModelSsoSigningAlgorithmTypeDto.md)
  - [OpenAPI\Client\Model.SsoSpCertificateActionTypeDto](docs/ModelSsoSpCertificateActionTypeDto.md)
- - [OpenAPI\Client\Model.SsoSpCertificateAdvanced](docs/ModelSsoSpCertificateAdvanced.md)
- - [OpenAPI\Client\Model.StartEdit](docs/ModelStartEdit.md)
+ - [OpenAPI\Client\Model.SsoSpCertificateAdvancedDto](docs/ModelSsoSpCertificateAdvancedDto.md)
+ - [OpenAPI\Client\Model.StartBackupRequestDto](docs/ModelStartBackupRequestDto.md)
+ - [OpenAPI\Client\Model.StartBackupRestoreRequestDto](docs/ModelStartBackupRestoreRequestDto.md)
+ - [OpenAPI\Client\Model.StartEditRequest](docs/ModelStartEditRequest.md)
  - [OpenAPI\Client\Model.StartFillingForm](docs/ModelStartFillingForm.md)
  - [OpenAPI\Client\Model.StartFillingMode](docs/ModelStartFillingMode.md)
  - [OpenAPI\Client\Model.StartReassignRequestDto](docs/ModelStartReassignRequestDto.md)
  - [OpenAPI\Client\Model.StartUpdateUserTypeDto](docs/ModelStartUpdateUserTypeDto.md)
- - [OpenAPI\Client\Model.Status](docs/ModelStatus.md)
  - [OpenAPI\Client\Model.StorageArrayWrapper](docs/ModelStorageArrayWrapper.md)
  - [OpenAPI\Client\Model.StorageDto](docs/ModelStorageDto.md)
- - [OpenAPI\Client\Model.StorageEncryptionRequestsDto](docs/ModelStorageEncryptionRequestsDto.md)
+ - [OpenAPI\Client\Model.StorageEncryptionRequestDto](docs/ModelStorageEncryptionRequestDto.md)
  - [OpenAPI\Client\Model.StorageFilter](docs/ModelStorageFilter.md)
- - [OpenAPI\Client\Model.StorageRequestsDto](docs/ModelStorageRequestsDto.md)
- - [OpenAPI\Client\Model.StorageSettings](docs/ModelStorageSettings.md)
+ - [OpenAPI\Client\Model.StorageRequestDto](docs/ModelStorageRequestDto.md)
+ - [OpenAPI\Client\Model.StorageSettingsDto](docs/ModelStorageSettingsDto.md)
  - [OpenAPI\Client\Model.StorageSettingsWrapper](docs/ModelStorageSettingsWrapper.md)
+ - [OpenAPI\Client\Model.StringArrayWrapper](docs/ModelStringArrayWrapper.md)
  - [OpenAPI\Client\Model.StringWrapper](docs/ModelStringWrapper.md)
- - [OpenAPI\Client\Model.StudioDefaultPageSettings](docs/ModelStudioDefaultPageSettings.md)
+ - [OpenAPI\Client\Model.StudioDefaultPageSettingsDto](docs/ModelStudioDefaultPageSettingsDto.md)
  - [OpenAPI\Client\Model.StudioDefaultPageSettingsWrapper](docs/ModelStudioDefaultPageSettingsWrapper.md)
- - [OpenAPI\Client\Model.SubAccount](docs/ModelSubAccount.md)
+ - [OpenAPI\Client\Model.SubAccountDto](docs/ModelSubAccountDto.md)
  - [OpenAPI\Client\Model.SubjectType](docs/ModelSubjectType.md)
- - [OpenAPI\Client\Model.SubmitForm](docs/ModelSubmitForm.md)
- - [OpenAPI\Client\Model.SubscriptionBalanceInfo](docs/ModelSubscriptionBalanceInfo.md)
- - [OpenAPI\Client\Model.SubscriptionBalanceInfoWrapper](docs/ModelSubscriptionBalanceInfoWrapper.md)
+ - [OpenAPI\Client\Model.SubmitFormDto](docs/ModelSubmitFormDto.md)
+ - [OpenAPI\Client\Model.SubscriptionBalanceDto](docs/ModelSubscriptionBalanceDto.md)
+ - [OpenAPI\Client\Model.SubscriptionBalanceWrapper](docs/ModelSubscriptionBalanceWrapper.md)
  - [OpenAPI\Client\Model.TariffDto](docs/ModelTariffDto.md)
  - [OpenAPI\Client\Model.TariffQuotaDto](docs/ModelTariffQuotaDto.md)
  - [OpenAPI\Client\Model.TariffState](docs/ModelTariffState.md)
@@ -4888,48 +5146,40 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.TaskProgressResponseWrapper](docs/ModelTaskProgressResponseWrapper.md)
  - [OpenAPI\Client\Model.TelegramStatusDto](docs/ModelTelegramStatusDto.md)
  - [OpenAPI\Client\Model.TelegramStatusWrapper](docs/ModelTelegramStatusWrapper.md)
- - [OpenAPI\Client\Model.TemplatesConfig](docs/ModelTemplatesConfig.md)
+ - [OpenAPI\Client\Model.TemplatesConfigDto](docs/ModelTemplatesConfigDto.md)
  - [OpenAPI\Client\Model.TemplatesRequestDto](docs/ModelTemplatesRequestDto.md)
- - [OpenAPI\Client\Model.TenantAiAccessSettings](docs/ModelTenantAiAccessSettings.md)
  - [OpenAPI\Client\Model.TenantAiAccessSettingsDto](docs/ModelTenantAiAccessSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantAiAccessSettingsRequestDto](docs/ModelTenantAiAccessSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantAiAccessSettingsWrapper](docs/ModelTenantAiAccessSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantAiAgentQuotaSettings](docs/ModelTenantAiAgentQuotaSettings.md)
- - [OpenAPI\Client\Model.TenantAiAgentQuotaSettingsWrapper](docs/ModelTenantAiAgentQuotaSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantAuditSettings](docs/ModelTenantAuditSettings.md)
- - [OpenAPI\Client\Model.TenantAuditSettingsResponseWrapper](docs/ModelTenantAuditSettingsResponseWrapper.md)
+ - [OpenAPI\Client\Model.TenantAuditSettingsDto](docs/ModelTenantAuditSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantAuditSettingsRequestDto](docs/ModelTenantAuditSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantAuditSettingsWrapper](docs/ModelTenantAuditSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantBannerSettings](docs/ModelTenantBannerSettings.md)
  - [OpenAPI\Client\Model.TenantBannerSettingsDto](docs/ModelTenantBannerSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantBannerSettingsRequestDto](docs/ModelTenantBannerSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantBannerSettingsWrapper](docs/ModelTenantBannerSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantDeepLinkSettings](docs/ModelTenantDeepLinkSettings.md)
+ - [OpenAPI\Client\Model.TenantDeepLinkSettingsDto](docs/ModelTenantDeepLinkSettingsDto.md)
  - [OpenAPI\Client\Model.TenantDeepLinkSettingsWrapper](docs/ModelTenantDeepLinkSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantDevToolsAccessSettings](docs/ModelTenantDevToolsAccessSettings.md)
  - [OpenAPI\Client\Model.TenantDevToolsAccessSettingsDto](docs/ModelTenantDevToolsAccessSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantDevToolsAccessSettingsRequestDto](docs/ModelTenantDevToolsAccessSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantDevToolsAccessSettingsWrapper](docs/ModelTenantDevToolsAccessSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantDomainValidator](docs/ModelTenantDomainValidator.md)
  - [OpenAPI\Client\Model.TenantDto](docs/ModelTenantDto.md)
- - [OpenAPI\Client\Model.TenantEntityQuotaSettings](docs/ModelTenantEntityQuotaSettings.md)
  - [OpenAPI\Client\Model.TenantIndustry](docs/ModelTenantIndustry.md)
- - [OpenAPI\Client\Model.TenantQuota](docs/ModelTenantQuota.md)
+ - [OpenAPI\Client\Model.TenantQuotaDto](docs/ModelTenantQuotaDto.md)
  - [OpenAPI\Client\Model.TenantQuotaFeatureDto](docs/ModelTenantQuotaFeatureDto.md)
- - [OpenAPI\Client\Model.TenantQuotaSettings](docs/ModelTenantQuotaSettings.md)
- - [OpenAPI\Client\Model.TenantQuotaSettingsRequestsDto](docs/ModelTenantQuotaSettingsRequestsDto.md)
+ - [OpenAPI\Client\Model.TenantQuotaSettingsDto](docs/ModelTenantQuotaSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantQuotaSettingsRequestDto](docs/ModelTenantQuotaSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantQuotaSettingsWrapper](docs/ModelTenantQuotaSettingsWrapper.md)
  - [OpenAPI\Client\Model.TenantQuotaWrapper](docs/ModelTenantQuotaWrapper.md)
- - [OpenAPI\Client\Model.TenantRoomQuotaSettings](docs/ModelTenantRoomQuotaSettings.md)
- - [OpenAPI\Client\Model.TenantRoomQuotaSettingsWrapper](docs/ModelTenantRoomQuotaSettingsWrapper.md)
  - [OpenAPI\Client\Model.TenantStatus](docs/ModelTenantStatus.md)
  - [OpenAPI\Client\Model.TenantTrustedDomainsType](docs/ModelTenantTrustedDomainsType.md)
  - [OpenAPI\Client\Model.TenantUserInvitationSettingsDto](docs/ModelTenantUserInvitationSettingsDto.md)
  - [OpenAPI\Client\Model.TenantUserInvitationSettingsRequestDto](docs/ModelTenantUserInvitationSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantUserInvitationSettingsWrapper](docs/ModelTenantUserInvitationSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantUserQuotaSettings](docs/ModelTenantUserQuotaSettings.md)
- - [OpenAPI\Client\Model.TenantUserQuotaSettingsWrapper](docs/ModelTenantUserQuotaSettingsWrapper.md)
  - [OpenAPI\Client\Model.TenantWalletService](docs/ModelTenantWalletService.md)
- - [OpenAPI\Client\Model.TenantWalletServiceSettings](docs/ModelTenantWalletServiceSettings.md)
+ - [OpenAPI\Client\Model.TenantWalletServiceSettingsDto](docs/ModelTenantWalletServiceSettingsDto.md)
  - [OpenAPI\Client\Model.TenantWalletServiceSettingsWrapper](docs/ModelTenantWalletServiceSettingsWrapper.md)
- - [OpenAPI\Client\Model.TenantWalletSettings](docs/ModelTenantWalletSettings.md)
- - [OpenAPI\Client\Model.TenantWalletSettingsResponseWrapper](docs/ModelTenantWalletSettingsResponseWrapper.md)
+ - [OpenAPI\Client\Model.TenantWalletSettingsDto](docs/ModelTenantWalletSettingsDto.md)
+ - [OpenAPI\Client\Model.TenantWalletSettingsRequestDto](docs/ModelTenantWalletSettingsRequestDto.md)
  - [OpenAPI\Client\Model.TenantWalletSettingsWrapper](docs/ModelTenantWalletSettingsWrapper.md)
  - [OpenAPI\Client\Model.TenantWrapper](docs/ModelTenantWrapper.md)
  - [OpenAPI\Client\Model.TerminateRequestDto](docs/ModelTerminateRequestDto.md)
@@ -4937,19 +5187,21 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.TfaAppCodeDto](docs/ModelTfaAppCodeDto.md)
  - [OpenAPI\Client\Model.TfaConfirmDataDto](docs/ModelTfaConfirmDataDto.md)
  - [OpenAPI\Client\Model.TfaConfirmDataWrapper](docs/ModelTfaConfirmDataWrapper.md)
- - [OpenAPI\Client\Model.TfaRequestsDto](docs/ModelTfaRequestsDto.md)
- - [OpenAPI\Client\Model.TfaRequestsDtoType](docs/ModelTfaRequestsDtoType.md)
+ - [OpenAPI\Client\Model.TfaRequestDto](docs/ModelTfaRequestDto.md)
  - [OpenAPI\Client\Model.TfaSettingsArrayWrapper](docs/ModelTfaSettingsArrayWrapper.md)
  - [OpenAPI\Client\Model.TfaSettingsDto](docs/ModelTfaSettingsDto.md)
  - [OpenAPI\Client\Model.TfaSetupCodeDto](docs/ModelTfaSetupCodeDto.md)
  - [OpenAPI\Client\Model.TfaSetupCodeWrapper](docs/ModelTfaSetupCodeWrapper.md)
- - [OpenAPI\Client\Model.TfaValidateRequestsDto](docs/ModelTfaValidateRequestsDto.md)
+ - [OpenAPI\Client\Model.TfaType](docs/ModelTfaType.md)
+ - [OpenAPI\Client\Model.TfaValidateRequestDto](docs/ModelTfaValidateRequestDto.md)
+ - [OpenAPI\Client\Model.ThirdPartyAccountArrayWrapper](docs/ModelThirdPartyAccountArrayWrapper.md)
+ - [OpenAPI\Client\Model.ThirdPartyAccountDto](docs/ModelThirdPartyAccountDto.md)
  - [OpenAPI\Client\Model.ThirdPartyBackupRequestDto](docs/ModelThirdPartyBackupRequestDto.md)
  - [OpenAPI\Client\Model.ThirdPartyCheckConversionRequestDto](docs/ModelThirdPartyCheckConversionRequestDto.md)
- - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResponse](docs/ModelThirdPartyChunkedUploadSessionResponse.md)
- - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResponseResponseWrapper](docs/ModelThirdPartyChunkedUploadSessionResponseResponseWrapper.md)
- - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResponseWrapper](docs/ModelThirdPartyChunkedUploadSessionResponseWrapper.md)
- - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResponseWrapperWrapper](docs/ModelThirdPartyChunkedUploadSessionResponseWrapperWrapper.md)
+ - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionDto](docs/ModelThirdPartyChunkedUploadSessionDto.md)
+ - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResultDto](docs/ModelThirdPartyChunkedUploadSessionResultDto.md)
+ - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionResultWrapper](docs/ModelThirdPartyChunkedUploadSessionResultWrapper.md)
+ - [OpenAPI\Client\Model.ThirdPartyChunkedUploadSessionWrapper](docs/ModelThirdPartyChunkedUploadSessionWrapper.md)
  - [OpenAPI\Client\Model.ThirdPartyConfigurationDto](docs/ModelThirdPartyConfigurationDto.md)
  - [OpenAPI\Client\Model.ThirdPartyConfigurationWrapper](docs/ModelThirdPartyConfigurationWrapper.md)
  - [OpenAPI\Client\Model.ThirdPartyDraftLocation](docs/ModelThirdPartyDraftLocation.md)
@@ -4962,53 +5214,53 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.ThirdPartyFolderContentWrapper](docs/ModelThirdPartyFolderContentWrapper.md)
  - [OpenAPI\Client\Model.ThirdPartyFolderDto](docs/ModelThirdPartyFolderDto.md)
  - [OpenAPI\Client\Model.ThirdPartyFolderWrapper](docs/ModelThirdPartyFolderWrapper.md)
- - [OpenAPI\Client\Model.ThirdPartyParams](docs/ModelThirdPartyParams.md)
- - [OpenAPI\Client\Model.ThirdPartyParamsArrayWrapper](docs/ModelThirdPartyParamsArrayWrapper.md)
  - [OpenAPI\Client\Model.ThirdPartyRequestDto](docs/ModelThirdPartyRequestDto.md)
- - [OpenAPI\Client\Model.ThirdPartySaveAsPdf](docs/ModelThirdPartySaveAsPdf.md)
+ - [OpenAPI\Client\Model.ThirdPartySaveAsPdfRequest](docs/ModelThirdPartySaveAsPdfRequest.md)
  - [OpenAPI\Client\Model.ThirdPartyUploadSessionResponseDto](docs/ModelThirdPartyUploadSessionResponseDto.md)
  - [OpenAPI\Client\Model.ThirdPartyUploadSessionResponseWrapper](docs/ModelThirdPartyUploadSessionResponseWrapper.md)
  - [OpenAPI\Client\Model.Thumbnail](docs/ModelThumbnail.md)
  - [OpenAPI\Client\Model.ThumbnailsDataDto](docs/ModelThumbnailsDataDto.md)
  - [OpenAPI\Client\Model.ThumbnailsDataWrapper](docs/ModelThumbnailsDataWrapper.md)
  - [OpenAPI\Client\Model.ThumbnailsRequest](docs/ModelThumbnailsRequest.md)
- - [OpenAPI\Client\Model.TimeBound](docs/ModelTimeBound.md)
- - [OpenAPI\Client\Model.TimezonesRequestsArrayWrapper](docs/ModelTimezonesRequestsArrayWrapper.md)
- - [OpenAPI\Client\Model.TimezonesRequestsDto](docs/ModelTimezonesRequestsDto.md)
+ - [OpenAPI\Client\Model.TimeBoundDto](docs/ModelTimeBoundDto.md)
+ - [OpenAPI\Client\Model.TimezoneArrayWrapper](docs/ModelTimezoneArrayWrapper.md)
+ - [OpenAPI\Client\Model.TimezoneDto](docs/ModelTimezoneDto.md)
  - [OpenAPI\Client\Model.TokenDiagnosticsDto](docs/ModelTokenDiagnosticsDto.md)
  - [OpenAPI\Client\Model.TokenDiagnosticsWrapper](docs/ModelTokenDiagnosticsWrapper.md)
  - [OpenAPI\Client\Model.TopUpDepositRequestDto](docs/ModelTopUpDepositRequestDto.md)
- - [OpenAPI\Client\Model.TransactionInfo](docs/ModelTransactionInfo.md)
+ - [OpenAPI\Client\Model.TransactionInfoDto](docs/ModelTransactionInfoDto.md)
  - [OpenAPI\Client\Model.TurnOnAdminMessageSettingsRequestDto](docs/ModelTurnOnAdminMessageSettingsRequestDto.md)
  - [OpenAPI\Client\Model.UpcomingPaymentArrayWrapper](docs/ModelUpcomingPaymentArrayWrapper.md)
  - [OpenAPI\Client\Model.UpcomingPaymentDto](docs/ModelUpcomingPaymentDto.md)
  - [OpenAPI\Client\Model.UpdateApiKeyRequest](docs/ModelUpdateApiKeyRequest.md)
  - [OpenAPI\Client\Model.UpdateClientRequest](docs/ModelUpdateClientRequest.md)
- - [OpenAPI\Client\Model.UpdateComment](docs/ModelUpdateComment.md)
- - [OpenAPI\Client\Model.UpdateFile](docs/ModelUpdateFile.md)
+ - [OpenAPI\Client\Model.UpdateCommentRequest](docs/ModelUpdateCommentRequest.md)
+ - [OpenAPI\Client\Model.UpdateFileRequest](docs/ModelUpdateFileRequest.md)
+ - [OpenAPI\Client\Model.UpdateFolderMetadataTemplateRequest](docs/ModelUpdateFolderMetadataTemplateRequest.md)
  - [OpenAPI\Client\Model.UpdateGroupRequest](docs/ModelUpdateGroupRequest.md)
+ - [OpenAPI\Client\Model.UpdateMemberCultureRequest](docs/ModelUpdateMemberCultureRequest.md)
  - [OpenAPI\Client\Model.UpdateMemberRequestDto](docs/ModelUpdateMemberRequestDto.md)
  - [OpenAPI\Client\Model.UpdateMembersQuotaRequestDto](docs/ModelUpdateMembersQuotaRequestDto.md)
  - [OpenAPI\Client\Model.UpdateMembersQuotaRequestDtoQuota](docs/ModelUpdateMembersQuotaRequestDtoQuota.md)
  - [OpenAPI\Client\Model.UpdateMembersRequestDto](docs/ModelUpdateMembersRequestDto.md)
+ - [OpenAPI\Client\Model.UpdateMetadataFieldRequest](docs/ModelUpdateMetadataFieldRequest.md)
+ - [OpenAPI\Client\Model.UpdateMetadataTemplate](docs/ModelUpdateMetadataTemplate.md)
  - [OpenAPI\Client\Model.UpdatePhotoMemberRequest](docs/ModelUpdatePhotoMemberRequest.md)
  - [OpenAPI\Client\Model.UpdateRoomGroupRequest](docs/ModelUpdateRoomGroupRequest.md)
  - [OpenAPI\Client\Model.UpdateRoomRequest](docs/ModelUpdateRoomRequest.md)
  - [OpenAPI\Client\Model.UpdateRoomsQuotaRequestDto](docs/ModelUpdateRoomsQuotaRequestDto.md)
  - [OpenAPI\Client\Model.UpdateRoomsRoomIdsRequestDto](docs/ModelUpdateRoomsRoomIdsRequestDto.md)
  - [OpenAPI\Client\Model.UpdateTagRequestDto](docs/ModelUpdateTagRequestDto.md)
- - [OpenAPI\Client\Model.UpdateWebhooksConfigRequestsDto](docs/ModelUpdateWebhooksConfigRequestsDto.md)
+ - [OpenAPI\Client\Model.UpdateWebhooksConfigRequestDto](docs/ModelUpdateWebhooksConfigRequestDto.md)
  - [OpenAPI\Client\Model.UploadResultDto](docs/ModelUploadResultDto.md)
  - [OpenAPI\Client\Model.UploadResultWrapper](docs/ModelUploadResultWrapper.md)
  - [OpenAPI\Client\Model.UploadSessionResponseDto](docs/ModelUploadSessionResponseDto.md)
  - [OpenAPI\Client\Model.UploadSessionResponseWrapper](docs/ModelUploadSessionResponseWrapper.md)
  - [OpenAPI\Client\Model.UsageSpaceStatItemArrayWrapper](docs/ModelUsageSpaceStatItemArrayWrapper.md)
  - [OpenAPI\Client\Model.UsageSpaceStatItemDto](docs/ModelUsageSpaceStatItemDto.md)
- - [OpenAPI\Client\Model.UserConfig](docs/ModelUserConfig.md)
+ - [OpenAPI\Client\Model.UserConfigDto](docs/ModelUserConfigDto.md)
  - [OpenAPI\Client\Model.UserExistsResponseDto](docs/ModelUserExistsResponseDto.md)
  - [OpenAPI\Client\Model.UserExistsResponseWrapper](docs/ModelUserExistsResponseWrapper.md)
- - [OpenAPI\Client\Model.UserInfo](docs/ModelUserInfo.md)
- - [OpenAPI\Client\Model.UserInfoWrapper](docs/ModelUserInfoWrapper.md)
  - [OpenAPI\Client\Model.UserInvitation](docs/ModelUserInvitation.md)
  - [OpenAPI\Client\Model.UserInvitationRequestDto](docs/ModelUserInvitationRequestDto.md)
  - [OpenAPI\Client\Model.ValidationErrorResponse](docs/ModelValidationErrorResponse.md)
@@ -5020,16 +5272,18 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.WalletServiceWrapper](docs/ModelWalletServiceWrapper.md)
  - [OpenAPI\Client\Model.WatermarkAdditions](docs/ModelWatermarkAdditions.md)
  - [OpenAPI\Client\Model.WatermarkDto](docs/ModelWatermarkDto.md)
- - [OpenAPI\Client\Model.WatermarkOnDraw](docs/ModelWatermarkOnDraw.md)
+ - [OpenAPI\Client\Model.WatermarkOnDrawDto](docs/ModelWatermarkOnDrawDto.md)
+ - [OpenAPI\Client\Model.WatermarkParagraphDto](docs/ModelWatermarkParagraphDto.md)
  - [OpenAPI\Client\Model.WatermarkRequestDto](docs/ModelWatermarkRequestDto.md)
- - [OpenAPI\Client\Model.WebItemSecurityRequestsDto](docs/ModelWebItemSecurityRequestsDto.md)
- - [OpenAPI\Client\Model.WebItemsSecurityRequestsDto](docs/ModelWebItemsSecurityRequestsDto.md)
+ - [OpenAPI\Client\Model.WatermarkTextRunDto](docs/ModelWatermarkTextRunDto.md)
+ - [OpenAPI\Client\Model.WebItemSecurityRequestDto](docs/ModelWebItemSecurityRequestDto.md)
+ - [OpenAPI\Client\Model.WebItemsSecurityRequestDto](docs/ModelWebItemsSecurityRequestDto.md)
  - [OpenAPI\Client\Model.WebPluginArrayWrapper](docs/ModelWebPluginArrayWrapper.md)
  - [OpenAPI\Client\Model.WebPluginDto](docs/ModelWebPluginDto.md)
- - [OpenAPI\Client\Model.WebPluginRequests](docs/ModelWebPluginRequests.md)
+ - [OpenAPI\Client\Model.WebPluginRequest](docs/ModelWebPluginRequest.md)
  - [OpenAPI\Client\Model.WebPluginWrapper](docs/ModelWebPluginWrapper.md)
  - [OpenAPI\Client\Model.WebhookGroupStatus](docs/ModelWebhookGroupStatus.md)
- - [OpenAPI\Client\Model.WebhookRetryRequestsDto](docs/ModelWebhookRetryRequestsDto.md)
+ - [OpenAPI\Client\Model.WebhookRetryRequestDto](docs/ModelWebhookRetryRequestDto.md)
  - [OpenAPI\Client\Model.WebhookTrigger](docs/ModelWebhookTrigger.md)
  - [OpenAPI\Client\Model.WebhookTriggerArrayWrapper](docs/ModelWebhookTriggerArrayWrapper.md)
  - [OpenAPI\Client\Model.WebhookTriggerDto](docs/ModelWebhookTriggerDto.md)
@@ -5045,9 +5299,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.WhiteLabelItemPathDto](docs/ModelWhiteLabelItemPathDto.md)
  - [OpenAPI\Client\Model.WhiteLabelItemSizeDto](docs/ModelWhiteLabelItemSizeDto.md)
  - [OpenAPI\Client\Model.WhiteLabelLogoType](docs/ModelWhiteLabelLogoType.md)
- - [OpenAPI\Client\Model.WhiteLabelRequestsDto](docs/ModelWhiteLabelRequestsDto.md)
- - [OpenAPI\Client\Model.WizardRequestsDto](docs/ModelWizardRequestsDto.md)
- - [OpenAPI\Client\Model.WizardSettings](docs/ModelWizardSettings.md)
+ - [OpenAPI\Client\Model.WhiteLabelRequestDto](docs/ModelWhiteLabelRequestDto.md)
+ - [OpenAPI\Client\Model.WizardRequestDto](docs/ModelWizardRequestDto.md)
+ - [OpenAPI\Client\Model.WizardSettingsDto](docs/ModelWizardSettingsDto.md)
  - [OpenAPI\Client\Model.WizardSettingsWrapper](docs/ModelWizardSettingsWrapper.md)
  - [OpenAPI\Client\Model.XlsxReportResponseDto](docs/ModelXlsxReportResponseDto.md)
  - [OpenAPI\Client\Model.XlsxReportResponseWrapper](docs/ModelXlsxReportResponseWrapper.md)

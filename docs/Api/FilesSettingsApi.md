@@ -197,7 +197,7 @@ try {
 ## `changeDefaultAccessRights()`
 
 ```php
-changeDefaultAccessRights($request_body): \OpenAPI\Client\Model\FileShareResponseArrayWrapper
+changeDefaultAccessRights($default_access_rights_request_dto): \OpenAPI\Client\Model\FileShareResponseArrayWrapper
 ```
 
 Change the default access rights
@@ -209,7 +209,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**int[]**](../Model/int.md)| The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. | [optional] |
+| **default_access_rights_request_dto** | [**int[]**](../Model/int.md)| The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. | [optional] |
 
 ### Return type
 
@@ -254,10 +254,10 @@ $apiInstance = new OpenAPI\Client\Api\SettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = array(56); // int[] | The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request.
+$default_access_rights_request_dto = array(56); // int[] | The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request.
 
 try {
-    $result = $apiInstance->changeDefaultAccessRights($request_body);
+    $result = $apiInstance->changeDefaultAccessRights($default_access_rights_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SettingsApi->changeDefaultAccessRights: ', $e->getMessage(), PHP_EOL;

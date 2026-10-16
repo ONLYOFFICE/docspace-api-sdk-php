@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EmailActivationSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the EmailActivationSettings object.
+ * @description The successful API response containing the EmailActivationSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class EmailActivationSettingsWrapper implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\EmailActivationSettings',
+        'response' => '\OpenAPI\Client\Model\EmailActivationSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class EmailActivationSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\EmailActivationSettings|null
+     * @return \OpenAPI\Client\Model\EmailActivationSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class EmailActivationSettingsWrapper implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EmailActivationSettings|null $response The EmailActivationSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\EmailActivationSettingsDto|null $response The EmailActivationSettingsDto object returned by the operation.
      *
      * @return self
      */

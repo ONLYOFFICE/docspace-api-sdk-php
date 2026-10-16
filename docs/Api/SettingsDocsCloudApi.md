@@ -877,7 +877,7 @@ try {
 ## `updateTenantConfig()`
 
 ```php
-updateTenantConfig($docs_cloud_config): \OpenAPI\Client\Model\DocsCloudConfigWrapper
+updateTenantConfig($docs_cloud_config_request_dto): \OpenAPI\Client\Model\DocsCloudConfigWrapper
 ```
 
 Update the Docs Connect tenant configuration
@@ -889,7 +889,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **docs_cloud_config** | [**\OpenAPI\Client\Model\DocsCloudConfig**](../Model/DocsCloudConfig.md)|  | [optional] |
+| **docs_cloud_config_request_dto** | [**\OpenAPI\Client\Model\DocsCloudConfigRequestDto**](../Model/DocsCloudConfigRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -934,10 +934,10 @@ $apiInstance = new OpenAPI\Client\Api\DocsCloudApi(
     new GuzzleHttp\Client(),
     $config
 );
-$docs_cloud_config = new \OpenAPI\Client\Model\DocsCloudConfig(); // \OpenAPI\Client\Model\DocsCloudConfig
+$docs_cloud_config_request_dto = new \OpenAPI\Client\Model\DocsCloudConfigRequestDto(); // \OpenAPI\Client\Model\DocsCloudConfigRequestDto
 
 try {
-    $result = $apiInstance->updateTenantConfig($docs_cloud_config);
+    $result = $apiInstance->updateTenantConfig($docs_cloud_config_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DocsCloudApi->updateTenantConfig: ', $e->getMessage(), PHP_EOL;

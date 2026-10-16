@@ -33,7 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileOperationType Class Doc Comment
  *
  * @category Class
- * @description [0 - Move, 1 - Copy, 2 - Delete, 3 - Download, 4 - MarkAsRead, 5 - Import, 6 - Convert, 7 - Duplicate]
+ * @description [0 - Move, 1 - Copy, 2 - Delete, 3 - Download, 4 - MarkAsRead, 5 - Import, 6 - Convert, 7 - Duplicate, 8 - Build]
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,8 @@ class FileOperationType
 
     public const DUPLICATE = 7;
 
+    public const BUILD = 8;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -73,7 +75,8 @@ class FileOperationType
             self::MARK_AS_READ,
             self::IMPORT,
             self::CONVERT,
-            self::DUPLICATE
+            self::DUPLICATE,
+            self::BUILD
         ];
     }
 }

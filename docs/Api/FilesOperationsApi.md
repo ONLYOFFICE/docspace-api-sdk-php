@@ -360,7 +360,7 @@ try {
 ## `checkMoveOrCopyBatchItems()`
 
 ```php
-checkMoveOrCopyBatchItems($in_dto): \OpenAPI\Client\Model\FileEntryBaseArrayWrapper
+checkMoveOrCopyBatchItems($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out): \OpenAPI\Client\Model\FileEntryBaseArrayWrapper
 ```
 
 Check move or copy conflicts
@@ -372,7 +372,14 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **in_dto** | [**\OpenAPIClientModelBatchRequestDto**](../Model/.md)| The files and folders to move or copy, the folder they go to, and the way name clashes are settled. | [optional] |
+| **return_single_operation** | **bool**| Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. | [optional] |
+| **folder_ids** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]**](../Model/\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner.md)| The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. | [optional] |
+| **file_ids** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]**](../Model/\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner.md)| The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. | [optional] |
+| **dest_folder_id** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter**](../Model/.md)| The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. | [optional] |
+| **conflict_resolve_type** | [**\OpenAPIClientModelFileConflictResolveType**](../Model/.md)| What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. | [optional] |
+| **delete_after** | **bool**| Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. | [optional] |
+| **content** | **bool**| What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. | [optional] |
+| **to_fill_out** | **bool**| Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. | [optional] |
 
 ### Return type
 
@@ -417,10 +424,17 @@ $apiInstance = new OpenAPI\Client\Api\OperationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$in_dto = new \OpenAPI\Client\Model\\OpenAPIClientModelBatchRequestDto(); // \OpenAPIClientModelBatchRequestDto | The files and folders to move or copy, the folder they go to, and the way name clashes are settled.
+$return_single_operation = false; // bool | Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
+$folder_ids = [1, 2, 3]; // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[] | The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list.
+$file_ids = [1, 2, 3]; // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[] | The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list.
+$dest_folder_id = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter(); // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter | The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room.
+$conflict_resolve_type = new \OpenAPI\Client\Model\\OpenAPIClientModelFileConflictResolveType(); // \OpenAPIClientModelFileConflictResolveType | What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash.
+$delete_after = false; // bool | Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them.
+$content = false; // bool | What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there.
+$to_fill_out = false; // bool | Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected.
 
 try {
-    $result = $apiInstance->checkMoveOrCopyBatchItems($in_dto);
+    $result = $apiInstance->checkMoveOrCopyBatchItems($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OperationsApi->checkMoveOrCopyBatchItems: ', $e->getMessage(), PHP_EOL;
@@ -439,7 +453,7 @@ try {
 ## `checkMoveOrCopyDestFolder()`
 
 ```php
-checkMoveOrCopyDestFolder($in_dto): \OpenAPI\Client\Model\CheckDestFolderWrapper
+checkMoveOrCopyDestFolder($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out): \OpenAPI\Client\Model\CheckDestFolderWrapper
 ```
 
 Check the destination folder
@@ -451,7 +465,14 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **in_dto** | [**\OpenAPIClientModelBatchRequestDto**](../Model/.md)| The files and folders to move or copy, the folder they go to, and the way name clashes are settled. | [optional] |
+| **return_single_operation** | **bool**| Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. | [optional] |
+| **folder_ids** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]**](../Model/\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner.md)| The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. | [optional] |
+| **file_ids** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]**](../Model/\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner.md)| The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. | [optional] |
+| **dest_folder_id** | [**\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter**](../Model/.md)| The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. | [optional] |
+| **conflict_resolve_type** | [**\OpenAPIClientModelFileConflictResolveType**](../Model/.md)| What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. | [optional] |
+| **delete_after** | **bool**| Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. | [optional] |
+| **content** | **bool**| What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. | [optional] |
+| **to_fill_out** | **bool**| Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. | [optional] |
 
 ### Return type
 
@@ -496,10 +517,17 @@ $apiInstance = new OpenAPI\Client\Api\OperationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$in_dto = new \OpenAPI\Client\Model\\OpenAPIClientModelBatchRequestDto(); // \OpenAPIClientModelBatchRequestDto | The files and folders to move or copy, the folder they go to, and the way name clashes are settled.
+$return_single_operation = false; // bool | Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
+$folder_ids = [1, 2, 3]; // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[] | The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list.
+$file_ids = [1, 2, 3]; // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[] | The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list.
+$dest_folder_id = new \OpenAPI\Client\Model\\OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter(); // \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter | The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room.
+$conflict_resolve_type = new \OpenAPI\Client\Model\\OpenAPIClientModelFileConflictResolveType(); // \OpenAPIClientModelFileConflictResolveType | What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash.
+$delete_after = false; // bool | Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them.
+$content = false; // bool | What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there.
+$to_fill_out = false; // bool | Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected.
 
 try {
-    $result = $apiInstance->checkMoveOrCopyDestFolder($in_dto);
+    $result = $apiInstance->checkMoveOrCopyDestFolder($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OperationsApi->checkMoveOrCopyDestFolder: ', $e->getMessage(), PHP_EOL;
@@ -597,7 +625,7 @@ try {
 ## `createUploadSession()`
 
 ```php
-createUploadSession($folder_id, $session_request): \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper
+createUploadSession($folder_id, $session_request): \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper
 ```
 
 Chunked upload
@@ -614,11 +642,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper**](../Model/ChunkedUploadSessionResponseWrapperWrapper.md)
+[**\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper**](../Model/ChunkedUploadSessionResultWrapper.md)
 
 ### Third-party storage
 
-The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper**](../Model/ThirdPartyChunkedUploadSessionResponseWrapperWrapper.md).
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper**](../Model/ThirdPartyChunkedUploadSessionResultWrapper.md).
 
 ### Authorization
 
@@ -682,7 +710,7 @@ try {
 ## `createUploadSessionInFolder()`
 
 ```php
-createUploadSessionInFolder($folder_id, $session_request): \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper
+createUploadSessionInFolder($folder_id, $session_request): \OpenAPI\Client\Model\ChunkedUploadSessionWrapper
 ```
 
 Create an upload session
@@ -699,11 +727,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper**](../Model/ChunkedUploadSessionResponseResponseWrapper.md)
+[**\OpenAPI\Client\Model\ChunkedUploadSessionWrapper**](../Model/ChunkedUploadSessionWrapper.md)
 
 ### Third-party storage
 
-The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper**](../Model/ThirdPartyChunkedUploadSessionResponseResponseWrapper.md).
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper**](../Model/ThirdPartyChunkedUploadSessionWrapper.md).
 
 ### Authorization
 
@@ -1253,7 +1281,7 @@ getOperationStatuses($id): \OpenAPI\Client\Model\FileOperationArrayWrapper
 ```
 
 Get active file operations
-Returns the background file operations of the caller that are still running or whose finished result has not  been read yet, grouped by kind: duplications first, then moves and copies, deletions, downloads and  mark-as-read. This is the polling target for every operation in this section — an operation appears here as  soon as it is queued and carries `progress` from 0 to 100, `finished`, the `error` of a failed item and, for a  download, the address of the archive in `url`. A record is dropped once its finished state has been handed  out, so a completed operation is reported once and an empty array means there is nothing left to report rather  than that the work failed. Pass `id` to follow a single operation; an id that is not among the caller's  operations gives an empty array. Operations are private to the account that started them, an anonymous caller  being scoped to the session of the external link. The call changes nothing. To follow one kind only use  `GET api/2.0/files/fileops/{operationType}`.
+Returns the background file operations of the caller that are still running or whose finished result has not  been read yet, grouped by kind: duplications first, then moves and copies, deletions, downloads, mark-as-read  and builder runs. This is the polling target for every operation in this section — an operation appears here as  soon as it is queued and carries `progress` from 0 to 100, `finished`, the `error` of a failed item and, for a  download, the address of the archive in `url`. A record is dropped once its finished state has been handed  out, so a completed operation is reported once and an empty array means there is nothing left to report rather  than that the work failed. Pass `id` to follow a single operation; an id that is not among the caller's  operations gives an empty array. Operations are private to the account that started them, an anonymous caller  being scoped to the session of the external link. The call changes nothing. To follow one kind only use  `GET api/2.0/files/fileops/{operationType}`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses/).
 
@@ -1332,7 +1360,7 @@ getOperationStatusesByType($operation_type, $id): \OpenAPI\Client\Model\FileOper
 ```
 
 Get file operations by type
-Returns the background file operations of the caller that are of one kind, named by the number in the route:  `1` for a copy, `2` for a deletion, `3` for a download, `4` for a mark-as-read and `7` for a duplication. The  answer carries the same records as `GET api/2.0/files/fileops`, with the same rule that a finished operation  is reported once and then dropped, and `id` narrows it further to a single operation. Moves, kind `0`, cannot  be read through this route: the address `api/2.0/files/fileops/move` belongs to another operation, so read  moves from `GET api/2.0/files/fileops` and pick the records whose `operation` is `0`. A kind that has no queue  of its own — `5` for an import, `6` for a conversion — is accepted and answers with an empty array, while a  number outside the operation type is rejected as an invalid request. The call changes nothing and never shows  another account's operations.
+Returns the background file operations of the caller that are of one kind, named by the number in the route: `1`  for a copy, `2` for a deletion, `3` for a download, `4` for a mark-as-read, `7` for a duplication and `8` for a  document builder run. The answer carries the same records as `GET api/2.0/files/fileops`, with the same rule  that a finished operation is reported once and then dropped, and `id` narrows it further to a single operation.  Moves, kind `0`, cannot be read through this route: the address `api/2.0/files/fileops/move` belongs to another  operation, so read moves from `GET api/2.0/files/fileops` and pick the records whose `operation` is `0`. A kind  that has no queue of its own — `5` for an import, `6` for a conversion — is accepted and answers with an empty  array, while a number outside the operation type is rejected as an invalid request. The call changes nothing and  never shows another account's operations.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-operation-statuses-by-type/).
 
@@ -1731,7 +1759,7 @@ try {
 ## `updateFileComment()`
 
 ```php
-updateFileComment($file_id, $update_comment): \OpenAPI\Client\Model\StringWrapper
+updateFileComment($file_id, $update_comment_request): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Update a comment
@@ -1744,7 +1772,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file whose version comment is replaced. | |
-| **update_comment** | [**\OpenAPI\Client\Model\UpdateComment**](../Model/UpdateComment.md)| The version and the comment to store on it. | |
+| **update_comment_request** | [**\OpenAPI\Client\Model\UpdateCommentRequest**](../Model/UpdateCommentRequest.md)| The version and the comment to store on it. | |
 
 ### Return type
 
@@ -1794,10 +1822,10 @@ $apiInstance = new OpenAPI\Client\Api\OperationsApi(
     $config
 );
 $file_id = 1; // int | The file whose version comment is replaced.
-$update_comment = new \OpenAPI\Client\Model\UpdateComment(); // \OpenAPI\Client\Model\UpdateComment | The version and the comment to store on it.
+$update_comment_request = new \OpenAPI\Client\Model\UpdateCommentRequest(); // \OpenAPI\Client\Model\UpdateCommentRequest | The version and the comment to store on it.
 
 try {
-    $result = $apiInstance->updateFileComment($file_id, $update_comment);
+    $result = $apiInstance->updateFileComment($file_id, $update_comment_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OperationsApi->updateFileComment: ', $e->getMessage(), PHP_EOL;
@@ -1816,7 +1844,7 @@ try {
 ## `uploadAsyncSession()`
 
 ```php
-uploadAsyncSession($folder_id, $session_id, $chunk_number, $file): \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper
+uploadAsyncSession($folder_id, $session_id, $chunk_number, $file): \OpenAPI\Client\Model\ChunkedUploadSessionWrapper
 ```
 
 Upload a numbered chunk
@@ -1835,11 +1863,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper**](../Model/ChunkedUploadSessionResponseResponseWrapper.md)
+[**\OpenAPI\Client\Model\ChunkedUploadSessionWrapper**](../Model/ChunkedUploadSessionWrapper.md)
 
 ### Third-party storage
 
-The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper**](../Model/ThirdPartyChunkedUploadSessionResponseResponseWrapper.md).
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$folder_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper**](../Model/ThirdPartyChunkedUploadSessionWrapper.md).
 
 ### Authorization
 

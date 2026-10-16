@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileReferenceWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the FileReference object.
+ * @description The successful API response containing the FileReferenceDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class FileReferenceWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\FileReference',
+        'response' => '\OpenAPI\Client\Model\FileReferenceDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class FileReferenceWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\FileReference|null
+     * @return \OpenAPI\Client\Model\FileReferenceDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class FileReferenceWrapper implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileReference|null $response The FileReference object returned by the operation.
+     * @param \OpenAPI\Client\Model\FileReferenceDto|null $response The FileReferenceDto object returned by the operation.
      *
      * @return self
      */

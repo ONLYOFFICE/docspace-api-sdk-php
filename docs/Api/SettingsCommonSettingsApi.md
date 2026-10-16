@@ -106,7 +106,7 @@ try {
 ## `completeWizard()`
 
 ```php
-completeWizard($wizard_requests_dto): \OpenAPI\Client\Model\WizardSettingsWrapper
+completeWizard($wizard_request_dto): \OpenAPI\Client\Model\WizardSettingsWrapper
 ```
 
 Complete the Wizard settings
@@ -118,7 +118,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **wizard_requests_dto** | [**\OpenAPI\Client\Model\WizardRequestsDto**](../Model/WizardRequestsDto.md)|  | [optional] |
+| **wizard_request_dto** | [**\OpenAPI\Client\Model\WizardRequestDto**](../Model/WizardRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -163,10 +163,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$wizard_requests_dto = new \OpenAPI\Client\Model\WizardRequestsDto(); // \OpenAPI\Client\Model\WizardRequestsDto
+$wizard_request_dto = new \OpenAPI\Client\Model\WizardRequestDto(); // \OpenAPI\Client\Model\WizardRequestDto
 
 try {
-    $result = $apiInstance->completeWizard($wizard_requests_dto);
+    $result = $apiInstance->completeWizard($wizard_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->completeWizard: ', $e->getMessage(), PHP_EOL;
@@ -185,7 +185,7 @@ try {
 ## `configureDeepLink()`
 
 ```php
-configureDeepLink($deep_link_configuration_requests_dto): \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper
+configureDeepLink($deep_link_configuration_request_dto): \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper
 ```
 
 Configure the deep link settings
@@ -197,7 +197,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **deep_link_configuration_requests_dto** | [**\OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto**](../Model/DeepLinkConfigurationRequestsDto.md)|  | [optional] |
+| **deep_link_configuration_request_dto** | [**\OpenAPI\Client\Model\DeepLinkConfigurationRequestDto**](../Model/DeepLinkConfigurationRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -242,10 +242,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$deep_link_configuration_requests_dto = new \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto(); // \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto
+$deep_link_configuration_request_dto = new \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto(); // \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto
 
 try {
-    $result = $apiInstance->configureDeepLink($deep_link_configuration_requests_dto);
+    $result = $apiInstance->configureDeepLink($deep_link_configuration_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->configureDeepLink: ', $e->getMessage(), PHP_EOL;
@@ -878,7 +878,7 @@ try {
 ## `getSupportedCultures()`
 
 ```php
-getSupportedCultures(): \OpenAPI\Client\Model\STRINGArrayWrapper
+getSupportedCultures(): \OpenAPI\Client\Model\StringArrayWrapper
 ```
 
 Get supported languages
@@ -892,7 +892,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\STRINGArrayWrapper**](../Model/STRINGArrayWrapper.md)
+[**\OpenAPI\Client\Model\StringArrayWrapper**](../Model/StringArrayWrapper.md)
 
 ### Authorization
 
@@ -1106,7 +1106,7 @@ try {
 ## `getTimeZones()`
 
 ```php
-getTimeZones(): \OpenAPI\Client\Model\TimezonesRequestsArrayWrapper
+getTimeZones(): \OpenAPI\Client\Model\TimezoneArrayWrapper
 ```
 
 Get time zones
@@ -1120,7 +1120,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TimezonesRequestsArrayWrapper**](../Model/TimezonesRequestsArrayWrapper.md)
+[**\OpenAPI\Client\Model\TimezoneArrayWrapper**](../Model/TimezoneArrayWrapper.md)
 
 ### Authorization
 
@@ -1261,7 +1261,7 @@ try {
 ## `saveDnsSettings()`
 
 ```php
-saveDnsSettings($dns_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+saveDnsSettings($dns_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Save the DNS settings
@@ -1273,7 +1273,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **dns_settings_requests_dto** | [**\OpenAPI\Client\Model\DnsSettingsRequestsDto**](../Model/DnsSettingsRequestsDto.md)|  | [optional] |
+| **dns_settings_request_dto** | [**\OpenAPI\Client\Model\DnsSettingsRequestDto**](../Model/DnsSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1318,10 +1318,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$dns_settings_requests_dto = new \OpenAPI\Client\Model\DnsSettingsRequestsDto(); // \OpenAPI\Client\Model\DnsSettingsRequestsDto
+$dns_settings_request_dto = new \OpenAPI\Client\Model\DnsSettingsRequestDto(); // \OpenAPI\Client\Model\DnsSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveDnsSettings($dns_settings_requests_dto);
+    $result = $apiInstance->saveDnsSettings($dns_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->saveDnsSettings: ', $e->getMessage(), PHP_EOL;
@@ -1340,7 +1340,7 @@ try {
 ## `saveMailDomainSettings()`
 
 ```php
-saveMailDomainSettings($mail_domain_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+saveMailDomainSettings($mail_domain_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Save the mail domain settings
@@ -1352,7 +1352,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **mail_domain_settings_requests_dto** | [**\OpenAPI\Client\Model\MailDomainSettingsRequestsDto**](../Model/MailDomainSettingsRequestsDto.md)|  | [optional] |
+| **mail_domain_settings_request_dto** | [**\OpenAPI\Client\Model\MailDomainSettingsRequestDto**](../Model/MailDomainSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1397,10 +1397,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$mail_domain_settings_requests_dto = new \OpenAPI\Client\Model\MailDomainSettingsRequestsDto(); // \OpenAPI\Client\Model\MailDomainSettingsRequestsDto
+$mail_domain_settings_request_dto = new \OpenAPI\Client\Model\MailDomainSettingsRequestDto(); // \OpenAPI\Client\Model\MailDomainSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveMailDomainSettings($mail_domain_settings_requests_dto);
+    $result = $apiInstance->saveMailDomainSettings($mail_domain_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->saveMailDomainSettings: ', $e->getMessage(), PHP_EOL;
@@ -1419,7 +1419,7 @@ try {
 ## `savePortalColorTheme()`
 
 ```php
-savePortalColorTheme($custom_color_themes_settings_requests_dto): \OpenAPI\Client\Model\CustomColorThemesSettingsWrapper
+savePortalColorTheme($custom_color_themes_settings_request_dto): \OpenAPI\Client\Model\CustomColorThemesSettingsWrapper
 ```
 
 Save a color theme
@@ -1431,7 +1431,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **custom_color_themes_settings_requests_dto** | [**\OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto**](../Model/CustomColorThemesSettingsRequestsDto.md)|  | [optional] |
+| **custom_color_themes_settings_request_dto** | [**\OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto**](../Model/CustomColorThemesSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1476,10 +1476,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$custom_color_themes_settings_requests_dto = new \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto(); // \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto
+$custom_color_themes_settings_request_dto = new \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto(); // \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto
 
 try {
-    $result = $apiInstance->savePortalColorTheme($custom_color_themes_settings_requests_dto);
+    $result = $apiInstance->savePortalColorTheme($custom_color_themes_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->savePortalColorTheme: ', $e->getMessage(), PHP_EOL;
@@ -1498,7 +1498,7 @@ try {
 ## `setTenantAiAccessSettings()`
 
 ```php
-setTenantAiAccessSettings($tenant_ai_access_settings_dto): \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper
+setTenantAiAccessSettings($tenant_ai_access_settings_request_dto): \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper
 ```
 
 Set the AI access settings
@@ -1510,7 +1510,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_ai_access_settings_dto** | [**\OpenAPI\Client\Model\TenantAiAccessSettingsDto**](../Model/TenantAiAccessSettingsDto.md)|  | [optional] |
+| **tenant_ai_access_settings_request_dto** | [**\OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto**](../Model/TenantAiAccessSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1555,10 +1555,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_ai_access_settings_dto = new \OpenAPI\Client\Model\TenantAiAccessSettingsDto(); // \OpenAPI\Client\Model\TenantAiAccessSettingsDto
+$tenant_ai_access_settings_request_dto = new \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto(); // \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantAiAccessSettings($tenant_ai_access_settings_dto);
+    $result = $apiInstance->setTenantAiAccessSettings($tenant_ai_access_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->setTenantAiAccessSettings: ', $e->getMessage(), PHP_EOL;
@@ -1577,7 +1577,7 @@ try {
 ## `updateEmailActivationSettings()`
 
 ```php
-updateEmailActivationSettings($email_activation_settings): \OpenAPI\Client\Model\EmailActivationSettingsWrapper
+updateEmailActivationSettings($email_activation_settings_request_dto): \OpenAPI\Client\Model\EmailActivationSettingsWrapper
 ```
 
 Update the email activation settings
@@ -1589,7 +1589,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_activation_settings** | [**\OpenAPI\Client\Model\EmailActivationSettings**](../Model/EmailActivationSettings.md)|  | [optional] |
+| **email_activation_settings_request_dto** | [**\OpenAPI\Client\Model\EmailActivationSettingsRequestDto**](../Model/EmailActivationSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1634,10 +1634,10 @@ $apiInstance = new OpenAPI\Client\Api\CommonSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$email_activation_settings = new \OpenAPI\Client\Model\EmailActivationSettings(); // \OpenAPI\Client\Model\EmailActivationSettings
+$email_activation_settings_request_dto = new \OpenAPI\Client\Model\EmailActivationSettingsRequestDto(); // \OpenAPI\Client\Model\EmailActivationSettingsRequestDto
 
 try {
-    $result = $apiInstance->updateEmailActivationSettings($email_activation_settings);
+    $result = $apiInstance->updateEmailActivationSettings($email_activation_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommonSettingsApi->updateEmailActivationSettings: ', $e->getMessage(), PHP_EOL;

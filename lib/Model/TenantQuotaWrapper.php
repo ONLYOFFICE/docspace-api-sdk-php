@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantQuotaWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantQuota object.
+ * @description The successful API response containing the TenantQuotaDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantQuota',
+        'response' => '\OpenAPI\Client\Model\TenantQuotaDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantQuota|null
+     * @return \OpenAPI\Client\Model\TenantQuotaDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantQuota|null $response The TenantQuota object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantQuotaDto|null $response The TenantQuotaDto object returned by the operation.
      *
      * @return self
      */

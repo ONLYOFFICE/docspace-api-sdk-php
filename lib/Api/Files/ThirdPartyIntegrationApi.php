@@ -1843,7 +1843,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getThirdPartyAccounts(string $contentType = self::contentTypes['getThirdPartyAccounts'][0])
     {
@@ -1863,7 +1863,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getThirdPartyAccountsWithHttpInfo(string $contentType = self::contentTypes['getThirdPartyAccounts'][0])
     {
@@ -1895,7 +1895,7 @@ class ThirdPartyIntegrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1935,7 +1935,7 @@ class ThirdPartyIntegrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper',
+                '\OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper',
                 $request,
                 $response,
             );
@@ -1944,7 +1944,7 @@ class ThirdPartyIntegrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper',
+                        '\OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2018,7 +2018,7 @@ class ThirdPartyIntegrationApi
      */
     public function getThirdPartyAccountsAsyncWithHttpInfo(string $contentType = self::contentTypes['getThirdPartyAccounts'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper';
         $request = $this->getThirdPartyAccountsRequest($contentType);
 
         return $this->client
@@ -2168,7 +2168,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveThirdParty($third_party_request_dto = null, string $contentType = self::contentTypes['saveThirdParty'][0])
     {
@@ -2189,7 +2189,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveThirdPartyWithHttpInfo($third_party_request_dto = null, string $contentType = self::contentTypes['saveThirdParty'][0])
     {
@@ -2237,18 +2237,6 @@ class ThirdPartyIntegrationApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -2290,22 +2278,6 @@ class ThirdPartyIntegrationApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2519,7 +2491,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveThirdPartyBackup($third_party_backup_request_dto = null, string $contentType = self::contentTypes['saveThirdPartyBackup'][0])
     {
@@ -2540,7 +2512,7 @@ class ThirdPartyIntegrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveThirdPartyBackupWithHttpInfo($third_party_backup_request_dto = null, string $contentType = self::contentTypes['saveThirdPartyBackup'][0])
     {
@@ -2588,18 +2560,6 @@ class ThirdPartyIntegrationApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -2641,22 +2601,6 @@ class ThirdPartyIntegrationApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

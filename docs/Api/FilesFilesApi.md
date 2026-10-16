@@ -223,7 +223,7 @@ try {
 ## `changeVersionHistory()`
 
 ```php
-changeVersionHistory($file_id, $change_history): \OpenAPI\Client\Model\FileArrayWrapper
+changeVersionHistory($file_id, $change_history_request): \OpenAPI\Client\Model\FileArrayWrapper
 ```
 
 Change version history
@@ -236,7 +236,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file whose version history is changed. | |
-| **change_history** | [**\OpenAPI\Client\Model\ChangeHistory**](../Model/ChangeHistory.md)| The change to make to the revision group. | |
+| **change_history_request** | [**\OpenAPI\Client\Model\ChangeHistoryRequest**](../Model/ChangeHistoryRequest.md)| The change to make to the revision group. | |
 
 ### Return type
 
@@ -286,10 +286,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file whose version history is changed.
-$change_history = new \OpenAPI\Client\Model\ChangeHistory(); // \OpenAPI\Client\Model\ChangeHistory | The change to make to the revision group.
+$change_history_request = new \OpenAPI\Client\Model\ChangeHistoryRequest(); // \OpenAPI\Client\Model\ChangeHistoryRequest | The change to make to the revision group.
 
 try {
-    $result = $apiInstance->changeVersionHistory($file_id, $change_history);
+    $result = $apiInstance->changeVersionHistory($file_id, $change_history_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->changeVersionHistory: ', $e->getMessage(), PHP_EOL;
@@ -308,7 +308,7 @@ try {
 ## `checkFillFormDraft()`
 
 ```php
-checkFillFormDraft($file_id, $check_fill_form_draft): \OpenAPI\Client\Model\StringWrapper
+checkFillFormDraft($file_id, $check_fill_form_draft_request): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Open a form draft for filling
@@ -321,7 +321,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. | |
-| **check_fill_form_draft** | [**\OpenAPI\Client\Model\CheckFillFormDraft**](../Model/CheckFillFormDraft.md)| The revision of the form to open and what the caller intends to do with it. | |
+| **check_fill_form_draft_request** | [**\OpenAPI\Client\Model\CheckFillFormDraftRequest**](../Model/CheckFillFormDraftRequest.md)| The revision of the form to open and what the caller intends to do with it. | |
 
 ### Return type
 
@@ -371,10 +371,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well.
-$check_fill_form_draft = new \OpenAPI\Client\Model\CheckFillFormDraft(); // \OpenAPI\Client\Model\CheckFillFormDraft | The revision of the form to open and what the caller intends to do with it.
+$check_fill_form_draft_request = new \OpenAPI\Client\Model\CheckFillFormDraftRequest(); // \OpenAPI\Client\Model\CheckFillFormDraftRequest | The revision of the form to open and what the caller intends to do with it.
 
 try {
-    $result = $apiInstance->checkFillFormDraft($file_id, $check_fill_form_draft);
+    $result = $apiInstance->checkFillFormDraft($file_id, $check_fill_form_draft_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->checkFillFormDraft: ', $e->getMessage(), PHP_EOL;
@@ -393,7 +393,7 @@ try {
 ## `copyFileAs()`
 
 ```php
-copyFileAs($file_id, $copy_as_json_element): \OpenAPI\Client\Model\FileEntryBaseWrapper
+copyFileAs($file_id, $copy_as_request): \OpenAPI\Client\Model\FileEntryBaseWrapper
 ```
 
 Copy a file
@@ -406,7 +406,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file to copy. | |
-| **copy_as_json_element** | [**\OpenAPI\Client\Model\CopyAsJsonElement**](../Model/CopyAsJsonElement.md)| The title, the destination and the conversion options of the copy. | |
+| **copy_as_request** | [**\OpenAPI\Client\Model\CopyAsRequest**](../Model/CopyAsRequest.md)| The title, the destination and the conversion options of the copy. | |
 
 ### Return type
 
@@ -456,10 +456,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file to copy.
-$copy_as_json_element = new \OpenAPI\Client\Model\CopyAsJsonElement(); // \OpenAPI\Client\Model\CopyAsJsonElement | The title, the destination and the conversion options of the copy.
+$copy_as_request = new \OpenAPI\Client\Model\CopyAsRequest(); // \OpenAPI\Client\Model\CopyAsRequest | The title, the destination and the conversion options of the copy.
 
 try {
-    $result = $apiInstance->copyFileAs($file_id, $copy_as_json_element);
+    $result = $apiInstance->copyFileAs($file_id, $copy_as_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->copyFileAs: ', $e->getMessage(), PHP_EOL;
@@ -478,7 +478,7 @@ try {
 ## `createEditSession()`
 
 ```php
-createEditSession($file_id, $file_size): \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper
+createEditSession($file_id, $file_size): \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper
 ```
 
 Create the editing session
@@ -495,11 +495,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper**](../Model/ChunkedUploadSessionResponseWrapperWrapper.md)
+[**\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper**](../Model/ChunkedUploadSessionResultWrapper.md)
 
 ### Third-party storage
 
-The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$file_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper**](../Model/ThirdPartyChunkedUploadSessionResponseWrapperWrapper.md).
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$file_id` as `string` and the answer is [**\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper**](../Model/ThirdPartyChunkedUploadSessionResultWrapper.md).
 
 ### Authorization
 
@@ -563,7 +563,7 @@ try {
 ## `createFile()`
 
 ```php
-createFile($folder_id, $create_file_json_element): \OpenAPI\Client\Model\FileWrapper
+createFile($folder_id, $create_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create a file
@@ -576,7 +576,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int|string**| The folder the file is created in. | |
-| **create_file_json_element** | [**\OpenAPI\Client\Model\CreateFileJsonElement**](../Model/CreateFileJsonElement.md)| The title of the new file and the source of its content. | |
+| **create_file_request** | [**\OpenAPI\Client\Model\CreateFileRequest**](../Model/CreateFileRequest.md)| The title of the new file and the source of its content. | |
 
 ### Return type
 
@@ -626,10 +626,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $folder_id = 1; // int | The folder the file is created in.
-$create_file_json_element = new \OpenAPI\Client\Model\CreateFileJsonElement(); // \OpenAPI\Client\Model\CreateFileJsonElement | The title of the new file and the source of its content.
+$create_file_request = new \OpenAPI\Client\Model\CreateFileRequest(); // \OpenAPI\Client\Model\CreateFileRequest | The title of the new file and the source of its content.
 
 try {
-    $result = $apiInstance->createFile($folder_id, $create_file_json_element);
+    $result = $apiInstance->createFile($folder_id, $create_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createFile: ', $e->getMessage(), PHP_EOL;
@@ -648,7 +648,7 @@ try {
 ## `createFileInMyDocuments()`
 
 ```php
-createFileInMyDocuments($create_file_json_element): \OpenAPI\Client\Model\FileWrapper
+createFileInMyDocuments($create_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create a file in My documents
@@ -660,7 +660,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_file_json_element** | [**\OpenAPI\Client\Model\CreateFileJsonElement**](../Model/CreateFileJsonElement.md)|  | [optional] |
+| **create_file_request** | [**\OpenAPI\Client\Model\CreateFileRequest**](../Model/CreateFileRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -705,10 +705,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_file_json_element = new \OpenAPI\Client\Model\CreateFileJsonElement(); // \OpenAPI\Client\Model\CreateFileJsonElement
+$create_file_request = new \OpenAPI\Client\Model\CreateFileRequest(); // \OpenAPI\Client\Model\CreateFileRequest
 
 try {
-    $result = $apiInstance->createFileInMyDocuments($create_file_json_element);
+    $result = $apiInstance->createFileInMyDocuments($create_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createFileInMyDocuments: ', $e->getMessage(), PHP_EOL;
@@ -812,7 +812,7 @@ try {
 ## `createHtmlFile()`
 
 ```php
-createHtmlFile($folder_id, $create_text_or_html_file): \OpenAPI\Client\Model\FileWrapper
+createHtmlFile($folder_id, $create_text_or_html_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create an HTML file
@@ -825,7 +825,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int|string**| The folder the file is created in. | |
-| **create_text_or_html_file** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFile**](../Model/CreateTextOrHtmlFile.md)| The title, the content and the collision behaviour of the new file. | |
+| **create_text_or_html_file_request** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFileRequest**](../Model/CreateTextOrHtmlFileRequest.md)| The title, the content and the collision behaviour of the new file. | |
 
 ### Return type
 
@@ -875,10 +875,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $folder_id = 1; // int | The folder the file is created in.
-$create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile | The title, the content and the collision behaviour of the new file.
+$create_text_or_html_file_request = new \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest(); // \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest | The title, the content and the collision behaviour of the new file.
 
 try {
-    $result = $apiInstance->createHtmlFile($folder_id, $create_text_or_html_file);
+    $result = $apiInstance->createHtmlFile($folder_id, $create_text_or_html_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createHtmlFile: ', $e->getMessage(), PHP_EOL;
@@ -897,7 +897,7 @@ try {
 ## `createHtmlFileInMyDocuments()`
 
 ```php
-createHtmlFileInMyDocuments($create_text_or_html_file): \OpenAPI\Client\Model\FileWrapper
+createHtmlFileInMyDocuments($create_text_or_html_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create an HTML file in My documents
@@ -909,7 +909,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_text_or_html_file** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFile**](../Model/CreateTextOrHtmlFile.md)|  | [optional] |
+| **create_text_or_html_file_request** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFileRequest**](../Model/CreateTextOrHtmlFileRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -954,10 +954,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile
+$create_text_or_html_file_request = new \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest(); // \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest
 
 try {
-    $result = $apiInstance->createHtmlFileInMyDocuments($create_text_or_html_file);
+    $result = $apiInstance->createHtmlFileInMyDocuments($create_text_or_html_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createHtmlFileInMyDocuments: ', $e->getMessage(), PHP_EOL;
@@ -976,7 +976,7 @@ try {
 ## `createTextFile()`
 
 ```php
-createTextFile($folder_id, $create_text_or_html_file): \OpenAPI\Client\Model\FileWrapper
+createTextFile($folder_id, $create_text_or_html_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create a text file
@@ -989,7 +989,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **folder_id** | **int|string**| The folder the file is created in. | |
-| **create_text_or_html_file** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFile**](../Model/CreateTextOrHtmlFile.md)| The title, the content and the collision behaviour of the new file. | |
+| **create_text_or_html_file_request** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFileRequest**](../Model/CreateTextOrHtmlFileRequest.md)| The title, the content and the collision behaviour of the new file. | |
 
 ### Return type
 
@@ -1039,10 +1039,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $folder_id = 1; // int | The folder the file is created in.
-$create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile | The title, the content and the collision behaviour of the new file.
+$create_text_or_html_file_request = new \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest(); // \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest | The title, the content and the collision behaviour of the new file.
 
 try {
-    $result = $apiInstance->createTextFile($folder_id, $create_text_or_html_file);
+    $result = $apiInstance->createTextFile($folder_id, $create_text_or_html_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createTextFile: ', $e->getMessage(), PHP_EOL;
@@ -1061,7 +1061,7 @@ try {
 ## `createTextFileInMyDocuments()`
 
 ```php
-createTextFileInMyDocuments($create_text_or_html_file): \OpenAPI\Client\Model\FileWrapper
+createTextFileInMyDocuments($create_text_or_html_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Create a text file in My documents
@@ -1073,7 +1073,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_text_or_html_file** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFile**](../Model/CreateTextOrHtmlFile.md)|  | [optional] |
+| **create_text_or_html_file_request** | [**\OpenAPI\Client\Model\CreateTextOrHtmlFileRequest**](../Model/CreateTextOrHtmlFileRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -1118,10 +1118,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_text_or_html_file = new \OpenAPI\Client\Model\CreateTextOrHtmlFile(); // \OpenAPI\Client\Model\CreateTextOrHtmlFile
+$create_text_or_html_file_request = new \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest(); // \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest
 
 try {
-    $result = $apiInstance->createTextFileInMyDocuments($create_text_or_html_file);
+    $result = $apiInstance->createTextFileInMyDocuments($create_text_or_html_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->createTextFileInMyDocuments: ', $e->getMessage(), PHP_EOL;
@@ -1219,7 +1219,7 @@ try {
 ## `deleteFile()`
 
 ```php
-deleteFile($file_id, $delete, $return_single_operation): \OpenAPI\Client\Model\FileOperationArrayWrapper
+deleteFile($file_id, $delete_file_request, $return_single_operation): \OpenAPI\Client\Model\FileOperationArrayWrapper
 ```
 
 Delete a file
@@ -1232,7 +1232,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file to delete. | |
-| **delete** | [**\OpenAPI\Client\Model\Delete**](../Model/Delete.md)| When and how the file is deleted. | |
+| **delete_file_request** | [**\OpenAPI\Client\Model\DeleteFileRequest**](../Model/DeleteFileRequest.md)| When and how the file is deleted. | |
 | **return_single_operation** | **bool**| Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. | [optional] |
 
 ### Return type
@@ -1283,11 +1283,11 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file to delete.
-$delete = new \OpenAPI\Client\Model\Delete(); // \OpenAPI\Client\Model\Delete | When and how the file is deleted.
+$delete_file_request = new \OpenAPI\Client\Model\DeleteFileRequest(); // \OpenAPI\Client\Model\DeleteFileRequest | When and how the file is deleted.
 $return_single_operation = false; // bool | Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list.
 
 try {
-    $result = $apiInstance->deleteFile($file_id, $delete, $return_single_operation);
+    $result = $apiInstance->deleteFile($file_id, $delete_file_request, $return_single_operation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->deleteFile: ', $e->getMessage(), PHP_EOL;
@@ -1310,7 +1310,7 @@ deleteRecent($base_batch_request_dto)
 ```
 
 Delete recent files
-Removes the listed entries from the Recent section of the calling account, the history of opened files that  `GET api/2.0/files/recent` returns. Nothing is deleted from storage and no other member's history is touched;  access to the entries is not checked at all, so a file the caller can no longer read can still be cleared from  their own history. Only numeric file ids are honoured, so a file on a connected third-party account cannot be  cleared this way, and folder ids are accepted but change nothing because the section lists files only. The  answer carries no body and reports nothing about how many entries were found: an empty request and an id that  was never in the section are accepted alike. Repeating the call is safe, but an entry returns the next time  the file is opened or `POST api/2.0/files/file/{fileId}/recent` is called for it. To hide the whole section  instead, call `PUT api/2.0/files/displayrecent`.
+Removes the listed entries from the Recent section of the calling account, the history of opened files that  `GET api/2.0/files/recent` returns. Nothing is deleted from storage and no other member's history is touched;  access to the entries is not checked at all, so a file the caller can no longer read can still be cleared from  their own history. A file on a connected third-party account is cleared by its string id too, but only while  the storage can still find it: the entry of a file removed from the storage stays in the history. Folder ids  are accepted but change nothing because the section lists files only. The answer carries no body and reports  nothing about how many entries were found: an empty request and an id that was never in the section are  accepted alike. Repeating the call is safe, but an entry returns the next time the file is opened or  `POST api/2.0/files/file/{fileId}/recent` is called for it. To hide the whole section instead, call  `PUT api/2.0/files/displayrecent`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-recent/).
 
@@ -1384,7 +1384,7 @@ try {
 ## `deleteTemplates()`
 
 ```php
-deleteTemplates($request_body): \OpenAPI\Client\Model\BooleanWrapper
+deleteTemplates($delete_template_files_request_dto): \OpenAPI\Client\Model\BooleanWrapper
 ```
 
 Delete template files
@@ -1396,7 +1396,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**int[]**](../Model/int.md)| The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. | [optional] |
+| **delete_template_files_request_dto** | [**int[]**](../Model/int.md)| The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. | [optional] |
 
 ### Return type
 
@@ -1441,10 +1441,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = array(56); // int[] | The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric.
+$delete_template_files_request_dto = array(56); // int[] | The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric.
 
 try {
-    $result = $apiInstance->deleteTemplates($request_body);
+    $result = $apiInstance->deleteTemplates($delete_template_files_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->deleteTemplates: ', $e->getMessage(), PHP_EOL;
@@ -2629,7 +2629,7 @@ try {
 ## `getProtectedFileUsers()`
 
 ```php
-getProtectedFileUsers($file_id): \OpenAPI\Client\Model\MentionWrapperArrayWrapper
+getProtectedFileUsers($file_id): \OpenAPI\Client\Model\MentionArrayWrapper
 ```
 
 Get users for document protection
@@ -2645,7 +2645,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\MentionWrapperArrayWrapper**](../Model/MentionWrapperArrayWrapper.md)
+[**\OpenAPI\Client\Model\MentionArrayWrapper**](../Model/MentionArrayWrapper.md)
 
 ### Third-party storage
 
@@ -2953,7 +2953,7 @@ try {
 ## `lockFile()`
 
 ```php
-lockFile($file_id, $lock_file_parameters): \OpenAPI\Client\Model\FileWrapper
+lockFile($file_id, $lock_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Lock a file
@@ -2966,7 +2966,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file to lock or unlock. | |
-| **lock_file_parameters** | [**\OpenAPI\Client\Model\LockFileParameters**](../Model/LockFileParameters.md)| The lock state to reach. | |
+| **lock_file_request** | [**\OpenAPI\Client\Model\LockFileRequest**](../Model/LockFileRequest.md)| The lock state to reach. | |
 
 ### Return type
 
@@ -3016,10 +3016,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file to lock or unlock.
-$lock_file_parameters = new \OpenAPI\Client\Model\LockFileParameters(); // \OpenAPI\Client\Model\LockFileParameters | The lock state to reach.
+$lock_file_request = new \OpenAPI\Client\Model\LockFileRequest(); // \OpenAPI\Client\Model\LockFileRequest | The lock state to reach.
 
 try {
-    $result = $apiInstance->lockFile($file_id, $lock_file_parameters);
+    $result = $apiInstance->lockFile($file_id, $lock_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->lockFile: ', $e->getMessage(), PHP_EOL;
@@ -3389,7 +3389,7 @@ try {
 ## `saveFileAsPdf()`
 
 ```php
-saveFileAsPdf($id, $save_as_pdf): \OpenAPI\Client\Model\FileWrapper
+saveFileAsPdf($id, $save_as_pdf_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Save a file as PDF
@@ -3402,7 +3402,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int|string**| The file to convert; it is left untouched. | |
-| **save_as_pdf** | [**\OpenAPI\Client\Model\SaveAsPdf**](../Model/SaveAsPdf.md)| The destination folder and the name of the PDF. | |
+| **save_as_pdf_request** | [**\OpenAPI\Client\Model\SaveAsPdfRequest**](../Model/SaveAsPdfRequest.md)| The destination folder and the name of the PDF. | |
 
 ### Return type
 
@@ -3410,7 +3410,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Third-party storage
 
-The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$id` as `string` `$save_as_pdf` as `\OpenAPI\Client\Model\ThirdPartySaveAsPdf` and the answer is [**\OpenAPI\Client\Model\ThirdPartyFileWrapper**](../Model/ThirdPartyFileWrapper.md).
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$id` as `string` `$save_as_pdf_request` as `\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest` and the answer is [**\OpenAPI\Client\Model\ThirdPartyFileWrapper**](../Model/ThirdPartyFileWrapper.md).
 
 ### Authorization
 
@@ -3452,10 +3452,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $id = 1; // int | The file to convert; it is left untouched.
-$save_as_pdf = new \OpenAPI\Client\Model\SaveAsPdf(); // \OpenAPI\Client\Model\SaveAsPdf | The destination folder and the name of the PDF.
+$save_as_pdf_request = new \OpenAPI\Client\Model\SaveAsPdfRequest(); // \OpenAPI\Client\Model\SaveAsPdfRequest | The destination folder and the name of the PDF.
 
 try {
-    $result = $apiInstance->saveFileAsPdf($id, $save_as_pdf);
+    $result = $apiInstance->saveFileAsPdf($id, $save_as_pdf_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->saveFileAsPdf: ', $e->getMessage(), PHP_EOL;
@@ -3554,7 +3554,7 @@ try {
 ## `setCustomFilterTag()`
 
 ```php
-setCustomFilterTag($file_id, $custom_filter_parameters): \OpenAPI\Client\Model\FileWrapper
+setCustomFilterTag($file_id, $custom_filter_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Set the Custom Filter editing mode
@@ -3567,7 +3567,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The spreadsheet whose Custom Filter mode is switched. | |
-| **custom_filter_parameters** | [**\OpenAPI\Client\Model\CustomFilterParameters**](../Model/CustomFilterParameters.md)| The Custom Filter state to reach. | |
+| **custom_filter_request** | [**\OpenAPI\Client\Model\CustomFilterRequest**](../Model/CustomFilterRequest.md)| The Custom Filter state to reach. | |
 
 ### Return type
 
@@ -3617,10 +3617,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The spreadsheet whose Custom Filter mode is switched.
-$custom_filter_parameters = new \OpenAPI\Client\Model\CustomFilterParameters(); // \OpenAPI\Client\Model\CustomFilterParameters | The Custom Filter state to reach.
+$custom_filter_request = new \OpenAPI\Client\Model\CustomFilterRequest(); // \OpenAPI\Client\Model\CustomFilterRequest | The Custom Filter state to reach.
 
 try {
-    $result = $apiInstance->setCustomFilterTag($file_id, $custom_filter_parameters);
+    $result = $apiInstance->setCustomFilterTag($file_id, $custom_filter_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->setCustomFilterTag: ', $e->getMessage(), PHP_EOL;
@@ -3972,7 +3972,7 @@ try {
 ## `startEditFile()`
 
 ```php
-startEditFile($file_id, $start_edit): \OpenAPI\Client\Model\StringWrapper
+startEditFile($file_id, $start_edit_request): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Open an editing session
@@ -3985,7 +3985,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file to open the editing session on. The caller needs edit access to it. | |
-| **start_edit** | [**\OpenAPI\Client\Model\StartEdit**](../Model/StartEdit.md)| The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. | |
+| **start_edit_request** | [**\OpenAPI\Client\Model\StartEditRequest**](../Model/StartEditRequest.md)| The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. | |
 
 ### Return type
 
@@ -4035,10 +4035,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file to open the editing session on. The caller needs edit access to it.
-$start_edit = new \OpenAPI\Client\Model\StartEdit(); // \OpenAPI\Client\Model\StartEdit | The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session.
+$start_edit_request = new \OpenAPI\Client\Model\StartEditRequest(); // \OpenAPI\Client\Model\StartEditRequest | The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session.
 
 try {
-    $result = $apiInstance->startEditFile($file_id, $start_edit);
+    $result = $apiInstance->startEditFile($file_id, $start_edit_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->startEditFile: ', $e->getMessage(), PHP_EOL;
@@ -4314,7 +4314,7 @@ try {
 ## `updateFile()`
 
 ```php
-updateFile($file_id, $update_file): \OpenAPI\Client\Model\FileWrapper
+updateFile($file_id, $update_file_request): \OpenAPI\Client\Model\FileWrapper
 ```
 
 Update a file
@@ -4327,7 +4327,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file to update. | |
-| **update_file** | [**\OpenAPI\Client\Model\UpdateFile**](../Model/UpdateFile.md)| The new title and the version to restore. | |
+| **update_file_request** | [**\OpenAPI\Client\Model\UpdateFileRequest**](../Model/UpdateFileRequest.md)| The new title and the version to restore. | |
 
 ### Return type
 
@@ -4377,10 +4377,10 @@ $apiInstance = new OpenAPI\Client\Api\FilesApi(
     $config
 );
 $file_id = 1; // int | The file to update.
-$update_file = new \OpenAPI\Client\Model\UpdateFile(); // \OpenAPI\Client\Model\UpdateFile | The new title and the version to restore.
+$update_file_request = new \OpenAPI\Client\Model\UpdateFileRequest(); // \OpenAPI\Client\Model\UpdateFileRequest | The new title and the version to restore.
 
 try {
-    $result = $apiInstance->updateFile($file_id, $update_file);
+    $result = $apiInstance->updateFile($file_id, $update_file_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FilesApi->updateFile: ', $e->getMessage(), PHP_EOL;

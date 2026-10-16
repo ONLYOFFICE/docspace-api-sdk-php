@@ -10,7 +10,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `setTenantBannerSettings()`
 
 ```php
-setTenantBannerSettings($tenant_banner_settings_dto): \OpenAPI\Client\Model\TenantBannerSettingsWrapper
+setTenantBannerSettings($tenant_banner_settings_request_dto): \OpenAPI\Client\Model\TenantBannerSettingsWrapper
 ```
 
 Set the banners visibility
@@ -22,7 +22,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_banner_settings_dto** | [**\OpenAPI\Client\Model\TenantBannerSettingsDto**](../Model/TenantBannerSettingsDto.md)|  | [optional] |
+| **tenant_banner_settings_request_dto** | [**\OpenAPI\Client\Model\TenantBannerSettingsRequestDto**](../Model/TenantBannerSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -67,10 +67,10 @@ $apiInstance = new OpenAPI\Client\Api\BannersVisibilityApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_banner_settings_dto = new \OpenAPI\Client\Model\TenantBannerSettingsDto(); // \OpenAPI\Client\Model\TenantBannerSettingsDto
+$tenant_banner_settings_request_dto = new \OpenAPI\Client\Model\TenantBannerSettingsRequestDto(); // \OpenAPI\Client\Model\TenantBannerSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantBannerSettings($tenant_banner_settings_dto);
+    $result = $apiInstance->setTenantBannerSettings($tenant_banner_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BannersVisibilityApi->setTenantBannerSettings: ', $e->getMessage(), PHP_EOL;

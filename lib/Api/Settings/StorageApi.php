@@ -419,7 +419,7 @@ class StorageApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2320,16 +2320,16 @@ class StorageApi
      * REST API Reference for updateCdnStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cdn-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCdnStorage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CdnStorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateCdnStorage($storage_requests_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
+    public function updateCdnStorage($storage_request_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
     {
-        list($response) = $this->updateCdnStorageWithHttpInfo($storage_requests_dto, $contentType);
+        list($response) = $this->updateCdnStorageWithHttpInfo($storage_request_dto, $contentType);
         return $response;
     }
 
@@ -2341,16 +2341,16 @@ class StorageApi
      * REST API Reference for updateCdnStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cdn-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCdnStorage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CdnStorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCdnStorageWithHttpInfo($storage_requests_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
+    public function updateCdnStorageWithHttpInfo($storage_request_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
     {
-        $request = $this->updateCdnStorageRequest($storage_requests_dto, $contentType);
+        $request = $this->updateCdnStorageRequest($storage_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2378,7 +2378,7 @@ class StorageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CdnStorageSettingsWrapper',
+                        '\OpenAPI\Client\Model\StorageSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -2418,7 +2418,7 @@ class StorageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CdnStorageSettingsWrapper',
+                '\OpenAPI\Client\Model\StorageSettingsWrapper',
                 $request,
                 $response,
             );
@@ -2427,7 +2427,7 @@ class StorageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CdnStorageSettingsWrapper',
+                        '\OpenAPI\Client\Model\StorageSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2471,15 +2471,15 @@ class StorageApi
      * REST API Reference for updateCdnStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cdn-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCdnStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCdnStorageAsync($storage_requests_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
+    public function updateCdnStorageAsync($storage_request_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
     {
-        return $this->updateCdnStorageAsyncWithHttpInfo($storage_requests_dto, $contentType)
+        return $this->updateCdnStorageAsyncWithHttpInfo($storage_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2495,16 +2495,16 @@ class StorageApi
      * REST API Reference for updateCdnStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cdn-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCdnStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCdnStorageAsyncWithHttpInfo($storage_requests_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
+    public function updateCdnStorageAsyncWithHttpInfo($storage_request_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CdnStorageSettingsWrapper';
-        $request = $this->updateCdnStorageRequest($storage_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\StorageSettingsWrapper';
+        $request = $this->updateCdnStorageRequest($storage_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2545,13 +2545,13 @@ class StorageApi
     /**
      * Create request for operation 'updateCdnStorage'
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCdnStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCdnStorageRequest($storage_requests_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
+    public function updateCdnStorageRequest($storage_request_dto = null, string $contentType = self::contentTypes['updateCdnStorage'][0])
     {
 
 
@@ -2574,12 +2574,12 @@ class StorageApi
         );
 
         // for model (json/xml)
-        if (isset($storage_requests_dto)) {
+        if (isset($storage_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_request_dto));
             } else {
-                $httpBody = $storage_requests_dto;
+                $httpBody = $storage_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2657,16 +2657,16 @@ class StorageApi
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStorage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\StorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateStorage($storage_requests_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
+    public function updateStorage($storage_request_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
     {
-        list($response) = $this->updateStorageWithHttpInfo($storage_requests_dto, $contentType);
+        list($response) = $this->updateStorageWithHttpInfo($storage_request_dto, $contentType);
         return $response;
     }
 
@@ -2678,16 +2678,16 @@ class StorageApi
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStorage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\StorageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateStorageWithHttpInfo($storage_requests_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
+    public function updateStorageWithHttpInfo($storage_request_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
     {
-        $request = $this->updateStorageRequest($storage_requests_dto, $contentType);
+        $request = $this->updateStorageRequest($storage_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2808,15 +2808,15 @@ class StorageApi
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateStorageAsync($storage_requests_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
+    public function updateStorageAsync($storage_request_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
     {
-        return $this->updateStorageAsyncWithHttpInfo($storage_requests_dto, $contentType)
+        return $this->updateStorageAsyncWithHttpInfo($storage_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2832,16 +2832,16 @@ class StorageApi
      * REST API Reference for updateStorage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-storage/
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateStorageAsyncWithHttpInfo($storage_requests_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
+    public function updateStorageAsyncWithHttpInfo($storage_request_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StorageSettingsWrapper';
-        $request = $this->updateStorageRequest($storage_requests_dto, $contentType);
+        $request = $this->updateStorageRequest($storage_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2882,13 +2882,13 @@ class StorageApi
     /**
      * Create request for operation 'updateStorage'
      *
-     * @param  \OpenAPI\Client\Model\StorageRequestsDto|null $storage_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\StorageRequestDto|null $storage_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStorage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateStorageRequest($storage_requests_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
+    public function updateStorageRequest($storage_request_dto = null, string $contentType = self::contentTypes['updateStorage'][0])
     {
 
 
@@ -2911,12 +2911,12 @@ class StorageApi
         );
 
         // for model (json/xml)
-        if (isset($storage_requests_dto)) {
+        if (isset($storage_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($storage_request_dto));
             } else {
-                $httpBody = $storage_requests_dto;
+                $httpBody = $storage_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

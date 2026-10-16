@@ -49,7 +49,7 @@ class AiToolsAddCustomServerRequest implements ModelInterface, ArrayAccess, \Jso
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiToolsAddCustomServer_request';
+    protected static $openAPIModelName = 'AiToolsAddCustomServerRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

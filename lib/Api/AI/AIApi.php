@@ -75,25 +75,25 @@ class AIApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'aiAiApproveToolCall' => [
+        'aiApproveToolCall' => [
             'application/json',
         ],
-        'aiAiDenyToolCall' => [
+        'aiDenyToolCall' => [
             'application/json',
         ],
-        'aiAiRegenerateStream' => [
+        'aiRegenerateStream' => [
             'application/json',
         ],
-        'aiAiSend' => [
+        'aiSend' => [
             'application/json',
         ],
-        'aiAiSendCustom' => [
+        'aiSendCustom' => [
             'application/json',
         ],
-        'aiAiSendWithStream' => [
+        'aiSendWithStream' => [
             'application/json',
         ],
-        'aiAiSendWithStreamOpenAI' => [
+        'aiSendWithStreamOpenAI' => [
             'application/json',
         ],
     ];
@@ -146,44 +146,44 @@ class AIApi
 
 
     /**
-     * Operation aiAiApproveToolCall
+     * Operation aiApproveToolCall
      *
      * Approve tool call
      *
-     * REST API Reference for aiAiApproveToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-approve-tool-call/
+     * REST API Reference for aiApproveToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-approve-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiApproveToolCallRequest $ai_ai_approve_tool_call_request ai_ai_approve_tool_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiApproveToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiApproveToolCallRequest $ai_approve_tool_call_request ai_approve_tool_call_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiApproveToolCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiApproveToolCall($ai_ai_approve_tool_call_request, string $contentType = self::contentTypes['aiAiApproveToolCall'][0])
+    public function aiApproveToolCall($ai_approve_tool_call_request, string $contentType = self::contentTypes['aiApproveToolCall'][0])
     {
-        list($response) = $this->aiAiApproveToolCallWithHttpInfo($ai_ai_approve_tool_call_request, $contentType);
+        list($response) = $this->aiApproveToolCallWithHttpInfo($ai_approve_tool_call_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiApproveToolCallWithHttpInfo
+     * Operation aiApproveToolCallWithHttpInfo
      *
      * Approve tool call
      *
-     * REST API Reference for aiAiApproveToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-approve-tool-call/
+     * REST API Reference for aiApproveToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-approve-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiApproveToolCallRequest $ai_ai_approve_tool_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiApproveToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiApproveToolCallRequest $ai_approve_tool_call_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiApproveToolCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiApproveToolCallWithHttpInfo($ai_ai_approve_tool_call_request, string $contentType = self::contentTypes['aiAiApproveToolCall'][0])
+    public function aiApproveToolCallWithHttpInfo($ai_approve_tool_call_request, string $contentType = self::contentTypes['aiApproveToolCall'][0])
     {
-        $request = $this->aiAiApproveToolCallRequest($ai_ai_approve_tool_call_request, $contentType);
+        $request = $this->aiApproveToolCallRequest($ai_approve_tool_call_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -311,22 +311,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiApproveToolCallAsync
+     * Operation aiApproveToolCallAsync
      *
      * Approve tool call
      *
-     * REST API Reference for aiAiApproveToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-approve-tool-call/
+     * REST API Reference for aiApproveToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-approve-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiApproveToolCallRequest $ai_ai_approve_tool_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiApproveToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiApproveToolCallRequest $ai_approve_tool_call_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiApproveToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiApproveToolCallAsync($ai_ai_approve_tool_call_request, string $contentType = self::contentTypes['aiAiApproveToolCall'][0])
+    public function aiApproveToolCallAsync($ai_approve_tool_call_request, string $contentType = self::contentTypes['aiApproveToolCall'][0])
     {
-        return $this->aiAiApproveToolCallAsyncWithHttpInfo($ai_ai_approve_tool_call_request, $contentType)
+        return $this->aiApproveToolCallAsyncWithHttpInfo($ai_approve_tool_call_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -335,23 +335,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiApproveToolCallAsyncWithHttpInfo
+     * Operation aiApproveToolCallAsyncWithHttpInfo
      *
      * Approve tool call
      *
-     * REST API Reference for aiAiApproveToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-approve-tool-call/
+     * REST API Reference for aiApproveToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-approve-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiApproveToolCallRequest $ai_ai_approve_tool_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiApproveToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiApproveToolCallRequest $ai_approve_tool_call_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiApproveToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiApproveToolCallAsyncWithHttpInfo($ai_ai_approve_tool_call_request, string $contentType = self::contentTypes['aiAiApproveToolCall'][0])
+    public function aiApproveToolCallAsyncWithHttpInfo($ai_approve_tool_call_request, string $contentType = self::contentTypes['aiApproveToolCall'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiChatEvent';
-        $request = $this->aiAiApproveToolCallRequest($ai_ai_approve_tool_call_request, $contentType);
+        $request = $this->aiApproveToolCallRequest($ai_approve_tool_call_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -390,21 +390,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiApproveToolCall'
+     * Create request for operation 'aiApproveToolCall'
      *
-     * @param  \OpenAPI\Client\Model\AiAiApproveToolCallRequest $ai_ai_approve_tool_call_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiApproveToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiApproveToolCallRequest $ai_approve_tool_call_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiApproveToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiApproveToolCallRequest($ai_ai_approve_tool_call_request, string $contentType = self::contentTypes['aiAiApproveToolCall'][0])
+    public function aiApproveToolCallRequest($ai_approve_tool_call_request, string $contentType = self::contentTypes['aiApproveToolCall'][0])
     {
 
-        // verify the required parameter 'ai_ai_approve_tool_call_request' is set
-        if ($ai_ai_approve_tool_call_request === null || (is_array($ai_ai_approve_tool_call_request) && count($ai_ai_approve_tool_call_request) === 0)) {
+        // verify the required parameter 'ai_approve_tool_call_request' is set
+        if ($ai_approve_tool_call_request === null || (is_array($ai_approve_tool_call_request) && count($ai_approve_tool_call_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_approve_tool_call_request when calling aiAiApproveToolCall'
+                'Missing the required parameter $ai_approve_tool_call_request when calling aiApproveToolCall'
             );
         }
 
@@ -427,12 +427,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_approve_tool_call_request)) {
+        if (isset($ai_approve_tool_call_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_approve_tool_call_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_approve_tool_call_request));
             } else {
-                $httpBody = $ai_ai_approve_tool_call_request;
+                $httpBody = $ai_approve_tool_call_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -490,44 +490,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiDenyToolCall
+     * Operation aiDenyToolCall
      *
      * Deny tool call
      *
-     * REST API Reference for aiAiDenyToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-deny-tool-call/
+     * REST API Reference for aiDenyToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-deny-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiToolCallData $ai_ai_tool_call_data ai_ai_tool_call_data (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiDenyToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiToolCallData $ai_tool_call_data ai_tool_call_data (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiDenyToolCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiDenyToolCall($ai_ai_tool_call_data, string $contentType = self::contentTypes['aiAiDenyToolCall'][0])
+    public function aiDenyToolCall($ai_tool_call_data, string $contentType = self::contentTypes['aiDenyToolCall'][0])
     {
-        list($response) = $this->aiAiDenyToolCallWithHttpInfo($ai_ai_tool_call_data, $contentType);
+        list($response) = $this->aiDenyToolCallWithHttpInfo($ai_tool_call_data, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiDenyToolCallWithHttpInfo
+     * Operation aiDenyToolCallWithHttpInfo
      *
      * Deny tool call
      *
-     * REST API Reference for aiAiDenyToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-deny-tool-call/
+     * REST API Reference for aiDenyToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-deny-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiToolCallData $ai_ai_tool_call_data (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiDenyToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiToolCallData $ai_tool_call_data (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiDenyToolCall'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiDenyToolCallWithHttpInfo($ai_ai_tool_call_data, string $contentType = self::contentTypes['aiAiDenyToolCall'][0])
+    public function aiDenyToolCallWithHttpInfo($ai_tool_call_data, string $contentType = self::contentTypes['aiDenyToolCall'][0])
     {
-        $request = $this->aiAiDenyToolCallRequest($ai_ai_tool_call_data, $contentType);
+        $request = $this->aiDenyToolCallRequest($ai_tool_call_data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -655,22 +655,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiDenyToolCallAsync
+     * Operation aiDenyToolCallAsync
      *
      * Deny tool call
      *
-     * REST API Reference for aiAiDenyToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-deny-tool-call/
+     * REST API Reference for aiDenyToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-deny-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiToolCallData $ai_ai_tool_call_data (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiDenyToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiToolCallData $ai_tool_call_data (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiDenyToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiDenyToolCallAsync($ai_ai_tool_call_data, string $contentType = self::contentTypes['aiAiDenyToolCall'][0])
+    public function aiDenyToolCallAsync($ai_tool_call_data, string $contentType = self::contentTypes['aiDenyToolCall'][0])
     {
-        return $this->aiAiDenyToolCallAsyncWithHttpInfo($ai_ai_tool_call_data, $contentType)
+        return $this->aiDenyToolCallAsyncWithHttpInfo($ai_tool_call_data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -679,23 +679,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiDenyToolCallAsyncWithHttpInfo
+     * Operation aiDenyToolCallAsyncWithHttpInfo
      *
      * Deny tool call
      *
-     * REST API Reference for aiAiDenyToolCall Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-deny-tool-call/
+     * REST API Reference for aiDenyToolCall Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-deny-tool-call/
      *
-     * @param  \OpenAPI\Client\Model\AiAiToolCallData $ai_ai_tool_call_data (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiDenyToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiToolCallData $ai_tool_call_data (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiDenyToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiDenyToolCallAsyncWithHttpInfo($ai_ai_tool_call_data, string $contentType = self::contentTypes['aiAiDenyToolCall'][0])
+    public function aiDenyToolCallAsyncWithHttpInfo($ai_tool_call_data, string $contentType = self::contentTypes['aiDenyToolCall'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiChatEvent';
-        $request = $this->aiAiDenyToolCallRequest($ai_ai_tool_call_data, $contentType);
+        $request = $this->aiDenyToolCallRequest($ai_tool_call_data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -734,21 +734,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiDenyToolCall'
+     * Create request for operation 'aiDenyToolCall'
      *
-     * @param  \OpenAPI\Client\Model\AiAiToolCallData $ai_ai_tool_call_data (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiDenyToolCall'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiToolCallData $ai_tool_call_data (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiDenyToolCall'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiDenyToolCallRequest($ai_ai_tool_call_data, string $contentType = self::contentTypes['aiAiDenyToolCall'][0])
+    public function aiDenyToolCallRequest($ai_tool_call_data, string $contentType = self::contentTypes['aiDenyToolCall'][0])
     {
 
-        // verify the required parameter 'ai_ai_tool_call_data' is set
-        if ($ai_ai_tool_call_data === null || (is_array($ai_ai_tool_call_data) && count($ai_ai_tool_call_data) === 0)) {
+        // verify the required parameter 'ai_tool_call_data' is set
+        if ($ai_tool_call_data === null || (is_array($ai_tool_call_data) && count($ai_tool_call_data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_tool_call_data when calling aiAiDenyToolCall'
+                'Missing the required parameter $ai_tool_call_data when calling aiDenyToolCall'
             );
         }
 
@@ -771,12 +771,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_tool_call_data)) {
+        if (isset($ai_tool_call_data)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_tool_call_data));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_tool_call_data));
             } else {
-                $httpBody = $ai_ai_tool_call_data;
+                $httpBody = $ai_tool_call_data;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -834,44 +834,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiRegenerateStream
+     * Operation aiRegenerateStream
      *
      * Regenerate stream
      *
-     * REST API Reference for aiAiRegenerateStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-regenerate-stream/
+     * REST API Reference for aiRegenerateStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-regenerate-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiRegenerateStreamRequest $ai_ai_regenerate_stream_request ai_ai_regenerate_stream_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiRegenerateStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiRegenerateStreamRequest $ai_regenerate_stream_request ai_regenerate_stream_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiRegenerateStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiRegenerateStream($ai_ai_regenerate_stream_request, string $contentType = self::contentTypes['aiAiRegenerateStream'][0])
+    public function aiRegenerateStream($ai_regenerate_stream_request, string $contentType = self::contentTypes['aiRegenerateStream'][0])
     {
-        list($response) = $this->aiAiRegenerateStreamWithHttpInfo($ai_ai_regenerate_stream_request, $contentType);
+        list($response) = $this->aiRegenerateStreamWithHttpInfo($ai_regenerate_stream_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiRegenerateStreamWithHttpInfo
+     * Operation aiRegenerateStreamWithHttpInfo
      *
      * Regenerate stream
      *
-     * REST API Reference for aiAiRegenerateStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-regenerate-stream/
+     * REST API Reference for aiRegenerateStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-regenerate-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiRegenerateStreamRequest $ai_ai_regenerate_stream_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiRegenerateStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiRegenerateStreamRequest $ai_regenerate_stream_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiRegenerateStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiRegenerateStreamWithHttpInfo($ai_ai_regenerate_stream_request, string $contentType = self::contentTypes['aiAiRegenerateStream'][0])
+    public function aiRegenerateStreamWithHttpInfo($ai_regenerate_stream_request, string $contentType = self::contentTypes['aiRegenerateStream'][0])
     {
-        $request = $this->aiAiRegenerateStreamRequest($ai_ai_regenerate_stream_request, $contentType);
+        $request = $this->aiRegenerateStreamRequest($ai_regenerate_stream_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -999,22 +999,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiRegenerateStreamAsync
+     * Operation aiRegenerateStreamAsync
      *
      * Regenerate stream
      *
-     * REST API Reference for aiAiRegenerateStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-regenerate-stream/
+     * REST API Reference for aiRegenerateStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-regenerate-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiRegenerateStreamRequest $ai_ai_regenerate_stream_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiRegenerateStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiRegenerateStreamRequest $ai_regenerate_stream_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiRegenerateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiRegenerateStreamAsync($ai_ai_regenerate_stream_request, string $contentType = self::contentTypes['aiAiRegenerateStream'][0])
+    public function aiRegenerateStreamAsync($ai_regenerate_stream_request, string $contentType = self::contentTypes['aiRegenerateStream'][0])
     {
-        return $this->aiAiRegenerateStreamAsyncWithHttpInfo($ai_ai_regenerate_stream_request, $contentType)
+        return $this->aiRegenerateStreamAsyncWithHttpInfo($ai_regenerate_stream_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1023,23 +1023,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiRegenerateStreamAsyncWithHttpInfo
+     * Operation aiRegenerateStreamAsyncWithHttpInfo
      *
      * Regenerate stream
      *
-     * REST API Reference for aiAiRegenerateStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-regenerate-stream/
+     * REST API Reference for aiRegenerateStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-regenerate-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiRegenerateStreamRequest $ai_ai_regenerate_stream_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiRegenerateStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiRegenerateStreamRequest $ai_regenerate_stream_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiRegenerateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiRegenerateStreamAsyncWithHttpInfo($ai_ai_regenerate_stream_request, string $contentType = self::contentTypes['aiAiRegenerateStream'][0])
+    public function aiRegenerateStreamAsyncWithHttpInfo($ai_regenerate_stream_request, string $contentType = self::contentTypes['aiRegenerateStream'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiChatEvent';
-        $request = $this->aiAiRegenerateStreamRequest($ai_ai_regenerate_stream_request, $contentType);
+        $request = $this->aiRegenerateStreamRequest($ai_regenerate_stream_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1078,21 +1078,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiRegenerateStream'
+     * Create request for operation 'aiRegenerateStream'
      *
-     * @param  \OpenAPI\Client\Model\AiAiRegenerateStreamRequest $ai_ai_regenerate_stream_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiRegenerateStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiRegenerateStreamRequest $ai_regenerate_stream_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiRegenerateStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiRegenerateStreamRequest($ai_ai_regenerate_stream_request, string $contentType = self::contentTypes['aiAiRegenerateStream'][0])
+    public function aiRegenerateStreamRequest($ai_regenerate_stream_request, string $contentType = self::contentTypes['aiRegenerateStream'][0])
     {
 
-        // verify the required parameter 'ai_ai_regenerate_stream_request' is set
-        if ($ai_ai_regenerate_stream_request === null || (is_array($ai_ai_regenerate_stream_request) && count($ai_ai_regenerate_stream_request) === 0)) {
+        // verify the required parameter 'ai_regenerate_stream_request' is set
+        if ($ai_regenerate_stream_request === null || (is_array($ai_regenerate_stream_request) && count($ai_regenerate_stream_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_regenerate_stream_request when calling aiAiRegenerateStream'
+                'Missing the required parameter $ai_regenerate_stream_request when calling aiRegenerateStream'
             );
         }
 
@@ -1115,12 +1115,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_regenerate_stream_request)) {
+        if (isset($ai_regenerate_stream_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_regenerate_stream_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_regenerate_stream_request));
             } else {
-                $httpBody = $ai_ai_regenerate_stream_request;
+                $httpBody = $ai_regenerate_stream_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1178,44 +1178,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSend
+     * Operation aiSend
      *
      * Run an AI action
      *
-     * REST API Reference for aiAiSend Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send/
+     * REST API Reference for aiSend Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendRequest $ai_ai_send_request ai_ai_send_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSend'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendRequest $ai_send_request ai_send_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSend'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiSend($ai_ai_send_request, string $contentType = self::contentTypes['aiAiSend'][0])
+    public function aiSend($ai_send_request, string $contentType = self::contentTypes['aiSend'][0])
     {
-        list($response) = $this->aiAiSendWithHttpInfo($ai_ai_send_request, $contentType);
+        list($response) = $this->aiSendWithHttpInfo($ai_send_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiSendWithHttpInfo
+     * Operation aiSendWithHttpInfo
      *
      * Run an AI action
      *
-     * REST API Reference for aiAiSend Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send/
+     * REST API Reference for aiSend Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendRequest $ai_ai_send_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSend'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendRequest $ai_send_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSend'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiSendWithHttpInfo($ai_ai_send_request, string $contentType = self::contentTypes['aiAiSend'][0])
+    public function aiSendWithHttpInfo($ai_send_request, string $contentType = self::contentTypes['aiSend'][0])
     {
-        $request = $this->aiAiSendRequest($ai_ai_send_request, $contentType);
+        $request = $this->aiSendRequest($ai_send_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1244,6 +1244,12 @@ class AIApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiThreadMessageLike',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1303,6 +1309,14 @@ class AIApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1343,22 +1357,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendAsync
+     * Operation aiSendAsync
      *
      * Run an AI action
      *
-     * REST API Reference for aiAiSend Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send/
+     * REST API Reference for aiSend Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendRequest $ai_ai_send_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSend'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendRequest $ai_send_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendAsync($ai_ai_send_request, string $contentType = self::contentTypes['aiAiSend'][0])
+    public function aiSendAsync($ai_send_request, string $contentType = self::contentTypes['aiSend'][0])
     {
-        return $this->aiAiSendAsyncWithHttpInfo($ai_ai_send_request, $contentType)
+        return $this->aiSendAsyncWithHttpInfo($ai_send_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1367,23 +1381,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendAsyncWithHttpInfo
+     * Operation aiSendAsyncWithHttpInfo
      *
      * Run an AI action
      *
-     * REST API Reference for aiAiSend Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send/
+     * REST API Reference for aiSend Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendRequest $ai_ai_send_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSend'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendRequest $ai_send_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendAsyncWithHttpInfo($ai_ai_send_request, string $contentType = self::contentTypes['aiAiSend'][0])
+    public function aiSendAsyncWithHttpInfo($ai_send_request, string $contentType = self::contentTypes['aiSend'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiThreadMessageLike';
-        $request = $this->aiAiSendRequest($ai_ai_send_request, $contentType);
+        $request = $this->aiSendRequest($ai_send_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1422,21 +1436,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiSend'
+     * Create request for operation 'aiSend'
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendRequest $ai_ai_send_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSend'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendRequest $ai_send_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSend'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiSendRequest($ai_ai_send_request, string $contentType = self::contentTypes['aiAiSend'][0])
+    public function aiSendRequest($ai_send_request, string $contentType = self::contentTypes['aiSend'][0])
     {
 
-        // verify the required parameter 'ai_ai_send_request' is set
-        if ($ai_ai_send_request === null || (is_array($ai_ai_send_request) && count($ai_ai_send_request) === 0)) {
+        // verify the required parameter 'ai_send_request' is set
+        if ($ai_send_request === null || (is_array($ai_send_request) && count($ai_send_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_send_request when calling aiAiSend'
+                'Missing the required parameter $ai_send_request when calling aiSend'
             );
         }
 
@@ -1459,12 +1473,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_send_request)) {
+        if (isset($ai_send_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_send_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_send_request));
             } else {
-                $httpBody = $ai_ai_send_request;
+                $httpBody = $ai_send_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1522,44 +1536,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendCustom
+     * Operation aiSendCustom
      *
      * Send custom
      *
-     * REST API Reference for aiAiSendCustom Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-custom/
+     * REST API Reference for aiSendCustom Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-custom/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendCustomRequest $ai_ai_send_custom_request ai_ai_send_custom_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendCustom'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendCustomRequest $ai_send_custom_request ai_send_custom_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendCustom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiSendCustom($ai_ai_send_custom_request, string $contentType = self::contentTypes['aiAiSendCustom'][0])
+    public function aiSendCustom($ai_send_custom_request, string $contentType = self::contentTypes['aiSendCustom'][0])
     {
-        list($response) = $this->aiAiSendCustomWithHttpInfo($ai_ai_send_custom_request, $contentType);
+        list($response) = $this->aiSendCustomWithHttpInfo($ai_send_custom_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiSendCustomWithHttpInfo
+     * Operation aiSendCustomWithHttpInfo
      *
      * Send custom
      *
-     * REST API Reference for aiAiSendCustom Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-custom/
+     * REST API Reference for aiSendCustom Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-custom/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendCustomRequest $ai_ai_send_custom_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendCustom'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendCustomRequest $ai_send_custom_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendCustom'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiSendCustomWithHttpInfo($ai_ai_send_custom_request, string $contentType = self::contentTypes['aiAiSendCustom'][0])
+    public function aiSendCustomWithHttpInfo($ai_send_custom_request, string $contentType = self::contentTypes['aiSendCustom'][0])
     {
-        $request = $this->aiAiSendCustomRequest($ai_ai_send_custom_request, $contentType);
+        $request = $this->aiSendCustomRequest($ai_send_custom_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1588,6 +1602,12 @@ class AIApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPIClientModelAiThreadMessageLike',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1647,6 +1667,14 @@ class AIApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1687,22 +1715,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendCustomAsync
+     * Operation aiSendCustomAsync
      *
      * Send custom
      *
-     * REST API Reference for aiAiSendCustom Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-custom/
+     * REST API Reference for aiSendCustom Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-custom/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendCustomRequest $ai_ai_send_custom_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendCustom'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendCustomRequest $ai_send_custom_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendCustom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendCustomAsync($ai_ai_send_custom_request, string $contentType = self::contentTypes['aiAiSendCustom'][0])
+    public function aiSendCustomAsync($ai_send_custom_request, string $contentType = self::contentTypes['aiSendCustom'][0])
     {
-        return $this->aiAiSendCustomAsyncWithHttpInfo($ai_ai_send_custom_request, $contentType)
+        return $this->aiSendCustomAsyncWithHttpInfo($ai_send_custom_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1711,23 +1739,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendCustomAsyncWithHttpInfo
+     * Operation aiSendCustomAsyncWithHttpInfo
      *
      * Send custom
      *
-     * REST API Reference for aiAiSendCustom Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-custom/
+     * REST API Reference for aiSendCustom Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-custom/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendCustomRequest $ai_ai_send_custom_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendCustom'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendCustomRequest $ai_send_custom_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendCustom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendCustomAsyncWithHttpInfo($ai_ai_send_custom_request, string $contentType = self::contentTypes['aiAiSendCustom'][0])
+    public function aiSendCustomAsyncWithHttpInfo($ai_send_custom_request, string $contentType = self::contentTypes['aiSendCustom'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiThreadMessageLike';
-        $request = $this->aiAiSendCustomRequest($ai_ai_send_custom_request, $contentType);
+        $request = $this->aiSendCustomRequest($ai_send_custom_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1766,21 +1794,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiSendCustom'
+     * Create request for operation 'aiSendCustom'
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendCustomRequest $ai_ai_send_custom_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendCustom'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendCustomRequest $ai_send_custom_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendCustom'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiSendCustomRequest($ai_ai_send_custom_request, string $contentType = self::contentTypes['aiAiSendCustom'][0])
+    public function aiSendCustomRequest($ai_send_custom_request, string $contentType = self::contentTypes['aiSendCustom'][0])
     {
 
-        // verify the required parameter 'ai_ai_send_custom_request' is set
-        if ($ai_ai_send_custom_request === null || (is_array($ai_ai_send_custom_request) && count($ai_ai_send_custom_request) === 0)) {
+        // verify the required parameter 'ai_send_custom_request' is set
+        if ($ai_send_custom_request === null || (is_array($ai_send_custom_request) && count($ai_send_custom_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_send_custom_request when calling aiAiSendCustom'
+                'Missing the required parameter $ai_send_custom_request when calling aiSendCustom'
             );
         }
 
@@ -1803,12 +1831,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_send_custom_request)) {
+        if (isset($ai_send_custom_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_send_custom_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_send_custom_request));
             } else {
-                $httpBody = $ai_ai_send_custom_request;
+                $httpBody = $ai_send_custom_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1866,44 +1894,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStream
+     * Operation aiSendWithStream
      *
      * Send with stream
      *
-     * REST API Reference for aiAiSendWithStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream/
+     * REST API Reference for aiSendWithStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiSendWithStream($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStream'][0])
+    public function aiSendWithStream($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStream'][0])
     {
-        list($response) = $this->aiAiSendWithStreamWithHttpInfo($ai_ai_send_stream_body, $contentType);
+        list($response) = $this->aiSendWithStreamWithHttpInfo($ai_send_stream_body, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiSendWithStreamWithHttpInfo
+     * Operation aiSendWithStreamWithHttpInfo
      *
      * Send with stream
      *
-     * REST API Reference for aiAiSendWithStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream/
+     * REST API Reference for aiSendWithStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStream'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiChatEvent|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiSendWithStreamWithHttpInfo($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStream'][0])
+    public function aiSendWithStreamWithHttpInfo($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStream'][0])
     {
-        $request = $this->aiAiSendWithStreamRequest($ai_ai_send_stream_body, $contentType);
+        $request = $this->aiSendWithStreamRequest($ai_send_stream_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2073,22 +2101,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStreamAsync
+     * Operation aiSendWithStreamAsync
      *
      * Send with stream
      *
-     * REST API Reference for aiAiSendWithStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream/
+     * REST API Reference for aiSendWithStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendWithStreamAsync($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStream'][0])
+    public function aiSendWithStreamAsync($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStream'][0])
     {
-        return $this->aiAiSendWithStreamAsyncWithHttpInfo($ai_ai_send_stream_body, $contentType)
+        return $this->aiSendWithStreamAsyncWithHttpInfo($ai_send_stream_body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2097,23 +2125,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStreamAsyncWithHttpInfo
+     * Operation aiSendWithStreamAsyncWithHttpInfo
      *
      * Send with stream
      *
-     * REST API Reference for aiAiSendWithStream Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream/
+     * REST API Reference for aiSendWithStream Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendWithStreamAsyncWithHttpInfo($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStream'][0])
+    public function aiSendWithStreamAsyncWithHttpInfo($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStream'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiChatEvent';
-        $request = $this->aiAiSendWithStreamRequest($ai_ai_send_stream_body, $contentType);
+        $request = $this->aiSendWithStreamRequest($ai_send_stream_body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2152,21 +2180,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiSendWithStream'
+     * Create request for operation 'aiSendWithStream'
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStream'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStream'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiSendWithStreamRequest($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStream'][0])
+    public function aiSendWithStreamRequest($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStream'][0])
     {
 
-        // verify the required parameter 'ai_ai_send_stream_body' is set
-        if ($ai_ai_send_stream_body === null || (is_array($ai_ai_send_stream_body) && count($ai_ai_send_stream_body) === 0)) {
+        // verify the required parameter 'ai_send_stream_body' is set
+        if ($ai_send_stream_body === null || (is_array($ai_send_stream_body) && count($ai_send_stream_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_send_stream_body when calling aiAiSendWithStream'
+                'Missing the required parameter $ai_send_stream_body when calling aiSendWithStream'
             );
         }
 
@@ -2189,12 +2217,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_send_stream_body)) {
+        if (isset($ai_send_stream_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_send_stream_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_send_stream_body));
             } else {
-                $httpBody = $ai_ai_send_stream_body;
+                $httpBody = $ai_send_stream_body;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2252,44 +2280,44 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStreamOpenAI
+     * Operation aiSendWithStreamOpenAI
      *
      * Stream a chat in OpenAI format
      *
-     * REST API Reference for aiAiSendWithStreamOpenAI Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream-open-ai/
+     * REST API Reference for aiSendWithStreamOpenAI Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream-open-ai/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStreamOpenAI'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStreamOpenAI'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiOpenAIStreamChunk|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAiSendWithStreamOpenAI($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStreamOpenAI'][0])
+    public function aiSendWithStreamOpenAI($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStreamOpenAI'][0])
     {
-        list($response) = $this->aiAiSendWithStreamOpenAIWithHttpInfo($ai_ai_send_stream_body, $contentType);
+        list($response) = $this->aiSendWithStreamOpenAIWithHttpInfo($ai_send_stream_body, $contentType);
         return $response;
     }
 
     /**
-     * Operation aiAiSendWithStreamOpenAIWithHttpInfo
+     * Operation aiSendWithStreamOpenAIWithHttpInfo
      *
      * Stream a chat in OpenAI format
      *
-     * REST API Reference for aiAiSendWithStreamOpenAI Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream-open-ai/
+     * REST API Reference for aiSendWithStreamOpenAI Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream-open-ai/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStreamOpenAI'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStreamOpenAI'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiOpenAIStreamChunk|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAiSendWithStreamOpenAIWithHttpInfo($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStreamOpenAI'][0])
+    public function aiSendWithStreamOpenAIWithHttpInfo($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStreamOpenAI'][0])
     {
-        $request = $this->aiAiSendWithStreamOpenAIRequest($ai_ai_send_stream_body, $contentType);
+        $request = $this->aiSendWithStreamOpenAIRequest($ai_send_stream_body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2445,22 +2473,22 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStreamOpenAIAsync
+     * Operation aiSendWithStreamOpenAIAsync
      *
      * Stream a chat in OpenAI format
      *
-     * REST API Reference for aiAiSendWithStreamOpenAI Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream-open-ai/
+     * REST API Reference for aiSendWithStreamOpenAI Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream-open-ai/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStreamOpenAI'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStreamOpenAI'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendWithStreamOpenAIAsync($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStreamOpenAI'][0])
+    public function aiSendWithStreamOpenAIAsync($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStreamOpenAI'][0])
     {
-        return $this->aiAiSendWithStreamOpenAIAsyncWithHttpInfo($ai_ai_send_stream_body, $contentType)
+        return $this->aiSendWithStreamOpenAIAsyncWithHttpInfo($ai_send_stream_body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2469,23 +2497,23 @@ class AIApi
     }
 
     /**
-     * Operation aiAiSendWithStreamOpenAIAsyncWithHttpInfo
+     * Operation aiSendWithStreamOpenAIAsyncWithHttpInfo
      *
      * Stream a chat in OpenAI format
      *
-     * REST API Reference for aiAiSendWithStreamOpenAI Operation
-     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-ai-send-with-stream-open-ai/
+     * REST API Reference for aiSendWithStreamOpenAI Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-send-with-stream-open-ai/
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStreamOpenAI'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStreamOpenAI'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAiSendWithStreamOpenAIAsyncWithHttpInfo($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStreamOpenAI'][0])
+    public function aiSendWithStreamOpenAIAsyncWithHttpInfo($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStreamOpenAI'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiOpenAIStreamChunk';
-        $request = $this->aiAiSendWithStreamOpenAIRequest($ai_ai_send_stream_body, $contentType);
+        $request = $this->aiSendWithStreamOpenAIRequest($ai_send_stream_body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2524,21 +2552,21 @@ class AIApi
     }
 
     /**
-     * Create request for operation 'aiAiSendWithStreamOpenAI'
+     * Create request for operation 'aiSendWithStreamOpenAI'
      *
-     * @param  \OpenAPI\Client\Model\AiAiSendStreamBody $ai_ai_send_stream_body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAiSendWithStreamOpenAI'] to see the possible values for this operation
+     * @param  \OpenAPI\Client\Model\AiSendStreamBody $ai_send_stream_body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiSendWithStreamOpenAI'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAiSendWithStreamOpenAIRequest($ai_ai_send_stream_body, string $contentType = self::contentTypes['aiAiSendWithStreamOpenAI'][0])
+    public function aiSendWithStreamOpenAIRequest($ai_send_stream_body, string $contentType = self::contentTypes['aiSendWithStreamOpenAI'][0])
     {
 
-        // verify the required parameter 'ai_ai_send_stream_body' is set
-        if ($ai_ai_send_stream_body === null || (is_array($ai_ai_send_stream_body) && count($ai_ai_send_stream_body) === 0)) {
+        // verify the required parameter 'ai_send_stream_body' is set
+        if ($ai_send_stream_body === null || (is_array($ai_send_stream_body) && count($ai_send_stream_body) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_ai_send_stream_body when calling aiAiSendWithStreamOpenAI'
+                'Missing the required parameter $ai_send_stream_body when calling aiSendWithStreamOpenAI'
             );
         }
 
@@ -2561,12 +2589,12 @@ class AIApi
         );
 
         // for model (json/xml)
-        if (isset($ai_ai_send_stream_body)) {
+        if (isset($ai_send_stream_body)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_ai_send_stream_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_send_stream_body));
             } else {
-                $httpBody = $ai_ai_send_stream_body;
+                $httpBody = $ai_send_stream_body;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

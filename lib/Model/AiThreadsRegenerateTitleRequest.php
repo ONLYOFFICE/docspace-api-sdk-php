@@ -49,7 +49,7 @@ class AiThreadsRegenerateTitleRequest implements ModelInterface, ArrayAccess, \J
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsRegenerateTitle_request';
+    protected static $openAPIModelName = 'AiThreadsRegenerateTitleRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

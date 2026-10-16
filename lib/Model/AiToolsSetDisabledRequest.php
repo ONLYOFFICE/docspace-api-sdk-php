@@ -49,7 +49,7 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiToolsSetDisabled_request';
+    protected static $openAPIModelName = 'AiToolsSetDisabledRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'server_type' => 'string',
         'tool_names' => 'string[]',
-        'entity_id' => 'string'
+        'entity_id' => 'string',
+        'scope' => '\OpenAPI\Client\Model\AiChatToolPrefsScope'
     ];
 
     /**
@@ -72,7 +73,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'server_type' => null,
         'tool_names' => null,
-        'entity_id' => null
+        'entity_id' => null,
+        'scope' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'server_type' => false,
         'tool_names' => false,
-        'entity_id' => false
+        'entity_id' => false,
+        'scope' => false
     ];
 
     /**
@@ -174,7 +177,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'server_type' => 'serverType',
         'tool_names' => 'toolNames',
-        'entity_id' => 'entityId'
+        'entity_id' => 'entityId',
+        'scope' => 'scope'
     ];
 
     /**
@@ -185,7 +189,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'server_type' => 'setServerType',
         'tool_names' => 'setToolNames',
-        'entity_id' => 'setEntityId'
+        'entity_id' => 'setEntityId',
+        'scope' => 'setScope'
     ];
 
     /**
@@ -196,7 +201,8 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'server_type' => 'getServerType',
         'tool_names' => 'getToolNames',
-        'entity_id' => 'getEntityId'
+        'entity_id' => 'getEntityId',
+        'scope' => 'getScope'
     ];
 
     /**
@@ -259,6 +265,7 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('server_type', $data ?? [], null);
         $this->setIfExists('tool_names', $data ?? [], null);
         $this->setIfExists('entity_id', $data ?? [], null);
+        $this->setIfExists('scope', $data ?? [], null);
     }
 
     /**
@@ -386,6 +393,33 @@ class AiToolsSetDisabledRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
         }
         $this->container['entity_id'] = $entity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     *
+     * @return \OpenAPI\Client\Model\AiChatToolPrefsScope|null
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     *
+     * @param \OpenAPI\Client\Model\AiChatToolPrefsScope|null $scope The list the write lands in; omitted means the caller's own.
+     *
+     * @return self
+     */
+    public function setScope($scope)
+    {
+        if (is_null($scope)) {
+            throw new \InvalidArgumentException('non-nullable scope cannot be null');
+        }
+        $this->container['scope'] = $scope;
 
         return $this;
     }

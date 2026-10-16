@@ -20,6 +20,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getExternalDbSyncStatus()**](RoomsApi.md#getExternalDbSyncStatus) | **GET** /api/2.0/files/rooms/{id}/externaldbsync | Get external DB sync status |
 | [**getNewRoomItems()**](RoomsApi.md#getNewRoomItems) | **GET** /api/2.0/files/rooms/{id}/news | Get new items in a room |
 | [**getPublicSettings()**](RoomsApi.md#getPublicSettings) | **GET** /api/2.0/files/roomtemplate/{id}/public | Get room template public access |
+| [**getRoomAiFolder()**](RoomsApi.md#getRoomAiFolder) | **GET** /api/2.0/files/rooms/{id}/ai | Get the .ai folder of a room |
 | [**getRoomCovers()**](RoomsApi.md#getRoomCovers) | **GET** /api/2.0/files/rooms/covers | Get room cover gallery |
 | [**getRoomCreatingStatus()**](RoomsApi.md#getRoomCreatingStatus) | **GET** /api/2.0/files/rooms/fromtemplate/status | Get the room creation progress |
 | [**getRoomIndexExport()**](RoomsApi.md#getRoomIndexExport) | **GET** /api/2.0/files/rooms/indexexport | Get the room index export |
@@ -35,6 +36,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**pinRoom()**](RoomsApi.md#pinRoom) | **PUT** /api/2.0/files/rooms/{id}/pin | Pin a room |
 | [**reorderRoom()**](RoomsApi.md#reorderRoom) | **PUT** /api/2.0/files/rooms/{id}/reorder | Reorder room contents |
 | [**resendEmailInvitations()**](RoomsApi.md#resendEmailInvitations) | **POST** /api/2.0/files/rooms/{id}/resend | Resend the room invitations |
+| [**searchRooms()**](RoomsApi.md#searchRooms) | **POST** /api/2.0/files/rooms/search | Search the rooms by metadata |
 | [**setPublicSettings()**](RoomsApi.md#setPublicSettings) | **PUT** /api/2.0/files/roomtemplate/public | Set room template public access |
 | [**setRoomLink()**](RoomsApi.md#setRoomLink) | **PUT** /api/2.0/files/rooms/{id}/links | Set the room external or invitation link |
 | [**setRoomSecurity()**](RoomsApi.md#setRoomSecurity) | **PUT** /api/2.0/files/rooms/{id}/share | Set the room access rights |
@@ -707,11 +709,11 @@ try {
 ## `createRoomThirdParty()`
 
 ```php
-createRoomThirdParty($id, $create_third_party_room): \OpenAPI\Client\Model\ThirdPartyFolderWrapper
+createRoomThirdParty($id, $create_third_party_room_request): \OpenAPI\Client\Model\ThirdPartyFolderWrapper
 ```
 
 Create a third-party room
-Turns a folder of a connected third-party storage account into a room of the `Rooms` section, so that the  files of the room keep living in that storage instead of the portal. Connect the account first with  `POST api/2.0/files/thirdparty` and take the path parameter from a folder listing of that account: it is the  identifier of a folder in the storage, not of a room. One connected account can back one room only, so a  second call over the same account is refused, and so is an account that was not connected for room storage.  The caller needs the right to create rooms, which a portal user and a guest do not have; a public room is  refused while the administrator restricts external access, and reaching the room limit of the tariff is  refused too. With `createAsNewFolder` the room is a new subfolder named after `title`, otherwise the folder  from the path becomes the room itself and `indexing`, `denyDownload`, `tags` and `logo` are then dropped. The  answer is the new room, whose identifiers are strings; a public or a form-filling room already has its primary  link, readable with `GET api/2.0/files/rooms/{id}/link`.
+Turns a folder of a connected third-party storage account into a room of the `Rooms` section, so that the  files of the room keep living in that storage instead of the portal. Connect the account first with  `POST api/2.0/files/thirdparty` and take the path parameter from a folder listing of that account: it is the  identifier of a folder in the storage, not of a room. One connected account can back one room only, so a  second call over the same account is refused, and so is an account that was not connected for room storage.  The caller needs the right to create rooms, which a portal user and a guest do not have; a public room is  refused while the administrator restricts external access, and reaching the room limit of the tariff is  refused too. With `createAsNewFolder` the room is a new subfolder named after `title`, otherwise the folder  from the path becomes the room itself and `tags` and `logo` are then dropped. A third-party room keeps neither  `indexing` nor `denyDownload` in either mode: both are accepted and ignored, and the room reads back with them  off. The  answer is the new room, whose identifiers are strings; a public or a form-filling room already has its primary  link, readable with `GET api/2.0/files/rooms/{id}/link`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/create-room-third-party/).
 
@@ -720,7 +722,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account. | |
-| **create_third_party_room** | [**\OpenAPI\Client\Model\CreateThirdPartyRoom**](../Model/CreateThirdPartyRoom.md)| The settings of the room to be created out of the folder. | |
+| **create_third_party_room_request** | [**\OpenAPI\Client\Model\CreateThirdPartyRoomRequest**](../Model/CreateThirdPartyRoomRequest.md)| The settings of the room to be created out of the folder. | |
 
 ### Return type
 
@@ -766,10 +768,10 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
     $config
 );
 $id = box-12-|280143035119; // string | The identifier of the folder in the connected third-party storage that becomes the room, or receives it as a  subfolder. Folder identifiers of a connected account are strings and are returned by the folder listings of  that account.
-$create_third_party_room = new \OpenAPI\Client\Model\CreateThirdPartyRoom(); // \OpenAPI\Client\Model\CreateThirdPartyRoom | The settings of the room to be created out of the folder.
+$create_third_party_room_request = new \OpenAPI\Client\Model\CreateThirdPartyRoomRequest(); // \OpenAPI\Client\Model\CreateThirdPartyRoomRequest | The settings of the room to be created out of the folder.
 
 try {
-    $result = $apiInstance->createRoomThirdParty($id, $create_third_party_room);
+    $result = $apiInstance->createRoomThirdParty($id, $create_third_party_room_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoomsApi->createRoomThirdParty: ', $e->getMessage(), PHP_EOL;
@@ -1357,6 +1359,97 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getRoomAiFolder()`
+
+```php
+getRoomAiFolder($id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value): \OpenAPI\Client\Model\FolderContentWrapper
+```
+
+Get the .ai folder of a room
+Returns one page of the contents of the .ai folder that lies in the root of a room, in the same shape as  `GET api/2.0/files/{folderId}` returns for any other folder. The rooms that hold such a folder are listed with  `GET api/2.0/files/rooms?withAiFolder=true`. Any member who can read the room may call it; somebody who cannot  is refused, and a room that does not exist is answered as not found. A room that holds no .ai folder is  answered with an empty page: no files and folders, a zero `total`, no `current` folder and empty `pathParts`.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-ai-folder/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| The room whose .ai folder is listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. | |
+| **filter_type** | [**\OpenAPI\Client\Model\FilterType**](../Model/.md)| Narrows the listing to a single kind of entry, such as documents, spreadsheets or images. Omit it to list every  kind the folder holds. | [optional] |
+| **count** | **int**| The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. | [optional] |
+| **start_index** | **int**| The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. | [optional] |
+| **sort_by** | **string**| The name of the field the entries are ordered by, matched case-insensitively against the file sort fields,  such as `DateAndTime`, `AZ`, `Size` or `Type`. | [optional] |
+| **sort_order** | [**\OpenAPI\Client\Model\SortOrder**](../Model/.md)| The direction in which the `sortBy` field is ordered. | [optional] |
+| **filter_value** | **string**| The search string the listing is filtered by: it is matched as a substring of entry titles. Omit it to list  the folder unfiltered. | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\FolderContentWrapper**](../Model/FolderContentWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RoomsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 1; // int | The room whose .ai folder is listed, named by the identifier that `GET api/2.0/files/rooms` reports for it.
+$filter_type = 1; // \OpenAPI\Client\Model\FilterType | Narrows the listing to a single kind of entry, such as documents, spreadsheets or images. Omit it to list every  kind the folder holds.
+$count = 25; // int | The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read.
+$start_index = 0; // int | The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page.
+$sort_by = DateAndTime; // string | The name of the field the entries are ordered by, matched case-insensitively against the file sort fields,  such as `DateAndTime`, `AZ`, `Size` or `Type`.
+$sort_order = 1; // \OpenAPI\Client\Model\SortOrder | The direction in which the `sortBy` field is ordered.
+$filter_value = skill; // string | The search string the listing is filtered by: it is matched as a substring of entry titles. Omit it to list  the folder unfiltered.
+
+try {
+    $result = $apiInstance->getRoomAiFolder($id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoomsApi->getRoomAiFolder: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getRoomCovers()`
 
 ```php
@@ -1847,7 +1940,7 @@ try {
 ## `getRoomTagsInfo()`
 
 ```php
-getRoomTagsInfo($count, $start_index, $filter_value): \OpenAPI\Client\Model\STRINGArrayWrapper
+getRoomTagsInfo($count, $start_index, $filter_value): \OpenAPI\Client\Model\StringArrayWrapper
 ```
 
 Get available room tags
@@ -1865,7 +1958,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\STRINGArrayWrapper**](../Model/STRINGArrayWrapper.md)
+[**\OpenAPI\Client\Model\StringArrayWrapper**](../Model/StringArrayWrapper.md)
 
 ### Authorization
 
@@ -2006,7 +2099,7 @@ try {
 ## `getRoomsFolder()`
 
 ```php
-getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $quota_filter, $storage_filter, $privacy_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id): \OpenAPI\Client\Model\FolderContentWrapper
+getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $quota_filter, $storage_filter, $privacy_filter, $with_ai_folder, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id, $metadata_template_id, $metadata_filters, $include_hidden_metadata): \OpenAPI\Client\Model\FolderContentWrapper
 ```
 
 Get rooms
@@ -2029,12 +2122,16 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **quota_filter** | [**\OpenAPI\Client\Model\QuotaFilter**](../Model/.md)| Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. | [optional] |
 | **storage_filter** | [**\OpenAPI\Client\Model\StorageFilter**](../Model/.md)| Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. | [optional] |
 | **privacy_filter** | [**\OpenAPI\Client\Model\RoomPrivacyFilter**](../Model/.md)| Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. | [optional] |
+| **with_ai_folder** | **bool**| Keeps only the rooms that hold a .ai folder in their root. The content of that folder is read with  `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms with and without the folder. | [optional] |
 | **count** | **int**| How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. | [optional] |
 | **start_index** | **int**| How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. | [optional] |
 | **sort_by** | **string**| The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. | [optional] |
 | **sort_order** | [**\OpenAPI\Client\Model\SortOrder**](../Model/.md)| The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used. | [optional] |
 | **filter_value** | **string**| Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched. | [optional] |
 | **group_id** | **int**| Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here. | [optional] |
+| **metadata_template_id** | **int**| The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to. | [optional] |
+| **metadata_filters** | **string**| The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/rooms/search. | [optional] |
+| **include_hidden_metadata** | **bool**| Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. | [optional] |
 
 ### Return type
 
@@ -2090,15 +2187,19 @@ $provider = 1; // \OpenAPI\Client\Model\ProviderFilter | Keeps only the rooms wh
 $quota_filter = 1; // \OpenAPI\Client\Model\QuotaFilter | Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found.
 $storage_filter = 1; // \OpenAPI\Client\Model\StorageFilter | Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter.
 $privacy_filter = 1; // \OpenAPI\Client\Model\RoomPrivacyFilter | Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds.
+$with_ai_folder = true; // bool | Keeps only the rooms that hold a .ai folder in their root. The content of that folder is read with  `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms with and without the folder.
 $count = 25; // int | How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received.
 $start_index = 0; // int | How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports.
 $sort_by = DateAndTime; // string | The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order.
 $sort_order = 1; // \OpenAPI\Client\Model\SortOrder | The direction of the order chosen by the sort field. It has no effect when no sort field is given and the  stored order of the account is used.
 $filter_value = Sales; // string | Keeps only the rooms whose title contains this text, ignoring case. It is a substring match over the title  alone: room content and tags are not searched.
 $group_id = 1; // int | Keeps only the rooms that belong to this room group. The identifier comes from `GET api/2.0/files/group`; the  groups of portal members are a different concept and their identifiers do not match here.
+$metadata_template_id = 1; // int | The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.
+$metadata_filters = [{"fieldId":1,"op":"eq","value":"ACME"}]; // string | The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/rooms/search.
+$include_hidden_metadata = false; // bool | Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way.
 
 try {
-    $result = $apiInstance->getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $quota_filter, $storage_filter, $privacy_filter, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id);
+    $result = $apiInstance->getRoomsFolder($type, $subject_id, $subject_owner_id, $search_area, $without_tags, $tags, $exclude_subject, $provider, $quota_filter, $storage_filter, $privacy_filter, $with_ai_folder, $count, $start_index, $sort_by, $sort_order, $filter_value, $group_id, $metadata_template_id, $metadata_filters, $include_hidden_metadata);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoomsApi->getRoomsFolder: ', $e->getMessage(), PHP_EOL;
@@ -2592,6 +2693,85 @@ try {
     $apiInstance->resendEmailInvitations($id, $user_invitation);
 } catch (Exception $e) {
     echo 'Exception when calling RoomsApi->resendEmailInvitations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchRooms()`
+
+```php
+searchRooms($rooms_metadata_search_request_dto): \OpenAPI\Client\Model\FolderContentWrapper
+```
+
+Search the rooms by metadata
+Searches the rooms by metadata. The same filter the rooms listing takes in the metadataTemplateId and metadataFilters  query parameters, here as a typed request body for the clients that build the conditions as objects rather than as a JSON string.
+
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/search-rooms/).
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **rooms_metadata_search_request_dto** | [**\OpenAPI\Client\Model\RoomsMetadataSearchRequestDto**](../Model/RoomsMetadataSearchRequestDto.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\FolderContentWrapper**](../Model/FolderContentWrapper.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\RoomsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$rooms_metadata_search_request_dto = new \OpenAPI\Client\Model\RoomsMetadataSearchRequestDto(); // \OpenAPI\Client\Model\RoomsMetadataSearchRequestDto
+
+try {
+    $result = $apiInstance->searchRooms($rooms_metadata_search_request_dto);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoomsApi->searchRooms: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

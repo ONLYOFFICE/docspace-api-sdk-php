@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantAiAccessSettingsDto Class Doc Comment
  *
  * @category Class
- * @description Whether AI functionality is available on the portal.
+ * @description Whether AI functionality is switched on for the portal.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'enabled' => 'bool'
+        'enabled' => 'bool',
+        'last_modified' => '\DateTime'
     ];
 
     /**
@@ -69,7 +70,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'enabled' => null
+        'enabled' => null,
+        'last_modified' => 'date-time'
     ];
 
     /**
@@ -78,7 +80,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'enabled' => false
+        'enabled' => false,
+        'last_modified' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'enabled' => 'enabled'
+        'enabled' => 'enabled',
+        'last_modified' => 'lastModified'
     ];
 
     /**
@@ -176,7 +180,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'enabled' => 'setEnabled'
+        'enabled' => 'setEnabled',
+        'last_modified' => 'setLastModified'
     ];
 
     /**
@@ -185,7 +190,8 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'enabled' => 'getEnabled'
+        'enabled' => 'getEnabled',
+        'last_modified' => 'getLastModified'
     ];
 
     /**
@@ -246,6 +252,7 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('enabled', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
     }
 
     /**
@@ -303,7 +310,7 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets enabled
      *
-     * @param bool|null $enabled Whether AI is available on the portal at all - chat, agents and vectorization together. Switching it off  hides the AI Agents folder and makes every AI endpoint unreachable for all members at once, not only for the  caller, and the change is pushed to connected clients rather than waiting for their next request.
+     * @param bool|null $enabled Specifies whether AI functionality is enabled for the tenant.  When set to `false`, all AI features (chat, agents, vectorization) are disabled tenant-wide.
      *
      * @return self
      */
@@ -313,6 +320,33 @@ class TenantAiAccessSettingsDto implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
         $this->container['enabled'] = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return \DateTime|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param \DateTime|null $last_modified The timestamp indicating when the settings were last modified.
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
+        }
+        $this->container['last_modified'] = $last_modified;
 
         return $this;
     }

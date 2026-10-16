@@ -524,7 +524,7 @@ try {
 ## `getGroupsMembersWithFileSecurity()`
 
 ```php
-getGroupsMembersWithFileSecurity($file_id, $group_id, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper
+getGroupsMembersWithFileSecurity($file_id, $group_id, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper
 ```
 
 Get file access of group members
@@ -544,7 +544,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper**](../Model/GroupMemberSecurityRequestArrayWrapper.md)
+[**\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper**](../Model/GroupMemberSecurityArrayWrapper.md)
 
 ### Third-party storage
 
@@ -615,7 +615,7 @@ try {
 ## `getGroupsMembersWithFolderSecurity()`
 
 ```php
-getGroupsMembersWithFolderSecurity($folder_id, $group_id, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper
+getGroupsMembersWithFolderSecurity($folder_id, $group_id, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper
 ```
 
 Get folder access of group members
@@ -635,7 +635,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\GroupMemberSecurityRequestArrayWrapper**](../Model/GroupMemberSecurityRequestArrayWrapper.md)
+[**\OpenAPI\Client\Model\GroupMemberSecurityArrayWrapper**](../Model/GroupMemberSecurityArrayWrapper.md)
 
 ### Third-party storage
 
@@ -785,7 +785,7 @@ try {
 ## `getSharedUsers()`
 
 ```php
-getSharedUsers($file_id): \OpenAPI\Client\Model\MentionWrapperArrayWrapper
+getSharedUsers($file_id): \OpenAPI\Client\Model\MentionArrayWrapper
 ```
 
 Get users to mention in a file
@@ -801,7 +801,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\MentionWrapperArrayWrapper**](../Model/MentionWrapperArrayWrapper.md)
+[**\OpenAPI\Client\Model\MentionArrayWrapper**](../Model/MentionArrayWrapper.md)
 
 ### Third-party storage
 
@@ -947,7 +947,7 @@ try {
 ## `sendEditorNotify()`
 
 ```php
-sendEditorNotify($file_id, $mention_message_wrapper): \OpenAPI\Client\Model\AceShortWrapperArrayWrapper
+sendEditorNotify($file_id, $mention_message_request): \OpenAPI\Client\Model\AceShortArrayWrapper
 ```
 
 Notify mentioned users
@@ -960,11 +960,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **file_id** | **int|string**| The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string. | |
-| **mention_message_wrapper** | [**\OpenAPI\Client\Model\MentionMessageWrapper**](../Model/MentionMessageWrapper.md)| The notification to send. | [optional] |
+| **mention_message_request** | [**\OpenAPI\Client\Model\MentionMessageRequest**](../Model/MentionMessageRequest.md)| The notification to send. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AceShortWrapperArrayWrapper**](../Model/AceShortWrapperArrayWrapper.md)
+[**\OpenAPI\Client\Model\AceShortArrayWrapper**](../Model/AceShortArrayWrapper.md)
 
 ### Third-party storage
 
@@ -1010,10 +1010,10 @@ $apiInstance = new OpenAPI\Client\Api\SharingApi(
     $config
 );
 $file_id = 10; // int | The file the mention was made in. A file stored on the portal is numbered, while a file in a connected  third-party account is named by an opaque string.
-$mention_message_wrapper = new \OpenAPI\Client\Model\MentionMessageWrapper(); // \OpenAPI\Client\Model\MentionMessageWrapper | The notification to send.
+$mention_message_request = new \OpenAPI\Client\Model\MentionMessageRequest(); // \OpenAPI\Client\Model\MentionMessageRequest | The notification to send.
 
 try {
-    $result = $apiInstance->sendEditorNotify($file_id, $mention_message_wrapper);
+    $result = $apiInstance->sendEditorNotify($file_id, $mention_message_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SharingApi->sendEditorNotify: ', $e->getMessage(), PHP_EOL;

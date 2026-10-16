@@ -462,16 +462,16 @@ class CookiesApi
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
      *
-     * @param  \OpenAPI\Client\Model\CookieSettingsRequestsDto|null $cookie_settings_requests_dto cookie_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CookieSettingsRequestDto|null $cookie_settings_request_dto cookie_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCookieSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateCookieSettings($cookie_settings_requests_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
+    public function updateCookieSettings($cookie_settings_request_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
     {
-        list($response) = $this->updateCookieSettingsWithHttpInfo($cookie_settings_requests_dto, $contentType);
+        list($response) = $this->updateCookieSettingsWithHttpInfo($cookie_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -483,16 +483,16 @@ class CookiesApi
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
      *
-     * @param  \OpenAPI\Client\Model\CookieSettingsRequestsDto|null $cookie_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CookieSettingsRequestDto|null $cookie_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCookieSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCookieSettingsWithHttpInfo($cookie_settings_requests_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
+    public function updateCookieSettingsWithHttpInfo($cookie_settings_request_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
     {
-        $request = $this->updateCookieSettingsRequest($cookie_settings_requests_dto, $contentType);
+        $request = $this->updateCookieSettingsRequest($cookie_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -627,15 +627,15 @@ class CookiesApi
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
      *
-     * @param  \OpenAPI\Client\Model\CookieSettingsRequestsDto|null $cookie_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CookieSettingsRequestDto|null $cookie_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCookieSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCookieSettingsAsync($cookie_settings_requests_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
+    public function updateCookieSettingsAsync($cookie_settings_request_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
     {
-        return $this->updateCookieSettingsAsyncWithHttpInfo($cookie_settings_requests_dto, $contentType)
+        return $this->updateCookieSettingsAsyncWithHttpInfo($cookie_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -651,16 +651,16 @@ class CookiesApi
      * REST API Reference for updateCookieSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-cookie-settings/
      *
-     * @param  \OpenAPI\Client\Model\CookieSettingsRequestsDto|null $cookie_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CookieSettingsRequestDto|null $cookie_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCookieSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCookieSettingsAsyncWithHttpInfo($cookie_settings_requests_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
+    public function updateCookieSettingsAsyncWithHttpInfo($cookie_settings_request_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->updateCookieSettingsRequest($cookie_settings_requests_dto, $contentType);
+        $request = $this->updateCookieSettingsRequest($cookie_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -701,13 +701,13 @@ class CookiesApi
     /**
      * Create request for operation 'updateCookieSettings'
      *
-     * @param  \OpenAPI\Client\Model\CookieSettingsRequestsDto|null $cookie_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CookieSettingsRequestDto|null $cookie_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCookieSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCookieSettingsRequest($cookie_settings_requests_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
+    public function updateCookieSettingsRequest($cookie_settings_request_dto = null, string $contentType = self::contentTypes['updateCookieSettings'][0])
     {
 
 
@@ -730,12 +730,12 @@ class CookiesApi
         );
 
         // for model (json/xml)
-        if (isset($cookie_settings_requests_dto)) {
+        if (isset($cookie_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($cookie_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($cookie_settings_request_dto));
             } else {
-                $httpBody = $cookie_settings_requests_dto;
+                $httpBody = $cookie_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -179,7 +179,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -189,7 +189,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAccountsEntriesWithFilesShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFilesShared'][0])
     {
@@ -212,7 +212,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -222,7 +222,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsEntriesWithFilesSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFilesShared'][0])
     {
@@ -254,7 +254,7 @@ class SearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $request,
                         $response,
                     );
@@ -271,12 +271,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -300,7 +294,7 @@ class SearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                 $request,
                 $response,
             );
@@ -309,7 +303,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -331,14 +325,6 @@ class SearchApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -368,7 +354,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -404,7 +390,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -417,7 +403,7 @@ class SearchApi
      */
     public function getAccountsEntriesWithFilesSharedAsyncWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFilesShared'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IAccountEntryArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AccountEntryArrayWrapper';
         $request = $this->getAccountsEntriesWithFilesSharedRequest($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value, $contentType);
 
         return $this->client
@@ -466,7 +452,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -571,7 +557,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -723,7 +709,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -733,7 +719,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAccountsEntriesWithFoldersShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFoldersShared'][0])
     {
@@ -756,7 +742,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -766,7 +752,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsEntriesWithFoldersSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFoldersShared'][0])
     {
@@ -798,7 +784,7 @@ class SearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $request,
                         $response,
                     );
@@ -815,12 +801,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -844,7 +824,7 @@ class SearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                 $request,
                 $response,
             );
@@ -853,7 +833,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -875,14 +855,6 @@ class SearchApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -912,7 +884,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -948,7 +920,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -961,7 +933,7 @@ class SearchApi
      */
     public function getAccountsEntriesWithFoldersSharedAsyncWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithFoldersShared'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IAccountEntryArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AccountEntryArrayWrapper';
         $request = $this->getAccountsEntriesWithFoldersSharedRequest($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value, $contentType);
 
         return $this->client
@@ -1010,7 +982,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1115,7 +1087,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1267,7 +1239,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1277,7 +1249,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAccountsEntriesWithRoomsShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithRoomsShared'][0])
     {
@@ -1300,7 +1272,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1310,7 +1282,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\IAccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AccountEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsEntriesWithRoomsSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithRoomsShared'][0])
     {
@@ -1342,7 +1314,7 @@ class SearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1359,12 +1331,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1388,7 +1354,7 @@ class SearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                 $request,
                 $response,
             );
@@ -1397,7 +1363,7 @@ class SearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\IAccountEntryArrayWrapper',
+                        '\OpenAPI\Client\Model\AccountEntryArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1419,14 +1385,6 @@ class SearchApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1456,7 +1414,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1492,7 +1450,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1505,7 +1463,7 @@ class SearchApi
      */
     public function getAccountsEntriesWithRoomsSharedAsyncWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAccountsEntriesWithRoomsShared'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\IAccountEntryArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AccountEntryArrayWrapper';
         $request = $this->getAccountsEntriesWithRoomsSharedRequest($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value, $contentType);
 
         return $this->client
@@ -1554,7 +1512,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. (optional)
@@ -1659,7 +1617,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2205,7 +2163,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -2216,7 +2174,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSimpleByFilter($employee_status = null, $group_id = null, $activation_status = null, $employee_type = null, $employee_types = null, $is_administrator = null, $payments = null, $account_login_type = null, $quota_filter = null, $without_group = null, $exclude_group = null, $invited_by_me = null, $inviter_id = null, $area = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getSimpleByFilter'][0])
     {
@@ -2245,7 +2203,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -2256,7 +2214,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSimpleByFilterWithHttpInfo($employee_status = null, $group_id = null, $activation_status = null, $employee_type = null, $employee_types = null, $is_administrator = null, $payments = null, $account_login_type = null, $quota_filter = null, $without_group = null, $exclude_group = null, $invited_by_me = null, $inviter_id = null, $area = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getSimpleByFilter'][0])
     {
@@ -2305,12 +2263,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2372,14 +2324,6 @@ class SearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2408,7 +2352,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -2451,7 +2395,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -2520,7 +2464,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -2690,7 +2634,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2845,7 +2789,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -2855,7 +2799,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getUsersWithFilesShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithFilesShared'][0])
     {
@@ -2878,7 +2822,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -2888,7 +2832,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithFilesSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithFilesShared'][0])
     {
@@ -2937,12 +2881,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3004,14 +2942,6 @@ class SearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3034,7 +2964,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3070,7 +3000,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3132,7 +3062,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3237,7 +3167,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3389,7 +3319,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3399,7 +3329,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getUsersWithFoldersShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithFoldersShared'][0])
     {
@@ -3422,7 +3352,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3432,7 +3362,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithFoldersSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithFoldersShared'][0])
     {
@@ -3481,12 +3411,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3548,14 +3472,6 @@ class SearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3578,7 +3494,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3614,7 +3530,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3676,7 +3592,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3781,7 +3697,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3933,7 +3849,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3943,7 +3859,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getUsersWithRoomShared($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithRoomShared'][0])
     {
@@ -3966,7 +3882,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -3976,7 +3892,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithRoomSharedWithHttpInfo($id, $employee_status = null, $activation_status = null, $exclude_shared = null, $include_shared = null, $invited_by_me = null, $inviter_id = null, $area = null, $employee_types = null, $count = null, $start_index = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getUsersWithRoomShared'][0])
     {
@@ -4025,12 +3941,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4092,14 +4002,6 @@ class SearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4122,7 +4024,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -4158,7 +4060,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -4220,7 +4122,7 @@ class SearchApi
      * @param  bool|null $include_shared Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. (optional)
      * @param  \OpenAPI\Client\Model\EmployeeType[]|null $employee_types Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
@@ -4325,7 +4227,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4483,7 +4385,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -4494,7 +4396,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function searchUsersByExtendedFilter($employee_status = null, $group_id = null, $activation_status = null, $employee_type = null, $employee_types = null, $is_administrator = null, $payments = null, $account_login_type = null, $quota_filter = null, $without_group = null, $exclude_group = null, $invited_by_me = null, $inviter_id = null, $area = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['searchUsersByExtendedFilter'][0])
     {
@@ -4523,7 +4425,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -4534,7 +4436,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchUsersByExtendedFilterWithHttpInfo($employee_status = null, $group_id = null, $activation_status = null, $employee_type = null, $employee_types = null, $is_administrator = null, $payments = null, $account_login_type = null, $quota_filter = null, $without_group = null, $exclude_group = null, $invited_by_me = null, $inviter_id = null, $area = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['searchUsersByExtendedFilter'][0])
     {
@@ -4583,12 +4485,6 @@ class SearchApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4650,14 +4546,6 @@ class SearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4686,7 +4574,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -4729,7 +4617,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -4798,7 +4686,7 @@ class SearchApi
      * @param  bool|null $exclude_group Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. (optional)
      * @param  bool|null $invited_by_me Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. (optional)
      * @param  string|null $inviter_id Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. (optional)
-     * @param  \OpenAPI\Client\Model\Area|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
+     * @param  \OpenAPI\Client\Model\AccountSearchArea|null $area The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. (optional)
      * @param  int|null $count The size of the page. It defaults to 100, which is also the largest value the operation accepts. (optional)
      * @param  int|null $start_index The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. (optional)
      * @param  string|null $sort_by What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. (optional)
@@ -4968,7 +4856,7 @@ class SearchApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $area,
             'area', // param base name
-            'Area', // openApiType
+            'AccountSearchArea', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -5477,7 +5365,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function searchUsersByStatus($status, $query = null, $filter_by = null, $filter_value = null, string $contentType = self::contentTypes['searchUsersByStatus'][0])
     {
@@ -5501,7 +5389,7 @@ class SearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchUsersByStatusWithHttpInfo($status, $query = null, $filter_by = null, $filter_value = null, string $contentType = self::contentTypes['searchUsersByStatus'][0])
     {
@@ -5549,18 +5437,6 @@ class SearchApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -5602,22 +5478,6 @@ class SearchApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

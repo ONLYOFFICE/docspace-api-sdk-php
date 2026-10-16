@@ -1,4 +1,4 @@
-# # STRINGArrayWrapper
+# # StringArrayWrapper
 
 ## Properties
 

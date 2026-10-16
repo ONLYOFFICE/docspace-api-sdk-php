@@ -87,7 +87,7 @@ try {
 ## `updateCookieSettings()`
 
 ```php
-updateCookieSettings($cookie_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+updateCookieSettings($cookie_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Update the cookie lifetime settings
@@ -99,7 +99,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cookie_settings_requests_dto** | [**\OpenAPI\Client\Model\CookieSettingsRequestsDto**](../Model/CookieSettingsRequestsDto.md)|  | [optional] |
+| **cookie_settings_request_dto** | [**\OpenAPI\Client\Model\CookieSettingsRequestDto**](../Model/CookieSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -144,10 +144,10 @@ $apiInstance = new OpenAPI\Client\Api\CookiesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cookie_settings_requests_dto = new \OpenAPI\Client\Model\CookieSettingsRequestsDto(); // \OpenAPI\Client\Model\CookieSettingsRequestsDto
+$cookie_settings_request_dto = new \OpenAPI\Client\Model\CookieSettingsRequestDto(); // \OpenAPI\Client\Model\CookieSettingsRequestDto
 
 try {
-    $result = $apiInstance->updateCookieSettings($cookie_settings_requests_dto);
+    $result = $apiInstance->updateCookieSettings($cookie_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CookiesApi->updateCookieSettings: ', $e->getMessage(), PHP_EOL;

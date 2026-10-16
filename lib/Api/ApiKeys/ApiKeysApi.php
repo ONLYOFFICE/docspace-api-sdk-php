@@ -849,7 +849,7 @@ class ApiKeysApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAllPermissions(string $contentType = self::contentTypes['getAllPermissions'][0])
     {
@@ -869,7 +869,7 @@ class ApiKeysApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllPermissionsWithHttpInfo(string $contentType = self::contentTypes['getAllPermissions'][0])
     {
@@ -901,7 +901,7 @@ class ApiKeysApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $request,
                         $response,
                     );
@@ -941,7 +941,7 @@ class ApiKeysApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                '\OpenAPI\Client\Model\StringArrayWrapper',
                 $request,
                 $response,
             );
@@ -950,7 +950,7 @@ class ApiKeysApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1024,7 +1024,7 @@ class ApiKeysApi
      */
     public function getAllPermissionsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAllPermissions'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\STRINGArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringArrayWrapper';
         $request = $this->getAllPermissionsRequest($contentType);
 
         return $this->client

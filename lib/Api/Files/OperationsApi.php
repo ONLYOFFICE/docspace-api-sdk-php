@@ -513,7 +513,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addFavorites($base_batch_request_dto = null, string $contentType = self::contentTypes['addFavorites'][0])
     {
@@ -534,7 +534,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addFavoritesWithHttpInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['addFavorites'][0])
     {
@@ -582,18 +582,6 @@ class OperationsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -635,22 +623,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -864,7 +836,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function bulkDownload($download_request_dto = null, string $contentType = self::contentTypes['bulkDownload'][0])
     {
@@ -885,7 +857,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkDownloadWithHttpInfo($download_request_dto = null, string $contentType = self::contentTypes['bulkDownload'][0])
     {
@@ -927,18 +899,6 @@ class OperationsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -972,22 +932,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1569,16 +1513,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function checkMoveOrCopyBatchItems($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
+    public function checkMoveOrCopyBatchItems($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
     {
-        list($response) = $this->checkMoveOrCopyBatchItemsWithHttpInfo($in_dto, $contentType);
+        list($response) = $this->checkMoveOrCopyBatchItemsWithHttpInfo($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
         return $response;
     }
 
@@ -1590,16 +1541,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileEntryBaseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkMoveOrCopyBatchItemsWithHttpInfo($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
+    public function checkMoveOrCopyBatchItemsWithHttpInfo($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
     {
-        $request = $this->checkMoveOrCopyBatchItemsRequest($in_dto, $contentType);
+        $request = $this->checkMoveOrCopyBatchItemsRequest($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1644,12 +1602,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1711,14 +1663,6 @@ class OperationsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1734,15 +1678,22 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkMoveOrCopyBatchItemsAsync($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
+    public function checkMoveOrCopyBatchItemsAsync($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
     {
-        return $this->checkMoveOrCopyBatchItemsAsyncWithHttpInfo($in_dto, $contentType)
+        return $this->checkMoveOrCopyBatchItemsAsyncWithHttpInfo($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1758,16 +1709,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyBatchItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-batch-items/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkMoveOrCopyBatchItemsAsyncWithHttpInfo($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
+    public function checkMoveOrCopyBatchItemsAsyncWithHttpInfo($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileEntryBaseArrayWrapper';
-        $request = $this->checkMoveOrCopyBatchItemsRequest($in_dto, $contentType);
+        $request = $this->checkMoveOrCopyBatchItemsRequest($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1808,14 +1766,28 @@ class OperationsApi
     /**
      * Create request for operation 'checkMoveOrCopyBatchItems'
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyBatchItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkMoveOrCopyBatchItemsRequest($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
+    public function checkMoveOrCopyBatchItemsRequest($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyBatchItems'][0])
     {
+
+
+
+
+
+
+
 
 
 
@@ -1828,9 +1800,72 @@ class OperationsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $in_dto,
-            'inDto', // param base name
-            'BatchRequestDto', // openApiType
+            $return_single_operation,
+            'returnSingleOperation', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $folder_ids,
+            'folderIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $file_ids,
+            'fileIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $dest_folder_id,
+            'destFolderId', // param base name
+            'int|string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $conflict_resolve_type,
+            'conflictResolveType', // param base name
+            'FileConflictResolveType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $delete_after,
+            'deleteAfter', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $content,
+            'content', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_fill_out,
+            'toFillOut', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1922,16 +1957,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CheckDestFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\CheckDestFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function checkMoveOrCopyDestFolder($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
+    public function checkMoveOrCopyDestFolder($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
     {
-        list($response) = $this->checkMoveOrCopyDestFolderWithHttpInfo($in_dto, $contentType);
+        list($response) = $this->checkMoveOrCopyDestFolderWithHttpInfo($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
         return $response;
     }
 
@@ -1943,16 +1985,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CheckDestFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CheckDestFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkMoveOrCopyDestFolderWithHttpInfo($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
+    public function checkMoveOrCopyDestFolderWithHttpInfo($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
     {
-        $request = $this->checkMoveOrCopyDestFolderRequest($in_dto, $contentType);
+        $request = $this->checkMoveOrCopyDestFolderRequest($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1991,18 +2040,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2056,22 +2093,6 @@ class OperationsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2087,15 +2108,22 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkMoveOrCopyDestFolderAsync($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
+    public function checkMoveOrCopyDestFolderAsync($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
     {
-        return $this->checkMoveOrCopyDestFolderAsyncWithHttpInfo($in_dto, $contentType)
+        return $this->checkMoveOrCopyDestFolderAsyncWithHttpInfo($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2111,16 +2139,23 @@ class OperationsApi
      * REST API Reference for checkMoveOrCopyDestFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-move-or-copy-dest-folder/
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkMoveOrCopyDestFolderAsyncWithHttpInfo($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
+    public function checkMoveOrCopyDestFolderAsyncWithHttpInfo($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CheckDestFolderWrapper';
-        $request = $this->checkMoveOrCopyDestFolderRequest($in_dto, $contentType);
+        $request = $this->checkMoveOrCopyDestFolderRequest($return_single_operation, $folder_ids, $file_ids, $dest_folder_id, $conflict_resolve_type, $delete_after, $content, $to_fill_out, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2161,14 +2196,28 @@ class OperationsApi
     /**
      * Create request for operation 'checkMoveOrCopyDestFolder'
      *
-     * @param  \OpenAPIClientModelBatchRequestDto|null $in_dto The files and folders to move or copy, the folder they go to, and the way name clashes are settled. (optional)
+     * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $folder_ids The folders to move or copy, by id. A number addresses a folder stored in the portal itself, a string  addresses a folder on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsFolderIdsParameterInner[]|null $file_ids The files to move or copy, by id. A number addresses a file stored in the portal itself, a string addresses a  file on a connected third-party account, and both kinds may be sent in one list. (optional)
+     * @param  \OpenAPI\Client\Model\CheckMoveOrCopyBatchItemsDestFolderIdParameter|null $dest_folder_id The folder the items go to, by id — a number for a folder stored in the portal itself, a string for a folder  on a connected third-party account. Take it from a folder listing such as `GET api/2.0/files/@root`; the  caller has to be allowed to create items in it, and the id of a room addresses the root of that room. (optional)
+     * @param  \OpenAPIClientModelFileConflictResolveType|null $conflict_resolve_type What happens to an item whose name is already taken in the destination folder: `skip` leaves it where it is,  `overwrite` replaces the entry at the destination, and `duplicate` places it beside that entry under a name  with a numeric suffix. `GET api/2.0/files/fileops/move` reports which items would clash. (optional)
+     * @param  bool|null $delete_after Whether the finished operation is still reported: `false` keeps its final record readable through  `GET api/2.0/files/fileops` until it has been read once, `true` drops the record as soon as the work is done.  It deletes nothing: a move takes the sources away in any case, and a copy always leaves them. (optional)
+     * @param  bool|null $content What is taken from a listed folder: `false` moves or copies the folder itself, `true` takes only what it  contains, so its files and subfolders land in the destination and the folder is not recreated there. (optional)
+     * @param  bool|null $to_fill_out Marks every copied PDF form as a draft prepared for filling, which is how such a copy reports its filling  status in a virtual data room. Files that are not forms are left unaffected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkMoveOrCopyDestFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkMoveOrCopyDestFolderRequest($in_dto = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
+    public function checkMoveOrCopyDestFolderRequest($return_single_operation = null, $folder_ids = null, $file_ids = null, $dest_folder_id = null, $conflict_resolve_type = null, $delete_after = null, $content = null, $to_fill_out = null, string $contentType = self::contentTypes['checkMoveOrCopyDestFolder'][0])
     {
+
+
+
+
+
+
+
 
 
 
@@ -2181,9 +2230,72 @@ class OperationsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $in_dto,
-            'inDto', // param base name
-            'BatchRequestDto', // openApiType
+            $return_single_operation,
+            'returnSingleOperation', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $folder_ids,
+            'folderIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $file_ids,
+            'fileIds', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $dest_folder_id,
+            'destFolderId', // param base name
+            'int|string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $conflict_resolve_type,
+            'conflictResolveType', // param base name
+            'FileConflictResolveType', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $delete_after,
+            'deleteAfter', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $content,
+            'content', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_fill_out,
+            'toFillOut', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2280,7 +2392,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function copyBatchItems($batch_request_dto = null, string $contentType = self::contentTypes['copyBatchItems'][0])
     {
@@ -2301,7 +2413,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function copyBatchItemsWithHttpInfo($batch_request_dto = null, string $contentType = self::contentTypes['copyBatchItems'][0])
     {
@@ -2344,12 +2456,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2402,14 +2508,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2632,7 +2730,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      * @deprecated
      */
     public function createUploadSession($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
@@ -2655,7 +2753,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
     public function createUploadSessionWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
@@ -2688,7 +2786,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                         $request,
                         $response,
                     );
@@ -2705,12 +2803,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2734,7 +2826,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                 $request,
                 $response,
             );
@@ -2743,7 +2835,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2765,14 +2857,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2831,7 +2915,7 @@ class OperationsApi
      */
     public function createUploadSessionAsyncWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSession'][0])
     {
-        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper';
         $request = $this->createUploadSessionRequest($folder_id, $session_request, $contentType);
 
         return $this->client
@@ -3014,7 +3098,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createUploadSessionInFolder($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
@@ -3036,7 +3120,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createUploadSessionInFolderWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
@@ -3068,7 +3152,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                         $request,
                         $response,
                     );
@@ -3085,12 +3169,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3114,7 +3192,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                 $request,
                 $response,
             );
@@ -3123,7 +3201,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3145,14 +3223,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3209,7 +3279,7 @@ class OperationsApi
      */
     public function createUploadSessionInFolderAsyncWithHttpInfo($folder_id, $session_request, string $contentType = self::contentTypes['createUploadSessionInFolder'][0])
     {
-        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper';
         $request = $this->createUploadSessionInFolderRequest($folder_id, $session_request, $contentType);
 
         return $this->client
@@ -3390,7 +3460,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteBatchItems($delete_batch_request_dto = null, string $contentType = self::contentTypes['deleteBatchItems'][0])
     {
@@ -3411,7 +3481,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteBatchItemsWithHttpInfo($delete_batch_request_dto = null, string $contentType = self::contentTypes['deleteBatchItems'][0])
     {
@@ -3454,12 +3524,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3512,14 +3576,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3741,7 +3797,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteFavoritesFromBody($base_batch_request_dto = null, string $contentType = self::contentTypes['deleteFavoritesFromBody'][0])
     {
@@ -3762,7 +3818,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFavoritesFromBodyWithHttpInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['deleteFavoritesFromBody'][0])
     {
@@ -3810,18 +3866,6 @@ class OperationsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -3863,22 +3907,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4092,7 +4120,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteFileVersions($delete_version_batch_request_dto = null, string $contentType = self::contentTypes['deleteFileVersions'][0])
     {
@@ -4113,7 +4141,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteFileVersionsWithHttpInfo($delete_version_batch_request_dto = null, string $contentType = self::contentTypes['deleteFileVersions'][0])
     {
@@ -4162,12 +4190,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4222,14 +4244,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4443,7 +4457,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function duplicateBatchItems($duplicate_request_dto = null, string $contentType = self::contentTypes['duplicateBatchItems'][0])
     {
@@ -4464,7 +4478,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function duplicateBatchItemsWithHttpInfo($duplicate_request_dto = null, string $contentType = self::contentTypes['duplicateBatchItems'][0])
     {
@@ -4507,12 +4521,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4565,14 +4573,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4795,7 +4795,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function emptyTrash($single = null, $folder_type = null, string $contentType = self::contentTypes['emptyTrash'][0])
     {
@@ -4817,7 +4817,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function emptyTrashWithHttpInfo($single = null, $folder_type = null, string $contentType = self::contentTypes['emptyTrash'][0])
     {
@@ -4866,12 +4866,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4926,14 +4920,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5055,7 +5041,7 @@ class OperationsApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $single,
-            'Single', // param base name
+            'single', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5163,7 +5149,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function finalizeSession($folder_id, $session_id, string $contentType = self::contentTypes['finalizeSession'][0])
     {
@@ -5185,7 +5171,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function finalizeSessionWithHttpInfo($folder_id, $session_id, string $contentType = self::contentTypes['finalizeSession'][0])
     {
@@ -5233,18 +5219,6 @@ class OperationsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -5286,22 +5260,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5880,7 +5838,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getOperationStatusesByType($operation_type, $id = null, string $contentType = self::contentTypes['getOperationStatusesByType'][0])
     {
@@ -5902,7 +5860,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getOperationStatusesByTypeWithHttpInfo($operation_type, $id = null, string $contentType = self::contentTypes['getOperationStatusesByType'][0])
     {
@@ -5950,12 +5908,6 @@ class OperationsApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -5997,14 +5949,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -6238,7 +6182,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function markAsRead($base_batch_request_dto = null, string $contentType = self::contentTypes['markAsRead'][0])
     {
@@ -6259,7 +6203,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function markAsReadWithHttpInfo($base_batch_request_dto = null, string $contentType = self::contentTypes['markAsRead'][0])
     {
@@ -6302,12 +6246,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -6360,14 +6298,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -6589,7 +6519,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function moveBatchItems($batch_request_dto = null, string $contentType = self::contentTypes['moveBatchItems'][0])
     {
@@ -6610,7 +6540,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function moveBatchItemsWithHttpInfo($batch_request_dto = null, string $contentType = self::contentTypes['moveBatchItems'][0])
     {
@@ -6653,12 +6583,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -6711,14 +6635,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -7651,16 +7567,16 @@ class OperationsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
      * @param  int|string $file_id The file whose version comment is replaced. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateCommentRequest $update_comment_request The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateFileComment($file_id, $update_comment, string $contentType = self::contentTypes['updateFileComment'][0])
+    public function updateFileComment($file_id, $update_comment_request, string $contentType = self::contentTypes['updateFileComment'][0])
     {
-        list($response) = $this->updateFileCommentWithHttpInfo($file_id, $update_comment, $contentType);
+        list($response) = $this->updateFileCommentWithHttpInfo($file_id, $update_comment_request, $contentType);
         return $response;
     }
 
@@ -7673,16 +7589,16 @@ class OperationsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
      * @param  int|string $file_id The file whose version comment is replaced. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateCommentRequest $update_comment_request The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateFileCommentWithHttpInfo($file_id, $update_comment, string $contentType = self::contentTypes['updateFileComment'][0])
+    public function updateFileCommentWithHttpInfo($file_id, $update_comment_request, string $contentType = self::contentTypes['updateFileComment'][0])
     {
-        $request = $this->updateFileCommentRequest($file_id, $update_comment, $contentType);
+        $request = $this->updateFileCommentRequest($file_id, $update_comment_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7727,12 +7643,6 @@ class OperationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -7794,14 +7704,6 @@ class OperationsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -7818,15 +7720,15 @@ class OperationsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
      * @param  int|string $file_id The file whose version comment is replaced. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateCommentRequest $update_comment_request The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFileCommentAsync($file_id, $update_comment, string $contentType = self::contentTypes['updateFileComment'][0])
+    public function updateFileCommentAsync($file_id, $update_comment_request, string $contentType = self::contentTypes['updateFileComment'][0])
     {
-        return $this->updateFileCommentAsyncWithHttpInfo($file_id, $update_comment, $contentType)
+        return $this->updateFileCommentAsyncWithHttpInfo($file_id, $update_comment_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7843,16 +7745,16 @@ class OperationsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file-comment/
      *
      * @param  int|string $file_id The file whose version comment is replaced. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateCommentRequest $update_comment_request The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFileCommentAsyncWithHttpInfo($file_id, $update_comment, string $contentType = self::contentTypes['updateFileComment'][0])
+    public function updateFileCommentAsyncWithHttpInfo($file_id, $update_comment_request, string $contentType = self::contentTypes['updateFileComment'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->updateFileCommentRequest($file_id, $update_comment, $contentType);
+        $request = $this->updateFileCommentRequest($file_id, $update_comment_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7894,13 +7796,13 @@ class OperationsApi
      * Create request for operation 'updateFileComment'
      *
      * @param  int|string $file_id The file whose version comment is replaced. (required)
-     * @param  \OpenAPI\Client\Model\UpdateComment $update_comment The version and the comment to store on it. (required)
+     * @param  \OpenAPI\Client\Model\UpdateCommentRequest $update_comment_request The version and the comment to store on it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFileComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateFileCommentRequest($file_id, $update_comment, string $contentType = self::contentTypes['updateFileComment'][0])
+    public function updateFileCommentRequest($file_id, $update_comment_request, string $contentType = self::contentTypes['updateFileComment'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -7910,10 +7812,10 @@ class OperationsApi
             );
         }
 
-        // verify the required parameter 'update_comment' is set
-        if ($update_comment === null || (is_array($update_comment) && count($update_comment) === 0)) {
+        // verify the required parameter 'update_comment_request' is set
+        if ($update_comment_request === null || (is_array($update_comment_request) && count($update_comment_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_comment when calling updateFileComment'
+                'Missing the required parameter $update_comment_request when calling updateFileComment'
             );
         }
 
@@ -7944,12 +7846,12 @@ class OperationsApi
         );
 
         // for model (json/xml)
-        if (isset($update_comment)) {
+        if (isset($update_comment_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_comment));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_comment_request));
             } else {
-                $httpBody = $update_comment;
+                $httpBody = $update_comment_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -8035,7 +7937,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadAsyncSession($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
@@ -8059,7 +7961,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadAsyncSessionWithHttpInfo($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
@@ -8091,7 +7993,7 @@ class OperationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                         $request,
                         $response,
                     );
@@ -8102,12 +8004,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -8137,7 +8033,7 @@ class OperationsApi
             }
 
             return $this->handleResponseWithDataType(
-                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                 $request,
                 $response,
             );
@@ -8146,7 +8042,7 @@ class OperationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper',
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8160,14 +8056,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -8236,7 +8124,7 @@ class OperationsApi
      */
     public function uploadAsyncSessionAsyncWithHttpInfo($folder_id, $session_id, $chunk_number = null, $file = null, string $contentType = self::contentTypes['uploadAsyncSession'][0])
     {
-        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseResponseWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseResponseWrapper';
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionWrapper';
         $request = $this->uploadAsyncSessionRequest($folder_id, $session_id, $chunk_number, $file, $contentType);
 
         return $this->client
@@ -8317,7 +8205,7 @@ class OperationsApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $chunk_number,
-            'ChunkNumber', // param base name
+            'chunkNumber', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -8443,7 +8331,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadSession($folder_id, $session_id, $file = null, string $contentType = self::contentTypes['uploadSession'][0])
     {
@@ -8466,7 +8354,7 @@ class OperationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\UploadSessionResponseWrapper|\OpenAPI\Client\Model\ThirdPartyUploadSessionResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadSessionWithHttpInfo($folder_id, $session_id, $file = null, string $contentType = self::contentTypes['uploadSession'][0])
     {
@@ -8509,12 +8397,6 @@ class OperationsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -8567,14 +8449,6 @@ class OperationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

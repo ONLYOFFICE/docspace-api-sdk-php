@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudTenantWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the DocsCloudTenant object.
+ * @description The successful API response containing the DocsCloudTenantDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class DocsCloudTenantWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\DocsCloudTenant',
+        'response' => '\OpenAPI\Client\Model\DocsCloudTenantDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class DocsCloudTenantWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\DocsCloudTenant|null
+     * @return \OpenAPI\Client\Model\DocsCloudTenantDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class DocsCloudTenantWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudTenant|null $response The DocsCloudTenant object returned by the operation.
+     * @param \OpenAPI\Client\Model\DocsCloudTenantDto|null $response The DocsCloudTenantDto object returned by the operation.
      *
      * @return self
      */

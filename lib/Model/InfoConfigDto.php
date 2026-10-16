@@ -61,7 +61,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'favorite' => 'bool',
         'folder' => 'string',
         'owner' => 'string',
-        'sharing_settings' => '\OpenAPI\Client\Model\AceShortWrapper[]',
+        'sharing_settings' => '\OpenAPI\Client\Model\AceShortDto[]',
         'type' => '\OpenAPI\Client\Model\EditorType',
         'uploaded' => 'string'
     ];
@@ -430,7 +430,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sharing_settings
      *
-     * @return \OpenAPI\Client\Model\AceShortWrapper[]|null
+     * @return \OpenAPI\Client\Model\AceShortDto[]|null
      */
     public function getSharingSettings()
     {
@@ -440,7 +440,7 @@ class InfoConfigDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sharing_settings
      *
-     * @param \OpenAPI\Client\Model\AceShortWrapper[]|null $sharing_settings Who the document is shared with, as the information panel lists it. An empty list means it is shared with  nobody beyond its owner.
+     * @param \OpenAPI\Client\Model\AceShortDto[]|null $sharing_settings Who the document is shared with, as the information panel lists it. An empty list means it is shared with  nobody beyond its owner.
      *
      * @return self
      */

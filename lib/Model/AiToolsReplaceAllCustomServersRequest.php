@@ -49,7 +49,7 @@ class AiToolsReplaceAllCustomServersRequest implements ModelInterface, ArrayAcce
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiToolsReplaceAllCustomServers_request';
+    protected static $openAPIModelName = 'AiToolsReplaceAllCustomServersRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

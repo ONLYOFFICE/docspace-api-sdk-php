@@ -82,7 +82,7 @@ try {
 ## `aiProfilesDelete()`
 
 ```php
-aiProfilesDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
+aiProfilesDelete($ai_profiles_delete_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete a provider profile
@@ -94,7 +94,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**| The ID of the profile to delete, as a bare JSON string. | |
+| **ai_profiles_delete_request** | **string**| The ID of the profile to delete, as a bare JSON string. | |
 
 ### Return type
 
@@ -125,10 +125,10 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string | The ID of the profile to delete, as a bare JSON string.
+$ai_profiles_delete_request = 'ai_profiles_delete_request_example'; // string | The ID of the profile to delete, as a bare JSON string.
 
 try {
-    $result = $apiInstance->aiProfilesDelete($body);
+    $result = $apiInstance->aiProfilesDelete($ai_profiles_delete_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfilesApi->aiProfilesDelete: ', $e->getMessage(), PHP_EOL;
@@ -216,7 +216,7 @@ aiProfilesList(): \OpenAPI\Client\Model\AiProfile[]
 ```
 
 List provider profiles
-Lists the portal's AI provider profiles with their secrets stripped, the same way the single-profile read does. It takes no parameters and is not paginated, because a portal holds few profiles. On a portal running the AI gateway the answer is synthesised from the gateway's own catalogue rather than from stored records. The IDs in the answer are what the assignment operations and every round's `profileId` accept.
+Lists the portal's AI provider profiles. A portal administrator receives each profile in full, `key` and `headers` included, because the settings page edits them; every other caller gets them with those secrets stripped, as the single-profile read always does. It takes no parameters and is not paginated, because a portal holds few profiles. On a portal running the AI gateway the answer is synthesised from the gateway's own catalogue rather than from stored records. The IDs in the answer are what the assignment operations and every round's `profileId` accept.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list/).
 
@@ -278,7 +278,7 @@ aiProfilesListModels($profile_id): \OpenAPI\Client\Model\AiModel[]
 ```
 
 List models
-Lists the models a stored profile's provider currently offers, asking the provider itself rather than reading a cached list. `profileId` is required and is read from the query. A failure is reported with the provider's own verdict: an unusable key comes back as 400 and a provider that is unreachable or broken as 502, while a missing profile or a caller without access keeps the status the portal gave it. Use `POST api/2.0/ai/profiles/list-provider-models` to probe an endpoint that has no profile yet.
+Lists the models a stored profile's provider currently offers, asking the provider itself rather than reading a cached list. `profileId` is required and is read from the query. A failure is reported with the provider's own verdict: an unusable key comes back as 400 and a provider that is unreachable or broken as 502, while a profile the caller cannot see answers 404 before the provider is asked and a caller without access keeps the 403 the portal gave it. Use `POST api/2.0/ai/profiles/list-provider-models` to probe an endpoint that has no profile yet.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-models/).
 
@@ -343,7 +343,7 @@ aiProfilesListProviderModels($ai_profiles_list_provider_models_request): \OpenAP
 ```
 
 List provider models
-Lists the models an endpoint offers for credentials supplied in the request, before any profile exists - this is what a provider-setup form calls to fill its model picker. `providerType` and `baseUrl` are both required, and a 400 for either names the offending input in a `field` member so the form can highlight it; a `baseUrl` pointing at a private network address is refused as well. For `providerType: onlyoffice` the answer comes from the portal gateway's catalogue, which carries richer capability data than the provider's own listing and matches what `GET api/2.0/ai/profiles/list` reports; a portal without that gateway falls back to asking the provider. A provider that is unreachable or broken is reported as 502, and one that rejects the key as 400.
+Lists the models an endpoint offers for credentials supplied in the request, before any profile exists - this is what a provider-setup form calls to fill its model picker. `providerType` and `baseUrl` are both required, and a 400 for either names the offending input in a `field` member so the form can highlight it; a `baseUrl` pointing at a private network address is refused as well, and so is an `apiKey` with characters that cannot travel in an HTTP header (anything outside printable ASCII), since no provider could ever accept it. For `providerType: onlyoffice` the answer comes from the portal gateway's catalogue, which carries richer capability data than the provider's own listing and matches what `GET api/2.0/ai/profiles/list` reports; a portal without that gateway falls back to asking the provider. A provider that is unreachable or broken is reported as 502, and one that rejects the key as 400.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-list-provider-models/).
 
@@ -404,11 +404,11 @@ try {
 ## `aiProfilesTestConnection()`
 
 ```php
-aiProfilesTestConnection($body): \OpenAPI\Client\Model\AiProfilesTestConnection200Response
+aiProfilesTestConnection($ai_profiles_test_connection_request): \OpenAPI\Client\Model\AiProfilesTestConnection200Response
 ```
 
 Test a profile's provider
-Probes a stored profile's credentials against its provider and reports the outcome in the answer, writing nothing - this is what a Test button calls so that a failure does not commit anything. `profileId` is required and may be sent in the body or as a query parameter. The result is carried in the body rather than in the status, so a failed probe still answers 200 and the caller has to read the payload. To validate credentials that are not stored yet, use `POST api/2.0/ai/profiles/list-provider-models`.
+Probes a stored profile's credentials against its provider and reports the outcome in the answer, writing nothing - this is what a Test button calls so that a failure does not commit anything. `profileId` is required and may be sent in the body or as a query parameter, and a profile the caller cannot see answers 404 before anything is probed. The result of the probe itself is carried in the body rather than in the status, so a failed probe still answers 200 and the caller has to read the payload. To validate credentials that are not stored yet, use `POST api/2.0/ai/profiles/list-provider-models`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/).
 
@@ -416,7 +416,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**| The ID of the profile to probe, as a bare JSON string. | |
+| **ai_profiles_test_connection_request** | **string**| The ID of the profile to probe, as a bare JSON string. | |
 
 ### Return type
 
@@ -447,10 +447,10 @@ $apiInstance = new OpenAPI\Client\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string | The ID of the profile to probe, as a bare JSON string.
+$ai_profiles_test_connection_request = 'ai_profiles_test_connection_request_example'; // string | The ID of the profile to probe, as a bare JSON string.
 
 try {
-    $result = $apiInstance->aiProfilesTestConnection($body);
+    $result = $apiInstance->aiProfilesTestConnection($ai_profiles_test_connection_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProfilesApi->aiProfilesTestConnection: ', $e->getMessage(), PHP_EOL;

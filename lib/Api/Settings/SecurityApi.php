@@ -486,17 +486,17 @@ class SecurityApi
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
-     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
+     * @param  string $product_id The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $user_id The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getIsProductAdministrator($productid, $userid, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
+    public function getIsProductAdministrator($product_id, $user_id, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
     {
-        list($response) = $this->getIsProductAdministratorWithHttpInfo($productid, $userid, $contentType);
+        list($response) = $this->getIsProductAdministratorWithHttpInfo($product_id, $user_id, $contentType);
         return $response;
     }
 
@@ -508,17 +508,17 @@ class SecurityApi
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
-     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
+     * @param  string $product_id The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $user_id The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getIsProductAdministratorWithHttpInfo($productid, $userid, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
+    public function getIsProductAdministratorWithHttpInfo($product_id, $user_id, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
     {
-        $request = $this->getIsProductAdministratorRequest($productid, $userid, $contentType);
+        $request = $this->getIsProductAdministratorRequest($product_id, $user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -653,16 +653,16 @@ class SecurityApi
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
-     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
+     * @param  string $product_id The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $user_id The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getIsProductAdministratorAsync($productid, $userid, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
+    public function getIsProductAdministratorAsync($product_id, $user_id, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
     {
-        return $this->getIsProductAdministratorAsyncWithHttpInfo($productid, $userid, $contentType)
+        return $this->getIsProductAdministratorAsyncWithHttpInfo($product_id, $user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -678,17 +678,17 @@ class SecurityApi
      * REST API Reference for getIsProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-is-product-administrator/
      *
-     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
-     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
+     * @param  string $product_id The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $user_id The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getIsProductAdministratorAsyncWithHttpInfo($productid, $userid, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
+    public function getIsProductAdministratorAsyncWithHttpInfo($product_id, $user_id, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ProductAdministratorWrapper';
-        $request = $this->getIsProductAdministratorRequest($productid, $userid, $contentType);
+        $request = $this->getIsProductAdministratorRequest($product_id, $user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -729,27 +729,27 @@ class SecurityApi
     /**
      * Create request for operation 'getIsProductAdministrator'
      *
-     * @param  string $productid The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
-     * @param  string $userid The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
+     * @param  string $product_id The module being asked about, by module GUID. The all-zero GUID asks about the portal itself rather than a  single module. (required)
+     * @param  string $user_id The account being asked about, by portal user ID. An ID that names no account is answered as a plain negative  rather than a failure, so a negative answer does not prove the account exists. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getIsProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getIsProductAdministratorRequest($productid, $userid, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
+    public function getIsProductAdministratorRequest($product_id, $user_id, string $contentType = self::contentTypes['getIsProductAdministrator'][0])
     {
 
-        // verify the required parameter 'productid' is set
-        if ($productid === null || (is_array($productid) && count($productid) === 0)) {
+        // verify the required parameter 'product_id' is set
+        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $productid when calling getIsProductAdministrator'
+                'Missing the required parameter $product_id when calling getIsProductAdministrator'
             );
         }
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getIsProductAdministrator'
+                'Missing the required parameter $user_id when calling getIsProductAdministrator'
             );
         }
 
@@ -763,8 +763,8 @@ class SecurityApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $productid,
-            'productid', // param base name
+            $product_id,
+            'productId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -772,8 +772,8 @@ class SecurityApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $userid,
-            'userid', // param base name
+            $user_id,
+            'userId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1190,16 +1190,16 @@ class SecurityApi
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
+     * @param  string $product_id The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getProductAdministrators($productid, string $contentType = self::contentTypes['getProductAdministrators'][0])
+    public function getProductAdministrators($product_id, string $contentType = self::contentTypes['getProductAdministrators'][0])
     {
-        list($response) = $this->getProductAdministratorsWithHttpInfo($productid, $contentType);
+        list($response) = $this->getProductAdministratorsWithHttpInfo($product_id, $contentType);
         return $response;
     }
 
@@ -1211,16 +1211,16 @@ class SecurityApi
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
+     * @param  string $product_id The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmployeeArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductAdministratorsWithHttpInfo($productid, string $contentType = self::contentTypes['getProductAdministrators'][0])
+    public function getProductAdministratorsWithHttpInfo($product_id, string $contentType = self::contentTypes['getProductAdministrators'][0])
     {
-        $request = $this->getProductAdministratorsRequest($productid, $contentType);
+        $request = $this->getProductAdministratorsRequest($product_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1355,15 +1355,15 @@ class SecurityApi
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
+     * @param  string $product_id The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductAdministratorsAsync($productid, string $contentType = self::contentTypes['getProductAdministrators'][0])
+    public function getProductAdministratorsAsync($product_id, string $contentType = self::contentTypes['getProductAdministrators'][0])
     {
-        return $this->getProductAdministratorsAsyncWithHttpInfo($productid, $contentType)
+        return $this->getProductAdministratorsAsyncWithHttpInfo($product_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1379,16 +1379,16 @@ class SecurityApi
      * REST API Reference for getProductAdministrators Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-product-administrators/
      *
-     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
+     * @param  string $product_id The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProductAdministratorsAsyncWithHttpInfo($productid, string $contentType = self::contentTypes['getProductAdministrators'][0])
+    public function getProductAdministratorsAsyncWithHttpInfo($product_id, string $contentType = self::contentTypes['getProductAdministrators'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeArrayWrapper';
-        $request = $this->getProductAdministratorsRequest($productid, $contentType);
+        $request = $this->getProductAdministratorsRequest($product_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1429,24 +1429,24 @@ class SecurityApi
     /**
      * Create request for operation 'getProductAdministrators'
      *
-     * @param  string $productid The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
+     * @param  string $product_id The module the operation acts on, by module GUID. The all-zero GUID stands for the portal itself rather than  for a single module, and a GUID that names no module group is answered with an empty result instead of a  failure. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductAdministrators'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getProductAdministratorsRequest($productid, string $contentType = self::contentTypes['getProductAdministrators'][0])
+    public function getProductAdministratorsRequest($product_id, string $contentType = self::contentTypes['getProductAdministrators'][0])
     {
 
-        // verify the required parameter 'productid' is set
-        if ($productid === null || (is_array($productid) && count($productid) === 0)) {
+        // verify the required parameter 'product_id' is set
+        if ($product_id === null || (is_array($product_id) && count($product_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $productid when calling getProductAdministrators'
+                'Missing the required parameter $product_id when calling getProductAdministrators'
             );
         }
 
 
-        $resourcePath = '/api/2.0/settings/security/administrator/{productid}';
+        $resourcePath = '/api/2.0/settings/security/administrator/{productId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1456,10 +1456,10 @@ class SecurityApi
 
 
         // path params
-        if ($productid !== null) {
+        if ($product_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'productid' . '}',
-                ObjectSerializer::toPathValue($productid),
+                '{' . 'productId' . '}',
+                ObjectSerializer::toPathValue($product_id),
                 $resourcePath
             );
         }
@@ -1911,7 +1911,7 @@ class SecurityApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getWebItemSettingsSecurityInfo($ids = null, string $contentType = self::contentTypes['getWebItemSettingsSecurityInfo'][0])
     {
@@ -1932,7 +1932,7 @@ class SecurityApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebItemSettingsSecurityInfoWithHttpInfo($ids = null, string $contentType = self::contentTypes['getWebItemSettingsSecurityInfo'][0])
     {
@@ -1981,12 +1981,6 @@ class SecurityApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2041,14 +2035,6 @@ class SecurityApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2259,16 +2245,16 @@ class SecurityApi
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
      *
-     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestsDto|null $web_items_security_requests_dto web_items_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestDto|null $web_items_security_request_dto web_items_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAccessToWebItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setAccessToWebItems($web_items_security_requests_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
+    public function setAccessToWebItems($web_items_security_request_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
     {
-        list($response) = $this->setAccessToWebItemsWithHttpInfo($web_items_security_requests_dto, $contentType);
+        list($response) = $this->setAccessToWebItemsWithHttpInfo($web_items_security_request_dto, $contentType);
         return $response;
     }
 
@@ -2280,16 +2266,16 @@ class SecurityApi
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
      *
-     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestsDto|null $web_items_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestDto|null $web_items_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAccessToWebItems'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setAccessToWebItemsWithHttpInfo($web_items_security_requests_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
+    public function setAccessToWebItemsWithHttpInfo($web_items_security_request_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
     {
-        $request = $this->setAccessToWebItemsRequest($web_items_security_requests_dto, $contentType);
+        $request = $this->setAccessToWebItemsRequest($web_items_security_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2334,12 +2320,6 @@ class SecurityApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2401,14 +2381,6 @@ class SecurityApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2424,15 +2396,15 @@ class SecurityApi
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
      *
-     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestsDto|null $web_items_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestDto|null $web_items_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAccessToWebItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setAccessToWebItemsAsync($web_items_security_requests_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
+    public function setAccessToWebItemsAsync($web_items_security_request_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
     {
-        return $this->setAccessToWebItemsAsyncWithHttpInfo($web_items_security_requests_dto, $contentType)
+        return $this->setAccessToWebItemsAsyncWithHttpInfo($web_items_security_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2448,16 +2420,16 @@ class SecurityApi
      * REST API Reference for setAccessToWebItems Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-access-to-web-items/
      *
-     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestsDto|null $web_items_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestDto|null $web_items_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAccessToWebItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setAccessToWebItemsAsyncWithHttpInfo($web_items_security_requests_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
+    public function setAccessToWebItemsAsyncWithHttpInfo($web_items_security_request_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SecurityArrayWrapper';
-        $request = $this->setAccessToWebItemsRequest($web_items_security_requests_dto, $contentType);
+        $request = $this->setAccessToWebItemsRequest($web_items_security_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2498,13 +2470,13 @@ class SecurityApi
     /**
      * Create request for operation 'setAccessToWebItems'
      *
-     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestsDto|null $web_items_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemsSecurityRequestDto|null $web_items_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAccessToWebItems'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setAccessToWebItemsRequest($web_items_security_requests_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
+    public function setAccessToWebItemsRequest($web_items_security_request_dto = null, string $contentType = self::contentTypes['setAccessToWebItems'][0])
     {
 
 
@@ -2527,12 +2499,12 @@ class SecurityApi
         );
 
         // for model (json/xml)
-        if (isset($web_items_security_requests_dto)) {
+        if (isset($web_items_security_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_items_security_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_items_security_request_dto));
             } else {
-                $httpBody = $web_items_security_requests_dto;
+                $httpBody = $web_items_security_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2610,16 +2582,16 @@ class SecurityApi
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
      *
-     * @param  \OpenAPI\Client\Model\SecurityRequestsDto|null $security_requests_dto security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SecurityRequestDto|null $security_request_dto security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setProductAdministrator($security_requests_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
+    public function setProductAdministrator($security_request_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
     {
-        list($response) = $this->setProductAdministratorWithHttpInfo($security_requests_dto, $contentType);
+        list($response) = $this->setProductAdministratorWithHttpInfo($security_request_dto, $contentType);
         return $response;
     }
 
@@ -2631,16 +2603,16 @@ class SecurityApi
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
      *
-     * @param  \OpenAPI\Client\Model\SecurityRequestsDto|null $security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SecurityRequestDto|null $security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setProductAdministrator'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ProductAdministratorWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setProductAdministratorWithHttpInfo($security_requests_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
+    public function setProductAdministratorWithHttpInfo($security_request_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
     {
-        $request = $this->setProductAdministratorRequest($security_requests_dto, $contentType);
+        $request = $this->setProductAdministratorRequest($security_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2685,12 +2657,6 @@ class SecurityApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2752,14 +2718,6 @@ class SecurityApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2775,15 +2733,15 @@ class SecurityApi
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
      *
-     * @param  \OpenAPI\Client\Model\SecurityRequestsDto|null $security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SecurityRequestDto|null $security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setProductAdministratorAsync($security_requests_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
+    public function setProductAdministratorAsync($security_request_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
     {
-        return $this->setProductAdministratorAsyncWithHttpInfo($security_requests_dto, $contentType)
+        return $this->setProductAdministratorAsyncWithHttpInfo($security_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2799,16 +2757,16 @@ class SecurityApi
      * REST API Reference for setProductAdministrator Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-product-administrator/
      *
-     * @param  \OpenAPI\Client\Model\SecurityRequestsDto|null $security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SecurityRequestDto|null $security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setProductAdministratorAsyncWithHttpInfo($security_requests_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
+    public function setProductAdministratorAsyncWithHttpInfo($security_request_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ProductAdministratorWrapper';
-        $request = $this->setProductAdministratorRequest($security_requests_dto, $contentType);
+        $request = $this->setProductAdministratorRequest($security_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2849,13 +2807,13 @@ class SecurityApi
     /**
      * Create request for operation 'setProductAdministrator'
      *
-     * @param  \OpenAPI\Client\Model\SecurityRequestsDto|null $security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SecurityRequestDto|null $security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setProductAdministrator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setProductAdministratorRequest($security_requests_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
+    public function setProductAdministratorRequest($security_request_dto = null, string $contentType = self::contentTypes['setProductAdministrator'][0])
     {
 
 
@@ -2878,12 +2836,12 @@ class SecurityApi
         );
 
         // for model (json/xml)
-        if (isset($security_requests_dto)) {
+        if (isset($security_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($security_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($security_request_dto));
             } else {
-                $httpBody = $security_requests_dto;
+                $httpBody = $security_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2961,16 +2919,16 @@ class SecurityApi
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
      *
-     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestsDto|null $web_item_security_requests_dto web_item_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestDto|null $web_item_security_request_dto web_item_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWebItemSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setWebItemSecurity($web_item_security_requests_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
+    public function setWebItemSecurity($web_item_security_request_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
     {
-        list($response) = $this->setWebItemSecurityWithHttpInfo($web_item_security_requests_dto, $contentType);
+        list($response) = $this->setWebItemSecurityWithHttpInfo($web_item_security_request_dto, $contentType);
         return $response;
     }
 
@@ -2982,16 +2940,16 @@ class SecurityApi
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
      *
-     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestsDto|null $web_item_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestDto|null $web_item_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWebItemSecurity'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SecurityArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setWebItemSecurityWithHttpInfo($web_item_security_requests_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
+    public function setWebItemSecurityWithHttpInfo($web_item_security_request_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
     {
-        $request = $this->setWebItemSecurityRequest($web_item_security_requests_dto, $contentType);
+        $request = $this->setWebItemSecurityRequest($web_item_security_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3036,12 +2994,6 @@ class SecurityApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3103,14 +3055,6 @@ class SecurityApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3126,15 +3070,15 @@ class SecurityApi
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
      *
-     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestsDto|null $web_item_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestDto|null $web_item_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWebItemSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setWebItemSecurityAsync($web_item_security_requests_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
+    public function setWebItemSecurityAsync($web_item_security_request_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
     {
-        return $this->setWebItemSecurityAsyncWithHttpInfo($web_item_security_requests_dto, $contentType)
+        return $this->setWebItemSecurityAsyncWithHttpInfo($web_item_security_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3150,16 +3094,16 @@ class SecurityApi
      * REST API Reference for setWebItemSecurity Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-web-item-security/
      *
-     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestsDto|null $web_item_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestDto|null $web_item_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWebItemSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setWebItemSecurityAsyncWithHttpInfo($web_item_security_requests_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
+    public function setWebItemSecurityAsyncWithHttpInfo($web_item_security_request_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SecurityArrayWrapper';
-        $request = $this->setWebItemSecurityRequest($web_item_security_requests_dto, $contentType);
+        $request = $this->setWebItemSecurityRequest($web_item_security_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3200,13 +3144,13 @@ class SecurityApi
     /**
      * Create request for operation 'setWebItemSecurity'
      *
-     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestsDto|null $web_item_security_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebItemSecurityRequestDto|null $web_item_security_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setWebItemSecurity'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setWebItemSecurityRequest($web_item_security_requests_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
+    public function setWebItemSecurityRequest($web_item_security_request_dto = null, string $contentType = self::contentTypes['setWebItemSecurity'][0])
     {
 
 
@@ -3229,12 +3173,12 @@ class SecurityApi
         );
 
         // for model (json/xml)
-        if (isset($web_item_security_requests_dto)) {
+        if (isset($web_item_security_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_item_security_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_item_security_request_dto));
             } else {
-                $httpBody = $web_item_security_requests_dto;
+                $httpBody = $web_item_security_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3312,16 +3256,16 @@ class SecurityApi
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
      *
-     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestsDto|null $password_settings_requests_dto password_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestDto|null $password_settings_request_dto password_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePasswordSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PasswordSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updatePasswordSettings($password_settings_requests_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
+    public function updatePasswordSettings($password_settings_request_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
     {
-        list($response) = $this->updatePasswordSettingsWithHttpInfo($password_settings_requests_dto, $contentType);
+        list($response) = $this->updatePasswordSettingsWithHttpInfo($password_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -3333,16 +3277,16 @@ class SecurityApi
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
      *
-     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestsDto|null $password_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestDto|null $password_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePasswordSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PasswordSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePasswordSettingsWithHttpInfo($password_settings_requests_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
+    public function updatePasswordSettingsWithHttpInfo($password_settings_request_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
     {
-        $request = $this->updatePasswordSettingsRequest($password_settings_requests_dto, $contentType);
+        $request = $this->updatePasswordSettingsRequest($password_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3463,15 +3407,15 @@ class SecurityApi
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
      *
-     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestsDto|null $password_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestDto|null $password_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePasswordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePasswordSettingsAsync($password_settings_requests_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
+    public function updatePasswordSettingsAsync($password_settings_request_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
     {
-        return $this->updatePasswordSettingsAsyncWithHttpInfo($password_settings_requests_dto, $contentType)
+        return $this->updatePasswordSettingsAsyncWithHttpInfo($password_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3487,16 +3431,16 @@ class SecurityApi
      * REST API Reference for updatePasswordSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-password-settings/
      *
-     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestsDto|null $password_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestDto|null $password_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePasswordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePasswordSettingsAsyncWithHttpInfo($password_settings_requests_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
+    public function updatePasswordSettingsAsyncWithHttpInfo($password_settings_request_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PasswordSettingsWrapper';
-        $request = $this->updatePasswordSettingsRequest($password_settings_requests_dto, $contentType);
+        $request = $this->updatePasswordSettingsRequest($password_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3537,13 +3481,13 @@ class SecurityApi
     /**
      * Create request for operation 'updatePasswordSettings'
      *
-     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestsDto|null $password_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\PasswordSettingsRequestDto|null $password_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePasswordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePasswordSettingsRequest($password_settings_requests_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
+    public function updatePasswordSettingsRequest($password_settings_request_dto = null, string $contentType = self::contentTypes['updatePasswordSettings'][0])
     {
 
 
@@ -3566,12 +3510,12 @@ class SecurityApi
         );
 
         // for model (json/xml)
-        if (isset($password_settings_requests_dto)) {
+        if (isset($password_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($password_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($password_settings_request_dto));
             } else {
-                $httpBody = $password_settings_requests_dto;
+                $httpBody = $password_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

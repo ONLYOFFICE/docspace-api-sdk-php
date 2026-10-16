@@ -153,16 +153,16 @@ class AuthenticationApi
      * REST API Reference for authenticateMe Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMe'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function authenticateMe($auth_requests_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
+    public function authenticateMe($auth_request_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
     {
-        list($response) = $this->authenticateMeWithHttpInfo($auth_requests_dto, $contentType);
+        list($response) = $this->authenticateMeWithHttpInfo($auth_request_dto, $contentType);
         return $response;
     }
 
@@ -174,16 +174,16 @@ class AuthenticationApi
      * REST API Reference for authenticateMe Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMe'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function authenticateMeWithHttpInfo($auth_requests_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
+    public function authenticateMeWithHttpInfo($auth_request_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
     {
-        $request = $this->authenticateMeRequest($auth_requests_dto, $contentType);
+        $request = $this->authenticateMeRequest($auth_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -290,15 +290,15 @@ class AuthenticationApi
      * REST API Reference for authenticateMe Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authenticateMeAsync($auth_requests_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
+    public function authenticateMeAsync($auth_request_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
     {
-        return $this->authenticateMeAsyncWithHttpInfo($auth_requests_dto, $contentType)
+        return $this->authenticateMeAsyncWithHttpInfo($auth_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -314,16 +314,16 @@ class AuthenticationApi
      * REST API Reference for authenticateMe Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authenticateMeAsyncWithHttpInfo($auth_requests_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
+    public function authenticateMeAsyncWithHttpInfo($auth_request_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AuthenticationTokenWrapper';
-        $request = $this->authenticateMeRequest($auth_requests_dto, $contentType);
+        $request = $this->authenticateMeRequest($auth_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -364,13 +364,13 @@ class AuthenticationApi
     /**
      * Create request for operation 'authenticateMe'
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMe'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function authenticateMeRequest($auth_requests_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
+    public function authenticateMeRequest($auth_request_dto = null, string $contentType = self::contentTypes['authenticateMe'][0])
     {
 
 
@@ -393,12 +393,12 @@ class AuthenticationApi
         );
 
         // for model (json/xml)
-        if (isset($auth_requests_dto)) {
+        if (isset($auth_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_request_dto));
             } else {
-                $httpBody = $auth_requests_dto;
+                $httpBody = $auth_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -477,16 +477,16 @@ class AuthenticationApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me-from-body-with-code/
      *
      * @param  string $code The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestsDto|null $auth_with_code_requests_dto auth_with_code_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestDto|null $auth_with_code_request_dto auth_with_code_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMeFromBodyWithCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function authenticateMeFromBodyWithCode($code, $auth_with_code_requests_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
+    public function authenticateMeFromBodyWithCode($code, $auth_with_code_request_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
     {
-        list($response) = $this->authenticateMeFromBodyWithCodeWithHttpInfo($code, $auth_with_code_requests_dto, $contentType);
+        list($response) = $this->authenticateMeFromBodyWithCodeWithHttpInfo($code, $auth_with_code_request_dto, $contentType);
         return $response;
     }
 
@@ -499,16 +499,16 @@ class AuthenticationApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me-from-body-with-code/
      *
      * @param  string $code The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestsDto|null $auth_with_code_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestDto|null $auth_with_code_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMeFromBodyWithCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function authenticateMeFromBodyWithCodeWithHttpInfo($code, $auth_with_code_requests_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
+    public function authenticateMeFromBodyWithCodeWithHttpInfo($code, $auth_with_code_request_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
     {
-        $request = $this->authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_requests_dto, $contentType);
+        $request = $this->authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -616,15 +616,15 @@ class AuthenticationApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me-from-body-with-code/
      *
      * @param  string $code The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestsDto|null $auth_with_code_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestDto|null $auth_with_code_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMeFromBodyWithCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authenticateMeFromBodyWithCodeAsync($code, $auth_with_code_requests_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
+    public function authenticateMeFromBodyWithCodeAsync($code, $auth_with_code_request_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
     {
-        return $this->authenticateMeFromBodyWithCodeAsyncWithHttpInfo($code, $auth_with_code_requests_dto, $contentType)
+        return $this->authenticateMeFromBodyWithCodeAsyncWithHttpInfo($code, $auth_with_code_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -641,16 +641,16 @@ class AuthenticationApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/authenticate-me-from-body-with-code/
      *
      * @param  string $code The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestsDto|null $auth_with_code_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestDto|null $auth_with_code_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMeFromBodyWithCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function authenticateMeFromBodyWithCodeAsyncWithHttpInfo($code, $auth_with_code_requests_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
+    public function authenticateMeFromBodyWithCodeAsyncWithHttpInfo($code, $auth_with_code_request_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AuthenticationTokenWrapper';
-        $request = $this->authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_requests_dto, $contentType);
+        $request = $this->authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -692,13 +692,13 @@ class AuthenticationApi
      * Create request for operation 'authenticateMeFromBodyWithCode'
      *
      * @param  string $code The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. (required)
-     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestsDto|null $auth_with_code_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthWithCodeRequestDto|null $auth_with_code_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['authenticateMeFromBodyWithCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_requests_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
+    public function authenticateMeFromBodyWithCodeRequest($code, $auth_with_code_request_dto = null, string $contentType = self::contentTypes['authenticateMeFromBodyWithCode'][0])
     {
 
         // verify the required parameter 'code' is set
@@ -736,12 +736,12 @@ class AuthenticationApi
         );
 
         // for model (json/xml)
-        if (isset($auth_with_code_requests_dto)) {
+        if (isset($auth_with_code_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_with_code_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_with_code_request_dto));
             } else {
-                $httpBody = $auth_with_code_requests_dto;
+                $httpBody = $auth_with_code_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -819,16 +819,16 @@ class AuthenticationApi
      * REST API Reference for checkConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-confirm/
      *
-     * @param  \OpenAPI\Client\Model\EmailValidationKeyModel|null $email_validation_key_model email_validation_key_model (optional)
+     * @param  \OpenAPI\Client\Model\CheckConfirmRequestDto|null $check_confirm_request_dto check_confirm_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConfirm'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ConfirmWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ConfirmWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function checkConfirm($email_validation_key_model = null, string $contentType = self::contentTypes['checkConfirm'][0])
+    public function checkConfirm($check_confirm_request_dto = null, string $contentType = self::contentTypes['checkConfirm'][0])
     {
-        list($response) = $this->checkConfirmWithHttpInfo($email_validation_key_model, $contentType);
+        list($response) = $this->checkConfirmWithHttpInfo($check_confirm_request_dto, $contentType);
         return $response;
     }
 
@@ -840,16 +840,16 @@ class AuthenticationApi
      * REST API Reference for checkConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-confirm/
      *
-     * @param  \OpenAPI\Client\Model\EmailValidationKeyModel|null $email_validation_key_model (optional)
+     * @param  \OpenAPI\Client\Model\CheckConfirmRequestDto|null $check_confirm_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConfirm'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ConfirmWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ConfirmWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkConfirmWithHttpInfo($email_validation_key_model = null, string $contentType = self::contentTypes['checkConfirm'][0])
+    public function checkConfirmWithHttpInfo($check_confirm_request_dto = null, string $contentType = self::contentTypes['checkConfirm'][0])
     {
-        $request = $this->checkConfirmRequest($email_validation_key_model, $contentType);
+        $request = $this->checkConfirmRequest($check_confirm_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -888,12 +888,6 @@ class AuthenticationApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -947,14 +941,6 @@ class AuthenticationApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -970,15 +956,15 @@ class AuthenticationApi
      * REST API Reference for checkConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-confirm/
      *
-     * @param  \OpenAPI\Client\Model\EmailValidationKeyModel|null $email_validation_key_model (optional)
+     * @param  \OpenAPI\Client\Model\CheckConfirmRequestDto|null $check_confirm_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConfirm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkConfirmAsync($email_validation_key_model = null, string $contentType = self::contentTypes['checkConfirm'][0])
+    public function checkConfirmAsync($check_confirm_request_dto = null, string $contentType = self::contentTypes['checkConfirm'][0])
     {
-        return $this->checkConfirmAsyncWithHttpInfo($email_validation_key_model, $contentType)
+        return $this->checkConfirmAsyncWithHttpInfo($check_confirm_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -994,16 +980,16 @@ class AuthenticationApi
      * REST API Reference for checkConfirm Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-confirm/
      *
-     * @param  \OpenAPI\Client\Model\EmailValidationKeyModel|null $email_validation_key_model (optional)
+     * @param  \OpenAPI\Client\Model\CheckConfirmRequestDto|null $check_confirm_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConfirm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkConfirmAsyncWithHttpInfo($email_validation_key_model = null, string $contentType = self::contentTypes['checkConfirm'][0])
+    public function checkConfirmAsyncWithHttpInfo($check_confirm_request_dto = null, string $contentType = self::contentTypes['checkConfirm'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ConfirmWrapper';
-        $request = $this->checkConfirmRequest($email_validation_key_model, $contentType);
+        $request = $this->checkConfirmRequest($check_confirm_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1044,13 +1030,13 @@ class AuthenticationApi
     /**
      * Create request for operation 'checkConfirm'
      *
-     * @param  \OpenAPI\Client\Model\EmailValidationKeyModel|null $email_validation_key_model (optional)
+     * @param  \OpenAPI\Client\Model\CheckConfirmRequestDto|null $check_confirm_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkConfirm'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkConfirmRequest($email_validation_key_model = null, string $contentType = self::contentTypes['checkConfirm'][0])
+    public function checkConfirmRequest($check_confirm_request_dto = null, string $contentType = self::contentTypes['checkConfirm'][0])
     {
 
 
@@ -1073,12 +1059,12 @@ class AuthenticationApi
         );
 
         // for model (json/xml)
-        if (isset($email_validation_key_model)) {
+        if (isset($check_confirm_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_validation_key_model));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($check_confirm_request_dto));
             } else {
-                $httpBody = $email_validation_key_model;
+                $httpBody = $check_confirm_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1776,16 +1762,16 @@ class AuthenticationApi
      * REST API Reference for saveMobilePhone Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mobile-phone/
      *
-     * @param  \OpenAPI\Client\Model\MobileRequestsDto|null $mobile_requests_dto mobile_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MobileRequestDto|null $mobile_request_dto mobile_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMobilePhone'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveMobilePhone($mobile_requests_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
+    public function saveMobilePhone($mobile_request_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
     {
-        list($response) = $this->saveMobilePhoneWithHttpInfo($mobile_requests_dto, $contentType);
+        list($response) = $this->saveMobilePhoneWithHttpInfo($mobile_request_dto, $contentType);
         return $response;
     }
 
@@ -1797,16 +1783,16 @@ class AuthenticationApi
      * REST API Reference for saveMobilePhone Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mobile-phone/
      *
-     * @param  \OpenAPI\Client\Model\MobileRequestsDto|null $mobile_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MobileRequestDto|null $mobile_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMobilePhone'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveMobilePhoneWithHttpInfo($mobile_requests_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
+    public function saveMobilePhoneWithHttpInfo($mobile_request_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
     {
-        $request = $this->saveMobilePhoneRequest($mobile_requests_dto, $contentType);
+        $request = $this->saveMobilePhoneRequest($mobile_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1941,15 +1927,15 @@ class AuthenticationApi
      * REST API Reference for saveMobilePhone Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mobile-phone/
      *
-     * @param  \OpenAPI\Client\Model\MobileRequestsDto|null $mobile_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MobileRequestDto|null $mobile_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMobilePhone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveMobilePhoneAsync($mobile_requests_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
+    public function saveMobilePhoneAsync($mobile_request_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
     {
-        return $this->saveMobilePhoneAsyncWithHttpInfo($mobile_requests_dto, $contentType)
+        return $this->saveMobilePhoneAsyncWithHttpInfo($mobile_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1965,16 +1951,16 @@ class AuthenticationApi
      * REST API Reference for saveMobilePhone Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mobile-phone/
      *
-     * @param  \OpenAPI\Client\Model\MobileRequestsDto|null $mobile_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MobileRequestDto|null $mobile_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMobilePhone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveMobilePhoneAsyncWithHttpInfo($mobile_requests_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
+    public function saveMobilePhoneAsyncWithHttpInfo($mobile_request_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AuthenticationTokenWrapper';
-        $request = $this->saveMobilePhoneRequest($mobile_requests_dto, $contentType);
+        $request = $this->saveMobilePhoneRequest($mobile_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2015,13 +2001,13 @@ class AuthenticationApi
     /**
      * Create request for operation 'saveMobilePhone'
      *
-     * @param  \OpenAPI\Client\Model\MobileRequestsDto|null $mobile_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MobileRequestDto|null $mobile_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMobilePhone'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveMobilePhoneRequest($mobile_requests_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
+    public function saveMobilePhoneRequest($mobile_request_dto = null, string $contentType = self::contentTypes['saveMobilePhone'][0])
     {
 
 
@@ -2044,12 +2030,12 @@ class AuthenticationApi
         );
 
         // for model (json/xml)
-        if (isset($mobile_requests_dto)) {
+        if (isset($mobile_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mobile_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mobile_request_dto));
             } else {
-                $httpBody = $mobile_requests_dto;
+                $httpBody = $mobile_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2127,16 +2113,16 @@ class AuthenticationApi
      * REST API Reference for sendSmsCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-sms-code/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSmsCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function sendSmsCode($auth_requests_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
+    public function sendSmsCode($auth_request_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
     {
-        list($response) = $this->sendSmsCodeWithHttpInfo($auth_requests_dto, $contentType);
+        list($response) = $this->sendSmsCodeWithHttpInfo($auth_request_dto, $contentType);
         return $response;
     }
 
@@ -2148,16 +2134,16 @@ class AuthenticationApi
      * REST API Reference for sendSmsCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-sms-code/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSmsCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AuthenticationTokenWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendSmsCodeWithHttpInfo($auth_requests_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
+    public function sendSmsCodeWithHttpInfo($auth_request_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
     {
-        $request = $this->sendSmsCodeRequest($auth_requests_dto, $contentType);
+        $request = $this->sendSmsCodeRequest($auth_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2264,15 +2250,15 @@ class AuthenticationApi
      * REST API Reference for sendSmsCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-sms-code/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSmsCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendSmsCodeAsync($auth_requests_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
+    public function sendSmsCodeAsync($auth_request_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
     {
-        return $this->sendSmsCodeAsyncWithHttpInfo($auth_requests_dto, $contentType)
+        return $this->sendSmsCodeAsyncWithHttpInfo($auth_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2288,16 +2274,16 @@ class AuthenticationApi
      * REST API Reference for sendSmsCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-sms-code/
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSmsCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendSmsCodeAsyncWithHttpInfo($auth_requests_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
+    public function sendSmsCodeAsyncWithHttpInfo($auth_request_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AuthenticationTokenWrapper';
-        $request = $this->sendSmsCodeRequest($auth_requests_dto, $contentType);
+        $request = $this->sendSmsCodeRequest($auth_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2338,13 +2324,13 @@ class AuthenticationApi
     /**
      * Create request for operation 'sendSmsCode'
      *
-     * @param  \OpenAPI\Client\Model\AuthRequestsDto|null $auth_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AuthRequestDto|null $auth_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendSmsCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendSmsCodeRequest($auth_requests_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
+    public function sendSmsCodeRequest($auth_request_dto = null, string $contentType = self::contentTypes['sendSmsCode'][0])
     {
 
 
@@ -2367,12 +2353,12 @@ class AuthenticationApi
         );
 
         // for model (json/xml)
-        if (isset($auth_requests_dto)) {
+        if (isset($auth_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($auth_request_dto));
             } else {
-                $httpBody = $auth_requests_dto;
+                $httpBody = $auth_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

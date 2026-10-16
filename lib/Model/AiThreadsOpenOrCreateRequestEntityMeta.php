@@ -50,7 +50,7 @@ class AiThreadsOpenOrCreateRequestEntityMeta implements ModelInterface, ArrayAcc
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsOpenOrCreate_request_entityMeta';
+    protected static $openAPIModelName = 'AiThreadsOpenOrCreateRequest_entityMeta';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

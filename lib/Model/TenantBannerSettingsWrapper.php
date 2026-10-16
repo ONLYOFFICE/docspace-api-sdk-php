@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantBannerSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantBannerSettings object.
+ * @description The successful API response containing the TenantBannerSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantBannerSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantBannerSettings',
+        'response' => '\OpenAPI\Client\Model\TenantBannerSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantBannerSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantBannerSettings|null
+     * @return \OpenAPI\Client\Model\TenantBannerSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantBannerSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantBannerSettings|null $response The TenantBannerSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantBannerSettingsDto|null $response The TenantBannerSettingsDto object returned by the operation.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupHistoryRecordArrayWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the list of BackupHistoryRecord objects.
+ * @description The successful API response containing the list of BackupHistoryRecordDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class BackupHistoryRecordArrayWrapper implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\BackupHistoryRecord[]',
+        'response' => '\OpenAPI\Client\Model\BackupHistoryRecordDto[]',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class BackupHistoryRecordArrayWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\BackupHistoryRecord[]|null
+     * @return \OpenAPI\Client\Model\BackupHistoryRecordDto[]|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class BackupHistoryRecordArrayWrapper implements ModelInterface, ArrayAccess, \J
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupHistoryRecord[]|null $response The list of BackupHistoryRecord objects returned by the operation.
+     * @param \OpenAPI\Client\Model\BackupHistoryRecordDto[]|null $response The list of BackupHistoryRecordDto objects returned by the operation.
      *
      * @return self
      */

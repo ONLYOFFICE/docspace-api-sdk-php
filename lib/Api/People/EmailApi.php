@@ -138,7 +138,7 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
@@ -146,9 +146,9 @@ class EmailApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function changeUserEmail($userid, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
+    public function changeUserEmail($user_id, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
     {
-        list($response) = $this->changeUserEmailWithHttpInfo($userid, $change_email_request, $contentType);
+        list($response) = $this->changeUserEmailWithHttpInfo($user_id, $change_email_request, $contentType);
         return $response;
     }
 
@@ -160,7 +160,7 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
@@ -168,9 +168,9 @@ class EmailApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeUserEmailWithHttpInfo($userid, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
+    public function changeUserEmailWithHttpInfo($user_id, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
     {
-        $request = $this->changeUserEmailRequest($userid, $change_email_request, $contentType);
+        $request = $this->changeUserEmailRequest($user_id, $change_email_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -291,16 +291,16 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeUserEmailAsync($userid, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
+    public function changeUserEmailAsync($user_id, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
     {
-        return $this->changeUserEmailAsyncWithHttpInfo($userid, $change_email_request, $contentType)
+        return $this->changeUserEmailAsyncWithHttpInfo($user_id, $change_email_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -316,17 +316,17 @@ class EmailApi
      * REST API Reference for changeUserEmail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-email/
      *
-     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeUserEmailAsyncWithHttpInfo($userid, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
+    public function changeUserEmailAsyncWithHttpInfo($user_id, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->changeUserEmailRequest($userid, $change_email_request, $contentType);
+        $request = $this->changeUserEmailRequest($user_id, $change_email_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -367,20 +367,20 @@ class EmailApi
     /**
      * Create request for operation 'changeUserEmail'
      *
-     * @param  string $userid The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangeEmailRequest $change_email_request The new address, in plain text or in the encrypted form the confirmation link carries. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserEmail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeUserEmailRequest($userid, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
+    public function changeUserEmailRequest($user_id, $change_email_request, string $contentType = self::contentTypes['changeUserEmail'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling changeUserEmail'
+                'Missing the required parameter $user_id when calling changeUserEmail'
             );
         }
 
@@ -392,7 +392,7 @@ class EmailApi
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/email';
+        $resourcePath = '/api/2.0/people/{userId}/email';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -402,10 +402,10 @@ class EmailApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }

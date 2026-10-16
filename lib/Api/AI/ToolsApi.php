@@ -1230,16 +1230,17 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
+     * @param  string $scope scope (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiToolsGetDisabled($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabled($scope, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
-        list($response) = $this->aiToolsGetDisabledWithHttpInfo($entity_id, $contentType);
+        list($response) = $this->aiToolsGetDisabledWithHttpInfo($scope, $entity_id, $contentType);
         return $response;
     }
 
@@ -1251,16 +1252,17 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
+     * @param  string $scope (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,string[]>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiToolsGetDisabledWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledWithHttpInfo($scope, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
-        $request = $this->aiToolsGetDisabledRequest($entity_id, $contentType);
+        $request = $this->aiToolsGetDisabledRequest($scope, $entity_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1289,6 +1291,12 @@ class ToolsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         'array<string,string[]>',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1342,6 +1350,14 @@ class ToolsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1381,15 +1397,16 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
+     * @param  string $scope (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetDisabledAsync($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledAsync($scope, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
-        return $this->aiToolsGetDisabledAsyncWithHttpInfo($entity_id, $contentType)
+        return $this->aiToolsGetDisabledAsyncWithHttpInfo($scope, $entity_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1405,16 +1422,17 @@ class ToolsApi
      * REST API Reference for aiToolsGetDisabled Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-tools-get-disabled/
      *
+     * @param  string $scope (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiToolsGetDisabledAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledAsyncWithHttpInfo($scope, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
         $returnType = 'array<string,string[]>';
-        $request = $this->aiToolsGetDisabledRequest($entity_id, $contentType);
+        $request = $this->aiToolsGetDisabledRequest($scope, $entity_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1455,14 +1473,22 @@ class ToolsApi
     /**
      * Create request for operation 'aiToolsGetDisabled'
      *
+     * @param  string $scope (required)
      * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiToolsGetDisabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiToolsGetDisabledRequest($entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
+    public function aiToolsGetDisabledRequest($scope, $entity_id = null, string $contentType = self::contentTypes['aiToolsGetDisabled'][0])
     {
+
+        // verify the required parameter 'scope' is set
+        if ($scope === null || (is_array($scope) && count($scope) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $scope when calling aiToolsGetDisabled'
+            );
+        }
 
 
 
@@ -1481,6 +1507,15 @@ class ToolsApi
             'form', // style
             true, // explode
             false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $scope,
+            'scope', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
         ) ?? []);
 
 
@@ -3721,7 +3756,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiToolsSetAllowAlways($ai_tools_set_allow_always_request, string $contentType = self::contentTypes['aiToolsSetAllowAlways'][0])
     {
@@ -3742,7 +3777,7 @@ class ToolsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiToolsSetAllowAlwaysWithHttpInfo($ai_tools_set_allow_always_request, string $contentType = self::contentTypes['aiToolsSetAllowAlways'][0])
     {
@@ -3775,6 +3810,12 @@ class ToolsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -3836,6 +3877,14 @@ class ToolsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

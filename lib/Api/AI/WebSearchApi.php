@@ -156,16 +156,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
+     * @param  string $ai_web_search_clear_request Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchClear($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
+    public function aiWebSearchClear($ai_web_search_clear_request, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
-        list($response) = $this->aiWebSearchClearWithHttpInfo($body, $contentType);
+        list($response) = $this->aiWebSearchClearWithHttpInfo($ai_web_search_clear_request, $contentType);
         return $response;
     }
 
@@ -177,16 +177,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
+     * @param  string $ai_web_search_clear_request Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchClearWithHttpInfo($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
+    public function aiWebSearchClearWithHttpInfo($ai_web_search_clear_request, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
-        $request = $this->aiWebSearchClearRequest($body, $contentType);
+        $request = $this->aiWebSearchClearRequest($ai_web_search_clear_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -321,15 +321,15 @@ class WebSearchApi
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
+     * @param  string $ai_web_search_clear_request Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchClearAsync($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
+    public function aiWebSearchClearAsync($ai_web_search_clear_request, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
-        return $this->aiWebSearchClearAsyncWithHttpInfo($body, $contentType)
+        return $this->aiWebSearchClearAsyncWithHttpInfo($ai_web_search_clear_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -345,16 +345,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchClear Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-clear/
      *
-     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
+     * @param  string $ai_web_search_clear_request Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchClearAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
+    public function aiWebSearchClearAsyncWithHttpInfo($ai_web_search_clear_request, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiWebSearchClearRequest($body, $contentType);
+        $request = $this->aiWebSearchClearRequest($ai_web_search_clear_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -395,19 +395,19 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchClear'
      *
-     * @param  string $body Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
+     * @param  string $ai_web_search_clear_request Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchClear'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchClearRequest($body, string $contentType = self::contentTypes['aiWebSearchClear'][0])
+    public function aiWebSearchClearRequest($ai_web_search_clear_request, string $contentType = self::contentTypes['aiWebSearchClear'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_web_search_clear_request' is set
+        if ($ai_web_search_clear_request === null || (is_array($ai_web_search_clear_request) && count($ai_web_search_clear_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiWebSearchClear'
+                'Missing the required parameter $ai_web_search_clear_request when calling aiWebSearchClear'
             );
         }
 
@@ -430,12 +430,12 @@ class WebSearchApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_web_search_clear_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_web_search_clear_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_web_search_clear_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -505,7 +505,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiWebSearchConfigure400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiWebSearchConfigure($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchConfigure'][0])
     {
@@ -526,7 +526,7 @@ class WebSearchApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiWebSearchMutationResult|\OpenAPI\Client\Model\AiWebSearchConfigure400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiWebSearchConfigureWithHttpInfo($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchConfigure'][0])
     {
@@ -564,7 +564,7 @@ class WebSearchApi
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiWebSearchConfigure400Response',
                         $request,
                         $response,
                     );
@@ -633,7 +633,7 @@ class WebSearchApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiWebSearchConfigure400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1580,16 +1580,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_contents_request A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchPassthroughContents($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
+    public function aiWebSearchPassthroughContents($ai_web_search_passthrough_contents_request, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
-        list($response) = $this->aiWebSearchPassthroughContentsWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiWebSearchPassthroughContentsWithHttpInfo($ai_web_search_passthrough_contents_request, $contentType);
         return $response;
     }
 
@@ -1601,16 +1601,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_contents_request A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchPassthroughContentsWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
+    public function aiWebSearchPassthroughContentsWithHttpInfo($ai_web_search_passthrough_contents_request, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
-        $request = $this->aiWebSearchPassthroughContentsRequest($request_body, $contentType);
+        $request = $this->aiWebSearchPassthroughContentsRequest($ai_web_search_passthrough_contents_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1639,6 +1639,12 @@ class WebSearchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1712,6 +1718,14 @@ class WebSearchApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'array<string,mixed>',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1787,15 +1801,15 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_contents_request A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchPassthroughContentsAsync($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
+    public function aiWebSearchPassthroughContentsAsync($ai_web_search_passthrough_contents_request, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
-        return $this->aiWebSearchPassthroughContentsAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiWebSearchPassthroughContentsAsyncWithHttpInfo($ai_web_search_passthrough_contents_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1811,16 +1825,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughContents Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/
      *
-     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_contents_request A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchPassthroughContentsAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
+    public function aiWebSearchPassthroughContentsAsyncWithHttpInfo($ai_web_search_passthrough_contents_request, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
         $returnType = 'array<string,mixed>';
-        $request = $this->aiWebSearchPassthroughContentsRequest($request_body, $contentType);
+        $request = $this->aiWebSearchPassthroughContentsRequest($ai_web_search_passthrough_contents_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1861,19 +1875,19 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchPassthroughContents'
      *
-     * @param  array<string,mixed> $request_body A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_contents_request A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughContents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchPassthroughContentsRequest($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
+    public function aiWebSearchPassthroughContentsRequest($ai_web_search_passthrough_contents_request, string $contentType = self::contentTypes['aiWebSearchPassthroughContents'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_web_search_passthrough_contents_request' is set
+        if ($ai_web_search_passthrough_contents_request === null || (is_array($ai_web_search_passthrough_contents_request) && count($ai_web_search_passthrough_contents_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiWebSearchPassthroughContents'
+                'Missing the required parameter $ai_web_search_passthrough_contents_request when calling aiWebSearchPassthroughContents'
             );
         }
 
@@ -1896,12 +1910,12 @@ class WebSearchApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_web_search_passthrough_contents_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_web_search_passthrough_contents_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_web_search_passthrough_contents_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1966,16 +1980,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_search_request A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchPassthroughSearch($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
+    public function aiWebSearchPassthroughSearch($ai_web_search_passthrough_search_request, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
-        list($response) = $this->aiWebSearchPassthroughSearchWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiWebSearchPassthroughSearchWithHttpInfo($ai_web_search_passthrough_search_request, $contentType);
         return $response;
     }
 
@@ -1987,16 +2001,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_search_request A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchPassthroughSearchWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
+    public function aiWebSearchPassthroughSearchWithHttpInfo($ai_web_search_passthrough_search_request, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
-        $request = $this->aiWebSearchPassthroughSearchRequest($request_body, $contentType);
+        $request = $this->aiWebSearchPassthroughSearchRequest($ai_web_search_passthrough_search_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2025,6 +2039,12 @@ class WebSearchApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         'array<string,mixed>',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -2102,6 +2122,14 @@ class WebSearchApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2173,15 +2201,15 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_search_request A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchPassthroughSearchAsync($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
+    public function aiWebSearchPassthroughSearchAsync($ai_web_search_passthrough_search_request, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
-        return $this->aiWebSearchPassthroughSearchAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiWebSearchPassthroughSearchAsyncWithHttpInfo($ai_web_search_passthrough_search_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2197,16 +2225,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchPassthroughSearch Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/
      *
-     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_search_request A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchPassthroughSearchAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
+    public function aiWebSearchPassthroughSearchAsyncWithHttpInfo($ai_web_search_passthrough_search_request, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
         $returnType = 'array<string,mixed>';
-        $request = $this->aiWebSearchPassthroughSearchRequest($request_body, $contentType);
+        $request = $this->aiWebSearchPassthroughSearchRequest($ai_web_search_passthrough_search_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2247,19 +2275,19 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchPassthroughSearch'
      *
-     * @param  array<string,mixed> $request_body A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_web_search_passthrough_search_request A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchPassthroughSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchPassthroughSearchRequest($request_body, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
+    public function aiWebSearchPassthroughSearchRequest($ai_web_search_passthrough_search_request, string $contentType = self::contentTypes['aiWebSearchPassthroughSearch'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_web_search_passthrough_search_request' is set
+        if ($ai_web_search_passthrough_search_request === null || (is_array($ai_web_search_passthrough_search_request) && count($ai_web_search_passthrough_search_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiWebSearchPassthroughSearch'
+                'Missing the required parameter $ai_web_search_passthrough_search_request when calling aiWebSearchPassthroughSearch'
             );
         }
 
@@ -2282,12 +2310,12 @@ class WebSearchApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_web_search_passthrough_search_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_web_search_passthrough_search_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_web_search_passthrough_search_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2352,16 +2380,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchSetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-set-active-config/
      *
-     * @param  \OpenAPI\Client\Model\AiWebSearchConfigureRequest $ai_web_search_configure_request ai_web_search_configure_request (required)
+     * @param  \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest $ai_web_search_set_active_config_request ai_web_search_set_active_config_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchSetActiveConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiWebSearchSetActiveConfig($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
+    public function aiWebSearchSetActiveConfig($ai_web_search_set_active_config_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
-        list($response) = $this->aiWebSearchSetActiveConfigWithHttpInfo($ai_web_search_configure_request, $contentType);
+        list($response) = $this->aiWebSearchSetActiveConfigWithHttpInfo($ai_web_search_set_active_config_request, $contentType);
         return $response;
     }
 
@@ -2373,16 +2401,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchSetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-set-active-config/
      *
-     * @param  \OpenAPI\Client\Model\AiWebSearchConfigureRequest $ai_web_search_configure_request (required)
+     * @param  \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest $ai_web_search_set_active_config_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchSetActiveConfig'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiWebSearchSetActiveConfigWithHttpInfo($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
+    public function aiWebSearchSetActiveConfigWithHttpInfo($ai_web_search_set_active_config_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
-        $request = $this->aiWebSearchSetActiveConfigRequest($ai_web_search_configure_request, $contentType);
+        $request = $this->aiWebSearchSetActiveConfigRequest($ai_web_search_set_active_config_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2545,15 +2573,15 @@ class WebSearchApi
      * REST API Reference for aiWebSearchSetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-set-active-config/
      *
-     * @param  \OpenAPI\Client\Model\AiWebSearchConfigureRequest $ai_web_search_configure_request (required)
+     * @param  \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest $ai_web_search_set_active_config_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchSetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchSetActiveConfigAsync($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
+    public function aiWebSearchSetActiveConfigAsync($ai_web_search_set_active_config_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
-        return $this->aiWebSearchSetActiveConfigAsyncWithHttpInfo($ai_web_search_configure_request, $contentType)
+        return $this->aiWebSearchSetActiveConfigAsyncWithHttpInfo($ai_web_search_set_active_config_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2569,16 +2597,16 @@ class WebSearchApi
      * REST API Reference for aiWebSearchSetActiveConfig Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-set-active-config/
      *
-     * @param  \OpenAPI\Client\Model\AiWebSearchConfigureRequest $ai_web_search_configure_request (required)
+     * @param  \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest $ai_web_search_set_active_config_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchSetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiWebSearchSetActiveConfigAsyncWithHttpInfo($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
+    public function aiWebSearchSetActiveConfigAsyncWithHttpInfo($ai_web_search_set_active_config_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiWebSearchSetActiveConfigRequest($ai_web_search_configure_request, $contentType);
+        $request = $this->aiWebSearchSetActiveConfigRequest($ai_web_search_set_active_config_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2619,19 +2647,19 @@ class WebSearchApi
     /**
      * Create request for operation 'aiWebSearchSetActiveConfig'
      *
-     * @param  \OpenAPI\Client\Model\AiWebSearchConfigureRequest $ai_web_search_configure_request (required)
+     * @param  \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest $ai_web_search_set_active_config_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiWebSearchSetActiveConfig'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiWebSearchSetActiveConfigRequest($ai_web_search_configure_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
+    public function aiWebSearchSetActiveConfigRequest($ai_web_search_set_active_config_request, string $contentType = self::contentTypes['aiWebSearchSetActiveConfig'][0])
     {
 
-        // verify the required parameter 'ai_web_search_configure_request' is set
-        if ($ai_web_search_configure_request === null || (is_array($ai_web_search_configure_request) && count($ai_web_search_configure_request) === 0)) {
+        // verify the required parameter 'ai_web_search_set_active_config_request' is set
+        if ($ai_web_search_set_active_config_request === null || (is_array($ai_web_search_set_active_config_request) && count($ai_web_search_set_active_config_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ai_web_search_configure_request when calling aiWebSearchSetActiveConfig'
+                'Missing the required parameter $ai_web_search_set_active_config_request when calling aiWebSearchSetActiveConfig'
             );
         }
 
@@ -2654,12 +2682,12 @@ class WebSearchApi
         );
 
         // for model (json/xml)
-        if (isset($ai_web_search_configure_request)) {
+        if (isset($ai_web_search_set_active_config_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_web_search_configure_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_web_search_set_active_config_request));
             } else {
-                $httpBody = $ai_web_search_configure_request;
+                $httpBody = $ai_web_search_set_active_config_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -49,7 +49,7 @@ class AiThreadsOpenOrCreateRequest implements ModelInterface, ArrayAccess, \Json
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsOpenOrCreate_request';
+    protected static $openAPIModelName = 'AiThreadsOpenOrCreateRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

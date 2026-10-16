@@ -1188,16 +1188,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
      * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledRequest $set_app_enabled_request The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setEnabled($id, $set_app_enabled_body, string $contentType = self::contentTypes['setEnabled'][0])
+    public function setEnabled($id, $set_app_enabled_request, string $contentType = self::contentTypes['setEnabled'][0])
     {
-        list($response) = $this->setEnabledWithHttpInfo($id, $set_app_enabled_body, $contentType);
+        list($response) = $this->setEnabledWithHttpInfo($id, $set_app_enabled_request, $contentType);
         return $response;
     }
 
@@ -1210,16 +1210,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
      * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledRequest $set_app_enabled_request The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setEnabledWithHttpInfo($id, $set_app_enabled_body, string $contentType = self::contentTypes['setEnabled'][0])
+    public function setEnabledWithHttpInfo($id, $set_app_enabled_request, string $contentType = self::contentTypes['setEnabled'][0])
     {
-        $request = $this->setEnabledRequest($id, $set_app_enabled_body, $contentType);
+        $request = $this->setEnabledRequest($id, $set_app_enabled_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1264,12 +1264,6 @@ class AppsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1331,14 +1325,6 @@ class AppsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1355,15 +1341,15 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
      * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledRequest $set_app_enabled_request The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setEnabledAsync($id, $set_app_enabled_body, string $contentType = self::contentTypes['setEnabled'][0])
+    public function setEnabledAsync($id, $set_app_enabled_request, string $contentType = self::contentTypes['setEnabled'][0])
     {
-        return $this->setEnabledAsyncWithHttpInfo($id, $set_app_enabled_body, $contentType)
+        return $this->setEnabledAsyncWithHttpInfo($id, $set_app_enabled_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1380,16 +1366,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/
      *
      * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledRequest $set_app_enabled_request The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setEnabledAsyncWithHttpInfo($id, $set_app_enabled_body, string $contentType = self::contentTypes['setEnabled'][0])
+    public function setEnabledAsyncWithHttpInfo($id, $set_app_enabled_request, string $contentType = self::contentTypes['setEnabled'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppWrapper';
-        $request = $this->setEnabledRequest($id, $set_app_enabled_body, $contentType);
+        $request = $this->setEnabledRequest($id, $set_app_enabled_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1431,13 +1417,13 @@ class AppsApi
      * Create request for operation 'setEnabled'
      *
      * @param  string $id The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. (required)
-     * @param  \OpenAPI\Client\Model\SetAppEnabledBody $set_app_enabled_body The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
+     * @param  \OpenAPI\Client\Model\SetAppEnabledRequest $set_app_enabled_request The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setEnabled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setEnabledRequest($id, $set_app_enabled_body, string $contentType = self::contentTypes['setEnabled'][0])
+    public function setEnabledRequest($id, $set_app_enabled_request, string $contentType = self::contentTypes['setEnabled'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1447,10 +1433,10 @@ class AppsApi
             );
         }
 
-        // verify the required parameter 'set_app_enabled_body' is set
-        if ($set_app_enabled_body === null || (is_array($set_app_enabled_body) && count($set_app_enabled_body) === 0)) {
+        // verify the required parameter 'set_app_enabled_request' is set
+        if ($set_app_enabled_request === null || (is_array($set_app_enabled_request) && count($set_app_enabled_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $set_app_enabled_body when calling setEnabled'
+                'Missing the required parameter $set_app_enabled_request when calling setEnabled'
             );
         }
 
@@ -1481,12 +1467,12 @@ class AppsApi
         );
 
         // for model (json/xml)
-        if (isset($set_app_enabled_body)) {
+        if (isset($set_app_enabled_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_app_enabled_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_app_enabled_request));
             } else {
-                $httpBody = $set_app_enabled_body;
+                $httpBody = $set_app_enabled_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1565,16 +1551,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
      * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsRequest $set_app_settings_request The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setSettings($id, $set_app_settings_body, string $contentType = self::contentTypes['setSettings'][0])
+    public function setSettings($id, $set_app_settings_request, string $contentType = self::contentTypes['setSettings'][0])
     {
-        list($response) = $this->setSettingsWithHttpInfo($id, $set_app_settings_body, $contentType);
+        list($response) = $this->setSettingsWithHttpInfo($id, $set_app_settings_request, $contentType);
         return $response;
     }
 
@@ -1587,16 +1573,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
      * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsRequest $set_app_settings_request The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AppWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setSettingsWithHttpInfo($id, $set_app_settings_body, string $contentType = self::contentTypes['setSettings'][0])
+    public function setSettingsWithHttpInfo($id, $set_app_settings_request, string $contentType = self::contentTypes['setSettings'][0])
     {
-        $request = $this->setSettingsRequest($id, $set_app_settings_body, $contentType);
+        $request = $this->setSettingsRequest($id, $set_app_settings_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1718,15 +1704,15 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
      * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsRequest $set_app_settings_request The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setSettingsAsync($id, $set_app_settings_body, string $contentType = self::contentTypes['setSettings'][0])
+    public function setSettingsAsync($id, $set_app_settings_request, string $contentType = self::contentTypes['setSettings'][0])
     {
-        return $this->setSettingsAsyncWithHttpInfo($id, $set_app_settings_body, $contentType)
+        return $this->setSettingsAsyncWithHttpInfo($id, $set_app_settings_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1743,16 +1729,16 @@ class AppsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-settings/
      *
      * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsRequest $set_app_settings_request The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setSettingsAsyncWithHttpInfo($id, $set_app_settings_body, string $contentType = self::contentTypes['setSettings'][0])
+    public function setSettingsAsyncWithHttpInfo($id, $set_app_settings_request, string $contentType = self::contentTypes['setSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AppWrapper';
-        $request = $this->setSettingsRequest($id, $set_app_settings_body, $contentType);
+        $request = $this->setSettingsRequest($id, $set_app_settings_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1794,13 +1780,13 @@ class AppsApi
      * Create request for operation 'setSettings'
      *
      * @param  string $id The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. (required)
-     * @param  \OpenAPI\Client\Model\SetAppSettingsBody $set_app_settings_body The configuration to store for this portal, replacing whatever was stored before. (required)
+     * @param  \OpenAPI\Client\Model\SetAppSettingsRequest $set_app_settings_request The configuration to store for this portal, replacing whatever was stored before. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setSettingsRequest($id, $set_app_settings_body, string $contentType = self::contentTypes['setSettings'][0])
+    public function setSettingsRequest($id, $set_app_settings_request, string $contentType = self::contentTypes['setSettings'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -1810,10 +1796,10 @@ class AppsApi
             );
         }
 
-        // verify the required parameter 'set_app_settings_body' is set
-        if ($set_app_settings_body === null || (is_array($set_app_settings_body) && count($set_app_settings_body) === 0)) {
+        // verify the required parameter 'set_app_settings_request' is set
+        if ($set_app_settings_request === null || (is_array($set_app_settings_request) && count($set_app_settings_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $set_app_settings_body when calling setSettings'
+                'Missing the required parameter $set_app_settings_request when calling setSettings'
             );
         }
 
@@ -1844,12 +1830,12 @@ class AppsApi
         );
 
         // for model (json/xml)
-        if (isset($set_app_settings_body)) {
+        if (isset($set_app_settings_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_app_settings_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_app_settings_request));
             } else {
-                $httpBody = $set_app_settings_body;
+                $httpBody = $set_app_settings_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

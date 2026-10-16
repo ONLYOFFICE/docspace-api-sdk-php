@@ -151,7 +151,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SmtpOperationStatusWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSmtpOperationStatus(string $contentType = self::contentTypes['getSmtpOperationStatus'][0])
     {
@@ -171,7 +171,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SmtpOperationStatusWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSmtpOperationStatusWithHttpInfo(string $contentType = self::contentTypes['getSmtpOperationStatus'][0])
     {
@@ -203,7 +203,7 @@ class SMTPSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                        '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                         $request,
                         $response,
                     );
@@ -243,7 +243,7 @@ class SMTPSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                 $request,
                 $response,
             );
@@ -252,7 +252,7 @@ class SMTPSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                        '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -326,7 +326,7 @@ class SMTPSettingsApi
      */
     public function getSmtpOperationStatusAsyncWithHttpInfo(string $contentType = self::contentTypes['getSmtpOperationStatus'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper';
+        $returnType = '\OpenAPI\Client\Model\SmtpOperationStatusWrapper';
         $request = $this->getSmtpOperationStatusRequest($contentType);
 
         return $this->client
@@ -1124,7 +1124,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SmtpSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SmtpSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveSmtpSettings($smtp_settings_dto = null, string $contentType = self::contentTypes['saveSmtpSettings'][0])
     {
@@ -1145,7 +1145,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SmtpSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SmtpSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveSmtpSettingsWithHttpInfo($smtp_settings_dto = null, string $contentType = self::contentTypes['saveSmtpSettings'][0])
     {
@@ -1194,12 +1194,6 @@ class SMTPSettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1254,14 +1248,6 @@ class SMTPSettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1474,7 +1460,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SmtpOperationStatusWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function testSmtpSettings(string $contentType = self::contentTypes['testSmtpSettings'][0])
     {
@@ -1494,7 +1480,7 @@ class SMTPSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SmtpOperationStatusWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function testSmtpSettingsWithHttpInfo(string $contentType = self::contentTypes['testSmtpSettings'][0])
     {
@@ -1526,7 +1512,7 @@ class SMTPSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                        '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                         $request,
                         $response,
                     );
@@ -1566,7 +1552,7 @@ class SMTPSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                 $request,
                 $response,
             );
@@ -1575,7 +1561,7 @@ class SMTPSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper',
+                        '\OpenAPI\Client\Model\SmtpOperationStatusWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1649,7 +1635,7 @@ class SMTPSettingsApi
      */
     public function testSmtpSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['testSmtpSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper';
+        $returnType = '\OpenAPI\Client\Model\SmtpOperationStatusWrapper';
         $request = $this->testSmtpSettingsRequest($contentType);
 
         return $this->client

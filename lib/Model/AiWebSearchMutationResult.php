@@ -60,7 +60,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'success' => 'bool',
         'config' => '\OpenAPI\Client\Model\AiWebSearchConfig',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -364,7 +364,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData|null
+     * @return \OpenAPI\Client\Model\AiErrorData|null
      */
     public function getError()
     {
@@ -374,7 +374,7 @@ class AiWebSearchMutationResult implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the configuration was rejected. Present on failure.
+     * @param \OpenAPI\Client\Model\AiErrorData|null $error Why the configuration was rejected. Present on failure.
      *
      * @return self
      */

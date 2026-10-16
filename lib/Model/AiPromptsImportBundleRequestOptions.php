@@ -50,7 +50,7 @@ class AiPromptsImportBundleRequestOptions implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPromptsImportBundle_request_options';
+    protected static $openAPIModelName = 'AiPromptsImportBundleRequest_options';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

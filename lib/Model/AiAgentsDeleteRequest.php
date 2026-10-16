@@ -49,7 +49,7 @@ class AiAgentsDeleteRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAgentsDelete_request';
+    protected static $openAPIModelName = 'AiAgentsDeleteRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

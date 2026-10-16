@@ -539,16 +539,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
+     * @param  string $ai_threads_clear_messages_request The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiThreadsClearMessages($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
+    public function aiThreadsClearMessages($ai_threads_clear_messages_request, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
-        list($response) = $this->aiThreadsClearMessagesWithHttpInfo($body, $contentType);
+        list($response) = $this->aiThreadsClearMessagesWithHttpInfo($ai_threads_clear_messages_request, $contentType);
         return $response;
     }
 
@@ -560,16 +560,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
+     * @param  string $ai_threads_clear_messages_request The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiThreadsClearMessagesWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
+    public function aiThreadsClearMessagesWithHttpInfo($ai_threads_clear_messages_request, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
-        $request = $this->aiThreadsClearMessagesRequest($body, $contentType);
+        $request = $this->aiThreadsClearMessagesRequest($ai_threads_clear_messages_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -718,15 +718,15 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
+     * @param  string $ai_threads_clear_messages_request The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsClearMessagesAsync($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
+    public function aiThreadsClearMessagesAsync($ai_threads_clear_messages_request, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
-        return $this->aiThreadsClearMessagesAsyncWithHttpInfo($body, $contentType)
+        return $this->aiThreadsClearMessagesAsyncWithHttpInfo($ai_threads_clear_messages_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -742,16 +742,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsClearMessages Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-clear-messages/
      *
-     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
+     * @param  string $ai_threads_clear_messages_request The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsClearMessagesAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
+    public function aiThreadsClearMessagesAsyncWithHttpInfo($ai_threads_clear_messages_request, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiThreadsClearMessagesRequest($body, $contentType);
+        $request = $this->aiThreadsClearMessagesRequest($ai_threads_clear_messages_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -792,19 +792,19 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsClearMessages'
      *
-     * @param  string $body The ID of the thread to empty, as a bare JSON string. (required)
+     * @param  string $ai_threads_clear_messages_request The ID of the thread to empty, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsClearMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiThreadsClearMessagesRequest($body, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
+    public function aiThreadsClearMessagesRequest($ai_threads_clear_messages_request, string $contentType = self::contentTypes['aiThreadsClearMessages'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_threads_clear_messages_request' is set
+        if ($ai_threads_clear_messages_request === null || (is_array($ai_threads_clear_messages_request) && count($ai_threads_clear_messages_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiThreadsClearMessages'
+                'Missing the required parameter $ai_threads_clear_messages_request when calling aiThreadsClearMessages'
             );
         }
 
@@ -827,12 +827,12 @@ class ThreadsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_threads_clear_messages_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_threads_clear_messages_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_threads_clear_messages_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1255,16 +1255,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_request The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiThreadsDelete($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
+    public function aiThreadsDelete($ai_threads_delete_request, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
-        list($response) = $this->aiThreadsDeleteWithHttpInfo($body, $contentType);
+        list($response) = $this->aiThreadsDeleteWithHttpInfo($ai_threads_delete_request, $contentType);
         return $response;
     }
 
@@ -1276,16 +1276,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_request The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiThreadsDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
+    public function aiThreadsDeleteWithHttpInfo($ai_threads_delete_request, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
-        $request = $this->aiThreadsDeleteRequest($body, $contentType);
+        $request = $this->aiThreadsDeleteRequest($ai_threads_delete_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1448,15 +1448,15 @@ class ThreadsApi
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_request The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsDeleteAsync($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
+    public function aiThreadsDeleteAsync($ai_threads_delete_request, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
-        return $this->aiThreadsDeleteAsyncWithHttpInfo($body, $contentType)
+        return $this->aiThreadsDeleteAsyncWithHttpInfo($ai_threads_delete_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1472,16 +1472,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete/
      *
-     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_request The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsDeleteAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
+    public function aiThreadsDeleteAsyncWithHttpInfo($ai_threads_delete_request, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiThreadsDeleteRequest($body, $contentType);
+        $request = $this->aiThreadsDeleteRequest($ai_threads_delete_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1522,19 +1522,19 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsDelete'
      *
-     * @param  string $body The ID of the thread to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_request The ID of the thread to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiThreadsDeleteRequest($body, string $contentType = self::contentTypes['aiThreadsDelete'][0])
+    public function aiThreadsDeleteRequest($ai_threads_delete_request, string $contentType = self::contentTypes['aiThreadsDelete'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_threads_delete_request' is set
+        if ($ai_threads_delete_request === null || (is_array($ai_threads_delete_request) && count($ai_threads_delete_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiThreadsDelete'
+                'Missing the required parameter $ai_threads_delete_request when calling aiThreadsDelete'
             );
         }
 
@@ -1557,12 +1557,12 @@ class ThreadsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_threads_delete_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_threads_delete_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_threads_delete_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1627,16 +1627,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_message_request The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiThreadsDeleteMessage($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
+    public function aiThreadsDeleteMessage($ai_threads_delete_message_request, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
-        list($response) = $this->aiThreadsDeleteMessageWithHttpInfo($body, $contentType);
+        list($response) = $this->aiThreadsDeleteMessageWithHttpInfo($ai_threads_delete_message_request, $contentType);
         return $response;
     }
 
@@ -1648,16 +1648,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_message_request The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiThreadsDeleteMessageWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
+    public function aiThreadsDeleteMessageWithHttpInfo($ai_threads_delete_message_request, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
-        $request = $this->aiThreadsDeleteMessageRequest($body, $contentType);
+        $request = $this->aiThreadsDeleteMessageRequest($ai_threads_delete_message_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1806,15 +1806,15 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_message_request The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsDeleteMessageAsync($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
+    public function aiThreadsDeleteMessageAsync($ai_threads_delete_message_request, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
-        return $this->aiThreadsDeleteMessageAsyncWithHttpInfo($body, $contentType)
+        return $this->aiThreadsDeleteMessageAsyncWithHttpInfo($ai_threads_delete_message_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1830,16 +1830,16 @@ class ThreadsApi
      * REST API Reference for aiThreadsDeleteMessage Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-threads-delete-message/
      *
-     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_message_request The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiThreadsDeleteMessageAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
+    public function aiThreadsDeleteMessageAsyncWithHttpInfo($ai_threads_delete_message_request, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiThreadsDeleteMessageRequest($body, $contentType);
+        $request = $this->aiThreadsDeleteMessageRequest($ai_threads_delete_message_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1880,19 +1880,19 @@ class ThreadsApi
     /**
      * Create request for operation 'aiThreadsDeleteMessage'
      *
-     * @param  string $body The ID of the message to delete, as a bare JSON string. (required)
+     * @param  string $ai_threads_delete_message_request The ID of the message to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiThreadsDeleteMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiThreadsDeleteMessageRequest($body, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
+    public function aiThreadsDeleteMessageRequest($ai_threads_delete_message_request, string $contentType = self::contentTypes['aiThreadsDeleteMessage'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_threads_delete_message_request' is set
+        if ($ai_threads_delete_message_request === null || (is_array($ai_threads_delete_message_request) && count($ai_threads_delete_message_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiThreadsDeleteMessage'
+                'Missing the required parameter $ai_threads_delete_message_request when calling aiThreadsDeleteMessage'
             );
         }
 
@@ -1915,12 +1915,12 @@ class ThreadsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_threads_delete_message_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_threads_delete_message_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_threads_delete_message_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2350,7 +2350,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsGetMessageById($message_id, string $contentType = self::contentTypes['aiThreadsGetMessageById'][0])
     {
@@ -2371,7 +2371,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPIClientModelAiThreadMessageLike|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsGetMessageByIdWithHttpInfo($message_id, string $contentType = self::contentTypes['aiThreadsGetMessageById'][0])
     {
@@ -2420,6 +2420,12 @@ class ThreadsApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2480,6 +2486,14 @@ class ThreadsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -3430,7 +3444,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsReadMessages($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
@@ -3454,7 +3468,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiThreadMessageLike[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsReadMessagesWithHttpInfo($thread_id, $count = null, $cursor = null, $direction = null, string $contentType = self::contentTypes['aiThreadsReadMessages'][0])
     {
@@ -3487,6 +3501,12 @@ class ThreadsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiThreadMessageLike[]',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -3536,6 +3556,14 @@ class ThreadsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiThreadMessageLike[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4866,7 +4894,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiThreadsUpdateMessage($ai_threads_update_message_request, string $contentType = self::contentTypes['aiThreadsUpdateMessage'][0])
     {
@@ -4887,7 +4915,7 @@ class ThreadsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiThreadsUpdateMessageWithHttpInfo($ai_threads_update_message_request, string $contentType = self::contentTypes['aiThreadsUpdateMessage'][0])
     {
@@ -4923,6 +4951,12 @@ class ThreadsApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -4930,6 +4964,12 @@ class ThreadsApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -4979,6 +5019,14 @@ class ThreadsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4988,6 +5036,14 @@ class ThreadsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',

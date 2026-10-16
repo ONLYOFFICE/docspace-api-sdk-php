@@ -135,16 +135,16 @@ class BannersVisibilityApi
      * REST API Reference for setTenantBannerSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-banner-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantBannerSettingsDto|null $tenant_banner_settings_dto tenant_banner_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantBannerSettingsRequestDto|null $tenant_banner_settings_request_dto tenant_banner_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantBannerSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TenantBannerSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setTenantBannerSettings($tenant_banner_settings_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
+    public function setTenantBannerSettings($tenant_banner_settings_request_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
     {
-        list($response) = $this->setTenantBannerSettingsWithHttpInfo($tenant_banner_settings_dto, $contentType);
+        list($response) = $this->setTenantBannerSettingsWithHttpInfo($tenant_banner_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -156,16 +156,16 @@ class BannersVisibilityApi
      * REST API Reference for setTenantBannerSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-banner-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantBannerSettingsDto|null $tenant_banner_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantBannerSettingsRequestDto|null $tenant_banner_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantBannerSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TenantBannerSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTenantBannerSettingsWithHttpInfo($tenant_banner_settings_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
+    public function setTenantBannerSettingsWithHttpInfo($tenant_banner_settings_request_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
     {
-        $request = $this->setTenantBannerSettingsRequest($tenant_banner_settings_dto, $contentType);
+        $request = $this->setTenantBannerSettingsRequest($tenant_banner_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -300,15 +300,15 @@ class BannersVisibilityApi
      * REST API Reference for setTenantBannerSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-banner-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantBannerSettingsDto|null $tenant_banner_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantBannerSettingsRequestDto|null $tenant_banner_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantBannerSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantBannerSettingsAsync($tenant_banner_settings_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
+    public function setTenantBannerSettingsAsync($tenant_banner_settings_request_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
     {
-        return $this->setTenantBannerSettingsAsyncWithHttpInfo($tenant_banner_settings_dto, $contentType)
+        return $this->setTenantBannerSettingsAsyncWithHttpInfo($tenant_banner_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -324,16 +324,16 @@ class BannersVisibilityApi
      * REST API Reference for setTenantBannerSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-banner-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantBannerSettingsDto|null $tenant_banner_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantBannerSettingsRequestDto|null $tenant_banner_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantBannerSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantBannerSettingsAsyncWithHttpInfo($tenant_banner_settings_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
+    public function setTenantBannerSettingsAsyncWithHttpInfo($tenant_banner_settings_request_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TenantBannerSettingsWrapper';
-        $request = $this->setTenantBannerSettingsRequest($tenant_banner_settings_dto, $contentType);
+        $request = $this->setTenantBannerSettingsRequest($tenant_banner_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -374,13 +374,13 @@ class BannersVisibilityApi
     /**
      * Create request for operation 'setTenantBannerSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantBannerSettingsDto|null $tenant_banner_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantBannerSettingsRequestDto|null $tenant_banner_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantBannerSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTenantBannerSettingsRequest($tenant_banner_settings_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
+    public function setTenantBannerSettingsRequest($tenant_banner_settings_request_dto = null, string $contentType = self::contentTypes['setTenantBannerSettings'][0])
     {
 
 
@@ -403,12 +403,12 @@ class BannersVisibilityApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_banner_settings_dto)) {
+        if (isset($tenant_banner_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_banner_settings_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_banner_settings_request_dto));
             } else {
-                $httpBody = $tenant_banner_settings_dto;
+                $httpBody = $tenant_banner_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

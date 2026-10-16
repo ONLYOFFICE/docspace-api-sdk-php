@@ -4,14 +4,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeUserPassword()**](PeoplePasswordApi.md#changeUserPassword) | **PUT** /api/2.0/people/{userid}/password | Change a user password |
+| [**changeUserPassword()**](PeoplePasswordApi.md#changeUserPassword) | **PUT** /api/2.0/people/{userId}/password | Change a user password |
 | [**sendUserPassword()**](PeoplePasswordApi.md#sendUserPassword) | **POST** /api/2.0/people/password | Remind a user password |
 
 
 ## `changeUserPassword()`
 
 ```php
-changeUserPassword($userid, $change_password_request): \OpenAPI\Client\Model\EmployeeFullWrapper
+changeUserPassword($user_id, $change_password_request): \OpenAPI\Client\Model\EmployeeFullWrapper
 ```
 
 Change a user password
@@ -23,7 +23,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **userid** | **string**| The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. | |
+| **user_id** | **string**| The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. | |
 | **change_password_request** | [**\OpenAPI\Client\Model\ChangePasswordRequest**](../Model/ChangePasswordRequest.md)| The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. | |
 
 ### Return type
@@ -69,11 +69,11 @@ $apiInstance = new OpenAPI\Client\Api\PasswordApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 00000000-0000-0000-0000-000000000000; // string | The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active.
 $change_password_request = new \OpenAPI\Client\Model\ChangePasswordRequest(); // \OpenAPI\Client\Model\ChangePasswordRequest | The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed.
 
 try {
-    $result = $apiInstance->changeUserPassword($userid, $change_password_request);
+    $result = $apiInstance->changeUserPassword($user_id, $change_password_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PasswordApi->changeUserPassword: ', $e->getMessage(), PHP_EOL;
@@ -96,7 +96,7 @@ sendUserPassword($email_member_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Remind a user password
-Emails a password recovery link to an address, and is the entry point of the recovery flow rather than the  operation that changes anything.  It needs no authentication, which is how a person who cannot sign in uses it; when the portal has a CAPTCHA  configured, an unauthenticated request has to pass it and answers 403 if it does not.  An unauthenticated caller always gets the same success message, whether or not the address belongs to an  account, so the answer cannot be used to find out which addresses are registered.  An authenticated caller does get told: a failure is answered with 403, and asking for somebody else requires  DocSpace administrator rights, while the owner's password can be asked for by the owner alone and another  administrator's only by the owner.  The link that is sent leads to `PUT api/2.0/people/{userid}/password`, which is where the new password is  set; no password is ever sent by email despite the wording of the message.  Repeated calls are throttled.
+Emails a password recovery link to an address, and is the entry point of the recovery flow rather than the  operation that changes anything.  It needs no authentication, which is how a person who cannot sign in uses it; when the portal has a CAPTCHA  configured, an unauthenticated request has to pass it and answers 403 if it does not.  An unauthenticated caller always gets the same success message, whether or not the address belongs to an  account, so the answer cannot be used to find out which addresses are registered.  An authenticated caller does get told: a failure is answered with 403, and asking for somebody else requires  DocSpace administrator rights, while the owner's password can be asked for by the owner alone and another  administrator's only by the owner.  The link that is sent leads to `PUT api/2.0/people/{userId}/password`, which is where the new password is  set; no password is ever sent by email despite the wording of the message.  Repeated calls are throttled.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/send-user-password/).
 

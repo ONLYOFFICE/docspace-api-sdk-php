@@ -20,7 +20,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getAccountsEntriesWithFilesShared()`
 
 ```php
-getAccountsEntriesWithFilesShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\IAccountEntryArrayWrapper
+getAccountsEntriesWithFilesShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\AccountEntryArrayWrapper
 ```
 
 Search accounts for a file
@@ -39,7 +39,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. | [optional] |
@@ -48,7 +48,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\IAccountEntryArrayWrapper**](../Model/IAccountEntryArrayWrapper.md)
+[**\OpenAPI\Client\Model\AccountEntryArrayWrapper**](../Model/AccountEntryArrayWrapper.md)
 
 ### Third-party storage
 
@@ -100,7 +100,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set.
 $invited_by_me = false; // bool | Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = [RoomAdmin, Guest]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response.
@@ -127,7 +127,7 @@ try {
 ## `getAccountsEntriesWithFoldersShared()`
 
 ```php
-getAccountsEntriesWithFoldersShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\IAccountEntryArrayWrapper
+getAccountsEntriesWithFoldersShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\AccountEntryArrayWrapper
 ```
 
 Search accounts for a folder
@@ -146,7 +146,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. | [optional] |
@@ -155,7 +155,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\IAccountEntryArrayWrapper**](../Model/IAccountEntryArrayWrapper.md)
+[**\OpenAPI\Client\Model\AccountEntryArrayWrapper**](../Model/AccountEntryArrayWrapper.md)
 
 ### Third-party storage
 
@@ -207,7 +207,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set.
 $invited_by_me = false; // bool | Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = [RoomAdmin, Guest]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response.
@@ -234,7 +234,7 @@ try {
 ## `getAccountsEntriesWithRoomsShared()`
 
 ```php
-getAccountsEntriesWithRoomsShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\IAccountEntryArrayWrapper
+getAccountsEntriesWithRoomsShared($id, $employee_status, $activation_status, $exclude_shared, $include_shared, $invited_by_me, $inviter_id, $area, $employee_types, $count, $start_index, $filter_separator, $filter_value): \OpenAPI\Client\Model\AccountEntryArrayWrapper
 ```
 
 Search accounts for a room
@@ -253,7 +253,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response. | [optional] |
@@ -262,7 +262,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\IAccountEntryArrayWrapper**](../Model/IAccountEntryArrayWrapper.md)
+[**\OpenAPI\Client\Model\AccountEntryArrayWrapper**](../Model/AccountEntryArrayWrapper.md)
 
 ### Third-party storage
 
@@ -314,7 +314,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when  `excludeShared` is also set.
 $invited_by_me = false; // bool | Keeps only the users invited by the caller when true, and only the users invited by somebody else when false.  Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the users invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = ["RoomAdmin","Guest"]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the users of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page, counting groups and users together. It defaults to 100, which is also the largest value  the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts, counted over the groups and users together. It defaults  to 0, and the total number of matches is reported in the total count of the response.
@@ -449,7 +449,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **exclude_group** | **bool**| Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. | [optional] |
 | **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. | [optional] |
 | **sort_by** | **string**| What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. | [optional] |
@@ -513,7 +513,7 @@ $without_group = false; // bool | Set it to true to keep only the accounts that 
 $exclude_group = false; // bool | Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`.
 $invited_by_me = false; // bool | Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it.
 $count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response.
 $sort_by = DisplayName; // string | What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`.
@@ -560,7 +560,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. | [optional] |
@@ -621,7 +621,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set.
 $invited_by_me = false; // bool | Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = [RoomAdmin, Guest]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response.
@@ -667,7 +667,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. | [optional] |
@@ -728,7 +728,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set.
 $invited_by_me = false; // bool | Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = [RoomAdmin, Guest]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response.
@@ -774,7 +774,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **include_shared** | **bool**| Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to. | [optional] |
 | **employee_types** | [**\OpenAPI\Client\Model\EmployeeType[]**](../Model/\OpenAPI\Client\Model\EmployeeType.md)| Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type. | [optional] |
 | **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. | [optional] |
@@ -835,7 +835,7 @@ $exclude_shared = false; // bool | Keeps only the accounts that do not have acce
 $include_shared = false; // bool | Keeps only the accounts that already have access to the entry, which is the set to offer when changing or  revoking access. Every returned entry has `shared` set to true, and the flag is ignored when `excludeShared`  is also set.
 $invited_by_me = false; // bool | Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only - and for a caller who is not a DocSpace  administrator, only the guests that caller is related to.
 $employee_types = [RoomAdmin, Guest]; // \OpenAPI\Client\Model\EmployeeType[] | Keeps only the accounts of the listed types, combined as alternatives. An empty list, which is the default,  searches every type.
 $count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response.
@@ -887,7 +887,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **exclude_group** | **bool**| Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`. | [optional] |
 | **invited_by_me** | **bool**| Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation. | [optional] |
 | **inviter_id** | **string**| Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation. | [optional] |
-| **area** | [**\OpenAPI\Client\Model\Area**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. | [optional] |
+| **area** | [**\OpenAPI\Client\Model\AccountSearchArea**](../Model/.md)| The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it. | [optional] |
 | **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
 | **start_index** | **int**| The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response. | [optional] |
 | **sort_by** | **string**| What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`. | [optional] |
@@ -951,7 +951,7 @@ $without_group = false; // bool | Set it to true to keep only the accounts that 
 $exclude_group = false; // bool | Inverts `groupId`: with true the members of that group are left out instead of being the only ones kept. It  has no effect without `groupId`.
 $invited_by_me = false; // bool | Keeps only the accounts invited by the caller when true, and only those invited by somebody else when  false. Omit it to search regardless of who sent the invitation.
 $inviter_id = 00000000-0000-0000-0000-000000000000; // string | Keeps only the accounts invited by the account with this ID. Omit it to search regardless of who sent the  invitation.
-$area = All; // \OpenAPI\Client\Model\Area | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it.
+$area = All; // \OpenAPI\Client\Model\AccountSearchArea | The part of the portal to search in: `All`, the default, searches members and guests together, `People`  leaves the guests out, and `Guests` returns guests only. It also cancels the type filters that contradict  it.
 $count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
 $start_index = 0; // int | The number of matches to skip before the page starts. It defaults to 0, and the total number of matches is  reported in the total count of the response.
 $sort_by = DisplayName; // string | What to order the accounts by, compared without regard to case: `FirstName`, `LastName`, `DisplayName`,  `Type`, `Email`, `Department`, `UsedSpace`, `CreatedBy` or `RegistrationDate`.

@@ -49,7 +49,7 @@ class AiThreadsRenameRequest implements ModelInterface, ArrayAccess, \JsonSerial
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsRename_request';
+    protected static $openAPIModelName = 'AiThreadsRenameRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

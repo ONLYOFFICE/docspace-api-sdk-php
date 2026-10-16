@@ -75,7 +75,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_ami' => 'bool',
         'base_domain' => 'string',
         'wizard_token' => 'string',
-        'password_hash' => '\OpenAPI\Client\Model\PasswordHasher',
+        'password_hash' => '\OpenAPI\Client\Model\PasswordHashSettingsDto',
         'firebase' => '\OpenAPI\Client\Model\FirebaseDto',
         'version' => 'string',
         'recaptcha_type' => '\OpenAPI\Client\Model\RecaptchaType',
@@ -85,7 +85,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'tenant_status' => '\OpenAPI\Client\Model\TenantStatus',
         'tenant_alias' => 'string',
         'display_about' => 'bool',
-        'domain_validator' => '\OpenAPI\Client\Model\TenantDomainValidator',
+        'domain_validator' => '\OpenAPI\Client\Model\DomainNameRulesDto',
         'zendesk_key' => 'string',
         'tag_manager_id' => 'string',
         'cookie_settings_enabled' => 'bool',
@@ -101,7 +101,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'form_gallery' => '\OpenAPI\Client\Model\FormGalleryDto',
         'max_image_upload_size' => 'int',
         'logo_text' => 'string',
-        'external_resources' => '\OpenAPI\Client\Model\CultureSpecificExternalResources',
+        'external_resources' => '\OpenAPI\Client\Model\ExternalResourcesDto',
         'default_folder_type' => '\OpenAPI\Client\Model\FolderType',
         'external_db_enabled' => 'bool'
     ];
@@ -1149,7 +1149,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets password_hash
      *
-     * @return \OpenAPI\Client\Model\PasswordHasher|null
+     * @return \OpenAPI\Client\Model\PasswordHashSettingsDto|null
      */
     public function getPasswordHash()
     {
@@ -1159,7 +1159,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password_hash
      *
-     * @param \OpenAPI\Client\Model\PasswordHasher|null $password_hash The parameters for hashing a password in the client before it is sent - the salt, the iteration count and  the hash size. It is filled in for an anonymous caller and, for a signed-in one, only when  `withPassword=true` is asked for. Hash with exactly these parameters and send the result as  `passwordHash`, since the portal cannot reproduce the hash from a different set.
+     * @param \OpenAPI\Client\Model\PasswordHashSettingsDto|null $password_hash The parameters for hashing a password in the client before it is sent - the salt, the iteration count and  the hash size. It is filled in for an anonymous caller and, for a signed-in one, only when  `withPassword=true` is asked for. Hash with exactly these parameters and send the result as  `passwordHash`, since the portal cannot reproduce the hash from a different set.
      *
      * @return self
      */
@@ -1369,7 +1369,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_status
      *
-     * @param \OpenAPI\Client\Model\TenantStatus|null $tenant_status The lifecycle state of the portal. Anything other than active means most operations are refused for the  moment, because the portal is being transferred, restored, encrypted or removed.
+     * @param \OpenAPI\Client\Model\TenantStatus|null $tenant_status The lifecycle state of the portal. Anything other than active means most operations are refused: the  portal is being transferred, restored, encrypted or removed, its owner has deactivated it, or the  retention policy has blocked it after a long period without use.
      *
      * @return self
      */
@@ -1447,7 +1447,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domain_validator
      *
-     * @return \OpenAPI\Client\Model\TenantDomainValidator|null
+     * @return \OpenAPI\Client\Model\DomainNameRulesDto|null
      */
     public function getDomainValidator()
     {
@@ -1457,7 +1457,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_validator
      *
-     * @param \OpenAPI\Client\Model\TenantDomainValidator|null $domain_validator The rules a portal name is checked against - its length limits and the pattern it has to match - so a  client can validate a rename before sending it. Filled in for a signed-in caller only.
+     * @param \OpenAPI\Client\Model\DomainNameRulesDto|null $domain_validator The rules a portal name is checked against - its length limits and the pattern it has to match - so a  client can validate a rename before sending it. Filled in for a signed-in caller only.
      *
      * @return self
      */
@@ -1921,7 +1921,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets external_resources
      *
-     * @return \OpenAPI\Client\Model\CultureSpecificExternalResources|null
+     * @return \OpenAPI\Client\Model\ExternalResourcesDto|null
      */
     public function getExternalResources()
     {
@@ -1931,7 +1931,7 @@ class SettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets external_resources
      *
-     * @param \OpenAPI\Client\Model\CultureSpecificExternalResources|null $external_resources The addresses of the vendor's help, support, forum and video resources, already picked for the portal  language. An entry is missing when the installation configures no address for it or the resource is  switched off, which `GET api/2.0/settings/rebranding/additional` reports flag by flag.
+     * @param \OpenAPI\Client\Model\ExternalResourcesDto|null $external_resources The addresses of the vendor's help, support, forum and video resources, already picked for the portal  language. An entry is missing when the installation configures no address for it or the resource is  switched off, which `GET api/2.0/settings/rebranding/additional` reports flag by flag.
      *
      * @return self
      */

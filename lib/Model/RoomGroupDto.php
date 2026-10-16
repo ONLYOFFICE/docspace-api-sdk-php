@@ -60,7 +60,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
-        'icon' => '\OpenAPI\Client\Model\MultiSizeLogoCover',
+        'icon' => '\OpenAPI\Client\Model\MultiSizeLogoCoverDto',
         'user_id' => 'string',
         'search_area' => '\OpenAPI\Client\Model\SearchArea',
         'rooms' => '\OpenAPI\Client\Model\FileEntryBaseDto[]',
@@ -396,7 +396,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets icon
      *
-     * @return \OpenAPI\Client\Model\MultiSizeLogoCover|null
+     * @return \OpenAPI\Client\Model\MultiSizeLogoCoverDto|null
      */
     public function getIcon()
     {
@@ -406,7 +406,7 @@ class RoomGroupDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets icon
      *
-     * @param \OpenAPI\Client\Model\MultiSizeLogoCover|null $icon The built-in cover chosen for the group, carrying the cover identifier and its rendering in each available  size. Null when the group has no icon, either because it was never given one or because the icon was cleared  by setting it to an empty value.
+     * @param \OpenAPI\Client\Model\MultiSizeLogoCoverDto|null $icon The built-in cover chosen for the group, carrying the cover identifier and its rendering in each available  size. Null when the group has no icon, either because it was never given one or because the icon was cleared  by setting it to an empty value.
      *
      * @return self
      */

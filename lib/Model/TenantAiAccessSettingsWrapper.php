@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantAiAccessSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantAiAccessSettings object.
+ * @description The successful API response containing the TenantAiAccessSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantAiAccessSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantAiAccessSettings',
+        'response' => '\OpenAPI\Client\Model\TenantAiAccessSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantAiAccessSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantAiAccessSettings|null
+     * @return \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantAiAccessSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantAiAccessSettings|null $response The TenantAiAccessSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $response The TenantAiAccessSettingsDto object returned by the operation.
      *
      * @return self
      */

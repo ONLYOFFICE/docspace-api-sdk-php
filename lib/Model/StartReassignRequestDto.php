@@ -377,7 +377,7 @@ class StartReassignRequestDto implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets delete_profile
      *
-     * @param bool|null $delete_profile Specifies whether to delete the source profile once the transfer succeeds. When false, which is the default,  the emptied profile is kept and can be deleted later through `DELETE api/2.0/people/{userid}`.
+     * @param bool|null $delete_profile Specifies whether to delete the source profile once the transfer succeeds. When false, which is the default,  the emptied profile is kept and can be deleted later through `DELETE api/2.0/people/{userId}`.
      *
      * @return self
      */

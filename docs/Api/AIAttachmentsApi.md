@@ -17,7 +17,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `aiAttachmentsDelete()`
 
 ```php
-aiAttachmentsDelete($body): \OpenAPI\Client\Model\AiSuccessResponse
+aiAttachmentsDelete($ai_attachments_delete_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete one attachment
@@ -29,7 +29,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**| The ID of the attachment to delete, as a bare JSON string. | |
+| **ai_attachments_delete_request** | **string**| The ID of the attachment to delete, as a bare JSON string. | |
 
 ### Return type
 
@@ -60,10 +60,10 @@ $apiInstance = new OpenAPI\Client\Api\AttachmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string | The ID of the attachment to delete, as a bare JSON string.
+$ai_attachments_delete_request = 'ai_attachments_delete_request_example'; // string | The ID of the attachment to delete, as a bare JSON string.
 
 try {
-    $result = $apiInstance->aiAttachmentsDelete($body);
+    $result = $apiInstance->aiAttachmentsDelete($ai_attachments_delete_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentsApi->aiAttachmentsDelete: ', $e->getMessage(), PHP_EOL;
@@ -82,7 +82,7 @@ try {
 ## `aiAttachmentsDeleteMany()`
 
 ```php
-aiAttachmentsDeleteMany($request_body): \OpenAPI\Client\Model\AiSuccessResponse
+aiAttachmentsDeleteMany($ai_attachments_delete_many_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Delete many
@@ -94,7 +94,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**string[]**](../Model/string.md)| The IDs of the attachments to delete, as a bare JSON array of strings. | |
+| **ai_attachments_delete_many_request** | [**string[]**](../Model/string.md)| The IDs of the attachments to delete, as a bare JSON array of strings. | |
 
 ### Return type
 
@@ -125,10 +125,10 @@ $apiInstance = new OpenAPI\Client\Api\AttachmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = array('request_body_example'); // string[] | The IDs of the attachments to delete, as a bare JSON array of strings.
+$ai_attachments_delete_many_request = array('ai_attachments_delete_many_request_example'); // string[] | The IDs of the attachments to delete, as a bare JSON array of strings.
 
 try {
-    $result = $apiInstance->aiAttachmentsDeleteMany($request_body);
+    $result = $apiInstance->aiAttachmentsDeleteMany($ai_attachments_delete_many_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentsApi->aiAttachmentsDeleteMany: ', $e->getMessage(), PHP_EOL;
@@ -147,7 +147,7 @@ try {
 ## `aiAttachmentsGet()`
 
 ```php
-aiAttachmentsGet($body): \OpenAPI\Client\Model\AiAttachment
+aiAttachmentsGet($ai_attachments_get_request): \OpenAPI\Client\Model\AiAttachment
 ```
 
 Get one attachment
@@ -159,7 +159,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**| The ID of the attachment to read, as a bare JSON string. | |
+| **ai_attachments_get_request** | **string**| The ID of the attachment to read, as a bare JSON string. | |
 
 ### Return type
 
@@ -190,10 +190,10 @@ $apiInstance = new OpenAPI\Client\Api\AttachmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string | The ID of the attachment to read, as a bare JSON string.
+$ai_attachments_get_request = 'ai_attachments_get_request_example'; // string | The ID of the attachment to read, as a bare JSON string.
 
 try {
-    $result = $apiInstance->aiAttachmentsGet($body);
+    $result = $apiInstance->aiAttachmentsGet($ai_attachments_get_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentsApi->aiAttachmentsGet: ', $e->getMessage(), PHP_EOL;
@@ -212,7 +212,7 @@ try {
 ## `aiAttachmentsGetMany()`
 
 ```php
-aiAttachmentsGetMany($request_body): \OpenAPIClientModelAiAttachment[]
+aiAttachmentsGetMany($ai_attachments_get_many_request): \OpenAPIClientModelAiAttachment[]
 ```
 
 Get many
@@ -224,7 +224,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**string[]**](../Model/string.md)| The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. | |
+| **ai_attachments_get_many_request** | [**string[]**](../Model/string.md)| The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. | |
 
 ### Return type
 
@@ -255,10 +255,10 @@ $apiInstance = new OpenAPI\Client\Api\AttachmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = array('request_body_example'); // string[] | The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position.
+$ai_attachments_get_many_request = array('ai_attachments_get_many_request_example'); // string[] | The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position.
 
 try {
-    $result = $apiInstance->aiAttachmentsGetMany($request_body);
+    $result = $apiInstance->aiAttachmentsGetMany($ai_attachments_get_many_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentsApi->aiAttachmentsGetMany: ', $e->getMessage(), PHP_EOL;
@@ -277,7 +277,7 @@ try {
 ## `aiAttachmentsGetSuggestedQuestions()`
 
 ```php
-aiAttachmentsGetSuggestedQuestions($request_body): \OpenAPI\Client\Model\AiSuccessResponse
+aiAttachmentsGetSuggestedQuestions($ai_attachments_get_suggested_questions_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Get suggested questions
@@ -288,7 +288,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | |
+| **ai_attachments_get_suggested_questions_request** | [**array<string,mixed>**](../Model/mixed.md)|  | |
 
 ### Return type
 
@@ -319,10 +319,10 @@ $apiInstance = new OpenAPI\Client\Api\AttachmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = NULL; // array<string,mixed>
+$ai_attachments_get_suggested_questions_request = NULL; // array<string,mixed>
 
 try {
-    $result = $apiInstance->aiAttachmentsGetSuggestedQuestions($request_body);
+    $result = $apiInstance->aiAttachmentsGetSuggestedQuestions($ai_attachments_get_suggested_questions_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AttachmentsApi->aiAttachmentsGetSuggestedQuestions: ', $e->getMessage(), PHP_EOL;

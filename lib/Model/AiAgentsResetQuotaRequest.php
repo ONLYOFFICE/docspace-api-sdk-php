@@ -49,7 +49,7 @@ class AiAgentsResetQuotaRequest implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAgentsResetQuota_request';
+    protected static $openAPIModelName = 'AiAgentsResetQuotaRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

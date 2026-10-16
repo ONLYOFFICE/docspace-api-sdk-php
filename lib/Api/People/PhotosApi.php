@@ -147,7 +147,7 @@ class PhotosApi
      * REST API Reference for createMemberPhotoThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-member-photo-thumbnails/
      *
-     * @param  string $userid The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\ThumbnailsRequest $thumbnails_request The crop rectangle, and optionally the temporary image to crop. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMemberPhotoThumbnails'] to see the possible values for this operation
      *
@@ -155,9 +155,9 @@ class PhotosApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createMemberPhotoThumbnails($userid, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
+    public function createMemberPhotoThumbnails($user_id, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
     {
-        list($response) = $this->createMemberPhotoThumbnailsWithHttpInfo($userid, $thumbnails_request, $contentType);
+        list($response) = $this->createMemberPhotoThumbnailsWithHttpInfo($user_id, $thumbnails_request, $contentType);
         return $response;
     }
 
@@ -169,7 +169,7 @@ class PhotosApi
      * REST API Reference for createMemberPhotoThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-member-photo-thumbnails/
      *
-     * @param  string $userid The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\ThumbnailsRequest $thumbnails_request The crop rectangle, and optionally the temporary image to crop. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMemberPhotoThumbnails'] to see the possible values for this operation
      *
@@ -177,9 +177,9 @@ class PhotosApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createMemberPhotoThumbnailsWithHttpInfo($userid, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
+    public function createMemberPhotoThumbnailsWithHttpInfo($user_id, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
     {
-        $request = $this->createMemberPhotoThumbnailsRequest($userid, $thumbnails_request, $contentType);
+        $request = $this->createMemberPhotoThumbnailsRequest($user_id, $thumbnails_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -314,16 +314,16 @@ class PhotosApi
      * REST API Reference for createMemberPhotoThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-member-photo-thumbnails/
      *
-     * @param  string $userid The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\ThumbnailsRequest $thumbnails_request The crop rectangle, and optionally the temporary image to crop. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMemberPhotoThumbnails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createMemberPhotoThumbnailsAsync($userid, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
+    public function createMemberPhotoThumbnailsAsync($user_id, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
     {
-        return $this->createMemberPhotoThumbnailsAsyncWithHttpInfo($userid, $thumbnails_request, $contentType)
+        return $this->createMemberPhotoThumbnailsAsyncWithHttpInfo($user_id, $thumbnails_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -339,17 +339,17 @@ class PhotosApi
      * REST API Reference for createMemberPhotoThumbnails Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-member-photo-thumbnails/
      *
-     * @param  string $userid The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\ThumbnailsRequest $thumbnails_request The crop rectangle, and optionally the temporary image to crop. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMemberPhotoThumbnails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createMemberPhotoThumbnailsAsyncWithHttpInfo($userid, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
+    public function createMemberPhotoThumbnailsAsyncWithHttpInfo($user_id, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ThumbnailsDataWrapper';
-        $request = $this->createMemberPhotoThumbnailsRequest($userid, $thumbnails_request, $contentType);
+        $request = $this->createMemberPhotoThumbnailsRequest($user_id, $thumbnails_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -390,20 +390,20 @@ class PhotosApi
     /**
      * Create request for operation 'createMemberPhotoThumbnails'
      *
-     * @param  string $userid The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is cropped, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\ThumbnailsRequest $thumbnails_request The crop rectangle, and optionally the temporary image to crop. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createMemberPhotoThumbnails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createMemberPhotoThumbnailsRequest($userid, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
+    public function createMemberPhotoThumbnailsRequest($user_id, $thumbnails_request, string $contentType = self::contentTypes['createMemberPhotoThumbnails'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling createMemberPhotoThumbnails'
+                'Missing the required parameter $user_id when calling createMemberPhotoThumbnails'
             );
         }
 
@@ -415,7 +415,7 @@ class PhotosApi
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/photo/thumbnails';
+        $resourcePath = '/api/2.0/people/{userId}/photo/thumbnails';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -425,10 +425,10 @@ class PhotosApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -524,16 +524,16 @@ class PhotosApi
      * REST API Reference for deleteMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function deleteMemberPhoto($userid, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
+    public function deleteMemberPhoto($user_id, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
     {
-        list($response) = $this->deleteMemberPhotoWithHttpInfo($userid, $contentType);
+        list($response) = $this->deleteMemberPhotoWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -545,16 +545,16 @@ class PhotosApi
      * REST API Reference for deleteMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteMemberPhotoWithHttpInfo($userid, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
+    public function deleteMemberPhotoWithHttpInfo($user_id, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
     {
-        $request = $this->deleteMemberPhotoRequest($userid, $contentType);
+        $request = $this->deleteMemberPhotoRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -689,15 +689,15 @@ class PhotosApi
      * REST API Reference for deleteMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMemberPhotoAsync($userid, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
+    public function deleteMemberPhotoAsync($user_id, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
     {
-        return $this->deleteMemberPhotoAsyncWithHttpInfo($userid, $contentType)
+        return $this->deleteMemberPhotoAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -713,16 +713,16 @@ class PhotosApi
      * REST API Reference for deleteMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMemberPhotoAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
+    public function deleteMemberPhotoAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ThumbnailsDataWrapper';
-        $request = $this->deleteMemberPhotoRequest($userid, $contentType);
+        $request = $this->deleteMemberPhotoRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -763,24 +763,24 @@ class PhotosApi
     /**
      * Create request for operation 'deleteMemberPhoto'
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteMemberPhotoRequest($userid, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
+    public function deleteMemberPhotoRequest($user_id, string $contentType = self::contentTypes['deleteMemberPhoto'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling deleteMemberPhoto'
+                'Missing the required parameter $user_id when calling deleteMemberPhoto'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/photo';
+        $resourcePath = '/api/2.0/people/{userId}/photo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -790,10 +790,10 @@ class PhotosApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -882,16 +882,16 @@ class PhotosApi
      * REST API Reference for getMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getMemberPhoto($userid, string $contentType = self::contentTypes['getMemberPhoto'][0])
+    public function getMemberPhoto($user_id, string $contentType = self::contentTypes['getMemberPhoto'][0])
     {
-        list($response) = $this->getMemberPhotoWithHttpInfo($userid, $contentType);
+        list($response) = $this->getMemberPhotoWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -903,16 +903,16 @@ class PhotosApi
      * REST API Reference for getMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMemberPhotoWithHttpInfo($userid, string $contentType = self::contentTypes['getMemberPhoto'][0])
+    public function getMemberPhotoWithHttpInfo($user_id, string $contentType = self::contentTypes['getMemberPhoto'][0])
     {
-        $request = $this->getMemberPhotoRequest($userid, $contentType);
+        $request = $this->getMemberPhotoRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1047,15 +1047,15 @@ class PhotosApi
      * REST API Reference for getMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMemberPhotoAsync($userid, string $contentType = self::contentTypes['getMemberPhoto'][0])
+    public function getMemberPhotoAsync($user_id, string $contentType = self::contentTypes['getMemberPhoto'][0])
     {
-        return $this->getMemberPhotoAsyncWithHttpInfo($userid, $contentType)
+        return $this->getMemberPhotoAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1071,16 +1071,16 @@ class PhotosApi
      * REST API Reference for getMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-member-photo/
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMemberPhotoAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getMemberPhoto'][0])
+    public function getMemberPhotoAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getMemberPhoto'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ThumbnailsDataWrapper';
-        $request = $this->getMemberPhotoRequest($userid, $contentType);
+        $request = $this->getMemberPhotoRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1121,24 +1121,24 @@ class PhotosApi
     /**
      * Create request for operation 'getMemberPhoto'
      *
-     * @param  string $userid The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
+     * @param  string $user_id The profile whose avatar the operation addresses, taken from the route. Either the ID of the account or its  user name is accepted. Reading a photo works for any account the caller may see, while deleting one only  works for the calling account itself. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMemberPhotoRequest($userid, string $contentType = self::contentTypes['getMemberPhoto'][0])
+    public function getMemberPhotoRequest($user_id, string $contentType = self::contentTypes['getMemberPhoto'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getMemberPhoto'
+                'Missing the required parameter $user_id when calling getMemberPhoto'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/photo';
+        $resourcePath = '/api/2.0/people/{userId}/photo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1148,10 +1148,10 @@ class PhotosApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -1240,17 +1240,17 @@ class PhotosApi
      * REST API Reference for updateMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-photo/
      *
-     * @param  string $userid The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\UpdatePhotoMemberRequest $update_photo_member_request The address of the image to use as the new avatar. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateMemberPhoto($userid, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
+    public function updateMemberPhoto($user_id, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
     {
-        list($response) = $this->updateMemberPhotoWithHttpInfo($userid, $update_photo_member_request, $contentType);
+        list($response) = $this->updateMemberPhotoWithHttpInfo($user_id, $update_photo_member_request, $contentType);
         return $response;
     }
 
@@ -1262,17 +1262,17 @@ class PhotosApi
      * REST API Reference for updateMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-photo/
      *
-     * @param  string $userid The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\UpdatePhotoMemberRequest $update_photo_member_request The address of the image to use as the new avatar. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ThumbnailsDataWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateMemberPhotoWithHttpInfo($userid, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
+    public function updateMemberPhotoWithHttpInfo($user_id, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
     {
-        $request = $this->updateMemberPhotoRequest($userid, $update_photo_member_request, $contentType);
+        $request = $this->updateMemberPhotoRequest($user_id, $update_photo_member_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1311,12 +1311,6 @@ class PhotosApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1370,14 +1364,6 @@ class PhotosApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1393,16 +1379,16 @@ class PhotosApi
      * REST API Reference for updateMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-photo/
      *
-     * @param  string $userid The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\UpdatePhotoMemberRequest $update_photo_member_request The address of the image to use as the new avatar. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberPhotoAsync($userid, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
+    public function updateMemberPhotoAsync($user_id, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
     {
-        return $this->updateMemberPhotoAsyncWithHttpInfo($userid, $update_photo_member_request, $contentType)
+        return $this->updateMemberPhotoAsyncWithHttpInfo($user_id, $update_photo_member_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1418,17 +1404,17 @@ class PhotosApi
      * REST API Reference for updateMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-photo/
      *
-     * @param  string $userid The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\UpdatePhotoMemberRequest $update_photo_member_request The address of the image to use as the new avatar. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberPhotoAsyncWithHttpInfo($userid, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
+    public function updateMemberPhotoAsyncWithHttpInfo($user_id, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ThumbnailsDataWrapper';
-        $request = $this->updateMemberPhotoRequest($userid, $update_photo_member_request, $contentType);
+        $request = $this->updateMemberPhotoRequest($user_id, $update_photo_member_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1469,20 +1455,20 @@ class PhotosApi
     /**
      * Create request for operation 'updateMemberPhoto'
      *
-     * @param  string $userid The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is replaced, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \OpenAPI\Client\Model\UpdatePhotoMemberRequest $update_photo_member_request The address of the image to use as the new avatar. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateMemberPhotoRequest($userid, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
+    public function updateMemberPhotoRequest($user_id, $update_photo_member_request, string $contentType = self::contentTypes['updateMemberPhoto'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling updateMemberPhoto'
+                'Missing the required parameter $user_id when calling updateMemberPhoto'
             );
         }
 
@@ -1494,7 +1480,7 @@ class PhotosApi
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/photo';
+        $resourcePath = '/api/2.0/people/{userId}/photo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1504,10 +1490,10 @@ class PhotosApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -1603,18 +1589,18 @@ class PhotosApi
      * REST API Reference for uploadMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-member-photo/
      *
-     * @param  string $userid The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \SplFileObject $file The image itself, sent as a multipart form field. It has to be a raster format the portal can read and stay  within the portal limit on image size; sending no file makes the operation answer with `success` false rather  than an error status. (required)
-     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userid}/photo/thumbnails` to take effect. (optional)
+     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userId}/photo/thumbnails` to take effect. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FileUploadResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function uploadMemberPhoto($userid, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
+    public function uploadMemberPhoto($user_id, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
     {
-        list($response) = $this->uploadMemberPhotoWithHttpInfo($userid, $file, $autosave, $contentType);
+        list($response) = $this->uploadMemberPhotoWithHttpInfo($user_id, $file, $autosave, $contentType);
         return $response;
     }
 
@@ -1626,18 +1612,18 @@ class PhotosApi
      * REST API Reference for uploadMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-member-photo/
      *
-     * @param  string $userid The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \SplFileObject $file The image itself, sent as a multipart form field. It has to be a raster format the portal can read and stay  within the portal limit on image size; sending no file makes the operation answer with `success` false rather  than an error status. (required)
-     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userid}/photo/thumbnails` to take effect. (optional)
+     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userId}/photo/thumbnails` to take effect. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMemberPhoto'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FileUploadResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadMemberPhotoWithHttpInfo($userid, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
+    public function uploadMemberPhotoWithHttpInfo($user_id, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
     {
-        $request = $this->uploadMemberPhotoRequest($userid, $file, $autosave, $contentType);
+        $request = $this->uploadMemberPhotoRequest($user_id, $file, $autosave, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1772,17 +1758,17 @@ class PhotosApi
      * REST API Reference for uploadMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-member-photo/
      *
-     * @param  string $userid The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \SplFileObject $file The image itself, sent as a multipart form field. It has to be a raster format the portal can read and stay  within the portal limit on image size; sending no file makes the operation answer with `success` false rather  than an error status. (required)
-     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userid}/photo/thumbnails` to take effect. (optional)
+     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userId}/photo/thumbnails` to take effect. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadMemberPhotoAsync($userid, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
+    public function uploadMemberPhotoAsync($user_id, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
     {
-        return $this->uploadMemberPhotoAsyncWithHttpInfo($userid, $file, $autosave, $contentType)
+        return $this->uploadMemberPhotoAsyncWithHttpInfo($user_id, $file, $autosave, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1798,18 +1784,18 @@ class PhotosApi
      * REST API Reference for uploadMemberPhoto Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/upload-member-photo/
      *
-     * @param  string $userid The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \SplFileObject $file The image itself, sent as a multipart form field. It has to be a raster format the portal can read and stay  within the portal limit on image size; sending no file makes the operation answer with `success` false rather  than an error status. (required)
-     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userid}/photo/thumbnails` to take effect. (optional)
+     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userId}/photo/thumbnails` to take effect. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadMemberPhotoAsyncWithHttpInfo($userid, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
+    public function uploadMemberPhotoAsyncWithHttpInfo($user_id, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileUploadResultWrapper';
-        $request = $this->uploadMemberPhotoRequest($userid, $file, $autosave, $contentType);
+        $request = $this->uploadMemberPhotoRequest($user_id, $file, $autosave, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1850,21 +1836,21 @@ class PhotosApi
     /**
      * Create request for operation 'uploadMemberPhoto'
      *
-     * @param  string $userid The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
+     * @param  string $user_id The profile whose avatar is uploaded, taken from the route. Either the ID of the account or its user name is  accepted, and it has to be the calling account, because a profile photo can only be changed by its owner. (required)
      * @param  \SplFileObject $file The image itself, sent as a multipart form field. It has to be a raster format the portal can read and stay  within the portal limit on image size; sending no file makes the operation answer with `success` false rather  than an error status. (required)
-     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userid}/photo/thumbnails` to take effect. (optional)
+     * @param  bool|null $autosave Set it to true to make the uploaded image the avatar right away. With the default false the image is only  stored as a temporary file whose name comes back in `data`, and it has to be passed to  `POST api/2.0/people/{userId}/photo/thumbnails` to take effect. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMemberPhoto'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadMemberPhotoRequest($userid, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
+    public function uploadMemberPhotoRequest($user_id, $file, $autosave = null, string $contentType = self::contentTypes['uploadMemberPhoto'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling uploadMemberPhoto'
+                'Missing the required parameter $user_id when calling uploadMemberPhoto'
             );
         }
 
@@ -1877,7 +1863,7 @@ class PhotosApi
 
 
 
-        $resourcePath = '/api/2.0/people/{userid}/photo';
+        $resourcePath = '/api/2.0/people/{userId}/photo';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1887,10 +1873,10 @@ class PhotosApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }

@@ -94,6 +94,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'bool',
         'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
         'is_link_expired' => 'bool',
+        'assigned_metadata_templates' => 'int[]',
+        'metadata_matches' => '\OpenAPI\Client\Model\MetadataMatchDto[]',
         'parent_id' => 'int',
         'files_count' => 'int',
         'folders_count' => 'int',
@@ -101,7 +103,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'new' => 'int',
         'mute' => 'bool',
         'tags' => 'string[]',
-        'logo' => '\OpenAPI\Client\Model\Logo',
+        'logo' => '\OpenAPI\Client\Model\LogoDto',
         'pinned' => 'bool',
         'room_type' => '\OpenAPI\Client\Model\RoomType',
         'private' => 'bool',
@@ -167,6 +169,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => null,
         'expiration_date' => null,
         'is_link_expired' => null,
+        'assigned_metadata_templates' => 'int32',
+        'metadata_matches' => null,
         'parent_id' => 'int32',
         'files_count' => 'int32',
         'folders_count' => 'int32',
@@ -238,6 +242,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => false,
         'expiration_date' => false,
         'is_link_expired' => false,
+        'assigned_metadata_templates' => false,
+        'metadata_matches' => false,
         'parent_id' => false,
         'files_count' => false,
         'folders_count' => false,
@@ -389,6 +395,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'external',
         'expiration_date' => 'expirationDate',
         'is_link_expired' => 'isLinkExpired',
+        'assigned_metadata_templates' => 'assignedMetadataTemplates',
+        'metadata_matches' => 'metadataMatches',
         'parent_id' => 'parentId',
         'files_count' => 'filesCount',
         'folders_count' => 'foldersCount',
@@ -460,6 +468,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'setExternal',
         'expiration_date' => 'setExpirationDate',
         'is_link_expired' => 'setIsLinkExpired',
+        'assigned_metadata_templates' => 'setAssignedMetadataTemplates',
+        'metadata_matches' => 'setMetadataMatches',
         'parent_id' => 'setParentId',
         'files_count' => 'setFilesCount',
         'folders_count' => 'setFoldersCount',
@@ -531,6 +541,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'external' => 'getExternal',
         'expiration_date' => 'getExpirationDate',
         'is_link_expired' => 'getIsLinkExpired',
+        'assigned_metadata_templates' => 'getAssignedMetadataTemplates',
+        'metadata_matches' => 'getMetadataMatches',
         'parent_id' => 'getParentId',
         'files_count' => 'getFilesCount',
         'folders_count' => 'getFoldersCount',
@@ -653,6 +665,8 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('external', $data ?? [], null);
         $this->setIfExists('expiration_date', $data ?? [], null);
         $this->setIfExists('is_link_expired', $data ?? [], null);
+        $this->setIfExists('assigned_metadata_templates', $data ?? [], null);
+        $this->setIfExists('metadata_matches', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('files_count', $data ?? [], null);
         $this->setIfExists('folders_count', $data ?? [], null);
@@ -1718,6 +1732,60 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets assigned_metadata_templates
+     *
+     * @return int[]|null
+     */
+    public function getAssignedMetadataTemplates()
+    {
+        return $this->container['assigned_metadata_templates'];
+    }
+
+    /**
+     * Sets assigned_metadata_templates
+     *
+     * @param int[]|null $assigned_metadata_templates The IDs of the metadata templates assigned to the file entry.
+     *
+     * @return self
+     */
+    public function setAssignedMetadataTemplates($assigned_metadata_templates)
+    {
+        if (is_null($assigned_metadata_templates)) {
+            throw new \InvalidArgumentException('non-nullable assigned_metadata_templates cannot be null');
+        }
+        $this->container['assigned_metadata_templates'] = $assigned_metadata_templates;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata_matches
+     *
+     * @return \OpenAPI\Client\Model\MetadataMatchDto[]|null
+     */
+    public function getMetadataMatches()
+    {
+        return $this->container['metadata_matches'];
+    }
+
+    /**
+     * Sets metadata_matches
+     *
+     * @param \OpenAPI\Client\Model\MetadataMatchDto[]|null $metadata_matches Where the search text of the listing was met in the metadata of the entry: one item per string value holding  the text, in the order of the fields. Present only in a listing filtered by text, and only for the entries whose  metadata contain it; an entry found by its title alone carries nothing here.
+     *
+     * @return self
+     */
+    public function setMetadataMatches($metadata_matches)
+    {
+        if (is_null($metadata_matches)) {
+            throw new \InvalidArgumentException('non-nullable metadata_matches cannot be null');
+        }
+        $this->container['metadata_matches'] = $metadata_matches;
+
+        return $this;
+    }
+
+    /**
      * Gets parent_id
      *
      * @return int|null
@@ -1757,7 +1825,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets files_count
      *
-     * @param int|null $files_count How many files lie directly in the folder, without counting the subfolders. The roots of the `Rooms`, room  templates and default templates sections always report 0, because the number is not collected for them.
+     * @param int|null $files_count How many files lie directly in the folder, without counting the subfolders. The roots of the `Rooms`, room  templates, default templates and AI agents sections always report 0, because the number is not collected for  them.
      *
      * @return self
      */
@@ -1784,7 +1852,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets folders_count
      *
-     * @param int|null $folders_count How many subfolders lie directly in the folder. For an AI room the two service subfolders it always holds are  subtracted, so the number matches what a listing of it shows, and the roots of the `Rooms` and templates  sections report 0.
+     * @param int|null $folders_count How many subfolders lie directly in the folder. For an AI room the two service subfolders it always holds are  subtracted, so the number matches what a listing of it shows, and the roots of the `Rooms`, templates and AI  agents sections report 0.
      *
      * @return self
      */
@@ -1923,7 +1991,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets logo
      *
-     * @return \OpenAPI\Client\Model\Logo|null
+     * @return \OpenAPI\Client\Model\LogoDto|null
      */
     public function getLogo()
     {
@@ -1933,7 +2001,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets logo
      *
-     * @param \OpenAPI\Client\Model\Logo|null $logo The addresses of the room logo in four sizes, together with the colour and the built-in cover that are drawn  when no logo was uploaded. A room without a logo answers with four empty addresses rather than with null, and  the field is null for a folder that is not a room.
+     * @param \OpenAPI\Client\Model\LogoDto|null $logo The addresses of the room logo in four sizes, together with the colour and the built-in cover that are drawn  when no logo was uploaded. A room without a logo answers with four empty addresses rather than with null, and  the field is null for a folder that is not a room.
      *
      * @return self
      */
@@ -2210,7 +2278,7 @@ class FolderDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quota_limit
      *
-     * @param int|null $quota_limit How much space the files of the room may take, in bytes. It is the limit set on this room, or the portal  default for rooms when none was set. Null when the tariff of the portal does not count room statistics, when  room quotas are switched off, when the room lies in the archive or the trash, or when the caller may only read  it.
+     * @param int|null $quota_limit How much space the files of the room may take, in bytes. It is the limit set on this room, or the portal  default for rooms when none was set. Null when the tariff of the portal does not count room statistics, when  room quotas are switched off, when the room lies in the archive or the trash, or when the role of the caller  in the room carries no editing rights - a viewer, a commenter, a reviewer and a form filler do not see the  figure, a room manager, a content creator and an editor do.
      *
      * @return self
      */

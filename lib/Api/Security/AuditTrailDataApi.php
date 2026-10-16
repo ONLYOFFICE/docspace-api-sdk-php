@@ -166,16 +166,18 @@ class AuditTrailDataApi
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createAuditTrailReport($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
+    public function createAuditTrailReport($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
-        list($response) = $this->createAuditTrailReportWithHttpInfo($format, $contentType);
+        list($response) = $this->createAuditTrailReportWithHttpInfo($format, $from, $to, $contentType);
         return $response;
     }
 
@@ -187,16 +189,18 @@ class AuditTrailDataApi
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocumentBuilderTaskWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAuditTrailReportWithHttpInfo($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
+    public function createAuditTrailReportWithHttpInfo($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
-        $request = $this->createAuditTrailReportRequest($format, $contentType);
+        $request = $this->createAuditTrailReportRequest($format, $from, $to, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -241,12 +245,6 @@ class AuditTrailDataApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -308,14 +306,6 @@ class AuditTrailDataApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -331,15 +321,17 @@ class AuditTrailDataApi
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuditTrailReportAsync($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
+    public function createAuditTrailReportAsync($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
-        return $this->createAuditTrailReportAsyncWithHttpInfo($format, $contentType)
+        return $this->createAuditTrailReportAsyncWithHttpInfo($format, $from, $to, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -355,16 +347,18 @@ class AuditTrailDataApi
      * REST API Reference for createAuditTrailReport Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-audit-trail-report/
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuditTrailReportAsyncWithHttpInfo($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
+    public function createAuditTrailReportAsyncWithHttpInfo($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
         $returnType = '\OpenAPI\Client\Model\DocumentBuilderTaskWrapper';
-        $request = $this->createAuditTrailReportRequest($format, $contentType);
+        $request = $this->createAuditTrailReportRequest($format, $from, $to, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -405,14 +399,18 @@ class AuditTrailDataApi
     /**
      * Create request for operation 'createAuditTrailReport'
      *
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in. The workbook format is the default and is the only one that leaves  the finished file addressable by ID: a report asked for as CSV comes back with an empty `resultFileId`, so it  can only be reached through `resultFileName` and `resultFileUrl`. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The format the report file is written in: a spreadsheet workbook, which is the default, or a comma-separated  text file. (optional)
+     * @param  \DateTime|null $from The earliest moment a reported event may have been recorded at, read as a UTC instant. (optional)
+     * @param  \DateTime|null $to The latest moment a reported event may have been recorded at, read as a UTC instant in the same way as `from`. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuditTrailReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAuditTrailReportRequest($format = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
+    public function createAuditTrailReportRequest($format = null, $from = null, $to = null, string $contentType = self::contentTypes['createAuditTrailReport'][0])
     {
+
+
 
 
 
@@ -428,6 +426,24 @@ class AuditTrailDataApi
             $format,
             'format', // param base name
             'AuditReportFormat', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -533,7 +549,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditEventsByFilter($user_id = null, $module_type = null, $action_type = null, $action = null, $entry_type = null, $target = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getAuditEventsByFilter'][0])
     {
@@ -563,7 +579,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditEventArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditEventsByFilterWithHttpInfo($user_id = null, $module_type = null, $action_type = null, $action = null, $entry_type = null, $target = null, $from = null, $to = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getAuditEventsByFilter'][0])
     {
@@ -612,12 +628,6 @@ class AuditTrailDataApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -672,14 +682,6 @@ class AuditTrailDataApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1019,7 +1021,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantAuditSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditSettings(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
@@ -1039,7 +1041,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditSettingsWithHttpInfo(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
@@ -1071,7 +1073,7 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -1111,7 +1113,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                 $request,
                 $response,
             );
@@ -1120,7 +1122,7 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1194,7 +1196,7 @@ class AuditTrailDataApi
      */
     public function getAuditSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAuditSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsWrapper';
         $request = $this->getAuditSettingsRequest($contentType);
 
         return $this->client
@@ -1345,7 +1347,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AuditTrailProductArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAuditTrailMappers($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1367,7 +1369,7 @@ class AuditTrailDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AuditTrailProductArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAuditTrailMappersWithHttpInfo($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
@@ -1399,7 +1401,7 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailProductArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1445,7 +1447,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
+                '\OpenAPI\Client\Model\AuditTrailProductArrayWrapper',
                 $request,
                 $response,
             );
@@ -1454,7 +1456,7 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper',
+                        '\OpenAPI\Client\Model\AuditTrailProductArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1540,7 +1542,7 @@ class AuditTrailDataApi
      */
     public function getAuditTrailMappersAsyncWithHttpInfo($product_type = null, $module_type = null, string $contentType = self::contentTypes['getAuditTrailMappers'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AuditTrailProductMapperArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\AuditTrailProductArrayWrapper';
         $request = $this->getAuditTrailMappersRequest($product_type, $module_type, $contentType);
 
         return $this->client
@@ -2679,16 +2681,16 @@ class AuditTrailDataApi
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAuditSettingsWrapper|null $tenant_audit_settings_wrapper tenant_audit_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantAuditSettingsRequestDto|null $tenant_audit_settings_request_dto tenant_audit_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAuditSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantAuditSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setAuditSettings($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
+    public function setAuditSettings($tenant_audit_settings_request_dto = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
-        list($response) = $this->setAuditSettingsWithHttpInfo($tenant_audit_settings_wrapper, $contentType);
+        list($response) = $this->setAuditSettingsWithHttpInfo($tenant_audit_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -2700,16 +2702,16 @@ class AuditTrailDataApi
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAuditSettingsWrapper|null $tenant_audit_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantAuditSettingsRequestDto|null $tenant_audit_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAuditSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantAuditSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setAuditSettingsWithHttpInfo($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
+    public function setAuditSettingsWithHttpInfo($tenant_audit_settings_request_dto = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
-        $request = $this->setAuditSettingsRequest($tenant_audit_settings_wrapper, $contentType);
+        $request = $this->setAuditSettingsRequest($tenant_audit_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2737,7 +2739,7 @@ class AuditTrailDataApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -2777,7 +2779,7 @@ class AuditTrailDataApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                 $request,
                 $response,
             );
@@ -2786,7 +2788,7 @@ class AuditTrailDataApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantAuditSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2830,15 +2832,15 @@ class AuditTrailDataApi
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAuditSettingsWrapper|null $tenant_audit_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantAuditSettingsRequestDto|null $tenant_audit_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAuditSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setAuditSettingsAsync($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
+    public function setAuditSettingsAsync($tenant_audit_settings_request_dto = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
-        return $this->setAuditSettingsAsyncWithHttpInfo($tenant_audit_settings_wrapper, $contentType)
+        return $this->setAuditSettingsAsyncWithHttpInfo($tenant_audit_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2854,16 +2856,16 @@ class AuditTrailDataApi
      * REST API Reference for setAuditSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-audit-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAuditSettingsWrapper|null $tenant_audit_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantAuditSettingsRequestDto|null $tenant_audit_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAuditSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setAuditSettingsAsyncWithHttpInfo($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
+    public function setAuditSettingsAsyncWithHttpInfo($tenant_audit_settings_request_dto = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsResponseWrapper';
-        $request = $this->setAuditSettingsRequest($tenant_audit_settings_wrapper, $contentType);
+        $returnType = '\OpenAPI\Client\Model\TenantAuditSettingsWrapper';
+        $request = $this->setAuditSettingsRequest($tenant_audit_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2904,13 +2906,13 @@ class AuditTrailDataApi
     /**
      * Create request for operation 'setAuditSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantAuditSettingsWrapper|null $tenant_audit_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantAuditSettingsRequestDto|null $tenant_audit_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setAuditSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setAuditSettingsRequest($tenant_audit_settings_wrapper = null, string $contentType = self::contentTypes['setAuditSettings'][0])
+    public function setAuditSettingsRequest($tenant_audit_settings_request_dto = null, string $contentType = self::contentTypes['setAuditSettings'][0])
     {
 
 
@@ -2933,12 +2935,12 @@ class AuditTrailDataApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_audit_settings_wrapper)) {
+        if (isset($tenant_audit_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_audit_settings_wrapper));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_audit_settings_request_dto));
             } else {
-                $httpBody = $tenant_audit_settings_wrapper;
+                $httpBody = $tenant_audit_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

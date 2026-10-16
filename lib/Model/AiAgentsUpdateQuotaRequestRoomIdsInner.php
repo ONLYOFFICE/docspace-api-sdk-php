@@ -50,7 +50,7 @@ class AiAgentsUpdateQuotaRequestRoomIdsInner implements ModelInterface, ArrayAcc
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAgentsUpdateQuota_request_roomIds_inner';
+    protected static $openAPIModelName = 'AiAgentsUpdateQuotaRequest_roomIds_inner';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

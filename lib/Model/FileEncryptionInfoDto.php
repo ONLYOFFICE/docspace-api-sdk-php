@@ -59,7 +59,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $openAPITypes = [
         'user_keys' => '\OpenAPI\Client\Model\EncryptionKeyDto[]',
-        'file_keys' => '\OpenAPI\Client\Model\FileKeys[]'
+        'file_keys' => '\OpenAPI\Client\Model\FileKeysDto[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets file_keys
      *
-     * @return \OpenAPI\Client\Model\FileKeys[]|null
+     * @return \OpenAPI\Client\Model\FileKeysDto[]|null
      */
     public function getFileKeys()
     {
@@ -344,7 +344,7 @@ class FileEncryptionInfoDto implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_keys
      *
-     * @param \OpenAPI\Client\Model\FileKeys[]|null $file_keys The keys of this file that were issued to the calling account, each naming the public key it was encrypted for  so that the client can pick the matching private half. An empty list means the file has not been shared with  this account rather than that the file is unencrypted.
+     * @param \OpenAPI\Client\Model\FileKeysDto[]|null $file_keys The keys of this file that were issued to the calling account, each naming the public key it was encrypted for  so that the client can pick the matching private half. An empty list means the file has not been shared with  this account rather than that the file is unencrypted.
      *
      * @return self
      */

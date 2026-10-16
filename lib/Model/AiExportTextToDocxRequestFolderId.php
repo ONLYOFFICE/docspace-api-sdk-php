@@ -50,7 +50,7 @@ class AiExportTextToDocxRequestFolderId implements ModelInterface, ArrayAccess, 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiExportTextToDocx_request_folderId';
+    protected static $openAPIModelName = 'AiExportTextToDocxRequest_folderId';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

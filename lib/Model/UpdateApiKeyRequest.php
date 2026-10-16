@@ -293,8 +293,12 @@ class UpdateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 30.";
         }
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 0)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['name']) && !preg_match("/[\\s\\S]*\\S[\\s\\S]*/", $this->container['name'])) {
+            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /[\\s\\S]*\\S[\\s\\S]*/.";
         }
 
         return $invalidProperties;
@@ -325,7 +329,7 @@ class UpdateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name The new label of the key, up to 30 characters. Omit it to keep the current name.
+     * @param string|null $name The new label of the key, up to 30 characters, neither empty nor made of whitespace only. Omit it to keep the  current name.
      *
      * @return self
      */
@@ -344,8 +348,11 @@ class UpdateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (!is_null($name) && (mb_strlen($name) > 30)) {
             throw new \InvalidArgumentException('invalid length for $name when calling UpdateApiKeyRequest., must be smaller than or equal to 30.');
         }
-        if (!is_null($name) && (mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateApiKeyRequest., must be bigger than or equal to 0.');
+        if (!is_null($name) && (mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateApiKeyRequest., must be bigger than or equal to 1.');
+        }
+        if (!is_null($name) && (!preg_match("/[\\s\\S]*\\S[\\s\\S]*/", ObjectSerializer::toString($name)))) {
+            throw new \InvalidArgumentException("invalid value for \$name when calling UpdateApiKeyRequest., must conform to the pattern /[\\s\\S]*\\S[\\s\\S]*/.");
         }
 
         $this->container['name'] = $name;

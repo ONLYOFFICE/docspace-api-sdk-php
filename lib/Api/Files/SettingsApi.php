@@ -924,16 +924,16 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
+     * @param  int[]|null $default_access_rights_request_dto The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareResponseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareResponseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function changeDefaultAccessRights($request_body = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
+    public function changeDefaultAccessRights($default_access_rights_request_dto = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
     {
-        list($response) = $this->changeDefaultAccessRightsWithHttpInfo($request_body, $contentType);
+        list($response) = $this->changeDefaultAccessRightsWithHttpInfo($default_access_rights_request_dto, $contentType);
         return $response;
     }
 
@@ -945,16 +945,16 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
+     * @param  int[]|null $default_access_rights_request_dto The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareResponseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareResponseArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeDefaultAccessRightsWithHttpInfo($request_body = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
+    public function changeDefaultAccessRightsWithHttpInfo($default_access_rights_request_dto = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
     {
-        $request = $this->changeDefaultAccessRightsRequest($request_body, $contentType);
+        $request = $this->changeDefaultAccessRightsRequest($default_access_rights_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -999,12 +999,6 @@ class SettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1066,14 +1060,6 @@ class SettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1089,15 +1075,15 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
+     * @param  int[]|null $default_access_rights_request_dto The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeDefaultAccessRightsAsync($request_body = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
+    public function changeDefaultAccessRightsAsync($default_access_rights_request_dto = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
     {
-        return $this->changeDefaultAccessRightsAsyncWithHttpInfo($request_body, $contentType)
+        return $this->changeDefaultAccessRightsAsyncWithHttpInfo($default_access_rights_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1113,16 +1099,16 @@ class SettingsApi
      * REST API Reference for changeDefaultAccessRights Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-default-access-rights/
      *
-     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
+     * @param  int[]|null $default_access_rights_request_dto The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeDefaultAccessRightsAsyncWithHttpInfo($request_body = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
+    public function changeDefaultAccessRightsAsyncWithHttpInfo($default_access_rights_request_dto = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileShareResponseArrayWrapper';
-        $request = $this->changeDefaultAccessRightsRequest($request_body, $contentType);
+        $request = $this->changeDefaultAccessRightsRequest($default_access_rights_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1163,13 +1149,13 @@ class SettingsApi
     /**
      * Create request for operation 'changeDefaultAccessRights'
      *
-     * @param  int[]|null $request_body The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
+     * @param  int[]|null $default_access_rights_request_dto The access rights the sharing dialog should offer by default. The array is the whole request body rather than  a field of an object, and the portal stores a normalised subset of it instead of the array as sent, so read  the answer to learn what was kept. An empty array clears the setting, after which the portal reports read  access alone. A value outside the published list is rejected as an invalid request. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDefaultAccessRights'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeDefaultAccessRightsRequest($request_body = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
+    public function changeDefaultAccessRightsRequest($default_access_rights_request_dto = null, string $contentType = self::contentTypes['changeDefaultAccessRights'][0])
     {
 
 
@@ -1192,12 +1178,12 @@ class SettingsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($default_access_rights_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($default_access_rights_request_dto));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $default_access_rights_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2333,7 +2319,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DocServiceUrlWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\DocServiceUrlWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function checkDocServiceUrl($check_doc_service_url_request_dto = null, string $contentType = self::contentTypes['checkDocServiceUrl'][0])
     {
@@ -2354,7 +2340,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DocServiceUrlWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DocServiceUrlWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkDocServiceUrlWithHttpInfo($check_doc_service_url_request_dto = null, string $contentType = self::contentTypes['checkDocServiceUrl'][0])
     {
@@ -2402,12 +2388,6 @@ class SettingsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -2449,14 +2429,6 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -7423,7 +7395,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function resetDefaultTemplate($default_template_settings_reset_request_dto = null, string $contentType = self::contentTypes['resetDefaultTemplate'][0])
     {
@@ -7444,7 +7416,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function resetDefaultTemplateWithHttpInfo($default_template_settings_reset_request_dto = null, string $contentType = self::contentTypes['resetDefaultTemplate'][0])
     {
@@ -7493,12 +7465,6 @@ class SettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -7553,14 +7519,6 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -7774,7 +7732,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setDefaultTemplate($default_template_settings_request_dto = null, string $contentType = self::contentTypes['setDefaultTemplate'][0])
     {
@@ -7795,7 +7753,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DefaultTemplateSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setDefaultTemplateWithHttpInfo($default_template_settings_request_dto = null, string $contentType = self::contentTypes['setDefaultTemplate'][0])
     {
@@ -7843,12 +7801,6 @@ class SettingsApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -7890,14 +7842,6 @@ class SettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -10449,7 +10393,7 @@ class SettingsApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $file_extension,
-            'FileExtension', // param base name
+            'fileExtension', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

@@ -4,13 +4,13 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getGuestSharingLink()**](PortalGuestsApi.md#getGuestSharingLink) | **GET** /api/2.0/people/guests/{userid}/share | Get a guest sharing link |
+| [**getGuestSharingLink()**](PortalGuestsApi.md#getGuestSharingLink) | **GET** /api/2.0/people/guests/{userId}/share | Get a guest sharing link |
 
 
 ## `getGuestSharingLink()`
 
 ```php
-getGuestSharingLink($userid): \OpenAPI\Client\Model\StringWrapper
+getGuestSharingLink($user_id): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Get a guest sharing link
@@ -22,7 +22,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **userid** | **string**| The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. | |
+| **user_id** | **string**| The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see. | |
 
 ### Return type
 
@@ -67,10 +67,10 @@ $apiInstance = new OpenAPI\Client\Api\GuestsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 00000000-0000-0000-0000-000000000000; // string | The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the guest to be handed over, taken from the route. The account has to exist, has to be a guest, and  has to be one the caller can see.
 
 try {
-    $result = $apiInstance->getGuestSharingLink($userid);
+    $result = $apiInstance->getGuestSharingLink($user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GuestsApi->getGuestSharingLink: ', $e->getMessage(), PHP_EOL;

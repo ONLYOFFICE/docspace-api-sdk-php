@@ -59,7 +59,7 @@ class AiToolsMutationResult implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -330,7 +330,7 @@ class AiToolsMutationResult implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData|null
+     * @return \OpenAPI\Client\Model\AiErrorData|null
      */
     public function getError()
     {
@@ -340,7 +340,7 @@ class AiToolsMutationResult implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the MCP server was rejected. Present on failure.
+     * @param \OpenAPI\Client\Model\AiErrorData|null $error Why the MCP server was rejected. Present on failure.
      *
      * @return self
      */

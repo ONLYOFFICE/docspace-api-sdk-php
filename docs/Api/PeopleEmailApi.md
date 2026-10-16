@@ -4,14 +4,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeUserEmail()**](PeopleEmailApi.md#changeUserEmail) | **PUT** /api/2.0/people/{userid}/email | Change a user email |
+| [**changeUserEmail()**](PeopleEmailApi.md#changeUserEmail) | **PUT** /api/2.0/people/{userId}/email | Change a user email |
 | [**sendEmailChangeInstructions()**](PeopleEmailApi.md#sendEmailChangeInstructions) | **POST** /api/2.0/people/email | Send instructions to change email |
 
 
 ## `changeUserEmail()`
 
 ```php
-changeUserEmail($userid, $change_email_request): \OpenAPI\Client\Model\EmployeeFullWrapper
+changeUserEmail($user_id, $change_email_request): \OpenAPI\Client\Model\EmployeeFullWrapper
 ```
 
 Change a user email
@@ -23,7 +23,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **userid** | **string**| The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. | |
+| **user_id** | **string**| The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. | |
 | **change_email_request** | [**\OpenAPI\Client\Model\ChangeEmailRequest**](../Model/ChangeEmailRequest.md)| The new address, in plain text or in the encrypted form the confirmation link carries. | |
 
 ### Return type
@@ -69,11 +69,11 @@ $apiInstance = new OpenAPI\Client\Api\EmailApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 00000000-0000-0000-0000-000000000000; // string | The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the account whose address is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active.
 $change_email_request = new \OpenAPI\Client\Model\ChangeEmailRequest(); // \OpenAPI\Client\Model\ChangeEmailRequest | The new address, in plain text or in the encrypted form the confirmation link carries.
 
 try {
-    $result = $apiInstance->changeUserEmail($userid, $change_email_request);
+    $result = $apiInstance->changeUserEmail($user_id, $change_email_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EmailApi->changeUserEmail: ', $e->getMessage(), PHP_EOL;
@@ -96,7 +96,7 @@ sendEmailChangeInstructions($update_member_request_dto): \OpenAPI\Client\Model\S
 ```
 
 Send instructions to change email
-Starts changing the email address of an account, and what it actually does depends on who calls it.  A caller acting on their own account only gets a confirmation letter sent to the new address, and the address  stays unchanged until that link is followed, which lands on `PUT api/2.0/people/{userid}/email`.  A DocSpace administrator acting on somebody else changes the address immediately instead: the account is  marked as not activated, every session of it is ended, and activation instructions are sent to the new  address - and passing the address the account already has is then rejected with 400.  A caller who is not an administrator may only address their own account, nobody but the owner may change the  owner's address, and only the owner may change the address of another DocSpace administrator.  The target has to be an account that is neither disabled nor a pending invitation, otherwise the operation  answers 404, and an address that already belongs to somebody answers 400.  The answer is a ready-to-display message naming the address the letter was sent to.
+Starts changing the email address of an account, and what it actually does depends on who calls it.  A caller acting on their own account only gets a confirmation letter sent to the new address, and the address  stays unchanged until that link is followed, which lands on `PUT api/2.0/people/{userId}/email`.  A DocSpace administrator acting on somebody else changes the address immediately instead: the account is  marked as not activated, every session of it is ended, and activation instructions are sent to the new  address - and passing the address the account already has is then rejected with 400.  A caller who is not an administrator may only address their own account, nobody but the owner may change the  owner's address, and only the owner may change the address of another DocSpace administrator.  The target has to be an account that is neither disabled nor a pending invitation, otherwise the operation  answers 404, and an address that already belongs to somebody answers 400.  The answer is a ready-to-display message naming the address the letter was sent to.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/send-email-change-instructions/).
 

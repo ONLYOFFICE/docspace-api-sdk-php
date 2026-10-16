@@ -59,18 +59,18 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'callback_url' => 'string',
-        'co_editing' => '\OpenAPI\Client\Model\CoEditingConfig',
+        'co_editing' => '\OpenAPI\Client\Model\CoEditingConfigDto',
         'create_url' => 'string',
         'customization' => '\OpenAPI\Client\Model\CustomizationConfigDto',
-        'embedded' => '\OpenAPI\Client\Model\EmbeddedConfig',
+        'embedded' => '\OpenAPI\Client\Model\EmbeddedConfigDto',
         'encryption_keys' => '\OpenAPI\Client\Model\EncryptionKeyDto[]',
         'lang' => 'string',
         'mode' => 'string',
         'mode_write' => 'bool',
-        'plugins' => '\OpenAPI\Client\Model\PluginsConfig',
-        'recent' => '\OpenAPI\Client\Model\RecentConfig[]',
-        'templates' => '\OpenAPI\Client\Model\TemplatesConfig[]',
-        'user' => '\OpenAPI\Client\Model\UserConfig'
+        'plugins' => '\OpenAPI\Client\Model\PluginsConfigDto',
+        'recent' => '\OpenAPI\Client\Model\RecentConfigDto[]',
+        'templates' => '\OpenAPI\Client\Model\TemplatesConfigDto[]',
+        'user' => '\OpenAPI\Client\Model\UserConfigDto'
     ];
 
     /**
@@ -417,7 +417,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets co_editing
      *
-     * @return \OpenAPI\Client\Model\CoEditingConfig|null
+     * @return \OpenAPI\Client\Model\CoEditingConfigDto|null
      */
     public function getCoEditing()
     {
@@ -427,7 +427,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets co_editing
      *
-     * @param \OpenAPI\Client\Model\CoEditingConfig|null $co_editing How co-editing starts out for this session and whether the user may switch it in the interface.
+     * @param \OpenAPI\Client\Model\CoEditingConfigDto|null $co_editing How co-editing starts out for this session and whether the user may switch it in the interface.
      *
      * @return self
      */
@@ -505,7 +505,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets embedded
      *
-     * @return \OpenAPI\Client\Model\EmbeddedConfig|null
+     * @return \OpenAPI\Client\Model\EmbeddedConfigDto|null
      */
     public function getEmbedded()
     {
@@ -515,7 +515,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets embedded
      *
-     * @param \OpenAPI\Client\Model\EmbeddedConfig|null $embedded The addresses the framed viewer needs. It is filled in only for the embedded layout.
+     * @param \OpenAPI\Client\Model\EmbeddedConfigDto|null $embedded The addresses the framed viewer needs. It is filled in only for the embedded layout.
      *
      * @return self
      */
@@ -661,7 +661,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets plugins
      *
-     * @return \OpenAPI\Client\Model\PluginsConfig|null
+     * @return \OpenAPI\Client\Model\PluginsConfigDto|null
      */
     public function getPlugins()
     {
@@ -671,7 +671,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets plugins
      *
-     * @param \OpenAPI\Client\Model\PluginsConfig|null $plugins Which editor plugins are offered. The portal currently offers none, so the list inside comes back empty.
+     * @param \OpenAPI\Client\Model\PluginsConfigDto|null $plugins Which editor plugins are offered. The portal currently offers none, so the list inside comes back empty.
      *
      * @return self
      */
@@ -688,7 +688,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets recent
      *
-     * @return \OpenAPI\Client\Model\RecentConfig[]|null
+     * @return \OpenAPI\Client\Model\RecentConfigDto[]|null
      */
     public function getRecent()
     {
@@ -698,7 +698,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets recent
      *
-     * @param \OpenAPI\Client\Model\RecentConfig[]|null $recent The documents offered in the editor's recent list. It is left out altogether when there is nothing to offer.
+     * @param \OpenAPI\Client\Model\RecentConfigDto[]|null $recent The documents offered in the editor's recent list. It is left out altogether when there is nothing to offer.
      *
      * @return self
      */
@@ -722,7 +722,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets templates
      *
-     * @return \OpenAPI\Client\Model\TemplatesConfig[]|null
+     * @return \OpenAPI\Client\Model\TemplatesConfigDto[]|null
      */
     public function getTemplates()
     {
@@ -732,7 +732,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets templates
      *
-     * @param \OpenAPI\Client\Model\TemplatesConfig[]|null $templates Always empty: the portal no longer passes creation templates through the editor configuration.
+     * @param \OpenAPI\Client\Model\TemplatesConfigDto[]|null $templates Always empty: the portal no longer passes creation templates through the editor configuration.
      *
      * @return self
      */
@@ -756,7 +756,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets user
      *
-     * @return \OpenAPI\Client\Model\UserConfig|null
+     * @return \OpenAPI\Client\Model\UserConfigDto|null
      */
     public function getUser()
     {
@@ -766,7 +766,7 @@ class EditorConfigurationDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\UserConfig|null $user The account the editors attribute changes to. It is empty for an anonymous session opened through an external  link, and the editors then ask for a name themselves.
+     * @param \OpenAPI\Client\Model\UserConfigDto|null $user The account the editors attribute changes to. It is empty for an anonymous session opened through an external  link, and the editors then ask for a name themselves.
      *
      * @return self
      */

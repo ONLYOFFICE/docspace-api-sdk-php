@@ -49,7 +49,7 @@ class AiPromptsRenameFolderRequest implements ModelInterface, ArrayAccess, \Json
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPromptsRenameFolder_request';
+    protected static $openAPIModelName = 'AiPromptsRenameFolderRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

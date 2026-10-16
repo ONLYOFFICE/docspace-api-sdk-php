@@ -591,7 +591,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantWalletServiceSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantWalletServiceSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function changeTenantWalletServiceState($change_wallet_service_state_request_dto = null, string $contentType = self::contentTypes['changeTenantWalletServiceState'][0])
     {
@@ -612,7 +612,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantWalletServiceSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantWalletServiceSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function changeTenantWalletServiceStateWithHttpInfo($change_wallet_service_state_request_dto = null, string $contentType = self::contentTypes['changeTenantWalletServiceState'][0])
     {
@@ -661,12 +661,6 @@ class PaymentApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -721,14 +715,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1996,7 +1982,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ServicePriceInfoArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ServicePriceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAccountingServicePrices($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
     {
@@ -2018,7 +2004,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ServicePriceInfoArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ServicePriceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountingServicePricesWithHttpInfo($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
     {
@@ -2050,7 +2036,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                        '\OpenAPI\Client\Model\ServicePriceArrayWrapper',
                         $request,
                         $response,
                     );
@@ -2061,18 +2047,6 @@ class PaymentApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2096,7 +2070,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                '\OpenAPI\Client\Model\ServicePriceArrayWrapper',
                 $request,
                 $response,
             );
@@ -2105,7 +2079,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper',
+                        '\OpenAPI\Client\Model\ServicePriceArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2119,22 +2093,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2191,7 +2149,7 @@ class PaymentApi
      */
     public function getAccountingServicePricesAsyncWithHttpInfo($service_name, $active = null, string $contentType = self::contentTypes['getAccountingServicePrices'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\ServicePriceArrayWrapper';
         $request = $this->getAccountingServicePricesRequest($service_name, $active, $contentType);
 
         return $this->client
@@ -2373,7 +2331,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ActiveServiceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ActiveServiceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getActiveServices(string $contentType = self::contentTypes['getActiveServices'][0])
     {
@@ -2393,7 +2351,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ActiveServiceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ActiveServiceArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getActiveServicesWithHttpInfo(string $contentType = self::contentTypes['getActiveServices'][0])
     {
@@ -2441,12 +2399,6 @@ class PaymentApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -2488,14 +2440,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2697,7 +2641,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAiPrices(string $contentType = self::contentTypes['getAiPrices'][0])
     {
@@ -2717,7 +2661,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiPricesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAiPricesWithHttpInfo(string $contentType = self::contentTypes['getAiPrices'][0])
     {
@@ -2765,12 +2709,6 @@ class PaymentApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -2812,14 +2750,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3023,7 +2953,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getCheckoutSetupUrl($back_url, $success_url, string $contentType = self::contentTypes['getCheckoutSetupUrl'][0])
     {
@@ -3045,7 +2975,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCheckoutSetupUrlWithHttpInfo($back_url, $success_url, string $contentType = self::contentTypes['getCheckoutSetupUrl'][0])
     {
@@ -3094,12 +3024,6 @@ class PaymentApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3154,14 +3078,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3307,7 +3223,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $back_url,
-            'BackUrl', // param base name
+            'backUrl', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -3316,7 +3232,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $success_url,
-            'SuccessUrl', // param base name
+            'successUrl', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5151,7 +5067,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $service_name,
-            'ServiceName', // param base name
+            'serviceName', // param base name
             'array', // openApiType
             'form', // style
             true, // explode
@@ -5160,7 +5076,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $start_date,
-            'StartDate', // param base name
+            'startDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5169,7 +5085,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $end_date,
-            'EndDate', // param base name
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5178,7 +5094,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $participant_name,
-            'ParticipantName', // param base name
+            'participantName', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5187,7 +5103,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $credit,
-            'Credit', // param base name
+            'credit', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5196,7 +5112,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $debit,
-            'Debit', // param base name
+            'debit', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5205,7 +5121,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $type,
-            'Type', // param base name
+            'type', // param base name
             'OperationType', // openApiType
             'form', // style
             true, // explode
@@ -5214,7 +5130,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
-            'Status', // param base name
+            'status', // param base name
             'OperationStatus', // openApiType
             'form', // style
             true, // explode
@@ -5223,7 +5139,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order_by,
-            'OrderBy', // param base name
+            'orderBy', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5232,7 +5148,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order_type,
-            'OrderType', // param base name
+            'orderType', // param base name
             'OperationOrderType', // openApiType
             'form', // style
             true, // explode
@@ -5963,7 +5879,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $service_name,
-            'ServiceName', // param base name
+            'serviceName', // param base name
             'array', // openApiType
             'form', // style
             true, // explode
@@ -5972,7 +5888,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $participant_name,
-            'ParticipantName', // param base name
+            'participantName', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5981,7 +5897,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
-            'Status', // param base name
+            'status', // param base name
             'OperationStatus', // openApiType
             'form', // style
             true, // explode
@@ -5990,7 +5906,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $start_date,
-            'StartDate', // param base name
+            'startDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -5999,7 +5915,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $end_date,
-            'EndDate', // param base name
+            'endDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6008,7 +5924,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $metadata,
-            'Metadata', // param base name
+            'metadata', // param base name
             'object', // openApiType
             'deepObject', // style
             false, // explode
@@ -6035,7 +5951,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order_by,
-            'OrderBy', // param base name
+            'orderBy', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6044,7 +5960,7 @@ class PaymentApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order_type,
-            'OrderType', // param base name
+            'orderType', // param base name
             'OperationOrderType', // openApiType
             'form', // style
             true, // explode
@@ -6466,7 +6382,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getPaymentAccount($back_url = null, string $contentType = self::contentTypes['getPaymentAccount'][0])
     {
@@ -6487,7 +6403,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPaymentAccountWithHttpInfo($back_url = null, string $contentType = self::contentTypes['getPaymentAccount'][0])
     {
@@ -6536,12 +6452,6 @@ class PaymentApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -6596,14 +6506,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -8530,7 +8432,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RestrictedModelsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\RestrictedAiModelsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRestrictedAiModels(string $contentType = self::contentTypes['getRestrictedAiModels'][0])
     {
@@ -8550,7 +8452,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RestrictedModelsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\RestrictedAiModelsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRestrictedAiModelsWithHttpInfo(string $contentType = self::contentTypes['getRestrictedAiModels'][0])
     {
@@ -8582,7 +8484,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                        '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                         $request,
                         $response,
                     );
@@ -8593,12 +8495,6 @@ class PaymentApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -8622,7 +8518,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                 $request,
                 $response,
             );
@@ -8631,7 +8527,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                        '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8645,14 +8541,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -8705,7 +8593,7 @@ class PaymentApi
      */
     public function getRestrictedAiModelsAsyncWithHttpInfo(string $contentType = self::contentTypes['getRestrictedAiModels'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\RestrictedAiModelsWrapper';
         $request = $this->getRestrictedAiModelsRequest($contentType);
 
         return $this->client
@@ -8854,7 +8742,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SubscriptionBalanceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSubscriptionBalanceInfo(string $contentType = self::contentTypes['getSubscriptionBalanceInfo'][0])
     {
@@ -8874,7 +8762,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SubscriptionBalanceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSubscriptionBalanceInfoWithHttpInfo(string $contentType = self::contentTypes['getSubscriptionBalanceInfo'][0])
     {
@@ -8906,7 +8794,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper',
+                        '\OpenAPI\Client\Model\SubscriptionBalanceWrapper',
                         $request,
                         $response,
                     );
@@ -8946,7 +8834,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper',
+                '\OpenAPI\Client\Model\SubscriptionBalanceWrapper',
                 $request,
                 $response,
             );
@@ -8955,7 +8843,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper',
+                        '\OpenAPI\Client\Model\SubscriptionBalanceWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9029,7 +8917,7 @@ class PaymentApi
      */
     public function getSubscriptionBalanceInfoAsyncWithHttpInfo(string $contentType = self::contentTypes['getSubscriptionBalanceInfo'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper';
+        $returnType = '\OpenAPI\Client\Model\SubscriptionBalanceWrapper';
         $request = $this->getSubscriptionBalanceInfoRequest($contentType);
 
         return $this->client
@@ -9502,7 +9390,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantWalletSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTenantWalletSettings(string $contentType = self::contentTypes['getTenantWalletSettings'][0])
     {
@@ -9522,7 +9410,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantWalletSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTenantWalletSettingsWithHttpInfo(string $contentType = self::contentTypes['getTenantWalletSettings'][0])
     {
@@ -9554,7 +9442,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -9594,7 +9482,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                 $request,
                 $response,
             );
@@ -9603,7 +9491,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9677,7 +9565,7 @@ class PaymentApi
      */
     public function getTenantWalletSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getTenantWalletSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\TenantWalletSettingsWrapper';
         $request = $this->getTenantWalletSettingsRequest($contentType);
 
         return $this->client
@@ -9827,7 +9715,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WalletServiceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WalletServiceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getWalletService($service, string $contentType = self::contentTypes['getWalletService'][0])
     {
@@ -9848,7 +9736,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WalletServiceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WalletServiceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWalletServiceWithHttpInfo($service, string $contentType = self::contentTypes['getWalletService'][0])
     {
@@ -9897,12 +9785,6 @@ class PaymentApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -9957,14 +9839,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -10842,16 +10716,16 @@ class PaymentApi
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
      *
-     * @param  \OpenAPI\Client\Model\SalesRequestsDto|null $sales_requests_dto sales_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SalesRequestDto|null $sales_request_dto sales_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPaymentRequest'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function sendPaymentRequest($sales_requests_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
+    public function sendPaymentRequest($sales_request_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
     {
-        $this->sendPaymentRequestWithHttpInfo($sales_requests_dto, $contentType);
+        $this->sendPaymentRequestWithHttpInfo($sales_request_dto, $contentType);
     }
 
     /**
@@ -10862,16 +10736,16 @@ class PaymentApi
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
      *
-     * @param  \OpenAPI\Client\Model\SalesRequestsDto|null $sales_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SalesRequestDto|null $sales_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPaymentRequest'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendPaymentRequestWithHttpInfo($sales_requests_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
+    public function sendPaymentRequestWithHttpInfo($sales_request_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
     {
-        $request = $this->sendPaymentRequestRequest($sales_requests_dto, $contentType);
+        $request = $this->sendPaymentRequestRequest($sales_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10938,15 +10812,15 @@ class PaymentApi
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
      *
-     * @param  \OpenAPI\Client\Model\SalesRequestsDto|null $sales_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SalesRequestDto|null $sales_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPaymentRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendPaymentRequestAsync($sales_requests_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
+    public function sendPaymentRequestAsync($sales_request_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
     {
-        return $this->sendPaymentRequestAsyncWithHttpInfo($sales_requests_dto, $contentType)
+        return $this->sendPaymentRequestAsyncWithHttpInfo($sales_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10962,16 +10836,16 @@ class PaymentApi
      * REST API Reference for sendPaymentRequest Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-payment-request/
      *
-     * @param  \OpenAPI\Client\Model\SalesRequestsDto|null $sales_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SalesRequestDto|null $sales_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPaymentRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendPaymentRequestAsyncWithHttpInfo($sales_requests_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
+    public function sendPaymentRequestAsyncWithHttpInfo($sales_request_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
     {
         $returnType = '';
-        $request = $this->sendPaymentRequestRequest($sales_requests_dto, $contentType);
+        $request = $this->sendPaymentRequestRequest($sales_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10999,13 +10873,13 @@ class PaymentApi
     /**
      * Create request for operation 'sendPaymentRequest'
      *
-     * @param  \OpenAPI\Client\Model\SalesRequestsDto|null $sales_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SalesRequestDto|null $sales_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPaymentRequest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendPaymentRequestRequest($sales_requests_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
+    public function sendPaymentRequestRequest($sales_request_dto = null, string $contentType = self::contentTypes['sendPaymentRequest'][0])
     {
 
 
@@ -11028,12 +10902,12 @@ class PaymentApi
         );
 
         // for model (json/xml)
-        if (isset($sales_requests_dto)) {
+        if (isset($sales_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sales_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sales_request_dto));
             } else {
-                $httpBody = $sales_requests_dto;
+                $httpBody = $sales_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -11116,7 +10990,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\RestrictedModelsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\RestrictedAiModelsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setRestrictedAiModels($set_restricted_ai_models_request_dto = null, string $contentType = self::contentTypes['setRestrictedAiModels'][0])
     {
@@ -11137,7 +11011,7 @@ class PaymentApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\RestrictedModelsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\RestrictedAiModelsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setRestrictedAiModelsWithHttpInfo($set_restricted_ai_models_request_dto = null, string $contentType = self::contentTypes['setRestrictedAiModels'][0])
     {
@@ -11169,7 +11043,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                        '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                         $request,
                         $response,
                     );
@@ -11180,18 +11054,6 @@ class PaymentApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -11215,7 +11077,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                 $request,
                 $response,
             );
@@ -11224,7 +11086,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper',
+                        '\OpenAPI\Client\Model\RestrictedAiModelsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11238,22 +11100,6 @@ class PaymentApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -11308,7 +11154,7 @@ class PaymentApi
      */
     public function setRestrictedAiModelsAsyncWithHttpInfo($set_restricted_ai_models_request_dto = null, string $contentType = self::contentTypes['setRestrictedAiModels'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\RestrictedModelsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\RestrictedAiModelsWrapper';
         $request = $this->setRestrictedAiModelsRequest($set_restricted_ai_models_request_dto, $contentType);
 
         return $this->client
@@ -11462,16 +11308,16 @@ class PaymentApi
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletSettingsWrapper|null $tenant_wallet_settings_wrapper tenant_wallet_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantWalletSettingsRequestDto|null $tenant_wallet_settings_request_dto tenant_wallet_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantWalletSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantWalletSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setTenantWalletSettings($tenant_wallet_settings_wrapper = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
+    public function setTenantWalletSettings($tenant_wallet_settings_request_dto = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
     {
-        list($response) = $this->setTenantWalletSettingsWithHttpInfo($tenant_wallet_settings_wrapper, $contentType);
+        list($response) = $this->setTenantWalletSettingsWithHttpInfo($tenant_wallet_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -11483,16 +11329,16 @@ class PaymentApi
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletSettingsWrapper|null $tenant_wallet_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantWalletSettingsRequestDto|null $tenant_wallet_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantWalletSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantWalletSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTenantWalletSettingsWithHttpInfo($tenant_wallet_settings_wrapper = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
+    public function setTenantWalletSettingsWithHttpInfo($tenant_wallet_settings_request_dto = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
     {
-        $request = $this->setTenantWalletSettingsRequest($tenant_wallet_settings_wrapper, $contentType);
+        $request = $this->setTenantWalletSettingsRequest($tenant_wallet_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11520,7 +11366,7 @@ class PaymentApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -11537,12 +11383,6 @@ class PaymentApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -11566,7 +11406,7 @@ class PaymentApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                 $request,
                 $response,
             );
@@ -11575,7 +11415,7 @@ class PaymentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\TenantWalletSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11604,14 +11444,6 @@ class PaymentApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -11627,15 +11459,15 @@ class PaymentApi
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletSettingsWrapper|null $tenant_wallet_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantWalletSettingsRequestDto|null $tenant_wallet_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantWalletSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantWalletSettingsAsync($tenant_wallet_settings_wrapper = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
+    public function setTenantWalletSettingsAsync($tenant_wallet_settings_request_dto = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
     {
-        return $this->setTenantWalletSettingsAsyncWithHttpInfo($tenant_wallet_settings_wrapper, $contentType)
+        return $this->setTenantWalletSettingsAsyncWithHttpInfo($tenant_wallet_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11651,16 +11483,16 @@ class PaymentApi
      * REST API Reference for setTenantWalletSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletSettingsWrapper|null $tenant_wallet_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantWalletSettingsRequestDto|null $tenant_wallet_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantWalletSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantWalletSettingsAsyncWithHttpInfo($tenant_wallet_settings_wrapper = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
+    public function setTenantWalletSettingsAsyncWithHttpInfo($tenant_wallet_settings_request_dto = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper';
-        $request = $this->setTenantWalletSettingsRequest($tenant_wallet_settings_wrapper, $contentType);
+        $returnType = '\OpenAPI\Client\Model\TenantWalletSettingsWrapper';
+        $request = $this->setTenantWalletSettingsRequest($tenant_wallet_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11701,13 +11533,13 @@ class PaymentApi
     /**
      * Create request for operation 'setTenantWalletSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantWalletSettingsWrapper|null $tenant_wallet_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\TenantWalletSettingsRequestDto|null $tenant_wallet_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantWalletSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTenantWalletSettingsRequest($tenant_wallet_settings_wrapper = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
+    public function setTenantWalletSettingsRequest($tenant_wallet_settings_request_dto = null, string $contentType = self::contentTypes['setTenantWalletSettings'][0])
     {
 
 
@@ -11730,12 +11562,12 @@ class PaymentApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_wallet_settings_wrapper)) {
+        if (isset($tenant_wallet_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_wallet_settings_wrapper));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_wallet_settings_request_dto));
             } else {
-                $httpBody = $tenant_wallet_settings_wrapper;
+                $httpBody = $tenant_wallet_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -492,16 +492,16 @@ class MessagesApi
      * REST API Reference for sendAdminMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-admin-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto|null $admin_message_settings_requests_dto admin_message_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestDto|null $admin_message_settings_request_dto admin_message_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendAdminMail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function sendAdminMail($admin_message_settings_requests_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
+    public function sendAdminMail($admin_message_settings_request_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
     {
-        list($response) = $this->sendAdminMailWithHttpInfo($admin_message_settings_requests_dto, $contentType);
+        list($response) = $this->sendAdminMailWithHttpInfo($admin_message_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -513,16 +513,16 @@ class MessagesApi
      * REST API Reference for sendAdminMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-admin-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto|null $admin_message_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestDto|null $admin_message_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendAdminMail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendAdminMailWithHttpInfo($admin_message_settings_requests_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
+    public function sendAdminMailWithHttpInfo($admin_message_settings_request_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
     {
-        $request = $this->sendAdminMailRequest($admin_message_settings_requests_dto, $contentType);
+        $request = $this->sendAdminMailRequest($admin_message_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -555,12 +555,6 @@ class MessagesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -606,14 +600,6 @@ class MessagesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -629,15 +615,15 @@ class MessagesApi
      * REST API Reference for sendAdminMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-admin-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto|null $admin_message_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestDto|null $admin_message_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendAdminMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAdminMailAsync($admin_message_settings_requests_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
+    public function sendAdminMailAsync($admin_message_settings_request_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
     {
-        return $this->sendAdminMailAsyncWithHttpInfo($admin_message_settings_requests_dto, $contentType)
+        return $this->sendAdminMailAsyncWithHttpInfo($admin_message_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -653,16 +639,16 @@ class MessagesApi
      * REST API Reference for sendAdminMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-admin-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto|null $admin_message_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestDto|null $admin_message_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendAdminMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAdminMailAsyncWithHttpInfo($admin_message_settings_requests_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
+    public function sendAdminMailAsyncWithHttpInfo($admin_message_settings_request_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->sendAdminMailRequest($admin_message_settings_requests_dto, $contentType);
+        $request = $this->sendAdminMailRequest($admin_message_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -703,13 +689,13 @@ class MessagesApi
     /**
      * Create request for operation 'sendAdminMail'
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto|null $admin_message_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageSettingsRequestDto|null $admin_message_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendAdminMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendAdminMailRequest($admin_message_settings_requests_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
+    public function sendAdminMailRequest($admin_message_settings_request_dto = null, string $contentType = self::contentTypes['sendAdminMail'][0])
     {
 
 
@@ -732,12 +718,12 @@ class MessagesApi
         );
 
         // for model (json/xml)
-        if (isset($admin_message_settings_requests_dto)) {
+        if (isset($admin_message_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($admin_message_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($admin_message_settings_request_dto));
             } else {
-                $httpBody = $admin_message_settings_requests_dto;
+                $httpBody = $admin_message_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -815,16 +801,16 @@ class MessagesApi
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto|null $admin_message_base_settings_requests_dto admin_message_base_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto|null $admin_message_base_settings_request_dto admin_message_base_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendJoinInviteMail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function sendJoinInviteMail($admin_message_base_settings_requests_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
+    public function sendJoinInviteMail($admin_message_base_settings_request_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
     {
-        list($response) = $this->sendJoinInviteMailWithHttpInfo($admin_message_base_settings_requests_dto, $contentType);
+        list($response) = $this->sendJoinInviteMailWithHttpInfo($admin_message_base_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -836,16 +822,16 @@ class MessagesApi
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto|null $admin_message_base_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto|null $admin_message_base_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendJoinInviteMail'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendJoinInviteMailWithHttpInfo($admin_message_base_settings_requests_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
+    public function sendJoinInviteMailWithHttpInfo($admin_message_base_settings_request_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
     {
-        $request = $this->sendJoinInviteMailRequest($admin_message_base_settings_requests_dto, $contentType);
+        $request = $this->sendJoinInviteMailRequest($admin_message_base_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -878,12 +864,6 @@ class MessagesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -929,14 +909,6 @@ class MessagesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -952,15 +924,15 @@ class MessagesApi
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto|null $admin_message_base_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto|null $admin_message_base_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendJoinInviteMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendJoinInviteMailAsync($admin_message_base_settings_requests_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
+    public function sendJoinInviteMailAsync($admin_message_base_settings_request_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
     {
-        return $this->sendJoinInviteMailAsyncWithHttpInfo($admin_message_base_settings_requests_dto, $contentType)
+        return $this->sendJoinInviteMailAsyncWithHttpInfo($admin_message_base_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -976,16 +948,16 @@ class MessagesApi
      * REST API Reference for sendJoinInviteMail Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/send-join-invite-mail/
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto|null $admin_message_base_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto|null $admin_message_base_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendJoinInviteMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendJoinInviteMailAsyncWithHttpInfo($admin_message_base_settings_requests_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
+    public function sendJoinInviteMailAsyncWithHttpInfo($admin_message_base_settings_request_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->sendJoinInviteMailRequest($admin_message_base_settings_requests_dto, $contentType);
+        $request = $this->sendJoinInviteMailRequest($admin_message_base_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1026,13 +998,13 @@ class MessagesApi
     /**
      * Create request for operation 'sendJoinInviteMail'
      *
-     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto|null $admin_message_base_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto|null $admin_message_base_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendJoinInviteMail'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendJoinInviteMailRequest($admin_message_base_settings_requests_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
+    public function sendJoinInviteMailRequest($admin_message_base_settings_request_dto = null, string $contentType = self::contentTypes['sendJoinInviteMail'][0])
     {
 
 
@@ -1055,12 +1027,12 @@ class MessagesApi
         );
 
         // for model (json/xml)
-        if (isset($admin_message_base_settings_requests_dto)) {
+        if (isset($admin_message_base_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($admin_message_base_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($admin_message_base_settings_request_dto));
             } else {
-                $httpBody = $admin_message_base_settings_requests_dto;
+                $httpBody = $admin_message_base_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

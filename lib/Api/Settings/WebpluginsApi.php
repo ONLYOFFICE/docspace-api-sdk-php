@@ -87,6 +87,9 @@ class WebpluginsApi
         'getWebPlugins' => [
             'application/json',
         ],
+        'refreshWebPlugin' => [
+            'application/json',
+        ],
         'updateWebPlugin' => [
             'application/json',
         ],
@@ -1474,6 +1477,364 @@ class WebpluginsApi
     }
 
     /**
+     * Operation refreshWebPlugin
+     *
+     * Refresh a web plugin
+     *
+     * REST API Reference for refreshWebPlugin Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/refresh-web-plugin/
+     *
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['refreshWebPlugin'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\WebPluginWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     */
+    public function refreshWebPlugin($name, string $contentType = self::contentTypes['refreshWebPlugin'][0])
+    {
+        list($response) = $this->refreshWebPluginWithHttpInfo($name, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation refreshWebPluginWithHttpInfo
+     *
+     * Refresh a web plugin
+     *
+     * REST API Reference for refreshWebPlugin Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/refresh-web-plugin/
+     *
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['refreshWebPlugin'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\WebPluginWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function refreshWebPluginWithHttpInfo($name, string $contentType = self::contentTypes['refreshWebPlugin'][0])
+    {
+        $request = $this->refreshWebPluginRequest($name, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\WebPluginWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\WebPluginWrapper',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\WebPluginWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation refreshWebPluginAsync
+     *
+     * Refresh a web plugin
+     *
+     * REST API Reference for refreshWebPlugin Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/refresh-web-plugin/
+     *
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['refreshWebPlugin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function refreshWebPluginAsync($name, string $contentType = self::contentTypes['refreshWebPlugin'][0])
+    {
+        return $this->refreshWebPluginAsyncWithHttpInfo($name, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation refreshWebPluginAsyncWithHttpInfo
+     *
+     * Refresh a web plugin
+     *
+     * REST API Reference for refreshWebPlugin Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/refresh-web-plugin/
+     *
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['refreshWebPlugin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function refreshWebPluginAsyncWithHttpInfo($name, string $contentType = self::contentTypes['refreshWebPlugin'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\WebPluginWrapper';
+        $request = $this->refreshWebPluginRequest($name, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'refreshWebPlugin'
+     *
+     * @param  string $name The plugin to act on, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`; a name that is not installed answers 404. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['refreshWebPlugin'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function refreshWebPluginRequest($name, string $contentType = self::contentTypes['refreshWebPlugin'][0])
+    {
+
+        // verify the required parameter 'name' is set
+        if ($name === null || (is_array($name) && count($name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $name when calling refreshWebPlugin'
+            );
+        }
+
+
+        $resourcePath = '/api/2.0/settings/webplugins/{name}/refresh';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'name' . '}',
+                ObjectSerializer::toPathValue($name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateWebPlugin
      *
      * Update a web plugin
@@ -1482,16 +1843,16 @@ class WebpluginsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
      * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequest $web_plugin_request The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateWebPlugin($name, $web_plugin_requests, string $contentType = self::contentTypes['updateWebPlugin'][0])
+    public function updateWebPlugin($name, $web_plugin_request, string $contentType = self::contentTypes['updateWebPlugin'][0])
     {
-        $this->updateWebPluginWithHttpInfo($name, $web_plugin_requests, $contentType);
+        $this->updateWebPluginWithHttpInfo($name, $web_plugin_request, $contentType);
     }
 
     /**
@@ -1503,16 +1864,16 @@ class WebpluginsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
      * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequest $web_plugin_request The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWebPluginWithHttpInfo($name, $web_plugin_requests, string $contentType = self::contentTypes['updateWebPlugin'][0])
+    public function updateWebPluginWithHttpInfo($name, $web_plugin_request, string $contentType = self::contentTypes['updateWebPlugin'][0])
     {
-        $request = $this->updateWebPluginRequest($name, $web_plugin_requests, $contentType);
+        $request = $this->updateWebPluginRequest($name, $web_plugin_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1564,14 +1925,6 @@ class WebpluginsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1588,15 +1941,15 @@ class WebpluginsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
      * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequest $web_plugin_request The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebPluginAsync($name, $web_plugin_requests, string $contentType = self::contentTypes['updateWebPlugin'][0])
+    public function updateWebPluginAsync($name, $web_plugin_request, string $contentType = self::contentTypes['updateWebPlugin'][0])
     {
-        return $this->updateWebPluginAsyncWithHttpInfo($name, $web_plugin_requests, $contentType)
+        return $this->updateWebPluginAsyncWithHttpInfo($name, $web_plugin_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1613,16 +1966,16 @@ class WebpluginsApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-web-plugin/
      *
      * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequest $web_plugin_request The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebPluginAsyncWithHttpInfo($name, $web_plugin_requests, string $contentType = self::contentTypes['updateWebPlugin'][0])
+    public function updateWebPluginAsyncWithHttpInfo($name, $web_plugin_request, string $contentType = self::contentTypes['updateWebPlugin'][0])
     {
         $returnType = '';
-        $request = $this->updateWebPluginRequest($name, $web_plugin_requests, $contentType);
+        $request = $this->updateWebPluginRequest($name, $web_plugin_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1651,13 +2004,13 @@ class WebpluginsApi
      * Create request for operation 'updateWebPlugin'
      *
      * @param  string $name The plugin to change, by the manifest name `GET api/2.0/settings/webplugins` publishes as `name`, matched  without regard to case. It is neither the localized display name nor the JavaScript object name in  `pluginName`, so it cannot be read off the interface; a name that is not installed answers 404. (required)
-     * @param  \OpenAPI\Client\Model\WebPluginRequests $web_plugin_requests The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
+     * @param  \OpenAPI\Client\Model\WebPluginRequest $web_plugin_request The whole state the plugin is to have afterwards. It replaces what was stored instead of merging into it, so  both the enabled flag and the settings have to be sent every time. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebPlugin'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateWebPluginRequest($name, $web_plugin_requests, string $contentType = self::contentTypes['updateWebPlugin'][0])
+    public function updateWebPluginRequest($name, $web_plugin_request, string $contentType = self::contentTypes['updateWebPlugin'][0])
     {
 
         // verify the required parameter 'name' is set
@@ -1667,10 +2020,10 @@ class WebpluginsApi
             );
         }
 
-        // verify the required parameter 'web_plugin_requests' is set
-        if ($web_plugin_requests === null || (is_array($web_plugin_requests) && count($web_plugin_requests) === 0)) {
+        // verify the required parameter 'web_plugin_request' is set
+        if ($web_plugin_request === null || (is_array($web_plugin_request) && count($web_plugin_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $web_plugin_requests when calling updateWebPlugin'
+                'Missing the required parameter $web_plugin_request when calling updateWebPlugin'
             );
         }
 
@@ -1701,12 +2054,12 @@ class WebpluginsApi
         );
 
         // for model (json/xml)
-        if (isset($web_plugin_requests)) {
+        if (isset($web_plugin_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_plugin_requests));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_plugin_request));
             } else {
-                $httpBody = $web_plugin_requests;
+                $httpBody = $web_plugin_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

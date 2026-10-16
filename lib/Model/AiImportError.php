@@ -60,7 +60,7 @@ class AiImportError implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'kind' => 'string',
         'ref' => 'string',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -404,7 +404,7 @@ class AiImportError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData
+     * @return \OpenAPI\Client\Model\AiErrorData
      */
     public function getError()
     {
@@ -414,7 +414,7 @@ class AiImportError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData $error Why the entry was rejected.
+     * @param \OpenAPI\Client\Model\AiErrorData $error Why the entry was rejected.
      *
      * @return self
      */

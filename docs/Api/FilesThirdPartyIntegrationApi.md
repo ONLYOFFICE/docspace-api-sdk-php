@@ -21,7 +21,7 @@ deleteThirdParty($provider_id): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Remove a third-party account
-Disconnects a third-party storage account from the portal and returns the ID of the folder that stood for it,  in the `provider-accountId` form the Files operations use for third-party entries. Take `providerId` from  `GET api/2.0/files/thirdparty`: it is the numeric account ID, not that composed folder ID. The member who  connected the account can remove it; another member's request is refused unless they hold delete rights on the  folder it stands for. Nothing is deleted at the storage service: the files stay with the provider, and what  goes away is the portal's link to them together with the stored credentials, the sharing records and the tags  kept for its entries. A room that was created on this account stops being available. When the account being  removed is the one connected for backups by `POST api/2.0/files/thirdparty/backup`, its backup schedule is  deleted as well. The removal cannot be repeated: once the account is gone the same ID is refused rather than  confirmed, so treat the first successful answer as the record of it.
+Disconnects a third-party storage account from the portal and returns the ID of the folder that stood for it,  in the `provider-accountId` form the Files operations use for third-party entries. Take `providerId` from  `GET api/2.0/files/thirdparty`: it is the numeric account ID, not that composed folder ID. The member who  connected the account can remove it; another member's request is refused unless they hold delete rights on the  folder it stands for. Nothing is deleted at the storage service: the files stay with the provider, and what  goes away is the portal's link to them together with the stored credentials, the sharing records and the tags  kept for its entries. An account a room was created on is refused with 403 while the room exists: delete the  room instead, which disconnects the account along with it. When the account being  removed is the one connected for backups by `POST api/2.0/files/thirdparty/backup`, its backup schedule is  deleted as well. The removal cannot be repeated: once the account is gone the same ID is refused rather than  confirmed, so treat the first successful answer as the record of it.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-third-party/).
 
@@ -403,7 +403,7 @@ try {
 ## `getThirdPartyAccounts()`
 
 ```php
-getThirdPartyAccounts(): \OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper
+getThirdPartyAccounts(): \OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper
 ```
 
 Get the third-party accounts
@@ -417,7 +417,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ThirdPartyParamsArrayWrapper**](../Model/ThirdPartyParamsArrayWrapper.md)
+[**\OpenAPI\Client\Model\ThirdPartyAccountArrayWrapper**](../Model/ThirdPartyAccountArrayWrapper.md)
 
 ### Authorization
 

@@ -396,7 +396,7 @@ try {
 ## `listMigrations()`
 
 ```php
-listMigrations(): \OpenAPI\Client\Model\STRINGArrayWrapper
+listMigrations(): \OpenAPI\Client\Model\StringArrayWrapper
 ```
 
 Get available migrators
@@ -410,7 +410,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\STRINGArrayWrapper**](../Model/STRINGArrayWrapper.md)
+[**\OpenAPI\Client\Model\StringArrayWrapper**](../Model/StringArrayWrapper.md)
 
 ### Authorization
 

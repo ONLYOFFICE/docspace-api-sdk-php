@@ -58,7 +58,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $openAPITypes = [
-        'themes' => '\OpenAPI\Client\Model\CustomColorThemesSettingsItem[]',
+        'themes' => '\OpenAPI\Client\Model\CustomColorThemeDto[]',
         'selected' => 'int',
         'limit' => 'int'
     ];
@@ -307,7 +307,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets themes
      *
-     * @return \OpenAPI\Client\Model\CustomColorThemesSettingsItem[]|null
+     * @return \OpenAPI\Client\Model\CustomColorThemeDto[]|null
      */
     public function getThemes()
     {
@@ -317,7 +317,7 @@ class CustomColorThemesSettingsDto implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets themes
      *
-     * @param \OpenAPI\Client\Model\CustomColorThemesSettingsItem[]|null $themes Every theme the portal can apply, ordered by ID, with the built-in ones first because they were created  first. It is never empty - the built-in themes cannot be deleted - and a custom theme is one whose ID is  higher than the built-in ones.
+     * @param \OpenAPI\Client\Model\CustomColorThemeDto[]|null $themes Every theme the portal can apply, ordered by ID, with the built-in ones first because they were created  first. It is never empty - the built-in themes cannot be deleted - and a custom theme is one whose ID is  higher than the built-in ones.
      *
      * @return self
      */

@@ -49,7 +49,7 @@ class AiThreadsUpdateMessageRequest implements ModelInterface, ArrayAccess, \Jso
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsUpdateMessage_request';
+    protected static $openAPIModelName = 'AiThreadsUpdateMessageRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

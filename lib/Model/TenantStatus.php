@@ -33,7 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantStatus Class Doc Comment
  *
  * @category Class
- * @description [0 - Active, 1 - Suspended, 2 - Remove pending, 3 - Transfering, 4 - Restoring, 5 - Migrating, 6 - Encryption]
+ * @description [0 - Active, 1 - Suspended, 2 - Remove pending, 3 - Transfering, 4 - Restoring, 5 - Migrating, 6 - Encryption, 7 - Blocked]
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,6 +57,8 @@ class TenantStatus
 
     public const ENCRYPTION = 6;
 
+    public const BLOCKED = 7;
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -70,7 +72,8 @@ class TenantStatus
             self::TRANSFERING,
             self::RESTORING,
             self::MIGRATING,
-            self::ENCRYPTION
+            self::ENCRYPTION,
+            self::BLOCKED
         ];
     }
 }

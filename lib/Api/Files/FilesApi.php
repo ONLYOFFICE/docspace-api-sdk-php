@@ -293,7 +293,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addFileToRecent($file_id, string $contentType = self::contentTypes['addFileToRecent'][0])
     {
@@ -314,7 +314,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addFileToRecentWithHttpInfo($file_id, string $contentType = self::contentTypes['addFileToRecent'][0])
     {
@@ -362,18 +362,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -415,22 +403,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -998,16 +970,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
      * @param  int|string $file_id The file whose version history is changed. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistoryRequest $change_history_request The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function changeVersionHistory($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
+    public function changeVersionHistory($file_id, $change_history_request, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
-        list($response) = $this->changeVersionHistoryWithHttpInfo($file_id, $change_history, $contentType);
+        list($response) = $this->changeVersionHistoryWithHttpInfo($file_id, $change_history_request, $contentType);
         return $response;
     }
 
@@ -1020,16 +992,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
      * @param  int|string $file_id The file whose version history is changed. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistoryRequest $change_history_request The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeVersionHistoryWithHttpInfo($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
+    public function changeVersionHistoryWithHttpInfo($file_id, $change_history_request, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
-        $request = $this->changeVersionHistoryRequest($file_id, $change_history, $contentType);
+        $request = $this->changeVersionHistoryRequest($file_id, $change_history_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1068,18 +1040,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1133,22 +1093,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1165,15 +1109,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
      * @param  int|string $file_id The file whose version history is changed. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistoryRequest $change_history_request The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeVersionHistoryAsync($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
+    public function changeVersionHistoryAsync($file_id, $change_history_request, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
-        return $this->changeVersionHistoryAsyncWithHttpInfo($file_id, $change_history, $contentType)
+        return $this->changeVersionHistoryAsyncWithHttpInfo($file_id, $change_history_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1190,16 +1134,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-version-history/
      *
      * @param  int|string $file_id The file whose version history is changed. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistoryRequest $change_history_request The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeVersionHistoryAsyncWithHttpInfo($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
+    public function changeVersionHistoryAsyncWithHttpInfo($file_id, $change_history_request, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
         $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper' : '\OpenAPI\Client\Model\FileArrayWrapper';
-        $request = $this->changeVersionHistoryRequest($file_id, $change_history, $contentType);
+        $request = $this->changeVersionHistoryRequest($file_id, $change_history_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1241,13 +1185,13 @@ class FilesApi
      * Create request for operation 'changeVersionHistory'
      *
      * @param  int|string $file_id The file whose version history is changed. (required)
-     * @param  \OpenAPI\Client\Model\ChangeHistory $change_history The change to make to the revision group. (required)
+     * @param  \OpenAPI\Client\Model\ChangeHistoryRequest $change_history_request The change to make to the revision group. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeVersionHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeVersionHistoryRequest($file_id, $change_history, string $contentType = self::contentTypes['changeVersionHistory'][0])
+    public function changeVersionHistoryRequest($file_id, $change_history_request, string $contentType = self::contentTypes['changeVersionHistory'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -1257,10 +1201,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'change_history' is set
-        if ($change_history === null || (is_array($change_history) && count($change_history) === 0)) {
+        // verify the required parameter 'change_history_request' is set
+        if ($change_history_request === null || (is_array($change_history_request) && count($change_history_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $change_history when calling changeVersionHistory'
+                'Missing the required parameter $change_history_request when calling changeVersionHistory'
             );
         }
 
@@ -1291,12 +1235,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($change_history)) {
+        if (isset($change_history_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($change_history));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($change_history_request));
             } else {
-                $httpBody = $change_history;
+                $httpBody = $change_history_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1375,16 +1319,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
      * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraftRequest $check_fill_form_draft_request The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function checkFillFormDraft($file_id, $check_fill_form_draft, string $contentType = self::contentTypes['checkFillFormDraft'][0])
+    public function checkFillFormDraft($file_id, $check_fill_form_draft_request, string $contentType = self::contentTypes['checkFillFormDraft'][0])
     {
-        list($response) = $this->checkFillFormDraftWithHttpInfo($file_id, $check_fill_form_draft, $contentType);
+        list($response) = $this->checkFillFormDraftWithHttpInfo($file_id, $check_fill_form_draft_request, $contentType);
         return $response;
     }
 
@@ -1397,16 +1341,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
      * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraftRequest $check_fill_form_draft_request The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function checkFillFormDraftWithHttpInfo($file_id, $check_fill_form_draft, string $contentType = self::contentTypes['checkFillFormDraft'][0])
+    public function checkFillFormDraftWithHttpInfo($file_id, $check_fill_form_draft_request, string $contentType = self::contentTypes['checkFillFormDraft'][0])
     {
-        $request = $this->checkFillFormDraftRequest($file_id, $check_fill_form_draft, $contentType);
+        $request = $this->checkFillFormDraftRequest($file_id, $check_fill_form_draft_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1439,18 +1383,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1496,22 +1428,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1528,15 +1444,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
      * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraftRequest $check_fill_form_draft_request The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkFillFormDraftAsync($file_id, $check_fill_form_draft, string $contentType = self::contentTypes['checkFillFormDraft'][0])
+    public function checkFillFormDraftAsync($file_id, $check_fill_form_draft_request, string $contentType = self::contentTypes['checkFillFormDraft'][0])
     {
-        return $this->checkFillFormDraftAsyncWithHttpInfo($file_id, $check_fill_form_draft, $contentType)
+        return $this->checkFillFormDraftAsyncWithHttpInfo($file_id, $check_fill_form_draft_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1553,16 +1469,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/check-fill-form-draft/
      *
      * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraftRequest $check_fill_form_draft_request The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function checkFillFormDraftAsyncWithHttpInfo($file_id, $check_fill_form_draft, string $contentType = self::contentTypes['checkFillFormDraft'][0])
+    public function checkFillFormDraftAsyncWithHttpInfo($file_id, $check_fill_form_draft_request, string $contentType = self::contentTypes['checkFillFormDraft'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->checkFillFormDraftRequest($file_id, $check_fill_form_draft, $contentType);
+        $request = $this->checkFillFormDraftRequest($file_id, $check_fill_form_draft_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1604,13 +1520,13 @@ class FilesApi
      * Create request for operation 'checkFillFormDraft'
      *
      * @param  int|string $file_id The identifier of the PDF form to open, as it is returned by a room listing such as  `GET api/2.0/files/{folderId}`. The identifier of an already created draft is accepted here as well. (required)
-     * @param  \OpenAPI\Client\Model\CheckFillFormDraft $check_fill_form_draft The revision of the form to open and what the caller intends to do with it. (required)
+     * @param  \OpenAPI\Client\Model\CheckFillFormDraftRequest $check_fill_form_draft_request The revision of the form to open and what the caller intends to do with it. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkFillFormDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function checkFillFormDraftRequest($file_id, $check_fill_form_draft, string $contentType = self::contentTypes['checkFillFormDraft'][0])
+    public function checkFillFormDraftRequest($file_id, $check_fill_form_draft_request, string $contentType = self::contentTypes['checkFillFormDraft'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -1620,10 +1536,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'check_fill_form_draft' is set
-        if ($check_fill_form_draft === null || (is_array($check_fill_form_draft) && count($check_fill_form_draft) === 0)) {
+        // verify the required parameter 'check_fill_form_draft_request' is set
+        if ($check_fill_form_draft_request === null || (is_array($check_fill_form_draft_request) && count($check_fill_form_draft_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $check_fill_form_draft when calling checkFillFormDraft'
+                'Missing the required parameter $check_fill_form_draft_request when calling checkFillFormDraft'
             );
         }
 
@@ -1654,12 +1570,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($check_fill_form_draft)) {
+        if (isset($check_fill_form_draft_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($check_fill_form_draft));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($check_fill_form_draft_request));
             } else {
-                $httpBody = $check_fill_form_draft;
+                $httpBody = $check_fill_form_draft_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1738,16 +1654,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
      * @param  int|string $file_id The file to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsRequest $copy_as_request The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileEntryBaseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileEntryBaseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function copyFileAs($file_id, $copy_as_json_element, string $contentType = self::contentTypes['copyFileAs'][0])
+    public function copyFileAs($file_id, $copy_as_request, string $contentType = self::contentTypes['copyFileAs'][0])
     {
-        list($response) = $this->copyFileAsWithHttpInfo($file_id, $copy_as_json_element, $contentType);
+        list($response) = $this->copyFileAsWithHttpInfo($file_id, $copy_as_request, $contentType);
         return $response;
     }
 
@@ -1760,16 +1676,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
      * @param  int|string $file_id The file to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsRequest $copy_as_request The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileEntryBaseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileEntryBaseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function copyFileAsWithHttpInfo($file_id, $copy_as_json_element, string $contentType = self::contentTypes['copyFileAs'][0])
+    public function copyFileAsWithHttpInfo($file_id, $copy_as_request, string $contentType = self::contentTypes['copyFileAs'][0])
     {
-        $request = $this->copyFileAsRequest($file_id, $copy_as_json_element, $contentType);
+        $request = $this->copyFileAsRequest($file_id, $copy_as_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1808,12 +1724,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1867,14 +1777,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1891,15 +1793,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
      * @param  int|string $file_id The file to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsRequest $copy_as_request The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function copyFileAsAsync($file_id, $copy_as_json_element, string $contentType = self::contentTypes['copyFileAs'][0])
+    public function copyFileAsAsync($file_id, $copy_as_request, string $contentType = self::contentTypes['copyFileAs'][0])
     {
-        return $this->copyFileAsAsyncWithHttpInfo($file_id, $copy_as_json_element, $contentType)
+        return $this->copyFileAsAsyncWithHttpInfo($file_id, $copy_as_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1916,16 +1818,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/copy-file-as/
      *
      * @param  int|string $file_id The file to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsRequest $copy_as_request The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function copyFileAsAsyncWithHttpInfo($file_id, $copy_as_json_element, string $contentType = self::contentTypes['copyFileAs'][0])
+    public function copyFileAsAsyncWithHttpInfo($file_id, $copy_as_request, string $contentType = self::contentTypes['copyFileAs'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileEntryBaseWrapper';
-        $request = $this->copyFileAsRequest($file_id, $copy_as_json_element, $contentType);
+        $request = $this->copyFileAsRequest($file_id, $copy_as_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1967,13 +1869,13 @@ class FilesApi
      * Create request for operation 'copyFileAs'
      *
      * @param  int|string $file_id The file to copy. (required)
-     * @param  \OpenAPI\Client\Model\CopyAsJsonElement $copy_as_json_element The title, the destination and the conversion options of the copy. (required)
+     * @param  \OpenAPI\Client\Model\CopyAsRequest $copy_as_request The title, the destination and the conversion options of the copy. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['copyFileAs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function copyFileAsRequest($file_id, $copy_as_json_element, string $contentType = self::contentTypes['copyFileAs'][0])
+    public function copyFileAsRequest($file_id, $copy_as_request, string $contentType = self::contentTypes['copyFileAs'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -1983,10 +1885,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'copy_as_json_element' is set
-        if ($copy_as_json_element === null || (is_array($copy_as_json_element) && count($copy_as_json_element) === 0)) {
+        // verify the required parameter 'copy_as_request' is set
+        if ($copy_as_request === null || (is_array($copy_as_request) && count($copy_as_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $copy_as_json_element when calling copyFileAs'
+                'Missing the required parameter $copy_as_request when calling copyFileAs'
             );
         }
 
@@ -2017,12 +1919,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($copy_as_json_element)) {
+        if (isset($copy_as_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($copy_as_json_element));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($copy_as_request));
             } else {
-                $httpBody = $copy_as_json_element;
+                $httpBody = $copy_as_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2106,7 +2008,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createEditSession($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
@@ -2128,7 +2030,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createEditSessionWithHttpInfo($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
@@ -2160,7 +2062,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                         $request,
                         $response,
                     );
@@ -2206,7 +2108,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                 $request,
                 $response,
             );
@@ -2215,7 +2117,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper',
+                        is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2301,7 +2203,7 @@ class FilesApi
      */
     public function createEditSessionAsyncWithHttpInfo($file_id, $file_size = null, string $contentType = self::contentTypes['createEditSession'][0])
     {
-        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResponseWrapperWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResponseWrapperWrapper';
+        $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyChunkedUploadSessionResultWrapper' : '\OpenAPI\Client\Model\ChunkedUploadSessionResultWrapper';
         $request = $this->createEditSessionRequest($file_id, $file_size, $contentType);
 
         return $this->client
@@ -2474,16 +2376,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest $create_file_request The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createFile($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
+    public function createFile($folder_id, $create_file_request, string $contentType = self::contentTypes['createFile'][0])
     {
-        list($response) = $this->createFileWithHttpInfo($folder_id, $create_file_json_element, $contentType);
+        list($response) = $this->createFileWithHttpInfo($folder_id, $create_file_request, $contentType);
         return $response;
     }
 
@@ -2496,16 +2398,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest $create_file_request The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFileWithHttpInfo($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
+    public function createFileWithHttpInfo($folder_id, $create_file_request, string $contentType = self::contentTypes['createFile'][0])
     {
-        $request = $this->createFileRequest($folder_id, $create_file_json_element, $contentType);
+        $request = $this->createFileRequest($folder_id, $create_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2544,18 +2446,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2609,22 +2499,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2641,15 +2515,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest $create_file_request The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFileAsync($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
+    public function createFileAsync($folder_id, $create_file_request, string $contentType = self::contentTypes['createFile'][0])
     {
-        return $this->createFileAsyncWithHttpInfo($folder_id, $create_file_json_element, $contentType)
+        return $this->createFileAsyncWithHttpInfo($folder_id, $create_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2666,16 +2540,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest $create_file_request The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFileAsyncWithHttpInfo($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
+    public function createFileAsyncWithHttpInfo($folder_id, $create_file_request, string $contentType = self::contentTypes['createFile'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createFileRequest($folder_id, $create_file_json_element, $contentType);
+        $request = $this->createFileRequest($folder_id, $create_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2717,13 +2591,13 @@ class FilesApi
      * Create request for operation 'createFile'
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement $create_file_json_element The title of the new file and the source of its content. (required)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest $create_file_request The title of the new file and the source of its content. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFileRequest($folder_id, $create_file_json_element, string $contentType = self::contentTypes['createFile'][0])
+    public function createFileRequest($folder_id, $create_file_request, string $contentType = self::contentTypes['createFile'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -2733,10 +2607,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'create_file_json_element' is set
-        if ($create_file_json_element === null || (is_array($create_file_json_element) && count($create_file_json_element) === 0)) {
+        // verify the required parameter 'create_file_request' is set
+        if ($create_file_request === null || (is_array($create_file_request) && count($create_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_file_json_element when calling createFile'
+                'Missing the required parameter $create_file_request when calling createFile'
             );
         }
 
@@ -2767,12 +2641,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_file_json_element)) {
+        if (isset($create_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_file_json_element));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_file_request));
             } else {
-                $httpBody = $create_file_json_element;
+                $httpBody = $create_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2850,16 +2724,16 @@ class FilesApi
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement|null $create_file_json_element create_file_json_element (optional)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest|null $create_file_request create_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createFileInMyDocuments($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
+    public function createFileInMyDocuments($create_file_request = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
-        list($response) = $this->createFileInMyDocumentsWithHttpInfo($create_file_json_element, $contentType);
+        list($response) = $this->createFileInMyDocumentsWithHttpInfo($create_file_request, $contentType);
         return $response;
     }
 
@@ -2871,16 +2745,16 @@ class FilesApi
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement|null $create_file_json_element (optional)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest|null $create_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFileInMyDocumentsWithHttpInfo($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
+    public function createFileInMyDocumentsWithHttpInfo($create_file_request = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
-        $request = $this->createFileInMyDocumentsRequest($create_file_json_element, $contentType);
+        $request = $this->createFileInMyDocumentsRequest($create_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2919,18 +2793,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2984,22 +2846,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3015,15 +2861,15 @@ class FilesApi
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement|null $create_file_json_element (optional)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest|null $create_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFileInMyDocumentsAsync($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
+    public function createFileInMyDocumentsAsync($create_file_request = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
-        return $this->createFileInMyDocumentsAsyncWithHttpInfo($create_file_json_element, $contentType)
+        return $this->createFileInMyDocumentsAsyncWithHttpInfo($create_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3039,16 +2885,16 @@ class FilesApi
      * REST API Reference for createFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement|null $create_file_json_element (optional)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest|null $create_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFileInMyDocumentsAsyncWithHttpInfo($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
+    public function createFileInMyDocumentsAsyncWithHttpInfo($create_file_request = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createFileInMyDocumentsRequest($create_file_json_element, $contentType);
+        $request = $this->createFileInMyDocumentsRequest($create_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3089,13 +2935,13 @@ class FilesApi
     /**
      * Create request for operation 'createFileInMyDocuments'
      *
-     * @param  \OpenAPI\Client\Model\CreateFileJsonElement|null $create_file_json_element (optional)
+     * @param  \OpenAPI\Client\Model\CreateFileRequest|null $create_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFileInMyDocumentsRequest($create_file_json_element = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
+    public function createFileInMyDocumentsRequest($create_file_request = null, string $contentType = self::contentTypes['createFileInMyDocuments'][0])
     {
 
 
@@ -3118,12 +2964,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_file_json_element)) {
+        if (isset($create_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_file_json_element));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_file_request));
             } else {
-                $httpBody = $create_file_json_element;
+                $httpBody = $create_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3207,7 +3053,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createFilePrimaryExternalLink($id, $file_link_request, string $contentType = self::contentTypes['createFilePrimaryExternalLink'][0])
     {
@@ -3229,7 +3075,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFilePrimaryExternalLinkWithHttpInfo($id, $file_link_request, string $contentType = self::contentTypes['createFilePrimaryExternalLink'][0])
     {
@@ -3278,12 +3124,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3338,14 +3178,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3579,16 +3411,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createHtmlFile($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
+    public function createHtmlFile($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
-        list($response) = $this->createHtmlFileWithHttpInfo($folder_id, $create_text_or_html_file, $contentType);
+        list($response) = $this->createHtmlFileWithHttpInfo($folder_id, $create_text_or_html_file_request, $contentType);
         return $response;
     }
 
@@ -3601,16 +3433,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createHtmlFileWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
+    public function createHtmlFileWithHttpInfo($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
-        $request = $this->createHtmlFileRequest($folder_id, $create_text_or_html_file, $contentType);
+        $request = $this->createHtmlFileRequest($folder_id, $create_text_or_html_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3655,12 +3487,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3722,14 +3548,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3746,15 +3564,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createHtmlFileAsync($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
+    public function createHtmlFileAsync($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
-        return $this->createHtmlFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, $contentType)
+        return $this->createHtmlFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3771,16 +3589,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createHtmlFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
+    public function createHtmlFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createHtmlFileRequest($folder_id, $create_text_or_html_file, $contentType);
+        $request = $this->createHtmlFileRequest($folder_id, $create_text_or_html_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3822,13 +3640,13 @@ class FilesApi
      * Create request for operation 'createHtmlFile'
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createHtmlFileRequest($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createHtmlFile'][0])
+    public function createHtmlFileRequest($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createHtmlFile'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -3838,10 +3656,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'create_text_or_html_file' is set
-        if ($create_text_or_html_file === null || (is_array($create_text_or_html_file) && count($create_text_or_html_file) === 0)) {
+        // verify the required parameter 'create_text_or_html_file_request' is set
+        if ($create_text_or_html_file_request === null || (is_array($create_text_or_html_file_request) && count($create_text_or_html_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_text_or_html_file when calling createHtmlFile'
+                'Missing the required parameter $create_text_or_html_file_request when calling createHtmlFile'
             );
         }
 
@@ -3872,12 +3690,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_text_or_html_file)) {
+        if (isset($create_text_or_html_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file_request));
             } else {
-                $httpBody = $create_text_or_html_file;
+                $httpBody = $create_text_or_html_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3955,16 +3773,16 @@ class FilesApi
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createHtmlFileInMyDocuments($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
+    public function createHtmlFileInMyDocuments($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
-        list($response) = $this->createHtmlFileInMyDocumentsWithHttpInfo($create_text_or_html_file, $contentType);
+        list($response) = $this->createHtmlFileInMyDocumentsWithHttpInfo($create_text_or_html_file_request, $contentType);
         return $response;
     }
 
@@ -3976,16 +3794,16 @@ class FilesApi
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createHtmlFileInMyDocumentsWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
+    public function createHtmlFileInMyDocumentsWithHttpInfo($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
-        $request = $this->createHtmlFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
+        $request = $this->createHtmlFileInMyDocumentsRequest($create_text_or_html_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4030,12 +3848,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4097,14 +3909,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4120,15 +3924,15 @@ class FilesApi
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createHtmlFileInMyDocumentsAsync($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
+    public function createHtmlFileInMyDocumentsAsync($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
-        return $this->createHtmlFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file, $contentType)
+        return $this->createHtmlFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4144,16 +3948,16 @@ class FilesApi
      * REST API Reference for createHtmlFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-html-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createHtmlFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
+    public function createHtmlFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createHtmlFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
+        $request = $this->createHtmlFileInMyDocumentsRequest($create_text_or_html_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4194,13 +3998,13 @@ class FilesApi
     /**
      * Create request for operation 'createHtmlFileInMyDocuments'
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createHtmlFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createHtmlFileInMyDocumentsRequest($create_text_or_html_file = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
+    public function createHtmlFileInMyDocumentsRequest($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createHtmlFileInMyDocuments'][0])
     {
 
 
@@ -4223,12 +4027,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_text_or_html_file)) {
+        if (isset($create_text_or_html_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file_request));
             } else {
-                $httpBody = $create_text_or_html_file;
+                $httpBody = $create_text_or_html_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4307,16 +4111,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createTextFile($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
+    public function createTextFile($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createTextFile'][0])
     {
-        list($response) = $this->createTextFileWithHttpInfo($folder_id, $create_text_or_html_file, $contentType);
+        list($response) = $this->createTextFileWithHttpInfo($folder_id, $create_text_or_html_file_request, $contentType);
         return $response;
     }
 
@@ -4329,16 +4133,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTextFileWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
+    public function createTextFileWithHttpInfo($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createTextFile'][0])
     {
-        $request = $this->createTextFileRequest($folder_id, $create_text_or_html_file, $contentType);
+        $request = $this->createTextFileRequest($folder_id, $create_text_or_html_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4383,12 +4187,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4450,14 +4248,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4474,15 +4264,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTextFileAsync($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
+    public function createTextFileAsync($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createTextFile'][0])
     {
-        return $this->createTextFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, $contentType)
+        return $this->createTextFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4499,16 +4289,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file/
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTextFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
+    public function createTextFileAsyncWithHttpInfo($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createTextFile'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createTextFileRequest($folder_id, $create_text_or_html_file, $contentType);
+        $request = $this->createTextFileRequest($folder_id, $create_text_or_html_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4550,13 +4340,13 @@ class FilesApi
      * Create request for operation 'createTextFile'
      *
      * @param  int|string $folder_id The folder the file is created in. (required)
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile $create_text_or_html_file The title, the content and the collision behaviour of the new file. (required)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest $create_text_or_html_file_request The title, the content and the collision behaviour of the new file. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTextFileRequest($folder_id, $create_text_or_html_file, string $contentType = self::contentTypes['createTextFile'][0])
+    public function createTextFileRequest($folder_id, $create_text_or_html_file_request, string $contentType = self::contentTypes['createTextFile'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -4566,10 +4356,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'create_text_or_html_file' is set
-        if ($create_text_or_html_file === null || (is_array($create_text_or_html_file) && count($create_text_or_html_file) === 0)) {
+        // verify the required parameter 'create_text_or_html_file_request' is set
+        if ($create_text_or_html_file_request === null || (is_array($create_text_or_html_file_request) && count($create_text_or_html_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_text_or_html_file when calling createTextFile'
+                'Missing the required parameter $create_text_or_html_file_request when calling createTextFile'
             );
         }
 
@@ -4600,12 +4390,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_text_or_html_file)) {
+        if (isset($create_text_or_html_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file_request));
             } else {
-                $httpBody = $create_text_or_html_file;
+                $httpBody = $create_text_or_html_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4683,16 +4473,16 @@ class FilesApi
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createTextFileInMyDocuments($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
+    public function createTextFileInMyDocuments($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
-        list($response) = $this->createTextFileInMyDocumentsWithHttpInfo($create_text_or_html_file, $contentType);
+        list($response) = $this->createTextFileInMyDocumentsWithHttpInfo($create_text_or_html_file_request, $contentType);
         return $response;
     }
 
@@ -4704,16 +4494,16 @@ class FilesApi
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createTextFileInMyDocumentsWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
+    public function createTextFileInMyDocumentsWithHttpInfo($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
-        $request = $this->createTextFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
+        $request = $this->createTextFileInMyDocumentsRequest($create_text_or_html_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4758,12 +4548,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4825,14 +4609,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4848,15 +4624,15 @@ class FilesApi
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTextFileInMyDocumentsAsync($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
+    public function createTextFileInMyDocumentsAsync($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
-        return $this->createTextFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file, $contentType)
+        return $this->createTextFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4872,16 +4648,16 @@ class FilesApi
      * REST API Reference for createTextFileInMyDocuments Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-text-file-in-my-documents/
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createTextFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
+    public function createTextFileInMyDocumentsAsyncWithHttpInfo($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->createTextFileInMyDocumentsRequest($create_text_or_html_file, $contentType);
+        $request = $this->createTextFileInMyDocumentsRequest($create_text_or_html_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4922,13 +4698,13 @@ class FilesApi
     /**
      * Create request for operation 'createTextFileInMyDocuments'
      *
-     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFile|null $create_text_or_html_file (optional)
+     * @param  \OpenAPI\Client\Model\CreateTextOrHtmlFileRequest|null $create_text_or_html_file_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTextFileInMyDocuments'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createTextFileInMyDocumentsRequest($create_text_or_html_file = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
+    public function createTextFileInMyDocumentsRequest($create_text_or_html_file_request = null, string $contentType = self::contentTypes['createTextFileInMyDocuments'][0])
     {
 
 
@@ -4951,12 +4727,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($create_text_or_html_file)) {
+        if (isset($create_text_or_html_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_text_or_html_file_request));
             } else {
-                $httpBody = $create_text_or_html_file;
+                $httpBody = $create_text_or_html_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5372,7 +5148,7 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
      * @param  int|string $file_id The file to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFileRequest $delete_file_request When and how the file is deleted. (required)
      * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
@@ -5380,9 +5156,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function deleteFile($file_id, $delete, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
+    public function deleteFile($file_id, $delete_file_request, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
     {
-        list($response) = $this->deleteFileWithHttpInfo($file_id, $delete, $return_single_operation, $contentType);
+        list($response) = $this->deleteFileWithHttpInfo($file_id, $delete_file_request, $return_single_operation, $contentType);
         return $response;
     }
 
@@ -5395,7 +5171,7 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
      * @param  int|string $file_id The file to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFileRequest $delete_file_request When and how the file is deleted. (required)
      * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
@@ -5403,9 +5179,9 @@ class FilesApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteFileWithHttpInfo($file_id, $delete, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
+    public function deleteFileWithHttpInfo($file_id, $delete_file_request, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
     {
-        $request = $this->deleteFileRequest($file_id, $delete, $return_single_operation, $contentType);
+        $request = $this->deleteFileRequest($file_id, $delete_file_request, $return_single_operation, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5541,16 +5317,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
      * @param  int|string $file_id The file to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFileRequest $delete_file_request When and how the file is deleted. (required)
      * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFileAsync($file_id, $delete, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
+    public function deleteFileAsync($file_id, $delete_file_request, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
     {
-        return $this->deleteFileAsyncWithHttpInfo($file_id, $delete, $return_single_operation, $contentType)
+        return $this->deleteFileAsyncWithHttpInfo($file_id, $delete_file_request, $return_single_operation, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5567,17 +5343,17 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-file/
      *
      * @param  int|string $file_id The file to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFileRequest $delete_file_request When and how the file is deleted. (required)
      * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFileAsyncWithHttpInfo($file_id, $delete, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
+    public function deleteFileAsyncWithHttpInfo($file_id, $delete_file_request, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileOperationArrayWrapper';
-        $request = $this->deleteFileRequest($file_id, $delete, $return_single_operation, $contentType);
+        $request = $this->deleteFileRequest($file_id, $delete_file_request, $return_single_operation, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5619,14 +5395,14 @@ class FilesApi
      * Create request for operation 'deleteFile'
      *
      * @param  int|string $file_id The file to delete. (required)
-     * @param  \OpenAPI\Client\Model\Delete $delete When and how the file is deleted. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFileRequest $delete_file_request When and how the file is deleted. (required)
      * @param  bool|null $return_single_operation Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteFileRequest($file_id, $delete, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
+    public function deleteFileRequest($file_id, $delete_file_request, $return_single_operation = null, string $contentType = self::contentTypes['deleteFile'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -5636,10 +5412,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'delete' is set
-        if ($delete === null || (is_array($delete) && count($delete) === 0)) {
+        // verify the required parameter 'delete_file_request' is set
+        if ($delete_file_request === null || (is_array($delete_file_request) && count($delete_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $delete when calling deleteFile'
+                'Missing the required parameter $delete_file_request when calling deleteFile'
             );
         }
 
@@ -5655,7 +5431,7 @@ class FilesApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $return_single_operation,
-            'ReturnSingleOperation', // param base name
+            'returnSingleOperation', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5680,12 +5456,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($delete)) {
+        if (isset($delete_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_file_request));
             } else {
-                $httpBody = $delete;
+                $httpBody = $delete_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5829,22 +5605,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -6040,16 +5800,16 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
+     * @param  int[]|null $delete_template_files_request_dto The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function deleteTemplates($request_body = null, string $contentType = self::contentTypes['deleteTemplates'][0])
+    public function deleteTemplates($delete_template_files_request_dto = null, string $contentType = self::contentTypes['deleteTemplates'][0])
     {
-        list($response) = $this->deleteTemplatesWithHttpInfo($request_body, $contentType);
+        list($response) = $this->deleteTemplatesWithHttpInfo($delete_template_files_request_dto, $contentType);
         return $response;
     }
 
@@ -6061,16 +5821,16 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
+     * @param  int[]|null $delete_template_files_request_dto The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteTemplatesWithHttpInfo($request_body = null, string $contentType = self::contentTypes['deleteTemplates'][0])
+    public function deleteTemplatesWithHttpInfo($delete_template_files_request_dto = null, string $contentType = self::contentTypes['deleteTemplates'][0])
     {
-        $request = $this->deleteTemplatesRequest($request_body, $contentType);
+        $request = $this->deleteTemplatesRequest($delete_template_files_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6205,15 +5965,15 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
+     * @param  int[]|null $delete_template_files_request_dto The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTemplatesAsync($request_body = null, string $contentType = self::contentTypes['deleteTemplates'][0])
+    public function deleteTemplatesAsync($delete_template_files_request_dto = null, string $contentType = self::contentTypes['deleteTemplates'][0])
     {
-        return $this->deleteTemplatesAsyncWithHttpInfo($request_body, $contentType)
+        return $this->deleteTemplatesAsyncWithHttpInfo($delete_template_files_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6229,16 +5989,16 @@ class FilesApi
      * REST API Reference for deleteTemplates Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-templates/
      *
-     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
+     * @param  int[]|null $delete_template_files_request_dto The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteTemplatesAsyncWithHttpInfo($request_body = null, string $contentType = self::contentTypes['deleteTemplates'][0])
+    public function deleteTemplatesAsyncWithHttpInfo($delete_template_files_request_dto = null, string $contentType = self::contentTypes['deleteTemplates'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->deleteTemplatesRequest($request_body, $contentType);
+        $request = $this->deleteTemplatesRequest($delete_template_files_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6279,13 +6039,13 @@ class FilesApi
     /**
      * Create request for operation 'deleteTemplates'
      *
-     * @param  int[]|null $request_body The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
+     * @param  int[]|null $delete_template_files_request_dto The files to take off the template list, by id; this array is the whole request body. Only a file stored in  the portal itself can be a template, which is why an id here is always numeric. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteTemplatesRequest($request_body = null, string $contentType = self::contentTypes['deleteTemplates'][0])
+    public function deleteTemplatesRequest($delete_template_files_request_dto = null, string $contentType = self::contentTypes['deleteTemplates'][0])
     {
 
 
@@ -6308,12 +6068,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($delete_template_files_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_template_files_request_dto));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $delete_template_files_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -8163,7 +7923,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFileHistory($file_id, $from_date = null, $to_date = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileHistory'][0])
     {
@@ -8188,7 +7948,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileHistoryWithHttpInfo($file_id, $from_date = null, $to_date = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileHistory'][0])
     {
@@ -8237,12 +7997,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -8297,14 +8051,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -8944,7 +8690,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFileLinks($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileLinks'][0])
     {
@@ -8967,7 +8713,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFileLinksWithHttpInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFileLinks'][0])
     {
@@ -9016,12 +8762,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -9076,14 +8816,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -9338,7 +9070,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFilePrimaryExternalLink($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFilePrimaryExternalLink'][0])
     {
@@ -9361,7 +9093,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFilePrimaryExternalLinkWithHttpInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFilePrimaryExternalLink'][0])
     {
@@ -9409,12 +9141,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -9456,14 +9182,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -10060,7 +9778,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFillResult($filling_session_id = null, string $contentType = self::contentTypes['getFillResult'][0])
     {
@@ -10081,7 +9799,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FillingFormResultWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFillResultWithHttpInfo($filling_session_id = null, string $contentType = self::contentTypes['getFillResult'][0])
     {
@@ -10123,18 +9841,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -10168,22 +9874,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -11115,7 +10805,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getPresignedUri($file_id, string $contentType = self::contentTypes['getPresignedUri'][0])
     {
@@ -11136,7 +10826,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPresignedUriWithHttpInfo($file_id, string $contentType = self::contentTypes['getPresignedUri'][0])
     {
@@ -11185,12 +10875,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -11245,14 +10929,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -11473,7 +11149,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\MentionWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\MentionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getProtectedFileUsers($file_id, string $contentType = self::contentTypes['getProtectedFileUsers'][0])
     {
@@ -11494,7 +11170,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\MentionWrapperArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\MentionArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProtectedFileUsersWithHttpInfo($file_id, string $contentType = self::contentTypes['getProtectedFileUsers'][0])
     {
@@ -11526,7 +11202,7 @@ class FilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\MentionArrayWrapper',
                         $request,
                         $response,
                     );
@@ -11572,7 +11248,7 @@ class FilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                '\OpenAPI\Client\Model\MentionArrayWrapper',
                 $request,
                 $response,
             );
@@ -11581,7 +11257,7 @@ class FilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\MentionWrapperArrayWrapper',
+                        '\OpenAPI\Client\Model\MentionArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11665,7 +11341,7 @@ class FilesApi
      */
     public function getProtectedFileUsersAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['getProtectedFileUsers'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\MentionWrapperArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\MentionArrayWrapper';
         $request = $this->getProtectedFileUsersRequest($file_id, $contentType);
 
         return $this->client
@@ -11831,7 +11507,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getReferenceData($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
@@ -11852,7 +11528,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileReferenceWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getReferenceDataWithHttpInfo($get_reference_data_dto = null, string $contentType = self::contentTypes['getReferenceData'][0])
     {
@@ -11900,18 +11576,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -11953,22 +11617,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -12540,7 +12188,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function isFormPDF($file_id, string $contentType = self::contentTypes['isFormPDF'][0])
     {
@@ -12561,7 +12209,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function isFormPDFWithHttpInfo($file_id, string $contentType = self::contentTypes['isFormPDF'][0])
     {
@@ -12604,12 +12252,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -12662,14 +12304,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -12894,16 +12528,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
      * @param  int|string $file_id The file to lock or unlock. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
+     * @param  \OpenAPI\Client\Model\LockFileRequest $lock_file_request The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function lockFile($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
+    public function lockFile($file_id, $lock_file_request, string $contentType = self::contentTypes['lockFile'][0])
     {
-        list($response) = $this->lockFileWithHttpInfo($file_id, $lock_file_parameters, $contentType);
+        list($response) = $this->lockFileWithHttpInfo($file_id, $lock_file_request, $contentType);
         return $response;
     }
 
@@ -12916,16 +12550,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
      * @param  int|string $file_id The file to lock or unlock. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
+     * @param  \OpenAPI\Client\Model\LockFileRequest $lock_file_request The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function lockFileWithHttpInfo($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
+    public function lockFileWithHttpInfo($file_id, $lock_file_request, string $contentType = self::contentTypes['lockFile'][0])
     {
-        $request = $this->lockFileRequest($file_id, $lock_file_parameters, $contentType);
+        $request = $this->lockFileRequest($file_id, $lock_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13061,15 +12695,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
      * @param  int|string $file_id The file to lock or unlock. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
+     * @param  \OpenAPI\Client\Model\LockFileRequest $lock_file_request The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockFileAsync($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
+    public function lockFileAsync($file_id, $lock_file_request, string $contentType = self::contentTypes['lockFile'][0])
     {
-        return $this->lockFileAsyncWithHttpInfo($file_id, $lock_file_parameters, $contentType)
+        return $this->lockFileAsyncWithHttpInfo($file_id, $lock_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13086,16 +12720,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/lock-file/
      *
      * @param  int|string $file_id The file to lock or unlock. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
+     * @param  \OpenAPI\Client\Model\LockFileRequest $lock_file_request The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function lockFileAsyncWithHttpInfo($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
+    public function lockFileAsyncWithHttpInfo($file_id, $lock_file_request, string $contentType = self::contentTypes['lockFile'][0])
     {
         $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->lockFileRequest($file_id, $lock_file_parameters, $contentType);
+        $request = $this->lockFileRequest($file_id, $lock_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13137,13 +12771,13 @@ class FilesApi
      * Create request for operation 'lockFile'
      *
      * @param  int|string $file_id The file to lock or unlock. (required)
-     * @param  \OpenAPI\Client\Model\LockFileParameters $lock_file_parameters The lock state to reach. (required)
+     * @param  \OpenAPI\Client\Model\LockFileRequest $lock_file_request The lock state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lockFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function lockFileRequest($file_id, $lock_file_parameters, string $contentType = self::contentTypes['lockFile'][0])
+    public function lockFileRequest($file_id, $lock_file_request, string $contentType = self::contentTypes['lockFile'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -13153,10 +12787,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'lock_file_parameters' is set
-        if ($lock_file_parameters === null || (is_array($lock_file_parameters) && count($lock_file_parameters) === 0)) {
+        // verify the required parameter 'lock_file_request' is set
+        if ($lock_file_request === null || (is_array($lock_file_request) && count($lock_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $lock_file_parameters when calling lockFile'
+                'Missing the required parameter $lock_file_request when calling lockFile'
             );
         }
 
@@ -13187,12 +12821,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($lock_file_parameters)) {
+        if (isset($lock_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($lock_file_parameters));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($lock_file_request));
             } else {
-                $httpBody = $lock_file_parameters;
+                $httpBody = $lock_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -13338,22 +12972,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -13577,7 +13195,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function openEditFile($file_id, $version = null, $view = null, $editor_type = null, $edit = null, $fill = null, string $contentType = self::contentTypes['openEditFile'][0])
     {
@@ -13603,7 +13221,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ConfigurationWrapper|\OpenAPI\Client\Model\ThirdPartyConfigurationWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function openEditFileWithHttpInfo($file_id, $version = null, $view = null, $editor_type = null, $edit = null, $fill = null, string $contentType = self::contentTypes['openEditFile'][0])
     {
@@ -13640,12 +13258,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -13690,14 +13302,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -13993,7 +13597,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EditHistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EditHistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function restoreFileVersion($file_id, $version = null, $url = null, string $contentType = self::contentTypes['restoreFileVersion'][0])
     {
@@ -14016,7 +13620,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EditHistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EditHistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function restoreFileVersionWithHttpInfo($file_id, $version = null, $url = null, string $contentType = self::contentTypes['restoreFileVersion'][0])
     {
@@ -14058,12 +13662,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -14097,14 +13695,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -14355,7 +13945,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveEditingFileFromForm($file_id, $download_uri = null, $file_extension = null, $file = null, $forcesave = null, string $contentType = self::contentTypes['saveEditingFileFromForm'][0])
     {
@@ -14380,7 +13970,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveEditingFileFromFormWithHttpInfo($file_id, $download_uri = null, $file_extension = null, $file = null, $forcesave = null, string $contentType = self::contentTypes['saveEditingFileFromForm'][0])
     {
@@ -14428,12 +14018,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -14475,14 +14059,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -14622,7 +14198,7 @@ class FilesApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $download_uri,
-            'DownloadUri', // param base name
+            'downloadUri', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -14736,16 +14312,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
      * @param  int|string $id The file to convert; it is left untouched. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdfRequest|\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest $save_as_pdf_request The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveFileAsPdf($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdf($id, $save_as_pdf_request, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        list($response) = $this->saveFileAsPdfWithHttpInfo($id, $save_as_pdf, $contentType);
+        list($response) = $this->saveFileAsPdfWithHttpInfo($id, $save_as_pdf_request, $contentType);
         return $response;
     }
 
@@ -14758,16 +14334,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
      * @param  int|string $id The file to convert; it is left untouched. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdfRequest|\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest $save_as_pdf_request The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveFileAsPdfWithHttpInfo($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfWithHttpInfo($id, $save_as_pdf_request, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf, $contentType);
+        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -14806,18 +14382,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -14871,22 +14435,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -14903,15 +14451,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
      * @param  int|string $id The file to convert; it is left untouched. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdfRequest|\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest $save_as_pdf_request The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFileAsPdfAsync($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfAsync($id, $save_as_pdf_request, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
-        return $this->saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf, $contentType)
+        return $this->saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -14928,16 +14476,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-file-as-pdf/
      *
      * @param  int|string $id The file to convert; it is left untouched. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdfRequest|\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest $save_as_pdf_request The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfAsyncWithHttpInfo($id, $save_as_pdf_request, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
         $returnType = is_string($id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf, $contentType);
+        $request = $this->saveFileAsPdfRequest($id, $save_as_pdf_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -14979,13 +14527,13 @@ class FilesApi
      * Create request for operation 'saveFileAsPdf'
      *
      * @param  int|string $id The file to convert; it is left untouched. (required)
-     * @param  \OpenAPI\Client\Model\SaveAsPdf|\OpenAPI\Client\Model\ThirdPartySaveAsPdf $save_as_pdf The destination folder and the name of the PDF. (required)
+     * @param  \OpenAPI\Client\Model\SaveAsPdfRequest|\OpenAPI\Client\Model\ThirdPartySaveAsPdfRequest $save_as_pdf_request The destination folder and the name of the PDF. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveFileAsPdf'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveFileAsPdfRequest($id, $save_as_pdf, string $contentType = self::contentTypes['saveFileAsPdf'][0])
+    public function saveFileAsPdfRequest($id, $save_as_pdf_request, string $contentType = self::contentTypes['saveFileAsPdf'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -14995,10 +14543,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'save_as_pdf' is set
-        if ($save_as_pdf === null || (is_array($save_as_pdf) && count($save_as_pdf) === 0)) {
+        // verify the required parameter 'save_as_pdf_request' is set
+        if ($save_as_pdf_request === null || (is_array($save_as_pdf_request) && count($save_as_pdf_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $save_as_pdf when calling saveFileAsPdf'
+                'Missing the required parameter $save_as_pdf_request when calling saveFileAsPdf'
             );
         }
 
@@ -15029,12 +14577,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($save_as_pdf)) {
+        if (isset($save_as_pdf_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_as_pdf));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($save_as_pdf_request));
             } else {
-                $httpBody = $save_as_pdf;
+                $httpBody = $save_as_pdf_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -15180,22 +14728,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -15410,16 +14942,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
      * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterRequest $custom_filter_request The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setCustomFilterTag($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
+    public function setCustomFilterTag($file_id, $custom_filter_request, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
-        list($response) = $this->setCustomFilterTagWithHttpInfo($file_id, $custom_filter_parameters, $contentType);
+        list($response) = $this->setCustomFilterTagWithHttpInfo($file_id, $custom_filter_request, $contentType);
         return $response;
     }
 
@@ -15432,16 +14964,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
      * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterRequest $custom_filter_request The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setCustomFilterTagWithHttpInfo($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
+    public function setCustomFilterTagWithHttpInfo($file_id, $custom_filter_request, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
-        $request = $this->setCustomFilterTagRequest($file_id, $custom_filter_parameters, $contentType);
+        $request = $this->setCustomFilterTagRequest($file_id, $custom_filter_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15486,12 +15018,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -15553,14 +15079,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -15577,15 +15095,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
      * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterRequest $custom_filter_request The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setCustomFilterTagAsync($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
+    public function setCustomFilterTagAsync($file_id, $custom_filter_request, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
-        return $this->setCustomFilterTagAsyncWithHttpInfo($file_id, $custom_filter_parameters, $contentType)
+        return $this->setCustomFilterTagAsyncWithHttpInfo($file_id, $custom_filter_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15602,16 +15120,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-custom-filter-tag/
      *
      * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterRequest $custom_filter_request The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setCustomFilterTagAsyncWithHttpInfo($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
+    public function setCustomFilterTagAsyncWithHttpInfo($file_id, $custom_filter_request, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
         $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->setCustomFilterTagRequest($file_id, $custom_filter_parameters, $contentType);
+        $request = $this->setCustomFilterTagRequest($file_id, $custom_filter_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15653,13 +15171,13 @@ class FilesApi
      * Create request for operation 'setCustomFilterTag'
      *
      * @param  int|string $file_id The spreadsheet whose Custom Filter mode is switched. (required)
-     * @param  \OpenAPI\Client\Model\CustomFilterParameters $custom_filter_parameters The Custom Filter state to reach. (required)
+     * @param  \OpenAPI\Client\Model\CustomFilterRequest $custom_filter_request The Custom Filter state to reach. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setCustomFilterTag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setCustomFilterTagRequest($file_id, $custom_filter_parameters, string $contentType = self::contentTypes['setCustomFilterTag'][0])
+    public function setCustomFilterTagRequest($file_id, $custom_filter_request, string $contentType = self::contentTypes['setCustomFilterTag'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -15669,10 +15187,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'custom_filter_parameters' is set
-        if ($custom_filter_parameters === null || (is_array($custom_filter_parameters) && count($custom_filter_parameters) === 0)) {
+        // verify the required parameter 'custom_filter_request' is set
+        if ($custom_filter_request === null || (is_array($custom_filter_request) && count($custom_filter_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $custom_filter_parameters when calling setCustomFilterTag'
+                'Missing the required parameter $custom_filter_request when calling setCustomFilterTag'
             );
         }
 
@@ -15703,12 +15221,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($custom_filter_parameters)) {
+        if (isset($custom_filter_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($custom_filter_parameters));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($custom_filter_request));
             } else {
-                $httpBody = $custom_filter_parameters;
+                $httpBody = $custom_filter_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -16089,7 +15607,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFileExternalLink($id, $file_link_request, string $contentType = self::contentTypes['setFileExternalLink'][0])
     {
@@ -16111,7 +15629,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFileExternalLinkWithHttpInfo($id, $file_link_request, string $contentType = self::contentTypes['setFileExternalLink'][0])
     {
@@ -16160,12 +15678,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -16220,14 +15732,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -16466,7 +15970,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFileOrder($file_id, $order_request_dto = null, string $contentType = self::contentTypes['setFileOrder'][0])
     {
@@ -16488,7 +15992,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFileOrderWithHttpInfo($file_id, $order_request_dto = null, string $contentType = self::contentTypes['setFileOrder'][0])
     {
@@ -16537,12 +16041,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -16597,14 +16095,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -16836,7 +16326,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFilesOrder($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
@@ -16857,7 +16347,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileEntryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFilesOrderWithHttpInfo($orders_request_dto = null, string $contentType = self::contentTypes['setFilesOrder'][0])
     {
@@ -16906,12 +16396,6 @@ class FilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -16966,14 +16450,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -17183,16 +16659,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
      * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
+     * @param  \OpenAPI\Client\Model\StartEditRequest $start_edit_request The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function startEditFile($file_id, $start_edit, string $contentType = self::contentTypes['startEditFile'][0])
+    public function startEditFile($file_id, $start_edit_request, string $contentType = self::contentTypes['startEditFile'][0])
     {
-        list($response) = $this->startEditFileWithHttpInfo($file_id, $start_edit, $contentType);
+        list($response) = $this->startEditFileWithHttpInfo($file_id, $start_edit_request, $contentType);
         return $response;
     }
 
@@ -17205,16 +16681,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
      * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
+     * @param  \OpenAPI\Client\Model\StartEditRequest $start_edit_request The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startEditFileWithHttpInfo($file_id, $start_edit, string $contentType = self::contentTypes['startEditFile'][0])
+    public function startEditFileWithHttpInfo($file_id, $start_edit_request, string $contentType = self::contentTypes['startEditFile'][0])
     {
-        $request = $this->startEditFileRequest($file_id, $start_edit, $contentType);
+        $request = $this->startEditFileRequest($file_id, $start_edit_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -17247,12 +16723,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -17304,14 +16774,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -17336,15 +16798,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
      * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
+     * @param  \OpenAPI\Client\Model\StartEditRequest $start_edit_request The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startEditFileAsync($file_id, $start_edit, string $contentType = self::contentTypes['startEditFile'][0])
+    public function startEditFileAsync($file_id, $start_edit_request, string $contentType = self::contentTypes['startEditFile'][0])
     {
-        return $this->startEditFileAsyncWithHttpInfo($file_id, $start_edit, $contentType)
+        return $this->startEditFileAsyncWithHttpInfo($file_id, $start_edit_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -17361,16 +16823,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-edit-file/
      *
      * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
+     * @param  \OpenAPI\Client\Model\StartEditRequest $start_edit_request The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startEditFileAsyncWithHttpInfo($file_id, $start_edit, string $contentType = self::contentTypes['startEditFile'][0])
+    public function startEditFileAsyncWithHttpInfo($file_id, $start_edit_request, string $contentType = self::contentTypes['startEditFile'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->startEditFileRequest($file_id, $start_edit, $contentType);
+        $request = $this->startEditFileRequest($file_id, $start_edit_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -17412,13 +16874,13 @@ class FilesApi
      * Create request for operation 'startEditFile'
      *
      * @param  int|string $file_id The file to open the editing session on. The caller needs edit access to it. (required)
-     * @param  \OpenAPI\Client\Model\StartEdit $start_edit The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
+     * @param  \OpenAPI\Client\Model\StartEditRequest $start_edit_request The session options. The body is required even when it only carries the default, so send an empty object to  open an ordinary co-editing session. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startEditFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function startEditFileRequest($file_id, $start_edit, string $contentType = self::contentTypes['startEditFile'][0])
+    public function startEditFileRequest($file_id, $start_edit_request, string $contentType = self::contentTypes['startEditFile'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -17428,10 +16890,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'start_edit' is set
-        if ($start_edit === null || (is_array($start_edit) && count($start_edit) === 0)) {
+        // verify the required parameter 'start_edit_request' is set
+        if ($start_edit_request === null || (is_array($start_edit_request) && count($start_edit_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $start_edit when calling startEditFile'
+                'Missing the required parameter $start_edit_request when calling startEditFile'
             );
         }
 
@@ -17462,12 +16924,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($start_edit)) {
+        if (isset($start_edit_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($start_edit));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($start_edit_request));
             } else {
-                $httpBody = $start_edit;
+                $httpBody = $start_edit_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -17909,7 +17371,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function toggleFileFavorite($file_id, $favorite = null, string $contentType = self::contentTypes['toggleFileFavorite'][0])
     {
@@ -17931,7 +17393,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function toggleFileFavoriteWithHttpInfo($file_id, $favorite = null, string $contentType = self::contentTypes['toggleFileFavorite'][0])
     {
@@ -17979,18 +17441,6 @@ class FilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -18032,22 +17482,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -18284,7 +17718,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function trackEditFile($file_id, $tab_id = null, $doc_key_for_track = null, $is_finish = null, string $contentType = self::contentTypes['trackEditFile'][0])
     {
@@ -18308,7 +17742,7 @@ class FilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\ItemKeyValuePairBooleanStringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function trackEditFileWithHttpInfo($file_id, $tab_id = null, $doc_key_for_track = null, $is_finish = null, string $contentType = self::contentTypes['trackEditFile'][0])
     {
@@ -18345,12 +17779,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -18395,14 +17823,6 @@ class FilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -18666,16 +18086,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
      * @param  int|string $file_id The file to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFileRequest $update_file_request The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateFile($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
+    public function updateFile($file_id, $update_file_request, string $contentType = self::contentTypes['updateFile'][0])
     {
-        list($response) = $this->updateFileWithHttpInfo($file_id, $update_file, $contentType);
+        list($response) = $this->updateFileWithHttpInfo($file_id, $update_file_request, $contentType);
         return $response;
     }
 
@@ -18688,16 +18108,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
      * @param  int|string $file_id The file to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFileRequest $update_file_request The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateFileWithHttpInfo($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
+    public function updateFileWithHttpInfo($file_id, $update_file_request, string $contentType = self::contentTypes['updateFile'][0])
     {
-        $request = $this->updateFileRequest($file_id, $update_file, $contentType);
+        $request = $this->updateFileRequest($file_id, $update_file_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -18730,18 +18150,6 @@ class FilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -18787,22 +18195,6 @@ class FilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -18819,15 +18211,15 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
      * @param  int|string $file_id The file to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFileRequest $update_file_request The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFileAsync($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
+    public function updateFileAsync($file_id, $update_file_request, string $contentType = self::contentTypes['updateFile'][0])
     {
-        return $this->updateFileAsyncWithHttpInfo($file_id, $update_file, $contentType)
+        return $this->updateFileAsyncWithHttpInfo($file_id, $update_file_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -18844,16 +18236,16 @@ class FilesApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-file/
      *
      * @param  int|string $file_id The file to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFileRequest $update_file_request The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateFileAsyncWithHttpInfo($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
+    public function updateFileAsyncWithHttpInfo($file_id, $update_file_request, string $contentType = self::contentTypes['updateFile'][0])
     {
         $returnType = is_string($file_id) ? '\OpenAPI\Client\Model\ThirdPartyFileWrapper' : '\OpenAPI\Client\Model\FileWrapper';
-        $request = $this->updateFileRequest($file_id, $update_file, $contentType);
+        $request = $this->updateFileRequest($file_id, $update_file_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -18895,13 +18287,13 @@ class FilesApi
      * Create request for operation 'updateFile'
      *
      * @param  int|string $file_id The file to update. (required)
-     * @param  \OpenAPI\Client\Model\UpdateFile $update_file The new title and the version to restore. (required)
+     * @param  \OpenAPI\Client\Model\UpdateFileRequest $update_file_request The new title and the version to restore. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateFileRequest($file_id, $update_file, string $contentType = self::contentTypes['updateFile'][0])
+    public function updateFileRequest($file_id, $update_file_request, string $contentType = self::contentTypes['updateFile'][0])
     {
 
         // verify the required parameter 'file_id' is set
@@ -18911,10 +18303,10 @@ class FilesApi
             );
         }
 
-        // verify the required parameter 'update_file' is set
-        if ($update_file === null || (is_array($update_file) && count($update_file) === 0)) {
+        // verify the required parameter 'update_file_request' is set
+        if ($update_file_request === null || (is_array($update_file_request) && count($update_file_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_file when calling updateFile'
+                'Missing the required parameter $update_file_request when calling updateFile'
             );
         }
 
@@ -18945,12 +18337,12 @@ class FilesApi
         );
 
         // for model (json/xml)
-        if (isset($update_file)) {
+        if (isset($update_file_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_file));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_file_request));
             } else {
-                $httpBody = $update_file;
+                $httpBody = $update_file_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

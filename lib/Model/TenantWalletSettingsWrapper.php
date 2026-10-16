@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantWalletSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The wrapper for the tenant wallet settings.
+ * @description The successful API response containing the TenantWalletSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'settings' => '\OpenAPI\Client\Model\TenantWalletSettings'
+        'response' => '\OpenAPI\Client\Model\TenantWalletSettingsDto',
+        'count' => 'int',
+        'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
+        'status' => 'int',
+        'status_code' => 'int'
     ];
 
     /**
@@ -69,7 +73,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'settings' => null
+        'response' => null,
+        'count' => 'int32',
+        'links' => null,
+        'status' => 'int32',
+        'status_code' => 'int32'
     ];
 
     /**
@@ -78,7 +86,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'settings' => false
+        'response' => false,
+        'count' => false,
+        'links' => false,
+        'status' => false,
+        'status_code' => false
     ];
 
     /**
@@ -167,7 +179,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'settings' => 'settings'
+        'response' => 'response',
+        'count' => 'count',
+        'links' => 'links',
+        'status' => 'status',
+        'status_code' => 'statusCode'
     ];
 
     /**
@@ -176,7 +192,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'settings' => 'setSettings'
+        'response' => 'setResponse',
+        'count' => 'setCount',
+        'links' => 'setLinks',
+        'status' => 'setStatus',
+        'status_code' => 'setStatusCode'
     ];
 
     /**
@@ -185,7 +205,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'settings' => 'getSettings'
+        'response' => 'getResponse',
+        'count' => 'getCount',
+        'links' => 'getLinks',
+        'status' => 'getStatus',
+        'status_code' => 'getStatusCode'
     ];
 
     /**
@@ -245,7 +269,11 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('settings', $data ?? [], null);
+        $this->setIfExists('response', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_code', $data ?? [], null);
     }
 
     /**
@@ -291,28 +319,136 @@ class TenantWalletSettingsWrapper implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets settings
+     * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantWalletSettings|null
+     * @return \OpenAPI\Client\Model\TenantWalletSettingsDto|null
      */
-    public function getSettings()
+    public function getResponse()
     {
-        return $this->container['settings'];
+        return $this->container['response'];
     }
 
     /**
-     * Sets settings
+     * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantWalletSettings|null $settings The tenant wallet settings.
+     * @param \OpenAPI\Client\Model\TenantWalletSettingsDto|null $response The TenantWalletSettingsDto object returned by the operation.
      *
      * @return self
      */
-    public function setSettings($settings)
+    public function setResponse($response)
     {
-        if (is_null($settings)) {
-            throw new \InvalidArgumentException('non-nullable settings cannot be null');
+        if (is_null($response)) {
+            throw new \InvalidArgumentException('non-nullable response cannot be null');
         }
-        $this->container['settings'] = $settings;
+        $this->container['response'] = $response;
+
+        return $this;
+    }
+
+    /**
+     * Gets count
+     *
+     * @return int|null
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int|null $count The total number of items in the response
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]|null $links List of links related to the response
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return int|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param int|null $status HTTP status code of the response
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_code
+     *
+     * @return int|null
+     */
+    public function getStatusCode()
+    {
+        return $this->container['status_code'];
+    }
+
+    /**
+     * Sets status_code
+     *
+     * @param int|null $status_code HTTP status code of the response (duplicate of status)
+     *
+     * @return self
+     */
+    public function setStatusCode($status_code)
+    {
+        if (is_null($status_code)) {
+            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
+        }
+        $this->container['status_code'] = $status_code;
 
         return $this;
     }

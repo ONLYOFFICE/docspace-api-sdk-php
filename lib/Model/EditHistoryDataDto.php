@@ -60,7 +60,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'changes_url' => 'string',
         'key' => 'string',
-        'previous' => '\OpenAPI\Client\Model\EditHistoryUrl',
+        'previous' => '\OpenAPI\Client\Model\EditHistoryUrlDto',
         'token' => 'string',
         'url' => 'string',
         'version' => 'int',
@@ -415,7 +415,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets previous
      *
-     * @return \OpenAPI\Client\Model\EditHistoryUrl|null
+     * @return \OpenAPI\Client\Model\EditHistoryUrlDto|null
      */
     public function getPrevious()
     {
@@ -425,7 +425,7 @@ class EditHistoryDataDto implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets previous
      *
-     * @param \OpenAPI\Client\Model\EditHistoryUrl|null $previous The revision this one is compared against. It arrives together with `changesUrl`, and when the revision shown  is the first one the file ever had, it points at the blank template the file was created from instead of at an  earlier revision.
+     * @param \OpenAPI\Client\Model\EditHistoryUrlDto|null $previous The revision this one is compared against. It arrives together with `changesUrl`, and when the revision shown  is the first one the file ever had, it points at the blank template the file was created from instead of at an  earlier revision.
      *
      * @return self
      */

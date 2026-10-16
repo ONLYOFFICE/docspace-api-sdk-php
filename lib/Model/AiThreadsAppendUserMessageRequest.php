@@ -49,7 +49,7 @@ class AiThreadsAppendUserMessageRequest implements ModelInterface, ArrayAccess, 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiThreadsAppendUserMessage_request';
+    protected static $openAPIModelName = 'AiThreadsAppendUserMessageRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

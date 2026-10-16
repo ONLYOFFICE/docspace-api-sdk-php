@@ -59,7 +59,7 @@ class FormResultsDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'create_on' => '\DateTime',
-        'forms_data' => '\OpenAPI\Client\Model\FormsItemData[]'
+        'forms_data' => '\OpenAPI\Client\Model\FormsItemDataDto[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class FormResultsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets forms_data
      *
-     * @return \OpenAPI\Client\Model\FormsItemData[]|null
+     * @return \OpenAPI\Client\Model\FormsItemDataDto[]|null
      */
     public function getFormsData()
     {
@@ -337,7 +337,7 @@ class FormResultsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets forms_data
      *
-     * @param \OpenAPI\Client\Model\FormsItemData[]|null $forms_data The values that were entered into this copy, one entry per field, preceded by an entry keyed `FormNumber` that  carries the number of the copy and is what the submissions are ordered by. Fields holding a picture or a  signature are left out of the record, so a field missing here was not necessarily left blank.
+     * @param \OpenAPI\Client\Model\FormsItemDataDto[]|null $forms_data The values that were entered into this copy, one entry per field, preceded by an entry keyed `FormNumber` that  carries the number of the copy and is what the submissions are ordered by. Fields holding a picture or a  signature are left out of the record, so a field missing here was not necessarily left blank.
      *
      * @return self
      */

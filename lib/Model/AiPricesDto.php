@@ -62,7 +62,7 @@ class AiPricesDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'embedding' => '\OpenAPI\Client\Model\AiEntryPricingDtoAiEmbeddingPriceDto[]',
         'image' => '\OpenAPI\Client\Model\AiEntryPricingDtoAiImagePriceDto[]',
         'web_search' => '\OpenAPI\Client\Model\AiEntryPricingDtoDecimal[]',
-        'currency' => '\OpenAPI\Client\Model\CurrencyInfo'
+        'currency' => '\OpenAPI\Client\Model\AiPriceCurrencyDto'
     ];
 
     /**
@@ -472,7 +472,7 @@ class AiPricesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return \OpenAPI\Client\Model\CurrencyInfo
+     * @return \OpenAPI\Client\Model\AiPriceCurrencyDto
      */
     public function getCurrency()
     {
@@ -482,7 +482,7 @@ class AiPricesDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param \OpenAPI\Client\Model\CurrencyInfo $currency The currency every price above is expressed in, with its ISO code and symbol. One answer never mixes  currencies, so this is the only place to read it.
+     * @param \OpenAPI\Client\Model\AiPriceCurrencyDto $currency The currency every price above is expressed in, with its ISO code and symbol. One answer never mixes  currencies, so this is the only place to read it.
      *
      * @return self
      */

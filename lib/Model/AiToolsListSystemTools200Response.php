@@ -57,7 +57,7 @@ class AiToolsListSystemTools200Response implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $openAPITypes = [
-        'groups' => 'array<string,\OpenAPI\Client\Model\AiTMCPItem[]>',
+        'groups' => 'array<string,\OpenAPI\Client\Model\AiMCPItem[]>',
         'errors' => 'array<string,string>',
         'system' => 'string[]'
     ];
@@ -315,7 +315,7 @@ class AiToolsListSystemTools200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets groups
      *
-     * @return array<string,\OpenAPI\Client\Model\AiTMCPItem[]>
+     * @return array<string,\OpenAPI\Client\Model\AiMCPItem[]>
      */
     public function getGroups()
     {
@@ -325,7 +325,7 @@ class AiToolsListSystemTools200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets groups
      *
-     * @param array<string,\OpenAPI\Client\Model\AiTMCPItem[]> $groups Tools by server name, covering both the host-configured system servers and the custom MCP servers registered for this scope.
+     * @param array<string,\OpenAPI\Client\Model\AiMCPItem[]> $groups Tools by server name, covering both the host-configured system servers and the custom MCP servers registered for this scope.
      *
      * @return self
      */

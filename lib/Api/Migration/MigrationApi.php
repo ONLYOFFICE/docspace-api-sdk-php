@@ -741,22 +741,6 @@ class MigrationApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1529,7 +1513,7 @@ class MigrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function listMigrations(string $contentType = self::contentTypes['listMigrations'][0])
     {
@@ -1549,7 +1533,7 @@ class MigrationApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listMigrationsWithHttpInfo(string $contentType = self::contentTypes['listMigrations'][0])
     {
@@ -1581,7 +1565,7 @@ class MigrationApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $request,
                         $response,
                     );
@@ -1621,7 +1605,7 @@ class MigrationApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                '\OpenAPI\Client\Model\StringArrayWrapper',
                 $request,
                 $response,
             );
@@ -1630,7 +1614,7 @@ class MigrationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1704,7 +1688,7 @@ class MigrationApi
      */
     public function listMigrationsAsyncWithHttpInfo(string $contentType = self::contentTypes['listMigrations'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\STRINGArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringArrayWrapper';
         $request = $this->listMigrationsRequest($contentType);
 
         return $this->client

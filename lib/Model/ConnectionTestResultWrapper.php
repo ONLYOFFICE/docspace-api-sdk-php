@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * ConnectionTestResultWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the ConnectionTestResult object.
+ * @description The successful API response containing the ConnectionTestResultDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class ConnectionTestResultWrapper implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\ConnectionTestResult',
+        'response' => '\OpenAPI\Client\Model\ConnectionTestResultDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class ConnectionTestResultWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\ConnectionTestResult|null
+     * @return \OpenAPI\Client\Model\ConnectionTestResultDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class ConnectionTestResultWrapper implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\ConnectionTestResult|null $response The ConnectionTestResult object returned by the operation.
+     * @param \OpenAPI\Client\Model\ConnectionTestResultDto|null $response The ConnectionTestResultDto object returned by the operation.
      *
      * @return self
      */

@@ -14,7 +14,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getSmtpOperationStatus()`
 
 ```php
-getSmtpOperationStatus(): \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper
+getSmtpOperationStatus(): \OpenAPI\Client\Model\SmtpOperationStatusWrapper
 ```
 
 Get SMTP test status
@@ -28,7 +28,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper**](../Model/SmtpOperationStatusRequestsWrapper.md)
+[**\OpenAPI\Client\Model\SmtpOperationStatusWrapper**](../Model/SmtpOperationStatusWrapper.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ try {
 ## `testSmtpSettings()`
 
 ```php
-testSmtpSettings(): \OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper
+testSmtpSettings(): \OpenAPI\Client\Model\SmtpOperationStatusWrapper
 ```
 
 Test SMTP settings
@@ -335,7 +335,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SmtpOperationStatusRequestsWrapper**](../Model/SmtpOperationStatusRequestsWrapper.md)
+[**\OpenAPI\Client\Model\SmtpOperationStatusWrapper**](../Model/SmtpOperationStatusWrapper.md)
 
 ### Authorization
 

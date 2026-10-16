@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudUsageWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the DocsCloudUsage object.
+ * @description The successful API response containing the DocsCloudUsageDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class DocsCloudUsageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\DocsCloudUsage',
+        'response' => '\OpenAPI\Client\Model\DocsCloudUsageDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class DocsCloudUsageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\DocsCloudUsage|null
+     * @return \OpenAPI\Client\Model\DocsCloudUsageDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class DocsCloudUsageWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudUsage|null $response The DocsCloudUsage object returned by the operation.
+     * @param \OpenAPI\Client\Model\DocsCloudUsageDto|null $response The DocsCloudUsageDto object returned by the operation.
      *
      * @return self
      */

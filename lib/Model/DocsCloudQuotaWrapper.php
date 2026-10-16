@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudQuotaWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the DocsCloudQuota object.
+ * @description The successful API response containing the DocsCloudQuotaDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class DocsCloudQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\DocsCloudQuota',
+        'response' => '\OpenAPI\Client\Model\DocsCloudQuotaDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class DocsCloudQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\DocsCloudQuota|null
+     * @return \OpenAPI\Client\Model\DocsCloudQuotaDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class DocsCloudQuotaWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudQuota|null $response The DocsCloudQuota object returned by the operation.
+     * @param \OpenAPI\Client\Model\DocsCloudQuotaDto|null $response The DocsCloudQuotaDto object returned by the operation.
      *
      * @return self
      */

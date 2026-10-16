@@ -498,16 +498,16 @@ class BackupApi
      * REST API Reference for createBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-backup-schedule/
      *
-     * @param  \OpenAPI\Client\Model\BackupScheduleDto|null $backup_schedule_dto backup_schedule_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateBackupScheduleRequestDto|null $create_backup_schedule_request_dto create_backup_schedule_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createBackupSchedule($backup_schedule_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
+    public function createBackupSchedule($create_backup_schedule_request_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
     {
-        list($response) = $this->createBackupScheduleWithHttpInfo($backup_schedule_dto, $contentType);
+        list($response) = $this->createBackupScheduleWithHttpInfo($create_backup_schedule_request_dto, $contentType);
         return $response;
     }
 
@@ -519,16 +519,16 @@ class BackupApi
      * REST API Reference for createBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-backup-schedule/
      *
-     * @param  \OpenAPI\Client\Model\BackupScheduleDto|null $backup_schedule_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateBackupScheduleRequestDto|null $create_backup_schedule_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBackupSchedule'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBackupScheduleWithHttpInfo($backup_schedule_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
+    public function createBackupScheduleWithHttpInfo($create_backup_schedule_request_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
     {
-        $request = $this->createBackupScheduleRequest($backup_schedule_dto, $contentType);
+        $request = $this->createBackupScheduleRequest($create_backup_schedule_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -567,12 +567,6 @@ class BackupApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -626,14 +620,6 @@ class BackupApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -649,15 +635,15 @@ class BackupApi
      * REST API Reference for createBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-backup-schedule/
      *
-     * @param  \OpenAPI\Client\Model\BackupScheduleDto|null $backup_schedule_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateBackupScheduleRequestDto|null $create_backup_schedule_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBackupScheduleAsync($backup_schedule_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
+    public function createBackupScheduleAsync($create_backup_schedule_request_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
     {
-        return $this->createBackupScheduleAsyncWithHttpInfo($backup_schedule_dto, $contentType)
+        return $this->createBackupScheduleAsyncWithHttpInfo($create_backup_schedule_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -673,16 +659,16 @@ class BackupApi
      * REST API Reference for createBackupSchedule Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-backup-schedule/
      *
-     * @param  \OpenAPI\Client\Model\BackupScheduleDto|null $backup_schedule_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateBackupScheduleRequestDto|null $create_backup_schedule_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBackupScheduleAsyncWithHttpInfo($backup_schedule_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
+    public function createBackupScheduleAsyncWithHttpInfo($create_backup_schedule_request_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->createBackupScheduleRequest($backup_schedule_dto, $contentType);
+        $request = $this->createBackupScheduleRequest($create_backup_schedule_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -723,13 +709,13 @@ class BackupApi
     /**
      * Create request for operation 'createBackupSchedule'
      *
-     * @param  \OpenAPI\Client\Model\BackupScheduleDto|null $backup_schedule_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateBackupScheduleRequestDto|null $create_backup_schedule_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBackupSchedule'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createBackupScheduleRequest($backup_schedule_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
+    public function createBackupScheduleRequest($create_backup_schedule_request_dto = null, string $contentType = self::contentTypes['createBackupSchedule'][0])
     {
 
 
@@ -752,12 +738,12 @@ class BackupApi
         );
 
         // for model (json/xml)
-        if (isset($backup_schedule_dto)) {
+        if (isset($create_backup_schedule_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($backup_schedule_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_backup_schedule_request_dto));
             } else {
-                $httpBody = $backup_schedule_dto;
+                $httpBody = $create_backup_schedule_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -840,7 +826,7 @@ class BackupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteBackup($id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
@@ -861,7 +847,7 @@ class BackupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteBackupWithHttpInfo($id, string $contentType = self::contentTypes['deleteBackup'][0])
     {
@@ -904,12 +890,6 @@ class BackupApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -962,14 +942,6 @@ class BackupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1453,7 +1425,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -1806,7 +1778,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2159,7 +2131,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2512,7 +2484,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2865,7 +2837,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4266,7 +4238,7 @@ class BackupApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $dump,
-            'Dump', // param base name
+            'dump', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4359,16 +4331,16 @@ class BackupApi
      * REST API Reference for startBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup/
      *
-     * @param  \OpenAPI\Client\Model\BackupDto|null $backup_dto backup_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRequestDto|null $start_backup_request_dto start_backup_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function startBackup($backup_dto = null, string $contentType = self::contentTypes['startBackup'][0])
+    public function startBackup($start_backup_request_dto = null, string $contentType = self::contentTypes['startBackup'][0])
     {
-        list($response) = $this->startBackupWithHttpInfo($backup_dto, $contentType);
+        list($response) = $this->startBackupWithHttpInfo($start_backup_request_dto, $contentType);
         return $response;
     }
 
@@ -4380,16 +4352,16 @@ class BackupApi
      * REST API Reference for startBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup/
      *
-     * @param  \OpenAPI\Client\Model\BackupDto|null $backup_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRequestDto|null $start_backup_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackup'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startBackupWithHttpInfo($backup_dto = null, string $contentType = self::contentTypes['startBackup'][0])
+    public function startBackupWithHttpInfo($start_backup_request_dto = null, string $contentType = self::contentTypes['startBackup'][0])
     {
-        $request = $this->startBackupRequest($backup_dto, $contentType);
+        $request = $this->startBackupRequest($start_backup_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4428,12 +4400,6 @@ class BackupApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4487,14 +4453,6 @@ class BackupApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4510,15 +4468,15 @@ class BackupApi
      * REST API Reference for startBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup/
      *
-     * @param  \OpenAPI\Client\Model\BackupDto|null $backup_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRequestDto|null $start_backup_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startBackupAsync($backup_dto = null, string $contentType = self::contentTypes['startBackup'][0])
+    public function startBackupAsync($start_backup_request_dto = null, string $contentType = self::contentTypes['startBackup'][0])
     {
-        return $this->startBackupAsyncWithHttpInfo($backup_dto, $contentType)
+        return $this->startBackupAsyncWithHttpInfo($start_backup_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4534,16 +4492,16 @@ class BackupApi
      * REST API Reference for startBackup Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup/
      *
-     * @param  \OpenAPI\Client\Model\BackupDto|null $backup_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRequestDto|null $start_backup_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startBackupAsyncWithHttpInfo($backup_dto = null, string $contentType = self::contentTypes['startBackup'][0])
+    public function startBackupAsyncWithHttpInfo($start_backup_request_dto = null, string $contentType = self::contentTypes['startBackup'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BackupProgressWrapper';
-        $request = $this->startBackupRequest($backup_dto, $contentType);
+        $request = $this->startBackupRequest($start_backup_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4584,13 +4542,13 @@ class BackupApi
     /**
      * Create request for operation 'startBackup'
      *
-     * @param  \OpenAPI\Client\Model\BackupDto|null $backup_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRequestDto|null $start_backup_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function startBackupRequest($backup_dto = null, string $contentType = self::contentTypes['startBackup'][0])
+    public function startBackupRequest($start_backup_request_dto = null, string $contentType = self::contentTypes['startBackup'][0])
     {
 
 
@@ -4613,12 +4571,12 @@ class BackupApi
         );
 
         // for model (json/xml)
-        if (isset($backup_dto)) {
+        if (isset($start_backup_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($backup_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($start_backup_request_dto));
             } else {
-                $httpBody = $backup_dto;
+                $httpBody = $start_backup_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4696,16 +4654,16 @@ class BackupApi
      * REST API Reference for startBackupRestore Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup-restore/
      *
-     * @param  \OpenAPI\Client\Model\BackupRestoreDto|null $backup_restore_dto backup_restore_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRestoreRequestDto|null $start_backup_restore_request_dto start_backup_restore_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackupRestore'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function startBackupRestore($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
+    public function startBackupRestore($start_backup_restore_request_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
-        list($response) = $this->startBackupRestoreWithHttpInfo($backup_restore_dto, $contentType);
+        list($response) = $this->startBackupRestoreWithHttpInfo($start_backup_restore_request_dto, $contentType);
         return $response;
     }
 
@@ -4717,16 +4675,16 @@ class BackupApi
      * REST API Reference for startBackupRestore Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup-restore/
      *
-     * @param  \OpenAPI\Client\Model\BackupRestoreDto|null $backup_restore_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRestoreRequestDto|null $start_backup_restore_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackupRestore'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BackupProgressWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function startBackupRestoreWithHttpInfo($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
+    public function startBackupRestoreWithHttpInfo($start_backup_restore_request_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
-        $request = $this->startBackupRestoreRequest($backup_restore_dto, $contentType);
+        $request = $this->startBackupRestoreRequest($start_backup_restore_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4765,18 +4723,6 @@ class BackupApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4830,22 +4776,6 @@ class BackupApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4861,15 +4791,15 @@ class BackupApi
      * REST API Reference for startBackupRestore Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup-restore/
      *
-     * @param  \OpenAPI\Client\Model\BackupRestoreDto|null $backup_restore_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRestoreRequestDto|null $start_backup_restore_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackupRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startBackupRestoreAsync($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
+    public function startBackupRestoreAsync($start_backup_restore_request_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
-        return $this->startBackupRestoreAsyncWithHttpInfo($backup_restore_dto, $contentType)
+        return $this->startBackupRestoreAsyncWithHttpInfo($start_backup_restore_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4885,16 +4815,16 @@ class BackupApi
      * REST API Reference for startBackupRestore Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/start-backup-restore/
      *
-     * @param  \OpenAPI\Client\Model\BackupRestoreDto|null $backup_restore_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRestoreRequestDto|null $start_backup_restore_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackupRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function startBackupRestoreAsyncWithHttpInfo($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
+    public function startBackupRestoreAsyncWithHttpInfo($start_backup_restore_request_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BackupProgressWrapper';
-        $request = $this->startBackupRestoreRequest($backup_restore_dto, $contentType);
+        $request = $this->startBackupRestoreRequest($start_backup_restore_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4935,13 +4865,13 @@ class BackupApi
     /**
      * Create request for operation 'startBackupRestore'
      *
-     * @param  \OpenAPI\Client\Model\BackupRestoreDto|null $backup_restore_dto (optional)
+     * @param  \OpenAPI\Client\Model\StartBackupRestoreRequestDto|null $start_backup_restore_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['startBackupRestore'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function startBackupRestoreRequest($backup_restore_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
+    public function startBackupRestoreRequest($start_backup_restore_request_dto = null, string $contentType = self::contentTypes['startBackupRestore'][0])
     {
 
 
@@ -4964,12 +4894,12 @@ class BackupApi
         );
 
         // for model (json/xml)
-        if (isset($backup_restore_dto)) {
+        if (isset($start_backup_restore_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($backup_restore_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($start_backup_restore_request_dto));
             } else {
-                $httpBody = $backup_restore_dto;
+                $httpBody = $start_backup_restore_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

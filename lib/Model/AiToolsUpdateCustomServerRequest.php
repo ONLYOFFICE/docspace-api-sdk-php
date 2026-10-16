@@ -49,7 +49,7 @@ class AiToolsUpdateCustomServerRequest implements ModelInterface, ArrayAccess, \
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiToolsUpdateCustomServer_request';
+    protected static $openAPIModelName = 'AiToolsUpdateCustomServerRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

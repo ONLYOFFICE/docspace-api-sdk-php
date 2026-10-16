@@ -49,7 +49,7 @@ class AiAgentsUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAgentsUpdate_request';
+    protected static $openAPIModelName = 'AiAgentsUpdateRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

@@ -148,7 +148,7 @@ class QuotaApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getUserQuotaSettings(string $contentType = self::contentTypes['getUserQuotaSettings'][0])
     {
@@ -168,7 +168,7 @@ class QuotaApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserQuotaSettingsWithHttpInfo(string $contentType = self::contentTypes['getUserQuotaSettings'][0])
     {
@@ -200,7 +200,7 @@ class QuotaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -240,7 +240,7 @@ class QuotaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper',
+                '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                 $request,
                 $response,
             );
@@ -249,7 +249,7 @@ class QuotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -323,7 +323,7 @@ class QuotaApi
      */
     public function getUserQuotaSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getUserQuotaSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper';
+        $returnType = '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper';
         $request = $this->getUserQuotaSettingsRequest($contentType);
 
         return $this->client
@@ -468,16 +468,16 @@ class QuotaApi
      * REST API Reference for saveAiAgentQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ai-agent-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAiAgentQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveAiAgentQuotaSettings($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
+    public function saveAiAgentQuotaSettings($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
     {
-        list($response) = $this->saveAiAgentQuotaSettingsWithHttpInfo($quota_settings_requests_dto, $contentType);
+        list($response) = $this->saveAiAgentQuotaSettingsWithHttpInfo($quota_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -489,16 +489,16 @@ class QuotaApi
      * REST API Reference for saveAiAgentQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ai-agent-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAiAgentQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveAiAgentQuotaSettingsWithHttpInfo($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
+    public function saveAiAgentQuotaSettingsWithHttpInfo($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
     {
-        $request = $this->saveAiAgentQuotaSettingsRequest($quota_settings_requests_dto, $contentType);
+        $request = $this->saveAiAgentQuotaSettingsRequest($quota_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -526,7 +526,7 @@ class QuotaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -537,18 +537,6 @@ class QuotaApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -572,7 +560,7 @@ class QuotaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper',
+                '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                 $request,
                 $response,
             );
@@ -581,7 +569,7 @@ class QuotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -595,22 +583,6 @@ class QuotaApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -633,15 +605,15 @@ class QuotaApi
      * REST API Reference for saveAiAgentQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ai-agent-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAiAgentQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAiAgentQuotaSettingsAsync($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
+    public function saveAiAgentQuotaSettingsAsync($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
     {
-        return $this->saveAiAgentQuotaSettingsAsyncWithHttpInfo($quota_settings_requests_dto, $contentType)
+        return $this->saveAiAgentQuotaSettingsAsyncWithHttpInfo($quota_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -657,16 +629,16 @@ class QuotaApi
      * REST API Reference for saveAiAgentQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ai-agent-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAiAgentQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAiAgentQuotaSettingsAsyncWithHttpInfo($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
+    public function saveAiAgentQuotaSettingsAsyncWithHttpInfo($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper';
-        $request = $this->saveAiAgentQuotaSettingsRequest($quota_settings_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper';
+        $request = $this->saveAiAgentQuotaSettingsRequest($quota_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -707,13 +679,13 @@ class QuotaApi
     /**
      * Create request for operation 'saveAiAgentQuotaSettings'
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAiAgentQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveAiAgentQuotaSettingsRequest($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
+    public function saveAiAgentQuotaSettingsRequest($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveAiAgentQuotaSettings'][0])
     {
 
 
@@ -736,12 +708,12 @@ class QuotaApi
         );
 
         // for model (json/xml)
-        if (isset($quota_settings_requests_dto)) {
+        if (isset($quota_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($quota_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($quota_settings_request_dto));
             } else {
-                $httpBody = $quota_settings_requests_dto;
+                $httpBody = $quota_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -819,16 +791,16 @@ class QuotaApi
      * REST API Reference for saveRoomQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-room-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveRoomQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveRoomQuotaSettings($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
+    public function saveRoomQuotaSettings($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
     {
-        list($response) = $this->saveRoomQuotaSettingsWithHttpInfo($quota_settings_requests_dto, $contentType);
+        list($response) = $this->saveRoomQuotaSettingsWithHttpInfo($quota_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -840,16 +812,16 @@ class QuotaApi
      * REST API Reference for saveRoomQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-room-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveRoomQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EntityQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveRoomQuotaSettingsWithHttpInfo($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
+    public function saveRoomQuotaSettingsWithHttpInfo($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
     {
-        $request = $this->saveRoomQuotaSettingsRequest($quota_settings_requests_dto, $contentType);
+        $request = $this->saveRoomQuotaSettingsRequest($quota_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -877,7 +849,7 @@ class QuotaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -888,18 +860,6 @@ class QuotaApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -923,7 +883,7 @@ class QuotaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper',
+                '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                 $request,
                 $response,
             );
@@ -932,7 +892,7 @@ class QuotaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper',
+                        '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -946,22 +906,6 @@ class QuotaApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -984,15 +928,15 @@ class QuotaApi
      * REST API Reference for saveRoomQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-room-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveRoomQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveRoomQuotaSettingsAsync($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
+    public function saveRoomQuotaSettingsAsync($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
     {
-        return $this->saveRoomQuotaSettingsAsyncWithHttpInfo($quota_settings_requests_dto, $contentType)
+        return $this->saveRoomQuotaSettingsAsyncWithHttpInfo($quota_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1008,16 +952,16 @@ class QuotaApi
      * REST API Reference for saveRoomQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-room-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveRoomQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveRoomQuotaSettingsAsyncWithHttpInfo($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
+    public function saveRoomQuotaSettingsAsyncWithHttpInfo($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper';
-        $request = $this->saveRoomQuotaSettingsRequest($quota_settings_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\EntityQuotaSettingsWrapper';
+        $request = $this->saveRoomQuotaSettingsRequest($quota_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1058,13 +1002,13 @@ class QuotaApi
     /**
      * Create request for operation 'saveRoomQuotaSettings'
      *
-     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestsDto|null $quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\QuotaSettingsRequestDto|null $quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveRoomQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveRoomQuotaSettingsRequest($quota_settings_requests_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
+    public function saveRoomQuotaSettingsRequest($quota_settings_request_dto = null, string $contentType = self::contentTypes['saveRoomQuotaSettings'][0])
     {
 
 
@@ -1087,12 +1031,12 @@ class QuotaApi
         );
 
         // for model (json/xml)
-        if (isset($quota_settings_requests_dto)) {
+        if (isset($quota_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($quota_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($quota_settings_request_dto));
             } else {
-                $httpBody = $quota_settings_requests_dto;
+                $httpBody = $quota_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1170,16 +1114,16 @@ class QuotaApi
      * REST API Reference for setTenantQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto|null $tenant_quota_settings_requests_dto tenant_quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto|null $tenant_quota_settings_request_dto tenant_quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setTenantQuotaSettings($tenant_quota_settings_requests_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
+    public function setTenantQuotaSettings($tenant_quota_settings_request_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
     {
-        list($response) = $this->setTenantQuotaSettingsWithHttpInfo($tenant_quota_settings_requests_dto, $contentType);
+        list($response) = $this->setTenantQuotaSettingsWithHttpInfo($tenant_quota_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -1191,16 +1135,16 @@ class QuotaApi
      * REST API Reference for setTenantQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto|null $tenant_quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto|null $tenant_quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantQuotaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantQuotaSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTenantQuotaSettingsWithHttpInfo($tenant_quota_settings_requests_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
+    public function setTenantQuotaSettingsWithHttpInfo($tenant_quota_settings_request_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
     {
-        $request = $this->setTenantQuotaSettingsRequest($tenant_quota_settings_requests_dto, $contentType);
+        $request = $this->setTenantQuotaSettingsRequest($tenant_quota_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1245,12 +1189,6 @@ class QuotaApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1312,14 +1250,6 @@ class QuotaApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1335,15 +1265,15 @@ class QuotaApi
      * REST API Reference for setTenantQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto|null $tenant_quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto|null $tenant_quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantQuotaSettingsAsync($tenant_quota_settings_requests_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
+    public function setTenantQuotaSettingsAsync($tenant_quota_settings_request_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
     {
-        return $this->setTenantQuotaSettingsAsyncWithHttpInfo($tenant_quota_settings_requests_dto, $contentType)
+        return $this->setTenantQuotaSettingsAsyncWithHttpInfo($tenant_quota_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1359,16 +1289,16 @@ class QuotaApi
      * REST API Reference for setTenantQuotaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-quota-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto|null $tenant_quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto|null $tenant_quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantQuotaSettingsAsyncWithHttpInfo($tenant_quota_settings_requests_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
+    public function setTenantQuotaSettingsAsyncWithHttpInfo($tenant_quota_settings_request_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TenantQuotaSettingsWrapper';
-        $request = $this->setTenantQuotaSettingsRequest($tenant_quota_settings_requests_dto, $contentType);
+        $request = $this->setTenantQuotaSettingsRequest($tenant_quota_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1409,13 +1339,13 @@ class QuotaApi
     /**
      * Create request for operation 'setTenantQuotaSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto|null $tenant_quota_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto|null $tenant_quota_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantQuotaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTenantQuotaSettingsRequest($tenant_quota_settings_requests_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
+    public function setTenantQuotaSettingsRequest($tenant_quota_settings_request_dto = null, string $contentType = self::contentTypes['setTenantQuotaSettings'][0])
     {
 
 
@@ -1438,12 +1368,12 @@ class QuotaApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_quota_settings_requests_dto)) {
+        if (isset($tenant_quota_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_quota_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_quota_settings_request_dto));
             } else {
-                $httpBody = $tenant_quota_settings_requests_dto;
+                $httpBody = $tenant_quota_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

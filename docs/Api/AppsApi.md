@@ -248,11 +248,11 @@ try {
 ## `setEnabled()`
 
 ```php
-setEnabled($id, $set_app_enabled_body): \OpenAPI\Client\Model\AppWrapper
+setEnabled($id, $set_app_enabled_request): \OpenAPI\Client\Model\AppWrapper
 ```
 
 Enable or disable an app
-Turns one portal application on or off for the current portal, and notifies the clients connected to the portal  so that they can show or hide it without being reloaded. The identifier must be an application declared in the  installation configuration, as listed by `GET api/2.0/apps`. The caller must be a portal administrator allowed  to edit the portal settings. The call is mutating and idempotent: it stores the flag for this portal, overriding  the default that the configuration gives the application, and repeating it with the same value changes nothing.  Disabling an application does not delete its settings document, which stays saved and applies again as soon as  the application is enabled. The response is the application in its new state, including that settings document.  Only the enabled flag is affected here: to change the settings document use `PUT api/2.0/apps/{id}/settings`.
+Turns one portal application on or off for the current portal, and notifies the clients connected to the portal  so that they can show or hide it without being reloaded. The identifier must be an application declared in the  installation configuration, as listed by `GET api/2.0/apps`. The caller must be a portal administrator allowed  to edit the portal settings. The call is mutating and idempotent: it stores the flag for this portal, overriding  the default that the configuration gives the application, and repeating it with the same value changes nothing.  Disabling an application does not delete its settings document, which stays saved and applies again as soon as  the application is enabled. The response is the application in its new state, including that settings document.  Only the enabled flag is affected here: to change the settings document use `PUT api/2.0/apps/{id}/settings`.  The enabled field is mandatory, and a body without it is rejected with 400 rather than read as false.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-enabled/).
 
@@ -261,7 +261,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything. | |
-| **set_app_enabled_body** | [**\OpenAPI\Client\Model\SetAppEnabledBody**](../Model/SetAppEnabledBody.md)| The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. | |
+| **set_app_enabled_request** | [**\OpenAPI\Client\Model\SetAppEnabledRequest**](../Model/SetAppEnabledRequest.md)| The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`. | |
 
 ### Return type
 
@@ -307,10 +307,10 @@ $apiInstance = new OpenAPI\Client\Api\AppsApi(
     $config
 );
 $id = ai-room; // string | The application to switch, by the identifier `GET api/2.0/apps` reports. It has to be an application declared  in the installation configuration; an unknown identifier answers 404 rather than creating anything.
-$set_app_enabled_body = new \OpenAPI\Client\Model\SetAppEnabledBody(); // \OpenAPI\Client\Model\SetAppEnabledBody | The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`.
+$set_app_enabled_request = new \OpenAPI\Client\Model\SetAppEnabledRequest(); // \OpenAPI\Client\Model\SetAppEnabledRequest | The new state of the application. Only the enabled flag travels here; the settings document is changed  through `PUT api/2.0/apps/{id}/settings`.
 
 try {
-    $result = $apiInstance->setEnabled($id, $set_app_enabled_body);
+    $result = $apiInstance->setEnabled($id, $set_app_enabled_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AppsApi->setEnabled: ', $e->getMessage(), PHP_EOL;
@@ -329,7 +329,7 @@ try {
 ## `setSettings()`
 
 ```php
-setSettings($id, $set_app_settings_body): \OpenAPI\Client\Model\AppWrapper
+setSettings($id, $set_app_settings_request): \OpenAPI\Client\Model\AppWrapper
 ```
 
 Save app settings
@@ -342,7 +342,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **string**| The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404. | |
-| **set_app_settings_body** | [**\OpenAPI\Client\Model\SetAppSettingsBody**](../Model/SetAppSettingsBody.md)| The configuration to store for this portal, replacing whatever was stored before. | |
+| **set_app_settings_request** | [**\OpenAPI\Client\Model\SetAppSettingsRequest**](../Model/SetAppSettingsRequest.md)| The configuration to store for this portal, replacing whatever was stored before. | |
 
 ### Return type
 
@@ -388,10 +388,10 @@ $apiInstance = new OpenAPI\Client\Api\AppsApi(
     $config
 );
 $id = ai-room; // string | The application whose configuration is stored, by the identifier `GET api/2.0/apps` reports. An identifier  not declared in the installation configuration answers 404.
-$set_app_settings_body = new \OpenAPI\Client\Model\SetAppSettingsBody(); // \OpenAPI\Client\Model\SetAppSettingsBody | The configuration to store for this portal, replacing whatever was stored before.
+$set_app_settings_request = new \OpenAPI\Client\Model\SetAppSettingsRequest(); // \OpenAPI\Client\Model\SetAppSettingsRequest | The configuration to store for this portal, replacing whatever was stored before.
 
 try {
-    $result = $apiInstance->setSettings($id, $set_app_settings_body);
+    $result = $apiInstance->setSettings($id, $set_app_settings_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AppsApi->setSettings: ', $e->getMessage(), PHP_EOL;

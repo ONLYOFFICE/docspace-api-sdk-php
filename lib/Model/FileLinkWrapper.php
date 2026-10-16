@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * FileLinkWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the FileLink object.
+ * @description The successful API response containing the FileLinkDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class FileLinkWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\FileLink',
+        'response' => '\OpenAPI\Client\Model\FileLinkDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class FileLinkWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\FileLink|null
+     * @return \OpenAPI\Client\Model\FileLinkDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class FileLinkWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\FileLink|null $response The FileLink object returned by the operation.
+     * @param \OpenAPI\Client\Model\FileLinkDto|null $response The FileLinkDto object returned by the operation.
      *
      * @return self
      */

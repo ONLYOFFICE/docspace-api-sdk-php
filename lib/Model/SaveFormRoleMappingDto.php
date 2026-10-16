@@ -59,7 +59,7 @@ class SaveFormRoleMappingDto implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $openAPITypes = [
         'form_id' => 'int',
-        'roles' => '\OpenAPI\Client\Model\FormRole[]'
+        'roles' => '\OpenAPI\Client\Model\FormRoleRequest[]'
     ];
 
     /**
@@ -333,7 +333,7 @@ class SaveFormRoleMappingDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets roles
      *
-     * @return \OpenAPI\Client\Model\FormRole[]|null
+     * @return \OpenAPI\Client\Model\FormRoleRequest[]|null
      */
     public function getRoles()
     {
@@ -343,7 +343,7 @@ class SaveFormRoleMappingDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets roles
      *
-     * @param \OpenAPI\Client\Model\FormRole[]|null $roles The roles with the account taking each of them and the sequence number that decides the turn: the same number  means the roles may be filled in parallel, different ones make a queue. The whole set is replaced on every  call, and an empty set resets the filling.
+     * @param \OpenAPI\Client\Model\FormRoleRequest[]|null $roles The roles with the account taking each of them and the sequence number that decides the turn: the same number  means the roles may be filled in parallel, different ones make a queue. The whole set is replaced on every  call, and an empty set resets the filling.
      *
      * @return self
      */

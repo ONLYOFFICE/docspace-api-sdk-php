@@ -17,7 +17,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `aiWebSearchClear()`
 
 ```php
-aiWebSearchClear($body): \OpenAPI\Client\Model\AiSuccessResponse
+aiWebSearchClear($ai_web_search_clear_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Clear the web-search configuration
@@ -29,7 +29,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**| Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. | |
+| **ai_web_search_clear_request** | **string**| Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room. | |
 
 ### Return type
 
@@ -60,10 +60,10 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string | Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room.
+$ai_web_search_clear_request = 'ai_web_search_clear_request_example'; // string | Ignored. The operation always clears the portal-wide configuration, so send an empty body; a value here does not scope it to a room.
 
 try {
-    $result = $apiInstance->aiWebSearchClear($body);
+    $result = $apiInstance->aiWebSearchClear($ai_web_search_clear_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebSearchApi->aiWebSearchClear: ', $e->getMessage(), PHP_EOL;
@@ -277,11 +277,11 @@ try {
 ## `aiWebSearchPassthroughContents()`
 
 ```php
-aiWebSearchPassthroughContents($request_body): array<string,mixed>
+aiWebSearchPassthroughContents($ai_web_search_passthrough_contents_request): array<string,mixed>
 ```
 
 Web page contents passthrough
-Fetches the contents of web pages on behalf of the document editor's AI plugin, against the portal's active web-search provider, exactly as the search passthrough does — including the `entityId` / `entityKind` billing attribution. The portal-wide configuration is used and a portal without one answers 404. The provider's status, body and content type are relayed verbatim, so its 429 and its failures surface unchanged. This is the follow-up to `POST api/2.0/ai/websearch/v1/search`, which returns the results whose contents this operation retrieves.
+Fetches the contents of web pages on behalf of the document editor's AI plugin, against the portal's active web-search provider, exactly as the search passthrough does — including the `entityId` / `entityKind` billing attribution. The portal-wide configuration is used and a portal without one answers 404. `urls` has to be a non-empty array of strings, or the call answers 400 naming the field. The provider's 4xx status, body and content type are relayed, so its 429 surfaces unchanged, while a 5xx is replaced by a fixed 502 with the detail kept in the server log. This is the follow-up to `POST api/2.0/ai/websearch/v1/search`, which returns the results whose contents this operation retrieves.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-contents/).
 
@@ -289,7 +289,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)| A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration. | |
+| **ai_web_search_passthrough_contents_request** | [**array<string,mixed>**](../Model/mixed.md)| A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration. | |
 
 ### Return type
 
@@ -320,10 +320,10 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = NULL; // array<string,mixed> | A page-contents request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration.
+$ai_web_search_passthrough_contents_request = NULL; // array<string,mixed> | A page-contents request in the shape the portal's active web-search provider expects, forwarded to it once `urls` passes a type check. The endpoint and the key come from the stored configuration.
 
 try {
-    $result = $apiInstance->aiWebSearchPassthroughContents($request_body);
+    $result = $apiInstance->aiWebSearchPassthroughContents($ai_web_search_passthrough_contents_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebSearchApi->aiWebSearchPassthroughContents: ', $e->getMessage(), PHP_EOL;
@@ -342,11 +342,11 @@ try {
 ## `aiWebSearchPassthroughSearch()`
 
 ```php
-aiWebSearchPassthroughSearch($request_body): array<string,mixed>
+aiWebSearchPassthroughSearch($ai_web_search_passthrough_search_request): array<string,mixed>
 ```
 
 Web search passthrough
-Runs a web search on behalf of the document editor's AI plugin, which holds only a placeholder configuration - the portal's active provider and its key are resolved here, so neither ever reaches the browser. The portal-wide configuration is used, and a portal without one answers 404. The `entityId` and `entityKind` query parameters name the document the search is billed to; with the ONLYOFFICE provider the entry is resolved under the caller's credentials and sent to the gateway as the request `metadata` (`source_id` / `source_type` / `source_title`), and an entry the caller cannot open sends none. The provider's own status, body and content type are relayed as they stand, so a provider that rate-limits answers 429 and one that is unreachable answers 502. Closing the connection aborts the upstream request.
+Runs a web search on behalf of the document editor's AI plugin, which holds only a placeholder configuration - the portal's active provider and its key are resolved here, so neither ever reaches the browser. The portal-wide configuration is used, and a portal without one answers 404. The `entityId` and `entityKind` query parameters name the document the search is billed to; with the ONLYOFFICE provider the entry is resolved under the caller's credentials and sent to the gateway as the request `metadata` (`source_id` / `source_type` / `source_title`), and an entry the caller cannot open sends none. `query` has to be a non-empty string and `numResults`, when sent, a positive integer; a body failing that answers 400 naming the field, before anything is sent on. The provider's own 4xx status, body and content type are relayed as they stand, so a provider that rate-limits answers 429; a 5xx from the provider or from the hop in front of it is not relayed, its detail stays in the server log and the call answers a fixed 502, which is also what an unreachable provider answers. Closing the connection aborts the upstream request.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-web-search-passthrough-search/).
 
@@ -354,7 +354,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)| A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here. | |
+| **ai_web_search_passthrough_search_request** | [**array<string,mixed>**](../Model/mixed.md)| A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here. | |
 
 ### Return type
 
@@ -385,10 +385,10 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = NULL; // array<string,mixed> | A search request in the shape the portal's active web-search provider expects, forwarded to it unchanged. The endpoint and the key come from the stored configuration and must not be sent here.
+$ai_web_search_passthrough_search_request = NULL; // array<string,mixed> | A search request in the shape the portal's active web-search provider expects, forwarded to it once `query` and `numResults` pass a type check. The endpoint and the key come from the stored configuration and must not be sent here.
 
 try {
-    $result = $apiInstance->aiWebSearchPassthroughSearch($request_body);
+    $result = $apiInstance->aiWebSearchPassthroughSearch($ai_web_search_passthrough_search_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebSearchApi->aiWebSearchPassthroughSearch: ', $e->getMessage(), PHP_EOL;
@@ -407,7 +407,7 @@ try {
 ## `aiWebSearchSetActiveConfig()`
 
 ```php
-aiWebSearchSetActiveConfig($ai_web_search_configure_request): \OpenAPI\Client\Model\AiSuccessResponse
+aiWebSearchSetActiveConfig($ai_web_search_set_active_config_request): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Set active config
@@ -419,7 +419,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ai_web_search_configure_request** | [**\OpenAPI\Client\Model\AiWebSearchConfigureRequest**](../Model/AiWebSearchConfigureRequest.md)|  | |
+| **ai_web_search_set_active_config_request** | [**\OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest**](../Model/AiWebSearchSetActiveConfigRequest.md)|  | |
 
 ### Return type
 
@@ -450,10 +450,10 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ai_web_search_configure_request = new \OpenAPI\Client\Model\AiWebSearchConfigureRequest(); // \OpenAPI\Client\Model\AiWebSearchConfigureRequest
+$ai_web_search_set_active_config_request = new \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest(); // \OpenAPI\Client\Model\AiWebSearchSetActiveConfigRequest
 
 try {
-    $result = $apiInstance->aiWebSearchSetActiveConfig($ai_web_search_configure_request);
+    $result = $apiInstance->aiWebSearchSetActiveConfig($ai_web_search_set_active_config_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebSearchApi->aiWebSearchSetActiveConfig: ', $e->getMessage(), PHP_EOL;

@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantWalletServiceSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantWalletServiceSettings object.
+ * @description The successful API response containing the TenantWalletServiceSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantWalletServiceSettingsWrapper implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantWalletServiceSettings',
+        'response' => '\OpenAPI\Client\Model\TenantWalletServiceSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantWalletServiceSettingsWrapper implements ModelInterface, ArrayAccess,
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantWalletServiceSettings|null
+     * @return \OpenAPI\Client\Model\TenantWalletServiceSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantWalletServiceSettingsWrapper implements ModelInterface, ArrayAccess,
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantWalletServiceSettings|null $response The TenantWalletServiceSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantWalletServiceSettingsDto|null $response The TenantWalletServiceSettingsDto object returned by the operation.
      *
      * @return self
      */

@@ -166,16 +166,16 @@ class WebhooksApi
      * REST API Reference for createWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-webhook/
      *
-     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto|null $create_webhooks_config_requests_dto create_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto|null $create_webhooks_config_request_dto create_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createWebhook($create_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhook($create_webhooks_config_request_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        list($response) = $this->createWebhookWithHttpInfo($create_webhooks_config_requests_dto, $contentType);
+        list($response) = $this->createWebhookWithHttpInfo($create_webhooks_config_request_dto, $contentType);
         return $response;
     }
 
@@ -187,16 +187,16 @@ class WebhooksApi
      * REST API Reference for createWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-webhook/
      *
-     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto|null $create_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto|null $create_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWebhookWithHttpInfo($create_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookWithHttpInfo($create_webhooks_config_request_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        $request = $this->createWebhookRequest($create_webhooks_config_requests_dto, $contentType);
+        $request = $this->createWebhookRequest($create_webhooks_config_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -235,12 +235,6 @@ class WebhooksApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -294,14 +288,6 @@ class WebhooksApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -317,15 +303,15 @@ class WebhooksApi
      * REST API Reference for createWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-webhook/
      *
-     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto|null $create_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto|null $create_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWebhookAsync($create_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookAsync($create_webhooks_config_request_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
     {
-        return $this->createWebhookAsyncWithHttpInfo($create_webhooks_config_requests_dto, $contentType)
+        return $this->createWebhookAsyncWithHttpInfo($create_webhooks_config_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -341,16 +327,16 @@ class WebhooksApi
      * REST API Reference for createWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-webhook/
      *
-     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto|null $create_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto|null $create_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createWebhookAsyncWithHttpInfo($create_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookAsyncWithHttpInfo($create_webhooks_config_request_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WebhooksConfigWrapper';
-        $request = $this->createWebhookRequest($create_webhooks_config_requests_dto, $contentType);
+        $request = $this->createWebhookRequest($create_webhooks_config_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -391,13 +377,13 @@ class WebhooksApi
     /**
      * Create request for operation 'createWebhook'
      *
-     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto|null $create_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto|null $create_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createWebhookRequest($create_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
+    public function createWebhookRequest($create_webhooks_config_request_dto = null, string $contentType = self::contentTypes['createWebhook'][0])
     {
 
 
@@ -420,12 +406,12 @@ class WebhooksApi
         );
 
         // for model (json/xml)
-        if (isset($create_webhooks_config_requests_dto)) {
+        if (isset($create_webhooks_config_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_webhooks_config_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_webhooks_config_request_dto));
             } else {
-                $httpBody = $create_webhooks_config_requests_dto;
+                $httpBody = $create_webhooks_config_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -503,16 +489,16 @@ class WebhooksApi
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function enableWebhook($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
+    public function enableWebhook($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
     {
-        list($response) = $this->enableWebhookWithHttpInfo($update_webhooks_config_requests_dto, $contentType);
+        list($response) = $this->enableWebhookWithHttpInfo($update_webhooks_config_request_dto, $contentType);
         return $response;
     }
 
@@ -524,16 +510,16 @@ class WebhooksApi
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function enableWebhookWithHttpInfo($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
+    public function enableWebhookWithHttpInfo($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
     {
-        $request = $this->enableWebhookRequest($update_webhooks_config_requests_dto, $contentType);
+        $request = $this->enableWebhookRequest($update_webhooks_config_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -572,12 +558,6 @@ class WebhooksApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -631,14 +611,6 @@ class WebhooksApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -654,15 +626,15 @@ class WebhooksApi
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableWebhookAsync($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
+    public function enableWebhookAsync($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
     {
-        return $this->enableWebhookAsyncWithHttpInfo($update_webhooks_config_requests_dto, $contentType)
+        return $this->enableWebhookAsyncWithHttpInfo($update_webhooks_config_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -678,16 +650,16 @@ class WebhooksApi
      * REST API Reference for enableWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/enable-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function enableWebhookAsyncWithHttpInfo($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
+    public function enableWebhookAsyncWithHttpInfo($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WebhooksConfigWrapper';
-        $request = $this->enableWebhookRequest($update_webhooks_config_requests_dto, $contentType);
+        $request = $this->enableWebhookRequest($update_webhooks_config_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -728,13 +700,13 @@ class WebhooksApi
     /**
      * Create request for operation 'enableWebhook'
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enableWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function enableWebhookRequest($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
+    public function enableWebhookRequest($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['enableWebhook'][0])
     {
 
 
@@ -757,12 +729,12 @@ class WebhooksApi
         );
 
         // for model (json/xml)
-        if (isset($update_webhooks_config_requests_dto)) {
+        if (isset($update_webhooks_config_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_webhooks_config_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_webhooks_config_request_dto));
             } else {
-                $httpBody = $update_webhooks_config_requests_dto;
+                $httpBody = $update_webhooks_config_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1502,7 +1474,7 @@ class WebhooksApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getWebhooksLogs($delivery_from = null, $delivery_to = null, $hook_uri = null, $config_id = null, $event_id = null, $group_status = null, $user_id = null, $trigger = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getWebhooksLogs'][0])
     {
@@ -1532,7 +1504,7 @@ class WebhooksApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebhooksLogsWithHttpInfo($delivery_from = null, $delivery_to = null, $hook_uri = null, $config_id = null, $event_id = null, $group_status = null, $user_id = null, $trigger = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getWebhooksLogs'][0])
     {
@@ -1581,12 +1553,6 @@ class WebhooksApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1641,14 +1607,6 @@ class WebhooksApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2686,16 +2644,16 @@ class WebhooksApi
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
      *
-     * @param  \OpenAPI\Client\Model\WebhookRetryRequestsDto|null $webhook_retry_requests_dto webhook_retry_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebhookRetryRequestDto|null $webhook_retry_request_dto webhook_retry_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhooks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function retryWebhooks($webhook_retry_requests_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
+    public function retryWebhooks($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
-        list($response) = $this->retryWebhooksWithHttpInfo($webhook_retry_requests_dto, $contentType);
+        list($response) = $this->retryWebhooksWithHttpInfo($webhook_retry_request_dto, $contentType);
         return $response;
     }
 
@@ -2707,16 +2665,16 @@ class WebhooksApi
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
      *
-     * @param  \OpenAPI\Client\Model\WebhookRetryRequestsDto|null $webhook_retry_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebhookRetryRequestDto|null $webhook_retry_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhooks'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retryWebhooksWithHttpInfo($webhook_retry_requests_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
+    public function retryWebhooksWithHttpInfo($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
-        $request = $this->retryWebhooksRequest($webhook_retry_requests_dto, $contentType);
+        $request = $this->retryWebhooksRequest($webhook_retry_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2851,15 +2809,15 @@ class WebhooksApi
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
      *
-     * @param  \OpenAPI\Client\Model\WebhookRetryRequestsDto|null $webhook_retry_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebhookRetryRequestDto|null $webhook_retry_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhooks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retryWebhooksAsync($webhook_retry_requests_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
+    public function retryWebhooksAsync($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
-        return $this->retryWebhooksAsyncWithHttpInfo($webhook_retry_requests_dto, $contentType)
+        return $this->retryWebhooksAsyncWithHttpInfo($webhook_retry_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2875,16 +2833,16 @@ class WebhooksApi
      * REST API Reference for retryWebhooks Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/retry-webhooks/
      *
-     * @param  \OpenAPI\Client\Model\WebhookRetryRequestsDto|null $webhook_retry_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebhookRetryRequestDto|null $webhook_retry_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhooks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retryWebhooksAsyncWithHttpInfo($webhook_retry_requests_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
+    public function retryWebhooksAsyncWithHttpInfo($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WebhooksLogArrayWrapper';
-        $request = $this->retryWebhooksRequest($webhook_retry_requests_dto, $contentType);
+        $request = $this->retryWebhooksRequest($webhook_retry_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2925,13 +2883,13 @@ class WebhooksApi
     /**
      * Create request for operation 'retryWebhooks'
      *
-     * @param  \OpenAPI\Client\Model\WebhookRetryRequestsDto|null $webhook_retry_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WebhookRetryRequestDto|null $webhook_retry_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryWebhooks'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function retryWebhooksRequest($webhook_retry_requests_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
+    public function retryWebhooksRequest($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
 
 
@@ -2954,12 +2912,12 @@ class WebhooksApi
         );
 
         // for model (json/xml)
-        if (isset($webhook_retry_requests_dto)) {
+        if (isset($webhook_retry_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_retry_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_retry_request_dto));
             } else {
-                $httpBody = $webhook_retry_requests_dto;
+                $httpBody = $webhook_retry_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3037,16 +2995,16 @@ class WebhooksApi
      * REST API Reference for updateWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateWebhook($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhook($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        list($response) = $this->updateWebhookWithHttpInfo($update_webhooks_config_requests_dto, $contentType);
+        list($response) = $this->updateWebhookWithHttpInfo($update_webhooks_config_request_dto, $contentType);
         return $response;
     }
 
@@ -3058,16 +3016,16 @@ class WebhooksApi
      * REST API Reference for updateWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WebhooksConfigWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWebhookWithHttpInfo($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookWithHttpInfo($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        $request = $this->updateWebhookRequest($update_webhooks_config_requests_dto, $contentType);
+        $request = $this->updateWebhookRequest($update_webhooks_config_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3106,12 +3064,6 @@ class WebhooksApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3165,14 +3117,6 @@ class WebhooksApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3188,15 +3132,15 @@ class WebhooksApi
      * REST API Reference for updateWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebhookAsync($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookAsync($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
-        return $this->updateWebhookAsyncWithHttpInfo($update_webhooks_config_requests_dto, $contentType)
+        return $this->updateWebhookAsyncWithHttpInfo($update_webhooks_config_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3212,16 +3156,16 @@ class WebhooksApi
      * REST API Reference for updateWebhook Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-webhook/
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateWebhookAsyncWithHttpInfo($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookAsyncWithHttpInfo($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WebhooksConfigWrapper';
-        $request = $this->updateWebhookRequest($update_webhooks_config_requests_dto, $contentType);
+        $request = $this->updateWebhookRequest($update_webhooks_config_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3262,13 +3206,13 @@ class WebhooksApi
     /**
      * Create request for operation 'updateWebhook'
      *
-     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto|null $update_webhooks_config_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto|null $update_webhooks_config_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateWebhookRequest($update_webhooks_config_requests_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
+    public function updateWebhookRequest($update_webhooks_config_request_dto = null, string $contentType = self::contentTypes['updateWebhook'][0])
     {
 
 
@@ -3291,12 +3235,12 @@ class WebhooksApi
         );
 
         // for model (json/xml)
-        if (isset($update_webhooks_config_requests_dto)) {
+        if (isset($update_webhooks_config_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_webhooks_config_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_webhooks_config_request_dto));
             } else {
-                $httpBody = $update_webhooks_config_requests_dto;
+                $httpBody = $update_webhooks_config_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

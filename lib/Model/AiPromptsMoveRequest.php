@@ -49,7 +49,7 @@ class AiPromptsMoveRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPromptsMove_request';
+    protected static $openAPIModelName = 'AiPromptsMoveRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

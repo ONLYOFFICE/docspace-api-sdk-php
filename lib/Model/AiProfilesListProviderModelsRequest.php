@@ -49,7 +49,7 @@ class AiProfilesListProviderModelsRequest implements ModelInterface, ArrayAccess
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiProfilesListProviderModels_request';
+    protected static $openAPIModelName = 'AiProfilesListProviderModelsRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

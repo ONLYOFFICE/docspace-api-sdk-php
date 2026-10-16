@@ -138,7 +138,7 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
@@ -146,9 +146,9 @@ class PasswordApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function changeUserPassword($userid, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
+    public function changeUserPassword($user_id, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
     {
-        list($response) = $this->changeUserPasswordWithHttpInfo($userid, $change_password_request, $contentType);
+        list($response) = $this->changeUserPasswordWithHttpInfo($user_id, $change_password_request, $contentType);
         return $response;
     }
 
@@ -160,7 +160,7 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
@@ -168,9 +168,9 @@ class PasswordApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeUserPasswordWithHttpInfo($userid, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
+    public function changeUserPasswordWithHttpInfo($user_id, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
     {
-        $request = $this->changeUserPasswordRequest($userid, $change_password_request, $contentType);
+        $request = $this->changeUserPasswordRequest($user_id, $change_password_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -291,16 +291,16 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeUserPasswordAsync($userid, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
+    public function changeUserPasswordAsync($user_id, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
     {
-        return $this->changeUserPasswordAsyncWithHttpInfo($userid, $change_password_request, $contentType)
+        return $this->changeUserPasswordAsyncWithHttpInfo($user_id, $change_password_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -316,17 +316,17 @@ class PasswordApi
      * REST API Reference for changeUserPassword Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/
      *
-     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeUserPasswordAsyncWithHttpInfo($userid, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
+    public function changeUserPasswordAsyncWithHttpInfo($user_id, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->changeUserPasswordRequest($userid, $change_password_request, $contentType);
+        $request = $this->changeUserPasswordRequest($user_id, $change_password_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -367,20 +367,20 @@ class PasswordApi
     /**
      * Create request for operation 'changeUserPassword'
      *
-     * @param  string $userid The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
+     * @param  string $user_id The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. (required)
      * @param  \OpenAPI\Client\Model\ChangePasswordRequest $change_password_request The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeUserPassword'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeUserPasswordRequest($userid, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
+    public function changeUserPasswordRequest($user_id, $change_password_request, string $contentType = self::contentTypes['changeUserPassword'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling changeUserPassword'
+                'Missing the required parameter $user_id when calling changeUserPassword'
             );
         }
 
@@ -392,7 +392,7 @@ class PasswordApi
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}/password';
+        $resourcePath = '/api/2.0/people/{userId}/password';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -402,10 +402,10 @@ class PasswordApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -506,7 +506,7 @@ class PasswordApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function sendUserPassword($email_member_request_dto = null, string $contentType = self::contentTypes['sendUserPassword'][0])
     {
@@ -527,7 +527,7 @@ class PasswordApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendUserPasswordWithHttpInfo($email_member_request_dto = null, string $contentType = self::contentTypes['sendUserPassword'][0])
     {
@@ -575,12 +575,6 @@ class PasswordApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -622,14 +616,6 @@ class PasswordApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

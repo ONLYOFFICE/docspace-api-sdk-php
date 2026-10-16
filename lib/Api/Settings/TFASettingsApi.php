@@ -1455,16 +1455,16 @@ class TFASettingsApi
      * REST API Reference for tfaValidateAuthCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-validate-auth-code/
      *
-     * @param  \OpenAPI\Client\Model\TfaValidateRequestsDto|null $tfa_validate_requests_dto tfa_validate_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaValidateRequestDto|null $tfa_validate_request_dto tfa_validate_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tfaValidateAuthCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function tfaValidateAuthCode($tfa_validate_requests_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
+    public function tfaValidateAuthCode($tfa_validate_request_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
     {
-        list($response) = $this->tfaValidateAuthCodeWithHttpInfo($tfa_validate_requests_dto, $contentType);
+        list($response) = $this->tfaValidateAuthCodeWithHttpInfo($tfa_validate_request_dto, $contentType);
         return $response;
     }
 
@@ -1476,16 +1476,16 @@ class TFASettingsApi
      * REST API Reference for tfaValidateAuthCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-validate-auth-code/
      *
-     * @param  \OpenAPI\Client\Model\TfaValidateRequestsDto|null $tfa_validate_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaValidateRequestDto|null $tfa_validate_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tfaValidateAuthCode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function tfaValidateAuthCodeWithHttpInfo($tfa_validate_requests_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
+    public function tfaValidateAuthCodeWithHttpInfo($tfa_validate_request_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
     {
-        $request = $this->tfaValidateAuthCodeRequest($tfa_validate_requests_dto, $contentType);
+        $request = $this->tfaValidateAuthCodeRequest($tfa_validate_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1524,18 +1524,6 @@ class TFASettingsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1589,22 +1577,6 @@ class TFASettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1620,15 +1592,15 @@ class TFASettingsApi
      * REST API Reference for tfaValidateAuthCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-validate-auth-code/
      *
-     * @param  \OpenAPI\Client\Model\TfaValidateRequestsDto|null $tfa_validate_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaValidateRequestDto|null $tfa_validate_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tfaValidateAuthCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function tfaValidateAuthCodeAsync($tfa_validate_requests_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
+    public function tfaValidateAuthCodeAsync($tfa_validate_request_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
     {
-        return $this->tfaValidateAuthCodeAsyncWithHttpInfo($tfa_validate_requests_dto, $contentType)
+        return $this->tfaValidateAuthCodeAsyncWithHttpInfo($tfa_validate_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1644,16 +1616,16 @@ class TFASettingsApi
      * REST API Reference for tfaValidateAuthCode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/tfa-validate-auth-code/
      *
-     * @param  \OpenAPI\Client\Model\TfaValidateRequestsDto|null $tfa_validate_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaValidateRequestDto|null $tfa_validate_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tfaValidateAuthCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function tfaValidateAuthCodeAsyncWithHttpInfo($tfa_validate_requests_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
+    public function tfaValidateAuthCodeAsyncWithHttpInfo($tfa_validate_request_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->tfaValidateAuthCodeRequest($tfa_validate_requests_dto, $contentType);
+        $request = $this->tfaValidateAuthCodeRequest($tfa_validate_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1694,13 +1666,13 @@ class TFASettingsApi
     /**
      * Create request for operation 'tfaValidateAuthCode'
      *
-     * @param  \OpenAPI\Client\Model\TfaValidateRequestsDto|null $tfa_validate_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaValidateRequestDto|null $tfa_validate_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['tfaValidateAuthCode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function tfaValidateAuthCodeRequest($tfa_validate_requests_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
+    public function tfaValidateAuthCodeRequest($tfa_validate_request_dto = null, string $contentType = self::contentTypes['tfaValidateAuthCode'][0])
     {
 
 
@@ -1723,12 +1695,12 @@ class TFASettingsApi
         );
 
         // for model (json/xml)
-        if (isset($tfa_validate_requests_dto)) {
+        if (isset($tfa_validate_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_validate_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_validate_request_dto));
             } else {
-                $httpBody = $tfa_validate_requests_dto;
+                $httpBody = $tfa_validate_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1806,16 +1778,16 @@ class TFASettingsApi
      * REST API Reference for unlinkTfaApp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unlink-tfa-app/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlinkTfaApp'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function unlinkTfaApp($tfa_requests_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
+    public function unlinkTfaApp($tfa_request_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
     {
-        list($response) = $this->unlinkTfaAppWithHttpInfo($tfa_requests_dto, $contentType);
+        list($response) = $this->unlinkTfaAppWithHttpInfo($tfa_request_dto, $contentType);
         return $response;
     }
 
@@ -1827,16 +1799,16 @@ class TFASettingsApi
      * REST API Reference for unlinkTfaApp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unlink-tfa-app/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlinkTfaApp'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function unlinkTfaAppWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
+    public function unlinkTfaAppWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
     {
-        $request = $this->unlinkTfaAppRequest($tfa_requests_dto, $contentType);
+        $request = $this->unlinkTfaAppRequest($tfa_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1881,12 +1853,6 @@ class TFASettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1948,14 +1914,6 @@ class TFASettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1971,15 +1929,15 @@ class TFASettingsApi
      * REST API Reference for unlinkTfaApp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unlink-tfa-app/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlinkTfaApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unlinkTfaAppAsync($tfa_requests_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
+    public function unlinkTfaAppAsync($tfa_request_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
     {
-        return $this->unlinkTfaAppAsyncWithHttpInfo($tfa_requests_dto, $contentType)
+        return $this->unlinkTfaAppAsyncWithHttpInfo($tfa_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1995,16 +1953,16 @@ class TFASettingsApi
      * REST API Reference for unlinkTfaApp Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/unlink-tfa-app/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlinkTfaApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function unlinkTfaAppAsyncWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
+    public function unlinkTfaAppAsyncWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->unlinkTfaAppRequest($tfa_requests_dto, $contentType);
+        $request = $this->unlinkTfaAppRequest($tfa_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2045,13 +2003,13 @@ class TFASettingsApi
     /**
      * Create request for operation 'unlinkTfaApp'
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlinkTfaApp'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function unlinkTfaAppRequest($tfa_requests_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
+    public function unlinkTfaAppRequest($tfa_request_dto = null, string $contentType = self::contentTypes['unlinkTfaApp'][0])
     {
 
 
@@ -2074,12 +2032,12 @@ class TFASettingsApi
         );
 
         // for model (json/xml)
-        if (isset($tfa_requests_dto)) {
+        if (isset($tfa_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_request_dto));
             } else {
-                $httpBody = $tfa_requests_dto;
+                $httpBody = $tfa_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2481,16 +2439,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateTfaSettings($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
+    public function updateTfaSettings($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
     {
-        list($response) = $this->updateTfaSettingsWithHttpInfo($tfa_requests_dto, $contentType);
+        list($response) = $this->updateTfaSettingsWithHttpInfo($tfa_request_dto, $contentType);
         return $response;
     }
 
@@ -2502,16 +2460,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTfaSettingsWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
+    public function updateTfaSettingsWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
     {
-        $request = $this->updateTfaSettingsRequest($tfa_requests_dto, $contentType);
+        $request = $this->updateTfaSettingsRequest($tfa_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2556,12 +2514,6 @@ class TFASettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2623,14 +2575,6 @@ class TFASettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2646,15 +2590,15 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTfaSettingsAsync($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
+    public function updateTfaSettingsAsync($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
     {
-        return $this->updateTfaSettingsAsyncWithHttpInfo($tfa_requests_dto, $contentType)
+        return $this->updateTfaSettingsAsyncWithHttpInfo($tfa_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2670,16 +2614,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTfaSettingsAsyncWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
+    public function updateTfaSettingsAsyncWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->updateTfaSettingsRequest($tfa_requests_dto, $contentType);
+        $request = $this->updateTfaSettingsRequest($tfa_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2720,13 +2664,13 @@ class TFASettingsApi
     /**
      * Create request for operation 'updateTfaSettings'
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTfaSettingsRequest($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
+    public function updateTfaSettingsRequest($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettings'][0])
     {
 
 
@@ -2749,12 +2693,12 @@ class TFASettingsApi
         );
 
         // for model (json/xml)
-        if (isset($tfa_requests_dto)) {
+        if (isset($tfa_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_request_dto));
             } else {
-                $httpBody = $tfa_requests_dto;
+                $httpBody = $tfa_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2832,16 +2776,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettingsLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateTfaSettingsLink($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
+    public function updateTfaSettingsLink($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
     {
-        list($response) = $this->updateTfaSettingsLinkWithHttpInfo($tfa_requests_dto, $contentType);
+        list($response) = $this->updateTfaSettingsLinkWithHttpInfo($tfa_request_dto, $contentType);
         return $response;
     }
 
@@ -2853,16 +2797,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettingsLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateTfaSettingsLinkWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
+    public function updateTfaSettingsLinkWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
     {
-        $request = $this->updateTfaSettingsLinkRequest($tfa_requests_dto, $contentType);
+        $request = $this->updateTfaSettingsLinkRequest($tfa_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2907,12 +2851,6 @@ class TFASettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2974,14 +2912,6 @@ class TFASettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2997,15 +2927,15 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettingsLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTfaSettingsLinkAsync($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
+    public function updateTfaSettingsLinkAsync($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
     {
-        return $this->updateTfaSettingsLinkAsyncWithHttpInfo($tfa_requests_dto, $contentType)
+        return $this->updateTfaSettingsLinkAsyncWithHttpInfo($tfa_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3021,16 +2951,16 @@ class TFASettingsApi
      * REST API Reference for updateTfaSettingsLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-tfa-settings-link/
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettingsLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateTfaSettingsLinkAsyncWithHttpInfo($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
+    public function updateTfaSettingsLinkAsyncWithHttpInfo($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->updateTfaSettingsLinkRequest($tfa_requests_dto, $contentType);
+        $request = $this->updateTfaSettingsLinkRequest($tfa_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3071,13 +3001,13 @@ class TFASettingsApi
     /**
      * Create request for operation 'updateTfaSettingsLink'
      *
-     * @param  \OpenAPI\Client\Model\TfaRequestsDto|null $tfa_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\TfaRequestDto|null $tfa_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTfaSettingsLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateTfaSettingsLinkRequest($tfa_requests_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
+    public function updateTfaSettingsLinkRequest($tfa_request_dto = null, string $contentType = self::contentTypes['updateTfaSettingsLink'][0])
     {
 
 
@@ -3100,12 +3030,12 @@ class TFASettingsApi
         );
 
         // for model (json/xml)
-        if (isset($tfa_requests_dto)) {
+        if (isset($tfa_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tfa_request_dto));
             } else {
-                $httpBody = $tfa_requests_dto;
+                $httpBody = $tfa_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

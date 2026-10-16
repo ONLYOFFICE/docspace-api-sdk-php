@@ -1543,16 +1543,16 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
+     * @param  string $user_id The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GroupSummaryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getGroupByUserId($userid, string $contentType = self::contentTypes['getGroupByUserId'][0])
+    public function getGroupByUserId($user_id, string $contentType = self::contentTypes['getGroupByUserId'][0])
     {
-        list($response) = $this->getGroupByUserIdWithHttpInfo($userid, $contentType);
+        list($response) = $this->getGroupByUserIdWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -1564,16 +1564,16 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
+     * @param  string $user_id The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GroupSummaryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGroupByUserIdWithHttpInfo($userid, string $contentType = self::contentTypes['getGroupByUserId'][0])
+    public function getGroupByUserIdWithHttpInfo($user_id, string $contentType = self::contentTypes['getGroupByUserId'][0])
     {
-        $request = $this->getGroupByUserIdRequest($userid, $contentType);
+        $request = $this->getGroupByUserIdRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1708,15 +1708,15 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
+     * @param  string $user_id The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGroupByUserIdAsync($userid, string $contentType = self::contentTypes['getGroupByUserId'][0])
+    public function getGroupByUserIdAsync($user_id, string $contentType = self::contentTypes['getGroupByUserId'][0])
     {
-        return $this->getGroupByUserIdAsyncWithHttpInfo($userid, $contentType)
+        return $this->getGroupByUserIdAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1732,16 +1732,16 @@ class GroupApi
      * REST API Reference for getGroupByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-group-by-user-id/
      *
-     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
+     * @param  string $user_id The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGroupByUserIdAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getGroupByUserId'][0])
+    public function getGroupByUserIdAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getGroupByUserId'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GroupSummaryArrayWrapper';
-        $request = $this->getGroupByUserIdRequest($userid, $contentType);
+        $request = $this->getGroupByUserIdRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1782,24 +1782,24 @@ class GroupApi
     /**
      * Create request for operation 'getGroupByUserId'
      *
-     * @param  string $userid The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
+     * @param  string $user_id The ID of the account whose groups are listed, taken from the route. An ID that matches no account yields an  empty list rather than 404. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGroupByUserIdRequest($userid, string $contentType = self::contentTypes['getGroupByUserId'][0])
+    public function getGroupByUserIdRequest($user_id, string $contentType = self::contentTypes['getGroupByUserId'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getGroupByUserId'
+                'Missing the required parameter $user_id when calling getGroupByUserId'
             );
         }
 
 
-        $resourcePath = '/api/2.0/group/user/{userid}';
+        $resourcePath = '/api/2.0/group/user/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1809,10 +1809,10 @@ class GroupApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -1912,7 +1912,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getGroups($user_id = null, $manager = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getGroups'][0])
     {
@@ -1939,7 +1939,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGroupsWithHttpInfo($user_id = null, $manager = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getGroups'][0])
     {
@@ -1988,12 +1988,6 @@ class GroupApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2048,14 +2042,6 @@ class GroupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3113,7 +3099,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setGroupManager($id, $set_manager_request, string $contentType = self::contentTypes['setGroupManager'][0])
     {
@@ -3135,7 +3121,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setGroupManagerWithHttpInfo($id, $set_manager_request, string $contentType = self::contentTypes['setGroupManager'][0])
     {
@@ -3184,12 +3170,6 @@ class GroupApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3244,14 +3224,6 @@ class GroupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3853,7 +3825,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateGroup($id, $update_group_request, string $contentType = self::contentTypes['updateGroup'][0])
     {
@@ -3875,7 +3847,7 @@ class GroupApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GroupWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGroupWithHttpInfo($id, $update_group_request, string $contentType = self::contentTypes['updateGroup'][0])
     {
@@ -3924,12 +3896,6 @@ class GroupApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3984,14 +3950,6 @@ class GroupApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

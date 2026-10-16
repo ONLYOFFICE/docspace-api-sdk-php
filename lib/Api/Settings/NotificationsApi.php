@@ -476,7 +476,7 @@ class NotificationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getNotificationSettings($type, string $contentType = self::contentTypes['getNotificationSettings'][0])
     {
@@ -497,7 +497,7 @@ class NotificationsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNotificationSettingsWithHttpInfo($type, string $contentType = self::contentTypes['getNotificationSettings'][0])
     {
@@ -546,12 +546,6 @@ class NotificationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -606,14 +600,6 @@ class NotificationsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1153,16 +1139,16 @@ class NotificationsApi
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestsDto|null $notification_settings_requests_dto notification_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestDto|null $notification_settings_request_dto notification_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setNotificationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setNotificationSettings($notification_settings_requests_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
+    public function setNotificationSettings($notification_settings_request_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
     {
-        list($response) = $this->setNotificationSettingsWithHttpInfo($notification_settings_requests_dto, $contentType);
+        list($response) = $this->setNotificationSettingsWithHttpInfo($notification_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -1174,16 +1160,16 @@ class NotificationsApi
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestsDto|null $notification_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestDto|null $notification_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setNotificationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\NotificationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setNotificationSettingsWithHttpInfo($notification_settings_requests_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
+    public function setNotificationSettingsWithHttpInfo($notification_settings_request_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
     {
-        $request = $this->setNotificationSettingsRequest($notification_settings_requests_dto, $contentType);
+        $request = $this->setNotificationSettingsRequest($notification_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1228,12 +1214,6 @@ class NotificationsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1295,14 +1275,6 @@ class NotificationsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1318,15 +1290,15 @@ class NotificationsApi
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestsDto|null $notification_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestDto|null $notification_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setNotificationSettingsAsync($notification_settings_requests_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
+    public function setNotificationSettingsAsync($notification_settings_request_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
     {
-        return $this->setNotificationSettingsAsyncWithHttpInfo($notification_settings_requests_dto, $contentType)
+        return $this->setNotificationSettingsAsyncWithHttpInfo($notification_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1342,16 +1314,16 @@ class NotificationsApi
      * REST API Reference for setNotificationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-notification-settings/
      *
-     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestsDto|null $notification_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestDto|null $notification_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setNotificationSettingsAsyncWithHttpInfo($notification_settings_requests_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
+    public function setNotificationSettingsAsyncWithHttpInfo($notification_settings_request_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\NotificationSettingsWrapper';
-        $request = $this->setNotificationSettingsRequest($notification_settings_requests_dto, $contentType);
+        $request = $this->setNotificationSettingsRequest($notification_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1392,13 +1364,13 @@ class NotificationsApi
     /**
      * Create request for operation 'setNotificationSettings'
      *
-     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestsDto|null $notification_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\NotificationSettingsRequestDto|null $notification_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setNotificationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setNotificationSettingsRequest($notification_settings_requests_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
+    public function setNotificationSettingsRequest($notification_settings_request_dto = null, string $contentType = self::contentTypes['setNotificationSettings'][0])
     {
 
 
@@ -1421,12 +1393,12 @@ class NotificationsApi
         );
 
         // for model (json/xml)
-        if (isset($notification_settings_requests_dto)) {
+        if (isset($notification_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($notification_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($notification_settings_request_dto));
             } else {
-                $httpBody = $notification_settings_requests_dto;
+                $httpBody = $notification_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

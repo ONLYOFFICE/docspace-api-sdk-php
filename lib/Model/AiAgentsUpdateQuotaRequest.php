@@ -49,7 +49,7 @@ class AiAgentsUpdateQuotaRequest implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAgentsUpdateQuota_request';
+    protected static $openAPIModelName = 'AiAgentsUpdateQuotaRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

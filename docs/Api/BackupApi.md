@@ -99,7 +99,7 @@ try {
 ## `createBackupSchedule()`
 
 ```php
-createBackupSchedule($backup_schedule_dto): \OpenAPI\Client\Model\BooleanWrapper
+createBackupSchedule($create_backup_schedule_request_dto): \OpenAPI\Client\Model\BooleanWrapper
 ```
 
 Create the backup schedule
@@ -111,7 +111,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **backup_schedule_dto** | [**\OpenAPI\Client\Model\BackupScheduleDto**](../Model/BackupScheduleDto.md)|  | [optional] |
+| **create_backup_schedule_request_dto** | [**\OpenAPI\Client\Model\CreateBackupScheduleRequestDto**](../Model/CreateBackupScheduleRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -156,10 +156,10 @@ $apiInstance = new OpenAPI\Client\Api\BackupApi(
     new GuzzleHttp\Client(),
     $config
 );
-$backup_schedule_dto = new \OpenAPI\Client\Model\BackupScheduleDto(); // \OpenAPI\Client\Model\BackupScheduleDto
+$create_backup_schedule_request_dto = new \OpenAPI\Client\Model\CreateBackupScheduleRequestDto(); // \OpenAPI\Client\Model\CreateBackupScheduleRequestDto
 
 try {
-    $result = $apiInstance->createBackupSchedule($backup_schedule_dto);
+    $result = $apiInstance->createBackupSchedule($create_backup_schedule_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BackupApi->createBackupSchedule: ', $e->getMessage(), PHP_EOL;
@@ -973,7 +973,7 @@ try {
 ## `startBackup()`
 
 ```php
-startBackup($backup_dto): \OpenAPI\Client\Model\BackupProgressWrapper
+startBackup($start_backup_request_dto): \OpenAPI\Client\Model\BackupProgressWrapper
 ```
 
 Start the backup
@@ -985,7 +985,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **backup_dto** | [**\OpenAPI\Client\Model\BackupDto**](../Model/BackupDto.md)|  | [optional] |
+| **start_backup_request_dto** | [**\OpenAPI\Client\Model\StartBackupRequestDto**](../Model/StartBackupRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1030,10 +1030,10 @@ $apiInstance = new OpenAPI\Client\Api\BackupApi(
     new GuzzleHttp\Client(),
     $config
 );
-$backup_dto = new \OpenAPI\Client\Model\BackupDto(); // \OpenAPI\Client\Model\BackupDto
+$start_backup_request_dto = new \OpenAPI\Client\Model\StartBackupRequestDto(); // \OpenAPI\Client\Model\StartBackupRequestDto
 
 try {
-    $result = $apiInstance->startBackup($backup_dto);
+    $result = $apiInstance->startBackup($start_backup_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BackupApi->startBackup: ', $e->getMessage(), PHP_EOL;
@@ -1052,7 +1052,7 @@ try {
 ## `startBackupRestore()`
 
 ```php
-startBackupRestore($backup_restore_dto): \OpenAPI\Client\Model\BackupProgressWrapper
+startBackupRestore($start_backup_restore_request_dto): \OpenAPI\Client\Model\BackupProgressWrapper
 ```
 
 Start the restoring process
@@ -1064,7 +1064,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **backup_restore_dto** | [**\OpenAPI\Client\Model\BackupRestoreDto**](../Model/BackupRestoreDto.md)|  | [optional] |
+| **start_backup_restore_request_dto** | [**\OpenAPI\Client\Model\StartBackupRestoreRequestDto**](../Model/StartBackupRestoreRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -1109,10 +1109,10 @@ $apiInstance = new OpenAPI\Client\Api\BackupApi(
     new GuzzleHttp\Client(),
     $config
 );
-$backup_restore_dto = new \OpenAPI\Client\Model\BackupRestoreDto(); // \OpenAPI\Client\Model\BackupRestoreDto
+$start_backup_restore_request_dto = new \OpenAPI\Client\Model\StartBackupRestoreRequestDto(); // \OpenAPI\Client\Model\StartBackupRestoreRequestDto
 
 try {
-    $result = $apiInstance->startBackupRestore($backup_restore_dto);
+    $result = $apiInstance->startBackupRestore($start_backup_restore_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BackupApi->startBackupRestore: ', $e->getMessage(), PHP_EOL;

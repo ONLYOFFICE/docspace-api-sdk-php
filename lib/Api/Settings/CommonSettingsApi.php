@@ -454,16 +454,16 @@ class CommonSettingsApi
      * REST API Reference for completeWizard Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/complete-wizard/
      *
-     * @param  \OpenAPI\Client\Model\WizardRequestsDto|null $wizard_requests_dto wizard_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WizardRequestDto|null $wizard_request_dto wizard_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWizard'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WizardSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WizardSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function completeWizard($wizard_requests_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
+    public function completeWizard($wizard_request_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
     {
-        list($response) = $this->completeWizardWithHttpInfo($wizard_requests_dto, $contentType);
+        list($response) = $this->completeWizardWithHttpInfo($wizard_request_dto, $contentType);
         return $response;
     }
 
@@ -475,16 +475,16 @@ class CommonSettingsApi
      * REST API Reference for completeWizard Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/complete-wizard/
      *
-     * @param  \OpenAPI\Client\Model\WizardRequestsDto|null $wizard_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WizardRequestDto|null $wizard_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWizard'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WizardSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WizardSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function completeWizardWithHttpInfo($wizard_requests_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
+    public function completeWizardWithHttpInfo($wizard_request_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
     {
-        $request = $this->completeWizardRequest($wizard_requests_dto, $contentType);
+        $request = $this->completeWizardRequest($wizard_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -523,12 +523,6 @@ class CommonSettingsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -582,14 +576,6 @@ class CommonSettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -605,15 +591,15 @@ class CommonSettingsApi
      * REST API Reference for completeWizard Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/complete-wizard/
      *
-     * @param  \OpenAPI\Client\Model\WizardRequestsDto|null $wizard_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WizardRequestDto|null $wizard_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWizard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function completeWizardAsync($wizard_requests_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
+    public function completeWizardAsync($wizard_request_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
     {
-        return $this->completeWizardAsyncWithHttpInfo($wizard_requests_dto, $contentType)
+        return $this->completeWizardAsyncWithHttpInfo($wizard_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -629,16 +615,16 @@ class CommonSettingsApi
      * REST API Reference for completeWizard Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/complete-wizard/
      *
-     * @param  \OpenAPI\Client\Model\WizardRequestsDto|null $wizard_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WizardRequestDto|null $wizard_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWizard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function completeWizardAsyncWithHttpInfo($wizard_requests_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
+    public function completeWizardAsyncWithHttpInfo($wizard_request_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WizardSettingsWrapper';
-        $request = $this->completeWizardRequest($wizard_requests_dto, $contentType);
+        $request = $this->completeWizardRequest($wizard_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -679,13 +665,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'completeWizard'
      *
-     * @param  \OpenAPI\Client\Model\WizardRequestsDto|null $wizard_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WizardRequestDto|null $wizard_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWizard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function completeWizardRequest($wizard_requests_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
+    public function completeWizardRequest($wizard_request_dto = null, string $contentType = self::contentTypes['completeWizard'][0])
     {
 
 
@@ -708,12 +694,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($wizard_requests_dto)) {
+        if (isset($wizard_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($wizard_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($wizard_request_dto));
             } else {
-                $httpBody = $wizard_requests_dto;
+                $httpBody = $wizard_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -791,16 +777,16 @@ class CommonSettingsApi
      * REST API Reference for configureDeepLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-deep-link/
      *
-     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto|null $deep_link_configuration_requests_dto deep_link_configuration_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto|null $deep_link_configuration_request_dto deep_link_configuration_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureDeepLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function configureDeepLink($deep_link_configuration_requests_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
+    public function configureDeepLink($deep_link_configuration_request_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
     {
-        list($response) = $this->configureDeepLinkWithHttpInfo($deep_link_configuration_requests_dto, $contentType);
+        list($response) = $this->configureDeepLinkWithHttpInfo($deep_link_configuration_request_dto, $contentType);
         return $response;
     }
 
@@ -812,16 +798,16 @@ class CommonSettingsApi
      * REST API Reference for configureDeepLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-deep-link/
      *
-     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto|null $deep_link_configuration_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto|null $deep_link_configuration_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureDeepLink'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function configureDeepLinkWithHttpInfo($deep_link_configuration_requests_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
+    public function configureDeepLinkWithHttpInfo($deep_link_configuration_request_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
     {
-        $request = $this->configureDeepLinkRequest($deep_link_configuration_requests_dto, $contentType);
+        $request = $this->configureDeepLinkRequest($deep_link_configuration_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -860,12 +846,6 @@ class CommonSettingsApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -919,14 +899,6 @@ class CommonSettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -942,15 +914,15 @@ class CommonSettingsApi
      * REST API Reference for configureDeepLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-deep-link/
      *
-     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto|null $deep_link_configuration_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto|null $deep_link_configuration_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureDeepLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureDeepLinkAsync($deep_link_configuration_requests_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
+    public function configureDeepLinkAsync($deep_link_configuration_request_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
     {
-        return $this->configureDeepLinkAsyncWithHttpInfo($deep_link_configuration_requests_dto, $contentType)
+        return $this->configureDeepLinkAsyncWithHttpInfo($deep_link_configuration_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -966,16 +938,16 @@ class CommonSettingsApi
      * REST API Reference for configureDeepLink Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/configure-deep-link/
      *
-     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto|null $deep_link_configuration_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto|null $deep_link_configuration_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureDeepLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function configureDeepLinkAsyncWithHttpInfo($deep_link_configuration_requests_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
+    public function configureDeepLinkAsyncWithHttpInfo($deep_link_configuration_request_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TenantDeepLinkSettingsWrapper';
-        $request = $this->configureDeepLinkRequest($deep_link_configuration_requests_dto, $contentType);
+        $request = $this->configureDeepLinkRequest($deep_link_configuration_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1016,13 +988,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'configureDeepLink'
      *
-     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestsDto|null $deep_link_configuration_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DeepLinkConfigurationRequestDto|null $deep_link_configuration_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureDeepLink'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function configureDeepLinkRequest($deep_link_configuration_requests_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
+    public function configureDeepLinkRequest($deep_link_configuration_request_dto = null, string $contentType = self::contentTypes['configureDeepLink'][0])
     {
 
 
@@ -1045,12 +1017,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($deep_link_configuration_requests_dto)) {
+        if (isset($deep_link_configuration_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($deep_link_configuration_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($deep_link_configuration_request_dto));
             } else {
-                $httpBody = $deep_link_configuration_requests_dto;
+                $httpBody = $deep_link_configuration_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3746,7 +3718,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSupportedCultures(string $contentType = self::contentTypes['getSupportedCultures'][0])
     {
@@ -3766,7 +3738,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSupportedCulturesWithHttpInfo(string $contentType = self::contentTypes['getSupportedCultures'][0])
     {
@@ -3798,7 +3770,7 @@ class CommonSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $request,
                         $response,
                     );
@@ -3832,7 +3804,7 @@ class CommonSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                '\OpenAPI\Client\Model\StringArrayWrapper',
                 $request,
                 $response,
             );
@@ -3841,7 +3813,7 @@ class CommonSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3907,7 +3879,7 @@ class CommonSettingsApi
      */
     public function getSupportedCulturesAsyncWithHttpInfo(string $contentType = self::contentTypes['getSupportedCultures'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\STRINGArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringArrayWrapper';
         $request = $this->getSupportedCulturesRequest($contentType);
 
         return $this->client
@@ -4690,7 +4662,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TimezonesRequestsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TimezoneArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getTimeZones(string $contentType = self::contentTypes['getTimeZones'][0])
     {
@@ -4710,7 +4682,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TimezonesRequestsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TimezoneArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTimeZonesWithHttpInfo(string $contentType = self::contentTypes['getTimeZones'][0])
     {
@@ -4742,7 +4714,7 @@ class CommonSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\TimezonesRequestsArrayWrapper',
+                        '\OpenAPI\Client\Model\TimezoneArrayWrapper',
                         $request,
                         $response,
                     );
@@ -4782,7 +4754,7 @@ class CommonSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\TimezonesRequestsArrayWrapper',
+                '\OpenAPI\Client\Model\TimezoneArrayWrapper',
                 $request,
                 $response,
             );
@@ -4791,7 +4763,7 @@ class CommonSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\TimezonesRequestsArrayWrapper',
+                        '\OpenAPI\Client\Model\TimezoneArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4865,7 +4837,7 @@ class CommonSettingsApi
      */
     public function getTimeZonesAsyncWithHttpInfo(string $contentType = self::contentTypes['getTimeZones'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\TimezonesRequestsArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\TimezoneArrayWrapper';
         $request = $this->getTimeZonesRequest($contentType);
 
         return $this->client
@@ -5015,7 +4987,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function saveDefaultFolder($default_product_request_dto = null, string $contentType = self::contentTypes['saveDefaultFolder'][0])
     {
@@ -5036,7 +5008,7 @@ class CommonSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StudioDefaultPageSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function saveDefaultFolderWithHttpInfo($default_product_request_dto = null, string $contentType = self::contentTypes['saveDefaultFolder'][0])
     {
@@ -5085,12 +5057,6 @@ class CommonSettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5145,14 +5111,6 @@ class CommonSettingsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5361,16 +5319,16 @@ class CommonSettingsApi
      * REST API Reference for saveDnsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-dns-settings/
      *
-     * @param  \OpenAPI\Client\Model\DnsSettingsRequestsDto|null $dns_settings_requests_dto dns_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DnsSettingsRequestDto|null $dns_settings_request_dto dns_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveDnsSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveDnsSettings($dns_settings_requests_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
+    public function saveDnsSettings($dns_settings_request_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
     {
-        list($response) = $this->saveDnsSettingsWithHttpInfo($dns_settings_requests_dto, $contentType);
+        list($response) = $this->saveDnsSettingsWithHttpInfo($dns_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -5382,16 +5340,16 @@ class CommonSettingsApi
      * REST API Reference for saveDnsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-dns-settings/
      *
-     * @param  \OpenAPI\Client\Model\DnsSettingsRequestsDto|null $dns_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DnsSettingsRequestDto|null $dns_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveDnsSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveDnsSettingsWithHttpInfo($dns_settings_requests_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
+    public function saveDnsSettingsWithHttpInfo($dns_settings_request_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
     {
-        $request = $this->saveDnsSettingsRequest($dns_settings_requests_dto, $contentType);
+        $request = $this->saveDnsSettingsRequest($dns_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5435,7 +5393,7 @@ class CommonSettingsApi
                         $request,
                         $response,
                     );
-                case 500:
+                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5489,7 +5447,7 @@ class CommonSettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
+                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5512,15 +5470,15 @@ class CommonSettingsApi
      * REST API Reference for saveDnsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-dns-settings/
      *
-     * @param  \OpenAPI\Client\Model\DnsSettingsRequestsDto|null $dns_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DnsSettingsRequestDto|null $dns_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveDnsSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveDnsSettingsAsync($dns_settings_requests_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
+    public function saveDnsSettingsAsync($dns_settings_request_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
     {
-        return $this->saveDnsSettingsAsyncWithHttpInfo($dns_settings_requests_dto, $contentType)
+        return $this->saveDnsSettingsAsyncWithHttpInfo($dns_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5536,16 +5494,16 @@ class CommonSettingsApi
      * REST API Reference for saveDnsSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-dns-settings/
      *
-     * @param  \OpenAPI\Client\Model\DnsSettingsRequestsDto|null $dns_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DnsSettingsRequestDto|null $dns_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveDnsSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveDnsSettingsAsyncWithHttpInfo($dns_settings_requests_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
+    public function saveDnsSettingsAsyncWithHttpInfo($dns_settings_request_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->saveDnsSettingsRequest($dns_settings_requests_dto, $contentType);
+        $request = $this->saveDnsSettingsRequest($dns_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5586,13 +5544,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'saveDnsSettings'
      *
-     * @param  \OpenAPI\Client\Model\DnsSettingsRequestsDto|null $dns_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\DnsSettingsRequestDto|null $dns_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveDnsSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveDnsSettingsRequest($dns_settings_requests_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
+    public function saveDnsSettingsRequest($dns_settings_request_dto = null, string $contentType = self::contentTypes['saveDnsSettings'][0])
     {
 
 
@@ -5615,12 +5573,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($dns_settings_requests_dto)) {
+        if (isset($dns_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($dns_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($dns_settings_request_dto));
             } else {
-                $httpBody = $dns_settings_requests_dto;
+                $httpBody = $dns_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5698,16 +5656,16 @@ class CommonSettingsApi
      * REST API Reference for saveMailDomainSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mail-domain-settings/
      *
-     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestsDto|null $mail_domain_settings_requests_dto mail_domain_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestDto|null $mail_domain_settings_request_dto mail_domain_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMailDomainSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveMailDomainSettings($mail_domain_settings_requests_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
+    public function saveMailDomainSettings($mail_domain_settings_request_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
     {
-        list($response) = $this->saveMailDomainSettingsWithHttpInfo($mail_domain_settings_requests_dto, $contentType);
+        list($response) = $this->saveMailDomainSettingsWithHttpInfo($mail_domain_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -5719,16 +5677,16 @@ class CommonSettingsApi
      * REST API Reference for saveMailDomainSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mail-domain-settings/
      *
-     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestsDto|null $mail_domain_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestDto|null $mail_domain_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMailDomainSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveMailDomainSettingsWithHttpInfo($mail_domain_settings_requests_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
+    public function saveMailDomainSettingsWithHttpInfo($mail_domain_settings_request_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
     {
-        $request = $this->saveMailDomainSettingsRequest($mail_domain_settings_requests_dto, $contentType);
+        $request = $this->saveMailDomainSettingsRequest($mail_domain_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5773,12 +5731,6 @@ class CommonSettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5840,14 +5792,6 @@ class CommonSettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -5863,15 +5807,15 @@ class CommonSettingsApi
      * REST API Reference for saveMailDomainSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mail-domain-settings/
      *
-     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestsDto|null $mail_domain_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestDto|null $mail_domain_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMailDomainSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveMailDomainSettingsAsync($mail_domain_settings_requests_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
+    public function saveMailDomainSettingsAsync($mail_domain_settings_request_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
     {
-        return $this->saveMailDomainSettingsAsyncWithHttpInfo($mail_domain_settings_requests_dto, $contentType)
+        return $this->saveMailDomainSettingsAsyncWithHttpInfo($mail_domain_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5887,16 +5831,16 @@ class CommonSettingsApi
      * REST API Reference for saveMailDomainSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-mail-domain-settings/
      *
-     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestsDto|null $mail_domain_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestDto|null $mail_domain_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMailDomainSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveMailDomainSettingsAsyncWithHttpInfo($mail_domain_settings_requests_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
+    public function saveMailDomainSettingsAsyncWithHttpInfo($mail_domain_settings_request_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->saveMailDomainSettingsRequest($mail_domain_settings_requests_dto, $contentType);
+        $request = $this->saveMailDomainSettingsRequest($mail_domain_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5937,13 +5881,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'saveMailDomainSettings'
      *
-     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestsDto|null $mail_domain_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\MailDomainSettingsRequestDto|null $mail_domain_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveMailDomainSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveMailDomainSettingsRequest($mail_domain_settings_requests_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
+    public function saveMailDomainSettingsRequest($mail_domain_settings_request_dto = null, string $contentType = self::contentTypes['saveMailDomainSettings'][0])
     {
 
 
@@ -5966,12 +5910,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($mail_domain_settings_requests_dto)) {
+        if (isset($mail_domain_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mail_domain_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($mail_domain_settings_request_dto));
             } else {
-                $httpBody = $mail_domain_settings_requests_dto;
+                $httpBody = $mail_domain_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -6049,16 +5993,16 @@ class CommonSettingsApi
      * REST API Reference for savePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-portal-color-theme/
      *
-     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto|null $custom_color_themes_settings_requests_dto custom_color_themes_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto|null $custom_color_themes_settings_request_dto custom_color_themes_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['savePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\CustomColorThemesSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function savePortalColorTheme($custom_color_themes_settings_requests_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
+    public function savePortalColorTheme($custom_color_themes_settings_request_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
     {
-        list($response) = $this->savePortalColorThemeWithHttpInfo($custom_color_themes_settings_requests_dto, $contentType);
+        list($response) = $this->savePortalColorThemeWithHttpInfo($custom_color_themes_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -6070,16 +6014,16 @@ class CommonSettingsApi
      * REST API Reference for savePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-portal-color-theme/
      *
-     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto|null $custom_color_themes_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto|null $custom_color_themes_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['savePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\CustomColorThemesSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function savePortalColorThemeWithHttpInfo($custom_color_themes_settings_requests_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
+    public function savePortalColorThemeWithHttpInfo($custom_color_themes_settings_request_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
     {
-        $request = $this->savePortalColorThemeRequest($custom_color_themes_settings_requests_dto, $contentType);
+        $request = $this->savePortalColorThemeRequest($custom_color_themes_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6214,15 +6158,15 @@ class CommonSettingsApi
      * REST API Reference for savePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-portal-color-theme/
      *
-     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto|null $custom_color_themes_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto|null $custom_color_themes_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['savePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function savePortalColorThemeAsync($custom_color_themes_settings_requests_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
+    public function savePortalColorThemeAsync($custom_color_themes_settings_request_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
     {
-        return $this->savePortalColorThemeAsyncWithHttpInfo($custom_color_themes_settings_requests_dto, $contentType)
+        return $this->savePortalColorThemeAsyncWithHttpInfo($custom_color_themes_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6238,16 +6182,16 @@ class CommonSettingsApi
      * REST API Reference for savePortalColorTheme Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-portal-color-theme/
      *
-     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto|null $custom_color_themes_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto|null $custom_color_themes_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['savePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function savePortalColorThemeAsyncWithHttpInfo($custom_color_themes_settings_requests_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
+    public function savePortalColorThemeAsyncWithHttpInfo($custom_color_themes_settings_request_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
     {
         $returnType = '\OpenAPI\Client\Model\CustomColorThemesSettingsWrapper';
-        $request = $this->savePortalColorThemeRequest($custom_color_themes_settings_requests_dto, $contentType);
+        $request = $this->savePortalColorThemeRequest($custom_color_themes_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6288,13 +6232,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'savePortalColorTheme'
      *
-     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestsDto|null $custom_color_themes_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\CustomColorThemesSettingsRequestDto|null $custom_color_themes_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['savePortalColorTheme'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function savePortalColorThemeRequest($custom_color_themes_settings_requests_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
+    public function savePortalColorThemeRequest($custom_color_themes_settings_request_dto = null, string $contentType = self::contentTypes['savePortalColorTheme'][0])
     {
 
 
@@ -6317,12 +6261,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($custom_color_themes_settings_requests_dto)) {
+        if (isset($custom_color_themes_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($custom_color_themes_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($custom_color_themes_settings_request_dto));
             } else {
-                $httpBody = $custom_color_themes_settings_requests_dto;
+                $httpBody = $custom_color_themes_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -6400,16 +6344,16 @@ class CommonSettingsApi
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $tenant_ai_access_settings_dto tenant_ai_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto|null $tenant_ai_access_settings_request_dto tenant_ai_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantAiAccessSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function setTenantAiAccessSettings($tenant_ai_access_settings_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
+    public function setTenantAiAccessSettings($tenant_ai_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
     {
-        list($response) = $this->setTenantAiAccessSettingsWithHttpInfo($tenant_ai_access_settings_dto, $contentType);
+        list($response) = $this->setTenantAiAccessSettingsWithHttpInfo($tenant_ai_access_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -6421,16 +6365,16 @@ class CommonSettingsApi
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $tenant_ai_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto|null $tenant_ai_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantAiAccessSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TenantAiAccessSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setTenantAiAccessSettingsWithHttpInfo($tenant_ai_access_settings_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
+    public function setTenantAiAccessSettingsWithHttpInfo($tenant_ai_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
     {
-        $request = $this->setTenantAiAccessSettingsRequest($tenant_ai_access_settings_dto, $contentType);
+        $request = $this->setTenantAiAccessSettingsRequest($tenant_ai_access_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6565,15 +6509,15 @@ class CommonSettingsApi
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $tenant_ai_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto|null $tenant_ai_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantAiAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantAiAccessSettingsAsync($tenant_ai_access_settings_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
+    public function setTenantAiAccessSettingsAsync($tenant_ai_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
     {
-        return $this->setTenantAiAccessSettingsAsyncWithHttpInfo($tenant_ai_access_settings_dto, $contentType)
+        return $this->setTenantAiAccessSettingsAsyncWithHttpInfo($tenant_ai_access_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6589,16 +6533,16 @@ class CommonSettingsApi
      * REST API Reference for setTenantAiAccessSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-ai-access-settings/
      *
-     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $tenant_ai_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto|null $tenant_ai_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantAiAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setTenantAiAccessSettingsAsyncWithHttpInfo($tenant_ai_access_settings_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
+    public function setTenantAiAccessSettingsAsyncWithHttpInfo($tenant_ai_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TenantAiAccessSettingsWrapper';
-        $request = $this->setTenantAiAccessSettingsRequest($tenant_ai_access_settings_dto, $contentType);
+        $request = $this->setTenantAiAccessSettingsRequest($tenant_ai_access_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6639,13 +6583,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'setTenantAiAccessSettings'
      *
-     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsDto|null $tenant_ai_access_settings_dto (optional)
+     * @param  \OpenAPI\Client\Model\TenantAiAccessSettingsRequestDto|null $tenant_ai_access_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTenantAiAccessSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setTenantAiAccessSettingsRequest($tenant_ai_access_settings_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
+    public function setTenantAiAccessSettingsRequest($tenant_ai_access_settings_request_dto = null, string $contentType = self::contentTypes['setTenantAiAccessSettings'][0])
     {
 
 
@@ -6668,12 +6612,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($tenant_ai_access_settings_dto)) {
+        if (isset($tenant_ai_access_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_ai_access_settings_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($tenant_ai_access_settings_request_dto));
             } else {
-                $httpBody = $tenant_ai_access_settings_dto;
+                $httpBody = $tenant_ai_access_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -6751,16 +6695,16 @@ class CommonSettingsApi
      * REST API Reference for updateEmailActivationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-email-activation-settings/
      *
-     * @param  \OpenAPI\Client\Model\EmailActivationSettings|null $email_activation_settings email_activation_settings (optional)
+     * @param  \OpenAPI\Client\Model\EmailActivationSettingsRequestDto|null $email_activation_settings_request_dto email_activation_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateEmailActivationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmailActivationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateEmailActivationSettings($email_activation_settings = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
+    public function updateEmailActivationSettings($email_activation_settings_request_dto = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
     {
-        list($response) = $this->updateEmailActivationSettingsWithHttpInfo($email_activation_settings, $contentType);
+        list($response) = $this->updateEmailActivationSettingsWithHttpInfo($email_activation_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -6772,16 +6716,16 @@ class CommonSettingsApi
      * REST API Reference for updateEmailActivationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-email-activation-settings/
      *
-     * @param  \OpenAPI\Client\Model\EmailActivationSettings|null $email_activation_settings (optional)
+     * @param  \OpenAPI\Client\Model\EmailActivationSettingsRequestDto|null $email_activation_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateEmailActivationSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmailActivationSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateEmailActivationSettingsWithHttpInfo($email_activation_settings = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
+    public function updateEmailActivationSettingsWithHttpInfo($email_activation_settings_request_dto = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
     {
-        $request = $this->updateEmailActivationSettingsRequest($email_activation_settings, $contentType);
+        $request = $this->updateEmailActivationSettingsRequest($email_activation_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6916,15 +6860,15 @@ class CommonSettingsApi
      * REST API Reference for updateEmailActivationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-email-activation-settings/
      *
-     * @param  \OpenAPI\Client\Model\EmailActivationSettings|null $email_activation_settings (optional)
+     * @param  \OpenAPI\Client\Model\EmailActivationSettingsRequestDto|null $email_activation_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateEmailActivationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEmailActivationSettingsAsync($email_activation_settings = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
+    public function updateEmailActivationSettingsAsync($email_activation_settings_request_dto = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
     {
-        return $this->updateEmailActivationSettingsAsyncWithHttpInfo($email_activation_settings, $contentType)
+        return $this->updateEmailActivationSettingsAsyncWithHttpInfo($email_activation_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6940,16 +6884,16 @@ class CommonSettingsApi
      * REST API Reference for updateEmailActivationSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-email-activation-settings/
      *
-     * @param  \OpenAPI\Client\Model\EmailActivationSettings|null $email_activation_settings (optional)
+     * @param  \OpenAPI\Client\Model\EmailActivationSettingsRequestDto|null $email_activation_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateEmailActivationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateEmailActivationSettingsAsyncWithHttpInfo($email_activation_settings = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
+    public function updateEmailActivationSettingsAsyncWithHttpInfo($email_activation_settings_request_dto = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmailActivationSettingsWrapper';
-        $request = $this->updateEmailActivationSettingsRequest($email_activation_settings, $contentType);
+        $request = $this->updateEmailActivationSettingsRequest($email_activation_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6990,13 +6934,13 @@ class CommonSettingsApi
     /**
      * Create request for operation 'updateEmailActivationSettings'
      *
-     * @param  \OpenAPI\Client\Model\EmailActivationSettings|null $email_activation_settings (optional)
+     * @param  \OpenAPI\Client\Model\EmailActivationSettingsRequestDto|null $email_activation_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateEmailActivationSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateEmailActivationSettingsRequest($email_activation_settings = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
+    public function updateEmailActivationSettingsRequest($email_activation_settings_request_dto = null, string $contentType = self::contentTypes['updateEmailActivationSettings'][0])
     {
 
 
@@ -7019,12 +6963,12 @@ class CommonSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($email_activation_settings)) {
+        if (isset($email_activation_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_activation_settings));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($email_activation_settings_request_dto));
             } else {
-                $httpBody = $email_activation_settings;
+                $httpBody = $email_activation_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

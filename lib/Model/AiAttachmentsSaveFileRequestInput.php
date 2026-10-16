@@ -50,7 +50,7 @@ class AiAttachmentsSaveFileRequestInput implements ModelInterface, ArrayAccess, 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAttachmentsSaveFile_request_input';
+    protected static $openAPIModelName = 'AiAttachmentsSaveFileRequest_input';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

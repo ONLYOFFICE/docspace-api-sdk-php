@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DocsCloudConfigWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the DocsCloudConfig object.
+ * @description The successful API response containing the DocsCloudConfigDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class DocsCloudConfigWrapper implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\DocsCloudConfig',
+        'response' => '\OpenAPI\Client\Model\DocsCloudConfigDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class DocsCloudConfigWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\DocsCloudConfig|null
+     * @return \OpenAPI\Client\Model\DocsCloudConfigDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class DocsCloudConfigWrapper implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DocsCloudConfig|null $response The DocsCloudConfig object returned by the operation.
+     * @param \OpenAPI\Client\Model\DocsCloudConfigDto|null $response The DocsCloudConfigDto object returned by the operation.
      *
      * @return self
      */

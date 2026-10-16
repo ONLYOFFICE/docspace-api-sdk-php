@@ -49,7 +49,7 @@ class AiAttachmentsLinkToMessageRequest implements ModelInterface, ArrayAccess, 
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAttachmentsLinkToMessage_request';
+    protected static $openAPIModelName = 'AiAttachmentsLinkToMessageRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

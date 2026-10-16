@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDevToolsAccessSettingsDto Class Doc Comment
  *
  * @category Class
- * @description Whether the `User` role is barred from the portal developer tools.
+ * @description Whether the developer tools are closed to the portal's users with the `User` role.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $openAPITypes = [
-        'limited_access_for_users' => 'bool'
+        'limited_access_for_users' => 'bool',
+        'last_modified' => '\DateTime'
     ];
 
     /**
@@ -69,7 +70,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'limited_access_for_users' => null
+        'limited_access_for_users' => null,
+        'last_modified' => 'date-time'
     ];
 
     /**
@@ -78,7 +80,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'limited_access_for_users' => false
+        'limited_access_for_users' => false,
+        'last_modified' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'limited_access_for_users' => 'limitedAccessForUsers'
+        'limited_access_for_users' => 'limitedAccessForUsers',
+        'last_modified' => 'lastModified'
     ];
 
     /**
@@ -176,7 +180,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'limited_access_for_users' => 'setLimitedAccessForUsers'
+        'limited_access_for_users' => 'setLimitedAccessForUsers',
+        'last_modified' => 'setLastModified'
     ];
 
     /**
@@ -185,7 +190,8 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'limited_access_for_users' => 'getLimitedAccessForUsers'
+        'limited_access_for_users' => 'getLimitedAccessForUsers',
+        'last_modified' => 'getLastModified'
     ];
 
     /**
@@ -246,6 +252,7 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('limited_access_for_users', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
     }
 
     /**
@@ -303,7 +310,7 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
     /**
      * Sets limited_access_for_users
      *
-     * @param bool|null $limited_access_for_users Whether members holding the `User` role are barred from the developer tools - API keys, OAuth applications  and webhooks. Room administrators and DocSpace administrators keep their access either way.
+     * @param bool|null $limited_access_for_users Specifies if the Developer Tools access are limited for users or not.
      *
      * @return self
      */
@@ -313,6 +320,33 @@ class TenantDevToolsAccessSettingsDto implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable limited_access_for_users cannot be null');
         }
         $this->container['limited_access_for_users'] = $limited_access_for_users;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return \DateTime|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param \DateTime|null $last_modified The timestamp indicating when the settings were last modified.
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
+        }
+        $this->container['last_modified'] = $last_modified;
 
         return $this;
     }

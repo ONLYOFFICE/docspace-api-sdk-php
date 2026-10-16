@@ -58,7 +58,7 @@ class ExternalShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'status' => '\OpenAPI\Client\Model\Status',
+        'status' => '\OpenAPI\Client\Model\ExternalShareStatus',
         'id' => 'string',
         'title' => 'string',
         'type' => '\OpenAPI\Client\Model\FileEntryType',
@@ -392,7 +392,7 @@ class ExternalShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \OpenAPI\Client\Model\Status
+     * @return \OpenAPI\Client\Model\ExternalShareStatus
      */
     public function getStatus()
     {
@@ -402,7 +402,7 @@ class ExternalShareDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \OpenAPI\Client\Model\Status $status How validating the link went. It is the first field to read: a refused link is reported here with the answer  still arriving as a success. A link that resolved describes both the entry and the link, one that is waiting  for its password describes only the entry, and one that failed outright leaves the rest of the object empty.
+     * @param \OpenAPI\Client\Model\ExternalShareStatus $status How validating the link went. It is the first field to read: a refused link is reported here with the answer  still arriving as a success. A link that resolved describes both the entry and the link, one that is waiting  for its password describes only the entry, and one that failed outright leaves the rest of the object empty.
      *
      * @return self
      */

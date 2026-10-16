@@ -67,12 +67,13 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'credit' => 'float',
         'debit' => 'float',
+        'cost' => 'float',
         'participant_name' => 'string',
         'participant_display_name' => 'string',
         'source_type' => 'string',
         'source_title' => 'string',
         'source_id' => 'string',
-        'token_usage' => '\OpenAPI\Client\Model\OperationTokenUsage',
+        'token_usage' => '\OpenAPI\Client\Model\OperationTokenUsageDto',
         'type' => '\OpenAPI\Client\Model\OperationType'
     ];
 
@@ -93,6 +94,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'credit' => 'double',
         'debit' => 'double',
+        'cost' => 'double',
         'participant_name' => null,
         'participant_display_name' => null,
         'source_type' => null,
@@ -117,6 +119,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => true,
         'credit' => false,
         'debit' => false,
+        'cost' => true,
         'participant_name' => true,
         'participant_display_name' => true,
         'source_type' => true,
@@ -221,6 +224,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'credit' => 'credit',
         'debit' => 'debit',
+        'cost' => 'cost',
         'participant_name' => 'participantName',
         'participant_display_name' => 'participantDisplayName',
         'source_type' => 'sourceType',
@@ -245,6 +249,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'credit' => 'setCredit',
         'debit' => 'setDebit',
+        'cost' => 'setCost',
         'participant_name' => 'setParticipantName',
         'participant_display_name' => 'setParticipantDisplayName',
         'source_type' => 'setSourceType',
@@ -269,6 +274,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'credit' => 'getCredit',
         'debit' => 'getDebit',
+        'cost' => 'getCost',
         'participant_name' => 'getParticipantName',
         'participant_display_name' => 'getParticipantDisplayName',
         'source_type' => 'getSourceType',
@@ -344,6 +350,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('credit', $data ?? [], null);
         $this->setIfExists('debit', $data ?? [], null);
+        $this->setIfExists('cost', $data ?? [], null);
         $this->setIfExists('participant_name', $data ?? [], null);
         $this->setIfExists('participant_display_name', $data ?? [], null);
         $this->setIfExists('source_type', $data ?? [], null);
@@ -674,6 +681,40 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets cost
+     *
+     * @return float|null
+     */
+    public function getCost()
+    {
+        return $this->container['cost'];
+    }
+
+    /**
+     * Sets cost
+     *
+     * @param float|null $cost What the AI provider charged for the whole `quantity` of an AI tools or AI search charge, as the billing  service recorded it - the provider's side of the same operation `debit` bills the portal for. It is `null`  on any other movement, and on an AI charge recorded without a provider cost.
+     *
+     * @return self
+     */
+    public function setCost($cost)
+    {
+        if (is_null($cost)) {
+            array_push($this->openAPINullablesSetToNull, 'cost');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cost', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cost'] = $cost;
+
+        return $this;
+    }
+
+    /**
      * Gets participant_name
      *
      * @return string|null
@@ -846,7 +887,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets token_usage
      *
-     * @return \OpenAPI\Client\Model\OperationTokenUsage|null
+     * @return \OpenAPI\Client\Model\OperationTokenUsageDto|null
      */
     public function getTokenUsage()
     {
@@ -856,7 +897,7 @@ class OperationDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets token_usage
      *
-     * @param \OpenAPI\Client\Model\OperationTokenUsage|null $token_usage The tokens an AI operation consumed, broken down by kind - prompt, completion, cache reads and writes,  reasoning, images. It is `null` on any movement that is not an AI charge, and on an AI charge the billing  service recorded without token counts.
+     * @param \OpenAPI\Client\Model\OperationTokenUsageDto|null $token_usage The tokens an AI operation consumed, broken down by kind - prompt, completion, cache reads and writes,  reasoning, images. It is `null` on any movement that is not an AI charge, and on an AI charge the billing  service recorded without token counts.
      *
      * @return self
      */

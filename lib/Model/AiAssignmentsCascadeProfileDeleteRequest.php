@@ -49,7 +49,7 @@ class AiAssignmentsCascadeProfileDeleteRequest implements ModelInterface, ArrayA
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAssignmentsCascadeProfileDelete_request';
+    protected static $openAPIModelName = 'AiAssignmentsCascadeProfileDeleteRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

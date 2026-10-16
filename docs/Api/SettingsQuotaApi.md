@@ -13,7 +13,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getUserQuotaSettings()`
 
 ```php
-getUserQuotaSettings(): \OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper
+getUserQuotaSettings(): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Get the user quota settings
@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper**](../Model/TenantUserQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ try {
 ## `saveAiAgentQuotaSettings()`
 
 ```php
-saveAiAgentQuotaSettings($quota_settings_requests_dto): \OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper
+saveAiAgentQuotaSettings($quota_settings_request_dto): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Save the AI Agent quota settings
@@ -101,11 +101,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **quota_settings_requests_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestsDto**](../Model/QuotaSettingsRequestsDto.md)|  | [optional] |
+| **quota_settings_request_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestDto**](../Model/QuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper**](../Model/TenantAiAgentQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -146,10 +146,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$quota_settings_requests_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestsDto
+$quota_settings_request_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveAiAgentQuotaSettings($quota_settings_requests_dto);
+    $result = $apiInstance->saveAiAgentQuotaSettings($quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->saveAiAgentQuotaSettings: ', $e->getMessage(), PHP_EOL;
@@ -168,7 +168,7 @@ try {
 ## `saveRoomQuotaSettings()`
 
 ```php
-saveRoomQuotaSettings($quota_settings_requests_dto): \OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper
+saveRoomQuotaSettings($quota_settings_request_dto): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Save the room quota settings
@@ -180,11 +180,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **quota_settings_requests_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestsDto**](../Model/QuotaSettingsRequestsDto.md)|  | [optional] |
+| **quota_settings_request_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestDto**](../Model/QuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper**](../Model/TenantRoomQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -225,10 +225,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$quota_settings_requests_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestsDto
+$quota_settings_request_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveRoomQuotaSettings($quota_settings_requests_dto);
+    $result = $apiInstance->saveRoomQuotaSettings($quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->saveRoomQuotaSettings: ', $e->getMessage(), PHP_EOL;
@@ -247,7 +247,7 @@ try {
 ## `setTenantQuotaSettings()`
 
 ```php
-setTenantQuotaSettings($tenant_quota_settings_requests_dto): \OpenAPI\Client\Model\TenantQuotaSettingsWrapper
+setTenantQuotaSettings($tenant_quota_settings_request_dto): \OpenAPI\Client\Model\TenantQuotaSettingsWrapper
 ```
 
 Save the tenant quota settings
@@ -259,7 +259,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_quota_settings_requests_dto** | [**\OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto**](../Model/TenantQuotaSettingsRequestsDto.md)|  | [optional] |
+| **tenant_quota_settings_request_dto** | [**\OpenAPI\Client\Model\TenantQuotaSettingsRequestDto**](../Model/TenantQuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -304,10 +304,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_quota_settings_requests_dto = new \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto
+$tenant_quota_settings_request_dto = new \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto(); // \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantQuotaSettings($tenant_quota_settings_requests_dto);
+    $result = $apiInstance->setTenantQuotaSettings($tenant_quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->setTenantQuotaSettings: ', $e->getMessage(), PHP_EOL;

@@ -49,7 +49,7 @@ class AiPreferencesSetReasoningLevelRequest implements ModelInterface, ArrayAcce
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPreferencesSetReasoningLevel_request';
+    protected static $openAPIModelName = 'AiPreferencesSetReasoningLevelRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class AiPreferencesSetReasoningLevelRequest implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $openAPITypes = [
-        'value' => '\OpenAPI\Client\Model\AiAiReasoningLevel',
+        'value' => '\OpenAPI\Client\Model\AiReasoningLevel',
         'entity_id' => 'string'
     ];
 
@@ -302,7 +302,7 @@ class AiPreferencesSetReasoningLevelRequest implements ModelInterface, ArrayAcce
     /**
      * Gets value
      *
-     * @return \OpenAPI\Client\Model\AiAiReasoningLevel
+     * @return \OpenAPI\Client\Model\AiReasoningLevel
      */
     public function getValue()
     {
@@ -312,7 +312,7 @@ class AiPreferencesSetReasoningLevelRequest implements ModelInterface, ArrayAcce
     /**
      * Sets value
      *
-     * @param \OpenAPI\Client\Model\AiAiReasoningLevel $value New extended-thinking depth; `off` turns deep mode off.
+     * @param \OpenAPI\Client\Model\AiReasoningLevel $value New extended-thinking depth; `off` turns deep mode off.
      *
      * @return self
      */

@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * IPRestrictionArrayWrapper Class Doc Comment
+ * IpRestrictionArrayWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the list of IPRestriction objects.
+ * @description The successful API response containing the list of IpRestrictionDto objects.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IPRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
+class IpRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class IPRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'IPRestrictionArrayWrapper';
+    protected static $openAPIModelName = 'IpRestrictionArrayWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class IPRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\IPRestriction[]',
+        'response' => '\OpenAPI\Client\Model\IpRestrictionDto[]',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class IPRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\IPRestriction[]|null
+     * @return \OpenAPI\Client\Model\IpRestrictionDto[]|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class IPRestrictionArrayWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\IPRestriction[]|null $response The list of IPRestriction objects returned by the operation.
+     * @param \OpenAPI\Client\Model\IpRestrictionDto[]|null $response The list of IpRestrictionDto objects returned by the operation.
      *
      * @return self
      */

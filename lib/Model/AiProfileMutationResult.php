@@ -60,7 +60,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'success' => 'bool',
         'profile' => '\OpenAPI\Client\Model\AiProfile',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -364,7 +364,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData|null
+     * @return \OpenAPI\Client\Model\AiErrorData|null
      */
     public function getError()
     {
@@ -374,7 +374,7 @@ class AiProfileMutationResult implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the profile was rejected - the name check or the provider credential check. Present on failure.
+     * @param \OpenAPI\Client\Model\AiErrorData|null $error Why the profile was rejected - the name check or the provider credential check. Present on failure.
      *
      * @return self
      */

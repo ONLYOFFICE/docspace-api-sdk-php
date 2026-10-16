@@ -156,16 +156,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
+     * @param  string $ai_attachments_delete_request The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsDelete($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
+    public function aiAttachmentsDelete($ai_attachments_delete_request, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
-        list($response) = $this->aiAttachmentsDeleteWithHttpInfo($body, $contentType);
+        list($response) = $this->aiAttachmentsDeleteWithHttpInfo($ai_attachments_delete_request, $contentType);
         return $response;
     }
 
@@ -177,16 +177,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
+     * @param  string $ai_attachments_delete_request The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
+    public function aiAttachmentsDeleteWithHttpInfo($ai_attachments_delete_request, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
-        $request = $this->aiAttachmentsDeleteRequest($body, $contentType);
+        $request = $this->aiAttachmentsDeleteRequest($ai_attachments_delete_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -321,15 +321,15 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
+     * @param  string $ai_attachments_delete_request The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsDeleteAsync($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
+    public function aiAttachmentsDeleteAsync($ai_attachments_delete_request, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
-        return $this->aiAttachmentsDeleteAsyncWithHttpInfo($body, $contentType)
+        return $this->aiAttachmentsDeleteAsyncWithHttpInfo($ai_attachments_delete_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -345,16 +345,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete/
      *
-     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
+     * @param  string $ai_attachments_delete_request The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsDeleteAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
+    public function aiAttachmentsDeleteAsyncWithHttpInfo($ai_attachments_delete_request, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiAttachmentsDeleteRequest($body, $contentType);
+        $request = $this->aiAttachmentsDeleteRequest($ai_attachments_delete_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -395,19 +395,19 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsDelete'
      *
-     * @param  string $body The ID of the attachment to delete, as a bare JSON string. (required)
+     * @param  string $ai_attachments_delete_request The ID of the attachment to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAttachmentsDeleteRequest($body, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
+    public function aiAttachmentsDeleteRequest($ai_attachments_delete_request, string $contentType = self::contentTypes['aiAttachmentsDelete'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_attachments_delete_request' is set
+        if ($ai_attachments_delete_request === null || (is_array($ai_attachments_delete_request) && count($ai_attachments_delete_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiAttachmentsDelete'
+                'Missing the required parameter $ai_attachments_delete_request when calling aiAttachmentsDelete'
             );
         }
 
@@ -430,12 +430,12 @@ class AttachmentsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_attachments_delete_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_attachments_delete_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_attachments_delete_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -500,16 +500,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
+     * @param  string[] $ai_attachments_delete_many_request The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsDeleteMany($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
+    public function aiAttachmentsDeleteMany($ai_attachments_delete_many_request, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
-        list($response) = $this->aiAttachmentsDeleteManyWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiAttachmentsDeleteManyWithHttpInfo($ai_attachments_delete_many_request, $contentType);
         return $response;
     }
 
@@ -521,16 +521,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
+     * @param  string[] $ai_attachments_delete_many_request The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsDeleteManyWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
+    public function aiAttachmentsDeleteManyWithHttpInfo($ai_attachments_delete_many_request, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
-        $request = $this->aiAttachmentsDeleteManyRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsDeleteManyRequest($ai_attachments_delete_many_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -665,15 +665,15 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
+     * @param  string[] $ai_attachments_delete_many_request The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsDeleteManyAsync($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
+    public function aiAttachmentsDeleteManyAsync($ai_attachments_delete_many_request, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
-        return $this->aiAttachmentsDeleteManyAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiAttachmentsDeleteManyAsyncWithHttpInfo($ai_attachments_delete_many_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -689,16 +689,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsDeleteMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-delete-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
+     * @param  string[] $ai_attachments_delete_many_request The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsDeleteManyAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
+    public function aiAttachmentsDeleteManyAsyncWithHttpInfo($ai_attachments_delete_many_request, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiAttachmentsDeleteManyRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsDeleteManyRequest($ai_attachments_delete_many_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -739,19 +739,19 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsDeleteMany'
      *
-     * @param  string[] $request_body The IDs of the attachments to delete, as a bare JSON array of strings. (required)
+     * @param  string[] $ai_attachments_delete_many_request The IDs of the attachments to delete, as a bare JSON array of strings. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsDeleteMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAttachmentsDeleteManyRequest($request_body, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
+    public function aiAttachmentsDeleteManyRequest($ai_attachments_delete_many_request, string $contentType = self::contentTypes['aiAttachmentsDeleteMany'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_attachments_delete_many_request' is set
+        if ($ai_attachments_delete_many_request === null || (is_array($ai_attachments_delete_many_request) && count($ai_attachments_delete_many_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiAttachmentsDeleteMany'
+                'Missing the required parameter $ai_attachments_delete_many_request when calling aiAttachmentsDeleteMany'
             );
         }
 
@@ -774,12 +774,12 @@ class AttachmentsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_attachments_delete_many_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_attachments_delete_many_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_attachments_delete_many_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -844,16 +844,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
+     * @param  string $ai_attachments_get_request The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsGet($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
+    public function aiAttachmentsGet($ai_attachments_get_request, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
-        list($response) = $this->aiAttachmentsGetWithHttpInfo($body, $contentType);
+        list($response) = $this->aiAttachmentsGetWithHttpInfo($ai_attachments_get_request, $contentType);
         return $response;
     }
 
@@ -865,16 +865,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
+     * @param  string $ai_attachments_get_request The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPIClientModelAiAttachment|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsGetWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
+    public function aiAttachmentsGetWithHttpInfo($ai_attachments_get_request, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
-        $request = $this->aiAttachmentsGetRequest($body, $contentType);
+        $request = $this->aiAttachmentsGetRequest($ai_attachments_get_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1023,15 +1023,15 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
+     * @param  string $ai_attachments_get_request The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetAsync($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
+    public function aiAttachmentsGetAsync($ai_attachments_get_request, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
-        return $this->aiAttachmentsGetAsyncWithHttpInfo($body, $contentType)
+        return $this->aiAttachmentsGetAsyncWithHttpInfo($ai_attachments_get_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1047,16 +1047,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGet Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get/
      *
-     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
+     * @param  string $ai_attachments_get_request The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
+    public function aiAttachmentsGetAsyncWithHttpInfo($ai_attachments_get_request, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiAttachment';
-        $request = $this->aiAttachmentsGetRequest($body, $contentType);
+        $request = $this->aiAttachmentsGetRequest($ai_attachments_get_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1097,19 +1097,19 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGet'
      *
-     * @param  string $body The ID of the attachment to read, as a bare JSON string. (required)
+     * @param  string $ai_attachments_get_request The ID of the attachment to read, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAttachmentsGetRequest($body, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
+    public function aiAttachmentsGetRequest($ai_attachments_get_request, string $contentType = self::contentTypes['aiAttachmentsGet'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_attachments_get_request' is set
+        if ($ai_attachments_get_request === null || (is_array($ai_attachments_get_request) && count($ai_attachments_get_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiAttachmentsGet'
+                'Missing the required parameter $ai_attachments_get_request when calling aiAttachmentsGet'
             );
         }
 
@@ -1132,12 +1132,12 @@ class AttachmentsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_attachments_get_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_attachments_get_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_attachments_get_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1202,16 +1202,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
+     * @param  string[] $ai_attachments_get_many_request The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsGetMany($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
+    public function aiAttachmentsGetMany($ai_attachments_get_many_request, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
-        list($response) = $this->aiAttachmentsGetManyWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiAttachmentsGetManyWithHttpInfo($ai_attachments_get_many_request, $contentType);
         return $response;
     }
 
@@ -1223,16 +1223,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
+     * @param  string[] $ai_attachments_get_many_request The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPIClientModelAiAttachment[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsGetManyWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
+    public function aiAttachmentsGetManyWithHttpInfo($ai_attachments_get_many_request, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
-        $request = $this->aiAttachmentsGetManyRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsGetManyRequest($ai_attachments_get_many_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1381,15 +1381,15 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
+     * @param  string[] $ai_attachments_get_many_request The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetManyAsync($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
+    public function aiAttachmentsGetManyAsync($ai_attachments_get_many_request, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
-        return $this->aiAttachmentsGetManyAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiAttachmentsGetManyAsyncWithHttpInfo($ai_attachments_get_many_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1405,16 +1405,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetMany Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-many/
      *
-     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
+     * @param  string[] $ai_attachments_get_many_request The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetManyAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
+    public function aiAttachmentsGetManyAsyncWithHttpInfo($ai_attachments_get_many_request, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
         $returnType = '\OpenAPIClientModelAiAttachment[]';
-        $request = $this->aiAttachmentsGetManyRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsGetManyRequest($ai_attachments_get_many_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1455,19 +1455,19 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGetMany'
      *
-     * @param  string[] $request_body The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
+     * @param  string[] $ai_attachments_get_many_request The IDs of the attachments to read, as a bare JSON array of strings. The answer is aligned with this array by position. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetMany'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAttachmentsGetManyRequest($request_body, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
+    public function aiAttachmentsGetManyRequest($ai_attachments_get_many_request, string $contentType = self::contentTypes['aiAttachmentsGetMany'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_attachments_get_many_request' is set
+        if ($ai_attachments_get_many_request === null || (is_array($ai_attachments_get_many_request) && count($ai_attachments_get_many_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiAttachmentsGetMany'
+                'Missing the required parameter $ai_attachments_get_many_request when calling aiAttachmentsGetMany'
             );
         }
 
@@ -1490,12 +1490,12 @@ class AttachmentsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_attachments_get_many_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_attachments_get_many_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_attachments_get_many_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1560,16 +1560,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $request_body request_body (required)
+     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request ai_attachments_get_suggested_questions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiAttachmentsGetSuggestedQuestions($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    public function aiAttachmentsGetSuggestedQuestions($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        list($response) = $this->aiAttachmentsGetSuggestedQuestionsWithHttpInfo($request_body, $contentType);
+        list($response) = $this->aiAttachmentsGetSuggestedQuestionsWithHttpInfo($ai_attachments_get_suggested_questions_request, $contentType);
         return $response;
     }
 
@@ -1581,16 +1581,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiAttachmentsGetSuggestedQuestionsWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    public function aiAttachmentsGetSuggestedQuestionsWithHttpInfo($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($ai_attachments_get_suggested_questions_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1725,15 +1725,15 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetSuggestedQuestionsAsync($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    public function aiAttachmentsGetSuggestedQuestionsAsync($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        return $this->aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($request_body, $contentType)
+        return $this->aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($ai_attachments_get_suggested_questions_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1749,16 +1749,16 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    public function aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($request_body, $contentType);
+        $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($ai_attachments_get_suggested_questions_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1799,19 +1799,19 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGetSuggestedQuestions'
      *
-     * @param  array<string,mixed> $request_body (required)
+     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiAttachmentsGetSuggestedQuestionsRequest($request_body, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
+    public function aiAttachmentsGetSuggestedQuestionsRequest($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_attachments_get_suggested_questions_request' is set
+        if ($ai_attachments_get_suggested_questions_request === null || (is_array($ai_attachments_get_suggested_questions_request) && count($ai_attachments_get_suggested_questions_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiAttachmentsGetSuggestedQuestions'
+                'Missing the required parameter $ai_attachments_get_suggested_questions_request when calling aiAttachmentsGetSuggestedQuestions'
             );
         }
 
@@ -1834,12 +1834,12 @@ class AttachmentsApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_attachments_get_suggested_questions_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_attachments_get_suggested_questions_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_attachments_get_suggested_questions_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

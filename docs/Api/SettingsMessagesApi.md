@@ -91,7 +91,7 @@ try {
 ## `sendAdminMail()`
 
 ```php
-sendAdminMail($admin_message_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+sendAdminMail($admin_message_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Send a message to the administrator
@@ -103,7 +103,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **admin_message_settings_requests_dto** | [**\OpenAPI\Client\Model\AdminMessageSettingsRequestsDto**](../Model/AdminMessageSettingsRequestsDto.md)|  | [optional] |
+| **admin_message_settings_request_dto** | [**\OpenAPI\Client\Model\AdminMessageSettingsRequestDto**](../Model/AdminMessageSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -148,10 +148,10 @@ $apiInstance = new OpenAPI\Client\Api\MessagesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$admin_message_settings_requests_dto = new \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto(); // \OpenAPI\Client\Model\AdminMessageSettingsRequestsDto
+$admin_message_settings_request_dto = new \OpenAPI\Client\Model\AdminMessageSettingsRequestDto(); // \OpenAPI\Client\Model\AdminMessageSettingsRequestDto
 
 try {
-    $result = $apiInstance->sendAdminMail($admin_message_settings_requests_dto);
+    $result = $apiInstance->sendAdminMail($admin_message_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->sendAdminMail: ', $e->getMessage(), PHP_EOL;
@@ -170,7 +170,7 @@ try {
 ## `sendJoinInviteMail()`
 
 ```php
-sendJoinInviteMail($admin_message_base_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+sendJoinInviteMail($admin_message_base_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Send an invitation email
@@ -182,7 +182,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **admin_message_base_settings_requests_dto** | [**\OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto**](../Model/AdminMessageBaseSettingsRequestsDto.md)|  | [optional] |
+| **admin_message_base_settings_request_dto** | [**\OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto**](../Model/AdminMessageBaseSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -227,10 +227,10 @@ $apiInstance = new OpenAPI\Client\Api\MessagesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$admin_message_base_settings_requests_dto = new \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto(); // \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestsDto
+$admin_message_base_settings_request_dto = new \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto(); // \OpenAPI\Client\Model\AdminMessageBaseSettingsRequestDto
 
 try {
-    $result = $apiInstance->sendJoinInviteMail($admin_message_base_settings_requests_dto);
+    $result = $apiInstance->sendJoinInviteMail($admin_message_base_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MessagesApi->sendJoinInviteMail: ', $e->getMessage(), PHP_EOL;

@@ -49,7 +49,7 @@ class AiVectorizationStartTaskRequest implements ModelInterface, ArrayAccess, \J
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiVectorizationStartTask_request';
+    protected static $openAPIModelName = 'AiVectorizationStartTaskRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

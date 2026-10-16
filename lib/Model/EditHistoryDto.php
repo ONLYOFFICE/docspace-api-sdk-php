@@ -62,10 +62,10 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'key' => 'string',
         'version' => 'int',
         'version_group' => 'int',
-        'user' => '\OpenAPI\Client\Model\EditHistoryAuthor',
+        'user' => '\OpenAPI\Client\Model\EditHistoryAuthorDto',
         'created' => '\OpenAPI\Client\Model\ApiDateTime',
         'changes_history' => 'string',
-        'changes' => '\OpenAPI\Client\Model\EditHistoryChangesWrapper[]',
+        'changes' => '\OpenAPI\Client\Model\EditHistoryChangesDto[]',
         'server_version' => 'string'
     ];
 
@@ -464,7 +464,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets user
      *
-     * @return \OpenAPI\Client\Model\EditHistoryAuthor|null
+     * @return \OpenAPI\Client\Model\EditHistoryAuthorDto|null
      */
     public function getUser()
     {
@@ -474,7 +474,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param \OpenAPI\Client\Model\EditHistoryAuthor|null $user The account that saved the revision. A revision saved by an account that no longer exists, or through an  anonymous link, is reported as a guest.
+     * @param \OpenAPI\Client\Model\EditHistoryAuthorDto|null $user The account that saved the revision. A revision saved by an account that no longer exists, or through an  anonymous link, is reported as a guest.
      *
      * @return self
      */
@@ -552,7 +552,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets changes
      *
-     * @return \OpenAPI\Client\Model\EditHistoryChangesWrapper[]|null
+     * @return \OpenAPI\Client\Model\EditHistoryChangesDto[]|null
      */
     public function getChanges()
     {
@@ -562,7 +562,7 @@ class EditHistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets changes
      *
-     * @param \OpenAPI\Client\Model\EditHistoryChangesWrapper[]|null $changes The single changes this revision introduced - who made each of them and when - taken from the stored change  record. It comes back empty both for a revision whose changes were never recorded and for one whose record is  in a format the portal no longer reads, so an empty list is not proof that nothing changed.
+     * @param \OpenAPI\Client\Model\EditHistoryChangesDto[]|null $changes The single changes this revision introduced - who made each of them and when - taken from the stored change  record. It comes back empty both for a revision whose changes were never recorded and for one whose record is  in a format the portal no longer reads, so an empty list is not proof that nothing changed.
      *
      * @return self
      */

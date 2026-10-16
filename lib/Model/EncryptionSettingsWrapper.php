@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * EncryptionSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the EncryptionSettings object.
+ * @description The successful API response containing the EncryptionSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class EncryptionSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\EncryptionSettings',
+        'response' => '\OpenAPI\Client\Model\EncryptionSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class EncryptionSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\EncryptionSettings|null
+     * @return \OpenAPI\Client\Model\EncryptionSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class EncryptionSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\EncryptionSettings|null $response The EncryptionSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\EncryptionSettingsDto|null $response The EncryptionSettingsDto object returned by the operation.
      *
      * @return self
      */

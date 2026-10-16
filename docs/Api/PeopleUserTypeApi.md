@@ -4,7 +4,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getUserTypeUpdateProgress()**](PeopleUserTypeApi.md#getUserTypeUpdateProgress) | **GET** /api/2.0/people/type/progress/{userid} | Get the user type change progress |
+| [**getUserTypeUpdateProgress()**](PeopleUserTypeApi.md#getUserTypeUpdateProgress) | **GET** /api/2.0/people/type/progress/{userId} | Get the user type change progress |
 | [**startUserTypeUpdate()**](PeopleUserTypeApi.md#startUserTypeUpdate) | **POST** /api/2.0/people/type | Start updating user type |
 | [**terminateUserTypeUpdate()**](PeopleUserTypeApi.md#terminateUserTypeUpdate) | **PUT** /api/2.0/people/type/terminate | Terminate updating user type |
 | [**updateUserType()**](PeopleUserTypeApi.md#updateUserType) | **PUT** /api/2.0/people/type/{type} | Change a user type |
@@ -13,7 +13,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getUserTypeUpdateProgress()`
 
 ```php
-getUserTypeUpdateProgress($userid): \OpenAPI\Client\Model\TaskProgressResponseWrapper
+getUserTypeUpdateProgress($user_id): \OpenAPI\Client\Model\TaskProgressResponseWrapper
 ```
 
 Get the user type change progress
@@ -25,7 +25,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **userid** | **string**| The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. | |
+| **user_id** | **string**| The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. | |
 
 ### Return type
 
@@ -70,10 +70,10 @@ $apiInstance = new OpenAPI\Client\Api\UserTypeApi(
     new GuzzleHttp\Client(),
     $config
 );
-$userid = 00000000-0000-0000-0000-000000000000; // string | The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started.
 
 try {
-    $result = $apiInstance->getUserTypeUpdateProgress($userid);
+    $result = $apiInstance->getUserTypeUpdateProgress($user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserTypeApi->getUserTypeUpdateProgress: ', $e->getMessage(), PHP_EOL;
@@ -96,7 +96,7 @@ startUserTypeUpdate($start_update_user_type_dto): \OpenAPI\Client\Model\TaskProg
 ```
 
 Start updating user type
-Queues an asynchronous job that converts one account to `Guest` or `User` and, in the same job, hands the  rooms and the shared files of that account over to another administrator.  Only `Guest` and `User` are accepted here, because they are the types that cannot own rooms; for any other  type use `PUT api/2.0/people/type/{type}`, which converts immediately and transfers nothing.  The caller needs the permission to add and remove users of the requested type, has to be the portal owner to  convert a DocSpace administrator, and converting to `Guest` also requires the portal to allow inviting guests.  The account being converted has to be active and cannot be the caller, and the recipient - `reassignUserId`,  or the caller when it is omitted - has to be an active room admin or DocSpace admin other than that account.  The conversion does not finish within this call: poll `GET api/2.0/people/type/progress/{userid}` with the  converted user ID until `isCompleted` is true, and cancel it through `PUT api/2.0/people/type/terminate`.  A failure inside the running job is reported in the `error` field of the progress, not as a status code here.
+Queues an asynchronous job that converts one account to `Guest` or `User` and, in the same job, hands the  rooms and the shared files of that account over to another administrator.  Only `Guest` and `User` are accepted here, because they are the types that cannot own rooms; for any other  type use `PUT api/2.0/people/type/{type}`, which converts immediately and transfers nothing.  The caller needs the permission to add and remove users of the requested type, has to be the portal owner to  convert a DocSpace administrator, and converting to `Guest` also requires the portal to allow inviting guests.  The account being converted has to be active and cannot be the caller, and the recipient - `reassignUserId`,  or the caller when it is omitted - has to be an active room admin or DocSpace admin other than that account.  The conversion does not finish within this call: poll `GET api/2.0/people/type/progress/{userId}` with the  converted user ID until `isCompleted` is true, and cancel it through `PUT api/2.0/people/type/terminate`.  A failure inside the running job is reported in the `error` field of the progress, not as a status code here.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/start-user-type-update/).
 

@@ -139,16 +139,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI Chat Completions request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, so consult the provider's own reference; the model and the credentials come from the profile in the path and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_openai_chat_completions_request An OpenAI Chat Completions request, forwarded to the provider as sent. The shape is the provider's, not this API's, so consult the provider's own reference. The credentials come from the profile in the path and must not be sent here; the profile's model is used when the body names none, and a `model` in the body takes precedence. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response
      */
-    public function aiOpenaiChatCompletions($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
+    public function aiOpenaiChatCompletions($profile_id, $ai_openai_chat_completions_request, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
     {
-        list($response) = $this->aiOpenaiChatCompletionsWithHttpInfo($profile_id, $request_body, $contentType);
+        list($response) = $this->aiOpenaiChatCompletionsWithHttpInfo($profile_id, $ai_openai_chat_completions_request, $contentType);
         return $response;
     }
 
@@ -161,16 +161,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI Chat Completions request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, so consult the provider's own reference; the model and the credentials come from the profile in the path and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_openai_chat_completions_request An OpenAI Chat Completions request, forwarded to the provider as sent. The shape is the provider's, not this API's, so consult the provider's own reference. The credentials come from the profile in the path and must not be sent here; the profile's model is used when the body names none, and a `model` in the body takes precedence. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiOpenaiChatCompletionsWithHttpInfo($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
+    public function aiOpenaiChatCompletionsWithHttpInfo($profile_id, $ai_openai_chat_completions_request, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
     {
-        $request = $this->aiOpenaiChatCompletionsRequest($profile_id, $request_body, $contentType);
+        $request = $this->aiOpenaiChatCompletionsRequest($profile_id, $ai_openai_chat_completions_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -348,15 +348,15 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI Chat Completions request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, so consult the provider's own reference; the model and the credentials come from the profile in the path and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_openai_chat_completions_request An OpenAI Chat Completions request, forwarded to the provider as sent. The shape is the provider's, not this API's, so consult the provider's own reference. The credentials come from the profile in the path and must not be sent here; the profile's model is used when the body names none, and a `model` in the body takes precedence. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiOpenaiChatCompletionsAsync($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
+    public function aiOpenaiChatCompletionsAsync($profile_id, $ai_openai_chat_completions_request, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
     {
-        return $this->aiOpenaiChatCompletionsAsyncWithHttpInfo($profile_id, $request_body, $contentType)
+        return $this->aiOpenaiChatCompletionsAsyncWithHttpInfo($profile_id, $ai_openai_chat_completions_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -373,16 +373,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-chat-completions/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI Chat Completions request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, so consult the provider's own reference; the model and the credentials come from the profile in the path and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_openai_chat_completions_request An OpenAI Chat Completions request, forwarded to the provider as sent. The shape is the provider's, not this API's, so consult the provider's own reference. The credentials come from the profile in the path and must not be sent here; the profile's model is used when the body names none, and a `model` in the body takes precedence. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiOpenaiChatCompletionsAsyncWithHttpInfo($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
+    public function aiOpenaiChatCompletionsAsyncWithHttpInfo($profile_id, $ai_openai_chat_completions_request, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
     {
         $returnType = 'array<string,mixed>';
-        $request = $this->aiOpenaiChatCompletionsRequest($profile_id, $request_body, $contentType);
+        $request = $this->aiOpenaiChatCompletionsRequest($profile_id, $ai_openai_chat_completions_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -424,13 +424,13 @@ class OpenAIPassthroughApi
      * Create request for operation 'aiOpenaiChatCompletions'
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI Chat Completions request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, so consult the provider's own reference; the model and the credentials come from the profile in the path and must not be sent here. (required)
+     * @param  array<string,mixed> $ai_openai_chat_completions_request An OpenAI Chat Completions request, forwarded to the provider as sent. The shape is the provider's, not this API's, so consult the provider's own reference. The credentials come from the profile in the path and must not be sent here; the profile's model is used when the body names none, and a `model` in the body takes precedence. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiChatCompletions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiOpenaiChatCompletionsRequest($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
+    public function aiOpenaiChatCompletionsRequest($profile_id, $ai_openai_chat_completions_request, string $contentType = self::contentTypes['aiOpenaiChatCompletions'][0])
     {
 
         // verify the required parameter 'profile_id' is set
@@ -440,10 +440,10 @@ class OpenAIPassthroughApi
             );
         }
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_openai_chat_completions_request' is set
+        if ($ai_openai_chat_completions_request === null || (is_array($ai_openai_chat_completions_request) && count($ai_openai_chat_completions_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiOpenaiChatCompletions'
+                'Missing the required parameter $ai_openai_chat_completions_request when calling aiOpenaiChatCompletions'
             );
         }
 
@@ -474,12 +474,12 @@ class OpenAIPassthroughApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_openai_chat_completions_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_openai_chat_completions_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_openai_chat_completions_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -545,16 +545,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI image-generation request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
+     * @param  array<string,mixed> $ai_openai_images_generations_request An OpenAI image-generation request, forwarded to the provider as sent once its documented fields pass a type check. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response
+     * @return array<string,mixed>|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response
      */
-    public function aiOpenaiImagesGenerations($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
+    public function aiOpenaiImagesGenerations($profile_id, $ai_openai_images_generations_request, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
     {
-        list($response) = $this->aiOpenaiImagesGenerationsWithHttpInfo($profile_id, $request_body, $contentType);
+        list($response) = $this->aiOpenaiImagesGenerationsWithHttpInfo($profile_id, $ai_openai_images_generations_request, $contentType);
         return $response;
     }
 
@@ -567,16 +567,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI image-generation request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
+     * @param  array<string,mixed> $ai_openai_images_generations_request An OpenAI image-generation request, forwarded to the provider as sent once its documented fields pass a type check. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,mixed>|\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response|\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiOpenaiImagesGenerationsWithHttpInfo($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
+    public function aiOpenaiImagesGenerationsWithHttpInfo($profile_id, $ai_openai_images_generations_request, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
     {
-        $request = $this->aiOpenaiImagesGenerationsRequest($profile_id, $request_body, $contentType);
+        $request = $this->aiOpenaiImagesGenerationsRequest($profile_id, $ai_openai_images_generations_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -608,6 +608,12 @@ class OpenAIPassthroughApi
                         $request,
                         $response,
                     );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        $request,
+                        $response,
+                    );
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -616,37 +622,37 @@ class OpenAIPassthroughApi
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
                 case 413:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
                 case 429:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
                 case 502:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $request,
                         $response,
                     );
@@ -682,6 +688,14 @@ class OpenAIPassthroughApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -693,7 +707,7 @@ class OpenAIPassthroughApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -701,7 +715,7 @@ class OpenAIPassthroughApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -709,7 +723,7 @@ class OpenAIPassthroughApi
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -717,7 +731,7 @@ class OpenAIPassthroughApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -725,7 +739,7 @@ class OpenAIPassthroughApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -733,7 +747,7 @@ class OpenAIPassthroughApi
                 case 502:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiOpenaiChatCompletions403Response',
+                        '\OpenAPI\Client\Model\AiOpenaiImagesGenerations403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -754,15 +768,15 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI image-generation request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
+     * @param  array<string,mixed> $ai_openai_images_generations_request An OpenAI image-generation request, forwarded to the provider as sent once its documented fields pass a type check. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiOpenaiImagesGenerationsAsync($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
+    public function aiOpenaiImagesGenerationsAsync($profile_id, $ai_openai_images_generations_request, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
     {
-        return $this->aiOpenaiImagesGenerationsAsyncWithHttpInfo($profile_id, $request_body, $contentType)
+        return $this->aiOpenaiImagesGenerationsAsyncWithHttpInfo($profile_id, $ai_openai_images_generations_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -779,16 +793,16 @@ class OpenAIPassthroughApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-openai-images-generations/
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI image-generation request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
+     * @param  array<string,mixed> $ai_openai_images_generations_request An OpenAI image-generation request, forwarded to the provider as sent once its documented fields pass a type check. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiOpenaiImagesGenerationsAsyncWithHttpInfo($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
+    public function aiOpenaiImagesGenerationsAsyncWithHttpInfo($profile_id, $ai_openai_images_generations_request, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
     {
         $returnType = 'array<string,mixed>';
-        $request = $this->aiOpenaiImagesGenerationsRequest($profile_id, $request_body, $contentType);
+        $request = $this->aiOpenaiImagesGenerationsRequest($profile_id, $ai_openai_images_generations_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -830,13 +844,13 @@ class OpenAIPassthroughApi
      * Create request for operation 'aiOpenaiImagesGenerations'
      *
      * @param  string $profile_id The AI provider profile identifier. (required)
-     * @param  array<string,mixed> $request_body An OpenAI image-generation request, forwarded to the provider byte for byte. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
+     * @param  array<string,mixed> $ai_openai_images_generations_request An OpenAI image-generation request, forwarded to the provider as sent once its documented fields pass a type check. The shape is the provider's, not this API's, and the credentials come from the profile in the path. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiOpenaiImagesGenerations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiOpenaiImagesGenerationsRequest($profile_id, $request_body, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
+    public function aiOpenaiImagesGenerationsRequest($profile_id, $ai_openai_images_generations_request, string $contentType = self::contentTypes['aiOpenaiImagesGenerations'][0])
     {
 
         // verify the required parameter 'profile_id' is set
@@ -846,10 +860,10 @@ class OpenAIPassthroughApi
             );
         }
 
-        // verify the required parameter 'request_body' is set
-        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+        // verify the required parameter 'ai_openai_images_generations_request' is set
+        if ($ai_openai_images_generations_request === null || (is_array($ai_openai_images_generations_request) && count($ai_openai_images_generations_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_body when calling aiOpenaiImagesGenerations'
+                'Missing the required parameter $ai_openai_images_generations_request when calling aiOpenaiImagesGenerations'
             );
         }
 
@@ -880,12 +894,12 @@ class OpenAIPassthroughApi
         );
 
         // for model (json/xml)
-        if (isset($request_body)) {
+        if (isset($ai_openai_images_generations_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($request_body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_openai_images_generations_request));
             } else {
-                $httpBody = $request_body;
+                $httpBody = $ai_openai_images_generations_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -12,7 +12,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getAuthServices()`
 
 ```php
-getAuthServices(): \OpenAPI\Client\Model\AuthServiceRequestsArrayWrapper
+getAuthServices(): \OpenAPI\Client\Model\AuthServiceArrayWrapper
 ```
 
 Get the authorization services
@@ -26,7 +26,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AuthServiceRequestsArrayWrapper**](../Model/AuthServiceRequestsArrayWrapper.md)
+[**\OpenAPI\Client\Model\AuthServiceArrayWrapper**](../Model/AuthServiceArrayWrapper.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ try {
 ## `saveAuthKeys()`
 
 ```php
-saveAuthKeys($auth_service_requests_dto): \OpenAPI\Client\Model\BooleanWrapper
+saveAuthKeys($save_auth_keys_request_dto): \OpenAPI\Client\Model\BooleanWrapper
 ```
 
 Save the authorization keys
@@ -100,7 +100,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **auth_service_requests_dto** | [**\OpenAPI\Client\Model\AuthServiceRequestsDto**](../Model/AuthServiceRequestsDto.md)|  | [optional] |
+| **save_auth_keys_request_dto** | [**\OpenAPI\Client\Model\SaveAuthKeysRequestDto**](../Model/SaveAuthKeysRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -145,10 +145,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthorizationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$auth_service_requests_dto = new \OpenAPI\Client\Model\AuthServiceRequestsDto(); // \OpenAPI\Client\Model\AuthServiceRequestsDto
+$save_auth_keys_request_dto = new \OpenAPI\Client\Model\SaveAuthKeysRequestDto(); // \OpenAPI\Client\Model\SaveAuthKeysRequestDto
 
 try {
-    $result = $apiInstance->saveAuthKeys($auth_service_requests_dto);
+    $result = $apiInstance->saveAuthKeys($save_auth_keys_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthorizationApi->saveAuthKeys: ', $e->getMessage(), PHP_EOL;
@@ -167,7 +167,7 @@ try {
 ## `testExternalDatabaseConnection()`
 
 ```php
-testExternalDatabaseConnection($external_database_settings): \OpenAPI\Client\Model\ConnectionTestResultWrapper
+testExternalDatabaseConnection($external_database_connection_request_dto): \OpenAPI\Client\Model\ConnectionTestResultWrapper
 ```
 
 Test external database connection
@@ -179,7 +179,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **external_database_settings** | [**\OpenAPI\Client\Model\ExternalDatabaseSettings**](../Model/ExternalDatabaseSettings.md)|  | [optional] |
+| **external_database_connection_request_dto** | [**\OpenAPI\Client\Model\ExternalDatabaseConnectionRequestDto**](../Model/ExternalDatabaseConnectionRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -224,10 +224,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthorizationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$external_database_settings = new \OpenAPI\Client\Model\ExternalDatabaseSettings(); // \OpenAPI\Client\Model\ExternalDatabaseSettings
+$external_database_connection_request_dto = new \OpenAPI\Client\Model\ExternalDatabaseConnectionRequestDto(); // \OpenAPI\Client\Model\ExternalDatabaseConnectionRequestDto
 
 try {
-    $result = $apiInstance->testExternalDatabaseConnection($external_database_settings);
+    $result = $apiInstance->testExternalDatabaseConnection($external_database_connection_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthorizationApi->testExternalDatabaseConnection: ', $e->getMessage(), PHP_EOL;

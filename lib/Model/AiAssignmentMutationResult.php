@@ -59,7 +59,7 @@ class AiAssignmentMutationResult implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -330,7 +330,7 @@ class AiAssignmentMutationResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData|null
+     * @return \OpenAPI\Client\Model\AiErrorData|null
      */
     public function getError()
     {
@@ -340,7 +340,7 @@ class AiAssignmentMutationResult implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData|null $error Why the assignment was rejected. Present on failure.
+     * @param \OpenAPI\Client\Model\AiErrorData|null $error Why the assignment was rejected. Present on failure.
      *
      * @return self
      */

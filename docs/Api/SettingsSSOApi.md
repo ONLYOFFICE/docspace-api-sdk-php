@@ -14,7 +14,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getDefaultSsoSettingsV2()`
 
 ```php
-getDefaultSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsV2Wrapper
+getDefaultSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsWrapper
 ```
 
 Get the default SSO settings
@@ -28,7 +28,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SsoSettingsV2Wrapper**](../Model/SsoSettingsV2Wrapper.md)
+[**\OpenAPI\Client\Model\SsoSettingsWrapper**](../Model/SsoSettingsWrapper.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ try {
 ## `getSsoSettingsV2()`
 
 ```php
-getSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsV2Wrapper
+getSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsWrapper
 ```
 
 Get the SSO settings
@@ -104,7 +104,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SsoSettingsV2Wrapper**](../Model/SsoSettingsV2Wrapper.md)
+[**\OpenAPI\Client\Model\SsoSettingsWrapper**](../Model/SsoSettingsWrapper.md)
 
 ### Authorization
 
@@ -166,7 +166,7 @@ try {
 ## `getSsoSettingsV2Constants()`
 
 ```php
-getSsoSettingsV2Constants(): \OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper
+getSsoSettingsV2Constants(): \OpenAPI\Client\Model\SsoSettingsConstantsWrapper
 ```
 
 Get the SSO settings constants
@@ -180,7 +180,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper**](../Model/SsoSettingsV2ConstantsWrapper.md)
+[**\OpenAPI\Client\Model\SsoSettingsConstantsWrapper**](../Model/SsoSettingsConstantsWrapper.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ try {
 ## `resetSsoSettingsV2()`
 
 ```php
-resetSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsV2Wrapper
+resetSsoSettingsV2(): \OpenAPI\Client\Model\SsoSettingsWrapper
 ```
 
 Reset the SSO settings
@@ -256,7 +256,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SsoSettingsV2Wrapper**](../Model/SsoSettingsV2Wrapper.md)
+[**\OpenAPI\Client\Model\SsoSettingsWrapper**](../Model/SsoSettingsWrapper.md)
 
 ### Authorization
 
@@ -318,7 +318,7 @@ try {
 ## `saveSsoSettingsV2()`
 
 ```php
-saveSsoSettingsV2($sso_settings_requests_dto): \OpenAPI\Client\Model\SsoSettingsV2Wrapper
+saveSsoSettingsV2($sso_settings_request_dto): \OpenAPI\Client\Model\SsoSettingsWrapper
 ```
 
 Save the SSO settings
@@ -330,11 +330,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sso_settings_requests_dto** | [**\OpenAPI\Client\Model\SsoSettingsRequestsDto**](../Model/SsoSettingsRequestsDto.md)|  | [optional] |
+| **sso_settings_request_dto** | [**\OpenAPI\Client\Model\SsoSettingsRequestDto**](../Model/SsoSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SsoSettingsV2Wrapper**](../Model/SsoSettingsV2Wrapper.md)
+[**\OpenAPI\Client\Model\SsoSettingsWrapper**](../Model/SsoSettingsWrapper.md)
 
 ### Authorization
 
@@ -375,10 +375,10 @@ $apiInstance = new OpenAPI\Client\Api\SSOApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sso_settings_requests_dto = new \OpenAPI\Client\Model\SsoSettingsRequestsDto(); // \OpenAPI\Client\Model\SsoSettingsRequestsDto
+$sso_settings_request_dto = new \OpenAPI\Client\Model\SsoSettingsRequestDto(); // \OpenAPI\Client\Model\SsoSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveSsoSettingsV2($sso_settings_requests_dto);
+    $result = $apiInstance->saveSsoSettingsV2($sso_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SSOApi->saveSsoSettingsV2: ', $e->getMessage(), PHP_EOL;

@@ -49,7 +49,7 @@ class AiPreferencesSetDeepModeRequest implements ModelInterface, ArrayAccess, \J
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiPreferencesSetDeepMode_request';
+    protected static $openAPIModelName = 'AiPreferencesSetDeepModeRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

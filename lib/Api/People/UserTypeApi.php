@@ -144,16 +144,16 @@ class UserTypeApi
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getUserTypeUpdateProgress($userid, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
+    public function getUserTypeUpdateProgress($user_id, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
     {
-        list($response) = $this->getUserTypeUpdateProgressWithHttpInfo($userid, $contentType);
+        list($response) = $this->getUserTypeUpdateProgressWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -165,16 +165,16 @@ class UserTypeApi
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUserTypeUpdateProgressWithHttpInfo($userid, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
+    public function getUserTypeUpdateProgressWithHttpInfo($user_id, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
     {
-        $request = $this->getUserTypeUpdateProgressRequest($userid, $contentType);
+        $request = $this->getUserTypeUpdateProgressRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -309,15 +309,15 @@ class UserTypeApi
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserTypeUpdateProgressAsync($userid, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
+    public function getUserTypeUpdateProgressAsync($user_id, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
     {
-        return $this->getUserTypeUpdateProgressAsyncWithHttpInfo($userid, $contentType)
+        return $this->getUserTypeUpdateProgressAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -333,16 +333,16 @@ class UserTypeApi
      * REST API Reference for getUserTypeUpdateProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-type-update-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUserTypeUpdateProgressAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
+    public function getUserTypeUpdateProgressAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TaskProgressResponseWrapper';
-        $request = $this->getUserTypeUpdateProgressRequest($userid, $contentType);
+        $request = $this->getUserTypeUpdateProgressRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -383,24 +383,24 @@ class UserTypeApi
     /**
      * Create request for operation 'getUserTypeUpdateProgress'
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUserTypeUpdateProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUserTypeUpdateProgressRequest($userid, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
+    public function getUserTypeUpdateProgressRequest($user_id, string $contentType = self::contentTypes['getUserTypeUpdateProgress'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getUserTypeUpdateProgress'
+                'Missing the required parameter $user_id when calling getUserTypeUpdateProgress'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/type/progress/{userid}';
+        $resourcePath = '/api/2.0/people/type/progress/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -410,10 +410,10 @@ class UserTypeApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -844,7 +844,7 @@ class UserTypeApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function terminateUserTypeUpdate($terminate_request_dto = null, string $contentType = self::contentTypes['terminateUserTypeUpdate'][0])
     {
@@ -865,7 +865,7 @@ class UserTypeApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function terminateUserTypeUpdateWithHttpInfo($terminate_request_dto = null, string $contentType = self::contentTypes['terminateUserTypeUpdate'][0])
     {
@@ -914,12 +914,6 @@ class UserTypeApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -974,14 +968,6 @@ class UserTypeApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1196,7 +1182,7 @@ class UserTypeApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function updateUserType($type, $update_members_request_dto, string $contentType = self::contentTypes['updateUserType'][0])
     {
@@ -1218,7 +1204,7 @@ class UserTypeApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateUserTypeWithHttpInfo($type, $update_members_request_dto, string $contentType = self::contentTypes['updateUserType'][0])
     {
@@ -1267,12 +1253,6 @@ class UserTypeApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1327,14 +1307,6 @@ class UserTypeApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

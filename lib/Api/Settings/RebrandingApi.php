@@ -187,7 +187,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AdditionalResourcesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteAdditionalWhiteLabelSettings(string $contentType = self::contentTypes['deleteAdditionalWhiteLabelSettings'][0])
     {
@@ -207,7 +207,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AdditionalResourcesWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAdditionalWhiteLabelSettingsWithHttpInfo(string $contentType = self::contentTypes['deleteAdditionalWhiteLabelSettings'][0])
     {
@@ -239,7 +239,7 @@ class RebrandingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\AdditionalResourcesWrapper',
                         $request,
                         $response,
                     );
@@ -279,7 +279,7 @@ class RebrandingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\AdditionalResourcesWrapper',
                 $request,
                 $response,
             );
@@ -288,7 +288,7 @@ class RebrandingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\AdditionalResourcesWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -362,7 +362,7 @@ class RebrandingApi
      */
     public function deleteAdditionalWhiteLabelSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteAdditionalWhiteLabelSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\AdditionalResourcesWrapper';
         $request = $this->deleteAdditionalWhiteLabelSettingsRequest($contentType);
 
         return $this->client
@@ -511,7 +511,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\LicensorDetailsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function deleteCompanyWhiteLabelSettings(string $contentType = self::contentTypes['deleteCompanyWhiteLabelSettings'][0])
     {
@@ -531,7 +531,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LicensorDetailsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteCompanyWhiteLabelSettingsWithHttpInfo(string $contentType = self::contentTypes['deleteCompanyWhiteLabelSettings'][0])
     {
@@ -563,7 +563,7 @@ class RebrandingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\LicensorDetailsWrapper',
                         $request,
                         $response,
                     );
@@ -603,7 +603,7 @@ class RebrandingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper',
+                '\OpenAPI\Client\Model\LicensorDetailsWrapper',
                 $request,
                 $response,
             );
@@ -612,7 +612,7 @@ class RebrandingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper',
+                        '\OpenAPI\Client\Model\LicensorDetailsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -686,7 +686,7 @@ class RebrandingApi
      */
     public function deleteCompanyWhiteLabelSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['deleteCompanyWhiteLabelSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsResponseWrapper';
+        $returnType = '\OpenAPI\Client\Model\LicensorDetailsWrapper';
         $request = $this->deleteCompanyWhiteLabelSettingsRequest($contentType);
 
         return $this->client
@@ -835,7 +835,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAdditionalWhiteLabelSettings(string $contentType = self::contentTypes['getAdditionalWhiteLabelSettings'][0])
     {
@@ -855,7 +855,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdditionalWhiteLabelSettingsWithHttpInfo(string $contentType = self::contentTypes['getAdditionalWhiteLabelSettings'][0])
     {
@@ -887,7 +887,7 @@ class RebrandingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper',
+                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -927,7 +927,7 @@ class RebrandingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper',
+                '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper',
                 $request,
                 $response,
             );
@@ -936,7 +936,7 @@ class RebrandingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper',
+                        '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1010,7 +1010,7 @@ class RebrandingApi
      */
     public function getAdditionalWhiteLabelSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getAdditionalWhiteLabelSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsDtoWrapper';
+        $returnType = '\OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper';
         $request = $this->getAdditionalWhiteLabelSettingsRequest($contentType);
 
         return $this->client
@@ -1159,7 +1159,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getCompanyWhiteLabelSettings(string $contentType = self::contentTypes['getCompanyWhiteLabelSettings'][0])
     {
@@ -1179,7 +1179,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCompanyWhiteLabelSettingsWithHttpInfo(string $contentType = self::contentTypes['getCompanyWhiteLabelSettings'][0])
     {
@@ -1211,7 +1211,7 @@ class RebrandingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper',
+                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -1251,7 +1251,7 @@ class RebrandingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper',
+                '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper',
                 $request,
                 $response,
             );
@@ -1260,7 +1260,7 @@ class RebrandingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper',
+                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1334,7 +1334,7 @@ class RebrandingApi
      */
     public function getCompanyWhiteLabelSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getCompanyWhiteLabelSettings'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsDtoWrapper';
+        $returnType = '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper';
         $request = $this->getCompanyWhiteLabelSettingsRequest($contentType);
 
         return $this->client
@@ -2069,7 +2069,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2078,7 +2078,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2437,7 +2437,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2446,7 +2446,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -2543,7 +2543,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\LicensorDetailsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getLicensorData(string $contentType = self::contentTypes['getLicensorData'][0])
     {
@@ -2563,7 +2563,7 @@ class RebrandingApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\LicensorDetailsArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLicensorDataWithHttpInfo(string $contentType = self::contentTypes['getLicensorData'][0])
     {
@@ -2595,7 +2595,7 @@ class RebrandingApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper',
+                        '\OpenAPI\Client\Model\LicensorDetailsArrayWrapper',
                         $request,
                         $response,
                     );
@@ -2635,7 +2635,7 @@ class RebrandingApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper',
+                '\OpenAPI\Client\Model\LicensorDetailsArrayWrapper',
                 $request,
                 $response,
             );
@@ -2644,7 +2644,7 @@ class RebrandingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper',
+                        '\OpenAPI\Client\Model\LicensorDetailsArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2718,7 +2718,7 @@ class RebrandingApi
      */
     public function getLicensorDataAsyncWithHttpInfo(string $contentType = self::contentTypes['getLicensorData'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CompanyWhiteLabelSettingsArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\LicensorDetailsArrayWrapper';
         $request = $this->getLicensorDataRequest($contentType);
 
         return $this->client
@@ -3129,7 +3129,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3138,7 +3138,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3483,7 +3483,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3492,7 +3492,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3851,7 +3851,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -3860,7 +3860,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4219,7 +4219,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4228,7 +4228,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -4321,16 +4321,16 @@ class RebrandingApi
      * REST API Reference for saveAdditionalWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-additional-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|null $additional_white_label_settings_wrapper additional_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsRequestDto|null $additional_white_label_settings_request_dto additional_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAdditionalWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveAdditionalWhiteLabelSettings($additional_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
+    public function saveAdditionalWhiteLabelSettings($additional_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
     {
-        list($response) = $this->saveAdditionalWhiteLabelSettingsWithHttpInfo($additional_white_label_settings_wrapper, $contentType);
+        list($response) = $this->saveAdditionalWhiteLabelSettingsWithHttpInfo($additional_white_label_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -4342,16 +4342,16 @@ class RebrandingApi
      * REST API Reference for saveAdditionalWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-additional-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|null $additional_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsRequestDto|null $additional_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAdditionalWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveAdditionalWhiteLabelSettingsWithHttpInfo($additional_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
+    public function saveAdditionalWhiteLabelSettingsWithHttpInfo($additional_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
     {
-        $request = $this->saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_wrapper, $contentType);
+        $request = $this->saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4472,15 +4472,15 @@ class RebrandingApi
      * REST API Reference for saveAdditionalWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-additional-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|null $additional_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsRequestDto|null $additional_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAdditionalWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAdditionalWhiteLabelSettingsAsync($additional_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
+    public function saveAdditionalWhiteLabelSettingsAsync($additional_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
     {
-        return $this->saveAdditionalWhiteLabelSettingsAsyncWithHttpInfo($additional_white_label_settings_wrapper, $contentType)
+        return $this->saveAdditionalWhiteLabelSettingsAsyncWithHttpInfo($additional_white_label_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4496,16 +4496,16 @@ class RebrandingApi
      * REST API Reference for saveAdditionalWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-additional-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|null $additional_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsRequestDto|null $additional_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAdditionalWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveAdditionalWhiteLabelSettingsAsyncWithHttpInfo($additional_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
+    public function saveAdditionalWhiteLabelSettingsAsyncWithHttpInfo($additional_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_wrapper, $contentType);
+        $request = $this->saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4546,13 +4546,13 @@ class RebrandingApi
     /**
      * Create request for operation 'saveAdditionalWhiteLabelSettings'
      *
-     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsWrapper|null $additional_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\AdditionalWhiteLabelSettingsRequestDto|null $additional_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveAdditionalWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
+    public function saveAdditionalWhiteLabelSettingsRequest($additional_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveAdditionalWhiteLabelSettings'][0])
     {
 
 
@@ -4575,12 +4575,12 @@ class RebrandingApi
         );
 
         // for model (json/xml)
-        if (isset($additional_white_label_settings_wrapper)) {
+        if (isset($additional_white_label_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($additional_white_label_settings_wrapper));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($additional_white_label_settings_request_dto));
             } else {
-                $httpBody = $additional_white_label_settings_wrapper;
+                $httpBody = $additional_white_label_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4658,16 +4658,16 @@ class RebrandingApi
      * REST API Reference for saveCompanyWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-company-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|null $company_white_label_settings_wrapper company_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsRequestDto|null $company_white_label_settings_request_dto company_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveCompanyWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveCompanyWhiteLabelSettings($company_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
+    public function saveCompanyWhiteLabelSettings($company_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
     {
-        list($response) = $this->saveCompanyWhiteLabelSettingsWithHttpInfo($company_white_label_settings_wrapper, $contentType);
+        list($response) = $this->saveCompanyWhiteLabelSettingsWithHttpInfo($company_white_label_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -4679,16 +4679,16 @@ class RebrandingApi
      * REST API Reference for saveCompanyWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-company-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|null $company_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsRequestDto|null $company_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveCompanyWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveCompanyWhiteLabelSettingsWithHttpInfo($company_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
+    public function saveCompanyWhiteLabelSettingsWithHttpInfo($company_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
     {
-        $request = $this->saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_wrapper, $contentType);
+        $request = $this->saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4809,15 +4809,15 @@ class RebrandingApi
      * REST API Reference for saveCompanyWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-company-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|null $company_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsRequestDto|null $company_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveCompanyWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCompanyWhiteLabelSettingsAsync($company_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
+    public function saveCompanyWhiteLabelSettingsAsync($company_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
     {
-        return $this->saveCompanyWhiteLabelSettingsAsyncWithHttpInfo($company_white_label_settings_wrapper, $contentType)
+        return $this->saveCompanyWhiteLabelSettingsAsyncWithHttpInfo($company_white_label_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4833,16 +4833,16 @@ class RebrandingApi
      * REST API Reference for saveCompanyWhiteLabelSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-company-white-label-settings/
      *
-     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|null $company_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsRequestDto|null $company_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveCompanyWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveCompanyWhiteLabelSettingsAsyncWithHttpInfo($company_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
+    public function saveCompanyWhiteLabelSettingsAsyncWithHttpInfo($company_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_wrapper, $contentType);
+        $request = $this->saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4883,13 +4883,13 @@ class RebrandingApi
     /**
      * Create request for operation 'saveCompanyWhiteLabelSettings'
      *
-     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsWrapper|null $company_white_label_settings_wrapper (optional)
+     * @param  \OpenAPI\Client\Model\CompanyWhiteLabelSettingsRequestDto|null $company_white_label_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveCompanyWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_wrapper = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
+    public function saveCompanyWhiteLabelSettingsRequest($company_white_label_settings_request_dto = null, string $contentType = self::contentTypes['saveCompanyWhiteLabelSettings'][0])
     {
 
 
@@ -4912,12 +4912,12 @@ class RebrandingApi
         );
 
         // for model (json/xml)
-        if (isset($company_white_label_settings_wrapper)) {
+        if (isset($company_white_label_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($company_white_label_settings_wrapper));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($company_white_label_settings_request_dto));
             } else {
-                $httpBody = $company_white_label_settings_wrapper;
+                $httpBody = $company_white_label_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4997,16 +4997,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveWhiteLabelLogoText($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
+    public function saveWhiteLabelLogoText($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
     {
-        list($response) = $this->saveWhiteLabelLogoTextWithHttpInfo($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        list($response) = $this->saveWhiteLabelLogoTextWithHttpInfo($is_dark, $is_default, $white_label_request_dto, $contentType);
         return $response;
     }
 
@@ -5020,16 +5020,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveWhiteLabelLogoTextWithHttpInfo($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
+    public function saveWhiteLabelLogoTextWithHttpInfo($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
     {
-        $request = $this->saveWhiteLabelLogoTextRequest($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        $request = $this->saveWhiteLabelLogoTextRequest($is_dark, $is_default, $white_label_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5074,12 +5074,6 @@ class RebrandingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5141,14 +5135,6 @@ class RebrandingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -5166,15 +5152,15 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveWhiteLabelLogoTextAsync($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
+    public function saveWhiteLabelLogoTextAsync($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
     {
-        return $this->saveWhiteLabelLogoTextAsyncWithHttpInfo($is_dark, $is_default, $white_label_requests_dto, $contentType)
+        return $this->saveWhiteLabelLogoTextAsyncWithHttpInfo($is_dark, $is_default, $white_label_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5192,16 +5178,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveWhiteLabelLogoTextAsyncWithHttpInfo($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
+    public function saveWhiteLabelLogoTextAsyncWithHttpInfo($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->saveWhiteLabelLogoTextRequest($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        $request = $this->saveWhiteLabelLogoTextRequest($is_dark, $is_default, $white_label_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5244,13 +5230,13 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelLogoText'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveWhiteLabelLogoTextRequest($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
+    public function saveWhiteLabelLogoTextRequest($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelLogoText'][0])
     {
 
 
@@ -5267,7 +5253,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5276,7 +5262,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5293,12 +5279,12 @@ class RebrandingApi
         );
 
         // for model (json/xml)
-        if (isset($white_label_requests_dto)) {
+        if (isset($white_label_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($white_label_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($white_label_request_dto));
             } else {
-                $httpBody = $white_label_requests_dto;
+                $httpBody = $white_label_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -5378,16 +5364,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveWhiteLabelSettings($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
+    public function saveWhiteLabelSettings($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
     {
-        list($response) = $this->saveWhiteLabelSettingsWithHttpInfo($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        list($response) = $this->saveWhiteLabelSettingsWithHttpInfo($is_dark, $is_default, $white_label_request_dto, $contentType);
         return $response;
     }
 
@@ -5401,16 +5387,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\BooleanWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveWhiteLabelSettingsWithHttpInfo($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
+    public function saveWhiteLabelSettingsWithHttpInfo($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
     {
-        $request = $this->saveWhiteLabelSettingsRequest($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        $request = $this->saveWhiteLabelSettingsRequest($is_dark, $is_default, $white_label_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5455,12 +5441,6 @@ class RebrandingApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -5522,14 +5502,6 @@ class RebrandingApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -5547,15 +5519,15 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveWhiteLabelSettingsAsync($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
+    public function saveWhiteLabelSettingsAsync($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
     {
-        return $this->saveWhiteLabelSettingsAsyncWithHttpInfo($is_dark, $is_default, $white_label_requests_dto, $contentType)
+        return $this->saveWhiteLabelSettingsAsyncWithHttpInfo($is_dark, $is_default, $white_label_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5573,16 +5545,16 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveWhiteLabelSettingsAsyncWithHttpInfo($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
+    public function saveWhiteLabelSettingsAsyncWithHttpInfo($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\BooleanWrapper';
-        $request = $this->saveWhiteLabelSettingsRequest($is_dark, $is_default, $white_label_requests_dto, $contentType);
+        $request = $this->saveWhiteLabelSettingsRequest($is_dark, $is_default, $white_label_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5625,13 +5597,13 @@ class RebrandingApi
      *
      * @param  bool|null $is_dark Which theme the answer is filled in for: `true` fills the dark image only, `false` the light one only.  Omitting it fills both, leaving the dark one empty for the slots that have no separate dark image. (optional)
      * @param  bool|null $is_default Whether the installation-wide default branding is addressed instead of this portal own. Writing the default  branding is only allowed on a self-hosted installation; elsewhere it is refused with 403. (optional)
-     * @param  \OpenAPI\Client\Model\WhiteLabelRequestsDto|null $white_label_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\WhiteLabelRequestDto|null $white_label_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveWhiteLabelSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveWhiteLabelSettingsRequest($is_dark = null, $is_default = null, $white_label_requests_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
+    public function saveWhiteLabelSettingsRequest($is_dark = null, $is_default = null, $white_label_request_dto = null, string $contentType = self::contentTypes['saveWhiteLabelSettings'][0])
     {
 
 
@@ -5648,7 +5620,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5657,7 +5629,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -5674,12 +5646,12 @@ class RebrandingApi
         );
 
         // for model (json/xml)
-        if (isset($white_label_requests_dto)) {
+        if (isset($white_label_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($white_label_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($white_label_request_dto));
             } else {
-                $httpBody = $white_label_requests_dto;
+                $httpBody = $white_label_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -6023,7 +5995,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_dark,
-            'IsDark', // param base name
+            'isDark', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -6032,7 +6004,7 @@ class RebrandingApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $is_default,
-            'IsDefault', // param base name
+            'isDefault', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

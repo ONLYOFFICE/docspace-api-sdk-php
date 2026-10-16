@@ -16,7 +16,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `authenticateMe()`
 
 ```php
-authenticateMe($auth_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
+authenticateMe($auth_request_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
 ```
 
 Authenticate a user
@@ -28,7 +28,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **auth_requests_dto** | [**\OpenAPI\Client\Model\AuthRequestsDto**](../Model/AuthRequestsDto.md)|  | [optional] |
+| **auth_request_dto** | [**\OpenAPI\Client\Model\AuthRequestDto**](../Model/AuthRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -73,10 +73,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$auth_requests_dto = new \OpenAPI\Client\Model\AuthRequestsDto(); // \OpenAPI\Client\Model\AuthRequestsDto
+$auth_request_dto = new \OpenAPI\Client\Model\AuthRequestDto(); // \OpenAPI\Client\Model\AuthRequestDto
 
 try {
-    $result = $apiInstance->authenticateMe($auth_requests_dto);
+    $result = $apiInstance->authenticateMe($auth_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->authenticateMe: ', $e->getMessage(), PHP_EOL;
@@ -95,7 +95,7 @@ try {
 ## `authenticateMeFromBodyWithCode()`
 
 ```php
-authenticateMeFromBodyWithCode($code, $auth_with_code_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
+authenticateMeFromBodyWithCode($code, $auth_with_code_request_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
 ```
 
 Authenticate a user by code
@@ -108,7 +108,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **code** | **string**| The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads. | |
-| **auth_with_code_requests_dto** | [**\OpenAPI\Client\Model\AuthWithCodeRequestsDto**](../Model/AuthWithCodeRequestsDto.md)|  | [optional] |
+| **auth_with_code_request_dto** | [**\OpenAPI\Client\Model\AuthWithCodeRequestDto**](../Model/AuthWithCodeRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -154,10 +154,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     $config
 );
 $code = 'code_example'; // string | The two-factor authentication code. Send the same value as the `code` of the request body, which is the one the handler reads.
-$auth_with_code_requests_dto = new \OpenAPI\Client\Model\AuthWithCodeRequestsDto(); // \OpenAPI\Client\Model\AuthWithCodeRequestsDto
+$auth_with_code_request_dto = new \OpenAPI\Client\Model\AuthWithCodeRequestDto(); // \OpenAPI\Client\Model\AuthWithCodeRequestDto
 
 try {
-    $result = $apiInstance->authenticateMeFromBodyWithCode($code, $auth_with_code_requests_dto);
+    $result = $apiInstance->authenticateMeFromBodyWithCode($code, $auth_with_code_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->authenticateMeFromBodyWithCode: ', $e->getMessage(), PHP_EOL;
@@ -176,7 +176,7 @@ try {
 ## `checkConfirm()`
 
 ```php
-checkConfirm($email_validation_key_model): \OpenAPI\Client\Model\ConfirmWrapper
+checkConfirm($check_confirm_request_dto): \OpenAPI\Client\Model\ConfirmWrapper
 ```
 
 Check a confirmation link
@@ -188,7 +188,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email_validation_key_model** | [**\OpenAPI\Client\Model\EmailValidationKeyModel**](../Model/EmailValidationKeyModel.md)|  | [optional] |
+| **check_confirm_request_dto** | [**\OpenAPI\Client\Model\CheckConfirmRequestDto**](../Model/CheckConfirmRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -233,10 +233,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$email_validation_key_model = new \OpenAPI\Client\Model\EmailValidationKeyModel(); // \OpenAPI\Client\Model\EmailValidationKeyModel
+$check_confirm_request_dto = new \OpenAPI\Client\Model\CheckConfirmRequestDto(); // \OpenAPI\Client\Model\CheckConfirmRequestDto
 
 try {
-    $result = $apiInstance->checkConfirm($email_validation_key_model);
+    $result = $apiInstance->checkConfirm($check_confirm_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->checkConfirm: ', $e->getMessage(), PHP_EOL;
@@ -407,7 +407,7 @@ try {
 ## `saveMobilePhone()`
 
 ```php
-saveMobilePhone($mobile_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
+saveMobilePhone($mobile_request_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
 ```
 
 Set a mobile phone
@@ -419,7 +419,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **mobile_requests_dto** | [**\OpenAPI\Client\Model\MobileRequestsDto**](../Model/MobileRequestsDto.md)|  | [optional] |
+| **mobile_request_dto** | [**\OpenAPI\Client\Model\MobileRequestDto**](../Model/MobileRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -464,10 +464,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$mobile_requests_dto = new \OpenAPI\Client\Model\MobileRequestsDto(); // \OpenAPI\Client\Model\MobileRequestsDto
+$mobile_request_dto = new \OpenAPI\Client\Model\MobileRequestDto(); // \OpenAPI\Client\Model\MobileRequestDto
 
 try {
-    $result = $apiInstance->saveMobilePhone($mobile_requests_dto);
+    $result = $apiInstance->saveMobilePhone($mobile_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->saveMobilePhone: ', $e->getMessage(), PHP_EOL;
@@ -486,7 +486,7 @@ try {
 ## `sendSmsCode()`
 
 ```php
-sendSmsCode($auth_requests_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
+sendSmsCode($auth_request_dto): \OpenAPI\Client\Model\AuthenticationTokenWrapper
 ```
 
 Send SMS code
@@ -498,7 +498,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **auth_requests_dto** | [**\OpenAPI\Client\Model\AuthRequestsDto**](../Model/AuthRequestsDto.md)|  | [optional] |
+| **auth_request_dto** | [**\OpenAPI\Client\Model\AuthRequestDto**](../Model/AuthRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -543,10 +543,10 @@ $apiInstance = new OpenAPI\Client\Api\AuthenticationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$auth_requests_dto = new \OpenAPI\Client\Model\AuthRequestsDto(); // \OpenAPI\Client\Model\AuthRequestsDto
+$auth_request_dto = new \OpenAPI\Client\Model\AuthRequestDto(); // \OpenAPI\Client\Model\AuthRequestDto
 
 try {
-    $result = $apiInstance->sendSmsCode($auth_requests_dto);
+    $result = $apiInstance->sendSmsCode($auth_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AuthenticationApi->sendSmsCode: ', $e->getMessage(), PHP_EOL;

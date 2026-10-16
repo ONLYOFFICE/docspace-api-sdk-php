@@ -18,7 +18,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `createWebhook()`
 
 ```php
-createWebhook($create_webhooks_config_requests_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
+createWebhook($create_webhooks_config_request_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
 ```
 
 Create a webhook
@@ -30,7 +30,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_webhooks_config_requests_dto** | [**\OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto**](../Model/CreateWebhooksConfigRequestsDto.md)|  | [optional] |
+| **create_webhooks_config_request_dto** | [**\OpenAPI\Client\Model\CreateWebhooksConfigRequestDto**](../Model/CreateWebhooksConfigRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -75,10 +75,10 @@ $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_webhooks_config_requests_dto = new \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto(); // \OpenAPI\Client\Model\CreateWebhooksConfigRequestsDto
+$create_webhooks_config_request_dto = new \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto(); // \OpenAPI\Client\Model\CreateWebhooksConfigRequestDto
 
 try {
-    $result = $apiInstance->createWebhook($create_webhooks_config_requests_dto);
+    $result = $apiInstance->createWebhook($create_webhooks_config_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->createWebhook: ', $e->getMessage(), PHP_EOL;
@@ -97,7 +97,7 @@ try {
 ## `enableWebhook()`
 
 ```php
-enableWebhook($update_webhooks_config_requests_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
+enableWebhook($update_webhooks_config_request_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
 ```
 
 Switch a webhook on or off
@@ -109,7 +109,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_webhooks_config_requests_dto** | [**\OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto**](../Model/UpdateWebhooksConfigRequestsDto.md)|  | [optional] |
+| **update_webhooks_config_request_dto** | [**\OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto**](../Model/UpdateWebhooksConfigRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -154,10 +154,10 @@ $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_webhooks_config_requests_dto = new \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto(); // \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto
+$update_webhooks_config_request_dto = new \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto(); // \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto
 
 try {
-    $result = $apiInstance->enableWebhook($update_webhooks_config_requests_dto);
+    $result = $apiInstance->enableWebhook($update_webhooks_config_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->enableWebhook: ', $e->getMessage(), PHP_EOL;
@@ -583,7 +583,7 @@ try {
 ## `retryWebhooks()`
 
 ```php
-retryWebhooks($webhook_retry_requests_dto): \OpenAPI\Client\Model\WebhooksLogArrayWrapper
+retryWebhooks($webhook_retry_request_dto): \OpenAPI\Client\Model\WebhooksLogArrayWrapper
 ```
 
 Retry webhook deliveries
@@ -595,7 +595,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_retry_requests_dto** | [**\OpenAPI\Client\Model\WebhookRetryRequestsDto**](../Model/WebhookRetryRequestsDto.md)|  | [optional] |
+| **webhook_retry_request_dto** | [**\OpenAPI\Client\Model\WebhookRetryRequestDto**](../Model/WebhookRetryRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -640,10 +640,10 @@ $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_retry_requests_dto = new \OpenAPI\Client\Model\WebhookRetryRequestsDto(); // \OpenAPI\Client\Model\WebhookRetryRequestsDto
+$webhook_retry_request_dto = new \OpenAPI\Client\Model\WebhookRetryRequestDto(); // \OpenAPI\Client\Model\WebhookRetryRequestDto
 
 try {
-    $result = $apiInstance->retryWebhooks($webhook_retry_requests_dto);
+    $result = $apiInstance->retryWebhooks($webhook_retry_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->retryWebhooks: ', $e->getMessage(), PHP_EOL;
@@ -662,7 +662,7 @@ try {
 ## `updateWebhook()`
 
 ```php
-updateWebhook($update_webhooks_config_requests_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
+updateWebhook($update_webhooks_config_request_dto): \OpenAPI\Client\Model\WebhooksConfigWrapper
 ```
 
 Update a webhook
@@ -674,7 +674,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_webhooks_config_requests_dto** | [**\OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto**](../Model/UpdateWebhooksConfigRequestsDto.md)|  | [optional] |
+| **update_webhooks_config_request_dto** | [**\OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto**](../Model/UpdateWebhooksConfigRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -719,10 +719,10 @@ $apiInstance = new OpenAPI\Client\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$update_webhooks_config_requests_dto = new \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto(); // \OpenAPI\Client\Model\UpdateWebhooksConfigRequestsDto
+$update_webhooks_config_request_dto = new \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto(); // \OpenAPI\Client\Model\UpdateWebhooksConfigRequestDto
 
 try {
-    $result = $apiInstance->updateWebhook($update_webhooks_config_requests_dto);
+    $result = $apiInstance->updateWebhook($update_webhooks_config_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->updateWebhook: ', $e->getMessage(), PHP_EOL;

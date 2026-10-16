@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * TenantDeepLinkSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the TenantDeepLinkSettings object.
+ * @description The successful API response containing the TenantDeepLinkSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class TenantDeepLinkSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\TenantDeepLinkSettings',
+        'response' => '\OpenAPI\Client\Model\TenantDeepLinkSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class TenantDeepLinkSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\TenantDeepLinkSettings|null
+     * @return \OpenAPI\Client\Model\TenantDeepLinkSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class TenantDeepLinkSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\TenantDeepLinkSettings|null $response The TenantDeepLinkSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\TenantDeepLinkSettingsDto|null $response The TenantDeepLinkSettingsDto object returned by the operation.
      *
      * @return self
      */

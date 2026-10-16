@@ -59,10 +59,10 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
-        'action' => '\OpenAPI\Client\Model\HistoryAction',
+        'action' => '\OpenAPI\Client\Model\HistoryActionDto',
         'initiator' => '\OpenAPI\Client\Model\EmployeeDto',
         'date' => '\OpenAPI\Client\Model\ApiDateTime',
-        'data' => '\OpenAPI\Client\Model\HistoryData',
+        'data' => '\OpenAPI\Client\Model\HistoryDataDto',
         'related' => '\OpenAPI\Client\Model\HistoryDto[]'
     ];
 
@@ -367,7 +367,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets action
      *
-     * @return \OpenAPI\Client\Model\HistoryAction
+     * @return \OpenAPI\Client\Model\HistoryActionDto
      */
     public function getAction()
     {
@@ -377,7 +377,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param \OpenAPI\Client\Model\HistoryAction $action What happened - the kind of event the record stands for, such as a file being uploaded, renamed, moved or  shared - with the key a client can key its own wording off.
+     * @param \OpenAPI\Client\Model\HistoryActionDto $action What happened - the kind of event the record stands for, such as a file being uploaded, renamed, moved or  shared - with the key a client can key its own wording off.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\HistoryData|null
+     * @return \OpenAPI\Client\Model\HistoryDataDto|null
      */
     public function getData()
     {
@@ -458,7 +458,7 @@ class HistoryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\HistoryData|null $data The history data. Absent for actions that carry no payload of their own - changing a room's  logo, icon colour or cover, whose interpreter returns no data (see  `RoomLogoChangedInterpreter`). It used to be declared required, which put it in the  OpenAPI document's required list while the null-dropping serializer left it out of the  response, so a generated client threw on any history page holding one of those entries.
+     * @param \OpenAPI\Client\Model\HistoryDataDto|null $data The history data. Absent for actions that carry no payload of their own - changing a room's  logo, icon colour or cover, whose interpreter returns no data (see  `RoomLogoChangedInterpreter`). It used to be declared required, which put it in the  OpenAPI document's required list while the null-dropping serializer left it out of the  response, so a generated client threw on any history page holding one of those entries.
      *
      * @return self
      */

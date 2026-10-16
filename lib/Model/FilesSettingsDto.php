@@ -103,14 +103,14 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'hide_confirm_convert_save' => 'bool',
         'hide_confirm_convert_open' => 'bool',
         'hide_confirm_room_lifetime' => 'bool',
-        'default_order' => '\OpenAPI\Client\Model\OrderBy',
+        'default_order' => '\OpenAPI\Client\Model\OrderByDto',
         'forcesave' => 'bool',
         'store_forcesave' => 'bool',
         'recent_section' => 'bool',
         'favorites_section' => 'bool',
         'templates_section' => 'bool',
         'download_tar_gz' => 'bool',
-        'automatically_clean_up' => '\OpenAPI\Client\Model\AutoCleanUpData',
+        'automatically_clean_up' => '\OpenAPI\Client\Model\AutoCleanUpDataDto',
         'can_search_by_content' => 'bool',
         'default_sharing_access_rights' => 'int[]',
         'max_upload_thread_count' => 'int',
@@ -2208,7 +2208,7 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets default_order
      *
-     * @return \OpenAPI\Client\Model\OrderBy|null
+     * @return \OpenAPI\Client\Model\OrderByDto|null
      */
     public function getDefaultOrder()
     {
@@ -2218,7 +2218,7 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_order
      *
-     * @param \OpenAPI\Client\Model\OrderBy|null $default_order The ordering the listing operations fall back to when a request names none. It follows the last order the  caller asked a listing for, so it changes on its own as the account is used.
+     * @param \OpenAPI\Client\Model\OrderByDto|null $default_order The ordering the listing operations fall back to when a request names none. It follows the last order the  caller asked a listing for, so it changes on its own as the account is used.
      *
      * @return self
      */
@@ -2397,7 +2397,7 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets automatically_clean_up
      *
-     * @return \OpenAPI\Client\Model\AutoCleanUpData|null
+     * @return \OpenAPI\Client\Model\AutoCleanUpDataDto|null
      */
     public function getAutomaticallyCleanUp()
     {
@@ -2407,7 +2407,7 @@ class FilesSettingsDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets automatically_clean_up
      *
-     * @param \OpenAPI\Client\Model\AutoCleanUpData|null $automatically_clean_up The trash auto-clearing setting of the caller, the same pair `GET api/2.0/files/settings/autocleanup` returns.
+     * @param \OpenAPI\Client\Model\AutoCleanUpDataDto|null $automatically_clean_up The trash auto-clearing setting of the caller, the same pair `GET api/2.0/files/settings/autocleanup` returns.
      *
      * @return self
      */

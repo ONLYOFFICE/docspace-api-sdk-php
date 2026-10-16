@@ -49,7 +49,7 @@ class AiEditorToolsCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiEditorToolsCall_request';
+    protected static $openAPIModelName = 'AiEditorToolsCallRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

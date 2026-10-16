@@ -49,7 +49,7 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiExportTextToDocx_request';
+    protected static $openAPIModelName = 'AiExportTextToDocxRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

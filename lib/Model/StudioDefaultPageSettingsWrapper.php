@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * StudioDefaultPageSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the StudioDefaultPageSettings object.
+ * @description The successful API response containing the StudioDefaultPageSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class StudioDefaultPageSettingsWrapper implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\StudioDefaultPageSettings',
+        'response' => '\OpenAPI\Client\Model\StudioDefaultPageSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class StudioDefaultPageSettingsWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\StudioDefaultPageSettings|null
+     * @return \OpenAPI\Client\Model\StudioDefaultPageSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class StudioDefaultPageSettingsWrapper implements ModelInterface, ArrayAccess, \
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\StudioDefaultPageSettings|null $response The StudioDefaultPageSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\StudioDefaultPageSettingsDto|null $response The StudioDefaultPageSettingsDto object returned by the operation.
      *
      * @return self
      */

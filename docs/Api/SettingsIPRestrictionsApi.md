@@ -13,7 +13,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getIpRestrictions()`
 
 ```php
-getIpRestrictions(): \OpenAPI\Client\Model\IPRestrictionArrayWrapper
+getIpRestrictions(): \OpenAPI\Client\Model\IpRestrictionArrayWrapper
 ```
 
 Get IP restrictions
@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\IPRestrictionArrayWrapper**](../Model/IPRestrictionArrayWrapper.md)
+[**\OpenAPI\Client\Model\IpRestrictionArrayWrapper**](../Model/IpRestrictionArrayWrapper.md)
 
 ### Authorization
 
@@ -89,7 +89,7 @@ try {
 ## `readIpRestrictionsSettings()`
 
 ```php
-readIpRestrictionsSettings(): \OpenAPI\Client\Model\IPRestrictionsSettingsWrapper
+readIpRestrictionsSettings(): \OpenAPI\Client\Model\IpRestrictionsSettingsWrapper
 ```
 
 Get IP restriction settings
@@ -103,7 +103,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\IPRestrictionsSettingsWrapper**](../Model/IPRestrictionsSettingsWrapper.md)
+[**\OpenAPI\Client\Model\IpRestrictionsSettingsWrapper**](../Model/IpRestrictionsSettingsWrapper.md)
 
 ### Authorization
 

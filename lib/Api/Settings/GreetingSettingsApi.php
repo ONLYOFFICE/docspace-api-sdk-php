@@ -1116,16 +1116,16 @@ class GreetingSettingsApi
      * REST API Reference for saveGreetingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-greeting-settings/
      *
-     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestsDto|null $greeting_settings_requests_dto greeting_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestDto|null $greeting_settings_request_dto greeting_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveGreetingSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveGreetingSettings($greeting_settings_requests_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
+    public function saveGreetingSettings($greeting_settings_request_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
     {
-        list($response) = $this->saveGreetingSettingsWithHttpInfo($greeting_settings_requests_dto, $contentType);
+        list($response) = $this->saveGreetingSettingsWithHttpInfo($greeting_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -1137,16 +1137,16 @@ class GreetingSettingsApi
      * REST API Reference for saveGreetingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-greeting-settings/
      *
-     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestsDto|null $greeting_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestDto|null $greeting_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveGreetingSettings'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveGreetingSettingsWithHttpInfo($greeting_settings_requests_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
+    public function saveGreetingSettingsWithHttpInfo($greeting_settings_request_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
     {
-        $request = $this->saveGreetingSettingsRequest($greeting_settings_requests_dto, $contentType);
+        $request = $this->saveGreetingSettingsRequest($greeting_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1191,12 +1191,6 @@ class GreetingSettingsApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1258,14 +1252,6 @@ class GreetingSettingsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -1281,15 +1267,15 @@ class GreetingSettingsApi
      * REST API Reference for saveGreetingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-greeting-settings/
      *
-     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestsDto|null $greeting_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestDto|null $greeting_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveGreetingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveGreetingSettingsAsync($greeting_settings_requests_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
+    public function saveGreetingSettingsAsync($greeting_settings_request_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
     {
-        return $this->saveGreetingSettingsAsyncWithHttpInfo($greeting_settings_requests_dto, $contentType)
+        return $this->saveGreetingSettingsAsyncWithHttpInfo($greeting_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1305,16 +1291,16 @@ class GreetingSettingsApi
      * REST API Reference for saveGreetingSettings Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-greeting-settings/
      *
-     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestsDto|null $greeting_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestDto|null $greeting_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveGreetingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveGreetingSettingsAsyncWithHttpInfo($greeting_settings_requests_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
+    public function saveGreetingSettingsAsyncWithHttpInfo($greeting_settings_request_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
     {
         $returnType = '\OpenAPI\Client\Model\StringWrapper';
-        $request = $this->saveGreetingSettingsRequest($greeting_settings_requests_dto, $contentType);
+        $request = $this->saveGreetingSettingsRequest($greeting_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1355,13 +1341,13 @@ class GreetingSettingsApi
     /**
      * Create request for operation 'saveGreetingSettings'
      *
-     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestsDto|null $greeting_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\GreetingSettingsRequestDto|null $greeting_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveGreetingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveGreetingSettingsRequest($greeting_settings_requests_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
+    public function saveGreetingSettingsRequest($greeting_settings_request_dto = null, string $contentType = self::contentTypes['saveGreetingSettings'][0])
     {
 
 
@@ -1384,12 +1370,12 @@ class GreetingSettingsApi
         );
 
         // for model (json/xml)
-        if (isset($greeting_settings_requests_dto)) {
+        if (isset($greeting_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($greeting_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($greeting_settings_request_dto));
             } else {
-                $httpBody = $greeting_settings_requests_dto;
+                $httpBody = $greeting_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

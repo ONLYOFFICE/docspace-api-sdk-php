@@ -186,7 +186,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function addMember($member_request_dto = null, string $contentType = self::contentTypes['addMember'][0])
     {
@@ -207,7 +207,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function addMemberWithHttpInfo($member_request_dto = null, string $contentType = self::contentTypes['addMember'][0])
     {
@@ -255,12 +255,6 @@ class ProfilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -302,14 +296,6 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -893,16 +879,16 @@ class ProfilesApi
      * REST API Reference for deleteMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMember'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function deleteMember($userid, string $contentType = self::contentTypes['deleteMember'][0])
+    public function deleteMember($user_id, string $contentType = self::contentTypes['deleteMember'][0])
     {
-        list($response) = $this->deleteMemberWithHttpInfo($userid, $contentType);
+        list($response) = $this->deleteMemberWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -914,16 +900,16 @@ class ProfilesApi
      * REST API Reference for deleteMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMember'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteMemberWithHttpInfo($userid, string $contentType = self::contentTypes['deleteMember'][0])
+    public function deleteMemberWithHttpInfo($user_id, string $contentType = self::contentTypes['deleteMember'][0])
     {
-        $request = $this->deleteMemberRequest($userid, $contentType);
+        $request = $this->deleteMemberRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -962,12 +948,6 @@ class ProfilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1027,14 +1007,6 @@ class ProfilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1058,15 +1030,15 @@ class ProfilesApi
      * REST API Reference for deleteMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMemberAsync($userid, string $contentType = self::contentTypes['deleteMember'][0])
+    public function deleteMemberAsync($user_id, string $contentType = self::contentTypes['deleteMember'][0])
     {
-        return $this->deleteMemberAsyncWithHttpInfo($userid, $contentType)
+        return $this->deleteMemberAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1082,16 +1054,16 @@ class ProfilesApi
      * REST API Reference for deleteMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteMemberAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['deleteMember'][0])
+    public function deleteMemberAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['deleteMember'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->deleteMemberRequest($userid, $contentType);
+        $request = $this->deleteMemberRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1132,24 +1104,24 @@ class ProfilesApi
     /**
      * Create request for operation 'deleteMember'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteMemberRequest($userid, string $contentType = self::contentTypes['deleteMember'][0])
+    public function deleteMemberRequest($user_id, string $contentType = self::contentTypes['deleteMember'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling deleteMember'
+                'Missing the required parameter $user_id when calling deleteMember'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}';
+        $resourcePath = '/api/2.0/people/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1159,10 +1131,10 @@ class ProfilesApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -1586,7 +1558,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getAllProfiles($count = null, $start_index = null, $filter_by = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAllProfiles'][0])
     {
@@ -1613,7 +1585,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAllProfilesWithHttpInfo($count = null, $start_index = null, $filter_by = null, $sort_by = null, $sort_order = null, $filter_separator = null, $filter_value = null, string $contentType = self::contentTypes['getAllProfiles'][0])
     {
@@ -1661,18 +1633,6 @@ class ProfilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -1714,22 +1674,6 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -2725,16 +2669,16 @@ class ProfilesApi
      * REST API Reference for getProfileByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-profile-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfileByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getProfileByUserId($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
+    public function getProfileByUserId($user_id, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
-        list($response) = $this->getProfileByUserIdWithHttpInfo($userid, $contentType);
+        list($response) = $this->getProfileByUserIdWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -2746,16 +2690,16 @@ class ProfilesApi
      * REST API Reference for getProfileByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-profile-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfileByUserId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProfileByUserIdWithHttpInfo($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
+    public function getProfileByUserIdWithHttpInfo($user_id, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
-        $request = $this->getProfileByUserIdRequest($userid, $contentType);
+        $request = $this->getProfileByUserIdRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2890,15 +2834,15 @@ class ProfilesApi
      * REST API Reference for getProfileByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-profile-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfileByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProfileByUserIdAsync($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
+    public function getProfileByUserIdAsync($user_id, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
-        return $this->getProfileByUserIdAsyncWithHttpInfo($userid, $contentType)
+        return $this->getProfileByUserIdAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2914,16 +2858,16 @@ class ProfilesApi
      * REST API Reference for getProfileByUserId Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-profile-by-user-id/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfileByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getProfileByUserIdAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
+    public function getProfileByUserIdAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->getProfileByUserIdRequest($userid, $contentType);
+        $request = $this->getProfileByUserIdRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2964,24 +2908,24 @@ class ProfilesApi
     /**
      * Create request for operation 'getProfileByUserId'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfileByUserId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getProfileByUserIdRequest($userid, string $contentType = self::contentTypes['getProfileByUserId'][0])
+    public function getProfileByUserIdRequest($user_id, string $contentType = self::contentTypes['getProfileByUserId'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getProfileByUserId'
+                'Missing the required parameter $user_id when calling getProfileByUserId'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}';
+        $resourcePath = '/api/2.0/people/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2991,10 +2935,10 @@ class ProfilesApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -3735,7 +3679,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function removeUsers($update_members_request_dto = null, string $contentType = self::contentTypes['removeUsers'][0])
     {
@@ -3756,7 +3700,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeUsersWithHttpInfo($update_members_request_dto = null, string $contentType = self::contentTypes['removeUsers'][0])
     {
@@ -3804,12 +3748,6 @@ class ProfilesApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -3851,14 +3789,6 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4072,7 +4002,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function resendUserInvites($update_members_request_dto = null, string $contentType = self::contentTypes['resendUserInvites'][0])
     {
@@ -4093,7 +4023,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function resendUserInvitesWithHttpInfo($update_members_request_dto = null, string $contentType = self::contentTypes['resendUserInvites'][0])
     {
@@ -4142,12 +4072,6 @@ class ProfilesApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4202,14 +4126,6 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -4418,17 +4334,17 @@ class ProfilesApi
      * REST API Reference for updateMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  \OpenAPI\Client\Model\UpdateMemberRequestDto $update_member_request_dto The request parameters for updating the user information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMember'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateMember($userid, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
+    public function updateMember($user_id, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
     {
-        list($response) = $this->updateMemberWithHttpInfo($userid, $update_member_request_dto, $contentType);
+        list($response) = $this->updateMemberWithHttpInfo($user_id, $update_member_request_dto, $contentType);
         return $response;
     }
 
@@ -4440,17 +4356,17 @@ class ProfilesApi
      * REST API Reference for updateMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  \OpenAPI\Client\Model\UpdateMemberRequestDto $update_member_request_dto The request parameters for updating the user information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMember'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateMemberWithHttpInfo($userid, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
+    public function updateMemberWithHttpInfo($user_id, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
     {
-        $request = $this->updateMemberRequest($userid, $update_member_request_dto, $contentType);
+        $request = $this->updateMemberRequest($user_id, $update_member_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4489,12 +4405,6 @@ class ProfilesApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4548,14 +4458,6 @@ class ProfilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -4571,16 +4473,16 @@ class ProfilesApi
      * REST API Reference for updateMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  \OpenAPI\Client\Model\UpdateMemberRequestDto $update_member_request_dto The request parameters for updating the user information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberAsync($userid, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
+    public function updateMemberAsync($user_id, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
     {
-        return $this->updateMemberAsyncWithHttpInfo($userid, $update_member_request_dto, $contentType)
+        return $this->updateMemberAsyncWithHttpInfo($user_id, $update_member_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4596,17 +4498,17 @@ class ProfilesApi
      * REST API Reference for updateMember Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member/
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  \OpenAPI\Client\Model\UpdateMemberRequestDto $update_member_request_dto The request parameters for updating the user information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberAsyncWithHttpInfo($userid, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
+    public function updateMemberAsyncWithHttpInfo($user_id, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->updateMemberRequest($userid, $update_member_request_dto, $contentType);
+        $request = $this->updateMemberRequest($user_id, $update_member_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4647,20 +4549,20 @@ class ProfilesApi
     /**
      * Create request for operation 'updateMember'
      *
-     * @param  string $userid The user ID. (required)
+     * @param  string $user_id The user ID. (required)
      * @param  \OpenAPI\Client\Model\UpdateMemberRequestDto $update_member_request_dto The request parameters for updating the user information. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMember'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateMemberRequest($userid, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
+    public function updateMemberRequest($user_id, $update_member_request_dto, string $contentType = self::contentTypes['updateMember'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling updateMember'
+                'Missing the required parameter $user_id when calling updateMember'
             );
         }
 
@@ -4672,7 +4574,7 @@ class ProfilesApi
         }
 
 
-        $resourcePath = '/api/2.0/people/{userid}';
+        $resourcePath = '/api/2.0/people/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4682,10 +4584,10 @@ class ProfilesApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -4781,17 +4683,17 @@ class ProfilesApi
      * REST API Reference for updateMemberCulture Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-culture/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\Culture|null $culture The culture name parameters. (optional)
+     * @param  string $user_id The user ID. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMemberCultureRequest|null $update_member_culture_request The culture name parameters. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberCulture'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function updateMemberCulture($userid, $culture = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
+    public function updateMemberCulture($user_id, $update_member_culture_request = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
     {
-        list($response) = $this->updateMemberCultureWithHttpInfo($userid, $culture, $contentType);
+        list($response) = $this->updateMemberCultureWithHttpInfo($user_id, $update_member_culture_request, $contentType);
         return $response;
     }
 
@@ -4803,17 +4705,17 @@ class ProfilesApi
      * REST API Reference for updateMemberCulture Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-culture/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\Culture|null $culture The culture name parameters. (optional)
+     * @param  string $user_id The user ID. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMemberCultureRequest|null $update_member_culture_request The culture name parameters. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberCulture'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EmployeeFullWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateMemberCultureWithHttpInfo($userid, $culture = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
+    public function updateMemberCultureWithHttpInfo($user_id, $update_member_culture_request = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
     {
-        $request = $this->updateMemberCultureRequest($userid, $culture, $contentType);
+        $request = $this->updateMemberCultureRequest($user_id, $update_member_culture_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4934,16 +4836,16 @@ class ProfilesApi
      * REST API Reference for updateMemberCulture Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-culture/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\Culture|null $culture The culture name parameters. (optional)
+     * @param  string $user_id The user ID. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMemberCultureRequest|null $update_member_culture_request The culture name parameters. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberCulture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberCultureAsync($userid, $culture = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
+    public function updateMemberCultureAsync($user_id, $update_member_culture_request = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
     {
-        return $this->updateMemberCultureAsyncWithHttpInfo($userid, $culture, $contentType)
+        return $this->updateMemberCultureAsyncWithHttpInfo($user_id, $update_member_culture_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4959,17 +4861,17 @@ class ProfilesApi
      * REST API Reference for updateMemberCulture Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/update-member-culture/
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\Culture|null $culture The culture name parameters. (optional)
+     * @param  string $user_id The user ID. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMemberCultureRequest|null $update_member_culture_request The culture name parameters. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberCulture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateMemberCultureAsyncWithHttpInfo($userid, $culture = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
+    public function updateMemberCultureAsyncWithHttpInfo($user_id, $update_member_culture_request = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EmployeeFullWrapper';
-        $request = $this->updateMemberCultureRequest($userid, $culture, $contentType);
+        $request = $this->updateMemberCultureRequest($user_id, $update_member_culture_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5010,26 +4912,26 @@ class ProfilesApi
     /**
      * Create request for operation 'updateMemberCulture'
      *
-     * @param  string $userid The user ID. (required)
-     * @param  \OpenAPI\Client\Model\Culture|null $culture The culture name parameters. (optional)
+     * @param  string $user_id The user ID. (required)
+     * @param  \OpenAPI\Client\Model\UpdateMemberCultureRequest|null $update_member_culture_request The culture name parameters. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateMemberCulture'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateMemberCultureRequest($userid, $culture = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
+    public function updateMemberCultureRequest($user_id, $update_member_culture_request = null, string $contentType = self::contentTypes['updateMemberCulture'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling updateMemberCulture'
+                'Missing the required parameter $user_id when calling updateMemberCulture'
             );
         }
 
 
 
-        $resourcePath = '/api/2.0/people/{userid}/culture';
+        $resourcePath = '/api/2.0/people/{userId}/culture';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -5039,10 +4941,10 @@ class ProfilesApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -5055,12 +4957,12 @@ class ProfilesApi
         );
 
         // for model (json/xml)
-        if (isset($culture)) {
+        if (isset($update_member_culture_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($culture));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_member_culture_request));
             } else {
-                $httpBody = $culture;
+                $httpBody = $update_member_culture_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

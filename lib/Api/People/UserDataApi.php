@@ -486,16 +486,16 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getReassignProgress($userid, string $contentType = self::contentTypes['getReassignProgress'][0])
+    public function getReassignProgress($user_id, string $contentType = self::contentTypes['getReassignProgress'][0])
     {
-        list($response) = $this->getReassignProgressWithHttpInfo($userid, $contentType);
+        list($response) = $this->getReassignProgressWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -507,16 +507,16 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getReassignProgressWithHttpInfo($userid, string $contentType = self::contentTypes['getReassignProgress'][0])
+    public function getReassignProgressWithHttpInfo($user_id, string $contentType = self::contentTypes['getReassignProgress'][0])
     {
-        $request = $this->getReassignProgressRequest($userid, $contentType);
+        $request = $this->getReassignProgressRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -651,15 +651,15 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReassignProgressAsync($userid, string $contentType = self::contentTypes['getReassignProgress'][0])
+    public function getReassignProgressAsync($user_id, string $contentType = self::contentTypes['getReassignProgress'][0])
     {
-        return $this->getReassignProgressAsyncWithHttpInfo($userid, $contentType)
+        return $this->getReassignProgressAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -675,16 +675,16 @@ class UserDataApi
      * REST API Reference for getReassignProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-reassign-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getReassignProgressAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getReassignProgress'][0])
+    public function getReassignProgressAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getReassignProgress'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TaskProgressResponseWrapper';
-        $request = $this->getReassignProgressRequest($userid, $contentType);
+        $request = $this->getReassignProgressRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -725,24 +725,24 @@ class UserDataApi
     /**
      * Create request for operation 'getReassignProgress'
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getReassignProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getReassignProgressRequest($userid, string $contentType = self::contentTypes['getReassignProgress'][0])
+    public function getReassignProgressRequest($user_id, string $contentType = self::contentTypes['getReassignProgress'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getReassignProgress'
+                'Missing the required parameter $user_id when calling getReassignProgress'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/reassign/progress/{userid}';
+        $resourcePath = '/api/2.0/people/reassign/progress/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -752,10 +752,10 @@ class UserDataApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -844,16 +844,16 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getRemoveProgress($userid, string $contentType = self::contentTypes['getRemoveProgress'][0])
+    public function getRemoveProgress($user_id, string $contentType = self::contentTypes['getRemoveProgress'][0])
     {
-        list($response) = $this->getRemoveProgressWithHttpInfo($userid, $contentType);
+        list($response) = $this->getRemoveProgressWithHttpInfo($user_id, $contentType);
         return $response;
     }
 
@@ -865,16 +865,16 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRemoveProgressWithHttpInfo($userid, string $contentType = self::contentTypes['getRemoveProgress'][0])
+    public function getRemoveProgressWithHttpInfo($user_id, string $contentType = self::contentTypes['getRemoveProgress'][0])
     {
-        $request = $this->getRemoveProgressRequest($userid, $contentType);
+        $request = $this->getRemoveProgressRequest($user_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1009,15 +1009,15 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRemoveProgressAsync($userid, string $contentType = self::contentTypes['getRemoveProgress'][0])
+    public function getRemoveProgressAsync($user_id, string $contentType = self::contentTypes['getRemoveProgress'][0])
     {
-        return $this->getRemoveProgressAsyncWithHttpInfo($userid, $contentType)
+        return $this->getRemoveProgressAsyncWithHttpInfo($user_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1033,16 +1033,16 @@ class UserDataApi
      * REST API Reference for getRemoveProgress Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/get-remove-progress/
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRemoveProgressAsyncWithHttpInfo($userid, string $contentType = self::contentTypes['getRemoveProgress'][0])
+    public function getRemoveProgressAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getRemoveProgress'][0])
     {
         $returnType = '\OpenAPI\Client\Model\TaskProgressResponseWrapper';
-        $request = $this->getRemoveProgressRequest($userid, $contentType);
+        $request = $this->getRemoveProgressRequest($user_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1083,24 +1083,24 @@ class UserDataApi
     /**
      * Create request for operation 'getRemoveProgress'
      *
-     * @param  string $userid The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
+     * @param  string $user_id The ID of the user the operation applies to, taken from the route. For a progress operation it has to be the  same ID that was passed when the job was started. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRemoveProgress'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRemoveProgressRequest($userid, string $contentType = self::contentTypes['getRemoveProgress'][0])
+    public function getRemoveProgressRequest($user_id, string $contentType = self::contentTypes['getRemoveProgress'][0])
     {
 
-        // verify the required parameter 'userid' is set
-        if ($userid === null || (is_array($userid) && count($userid) === 0)) {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $userid when calling getRemoveProgress'
+                'Missing the required parameter $user_id when calling getRemoveProgress'
             );
         }
 
 
-        $resourcePath = '/api/2.0/people/remove/progress/{userid}';
+        $resourcePath = '/api/2.0/people/remove/progress/{userId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1110,10 +1110,10 @@ class UserDataApi
 
 
         // path params
-        if ($userid !== null) {
+        if ($user_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'userid' . '}',
-                ObjectSerializer::toPathValue($userid),
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
                 $resourcePath
             );
         }
@@ -1468,7 +1468,7 @@ class UserDataApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $user_id,
-            'UserId', // param base name
+            'userId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1477,7 +1477,7 @@ class UserDataApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $type,
-            'Type', // param base name
+            'type', // param base name
             'EmployeeType', // openApiType
             'form', // style
             true, // explode
@@ -2897,7 +2897,7 @@ class UserDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function terminateReassign($terminate_request_dto = null, string $contentType = self::contentTypes['terminateReassign'][0])
     {
@@ -2918,7 +2918,7 @@ class UserDataApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\TaskProgressResponseWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function terminateReassignWithHttpInfo($terminate_request_dto = null, string $contentType = self::contentTypes['terminateReassign'][0])
     {
@@ -2967,12 +2967,6 @@ class UserDataApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3027,14 +3021,6 @@ class UserDataApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -3317,14 +3303,6 @@ class UserDataApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

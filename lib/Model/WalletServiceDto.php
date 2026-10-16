@@ -65,10 +65,10 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'free' => 'bool',
         'trial' => 'bool',
         'features' => '\OpenAPI\Client\Model\TenantQuotaFeatureDto[]',
-        'users_quota' => '\OpenAPI\Client\Model\TenantEntityQuotaSettings',
-        'rooms_quota' => '\OpenAPI\Client\Model\TenantEntityQuotaSettings',
-        'ai_agents_quota' => '\OpenAPI\Client\Model\TenantEntityQuotaSettings',
-        'tenant_custom_quota' => '\OpenAPI\Client\Model\TenantQuotaSettings',
+        'users_quota' => '\OpenAPI\Client\Model\EntityQuotaDto',
+        'rooms_quota' => '\OpenAPI\Client\Model\EntityQuotaDto',
+        'ai_agents_quota' => '\OpenAPI\Client\Model\EntityQuotaDto',
+        'tenant_custom_quota' => '\OpenAPI\Client\Model\TenantQuotaSettingsDto',
         'due_date' => '\DateTime',
         'inner_services' => '\OpenAPI\Client\Model\WalletServiceDto[]',
         'service_name' => 'string'
@@ -591,7 +591,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets users_quota
      *
-     * @return \OpenAPI\Client\Model\TenantEntityQuotaSettings|null
+     * @return \OpenAPI\Client\Model\EntityQuotaDto|null
      */
     public function getUsersQuota()
     {
@@ -601,7 +601,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets users_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $users_quota The per-member storage allowance an administrator has set on top of the quota, and whether it is applied  at all. It describes the live portal rather than this quota, so every entry of a catalogue listing repeats  the same values, and it is empty unless the portal is a server installation or its plan includes  statistics.
+     * @param \OpenAPI\Client\Model\EntityQuotaDto|null $users_quota The per-member storage allowance an administrator has set on top of the quota, and whether it is applied  at all. It describes the live portal rather than this quota, so every entry of a catalogue listing repeats  the same values, and it is empty unless the portal is a server installation or its plan includes  statistics.
      *
      * @return self
      */
@@ -618,7 +618,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rooms_quota
      *
-     * @return \OpenAPI\Client\Model\TenantEntityQuotaSettings|null
+     * @return \OpenAPI\Client\Model\EntityQuotaDto|null
      */
     public function getRoomsQuota()
     {
@@ -628,7 +628,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rooms_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $rooms_quota The same kind of per-room storage override, filled in and read the same way as `usersQuota`.
+     * @param \OpenAPI\Client\Model\EntityQuotaDto|null $rooms_quota The same kind of per-room storage override, filled in and read the same way as `usersQuota`.
      *
      * @return self
      */
@@ -645,7 +645,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ai_agents_quota
      *
-     * @return \OpenAPI\Client\Model\TenantEntityQuotaSettings|null
+     * @return \OpenAPI\Client\Model\EntityQuotaDto|null
      */
     public function getAiAgentsQuota()
     {
@@ -655,7 +655,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ai_agents_quota
      *
-     * @param \OpenAPI\Client\Model\TenantEntityQuotaSettings|null $ai_agents_quota The same kind of per-agent storage override for AI agents, filled in and read the same way as  `usersQuota`.
+     * @param \OpenAPI\Client\Model\EntityQuotaDto|null $ai_agents_quota The same kind of per-agent storage override for AI agents, filled in and read the same way as  `usersQuota`.
      *
      * @return self
      */
@@ -672,7 +672,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tenant_custom_quota
      *
-     * @return \OpenAPI\Client\Model\TenantQuotaSettings|null
+     * @return \OpenAPI\Client\Model\TenantQuotaSettingsDto|null
      */
     public function getTenantCustomQuota()
     {
@@ -682,7 +682,7 @@ class WalletServiceDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tenant_custom_quota
      *
-     * @param \OpenAPI\Client\Model\TenantQuotaSettings|null $tenant_custom_quota The storage allowance an administrator has set for the portal as a whole, which caps it below what the  quota grants. Filled in under the same conditions as `usersQuota`.
+     * @param \OpenAPI\Client\Model\TenantQuotaSettingsDto|null $tenant_custom_quota The storage allowance an administrator has set for the portal as a whole, which caps it below what the  quota grants. Filled in under the same conditions as `usersQuota`.
      *
      * @return self
      */

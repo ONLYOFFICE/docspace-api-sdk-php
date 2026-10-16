@@ -241,7 +241,7 @@ try {
 ## `saveGreetingSettings()`
 
 ```php
-saveGreetingSettings($greeting_settings_requests_dto): \OpenAPI\Client\Model\StringWrapper
+saveGreetingSettings($greeting_settings_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Save the greeting settings
@@ -253,7 +253,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **greeting_settings_requests_dto** | [**\OpenAPI\Client\Model\GreetingSettingsRequestsDto**](../Model/GreetingSettingsRequestsDto.md)|  | [optional] |
+| **greeting_settings_request_dto** | [**\OpenAPI\Client\Model\GreetingSettingsRequestDto**](../Model/GreetingSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -298,10 +298,10 @@ $apiInstance = new OpenAPI\Client\Api\GreetingSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$greeting_settings_requests_dto = new \OpenAPI\Client\Model\GreetingSettingsRequestsDto(); // \OpenAPI\Client\Model\GreetingSettingsRequestsDto
+$greeting_settings_request_dto = new \OpenAPI\Client\Model\GreetingSettingsRequestDto(); // \OpenAPI\Client\Model\GreetingSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveGreetingSettings($greeting_settings_requests_dto);
+    $result = $apiInstance->saveGreetingSettings($greeting_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GreetingSettingsApi->saveGreetingSettings: ', $e->getMessage(), PHP_EOL;

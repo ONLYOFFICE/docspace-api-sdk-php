@@ -60,7 +60,7 @@ class StorageDto implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'title' => 'string',
-        'properties' => '\OpenAPI\Client\Model\AuthKey[]',
+        'properties' => '\OpenAPI\Client\Model\AuthKeyDto[]',
         'current' => 'bool',
         'is_set' => 'bool'
     ];
@@ -401,7 +401,7 @@ class StorageDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets properties
      *
-     * @return \OpenAPI\Client\Model\AuthKey[]|null
+     * @return \OpenAPI\Client\Model\AuthKeyDto[]|null
      */
     public function getProperties()
     {
@@ -411,7 +411,7 @@ class StorageDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets properties
      *
-     * @param \OpenAPI\Client\Model\AuthKey[]|null $properties The settings the provider expects, each with its key, its localised label and the value the server  currently holds. For the entry marked `current` the values come from the portal's saved storage settings  and for the others from the installation configuration, so a setting nobody has configured comes back with  an empty value rather than being left out.
+     * @param \OpenAPI\Client\Model\AuthKeyDto[]|null $properties The settings the provider expects, each with its key, its localised label and the value the server  currently holds. For the entry marked `current` the values come from the portal's saved storage settings  and for the others from the installation configuration, so a setting nobody has configured comes back with  an empty value rather than being left out.
      *
      * @return self
      */

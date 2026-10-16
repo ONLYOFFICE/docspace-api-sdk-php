@@ -49,7 +49,7 @@ class AiWebSearchConfigureRequest implements ModelInterface, ArrayAccess, \JsonS
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiWebSearchConfigure_request';
+    protected static $openAPIModelName = 'AiWebSearchConfigureRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

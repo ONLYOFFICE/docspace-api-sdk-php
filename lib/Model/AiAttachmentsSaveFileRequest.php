@@ -49,7 +49,7 @@ class AiAttachmentsSaveFileRequest implements ModelInterface, ArrayAccess, \Json
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAttachmentsSaveFile_request';
+    protected static $openAPIModelName = 'AiAttachmentsSaveFileRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

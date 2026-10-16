@@ -84,6 +84,9 @@ class PreferencesApi
         'aiPreferencesGetReasoningLevel' => [
             'application/json',
         ],
+        'aiPreferencesGetToolPermissionMode' => [
+            'application/json',
+        ],
         'aiPreferencesIsDeepModeSet' => [
             'application/json',
         ],
@@ -91,6 +94,9 @@ class PreferencesApi
             'application/json',
         ],
         'aiPreferencesSetReasoningLevel' => [
+            'application/json',
+        ],
+        'aiPreferencesSetToolPermissionMode' => [
             'application/json',
         ],
     ];
@@ -150,16 +156,16 @@ class PreferencesApi
      * REST API Reference for aiPreferencesClearDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-clear-deep-mode/
      *
-     * @param  string $body The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
+     * @param  string $ai_preferences_clear_deep_mode_request The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesClearDeepMode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiPreferencesClearDeepMode($body, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
+    public function aiPreferencesClearDeepMode($ai_preferences_clear_deep_mode_request, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
     {
-        list($response) = $this->aiPreferencesClearDeepModeWithHttpInfo($body, $contentType);
+        list($response) = $this->aiPreferencesClearDeepModeWithHttpInfo($ai_preferences_clear_deep_mode_request, $contentType);
         return $response;
     }
 
@@ -171,16 +177,16 @@ class PreferencesApi
      * REST API Reference for aiPreferencesClearDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-clear-deep-mode/
      *
-     * @param  string $body The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
+     * @param  string $ai_preferences_clear_deep_mode_request The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesClearDeepMode'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiPreferencesClearDeepModeWithHttpInfo($body, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
+    public function aiPreferencesClearDeepModeWithHttpInfo($ai_preferences_clear_deep_mode_request, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
     {
-        $request = $this->aiPreferencesClearDeepModeRequest($body, $contentType);
+        $request = $this->aiPreferencesClearDeepModeRequest($ai_preferences_clear_deep_mode_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -209,6 +215,12 @@ class PreferencesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -268,6 +280,14 @@ class PreferencesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -315,15 +335,15 @@ class PreferencesApi
      * REST API Reference for aiPreferencesClearDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-clear-deep-mode/
      *
-     * @param  string $body The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
+     * @param  string $ai_preferences_clear_deep_mode_request The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesClearDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesClearDeepModeAsync($body, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
+    public function aiPreferencesClearDeepModeAsync($ai_preferences_clear_deep_mode_request, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
     {
-        return $this->aiPreferencesClearDeepModeAsyncWithHttpInfo($body, $contentType)
+        return $this->aiPreferencesClearDeepModeAsyncWithHttpInfo($ai_preferences_clear_deep_mode_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -339,16 +359,16 @@ class PreferencesApi
      * REST API Reference for aiPreferencesClearDeepMode Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-clear-deep-mode/
      *
-     * @param  string $body The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
+     * @param  string $ai_preferences_clear_deep_mode_request The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesClearDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiPreferencesClearDeepModeAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
+    public function aiPreferencesClearDeepModeAsyncWithHttpInfo($ai_preferences_clear_deep_mode_request, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiPreferencesClearDeepModeRequest($body, $contentType);
+        $request = $this->aiPreferencesClearDeepModeRequest($ai_preferences_clear_deep_mode_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -389,19 +409,19 @@ class PreferencesApi
     /**
      * Create request for operation 'aiPreferencesClearDeepMode'
      *
-     * @param  string $body The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
+     * @param  string $ai_preferences_clear_deep_mode_request The ID of the room whose preference is cleared, as a bare JSON string. Send an empty body to clear the portal-wide preference. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesClearDeepMode'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiPreferencesClearDeepModeRequest($body, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
+    public function aiPreferencesClearDeepModeRequest($ai_preferences_clear_deep_mode_request, string $contentType = self::contentTypes['aiPreferencesClearDeepMode'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_preferences_clear_deep_mode_request' is set
+        if ($ai_preferences_clear_deep_mode_request === null || (is_array($ai_preferences_clear_deep_mode_request) && count($ai_preferences_clear_deep_mode_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiPreferencesClearDeepMode'
+                'Missing the required parameter $ai_preferences_clear_deep_mode_request when calling aiPreferencesClearDeepMode'
             );
         }
 
@@ -424,12 +444,12 @@ class PreferencesApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_preferences_clear_deep_mode_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_preferences_clear_deep_mode_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_preferences_clear_deep_mode_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -499,7 +519,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPreferencesGetDeepMode($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
@@ -520,7 +540,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPreferencesGetDeepModeWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetDeepMode'][0])
     {
@@ -553,6 +573,12 @@ class PreferencesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         'bool',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -602,6 +628,14 @@ class PreferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'bool',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -825,7 +859,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiAiReasoningLevel|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiReasoningLevel|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPreferencesGetReasoningLevel($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetReasoningLevel'][0])
     {
@@ -846,7 +880,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiAiReasoningLevel|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiReasoningLevel|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPreferencesGetReasoningLevelWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetReasoningLevel'][0])
     {
@@ -878,7 +912,13 @@ class PreferencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiAiReasoningLevel',
+                        '\OpenAPI\Client\Model\AiReasoningLevel',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -918,7 +958,7 @@ class PreferencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiAiReasoningLevel',
+                '\OpenAPI\Client\Model\AiReasoningLevel',
                 $request,
                 $response,
             );
@@ -927,7 +967,15 @@ class PreferencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiAiReasoningLevel',
+                        '\OpenAPI\Client\Model\AiReasoningLevel',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1003,7 +1051,7 @@ class PreferencesApi
      */
     public function aiPreferencesGetReasoningLevelAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetReasoningLevel'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiAiReasoningLevel';
+        $returnType = '\OpenAPI\Client\Model\AiReasoningLevel';
         $request = $this->aiPreferencesGetReasoningLevelRequest($entity_id, $contentType);
 
         return $this->client
@@ -1139,6 +1187,346 @@ class PreferencesApi
     }
 
     /**
+     * Operation aiPreferencesGetToolPermissionMode
+     *
+     * Get tool permission mode
+     *
+     * REST API Reference for aiPreferencesGetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-tool-permission-mode/
+     *
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\AiChatToolPermissionMode|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     */
+    public function aiPreferencesGetToolPermissionMode($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetToolPermissionMode'][0])
+    {
+        list($response) = $this->aiPreferencesGetToolPermissionModeWithHttpInfo($entity_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation aiPreferencesGetToolPermissionModeWithHttpInfo
+     *
+     * Get tool permission mode
+     *
+     * REST API Reference for aiPreferencesGetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-tool-permission-mode/
+     *
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\AiChatToolPermissionMode|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function aiPreferencesGetToolPermissionModeWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetToolPermissionMode'][0])
+    {
+        $request = $this->aiPreferencesGetToolPermissionModeRequest($entity_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiChatToolPermissionMode',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\AiChatToolPermissionMode',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiChatToolPermissionMode',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation aiPreferencesGetToolPermissionModeAsync
+     *
+     * Get tool permission mode
+     *
+     * REST API Reference for aiPreferencesGetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-tool-permission-mode/
+     *
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiPreferencesGetToolPermissionModeAsync($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetToolPermissionMode'][0])
+    {
+        return $this->aiPreferencesGetToolPermissionModeAsyncWithHttpInfo($entity_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation aiPreferencesGetToolPermissionModeAsyncWithHttpInfo
+     *
+     * Get tool permission mode
+     *
+     * REST API Reference for aiPreferencesGetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-get-tool-permission-mode/
+     *
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiPreferencesGetToolPermissionModeAsyncWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetToolPermissionMode'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\AiChatToolPermissionMode';
+        $request = $this->aiPreferencesGetToolPermissionModeRequest($entity_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'aiPreferencesGetToolPermissionMode'
+     *
+     * @param  string|null $entity_id The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesGetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function aiPreferencesGetToolPermissionModeRequest($entity_id = null, string $contentType = self::contentTypes['aiPreferencesGetToolPermissionMode'][0])
+    {
+
+
+
+        $resourcePath = '/api/2.0/ai/preferences/get-tool-permission-mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $entity_id,
+            'entityId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation aiPreferencesIsDeepModeSet
      *
      * Is deep mode set
@@ -1151,7 +1539,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPreferencesIsDeepModeSet($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
@@ -1172,7 +1560,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of bool|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPreferencesIsDeepModeSetWithHttpInfo($entity_id = null, string $contentType = self::contentTypes['aiPreferencesIsDeepModeSet'][0])
     {
@@ -1205,6 +1593,12 @@ class PreferencesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         'bool',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1254,6 +1648,14 @@ class PreferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'bool',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1835,7 +2237,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiPreferencesSetReasoningLevel($ai_preferences_set_reasoning_level_request, string $contentType = self::contentTypes['aiPreferencesSetReasoningLevel'][0])
     {
@@ -1856,7 +2258,7 @@ class PreferencesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiPreferencesSetReasoningLevelWithHttpInfo($ai_preferences_set_reasoning_level_request, string $contentType = self::contentTypes['aiPreferencesSetReasoningLevel'][0])
     {
@@ -1889,6 +2291,12 @@ class PreferencesApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1944,6 +2352,14 @@ class PreferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2110,6 +2526,364 @@ class PreferencesApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_preferences_set_reasoning_level_request));
             } else {
                 $httpBody = $ai_preferences_set_reasoning_level_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation aiPreferencesSetToolPermissionMode
+     *
+     * Set tool permission mode
+     *
+     * REST API Reference for aiPreferencesSetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-set-tool-permission-mode/
+     *
+     * @param  \OpenAPI\Client\Model\AiPreferencesSetToolPermissionModeRequest $ai_preferences_set_tool_permission_mode_request ai_preferences_set_tool_permission_mode_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesSetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     */
+    public function aiPreferencesSetToolPermissionMode($ai_preferences_set_tool_permission_mode_request, string $contentType = self::contentTypes['aiPreferencesSetToolPermissionMode'][0])
+    {
+        list($response) = $this->aiPreferencesSetToolPermissionModeWithHttpInfo($ai_preferences_set_tool_permission_mode_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation aiPreferencesSetToolPermissionModeWithHttpInfo
+     *
+     * Set tool permission mode
+     *
+     * REST API Reference for aiPreferencesSetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-set-tool-permission-mode/
+     *
+     * @param  \OpenAPI\Client\Model\AiPreferencesSetToolPermissionModeRequest $ai_preferences_set_tool_permission_mode_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesSetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function aiPreferencesSetToolPermissionModeWithHttpInfo($ai_preferences_set_tool_permission_mode_request, string $contentType = self::contentTypes['aiPreferencesSetToolPermissionMode'][0])
+    {
+        $request = $this->aiPreferencesSetToolPermissionModeRequest($ai_preferences_set_tool_permission_mode_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\OpenAPI\Client\Model\AiSuccessResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation aiPreferencesSetToolPermissionModeAsync
+     *
+     * Set tool permission mode
+     *
+     * REST API Reference for aiPreferencesSetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-set-tool-permission-mode/
+     *
+     * @param  \OpenAPI\Client\Model\AiPreferencesSetToolPermissionModeRequest $ai_preferences_set_tool_permission_mode_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesSetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiPreferencesSetToolPermissionModeAsync($ai_preferences_set_tool_permission_mode_request, string $contentType = self::contentTypes['aiPreferencesSetToolPermissionMode'][0])
+    {
+        return $this->aiPreferencesSetToolPermissionModeAsyncWithHttpInfo($ai_preferences_set_tool_permission_mode_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation aiPreferencesSetToolPermissionModeAsyncWithHttpInfo
+     *
+     * Set tool permission mode
+     *
+     * REST API Reference for aiPreferencesSetToolPermissionMode Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-preferences-set-tool-permission-mode/
+     *
+     * @param  \OpenAPI\Client\Model\AiPreferencesSetToolPermissionModeRequest $ai_preferences_set_tool_permission_mode_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesSetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function aiPreferencesSetToolPermissionModeAsyncWithHttpInfo($ai_preferences_set_tool_permission_mode_request, string $contentType = self::contentTypes['aiPreferencesSetToolPermissionMode'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $request = $this->aiPreferencesSetToolPermissionModeRequest($ai_preferences_set_tool_permission_mode_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'aiPreferencesSetToolPermissionMode'
+     *
+     * @param  \OpenAPI\Client\Model\AiPreferencesSetToolPermissionModeRequest $ai_preferences_set_tool_permission_mode_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiPreferencesSetToolPermissionMode'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function aiPreferencesSetToolPermissionModeRequest($ai_preferences_set_tool_permission_mode_request, string $contentType = self::contentTypes['aiPreferencesSetToolPermissionMode'][0])
+    {
+
+        // verify the required parameter 'ai_preferences_set_tool_permission_mode_request' is set
+        if ($ai_preferences_set_tool_permission_mode_request === null || (is_array($ai_preferences_set_tool_permission_mode_request) && count($ai_preferences_set_tool_permission_mode_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ai_preferences_set_tool_permission_mode_request when calling aiPreferencesSetToolPermissionMode'
+            );
+        }
+
+
+        $resourcePath = '/api/2.0/ai/preferences/set-tool-permission-mode';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($ai_preferences_set_tool_permission_mode_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_preferences_set_tool_permission_mode_request));
+            } else {
+                $httpBody = $ai_preferences_set_tool_permission_mode_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

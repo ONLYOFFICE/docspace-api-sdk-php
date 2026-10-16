@@ -49,7 +49,7 @@ class AiAssignmentsAssignRequest implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @var string
      */
-    protected static $openAPIModelName = 'aiAssignmentsAssign_request';
+    protected static $openAPIModelName = 'AiAssignmentsAssignRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization

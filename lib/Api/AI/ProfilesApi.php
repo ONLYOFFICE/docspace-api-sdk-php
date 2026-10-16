@@ -161,7 +161,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiProfilesCreate400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiProfilesCreate($ai_create_profile_input, string $contentType = self::contentTypes['aiProfilesCreate'][0])
     {
@@ -182,7 +182,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiProfilesCreate400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiProfilesCreateWithHttpInfo($ai_create_profile_input, string $contentType = self::contentTypes['aiProfilesCreate'][0])
     {
@@ -220,7 +220,7 @@ class ProfilesApi
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiProfilesCreate400Response',
                         $request,
                         $response,
                     );
@@ -283,7 +283,7 @@ class ProfilesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiProfilesCreate400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -514,16 +514,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-delete/
      *
-     * @param  string $body The ID of the profile to delete, as a bare JSON string. (required)
+     * @param  string $ai_profiles_delete_request The ID of the profile to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiProfilesDelete($body, string $contentType = self::contentTypes['aiProfilesDelete'][0])
+    public function aiProfilesDelete($ai_profiles_delete_request, string $contentType = self::contentTypes['aiProfilesDelete'][0])
     {
-        list($response) = $this->aiProfilesDeleteWithHttpInfo($body, $contentType);
+        list($response) = $this->aiProfilesDeleteWithHttpInfo($ai_profiles_delete_request, $contentType);
         return $response;
     }
 
@@ -535,16 +535,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-delete/
      *
-     * @param  string $body The ID of the profile to delete, as a bare JSON string. (required)
+     * @param  string $ai_profiles_delete_request The ID of the profile to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesDelete'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiProfilesDeleteWithHttpInfo($body, string $contentType = self::contentTypes['aiProfilesDelete'][0])
+    public function aiProfilesDeleteWithHttpInfo($ai_profiles_delete_request, string $contentType = self::contentTypes['aiProfilesDelete'][0])
     {
-        $request = $this->aiProfilesDeleteRequest($body, $contentType);
+        $request = $this->aiProfilesDeleteRequest($ai_profiles_delete_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -693,15 +693,15 @@ class ProfilesApi
      * REST API Reference for aiProfilesDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-delete/
      *
-     * @param  string $body The ID of the profile to delete, as a bare JSON string. (required)
+     * @param  string $ai_profiles_delete_request The ID of the profile to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiProfilesDeleteAsync($body, string $contentType = self::contentTypes['aiProfilesDelete'][0])
+    public function aiProfilesDeleteAsync($ai_profiles_delete_request, string $contentType = self::contentTypes['aiProfilesDelete'][0])
     {
-        return $this->aiProfilesDeleteAsyncWithHttpInfo($body, $contentType)
+        return $this->aiProfilesDeleteAsyncWithHttpInfo($ai_profiles_delete_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -717,16 +717,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesDelete Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-delete/
      *
-     * @param  string $body The ID of the profile to delete, as a bare JSON string. (required)
+     * @param  string $ai_profiles_delete_request The ID of the profile to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiProfilesDeleteAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiProfilesDelete'][0])
+    public function aiProfilesDeleteAsyncWithHttpInfo($ai_profiles_delete_request, string $contentType = self::contentTypes['aiProfilesDelete'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiProfilesDeleteRequest($body, $contentType);
+        $request = $this->aiProfilesDeleteRequest($ai_profiles_delete_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -767,19 +767,19 @@ class ProfilesApi
     /**
      * Create request for operation 'aiProfilesDelete'
      *
-     * @param  string $body The ID of the profile to delete, as a bare JSON string. (required)
+     * @param  string $ai_profiles_delete_request The ID of the profile to delete, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiProfilesDeleteRequest($body, string $contentType = self::contentTypes['aiProfilesDelete'][0])
+    public function aiProfilesDeleteRequest($ai_profiles_delete_request, string $contentType = self::contentTypes['aiProfilesDelete'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_profiles_delete_request' is set
+        if ($ai_profiles_delete_request === null || (is_array($ai_profiles_delete_request) && count($ai_profiles_delete_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiProfilesDelete'
+                'Missing the required parameter $ai_profiles_delete_request when calling aiProfilesDelete'
             );
         }
 
@@ -802,12 +802,12 @@ class ProfilesApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_profiles_delete_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_profiles_delete_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_profiles_delete_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1548,7 +1548,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiModel[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiModel[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiProfilesListModels($profile_id, string $contentType = self::contentTypes['aiProfilesListModels'][0])
     {
@@ -1569,7 +1569,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiModel[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiModel[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiProfilesListModelsWithHttpInfo($profile_id, string $contentType = self::contentTypes['aiProfilesListModels'][0])
     {
@@ -1618,6 +1618,12 @@ class ProfilesApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1684,6 +1690,14 @@ class ProfilesApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -2275,16 +2289,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/
      *
-     * @param  string $body The ID of the profile to probe, as a bare JSON string. (required)
+     * @param  string $ai_profiles_test_connection_request The ID of the profile to probe, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesTestConnection'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiProfilesTestConnection($body, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
+    public function aiProfilesTestConnection($ai_profiles_test_connection_request, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
     {
-        list($response) = $this->aiProfilesTestConnectionWithHttpInfo($body, $contentType);
+        list($response) = $this->aiProfilesTestConnectionWithHttpInfo($ai_profiles_test_connection_request, $contentType);
         return $response;
     }
 
@@ -2296,16 +2310,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/
      *
-     * @param  string $body The ID of the profile to probe, as a bare JSON string. (required)
+     * @param  string $ai_profiles_test_connection_request The ID of the profile to probe, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesTestConnection'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiProfilesTestConnection200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiProfilesTestConnectionWithHttpInfo($body, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
+    public function aiProfilesTestConnectionWithHttpInfo($ai_profiles_test_connection_request, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
     {
-        $request = $this->aiProfilesTestConnectionRequest($body, $contentType);
+        $request = $this->aiProfilesTestConnectionRequest($ai_profiles_test_connection_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2350,6 +2364,12 @@ class ProfilesApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -2423,6 +2443,14 @@ class ProfilesApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 413:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2454,15 +2482,15 @@ class ProfilesApi
      * REST API Reference for aiProfilesTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/
      *
-     * @param  string $body The ID of the profile to probe, as a bare JSON string. (required)
+     * @param  string $ai_profiles_test_connection_request The ID of the profile to probe, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesTestConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiProfilesTestConnectionAsync($body, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
+    public function aiProfilesTestConnectionAsync($ai_profiles_test_connection_request, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
     {
-        return $this->aiProfilesTestConnectionAsyncWithHttpInfo($body, $contentType)
+        return $this->aiProfilesTestConnectionAsyncWithHttpInfo($ai_profiles_test_connection_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2478,16 +2506,16 @@ class ProfilesApi
      * REST API Reference for aiProfilesTestConnection Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-profiles-test-connection/
      *
-     * @param  string $body The ID of the profile to probe, as a bare JSON string. (required)
+     * @param  string $ai_profiles_test_connection_request The ID of the profile to probe, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesTestConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiProfilesTestConnectionAsyncWithHttpInfo($body, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
+    public function aiProfilesTestConnectionAsyncWithHttpInfo($ai_profiles_test_connection_request, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
     {
         $returnType = '\OpenAPI\Client\Model\AiProfilesTestConnection200Response';
-        $request = $this->aiProfilesTestConnectionRequest($body, $contentType);
+        $request = $this->aiProfilesTestConnectionRequest($ai_profiles_test_connection_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2528,19 +2556,19 @@ class ProfilesApi
     /**
      * Create request for operation 'aiProfilesTestConnection'
      *
-     * @param  string $body The ID of the profile to probe, as a bare JSON string. (required)
+     * @param  string $ai_profiles_test_connection_request The ID of the profile to probe, as a bare JSON string. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiProfilesTestConnection'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiProfilesTestConnectionRequest($body, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
+    public function aiProfilesTestConnectionRequest($ai_profiles_test_connection_request, string $contentType = self::contentTypes['aiProfilesTestConnection'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'ai_profiles_test_connection_request' is set
+        if ($ai_profiles_test_connection_request === null || (is_array($ai_profiles_test_connection_request) && count($ai_profiles_test_connection_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling aiProfilesTestConnection'
+                'Missing the required parameter $ai_profiles_test_connection_request when calling aiProfilesTestConnection'
             );
         }
 
@@ -2563,12 +2591,12 @@ class ProfilesApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($ai_profiles_test_connection_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_profiles_test_connection_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $ai_profiles_test_connection_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2638,7 +2666,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiProfilesCreate400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiProfilesUpdate($ai_profile, string $contentType = self::contentTypes['aiProfilesUpdate'][0])
     {
@@ -2659,7 +2687,7 @@ class ProfilesApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiProfileMutationResult|\OpenAPI\Client\Model\AiProfilesCreate400Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiProfilesUpdateWithHttpInfo($ai_profile, string $contentType = self::contentTypes['aiProfilesUpdate'][0])
     {
@@ -2697,7 +2725,7 @@ class ProfilesApi
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiProfilesCreate400Response',
                         $request,
                         $response,
                     );
@@ -2760,7 +2788,7 @@ class ProfilesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        '\OpenAPI\Client\Model\AiProfilesCreate400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

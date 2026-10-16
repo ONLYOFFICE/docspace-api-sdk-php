@@ -153,6 +153,9 @@ class FoldersApi
         'renameFolder' => [
             'application/json',
         ],
+        'searchFolder' => [
+            'application/json',
+        ],
         'setFolderOrder' => [
             'application/json',
         ],
@@ -238,7 +241,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function checkUpload($folder_id, $check_upload_request, string $contentType = self::contentTypes['checkUpload'][0])
     {
@@ -260,7 +263,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\STRINGArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\StringArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkUploadWithHttpInfo($folder_id, $check_upload_request, string $contentType = self::contentTypes['checkUpload'][0])
     {
@@ -292,7 +295,7 @@ class FoldersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $request,
                         $response,
                     );
@@ -309,12 +312,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -338,7 +335,7 @@ class FoldersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                '\OpenAPI\Client\Model\StringArrayWrapper',
                 $request,
                 $response,
             );
@@ -347,7 +344,7 @@ class FoldersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\STRINGArrayWrapper',
+                        '\OpenAPI\Client\Model\StringArrayWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -369,14 +366,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -433,7 +422,7 @@ class FoldersApi
      */
     public function checkUploadAsyncWithHttpInfo($folder_id, $check_upload_request, string $contentType = self::contentTypes['checkUpload'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\STRINGArrayWrapper';
+        $returnType = '\OpenAPI\Client\Model\StringArrayWrapper';
         $request = $this->checkUploadRequest($folder_id, $check_upload_request, $contentType);
 
         return $this->client
@@ -610,16 +599,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function createFolder($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
+    public function createFolder($folder_id, $create_folder_request, string $contentType = self::contentTypes['createFolder'][0])
     {
-        list($response) = $this->createFolderWithHttpInfo($folder_id, $create_folder, $contentType);
+        list($response) = $this->createFolderWithHttpInfo($folder_id, $create_folder_request, $contentType);
         return $response;
     }
 
@@ -632,16 +621,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFolderWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
+    public function createFolderWithHttpInfo($folder_id, $create_folder_request, string $contentType = self::contentTypes['createFolder'][0])
     {
-        $request = $this->createFolderRequest($folder_id, $create_folder, $contentType);
+        $request = $this->createFolderRequest($folder_id, $create_folder_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -686,12 +675,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -753,14 +736,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -777,15 +752,15 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFolderAsync($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
+    public function createFolderAsync($folder_id, $create_folder_request, string $contentType = self::contentTypes['createFolder'][0])
     {
-        return $this->createFolderAsyncWithHttpInfo($folder_id, $create_folder, $contentType)
+        return $this->createFolderAsyncWithHttpInfo($folder_id, $create_folder_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -802,16 +777,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFolderAsyncWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
+    public function createFolderAsyncWithHttpInfo($folder_id, $create_folder_request, string $contentType = self::contentTypes['createFolder'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
-        $request = $this->createFolderRequest($folder_id, $create_folder, $contentType);
+        $request = $this->createFolderRequest($folder_id, $create_folder_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -853,13 +828,13 @@ class FoldersApi
      * Create request for operation 'createFolder'
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFolderRequest($folder_id, $create_folder, string $contentType = self::contentTypes['createFolder'][0])
+    public function createFolderRequest($folder_id, $create_folder_request, string $contentType = self::contentTypes['createFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -869,10 +844,10 @@ class FoldersApi
             );
         }
 
-        // verify the required parameter 'create_folder' is set
-        if ($create_folder === null || (is_array($create_folder) && count($create_folder) === 0)) {
+        // verify the required parameter 'create_folder_request' is set
+        if ($create_folder_request === null || (is_array($create_folder_request) && count($create_folder_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_folder when calling createFolder'
+                'Missing the required parameter $create_folder_request when calling createFolder'
             );
         }
 
@@ -903,12 +878,12 @@ class FoldersApi
         );
 
         // for model (json/xml)
-        if (isset($create_folder)) {
+        if (isset($create_folder_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_folder));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_folder_request));
             } else {
-                $httpBody = $create_folder;
+                $httpBody = $create_folder_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -992,7 +967,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function createFolderPrimaryExternalLink($id, $folder_link_request, string $contentType = self::contentTypes['createFolderPrimaryExternalLink'][0])
     {
@@ -1014,7 +989,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createFolderPrimaryExternalLinkWithHttpInfo($id, $folder_link_request, string $contentType = self::contentTypes['createFolderPrimaryExternalLink'][0])
     {
@@ -1063,12 +1038,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1123,14 +1092,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1364,7 +1325,7 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
      * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet and `Csv` a comma-separated text file, and  either is saved as a file in My documents. (optional)
      * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
      * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
@@ -1388,7 +1349,7 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
      * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet and `Csv` a comma-separated text file, and  either is saved as a file in My documents. (optional)
      * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
      * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
@@ -1535,7 +1496,7 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
      * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet and `Csv` a comma-separated text file, and  either is saved as a file in My documents. (optional)
      * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
      * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
@@ -1562,7 +1523,7 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/create-report-folder-history/
      *
      * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet and `Csv` a comma-separated text file, and  either is saved as a file in My documents. (optional)
      * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
      * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
@@ -1615,7 +1576,7 @@ class FoldersApi
      * Create request for operation 'createReportFolderHistory'
      *
      * @param  int $folder_id The folder whose history is exported; the report covers the folder itself and the entries inside it. (required)
-     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet that is saved as a file of the portal, while  `Csv` produces a comma-separated text file that is uploaded to My documents without being reported back with  a file identifier. (optional)
+     * @param  \OpenAPI\Client\Model\AuditReportFormat|null $format The shape the report is written in: `Xlsx` produces a spreadsheet and `Csv` a comma-separated text file, and  either is saved as a file in My documents. (optional)
      * @param  \DateTime|null $from The earliest moment an exported entry may have, read in the time zone of the portal; left out, the report  starts at the oldest entry the portal still keeps. (optional)
      * @param  \DateTime|null $to The latest moment an exported entry may have, read in the time zone of the portal; left out, the report ends  at the newest entry. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createReportFolderHistory'] to see the possible values for this operation
@@ -1767,16 +1728,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
      * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolderRequest $delete_folder_request How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function deleteFolder($folder_id, $delete_folder, string $contentType = self::contentTypes['deleteFolder'][0])
+    public function deleteFolder($folder_id, $delete_folder_request, string $contentType = self::contentTypes['deleteFolder'][0])
     {
-        list($response) = $this->deleteFolderWithHttpInfo($folder_id, $delete_folder, $contentType);
+        list($response) = $this->deleteFolderWithHttpInfo($folder_id, $delete_folder_request, $contentType);
         return $response;
     }
 
@@ -1789,16 +1750,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
      * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolderRequest $delete_folder_request How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\FileOperationArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteFolderWithHttpInfo($folder_id, $delete_folder, string $contentType = self::contentTypes['deleteFolder'][0])
+    public function deleteFolderWithHttpInfo($folder_id, $delete_folder_request, string $contentType = self::contentTypes['deleteFolder'][0])
     {
-        $request = $this->deleteFolderRequest($folder_id, $delete_folder, $contentType);
+        $request = $this->deleteFolderRequest($folder_id, $delete_folder_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1934,15 +1895,15 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
      * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolderRequest $delete_folder_request How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFolderAsync($folder_id, $delete_folder, string $contentType = self::contentTypes['deleteFolder'][0])
+    public function deleteFolderAsync($folder_id, $delete_folder_request, string $contentType = self::contentTypes['deleteFolder'][0])
     {
-        return $this->deleteFolderAsyncWithHttpInfo($folder_id, $delete_folder, $contentType)
+        return $this->deleteFolderAsyncWithHttpInfo($folder_id, $delete_folder_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1959,16 +1920,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/delete-folder/
      *
      * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolderRequest $delete_folder_request How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteFolderAsyncWithHttpInfo($folder_id, $delete_folder, string $contentType = self::contentTypes['deleteFolder'][0])
+    public function deleteFolderAsyncWithHttpInfo($folder_id, $delete_folder_request, string $contentType = self::contentTypes['deleteFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FileOperationArrayWrapper';
-        $request = $this->deleteFolderRequest($folder_id, $delete_folder, $contentType);
+        $request = $this->deleteFolderRequest($folder_id, $delete_folder_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2010,13 +1971,13 @@ class FoldersApi
      * Create request for operation 'deleteFolder'
      *
      * @param  int|string $folder_id The folder to delete, together with everything it holds. (required)
-     * @param  \OpenAPI\Client\Model\DeleteFolder $delete_folder How the deletion is to be carried out. (required)
+     * @param  \OpenAPI\Client\Model\DeleteFolderRequest $delete_folder_request How the deletion is to be carried out. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteFolderRequest($folder_id, $delete_folder, string $contentType = self::contentTypes['deleteFolder'][0])
+    public function deleteFolderRequest($folder_id, $delete_folder_request, string $contentType = self::contentTypes['deleteFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -2026,10 +1987,10 @@ class FoldersApi
             );
         }
 
-        // verify the required parameter 'delete_folder' is set
-        if ($delete_folder === null || (is_array($delete_folder) && count($delete_folder) === 0)) {
+        // verify the required parameter 'delete_folder_request' is set
+        if ($delete_folder_request === null || (is_array($delete_folder_request) && count($delete_folder_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $delete_folder when calling deleteFolder'
+                'Missing the required parameter $delete_folder_request when calling deleteFolder'
             );
         }
 
@@ -2060,12 +2021,12 @@ class FoldersApi
         );
 
         // for model (json/xml)
-        if (isset($delete_folder)) {
+        if (isset($delete_folder_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_folder));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_folder_request));
             } else {
-                $httpBody = $delete_folder;
+                $httpBody = $delete_folder_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2508,15 +2469,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getFavoritesFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
+    public function getFavoritesFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
-        list($response) = $this->getFavoritesFolderWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        list($response) = $this->getFavoritesFolderWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -2535,15 +2499,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFavoritesFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
+    public function getFavoritesFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
-        $request = $this->getFavoritesFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getFavoritesFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2588,12 +2555,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2655,14 +2616,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -2685,14 +2638,17 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFavoritesFolderAsync($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
+    public function getFavoritesFolderAsync($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
-        return $this->getFavoritesFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType)
+        return $this->getFavoritesFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2715,15 +2671,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFavoritesFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
+    public function getFavoritesFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getFavoritesFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getFavoritesFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2771,12 +2730,15 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFavoritesFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFavoritesFolderRequest($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
+    public function getFavoritesFolderRequest($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFavoritesFolder'][0])
     {
 
 
@@ -2788,6 +2750,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getFavoritesFolder, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -2859,6 +2824,33 @@ class FoldersApi
             $filter_value,
             'filterValue', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3638,16 +3630,19 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  \OpenAPI\Client\Model\RequestLocation|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  Supported for the rooms, the trash, the regular folders and the Shared with me, Recent and Favorites sections  (the third-party entries never carry metadata and are left out); the Templates and Private sections reject it with 400. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/{folderId}/search. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getFolderByFolderId($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
+    public function getFolderByFolderId($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
-        list($response) = $this->getFolderByFolderIdWithHttpInfo($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $contentType);
+        list($response) = $this->getFolderByFolderIdWithHttpInfo($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -3677,16 +3672,19 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  \OpenAPI\Client\Model\RequestLocation|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  Supported for the rooms, the trash, the regular folders and the Shared with me, Recent and Favorites sections  (the third-party entries never carry metadata and are left out); the Templates and Private sections reject it with 400. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/{folderId}/search. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFolderByFolderIdWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
+    public function getFolderByFolderIdWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
-        $request = $this->getFolderByFolderIdRequest($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $contentType);
+        $request = $this->getFolderByFolderIdRequest($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3719,18 +3717,6 @@ class FoldersApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -3776,22 +3762,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -3825,15 +3795,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  \OpenAPI\Client\Model\RequestLocation|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  Supported for the rooms, the trash, the regular folders and the Shared with me, Recent and Favorites sections  (the third-party entries never carry metadata and are left out); the Templates and Private sections reject it with 400. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/{folderId}/search. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFolderByFolderIdAsync($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
+    public function getFolderByFolderIdAsync($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
-        return $this->getFolderByFolderIdAsyncWithHttpInfo($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $contentType)
+        return $this->getFolderByFolderIdAsyncWithHttpInfo($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3867,16 +3840,19 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  \OpenAPI\Client\Model\RequestLocation|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  Supported for the rooms, the trash, the regular folders and the Shared with me, Recent and Favorites sections  (the third-party entries never carry metadata and are left out); the Templates and Private sections reject it with 400. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/{folderId}/search. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFolderByFolderIdAsyncWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
+    public function getFolderByFolderIdAsyncWithHttpInfo($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getFolderByFolderIdRequest($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $contentType);
+        $request = $this->getFolderByFolderIdRequest($folder_id, $user_id_or_group_id, $shared_by, $filter_type, $room_id, $folder_type, $exclude_subject, $apply_filter_option, $with_sub_folders, $extension, $search_area, $forms_item_key, $forms_item_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $location, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3935,13 +3911,16 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the listing is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the folder unfiltered. (optional)
-     * @param  \OpenAPI\Client\Model\Location|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  \OpenAPI\Client\Model\RequestLocation|null $location Where the entries of a tag-based listing have to live to be kept: `Room` keeps what lies in a room,  `Documents` what lies in a personal section, and `Link` what was reached through an external link that is  still valid. It shapes the Favorites and Recent listings and does nothing in an ordinary folder. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  Supported for the rooms, the trash, the regular folders and the Shared with me, Recent and Favorites sections  (the third-party entries never carry metadata and are left out); the Templates and Private sections reject it with 400. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq (the whole value) or contains (a part of it); a number or a date field takes range with inclusive bounds,  or gt, gte, lt, lte with the single bound in value; a choice field takes in. A date-only bound covers the whole day,  so to:2026-06-30 includes the values stored on 30 June and gt:2026-06-30 starts after it.  A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}.  The same filter is taken as a typed request body by POST api/2.0/files/{folderId}/search. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFolderByFolderId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFolderByFolderIdRequest($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
+    public function getFolderByFolderIdRequest($folder_id, $user_id_or_group_id = null, $shared_by = null, $filter_type = null, $room_id = null, $folder_type = null, $exclude_subject = null, $apply_filter_option = null, $with_sub_folders = null, $extension = null, $search_area = null, $forms_item_key = null, $forms_item_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $location = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFolderByFolderId'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -3970,6 +3949,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getFolderByFolderId, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -4139,8 +4121,35 @@ class FoldersApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $location,
-            'Location', // param base name
-            'Location', // openApiType
+            'location', // param base name
+            'RequestLocation', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4249,7 +4258,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFolderHistory($folder_id, $from_date = null, $to_date = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderHistory'][0])
     {
@@ -4274,7 +4283,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\HistoryArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderHistoryWithHttpInfo($folder_id, $from_date = null, $to_date = null, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderHistory'][0])
     {
@@ -4323,12 +4332,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -4383,14 +4386,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -5731,7 +5726,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getFolderPrimaryExternalLink($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderPrimaryExternalLink'][0])
     {
@@ -5754,7 +5749,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFolderPrimaryExternalLinkWithHttpInfo($id, $count = null, $start_index = null, string $contentType = self::contentTypes['getFolderPrimaryExternalLink'][0])
     {
@@ -5802,12 +5797,6 @@ class FoldersApi
                         $request,
                         $response,
                     );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -5849,14 +5838,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -6469,15 +6450,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getFormsFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
+    public function getFormsFolder($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
-        list($response) = $this->getFormsFolderWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        list($response) = $this->getFormsFolderWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -6496,15 +6480,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFormsFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
+    public function getFormsFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
-        $request = $this->getFormsFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getFormsFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6549,12 +6536,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -6616,14 +6597,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -6646,14 +6619,17 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFormsFolderAsync($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
+    public function getFormsFolderAsync($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
-        return $this->getFormsFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType)
+        return $this->getFormsFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6676,15 +6652,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFormsFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
+    public function getFormsFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getFormsFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getFormsFolderRequest($user_id_or_group_id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6732,12 +6711,15 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by: it is matched as a substring of entry titles and, for files,  against the indexed document content as well. Omit it to list the section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFormsFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFormsFolderRequest($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getFormsFolder'][0])
+    public function getFormsFolderRequest($user_id_or_group_id = null, $filter_type = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getFormsFolder'][0])
     {
 
 
@@ -6749,6 +6731,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getFormsFolder, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -6820,6 +6805,33 @@ class FoldersApi
             $filter_value,
             'filterValue', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -6921,15 +6933,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getMyFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
+    public function getMyFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
-        list($response) = $this->getMyFolderWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        list($response) = $this->getMyFolderWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -6949,15 +6964,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMyFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
+    public function getMyFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
-        $request = $this->getMyFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getMyFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7002,12 +7020,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -7069,14 +7081,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -7100,14 +7104,17 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMyFolderAsync($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
+    public function getMyFolderAsync($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
-        return $this->getMyFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType)
+        return $this->getMyFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7131,15 +7138,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMyFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
+    public function getMyFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getMyFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getMyFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7188,12 +7198,15 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMyFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMyFolderRequest($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getMyFolder'][0])
+    public function getMyFolderRequest($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getMyFolder'][0])
     {
 
 
@@ -7206,6 +7219,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getMyFolder, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -7286,6 +7302,33 @@ class FoldersApi
             $filter_value,
             'filterValue', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7748,15 +7791,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
      * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the recent files must be assigned to. On its own it narrows the listing to the files  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party files never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getRecentFolder($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
+    public function getRecentFolder($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
-        list($response) = $this->getRecentFolderWithHttpInfo($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        list($response) = $this->getRecentFolderWithHttpInfo($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -7779,15 +7825,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
      * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the recent files must be assigned to. On its own it narrows the listing to the files  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party files never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecentFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
+    public function getRecentFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
-        $request = $this->getRecentFolderRequest($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getRecentFolderRequest($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7832,12 +7881,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -7899,14 +7942,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -7933,14 +7968,17 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
      * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the recent files must be assigned to. On its own it narrows the listing to the files  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party files never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecentFolderAsync($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
+    public function getRecentFolderAsync($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
-        return $this->getRecentFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType)
+        return $this->getRecentFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7967,15 +8005,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
      * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the recent files must be assigned to. On its own it narrows the listing to the files  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party files never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecentFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
+    public function getRecentFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getRecentFolderRequest($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getRecentFolderRequest($user_id_or_group_id, $filter_type, $exclude_subject, $apply_filter_option, $search_area, $extension, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8027,12 +8068,15 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. The Recent section keeps its own newest-first order, so the value does not  reorder this listing. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. The Recent section keeps its own newest-first order, so the value does not reorder this  listing. (optional)
      * @param  string|null $filter_value The search string the history is filtered by: it is matched as a substring of file titles and against the  indexed document content as well. Omit it to list the whole history. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the recent files must be assigned to. On its own it narrows the listing to the files  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party files never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecentFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRecentFolderRequest($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRecentFolder'][0])
+    public function getRecentFolderRequest($user_id_or_group_id = null, $filter_type = null, $exclude_subject = null, $apply_filter_option = null, $search_area = null, $extension = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getRecentFolder'][0])
     {
 
 
@@ -8048,6 +8092,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getRecentFolder, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -8155,6 +8202,33 @@ class FoldersApi
             $filter_value,
             'filterValue', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -8618,7 +8692,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getRootFolders($user_id_or_group_id = null, $filter_type = null, $without_trash = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRootFolders'][0])
     {
@@ -8646,7 +8720,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRootFoldersWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $without_trash = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getRootFolders'][0])
     {
@@ -8695,12 +8769,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -8755,14 +8823,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -9080,15 +9140,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function getTrashFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
+    public function getTrashFolder($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
-        list($response) = $this->getTrashFolderWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        list($response) = $this->getTrashFolderWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
         return $response;
     }
 
@@ -9108,15 +9171,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTrashFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
+    public function getTrashFolderWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
-        $request = $this->getTrashFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getTrashFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9161,12 +9227,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -9228,14 +9288,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -9259,14 +9311,17 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrashFolderAsync($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
+    public function getTrashFolderAsync($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
-        return $this->getTrashFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType)
+        return $this->getTrashFolderAsyncWithHttpInfo($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9290,15 +9345,18 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTrashFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
+    public function getTrashFolderAsyncWithHttpInfo($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
         $returnType = '\OpenAPI\Client\Model\FolderContentWrapper';
-        $request = $this->getTrashFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $contentType);
+        $request = $this->getTrashFolderRequest($user_id_or_group_id, $filter_type, $apply_filter_option, $count, $start_index, $sort_by, $sort_order, $filter_value, $metadata_template_id, $metadata_filters, $include_hidden_metadata, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9347,12 +9405,15 @@ class FoldersApi
      * @param  string|null $sort_by The name of the field the entries are ordered by, matched case-insensitively against the file sort fields:  `DateAndTime`, `AZ`, `Size`, `Author`, `Type`, `New`, `DateAndTimeCreation`, `RoomType`, `Tags`, `Room`,  `CustomOrder`, `LastOpened` and `UsedSpace`. A recognized value is also saved as the default order of the  account and reused by later listings that omit the parameter, while a value matching none of the fields leaves  that saved order in place. (optional)
      * @param  \OpenAPI\Client\Model\SortOrder|null $sort_order The direction in which the `sortBy` field is ordered. It is saved together with `sortBy` as the default order  of the account. (optional)
      * @param  string|null $filter_value The search string the section is filtered by, matched as a substring of entry titles. Omit it to list the  section unfiltered. (optional)
+     * @param  int|null $metadata_template_id The ID of the metadata template the entries must be assigned to. On its own it narrows the listing to the entries  carrying the template; together with the metadata filters it also pins the template the filtered fields belong to.  The third-party entries never carry metadata and are left out when the filter is set. (optional)
+     * @param  string|null $metadata_filters The URL-encoded JSON array of the metadata filter conditions,  e.g. [{fieldId:1,op:contains,value:ACME},{fieldId:2,op:range,from:2026-01-01,to:2026-06-30},{fieldId:3,op:in,optionIds:[...]}].  A string field takes eq or contains; a number or a date field takes range with inclusive bounds, or gt, gte, lt, lte with the bound in value;  a date-only bound covers the whole day. A custom field is addressed by its name instead of the fieldId: {name:Client,op:eq,value:ACME}. (optional)
+     * @param  bool|null $include_hidden_metadata Whether the text search, and the metadataMatches it reports, also look at the values of the hidden metadata  templates (created with visible false for the metadata a service keeps for itself, which the web client never  shows). False, the default, leaves them out, so an entry is not found by such a value; true takes them in.  metadataTemplateId and metadataFilters are not concerned: a hidden template or field named there is searched  either way. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTrashFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getTrashFolderRequest($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, string $contentType = self::contentTypes['getTrashFolder'][0])
+    public function getTrashFolderRequest($user_id_or_group_id = null, $filter_type = null, $apply_filter_option = null, $count = null, $start_index = null, $sort_by = null, $sort_order = null, $filter_value = null, $metadata_template_id = null, $metadata_filters = null, $include_hidden_metadata = null, string $contentType = self::contentTypes['getTrashFolder'][0])
     {
 
 
@@ -9365,6 +9426,9 @@ class FoldersApi
             throw new \InvalidArgumentException('invalid value for "$count" when calling FoldersApi.getTrashFolder, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -9445,6 +9509,33 @@ class FoldersApi
             $filter_value,
             'filterValue', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_template_id,
+            'metadataTemplateId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metadata_filters,
+            'metadataFilters', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $include_hidden_metadata,
+            'includeHiddenMetadata', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -9555,7 +9646,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function insertFile($folder_id, $insert_file_file = null, $insert_file_title = null, $insert_file_create_new_if_exist = null, $insert_file_keep_convert_status = null, $insert_file_stream_can_read = null, $insert_file_stream_can_write = null, $insert_file_stream_can_seek = null, $insert_file_stream_can_timeout = null, $insert_file_stream_length = null, $insert_file_stream_position = null, $insert_file_stream_read_timeout = null, $insert_file_stream_write_timeout = null, string $contentType = self::contentTypes['insertFile'][0])
     {
@@ -9588,7 +9679,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileWrapper|\OpenAPI\Client\Model\ThirdPartyFileWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function insertFileWithHttpInfo($folder_id, $insert_file_file = null, $insert_file_title = null, $insert_file_create_new_if_exist = null, $insert_file_keep_convert_status = null, $insert_file_stream_can_read = null, $insert_file_stream_can_write = null, $insert_file_stream_can_seek = null, $insert_file_stream_can_timeout = null, $insert_file_stream_length = null, $insert_file_stream_position = null, $insert_file_stream_read_timeout = null, $insert_file_stream_write_timeout = null, string $contentType = self::contentTypes['insertFile'][0])
     {
@@ -9631,12 +9722,6 @@ class FoldersApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -9689,14 +9774,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -10421,16 +10498,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function renameFolder($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
+    public function renameFolder($folder_id, $create_folder_request, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        list($response) = $this->renameFolderWithHttpInfo($folder_id, $create_folder, $contentType);
+        list($response) = $this->renameFolderWithHttpInfo($folder_id, $create_folder_request, $contentType);
         return $response;
     }
 
@@ -10443,16 +10520,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function renameFolderWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
+    public function renameFolderWithHttpInfo($folder_id, $create_folder_request, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        $request = $this->renameFolderRequest($folder_id, $create_folder, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $create_folder_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10497,12 +10574,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -10564,14 +10635,6 @@ class FoldersApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -10588,15 +10651,15 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameFolderAsync($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
+    public function renameFolderAsync($folder_id, $create_folder_request, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        return $this->renameFolderAsyncWithHttpInfo($folder_id, $create_folder, $contentType)
+        return $this->renameFolderAsyncWithHttpInfo($folder_id, $create_folder_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10613,16 +10676,16 @@ class FoldersApi
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/rename-folder/
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameFolderAsyncWithHttpInfo($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
+    public function renameFolderAsyncWithHttpInfo($folder_id, $create_folder_request, string $contentType = self::contentTypes['renameFolder'][0])
     {
         $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderWrapper' : '\OpenAPI\Client\Model\FolderWrapper';
-        $request = $this->renameFolderRequest($folder_id, $create_folder, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $create_folder_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10664,13 +10727,13 @@ class FoldersApi
      * Create request for operation 'renameFolder'
      *
      * @param  int|string $folder_id The folder the request is addressed to: when a folder is created it is the parent that receives the new  folder, and when a folder is renamed it is the folder that gets the new title. (required)
-     * @param  \OpenAPI\Client\Model\CreateFolder $create_folder The title carried by the request body. (required)
+     * @param  \OpenAPI\Client\Model\CreateFolderRequest $create_folder_request The title carried by the request body. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function renameFolderRequest($folder_id, $create_folder, string $contentType = self::contentTypes['renameFolder'][0])
+    public function renameFolderRequest($folder_id, $create_folder_request, string $contentType = self::contentTypes['renameFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
@@ -10680,10 +10743,10 @@ class FoldersApi
             );
         }
 
-        // verify the required parameter 'create_folder' is set
-        if ($create_folder === null || (is_array($create_folder) && count($create_folder) === 0)) {
+        // verify the required parameter 'create_folder_request' is set
+        if ($create_folder_request === null || (is_array($create_folder_request) && count($create_folder_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_folder when calling renameFolder'
+                'Missing the required parameter $create_folder_request when calling renameFolder'
             );
         }
 
@@ -10714,12 +10777,12 @@ class FoldersApi
         );
 
         // for model (json/xml)
-        if (isset($create_folder)) {
+        if (isset($create_folder_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_folder));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_folder_request));
             } else {
-                $httpBody = $create_folder;
+                $httpBody = $create_folder_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -10790,6 +10853,369 @@ class FoldersApi
     }
 
     /**
+     * Operation searchFolder
+     *
+     * Search a folder by metadata
+     *
+     * REST API Reference for searchFolder Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
+     *
+     * @param  int|string $folder_id The folder ID. (required)
+     * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     */
+    public function searchFolder($folder_id, $folder_metadata_search, string $contentType = self::contentTypes['searchFolder'][0])
+    {
+        list($response) = $this->searchFolderWithHttpInfo($folder_id, $folder_metadata_search, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchFolderWithHttpInfo
+     *
+     * Search a folder by metadata
+     *
+     * REST API Reference for searchFolder Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
+     *
+     * @param  int|string $folder_id The folder ID. (required)
+     * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\FolderContentWrapper|\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchFolderWithHttpInfo($folder_id, $folder_metadata_search, string $contentType = self::contentTypes['searchFolder'][0])
+    {
+        $request = $this->searchFolderRequest($folder_id, $folder_metadata_search, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorApiResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchFolderAsync
+     *
+     * Search a folder by metadata
+     *
+     * REST API Reference for searchFolder Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
+     *
+     * @param  int|string $folder_id The folder ID. (required)
+     * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchFolderAsync($folder_id, $folder_metadata_search, string $contentType = self::contentTypes['searchFolder'][0])
+    {
+        return $this->searchFolderAsyncWithHttpInfo($folder_id, $folder_metadata_search, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchFolderAsyncWithHttpInfo
+     *
+     * Search a folder by metadata
+     *
+     * REST API Reference for searchFolder Operation
+     * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
+     *
+     * @param  int|string $folder_id The folder ID. (required)
+     * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchFolderAsyncWithHttpInfo($folder_id, $folder_metadata_search, string $contentType = self::contentTypes['searchFolder'][0])
+    {
+        $returnType = is_string($folder_id) ? '\OpenAPI\Client\Model\ThirdPartyFolderContentWrapper' : '\OpenAPI\Client\Model\FolderContentWrapper';
+        $request = $this->searchFolderRequest($folder_id, $folder_metadata_search, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchFolder'
+     *
+     * @param  int|string $folder_id The folder ID. (required)
+     * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchFolderRequest($folder_id, $folder_metadata_search, string $contentType = self::contentTypes['searchFolder'][0])
+    {
+
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling searchFolder'
+            );
+        }
+
+        // verify the required parameter 'folder_metadata_search' is set
+        if ($folder_metadata_search === null || (is_array($folder_metadata_search) && count($folder_metadata_search) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_metadata_search when calling searchFolder'
+            );
+        }
+
+
+        $resourcePath = '/api/2.0/files/{folderId}/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($folder_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'folderId' . '}',
+                ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($folder_metadata_search)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($folder_metadata_search));
+            } else {
+                $httpBody = $folder_metadata_search;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('ApiKeyBearer');
+        if ($apiKey !== null) {
+            $headers['ApiKeyBearer'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('asc_auth_key');
+        if ($apiKey !== null) {
+            
+        }
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation setFolderOrder
      *
      * Set folder order
@@ -10803,7 +11229,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFolderOrder($folder_id, $order_request_dto = null, string $contentType = self::contentTypes['setFolderOrder'][0])
     {
@@ -10825,7 +11251,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FolderWrapper|\OpenAPI\Client\Model\ThirdPartyFolderWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFolderOrderWithHttpInfo($folder_id, $order_request_dto = null, string $contentType = self::contentTypes['setFolderOrder'][0])
     {
@@ -10874,12 +11300,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -10934,14 +11354,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -11174,7 +11586,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function setFolderPrimaryExternalLink($id, $folder_link_request, string $contentType = self::contentTypes['setFolderPrimaryExternalLink'][0])
     {
@@ -11196,7 +11608,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileShareWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function setFolderPrimaryExternalLinkWithHttpInfo($id, $folder_link_request, string $contentType = self::contentTypes['setFolderPrimaryExternalLink'][0])
     {
@@ -11245,12 +11657,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -11305,14 +11711,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -11838,7 +12236,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadFile($folder_id, $create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
@@ -11863,7 +12261,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ThirdPartyFileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileWithHttpInfo($folder_id, $create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
@@ -11911,18 +12309,6 @@ class FoldersApi
                         $request,
                         $response,
                     );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
             }
 
             
@@ -11964,22 +12350,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -12256,7 +12626,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function uploadFileToMy($create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFileToMy'][0])
     {
@@ -12280,7 +12650,7 @@ class FoldersApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\FileArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadFileToMyWithHttpInfo($create_new_if_exist = null, $store_original_file = null, $keep_convert_status = null, $file = null, string $contentType = self::contentTypes['uploadFileToMy'][0])
     {
@@ -12329,12 +12699,6 @@ class FoldersApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -12389,14 +12753,6 @@ class FoldersApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

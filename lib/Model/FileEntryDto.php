@@ -93,7 +93,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => 'string',
         'external' => 'bool',
         'expiration_date' => '\OpenAPI\Client\Model\ApiDateTime',
-        'is_link_expired' => 'bool'
+        'is_link_expired' => 'bool',
+        'assigned_metadata_templates' => 'int[]',
+        'metadata_matches' => '\OpenAPI\Client\Model\MetadataMatchDto[]'
     ];
 
     /**
@@ -139,7 +141,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => null,
         'external' => null,
         'expiration_date' => null,
-        'is_link_expired' => null
+        'is_link_expired' => null,
+        'assigned_metadata_templates' => 'int32',
+        'metadata_matches' => null
     ];
 
     /**
@@ -183,7 +187,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => true,
         'external' => true,
         'expiration_date' => false,
-        'is_link_expired' => true
+        'is_link_expired' => true,
+        'assigned_metadata_templates' => true,
+        'metadata_matches' => true
     ];
 
     /**
@@ -307,7 +313,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => 'requestToken',
         'external' => 'external',
         'expiration_date' => 'expirationDate',
-        'is_link_expired' => 'isLinkExpired'
+        'is_link_expired' => 'isLinkExpired',
+        'assigned_metadata_templates' => 'assignedMetadataTemplates',
+        'metadata_matches' => 'metadataMatches'
     ];
 
     /**
@@ -351,7 +359,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => 'setRequestToken',
         'external' => 'setExternal',
         'expiration_date' => 'setExpirationDate',
-        'is_link_expired' => 'setIsLinkExpired'
+        'is_link_expired' => 'setIsLinkExpired',
+        'assigned_metadata_templates' => 'setAssignedMetadataTemplates',
+        'metadata_matches' => 'setMetadataMatches'
     ];
 
     /**
@@ -395,7 +405,9 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'request_token' => 'getRequestToken',
         'external' => 'getExternal',
         'expiration_date' => 'getExpirationDate',
-        'is_link_expired' => 'getIsLinkExpired'
+        'is_link_expired' => 'getIsLinkExpired',
+        'assigned_metadata_templates' => 'getAssignedMetadataTemplates',
+        'metadata_matches' => 'getMetadataMatches'
     ];
 
     /**
@@ -491,6 +503,8 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('external', $data ?? [], null);
         $this->setIfExists('expiration_date', $data ?? [], null);
         $this->setIfExists('is_link_expired', $data ?? [], null);
+        $this->setIfExists('assigned_metadata_templates', $data ?? [], null);
+        $this->setIfExists('metadata_matches', $data ?? [], null);
     }
 
     /**
@@ -1559,6 +1573,74 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['is_link_expired'] = $is_link_expired;
+
+        return $this;
+    }
+
+    /**
+     * Gets assigned_metadata_templates
+     *
+     * @return int[]|null
+     */
+    public function getAssignedMetadataTemplates()
+    {
+        return $this->container['assigned_metadata_templates'];
+    }
+
+    /**
+     * Sets assigned_metadata_templates
+     *
+     * @param int[]|null $assigned_metadata_templates The IDs of the metadata templates assigned to the file entry.
+     *
+     * @return self
+     */
+    public function setAssignedMetadataTemplates($assigned_metadata_templates)
+    {
+        if (is_null($assigned_metadata_templates)) {
+            array_push($this->openAPINullablesSetToNull, 'assigned_metadata_templates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('assigned_metadata_templates', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['assigned_metadata_templates'] = $assigned_metadata_templates;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata_matches
+     *
+     * @return \OpenAPI\Client\Model\MetadataMatchDto[]|null
+     */
+    public function getMetadataMatches()
+    {
+        return $this->container['metadata_matches'];
+    }
+
+    /**
+     * Sets metadata_matches
+     *
+     * @param \OpenAPI\Client\Model\MetadataMatchDto[]|null $metadata_matches Where the search text of the listing was met in the metadata of the entry: one item per string value holding  the text, in the order of the fields. Present only in a listing filtered by text, and only for the entries whose  metadata contain it; an entry found by its title alone carries nothing here.
+     *
+     * @return self
+     */
+    public function setMetadataMatches($metadata_matches)
+    {
+        if (is_null($metadata_matches)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata_matches');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata_matches', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata_matches'] = $metadata_matches;
 
         return $this;
     }

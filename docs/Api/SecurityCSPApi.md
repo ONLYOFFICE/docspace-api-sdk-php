@@ -11,7 +11,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `configureCsp()`
 
 ```php
-configureCsp($csp_requests_dto): \OpenAPI\Client\Model\CspWrapper
+configureCsp($csp_request_dto): \OpenAPI\Client\Model\CspWrapper
 ```
 
 Configure CSP settings
@@ -23,7 +23,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **csp_requests_dto** | [**\OpenAPI\Client\Model\CspRequestsDto**](../Model/CspRequestsDto.md)|  | [optional] |
+| **csp_request_dto** | [**\OpenAPI\Client\Model\CspRequestDto**](../Model/CspRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -68,10 +68,10 @@ $apiInstance = new OpenAPI\Client\Api\CSPApi(
     new GuzzleHttp\Client(),
     $config
 );
-$csp_requests_dto = new \OpenAPI\Client\Model\CspRequestsDto(); // \OpenAPI\Client\Model\CspRequestsDto
+$csp_request_dto = new \OpenAPI\Client\Model\CspRequestDto(); // \OpenAPI\Client\Model\CspRequestDto
 
 try {
-    $result = $apiInstance->configureCsp($csp_requests_dto);
+    $result = $apiInstance->configureCsp($csp_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CSPApi->configureCsp: ', $e->getMessage(), PHP_EOL;

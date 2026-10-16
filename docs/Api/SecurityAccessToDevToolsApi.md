@@ -10,7 +10,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `setTenantDevToolsAccessSettings()`
 
 ```php
-setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_dto): \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper
+setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_request_dto): \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper
 ```
 
 Set the Developer Tools access settings
@@ -22,7 +22,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_dev_tools_access_settings_dto** | [**\OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto**](../Model/TenantDevToolsAccessSettingsDto.md)|  | [optional] |
+| **tenant_dev_tools_access_settings_request_dto** | [**\OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto**](../Model/TenantDevToolsAccessSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -67,10 +67,10 @@ $apiInstance = new OpenAPI\Client\Api\AccessToDevToolsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_dev_tools_access_settings_dto = new \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto(); // \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto
+$tenant_dev_tools_access_settings_request_dto = new \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto(); // \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_dto);
+    $result = $apiInstance->setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccessToDevToolsApi->setTenantDevToolsAccessSettings: ', $e->getMessage(), PHP_EOL;

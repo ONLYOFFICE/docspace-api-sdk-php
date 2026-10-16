@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * BackupProgressWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the BackupProgress object.
+ * @description The successful API response containing the BackupProgressDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class BackupProgressWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\BackupProgress',
+        'response' => '\OpenAPI\Client\Model\BackupProgressDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class BackupProgressWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\BackupProgress|null
+     * @return \OpenAPI\Client\Model\BackupProgressDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class BackupProgressWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\BackupProgress|null $response The BackupProgress object returned by the operation.
+     * @param \OpenAPI\Client\Model\BackupProgressDto|null $response The BackupProgressDto object returned by the operation.
      *
      * @return self
      */

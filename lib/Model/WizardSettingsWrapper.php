@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WizardSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the WizardSettings object.
+ * @description The successful API response containing the WizardSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class WizardSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\WizardSettings',
+        'response' => '\OpenAPI\Client\Model\WizardSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class WizardSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\WizardSettings|null
+     * @return \OpenAPI\Client\Model\WizardSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class WizardSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\WizardSettings|null $response The WizardSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\WizardSettingsDto|null $response The WizardSettingsDto object returned by the operation.
      *
      * @return self
      */

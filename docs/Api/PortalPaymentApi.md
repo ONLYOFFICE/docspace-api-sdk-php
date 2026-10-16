@@ -443,7 +443,7 @@ try {
 ## `getAccountingServicePrices()`
 
 ```php
-getAccountingServicePrices($service_name, $active): \OpenAPI\Client\Model\ServicePriceInfoArrayWrapper
+getAccountingServicePrices($service_name, $active): \OpenAPI\Client\Model\ServicePriceArrayWrapper
 ```
 
 Get the service prices from the accounting service
@@ -460,7 +460,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ServicePriceInfoArrayWrapper**](../Model/ServicePriceInfoArrayWrapper.md)
+[**\OpenAPI\Client\Model\ServicePriceArrayWrapper**](../Model/ServicePriceArrayWrapper.md)
 
 ### Authorization
 
@@ -1892,7 +1892,7 @@ try {
 ## `getRestrictedAiModels()`
 
 ```php
-getRestrictedAiModels(): \OpenAPI\Client\Model\RestrictedModelsResponseWrapper
+getRestrictedAiModels(): \OpenAPI\Client\Model\RestrictedAiModelsWrapper
 ```
 
 Get restricted AI models
@@ -1906,7 +1906,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\RestrictedModelsResponseWrapper**](../Model/RestrictedModelsResponseWrapper.md)
+[**\OpenAPI\Client\Model\RestrictedAiModelsWrapper**](../Model/RestrictedAiModelsWrapper.md)
 
 ### Authorization
 
@@ -1968,7 +1968,7 @@ try {
 ## `getSubscriptionBalanceInfo()`
 
 ```php
-getSubscriptionBalanceInfo(): \OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper
+getSubscriptionBalanceInfo(): \OpenAPI\Client\Model\SubscriptionBalanceWrapper
 ```
 
 Get the subscription balance information
@@ -1982,7 +1982,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\SubscriptionBalanceInfoWrapper**](../Model/SubscriptionBalanceInfoWrapper.md)
+[**\OpenAPI\Client\Model\SubscriptionBalanceWrapper**](../Model/SubscriptionBalanceWrapper.md)
 
 ### Authorization
 
@@ -2120,11 +2120,11 @@ try {
 ## `getTenantWalletSettings()`
 
 ```php
-getTenantWalletSettings(): \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper
+getTenantWalletSettings(): \OpenAPI\Client\Model\TenantWalletSettingsWrapper
 ```
 
 Get the auto top-up settings
-Returns the portal's automatic wallet top-up settings - whether it is on, the balance that triggers a  charge, the balance it is topped up to, and the currency both are expressed in. Any DocSpace  administrator may read them, and unlike the operation that changes them this one needs neither a  billing customer nor a configured billing service, so it answers on a portal that has never paid for  anything. It is read-only and changes nothing.  A portal that has never configured top-up gets the defaults rather than an empty result: `enabled` is  false, `currency` is null, and `minBalance` and `upToBalance` are 0. Those two zeros are outside the  ranges `POST api/2.0/portal/payment/topupsettings` accepts - 5 to 1000 and 6 to 5000 - so the answer  cannot be sent straight back to it; supply real values instead. `lastModified` is  `0001-01-01T00:00:00` until the settings are stored for the first time.  `lowBalanceThreshold` and `lowBalanceNotified` are maintained by the portal itself: they are reported  here, but ignored when the settings are written.
+Returns the portal's automatic wallet top-up settings - whether it is on, the balance that triggers a  charge, the balance it is topped up to, and the currency both are expressed in. Any DocSpace  administrator may read them, and unlike the operation that changes them this one needs neither a  billing customer nor a configured billing service, so it answers on a portal that has never paid for  anything. It is read-only and changes nothing.  A portal that has never configured top-up gets the defaults rather than an empty result: `enabled` is  false, `currency` is null, and `minBalance` and `upToBalance` are 0. Those two zeros are outside the  ranges `POST api/2.0/portal/payment/topupsettings` accepts - 5 to 1000 and 6 to 5000 - so the answer  cannot be sent straight back to it; supply real values instead. `lastModified` is  `0001-01-01T00:00:00` until the settings are stored for the first time.  `lowBalanceThreshold` and `lowBalanceNotified` are maintained by the portal itself: they are reported  here, but cannot be written.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-tenant-wallet-settings/).
 
@@ -2134,7 +2134,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper**](../Model/TenantWalletSettingsResponseWrapper.md)
+[**\OpenAPI\Client\Model\TenantWalletSettingsWrapper**](../Model/TenantWalletSettingsWrapper.md)
 
 ### Authorization
 
@@ -2430,7 +2430,7 @@ try {
 ## `sendPaymentRequest()`
 
 ```php
-sendPaymentRequest($sales_requests_dto)
+sendPaymentRequest($sales_request_dto)
 ```
 
 Contact the sales team
@@ -2442,7 +2442,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sales_requests_dto** | [**\OpenAPI\Client\Model\SalesRequestsDto**](../Model/SalesRequestsDto.md)|  | [optional] |
+| **sales_request_dto** | [**\OpenAPI\Client\Model\SalesRequestDto**](../Model/SalesRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -2487,10 +2487,10 @@ $apiInstance = new OpenAPI\Client\Api\PaymentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sales_requests_dto = new \OpenAPI\Client\Model\SalesRequestsDto(); // \OpenAPI\Client\Model\SalesRequestsDto
+$sales_request_dto = new \OpenAPI\Client\Model\SalesRequestDto(); // \OpenAPI\Client\Model\SalesRequestDto
 
 try {
-    $apiInstance->sendPaymentRequest($sales_requests_dto);
+    $apiInstance->sendPaymentRequest($sales_request_dto);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentApi->sendPaymentRequest: ', $e->getMessage(), PHP_EOL;
 }
@@ -2508,11 +2508,11 @@ try {
 ## `setRestrictedAiModels()`
 
 ```php
-setRestrictedAiModels($set_restricted_ai_models_request_dto): \OpenAPI\Client\Model\RestrictedModelsResponseWrapper
+setRestrictedAiModels($set_restricted_ai_models_request_dto): \OpenAPI\Client\Model\RestrictedAiModelsWrapper
 ```
 
 Set restricted AI models
-Replaces the whole set of AI chat models barred on this portal: the body is the complete set that is to hold,  so adding one restriction means sending the new model together with the ones already restricted, lifting one  means leaving it out, and an empty set lifts them all. Read the current set from  `GET api/2.0/portal/payment/ai-model/restrictions` and the model identifiers from  `GET api/2.0/portal/payment/ai-prices` before calling. The installation needs a billing service and the AI  gateway configured, the portal needs a billing customer, and the caller needs the permission to edit the  portal settings as well as DocSpace administrator rights. The call is mutating and idempotent - sending the  same set twice leaves the same state - and it is written to the portal audit trail. It takes effect on the  next AI request, so a conversation already open on a model that has just been barred cannot go on with it. The  stored set comes back in the answer.
+Replaces the whole set of AI chat models barred on this portal: the body is the complete set that is to hold,  so adding one restriction means sending the new model together with the ones already restricted, lifting one  means leaving it out, and an empty set lifts them all. Read the current set from  `GET api/2.0/portal/payment/ai-model/restrictions` and the model identifiers from  `GET api/2.0/portal/payment/ai-prices` before calling. The installation needs a billing service and the AI  gateway configured, the portal needs a billing customer and the AI tools wallet service switched on with  `POST api/2.0/portal/payment/servicestate`, and the caller needs the permission to edit the portal settings as  well as DocSpace administrator rights. The call is mutating and idempotent - sending the same set twice leaves  the same state - and it is written to the portal audit trail. It takes effect on the next AI request, so a  conversation already open on a model that has just been barred cannot go on with it. The stored set comes  back in the answer. While AI tools is off the call is refused with 403 instead of being stored, because the  read reports an empty set then and nothing written could be read back.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-restricted-ai-models/).
 
@@ -2524,7 +2524,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-[**\OpenAPI\Client\Model\RestrictedModelsResponseWrapper**](../Model/RestrictedModelsResponseWrapper.md)
+[**\OpenAPI\Client\Model\RestrictedAiModelsWrapper**](../Model/RestrictedAiModelsWrapper.md)
 
 ### Authorization
 
@@ -2587,11 +2587,11 @@ try {
 ## `setTenantWalletSettings()`
 
 ```php
-setTenantWalletSettings($tenant_wallet_settings_wrapper): \OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper
+setTenantWalletSettings($tenant_wallet_settings_request_dto): \OpenAPI\Client\Model\TenantWalletSettingsWrapper
 ```
 
 Set the auto top-up settings
-Switches the portal's automatic wallet top-up on or off and sets its thresholds: while it is on, the payment  method on file is charged whenever the wallet balance falls below `minBalance`, enough to bring it up to  `upToBalance`, in `currency`. The portal needs a billing customer whose wallet balance exists - a portal that  has never had one answers 404, so top the wallet up once with `POST api/2.0/portal/payment/deposit` first -  and only the payer may change the settings. The body replaces the stored settings as a whole and an omitted  body resets them to the defaults; `minBalance` is accepted between 5 and 1000 and `upToBalance` between 6 and  5000, while `lowBalanceThreshold` and `lowBalanceNotified` are ignored on the way in and kept as the portal  had them. The call is mutating and idempotent, it charges nothing by itself, it is written to the portal audit  trail, and switching the top-up on also re-arms the low-balance warning. The settings as they were stored come  back in the answer.
+Switches the portal's automatic wallet top-up on or off and sets its thresholds: while it is on, the payment  method on file is charged whenever the wallet balance falls below `minBalance`, enough to bring it up to  `upToBalance`, in `currency`. The portal needs a billing customer whose wallet balance exists - a portal that  has never had one answers 404, so top the wallet up once with `POST api/2.0/portal/payment/deposit` first -  and only the payer may change the settings. The body replaces the stored settings as a whole and an omitted  body resets them to the defaults; `minBalance` is accepted between 5 and 1000 and `upToBalance` between 6 and  5000, and `upToBalance` has to be greater than `minBalance`, so that a top-up lifts the wallet above the balance  that triggers it. The low-balance warning state (`lowBalanceThreshold`, `lowBalanceNotified`) and `lastModified` may be  sent for compatibility but are ignored: the portal keeps the values it had. The call is mutating and  idempotent, it charges nothing by itself, it is written to the portal audit trail, and switching the top-up on also re-arms the low-balance warning. The settings as they were stored come  back in the answer.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-wallet-settings/).
 
@@ -2599,11 +2599,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_wallet_settings_wrapper** | [**\OpenAPI\Client\Model\TenantWalletSettingsWrapper**](../Model/TenantWalletSettingsWrapper.md)|  | [optional] |
+| **tenant_wallet_settings_request_dto** | [**\OpenAPI\Client\Model\TenantWalletSettingsRequestDto**](../Model/TenantWalletSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantWalletSettingsResponseWrapper**](../Model/TenantWalletSettingsResponseWrapper.md)
+[**\OpenAPI\Client\Model\TenantWalletSettingsWrapper**](../Model/TenantWalletSettingsWrapper.md)
 
 ### Authorization
 
@@ -2644,10 +2644,10 @@ $apiInstance = new OpenAPI\Client\Api\PaymentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_wallet_settings_wrapper = new \OpenAPI\Client\Model\TenantWalletSettingsWrapper(); // \OpenAPI\Client\Model\TenantWalletSettingsWrapper
+$tenant_wallet_settings_request_dto = new \OpenAPI\Client\Model\TenantWalletSettingsRequestDto(); // \OpenAPI\Client\Model\TenantWalletSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantWalletSettings($tenant_wallet_settings_wrapper);
+    $result = $apiInstance->setTenantWalletSettings($tenant_wallet_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PaymentApi->setTenantWalletSettings: ', $e->getMessage(), PHP_EOL;

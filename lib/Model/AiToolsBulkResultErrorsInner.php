@@ -58,7 +58,7 @@ class AiToolsBulkResultErrorsInner implements ModelInterface, ArrayAccess, \Json
      */
     protected static $openAPITypes = [
         'name' => 'string',
-        'error' => '\OpenAPI\Client\Model\AiTErrorData'
+        'error' => '\OpenAPI\Client\Model\AiErrorData'
     ];
 
     /**
@@ -332,7 +332,7 @@ class AiToolsBulkResultErrorsInner implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets error
      *
-     * @return \OpenAPI\Client\Model\AiTErrorData
+     * @return \OpenAPI\Client\Model\AiErrorData
      */
     public function getError()
     {
@@ -342,7 +342,7 @@ class AiToolsBulkResultErrorsInner implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets error
      *
-     * @param \OpenAPI\Client\Model\AiTErrorData $error error
+     * @param \OpenAPI\Client\Model\AiErrorData $error error
      *
      * @return self
      */

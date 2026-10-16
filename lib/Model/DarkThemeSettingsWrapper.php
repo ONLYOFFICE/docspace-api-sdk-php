@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * DarkThemeSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the DarkThemeSettings object.
+ * @description The successful API response containing the DarkThemeSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class DarkThemeSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\DarkThemeSettings',
+        'response' => '\OpenAPI\Client\Model\DarkThemeSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class DarkThemeSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\DarkThemeSettings|null
+     * @return \OpenAPI\Client\Model\DarkThemeSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class DarkThemeSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\DarkThemeSettings|null $response The DarkThemeSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\DarkThemeSettingsDto|null $response The DarkThemeSettingsDto object returned by the operation.
      *
      * @return self
      */

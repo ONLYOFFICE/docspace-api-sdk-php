@@ -245,7 +245,7 @@ try {
 ## `setNotificationSettings()`
 
 ```php
-setNotificationSettings($notification_settings_requests_dto): \OpenAPI\Client\Model\NotificationSettingsWrapper
+setNotificationSettings($notification_settings_request_dto): \OpenAPI\Client\Model\NotificationSettingsWrapper
 ```
 
 Set notification status
@@ -257,7 +257,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **notification_settings_requests_dto** | [**\OpenAPI\Client\Model\NotificationSettingsRequestsDto**](../Model/NotificationSettingsRequestsDto.md)|  | [optional] |
+| **notification_settings_request_dto** | [**\OpenAPI\Client\Model\NotificationSettingsRequestDto**](../Model/NotificationSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -302,10 +302,10 @@ $apiInstance = new OpenAPI\Client\Api\NotificationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$notification_settings_requests_dto = new \OpenAPI\Client\Model\NotificationSettingsRequestsDto(); // \OpenAPI\Client\Model\NotificationSettingsRequestsDto
+$notification_settings_request_dto = new \OpenAPI\Client\Model\NotificationSettingsRequestDto(); // \OpenAPI\Client\Model\NotificationSettingsRequestDto
 
 try {
-    $result = $apiInstance->setNotificationSettings($notification_settings_requests_dto);
+    $result = $apiInstance->setNotificationSettings($notification_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling NotificationsApi->setNotificationSettings: ', $e->getMessage(), PHP_EOL;

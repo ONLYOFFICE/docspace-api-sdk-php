@@ -82,7 +82,7 @@ try {
 ## `aiAssignmentsBulkAssign()`
 
 ```php
-aiAssignmentsBulkAssign($request_body): \OpenAPI\Client\Model\AiBulkAssignmentResult
+aiAssignmentsBulkAssign($ai_assignments_bulk_assign_request): \OpenAPI\Client\Model\AiBulkAssignmentResult
 ```
 
 Bulk assign
@@ -94,7 +94,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **request_body** | [**array<string,string>**](../Model/string.md)| A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. | |
+| **ai_assignments_bulk_assign_request** | [**array<string,string>**](../Model/string.md)| A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map. | |
 
 ### Return type
 
@@ -125,10 +125,10 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$request_body = array('key' => 'request_body_example'); // array<string,string> | A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map.
+$ai_assignments_bulk_assign_request = array('key' => 'ai_assignments_bulk_assign_request_example'); // array<string,string> | A map of action type to profile ID. Every key has to be a known action type and every value a profile ID; one bad entry rejects the whole map.
 
 try {
-    $result = $apiInstance->aiAssignmentsBulkAssign($request_body);
+    $result = $apiInstance->aiAssignmentsBulkAssign($ai_assignments_bulk_assign_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssignmentsApi->aiAssignmentsBulkAssign: ', $e->getMessage(), PHP_EOL;
@@ -346,7 +346,7 @@ aiAssignmentsResolveForAction($action_type, $entity_id): \OpenAPI\Client\Model\A
 ```
 
 Resolve for action
-Returns the profile that will serve one AI action, falling back to the `Default` slot when the action has no profile of its own. `actionType` is required and has to be one of the known actions - an unknown or misspelled value is rejected rather than resolved to the default. `entityId` narrows the lookup to a room, and a room with no assignment of its own degrades to the portal-wide one. This fails when neither slot is set or the bound profile is gone, so use `GET api/2.0/ai/assignments/try-resolve-for-action` when an unconfigured portal should answer empty instead.
+Returns the profile that will serve one AI action, falling back to the `Default` slot when the action has no profile of its own. `actionType` is required and has to be one of the known actions - an unknown or misspelled value is rejected rather than resolved to the default. `entityId` narrows the lookup to a room and has to name one the caller can open - an unknown room answers 404 rather than quietly resolving portal-wide - while an accessible room with no assignment of its own degrades to the portal-wide one. When neither slot is set, the slot names a profile that no longer exists, or the `Default` profile cannot serve the action, the call answers 404, so use `GET api/2.0/ai/assignments/try-resolve-for-action` when an unconfigured portal should answer empty instead.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-resolve-for-action/).
 
@@ -413,7 +413,7 @@ aiAssignmentsTryResolveForAction($action_type, $entity_id): \OpenAPI\Client\Mode
 ```
 
 Try resolve for action
-Returns the profile that will serve one AI action, exactly as `GET api/2.0/ai/assignments/resolve-for-action` does, but answers with an empty result rather than failing when nothing is configured. `actionType` is required and is validated the same way, and `entityId` narrows the lookup to a room. This is the operation to call when the absence of a profile is a normal state to render - a settings screen, or a feature that hides itself. Both operations are read-only.
+Returns the profile that will serve one AI action, exactly as `GET api/2.0/ai/assignments/resolve-for-action` does, but answers with an empty result rather than failing when nothing is configured. `actionType` is required and is validated the same way, and `entityId` narrows the lookup to a room the caller can open - an unknown one answers 404 here as well. This is the operation to call when the absence of a profile is a normal state to render - a settings screen, or a feature that hides itself. Both operations are read-only.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-try-resolve-for-action/).
 
@@ -476,7 +476,7 @@ try {
 ## `aiAssignmentsUnassign()`
 
 ```php
-aiAssignmentsUnassign($body): \OpenAPI\Client\Model\AiSuccessResponse
+aiAssignmentsUnassign($ai_action_type): \OpenAPI\Client\Model\AiSuccessResponse
 ```
 
 Clear an action's profile
@@ -488,7 +488,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **string**|  | |
+| **ai_action_type** | **string**|  | |
 
 ### Return type
 
@@ -519,10 +519,10 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = 'body_example'; // string
+$ai_action_type = 'ai_action_type_example'; // string
 
 try {
-    $result = $apiInstance->aiAssignmentsUnassign($body);
+    $result = $apiInstance->aiAssignmentsUnassign($ai_action_type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssignmentsApi->aiAssignmentsUnassign: ', $e->getMessage(), PHP_EOL;

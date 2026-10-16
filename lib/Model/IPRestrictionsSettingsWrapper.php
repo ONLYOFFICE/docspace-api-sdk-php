@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * IPRestrictionsSettingsWrapper Class Doc Comment
+ * IpRestrictionsSettingsWrapper Class Doc Comment
  *
  * @category Class
- * @description The successful API response containing the IPRestrictionsSettings object.
+ * @description The successful API response containing the IpRestrictionsSettingsDto object.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IPRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
+class IpRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class IPRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
      *
      * @var string
      */
-    protected static $openAPIModelName = 'IPRestrictionsSettingsWrapper';
+    protected static $openAPIModelName = 'IpRestrictionsSettingsWrapper';
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class IPRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $openAPITypes = [
-        'response' => '\OpenAPI\Client\Model\IPRestrictionsSettings',
+        'response' => '\OpenAPI\Client\Model\IpRestrictionsSettingsDto',
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
@@ -321,7 +321,7 @@ class IPRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets response
      *
-     * @return \OpenAPI\Client\Model\IPRestrictionsSettings|null
+     * @return \OpenAPI\Client\Model\IpRestrictionsSettingsDto|null
      */
     public function getResponse()
     {
@@ -331,7 +331,7 @@ class IPRestrictionsSettingsWrapper implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets response
      *
-     * @param \OpenAPI\Client\Model\IPRestrictionsSettings|null $response The IPRestrictionsSettings object returned by the operation.
+     * @param \OpenAPI\Client\Model\IpRestrictionsSettingsDto|null $response The IpRestrictionsSettingsDto object returned by the operation.
      *
      * @return self
      */

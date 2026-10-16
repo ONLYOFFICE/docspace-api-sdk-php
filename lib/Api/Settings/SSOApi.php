@@ -151,7 +151,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getDefaultSsoSettingsV2(string $contentType = self::contentTypes['getDefaultSsoSettingsV2'][0])
     {
@@ -171,7 +171,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDefaultSsoSettingsV2WithHttpInfo(string $contentType = self::contentTypes['getDefaultSsoSettingsV2'][0])
     {
@@ -203,7 +203,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -243,7 +243,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                '\OpenAPI\Client\Model\SsoSettingsWrapper',
                 $request,
                 $response,
             );
@@ -252,7 +252,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -326,7 +326,7 @@ class SSOApi
      */
     public function getDefaultSsoSettingsV2AsyncWithHttpInfo(string $contentType = self::contentTypes['getDefaultSsoSettingsV2'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2Wrapper';
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsWrapper';
         $request = $this->getDefaultSsoSettingsV2Request($contentType);
 
         return $this->client
@@ -475,7 +475,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSsoSettingsV2(string $contentType = self::contentTypes['getSsoSettingsV2'][0])
     {
@@ -495,7 +495,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSsoSettingsV2WithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2'][0])
     {
@@ -527,7 +527,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -561,7 +561,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                '\OpenAPI\Client\Model\SsoSettingsWrapper',
                 $request,
                 $response,
             );
@@ -570,7 +570,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -636,7 +636,7 @@ class SSOApi
      */
     public function getSsoSettingsV2AsyncWithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2Wrapper';
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsWrapper';
         $request = $this->getSsoSettingsV2Request($contentType);
 
         return $this->client
@@ -785,7 +785,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function getSsoSettingsV2Constants(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
@@ -805,7 +805,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsConstantsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSsoSettingsV2ConstantsWithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
@@ -837,7 +837,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsConstantsWrapper',
                         $request,
                         $response,
                     );
@@ -877,7 +877,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
+                '\OpenAPI\Client\Model\SsoSettingsConstantsWrapper',
                 $request,
                 $response,
             );
@@ -886,7 +886,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsConstantsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -960,7 +960,7 @@ class SSOApi
      */
     public function getSsoSettingsV2ConstantsAsyncWithHttpInfo(string $contentType = self::contentTypes['getSsoSettingsV2Constants'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2ConstantsWrapper';
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsConstantsWrapper';
         $request = $this->getSsoSettingsV2ConstantsRequest($contentType);
 
         return $this->client
@@ -1109,7 +1109,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function resetSsoSettingsV2(string $contentType = self::contentTypes['resetSsoSettingsV2'][0])
     {
@@ -1129,7 +1129,7 @@ class SSOApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function resetSsoSettingsV2WithHttpInfo(string $contentType = self::contentTypes['resetSsoSettingsV2'][0])
     {
@@ -1161,7 +1161,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -1201,7 +1201,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                '\OpenAPI\Client\Model\SsoSettingsWrapper',
                 $request,
                 $response,
             );
@@ -1210,7 +1210,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1284,7 +1284,7 @@ class SSOApi
      */
     public function resetSsoSettingsV2AsyncWithHttpInfo(string $contentType = self::contentTypes['resetSsoSettingsV2'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2Wrapper';
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsWrapper';
         $request = $this->resetSsoSettingsV2Request($contentType);
 
         return $this->client
@@ -1429,16 +1429,16 @@ class SSOApi
      * REST API Reference for saveSsoSettingsV2 Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-sso-settings-v2/
      *
-     * @param  \OpenAPI\Client\Model\SsoSettingsRequestsDto|null $sso_settings_requests_dto sso_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SsoSettingsRequestDto|null $sso_settings_request_dto sso_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveSsoSettingsV2'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
-    public function saveSsoSettingsV2($sso_settings_requests_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
+    public function saveSsoSettingsV2($sso_settings_request_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
     {
-        list($response) = $this->saveSsoSettingsV2WithHttpInfo($sso_settings_requests_dto, $contentType);
+        list($response) = $this->saveSsoSettingsV2WithHttpInfo($sso_settings_request_dto, $contentType);
         return $response;
     }
 
@@ -1450,16 +1450,16 @@ class SSOApi
      * REST API Reference for saveSsoSettingsV2 Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-sso-settings-v2/
      *
-     * @param  \OpenAPI\Client\Model\SsoSettingsRequestsDto|null $sso_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SsoSettingsRequestDto|null $sso_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveSsoSettingsV2'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\SsoSettingsV2Wrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\SsoSettingsWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveSsoSettingsV2WithHttpInfo($sso_settings_requests_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
+    public function saveSsoSettingsV2WithHttpInfo($sso_settings_request_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
     {
-        $request = $this->saveSsoSettingsV2Request($sso_settings_requests_dto, $contentType);
+        $request = $this->saveSsoSettingsV2Request($sso_settings_request_dto, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1487,7 +1487,7 @@ class SSOApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $request,
                         $response,
                     );
@@ -1498,12 +1498,6 @@ class SSOApi
                         $response,
                     );
                 case 429:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -1527,7 +1521,7 @@ class SSOApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                '\OpenAPI\Client\Model\SsoSettingsWrapper',
                 $request,
                 $response,
             );
@@ -1536,7 +1530,7 @@ class SSOApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\SsoSettingsV2Wrapper',
+                        '\OpenAPI\Client\Model\SsoSettingsWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1550,14 +1544,6 @@ class SSOApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
@@ -1580,15 +1566,15 @@ class SSOApi
      * REST API Reference for saveSsoSettingsV2 Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-sso-settings-v2/
      *
-     * @param  \OpenAPI\Client\Model\SsoSettingsRequestsDto|null $sso_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SsoSettingsRequestDto|null $sso_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveSsoSettingsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveSsoSettingsV2Async($sso_settings_requests_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
+    public function saveSsoSettingsV2Async($sso_settings_request_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
     {
-        return $this->saveSsoSettingsV2AsyncWithHttpInfo($sso_settings_requests_dto, $contentType)
+        return $this->saveSsoSettingsV2AsyncWithHttpInfo($sso_settings_request_dto, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1604,16 +1590,16 @@ class SSOApi
      * REST API Reference for saveSsoSettingsV2 Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/save-sso-settings-v2/
      *
-     * @param  \OpenAPI\Client\Model\SsoSettingsRequestsDto|null $sso_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SsoSettingsRequestDto|null $sso_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveSsoSettingsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function saveSsoSettingsV2AsyncWithHttpInfo($sso_settings_requests_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
+    public function saveSsoSettingsV2AsyncWithHttpInfo($sso_settings_request_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\SsoSettingsV2Wrapper';
-        $request = $this->saveSsoSettingsV2Request($sso_settings_requests_dto, $contentType);
+        $returnType = '\OpenAPI\Client\Model\SsoSettingsWrapper';
+        $request = $this->saveSsoSettingsV2Request($sso_settings_request_dto, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1654,13 +1640,13 @@ class SSOApi
     /**
      * Create request for operation 'saveSsoSettingsV2'
      *
-     * @param  \OpenAPI\Client\Model\SsoSettingsRequestsDto|null $sso_settings_requests_dto (optional)
+     * @param  \OpenAPI\Client\Model\SsoSettingsRequestDto|null $sso_settings_request_dto (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['saveSsoSettingsV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function saveSsoSettingsV2Request($sso_settings_requests_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
+    public function saveSsoSettingsV2Request($sso_settings_request_dto = null, string $contentType = self::contentTypes['saveSsoSettingsV2'][0])
     {
 
 
@@ -1683,12 +1669,12 @@ class SSOApi
         );
 
         // for model (json/xml)
-        if (isset($sso_settings_requests_dto)) {
+        if (isset($sso_settings_request_dto)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sso_settings_requests_dto));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sso_settings_request_dto));
             } else {
-                $httpBody = $sso_settings_requests_dto;
+                $httpBody = $sso_settings_request_dto;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
