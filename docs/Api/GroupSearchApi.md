@@ -4,9 +4,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getGroupsWithFilesShared()**](GroupSearchApi.md#getGroupsWithFilesShared) | **GET** /api/2.0/group/file/{id} | Get groups with file sharing settings |
-| [**getGroupsWithFoldersShared()**](GroupSearchApi.md#getGroupsWithFoldersShared) | **GET** /api/2.0/group/folder/{id} | Get groups with folder sharing settings |
-| [**getGroupsWithRoomsShared()**](GroupSearchApi.md#getGroupsWithRoomsShared) | **GET** /api/2.0/group/room/{id} | Get groups with room sharing settings |
+| [**getGroupsWithFilesShared()**](GroupSearchApi.md#getGroupsWithFilesShared) | **GET** /api/2.0/group/file/{id} | Search groups for a file |
+| [**getGroupsWithFoldersShared()**](GroupSearchApi.md#getGroupsWithFoldersShared) | **GET** /api/2.0/group/folder/{id} | Search groups for a folder |
+| [**getGroupsWithRoomsShared()**](GroupSearchApi.md#getGroupsWithRoomsShared) | **GET** /api/2.0/group/room/{id} | Search groups for a room |
 
 
 ## `getGroupsWithFilesShared()`
@@ -15,8 +15,8 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 getGroupsWithFilesShared($id, $exclude_shared, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupArrayWrapper
 ```
 
-Get groups with file sharing settings
-Returns groups with their sharing settings for a file with the ID specified in request.
+Search groups for a file
+Returns the groups that can be given access to the file with the ID given in the route, and reports for each  of them whether it already has access to that file.  The caller has to be allowed to manage the access of that file, and the ID has to belong to an existing file,  so the operation answers 403 for a file the caller cannot share and 404 for an ID that matches nothing.  The call is read-only and, unlike the account search, works without a filter: leaving `filterValue` empty  returns every group instead of nothing, and a value narrows the result by group name.  The result is paged by `count` and `startIndex`, with the number of matching groups in the total count of the  response.  Pass `excludeShared` to keep only the groups that have no access to the file yet, which is the set to offer  when adding new ones; without it every matching group comes back and `shared` tells them apart.  To search users and groups together, use `GET api/2.0/accounts/file/{id}/search`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-files-shared/).
 
@@ -24,15 +24,19 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The group ID. | |
-| **exclude_shared** | **bool**| Specifies whether to exclude the group sharing settings from the response. | [optional] |
-| **count** | **int**| The number of groups to retrieve in the request. | [optional] |
-| **start_index** | **int**| The starting index from which to begin retrieving groups with their sharing settings. | [optional] |
-| **filter_value** | **string**| The text used as a filter for retrieving groups with their sharing settings. | [optional] |
+| **id** | **int|string**| The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. | |
+| **exclude_shared** | **bool**| Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. | [optional] |
+| **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
+| **start_index** | **int**| The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. | [optional] |
+| **filter_value** | **string**| The text to match against the group name. Omit it to get every group the caller may grant access to. | [optional] |
 
 ### Return type
 
 [**\OpenAPI\Client\Model\GroupArrayWrapper**](../Model/GroupArrayWrapper.md)
+
+### Third-party storage
+
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$id` as `string`.
 
 ### Authorization
 
@@ -73,11 +77,11 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The group ID.
-$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 25; // int | The number of groups to retrieve in the request.
-$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 1234; // int | The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage.
+$exclude_shared = false; // bool | Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart.
+$count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
+$start_index = 0; // int | The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response.
+$filter_value = Marketing; // string | The text to match against the group name. Omit it to get every group the caller may grant access to.
 
 try {
     $result = $apiInstance->getGroupsWithFilesShared($id, $exclude_shared, $count, $start_index, $filter_value);
@@ -102,8 +106,8 @@ try {
 getGroupsWithFoldersShared($id, $exclude_shared, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupArrayWrapper
 ```
 
-Get groups with folder sharing settings
-Returns groups with their sharing settings in a folder with the ID specified in request.
+Search groups for a folder
+Returns the groups that can be given access to the folder with the ID given in the route, and reports for  each of them whether it already has access to that folder.  The caller has to be allowed to manage the access of that folder, and the ID has to belong to an existing  folder, so the operation answers 403 for a folder the caller cannot share and 404 for an ID that matches  nothing.  The call is read-only and, unlike the account search, works without a filter: leaving `filterValue` empty  returns every group instead of nothing, and a value narrows the result by group name.  The result is paged by `count` and `startIndex`, with the number of matching groups in the total count of the  response.  Pass `excludeShared` to keep only the groups that have no access to the folder yet, which is the set to offer  when adding new ones; without it every matching group comes back and `shared` tells them apart.  To search users and groups together, use `GET api/2.0/accounts/folder/{id}/search`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-folders-shared/).
 
@@ -111,15 +115,19 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The group ID. | |
-| **exclude_shared** | **bool**| Specifies whether to exclude the group sharing settings from the response. | [optional] |
-| **count** | **int**| The number of groups to retrieve in the request. | [optional] |
-| **start_index** | **int**| The starting index from which to begin retrieving groups with their sharing settings. | [optional] |
-| **filter_value** | **string**| The text used as a filter for retrieving groups with their sharing settings. | [optional] |
+| **id** | **int|string**| The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. | |
+| **exclude_shared** | **bool**| Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. | [optional] |
+| **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
+| **start_index** | **int**| The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. | [optional] |
+| **filter_value** | **string**| The text to match against the group name. Omit it to get every group the caller may grant access to. | [optional] |
 
 ### Return type
 
 [**\OpenAPI\Client\Model\GroupArrayWrapper**](../Model/GroupArrayWrapper.md)
+
+### Third-party storage
+
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$id` as `string`.
 
 ### Authorization
 
@@ -160,11 +168,11 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The group ID.
-$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 25; // int | The number of groups to retrieve in the request.
-$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 1234; // int | The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage.
+$exclude_shared = false; // bool | Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart.
+$count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
+$start_index = 0; // int | The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response.
+$filter_value = Marketing; // string | The text to match against the group name. Omit it to get every group the caller may grant access to.
 
 try {
     $result = $apiInstance->getGroupsWithFoldersShared($id, $exclude_shared, $count, $start_index, $filter_value);
@@ -189,8 +197,8 @@ try {
 getGroupsWithRoomsShared($id, $exclude_shared, $count, $start_index, $filter_value): \OpenAPI\Client\Model\GroupArrayWrapper
 ```
 
-Get groups with room sharing settings
-Returns groups with their sharing settings in a room with the ID specified in request.
+Search groups for a room
+Returns the groups that can be given access to the room with the ID given in the route, and reports for each  of them whether it already has access to that room.  The caller has to be allowed to manage the access of that room, and the ID has to belong to an existing room,  so the operation answers 403 for a room the caller cannot share and 404 for an ID that matches nothing.  The call is read-only and, unlike the account search, works without a filter: leaving `filterValue` empty  returns every group instead of nothing, and a value narrows the result by group name.  The result is paged by `count` and `startIndex`, with the number of matching groups in the total count of the  response.  Pass `excludeShared` to keep only the groups that have no access to the room yet, which is the set to offer  when adding new ones; without it every matching group comes back and `shared` tells them apart.  To search users and groups together, use `GET api/2.0/accounts/room/{id}/search`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-groups-with-rooms-shared/).
 
@@ -198,15 +206,19 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The group ID. | |
-| **exclude_shared** | **bool**| Specifies whether to exclude the group sharing settings from the response. | [optional] |
-| **count** | **int**| The number of groups to retrieve in the request. | [optional] |
-| **start_index** | **int**| The starting index from which to begin retrieving groups with their sharing settings. | [optional] |
-| **filter_value** | **string**| The text used as a filter for retrieving groups with their sharing settings. | [optional] |
+| **id** | **int|string**| The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage. | |
+| **exclude_shared** | **bool**| Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart. | [optional] |
+| **count** | **int**| The size of the page. It defaults to 100, which is also the largest value the operation accepts. | [optional] |
+| **start_index** | **int**| The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response. | [optional] |
+| **filter_value** | **string**| The text to match against the group name. Omit it to get every group the caller may grant access to. | [optional] |
 
 ### Return type
 
 [**\OpenAPI\Client\Model\GroupArrayWrapper**](../Model/GroupArrayWrapper.md)
+
+### Third-party storage
+
+The same method serves an entry in a connected third-party storage, whose identifier is a string such as `sbox-42`: pass `$id` as `string`.
 
 ### Authorization
 
@@ -247,11 +259,11 @@ $apiInstance = new OpenAPI\Client\Api\SearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | The group ID.
-$exclude_shared = false; // bool | Specifies whether to exclude the group sharing settings from the response.
-$count = 25; // int | The number of groups to retrieve in the request.
-$start_index = 0; // int | The starting index from which to begin retrieving groups with their sharing settings.
-$filter_value = John; // string | The text used as a filter for retrieving groups with their sharing settings.
+$id = 1234; // int | The ID of the room, folder or file whose access the search is run against, taken from the route. It is an  integer for an entry stored in DocSpace and a provider-specific string for an entry in a connected  third-party storage.
+$exclude_shared = false; // bool | Keeps only the groups that do not have access to the entry yet, which is the set to offer when granting  access. Every returned entry then has `shared` set to false; without the flag every matching group comes back  and `shared` tells them apart.
+$count = 25; // int | The size of the page. It defaults to 100, which is also the largest value the operation accepts.
+$start_index = 0; // int | The number of matching groups to skip before the page starts. It defaults to 0, and the total number of  matches is reported in the total count of the response.
+$filter_value = Marketing; // string | The text to match against the group name. Omit it to get every group the caller may grant access to.
 
 try {
     $result = $apiInstance->getGroupsWithRoomsShared($id, $exclude_shared, $count, $start_index, $filter_value);

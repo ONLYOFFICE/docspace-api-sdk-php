@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**limited_access_for_users** | **bool** | Determines if users have restricted access to the Developer Tools. | [optional]
+**limited_access_for_users** | **bool** | Specifies if the Developer Tools access are limited for users or not. | [optional]
+**last_modified** | **\DateTime** | The timestamp indicating when the settings were last modified. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

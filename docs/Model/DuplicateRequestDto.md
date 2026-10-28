@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**return_single_operation** | **bool** | Specifies whether to return only the current operation | [optional]
-**folder_ids** | [**\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFolderIds[]**](DuplicateRequestDtoAllOfFolderIds.md) | The list of folder IDs. | [optional]
-**file_ids** | [**\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]**](DuplicateRequestDtoAllOfFileIds.md) | The list of file IDs. | [optional]
+**return_single_operation** | **bool** | Which operations the answer carries: `true` returns the operation this call started and nothing else, `false`  returns every operation of the same kind that the caller has running or unread. When nothing was queued, which  happens for an empty selection, `true` falls back to the full list. | [optional]
+**folder_ids** | [**\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFolderIds[]**](DuplicateRequestDtoAllOfFolderIds.md) | The folders to duplicate, by id; the copy of each one is created in the folder that already holds it. A number  addresses a folder stored in the portal itself, a string addresses a folder on a connected third-party  account, and both kinds may be sent in one list. | [optional]
+**file_ids** | [**\OpenAPI\Client\Model\DuplicateRequestDtoAllOfFileIds[]**](DuplicateRequestDtoAllOfFileIds.md) | The files to duplicate, by id; the copy of each one is created in the folder that already holds it. A number  addresses a file stored in the portal itself, a string addresses a file on a connected third-party account,  and both kinds may be sent in one list. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

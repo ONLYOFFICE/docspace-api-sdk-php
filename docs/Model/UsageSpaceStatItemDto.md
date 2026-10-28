@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | The item name. | [optional]
-**icon** | **string** | The item icon path. | [optional]
-**disabled** | **bool** | Specifies if the item is disabled or not. | [optional]
-**size** | **string** | The item used space. | [optional]
-**url** | **string** | The item URL. | [optional]
+**name** | **string** | The category name in the portal language, HTML-escaped and ready to be rendered as text. What a category  stands for depends on the module asked about - for the Documents module it is a room type. | [optional]
+**icon** | **string** | The path of the icon to render beside the name, relative to the portal address. It is empty for a category  that ships no icon. | [optional]
+**disabled** | **bool** | Whether the category is switched off for this portal. A disabled category still reports the space it  occupies, so it is worth showing greyed out rather than dropping. | [optional]
+**size** | **string** | The occupied space already formatted for display, with its unit and in the portal language - `0 Byte` for  an empty category. It is not a byte count and must not be parsed; the raw numbers live in the quota  reported by `GET api/2.0/portal/quota`. | [optional]
+**url** | **string** | The portal page that lists the contents of this category, relative to the portal address, so a statistics  page can link through to it. It is empty for a category with no page of its own. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

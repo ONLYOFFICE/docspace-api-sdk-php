@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**response** | [**\OpenAPI\Client\Model\CheckDestFolderDto**](CheckDestFolderDto.md) |  | [optional]
+**response** | [**\OpenAPI\Client\Model\CheckDestFolderDto**](CheckDestFolderDto.md) | The CheckDestFolderDto object returned by the operation. | [optional]
 **count** | **int** | The total number of items in the response | [optional]
 **links** | [**\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]**](GetPortalPrices200ResponseLinksInner.md) | List of links related to the response | [optional]
 **status** | **int** | HTTP status code of the response | [optional]

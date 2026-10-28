@@ -4,33 +4,33 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**startTask()**](AIVectorizationApi.md#startTask) | **POST** /api/2.0/ai/vectorization/tasks | Start a vectorization task |
+| [**aiVectorizationStartTask()**](AIVectorizationApi.md#aiVectorizationStartTask) | **POST** /api/2.0/ai/vectorization/tasks | Start a vectorization task |
 
 
-## `startTask()`
+## `aiVectorizationStartTask()`
 
 ```php
-startTask($vectorization_start_request_body)
+aiVectorizationStartTask($ai_vectorization_start_task_request): \OpenAPI\Client\Model\AiVectorizationStartTask200Response
 ```
 
 Start a vectorization task
-Submits the specified files for vectorization. Each file is processed asynchronously by the configured embedding provider  and indexed for semantic search in AI chat sessions. Only files accessible to the current user can be vectorized.
+Queues the indexing of the portal files named in the body so their contents can be retrieved during a chat round. The body is proxied unchanged to the DocSpace AI service, which validates it and owns the job. Indexing is asynchronous and fire-and-forget: the answer acknowledges the request without carrying a job handle, so there is nothing to poll and progress is not reported here. The embedding provider used is the one in `GET api/2.0/ai/config/vectorization`, and changing that setting does not re-index anything already indexed - queue it again for that.
 
-For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/start-task/).
+For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-vectorization-start-task/).
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **vectorization_start_request_body** | [**\OpenAPI\Client\Model\VectorizationStartRequestBody**](../Model/VectorizationStartRequestBody.md)| The vectorization parameters including file identifiers. | |
+| **ai_vectorization_start_task_request** | [**\OpenAPI\Client\Model\AiVectorizationStartTaskRequest**](../Model/AiVectorizationStartTaskRequest.md)| The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape. | |
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\AiVectorizationStartTask200Response**](../Model/AiVectorizationStartTask200Response.md)
 
 ### Authorization
 
-[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
+[cookieAuth](../../README.md#cookieAuth), [bearerAuth](../../README.md#bearerAuth)
 
 ### Example
 
@@ -39,27 +39,13 @@ void (empty response body)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-// Configure OAuth2 access token for authorization: OAuth2
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure API key authorization: ApiKeyBearer
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
-
-// Configure API key authorization: asc_auth_key
+// Configure API key authorization: cookieAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
 
-// Configure Bearer (JWT) authorization: Bearer
+// Configure Bearer authorization: bearerAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
 
 $apiInstance = new OpenAPI\Client\Api\VectorizationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -67,19 +53,20 @@ $apiInstance = new OpenAPI\Client\Api\VectorizationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$vectorization_start_request_body = new \OpenAPI\Client\Model\VectorizationStartRequestBody(); // \OpenAPI\Client\Model\VectorizationStartRequestBody | The vectorization parameters including file identifiers.
+$ai_vectorization_start_task_request = new \OpenAPI\Client\Model\AiVectorizationStartTaskRequest(); // \OpenAPI\Client\Model\AiVectorizationStartTaskRequest | The files to index, proxied unchanged to the DocSpace AI service, which owns and validates the shape.
 
 try {
-    $apiInstance->startTask($vectorization_start_request_body);
+    $result = $apiInstance->aiVectorizationStartTask($ai_vectorization_start_task_request);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VectorizationApi->startTask: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VectorizationApi->aiVectorizationStartTask: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -13,11 +13,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `getUserQuotaSettings()`
 
 ```php
-getUserQuotaSettings(): \OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper
+getUserQuotaSettings(): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Get the user quota settings
-Returns the user quota settings.
+Returns the portal's per-user default storage quota: whether it is enabled and, if so, its size in bytes.  Requires Owner or DocSpaceAdmin (the EditPortalSettings permission); every other authenticated role, and an  anonymous caller, is refused. This is a read-only, idempotent call. When `enableQuota` is false, the size  value is not enforced and users get unlimited personal storage regardless of what it holds. The response  supports conditional requests: send the standard If-Modified-Since header with the previous `lastModified`  value, and an unchanged response comes back empty instead of resending the settings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-user-quota-settings/).
 
@@ -27,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantUserQuotaSettingsWrapper**](../Model/TenantUserQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -89,11 +89,11 @@ try {
 ## `saveAiAgentQuotaSettings()`
 
 ```php
-saveAiAgentQuotaSettings($quota_settings_requests_dto): \OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper
+saveAiAgentQuotaSettings($quota_settings_request_dto): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Save the AI Agent quota settings
-Saves the AI Agent quota settings specified in the request to the current portal.
+Sets the portal's default storage quota for AI agents, applied as the starting limit for newly created agents.  Requires Owner or DocSpaceAdmin (the EditPortalSettings permission), and on a paid SaaS tenant the portal's  plan must include the statistics feature, or the call is rejected as not covered by the plan. The requested  size cannot exceed the portal's own total storage quota, nor, on a Standalone install with a portal-wide quota  enabled, that quota's size. Disable enforcement by passing `enableQuota=false`; the size is then ignored for  new agents. This is a mutating, idempotent call: sending the same body again leaves the quota unchanged. It  returns the saved settings, not any agent's current usage.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/save-ai-agent-quota-settings/).
 
@@ -101,11 +101,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **quota_settings_requests_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestsDto**](../Model/QuotaSettingsRequestsDto.md)|  | [optional] |
+| **quota_settings_request_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestDto**](../Model/QuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantAiAgentQuotaSettingsWrapper**](../Model/TenantAiAgentQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -146,10 +146,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$quota_settings_requests_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestsDto
+$quota_settings_request_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveAiAgentQuotaSettings($quota_settings_requests_dto);
+    $result = $apiInstance->saveAiAgentQuotaSettings($quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->saveAiAgentQuotaSettings: ', $e->getMessage(), PHP_EOL;
@@ -168,11 +168,11 @@ try {
 ## `saveRoomQuotaSettings()`
 
 ```php
-saveRoomQuotaSettings($quota_settings_requests_dto): \OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper
+saveRoomQuotaSettings($quota_settings_request_dto): \OpenAPI\Client\Model\EntityQuotaSettingsWrapper
 ```
 
 Save the room quota settings
-Saves the room quota settings specified in the request to the current portal.
+Sets the portal's default per-room storage quota, applied to newly created rooms as their starting limit.  Requires Owner or DocSpaceAdmin (the EditPortalSettings permission), and on a paid SaaS tenant the portal's  plan must include the statistics feature, or the call is rejected as not covered by the plan. The requested  size cannot exceed the portal's own total storage quota, nor, on a Standalone install with a portal-wide quota  enabled, that quota's size. Disable enforcement by passing `enableQuota=false`; the size is then ignored for  new rooms. This is a mutating, idempotent call: sending the same body again leaves the quota unchanged. It  returns the saved settings, not the individual rooms' current usage.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/save-room-quota-settings/).
 
@@ -180,11 +180,11 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **quota_settings_requests_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestsDto**](../Model/QuotaSettingsRequestsDto.md)|  | [optional] |
+| **quota_settings_request_dto** | [**\OpenAPI\Client\Model\QuotaSettingsRequestDto**](../Model/QuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\TenantRoomQuotaSettingsWrapper**](../Model/TenantRoomQuotaSettingsWrapper.md)
+[**\OpenAPI\Client\Model\EntityQuotaSettingsWrapper**](../Model/EntityQuotaSettingsWrapper.md)
 
 ### Authorization
 
@@ -225,10 +225,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$quota_settings_requests_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestsDto
+$quota_settings_request_dto = new \OpenAPI\Client\Model\QuotaSettingsRequestDto(); // \OpenAPI\Client\Model\QuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->saveRoomQuotaSettings($quota_settings_requests_dto);
+    $result = $apiInstance->saveRoomQuotaSettings($quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->saveRoomQuotaSettings: ', $e->getMessage(), PHP_EOL;
@@ -247,11 +247,11 @@ try {
 ## `setTenantQuotaSettings()`
 
 ```php
-setTenantQuotaSettings($tenant_quota_settings_requests_dto): \OpenAPI\Client\Model\TenantQuotaSettingsWrapper
+setTenantQuotaSettings($tenant_quota_settings_request_dto): \OpenAPI\Client\Model\TenantQuotaSettingsWrapper
 ```
 
 Save the tenant quota settings
-Saves the tenant quota settings specified in the request to the current portal.
+Sets or removes the storage quota for a given tenant. Available only on a Standalone (self-hosted)  installation; on SaaS the call is always refused. Requires a DocSpace administrator, and the portal's plan  must include the statistics feature or the call is rejected as not covered by the plan. Pass a non-negative  `quota` in bytes to enable the limit for the tenant identified by `tenantId`, or a negative value to remove  any limit. This is a mutating, idempotent call: sending the same body again leaves the quota unchanged. It  returns the saved quota settings for that tenant, not its current usage.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-quota-settings/).
 
@@ -259,7 +259,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_quota_settings_requests_dto** | [**\OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto**](../Model/TenantQuotaSettingsRequestsDto.md)|  | [optional] |
+| **tenant_quota_settings_request_dto** | [**\OpenAPI\Client\Model\TenantQuotaSettingsRequestDto**](../Model/TenantQuotaSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -304,10 +304,10 @@ $apiInstance = new OpenAPI\Client\Api\QuotaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_quota_settings_requests_dto = new \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto(); // \OpenAPI\Client\Model\TenantQuotaSettingsRequestsDto
+$tenant_quota_settings_request_dto = new \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto(); // \OpenAPI\Client\Model\TenantQuotaSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantQuotaSettings($tenant_quota_settings_requests_dto);
+    $result = $apiInstance->setTenantQuotaSettings($tenant_quota_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QuotaApi->setTenantQuotaSettings: ', $e->getMessage(), PHP_EOL;
