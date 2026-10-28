@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**members** | **string[]** | The list of group member IDs. | [optional]
-**group_manager** | **string** | The group manager ID. |
-**group_name** | **string** | The group name. | [optional]
+**members** | **string[]** | The accounts to put into the new group. Every one of them has to be an active member that is not a guest,  otherwise the whole call is rejected. Omit it to create an empty group. | [optional]
+**group_manager** | **string** | The account to make the manager of the new group. It is added to the group as well, so it does not have to be  repeated in `members`. Omit it to create a group without a manager. | [optional]
+**group_name** | **string** | The name of the group, from 1 to 128 characters. It is required, it may not be blank, and it does not have to  be unique. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

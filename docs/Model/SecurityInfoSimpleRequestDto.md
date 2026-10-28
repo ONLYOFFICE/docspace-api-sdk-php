@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**share** | [**\OpenAPI\Client\Model\FileShareParams[]**](FileShareParams.md) | The collection of sharing parameters. | [optional]
-**notify** | **bool** | Specifies whether to notify users about the shared file or not. | [optional]
-**sharing_message** | **string** | The message to send when notifying about the shared file. | [optional]
+**share** | [**\OpenAPI\Client\Model\FileShareParams[]**](FileShareParams.md) | One record per account or group whose rights are being set, each naming the subject and the level it gets; a  level of `None` takes the access away. An empty collection makes the call change nothing. | [optional]
+**notify** | **bool** | Set to true to have every account named in `share` emailed about the access it just received; false changes  the rights without telling anyone. | [optional]
+**sharing_message** | **string** | The text put into that email, ignored while `notify` is false. Markup is stripped before sending, so only the  plain text of the value survives. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

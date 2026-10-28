@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | The new name for the API key. | [optional]
-**permissions** | **string[]** | The new list of permissions for the API key. | [optional]
-**is_active** | **bool** | Indicates whether the API key should be active or not. | [optional]
+**name** | **string** | The new label of the key, up to 30 characters, neither empty nor made of whitespace only. Omit it to keep the  current name. | [optional]
+**permissions** | **string[]** | The scopes that replace the current ones. Every value has to come from `GET api/2.0/keys/permissions`, an  unknown value or an empty array is rejected, and omitting the field keeps the current scopes. | [optional]
+**is_active** | **bool** | Whether the key may authenticate requests. Set it to false to stop the key without deleting it and to true to  let it work again; omit it to keep the current state. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

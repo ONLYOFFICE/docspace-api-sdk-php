@@ -10,11 +10,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `setTenantBannerSettings()`
 
 ```php
-setTenantBannerSettings($tenant_banner_settings_dto): \OpenAPI\Client\Model\TenantBannerSettingsWrapper
+setTenantBannerSettings($tenant_banner_settings_request_dto): \OpenAPI\Client\Model\TenantBannerSettingsWrapper
 ```
 
 Set the banners visibility
-Sets the visibility settings of the promotional banners in the portal.
+Sets whether the portal's promotional banners are hidden for every user. Available only on an Enterprise  license; every other plan is refused regardless of the caller's role. Requires Owner or DocSpaceAdmin (the  EditPortalSettings permission). The flag only takes effect on a Standalone (self-hosted) installation; on  SaaS, banners are always shown no matter what is saved here. This is a mutating, idempotent, portal-wide call:  it applies to every user on the tenant immediately. It returns the saved setting; read the current value at  any time from `GET api/2.0/settings/banner`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-banner-settings/).
 
@@ -22,7 +22,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_banner_settings_dto** | [**\OpenAPI\Client\Model\TenantBannerSettingsDto**](../Model/TenantBannerSettingsDto.md)|  | [optional] |
+| **tenant_banner_settings_request_dto** | [**\OpenAPI\Client\Model\TenantBannerSettingsRequestDto**](../Model/TenantBannerSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -61,17 +61,16 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\BannersVisibilityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_banner_settings_dto = new \OpenAPI\Client\Model\TenantBannerSettingsDto(); // \OpenAPI\Client\Model\TenantBannerSettingsDto
+$tenant_banner_settings_request_dto = new \OpenAPI\Client\Model\TenantBannerSettingsRequestDto(); // \OpenAPI\Client\Model\TenantBannerSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantBannerSettings($tenant_banner_settings_dto);
+    $result = $apiInstance->setTenantBannerSettings($tenant_banner_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BannersVisibilityApi->setTenantBannerSettings: ', $e->getMessage(), PHP_EOL;

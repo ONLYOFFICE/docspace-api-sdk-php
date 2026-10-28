@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) |  | [optional]
-**email** | **string** | The user email address. | [optional]
+**email** | **string** | The address of somebody who has no portal account yet. An invitation is sent to it and an account is created  once it is accepted, so this is the field to use instead of an account identifier when the person is new to  the portal. | [optional]
+**type** | [**\OpenAPI\Client\Model\EmployeeType**](EmployeeType.md) | The user type. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -10,11 +10,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `setTenantDevToolsAccessSettings()`
 
 ```php
-setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_dto): \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper
+setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_request_dto): \OpenAPI\Client\Model\TenantDevToolsAccessSettingsWrapper
 ```
 
 Set the Developer Tools access settings
-Sets the Developer Tools access settings for the portal.
+Sets whether the portal restricts the `User` role from using the developer tools (API keys, OAuth apps,  webhooks); `RoomAdmin` and `DocSpaceAdmin` are never affected by this setting. Requires Owner or DocSpaceAdmin  (the EditPortalSettings permission). This is a mutating, idempotent, portal-wide call: it applies to every  `User` on the tenant immediately. It returns the saved setting; read the current value at any time from  `GET api/2.0/settings/devtoolsaccess`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/set-tenant-dev-tools-access-settings/).
 
@@ -22,7 +22,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tenant_dev_tools_access_settings_dto** | [**\OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto**](../Model/TenantDevToolsAccessSettingsDto.md)|  | [optional] |
+| **tenant_dev_tools_access_settings_request_dto** | [**\OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto**](../Model/TenantDevToolsAccessSettingsRequestDto.md)|  | [optional] |
 
 ### Return type
 
@@ -61,17 +61,16 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\AccessToDevToolsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$tenant_dev_tools_access_settings_dto = new \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto(); // \OpenAPI\Client\Model\TenantDevToolsAccessSettingsDto
+$tenant_dev_tools_access_settings_request_dto = new \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto(); // \OpenAPI\Client\Model\TenantDevToolsAccessSettingsRequestDto
 
 try {
-    $result = $apiInstance->setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_dto);
+    $result = $apiInstance->setTenantDevToolsAccessSettings($tenant_dev_tools_access_settings_request_dto);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccessToDevToolsApi->setTenantDevToolsAccessSettings: ', $e->getMessage(), PHP_EOL;

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**favorite** | **bool** | Specifies if the file is favorite or not. | [optional]
-**folder** | **string** | The folder of the file. | [optional]
-**owner** | **string** | The file owner. | [optional]
-**sharing_settings** | [**\OpenAPI\Client\Model\AceShortWrapper[]**](AceShortWrapper.md) | The sharing settings of the file. | [optional]
-**type** | [**\OpenAPI\Client\Model\EditorType**](EditorType.md) |  | [optional]
-**uploaded** | **string** | The uploaded file. | [optional]
+**favorite** | **bool** | Whether the caller has this document among their favorites. It is empty when favorites do not apply - for an  anonymous caller, for a guest, and for an encrypted document. | [optional]
+**folder** | **string** | The place of the document as a readable path, its folders joined from the root downwards. It is empty in the  embedded layout, which shows no such panel. | [optional]
+**owner** | **string** | The display name of the owner of the document. It is empty for an anonymous session. | [optional]
+**sharing_settings** | [**\OpenAPI\Client\Model\AceShortDto[]**](AceShortDto.md) | Who the document is shared with, as the information panel lists it. An empty list means it is shared with  nobody beyond its owner. | [optional]
+**type** | [**\OpenAPI\Client\Model\EditorType**](EditorType.md) | The layout the information panel is rendered for. | [optional]
+**uploaded** | **string** | When the document was created on the portal, already formatted for reading in the culture of the caller rather  than as a machine timestamp. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -4,18 +4,18 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**changeUserPassword()**](PeoplePasswordApi.md#changeUserPassword) | **PUT** /api/2.0/people/{userid}/password | Change a user password |
+| [**changeUserPassword()**](PeoplePasswordApi.md#changeUserPassword) | **PUT** /api/2.0/people/{userId}/password | Change a user password |
 | [**sendUserPassword()**](PeoplePasswordApi.md#sendUserPassword) | **POST** /api/2.0/people/password | Remind a user password |
 
 
 ## `changeUserPassword()`
 
 ```php
-changeUserPassword($userid, $member_base_request_dto): \OpenAPI\Client\Model\EmployeeFullWrapper
+changeUserPassword($user_id, $change_password_request): \OpenAPI\Client\Model\EmployeeFullWrapper
 ```
 
 Change a user password
-Sets a new password to the user with the ID specified in the request.
+Sets a new password on an account, which is the step that completes a password change or a password  recovery.  The request has to carry the confirmation token from the emailed link rather than an ordinary session, and an  expired or already used token is answered with 401.  The account has to exist and be `Active`, so the password of a disabled account or of an open invitation  cannot be set, and only the portal owner may set the owner's own password.  Send either `passwordHash`, which is taken as it is, or a plain `password`, which is checked against the  portal password policy; sending neither, or a password the policy rejects, answers 400.  The change ends every other session of that account and emails it a notice that the password was changed.  The answer is the profile, which does not carry the password in any form.  To have the recovery link sent in the first place, use `POST api/2.0/people/password`.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/change-user-password/).
 
@@ -23,8 +23,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **userid** | **string**| The user ID. | |
-| **member_base_request_dto** | [**\OpenAPI\Client\Model\MemberBaseRequestDto**](../Model/MemberBaseRequestDto.md)| The request parameters for the user generic information. | |
+| **user_id** | **string**| The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active. | |
+| **change_password_request** | [**\OpenAPI\Client\Model\ChangePasswordRequest**](../Model/ChangePasswordRequest.md)| The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed. | |
 
 ### Return type
 
@@ -63,18 +63,17 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('as
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-
 $apiInstance = new OpenAPI\Client\Api\PasswordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$userid = aae1e103-bca5-9fa1-ba8c-42058b4abf28; // string | The user ID.
-$member_base_request_dto = new \OpenAPI\Client\Model\MemberBaseRequestDto(); // \OpenAPI\Client\Model\MemberBaseRequestDto | The request parameters for the user generic information.
+$user_id = 00000000-0000-0000-0000-000000000000; // string | The ID of the account whose password is set, taken from the route. It has to match the account the  confirmation token was issued for, and the account has to be active.
+$change_password_request = new \OpenAPI\Client\Model\ChangePasswordRequest(); // \OpenAPI\Client\Model\ChangePasswordRequest | The new password, sent either in plain text or already hashed. Exactly one of the two fields is needed.
 
 try {
-    $result = $apiInstance->changeUserPassword($userid, $member_base_request_dto);
+    $result = $apiInstance->changeUserPassword($user_id, $change_password_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PasswordApi->changeUserPassword: ', $e->getMessage(), PHP_EOL;
@@ -97,7 +96,7 @@ sendUserPassword($email_member_request_dto): \OpenAPI\Client\Model\StringWrapper
 ```
 
 Remind a user password
-Reminds a password to the user using the email address specified in the request.
+Emails a password recovery link to an address, and is the entry point of the recovery flow rather than the  operation that changes anything.  It needs no authentication, which is how a person who cannot sign in uses it; when the portal has a CAPTCHA  configured, an unauthenticated request has to pass it and answers 403 if it does not.  An unauthenticated caller always gets the same success message, whether or not the address belongs to an  account, so the answer cannot be used to find out which addresses are registered.  An authenticated caller does get told: a failure is answered with 403, and asking for somebody else requires  DocSpace administrator rights, while the owner's password can be asked for by the owner alone and another  administrator's only by the owner.  The link that is sent leads to `PUT api/2.0/people/{userId}/password`, which is where the new password is  set; no password is ever sent by email despite the wording of the message.  Repeated calls are throttled.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/send-user-password/).
 
@@ -113,7 +112,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic), [OAuth2](../../README.md#OAuth2), [ApiKeyBearer](../../README.md#ApiKeyBearer), [asc_auth_key](../../README.md#asc_auth_key), [Bearer](../../README.md#Bearer), [OpenId](../../README.md#OpenId)
 
 ### Example
 
@@ -122,11 +121,33 @@ No authorization required
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+// Configure OAuth2 access token for authorization: OAuth2
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure API key authorization: ApiKeyBearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('ApiKeyBearer', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('ApiKeyBearer', 'Bearer');
+
+// Configure API key authorization: asc_auth_key
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('asc_auth_key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('asc_auth_key', 'Bearer');
+
+// Configure Bearer (JWT) authorization: Bearer
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new OpenAPI\Client\Api\PasswordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $email_member_request_dto = new \OpenAPI\Client\Model\EmailMemberRequestDto(); // \OpenAPI\Client\Model\EmailMemberRequestDto
 
