@@ -275,6 +275,10 @@ class WebhookRetryRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['ids']) && (count($this->container['ids']) > 100)) {
+            $invalidProperties[] = "invalid value for 'ids', number of items must be less than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -303,7 +307,7 @@ class WebhookRetryRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets ids
      *
-     * @param int[]|null $ids The delivery records to send again, by the identifiers `GET api/2.0/settings/webhooks/log` reports. An  identifier that exists nowhere, and one belonging to another member subscription when the caller is not a  DocSpace administrator, is skipped in silence rather than failing the call, so compare the number of records  that come back against the number sent. An empty list is accepted and queues nothing.
+     * @param int[]|null $ids The delivery records to send again, by the `id` values `GET api/2.0/settings/webhooks/log` reports. The bound  is per call: a longer batch has to be split into several calls.
      *
      * @return self
      */
@@ -318,6 +322,9 @@ class WebhookRetryRequestDto implements ModelInterface, ArrayAccess, \JsonSerial
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
+        }
+        if (!is_null($ids) && (count($ids) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $ids when calling WebhookRetryRequestDto., number of items must be less than or equal to 100.');
         }
         $this->container['ids'] = $ids;
 

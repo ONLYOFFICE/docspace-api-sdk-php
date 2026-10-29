@@ -440,7 +440,7 @@ class MetadataFilterConditionRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets value
      *
-     * @param string|null $value The value of a single-valued condition: the whole or a part of a string field, the exact value of a number field,  or the bound of a gt, gte, lt or lte condition on a number or a date field. A JSON number is accepted as  well as a string. A date given without a time (2026-06-30) names the whole day (UTC).
+     * @param string|null $value The value of a single-valued condition: the whole or a part of a string field, the exact value of a number field,  or the bound of a gt, gte, lt or lte condition on a number or a date field. A JSON number is accepted as  well as a string. A number is a whole number of at most 2^53-1 in magnitude, the limit of a stored number value.  A date given without a time (2026-06-30) names the whole day (UTC).
      *
      * @return self
      */
@@ -474,7 +474,7 @@ class MetadataFilterConditionRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets from
      *
-     * @param string|null $from The inclusive lower bound of a range. A date given without a time (2026-06-01) is the start of that day (UTC).
+     * @param string|null $from The inclusive lower bound of a range. A number is a whole number of at most 2^53-1 in magnitude, the limit of a  stored number value. A date given without a time (2026-06-01) is the start of that day (UTC).
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class MetadataFilterConditionRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets to
      *
-     * @param string|null $to The inclusive upper bound of a range. A date given without a time (2026-06-30) covers the whole day (UTC);  a value with a time is an instant and is taken as is.
+     * @param string|null $to The inclusive upper bound of a range. A number is a whole number of at most 2^53-1 in magnitude, the limit of a  stored number value. A date given without a time (2026-06-30) covers the whole day (UTC); a value with a time  is an instant and is taken as is.
      *
      * @return self
      */

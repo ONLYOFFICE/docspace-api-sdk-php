@@ -10860,7 +10860,7 @@ class FoldersApi
      * REST API Reference for searchFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
      *
-     * @param  int|string $folder_id The folder ID. (required)
+     * @param  int|string $folder_id The folder or room to search in; take the id from a listing such as `GET api/2.0/files/@root`. A numeric id  addresses a folder of the portal, a string one a folder in a connected third-party storage. (required)
      * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
      *
@@ -10882,7 +10882,7 @@ class FoldersApi
      * REST API Reference for searchFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
      *
-     * @param  int|string $folder_id The folder ID. (required)
+     * @param  int|string $folder_id The folder or room to search in; take the id from a listing such as `GET api/2.0/files/@root`. A numeric id  addresses a folder of the portal, a string one a folder in a connected third-party storage. (required)
      * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
      *
@@ -11013,7 +11013,7 @@ class FoldersApi
      * REST API Reference for searchFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
      *
-     * @param  int|string $folder_id The folder ID. (required)
+     * @param  int|string $folder_id The folder or room to search in; take the id from a listing such as `GET api/2.0/files/@root`. A numeric id  addresses a folder of the portal, a string one a folder in a connected third-party storage. (required)
      * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
      *
@@ -11038,7 +11038,7 @@ class FoldersApi
      * REST API Reference for searchFolder Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/search-folder/
      *
-     * @param  int|string $folder_id The folder ID. (required)
+     * @param  int|string $folder_id The folder or room to search in; take the id from a listing such as `GET api/2.0/files/@root`. A numeric id  addresses a folder of the portal, a string one a folder in a connected third-party storage. (required)
      * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
      *
@@ -11089,7 +11089,7 @@ class FoldersApi
     /**
      * Create request for operation 'searchFolder'
      *
-     * @param  int|string $folder_id The folder ID. (required)
+     * @param  int|string $folder_id The folder or room to search in; take the id from a listing such as `GET api/2.0/files/@root`. A numeric id  addresses a folder of the portal, a string one a folder in a connected third-party storage. (required)
      * @param  \OpenAPI\Client\Model\FolderMetadataSearch $folder_metadata_search The search parameters. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchFolder'] to see the possible values for this operation
      *

@@ -33,7 +33,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * PriceTimeUnit Class Doc Comment
  *
  * @category Class
- * @description [0 - None, 1 - Hour, 2 - Day, 3 - Week, 4 - Month, 5 - Year, 6 - ThreeYears]
+ * @description [1 - None, 2 - Hour, 3 - Day, 4 - Week, 5 - Month, 6 - Year, 7 - ThreeYears, 8 - Minute]
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,19 +43,21 @@ class PriceTimeUnit
     /**
      * Possible values of this enum
      */
-    public const NONE = 0;
+    public const NONE = 1;
 
-    public const HOUR = 1;
+    public const HOUR = 2;
 
-    public const DAY = 2;
+    public const DAY = 3;
 
-    public const WEEK = 3;
+    public const WEEK = 4;
 
-    public const MONTH = 4;
+    public const MONTH = 5;
 
-    public const YEAR = 5;
+    public const YEAR = 6;
 
-    public const THREE_YEARS = 6;
+    public const THREE_YEARS = 7;
+
+    public const MINUTE = 8;
 
     /**
      * Gets allowable values of the enum
@@ -70,7 +72,8 @@ class PriceTimeUnit
             self::WEEK,
             self::MONTH,
             self::YEAR,
-            self::THREE_YEARS
+            self::THREE_YEARS,
+            self::MINUTE
         ];
     }
 }

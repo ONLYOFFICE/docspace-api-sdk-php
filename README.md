@@ -375,6 +375,19 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Start markdown export</td>
       </tr>
     <tr>
+        <td colspan="3" style="text-align: center;"><strong>MetadataApi</strong></td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIMetadataApi.md#aimetafill"><strong>aiMetaFill</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/ai/meta/fill</td>
+        <td>Fill metadata values</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiAIMetadataApi.md#aimetagenerate"><strong>aiMetaGenerate</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/ai/meta/generate</td>
+        <td>Generate metadata fields</td>
+      </tr>
+    <tr>
         <td colspan="3" style="text-align: center;"><strong>OpenAIPassthroughApi</strong></td>
       </tr>
       <tr>
@@ -2650,6 +2663,14 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get a guest sharing link</td>
       </tr>
     <tr>
+        <td colspan="3" style="text-align: center;"><strong>ModuleEventsApi</strong></td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalModuleEventsApi.md#sendmoduleevent"><strong>sendModuleEvent</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/portal/moduleevents</td>
+        <td>Send a module event</td>
+      </tr>
+    <tr>
         <td colspan="3" style="text-align: center;"><strong>PaymentApi</strong></td>
       </tr>
       <tr>
@@ -2678,6 +2699,21 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Start the service usage report</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#createservicelimit"><strong>createServiceLimit</strong></a></td>
+        <td><strong>POST</strong> /api/2.0/portal/payment/servicelimit</td>
+        <td>Create a service limit</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#deleteservicelimit"><strong>deleteServiceLimit</strong></a></td>
+        <td><strong>DELETE</strong> /api/2.0/portal/payment/servicelimit/{id}</td>
+        <td>Delete a service limit</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#disableparticipantservicelimits"><strong>disableParticipantServiceLimits</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/portal/payment/servicelimit/participants/disable</td>
+        <td>Disable the user service limits</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getaccountingserviceprices"><strong>getAccountingServicePrices</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/accounting/prices/{serviceName}</td>
         <td>Get the service prices from the accounting service</td>
@@ -2701,6 +2737,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#getcustomerbalance"><strong>getCustomerBalance</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/customer/balance</td>
         <td>Get the customer balance</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getcustomerdeposits"><strong>getCustomerDeposits</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/customer/deposits</td>
+        <td>Get the wallet top-ups</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getcustomerinfo"><strong>getCustomerInfo</strong></a></td>
@@ -2738,6 +2779,21 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get the service usage report status</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getdepositinvoice"><strong>getDepositInvoice</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/customer/deposits/{id}/invoice</td>
+        <td>Get the top-up invoice</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getglobalservicelimit"><strong>getGlobalServiceLimit</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/servicelimit/global</td>
+        <td>Get the global service limit</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getparticipantservicelimits"><strong>getParticipantServiceLimits</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/servicelimit/participants</td>
+        <td>Get the user service limits</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getpaymentaccount"><strong>getPaymentAccount</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/account</td>
         <td>Get the billing account page</td>
@@ -2773,6 +2829,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td>Get restricted AI models</td>
       </tr>
       <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#getservicelimit"><strong>getServiceLimit</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/servicelimit/{id}</td>
+        <td>Get a service limit</td>
+      </tr>
+      <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getsubscriptionbalanceinfo"><strong>getSubscriptionBalanceInfo</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/subscription/balance</td>
         <td>Get the subscription balance information</td>
@@ -2786,6 +2847,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#gettenantwalletsettings"><strong>getTenantWalletSettings</strong></a></td>
         <td><strong>GET</strong> /api/2.0/portal/payment/topupsettings</td>
         <td>Get the auto top-up settings</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#gettotalservicelimit"><strong>getTotalServiceLimit</strong></a></td>
+        <td><strong>GET</strong> /api/2.0/portal/payment/servicelimit/total</td>
+        <td>Get the portal service limit</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#getwalletservice"><strong>getWalletService</strong></a></td>
@@ -2806,6 +2872,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#sendpaymentrequest"><strong>sendPaymentRequest</strong></a></td>
         <td><strong>POST</strong> /api/2.0/portal/payment/request</td>
         <td>Contact the sales team</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#setparticipantservicelimits"><strong>setParticipantServiceLimits</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/portal/payment/servicelimit/participants</td>
+        <td>Set the user service limits</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#setrestrictedaimodels"><strong>setRestrictedAiModels</strong></a></td>
@@ -2841,6 +2912,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
         <td><a href="docs/ApiPortalPaymentApi.md#updatepayment"><strong>updatePayment</strong></a></td>
         <td><strong>PUT</strong> /api/2.0/portal/payment/update</td>
         <td>Change the subscription quantity</td>
+      </tr>
+      <tr>
+        <td><a href="docs/ApiPortalPaymentApi.md#updateservicelimit"><strong>updateServiceLimit</strong></a></td>
+        <td><strong>PUT</strong> /api/2.0/portal/payment/servicelimit</td>
+        <td>Update a service limit</td>
       </tr>
       <tr>
         <td><a href="docs/ApiPortalPaymentApi.md#updatewalletpayment"><strong>updateWalletPayment</strong></a></td>
@@ -4353,6 +4429,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiEmbeddingPriceDto](docs/ModelAiEmbeddingPriceDto.md)
  - [OpenAPI\Client\Model.AiEmbeddingProviderType](docs/ModelAiEmbeddingProviderType.md)
  - [OpenAPI\Client\Model.AiEmployeeDto](docs/ModelAiEmployeeDto.md)
+ - [OpenAPI\Client\Model.AiEntryMetadata](docs/ModelAiEntryMetadata.md)
+ - [OpenAPI\Client\Model.AiEntryMetadataCustomFieldsInner](docs/ModelAiEntryMetadataCustomFieldsInner.md)
+ - [OpenAPI\Client\Model.AiEntryMetadataField](docs/ModelAiEntryMetadataField.md)
+ - [OpenAPI\Client\Model.AiEntryMetadataFieldOptionsInner](docs/ModelAiEntryMetadataFieldOptionsInner.md)
+ - [OpenAPI\Client\Model.AiEntryMetadataTemplatesInner](docs/ModelAiEntryMetadataTemplatesInner.md)
  - [OpenAPI\Client\Model.AiEntryPricingDtoAiChatPriceDto](docs/ModelAiEntryPricingDtoAiChatPriceDto.md)
  - [OpenAPI\Client\Model.AiEntryPricingDtoAiEmbeddingPriceDto](docs/ModelAiEntryPricingDtoAiEmbeddingPriceDto.md)
  - [OpenAPI\Client\Model.AiEntryPricingDtoAiImagePriceDto](docs/ModelAiEntryPricingDtoAiImagePriceDto.md)
@@ -4388,7 +4469,21 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.AiLogoCoverDto](docs/ModelAiLogoCoverDto.md)
  - [OpenAPI\Client\Model.AiLogoDto](docs/ModelAiLogoDto.md)
  - [OpenAPI\Client\Model.AiMCPItem](docs/ModelAiMCPItem.md)
+ - [OpenAPI\Client\Model.AiMetaFill200Response](docs/ModelAiMetaFill200Response.md)
+ - [OpenAPI\Client\Model.AiMetaFill200ResponseFilledInner](docs/ModelAiMetaFill200ResponseFilledInner.md)
+ - [OpenAPI\Client\Model.AiMetaFill200ResponseFilledInnerValue](docs/ModelAiMetaFill200ResponseFilledInnerValue.md)
+ - [OpenAPI\Client\Model.AiMetaFill200ResponseSourcesInner](docs/ModelAiMetaFill200ResponseSourcesInner.md)
+ - [OpenAPI\Client\Model.AiMetaFill200ResponseUnresolvedInner](docs/ModelAiMetaFill200ResponseUnresolvedInner.md)
+ - [OpenAPI\Client\Model.AiMetaFillRequest](docs/ModelAiMetaFillRequest.md)
+ - [OpenAPI\Client\Model.AiMetaGenerate200Response](docs/ModelAiMetaGenerate200Response.md)
+ - [OpenAPI\Client\Model.AiMetaGenerate200ResponseFieldsInner](docs/ModelAiMetaGenerate200ResponseFieldsInner.md)
+ - [OpenAPI\Client\Model.AiMetaGenerate200ResponseSkippedInner](docs/ModelAiMetaGenerate200ResponseSkippedInner.md)
+ - [OpenAPI\Client\Model.AiMetaGenerate200ResponseSourcesInner](docs/ModelAiMetaGenerate200ResponseSourcesInner.md)
+ - [OpenAPI\Client\Model.AiMetaGenerate402Response](docs/ModelAiMetaGenerate402Response.md)
+ - [OpenAPI\Client\Model.AiMetaGenerateRequest](docs/ModelAiMetaGenerateRequest.md)
+ - [OpenAPI\Client\Model.AiMetaGenerateRequestId](docs/ModelAiMetaGenerateRequestId.md)
  - [OpenAPI\Client\Model.AiMetadataMatchDto](docs/ModelAiMetadataMatchDto.md)
+ - [OpenAPI\Client\Model.AiMetadataValue](docs/ModelAiMetadataValue.md)
  - [OpenAPI\Client\Model.AiModel](docs/ModelAiModel.md)
  - [OpenAPI\Client\Model.AiNewItemsAgentNewItemsArrayWrapper](docs/ModelAiNewItemsAgentNewItemsArrayWrapper.md)
  - [OpenAPI\Client\Model.AiNewItemsDtoAgentNewItemsDto](docs/ModelAiNewItemsDtoAgentNewItemsDto.md)
@@ -4615,6 +4710,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.CreateMetadataTemplateRequestDto](docs/ModelCreateMetadataTemplateRequestDto.md)
  - [OpenAPI\Client\Model.CreateRoomFromTemplateDto](docs/ModelCreateRoomFromTemplateDto.md)
  - [OpenAPI\Client\Model.CreateRoomRequestDto](docs/ModelCreateRoomRequestDto.md)
+ - [OpenAPI\Client\Model.CreateServiceLimitRequestDto](docs/ModelCreateServiceLimitRequestDto.md)
  - [OpenAPI\Client\Model.CreateTagRequestDto](docs/ModelCreateTagRequestDto.md)
  - [OpenAPI\Client\Model.CreateTextOrHtmlFileRequest](docs/ModelCreateTextOrHtmlFileRequest.md)
  - [OpenAPI\Client\Model.CreateThirdPartyRoomRequest](docs/ModelCreateThirdPartyRoomRequest.md)
@@ -4670,6 +4766,9 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.DeleteFolderRequest](docs/ModelDeleteFolderRequest.md)
  - [OpenAPI\Client\Model.DeleteRoomRequest](docs/ModelDeleteRoomRequest.md)
  - [OpenAPI\Client\Model.DeleteVersionBatchRequestDto](docs/ModelDeleteVersionBatchRequestDto.md)
+ - [OpenAPI\Client\Model.DepositDto](docs/ModelDepositDto.md)
+ - [OpenAPI\Client\Model.DepositReportDto](docs/ModelDepositReportDto.md)
+ - [OpenAPI\Client\Model.DepositReportWrapper](docs/ModelDepositReportWrapper.md)
  - [OpenAPI\Client\Model.DiscountCategoryDto](docs/ModelDiscountCategoryDto.md)
  - [OpenAPI\Client\Model.DisplayRequestDto](docs/ModelDisplayRequestDto.md)
  - [OpenAPI\Client\Model.DistributedTaskStatus](docs/ModelDistributedTaskStatus.md)
@@ -5074,6 +5173,15 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.SecurityInfoRequestDto](docs/ModelSecurityInfoRequestDto.md)
  - [OpenAPI\Client\Model.SecurityInfoSimpleRequestDto](docs/ModelSecurityInfoSimpleRequestDto.md)
  - [OpenAPI\Client\Model.SecurityRequestDto](docs/ModelSecurityRequestDto.md)
+ - [OpenAPI\Client\Model.SendModuleEventRequest](docs/ModelSendModuleEventRequest.md)
+ - [OpenAPI\Client\Model.ServiceLimitDto](docs/ModelServiceLimitDto.md)
+ - [OpenAPI\Client\Model.ServiceLimitOrderBy](docs/ModelServiceLimitOrderBy.md)
+ - [OpenAPI\Client\Model.ServiceLimitPeriod](docs/ModelServiceLimitPeriod.md)
+ - [OpenAPI\Client\Model.ServiceLimitReportDto](docs/ModelServiceLimitReportDto.md)
+ - [OpenAPI\Client\Model.ServiceLimitReportWrapper](docs/ModelServiceLimitReportWrapper.md)
+ - [OpenAPI\Client\Model.ServiceLimitScope](docs/ModelServiceLimitScope.md)
+ - [OpenAPI\Client\Model.ServiceLimitUsageDto](docs/ModelServiceLimitUsageDto.md)
+ - [OpenAPI\Client\Model.ServiceLimitWrapper](docs/ModelServiceLimitWrapper.md)
  - [OpenAPI\Client\Model.ServicePriceArrayWrapper](docs/ModelServicePriceArrayWrapper.md)
  - [OpenAPI\Client\Model.ServicePriceDto](docs/ModelServicePriceDto.md)
  - [OpenAPI\Client\Model.SessionRequest](docs/ModelSessionRequest.md)
@@ -5083,6 +5191,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.SetCustomFields](docs/ModelSetCustomFields.md)
  - [OpenAPI\Client\Model.SetManagerRequest](docs/ModelSetManagerRequest.md)
  - [OpenAPI\Client\Model.SetMetadataValues](docs/ModelSetMetadataValues.md)
+ - [OpenAPI\Client\Model.SetParticipantServiceLimitsRequestDto](docs/ModelSetParticipantServiceLimitsRequestDto.md)
  - [OpenAPI\Client\Model.SetPublicDto](docs/ModelSetPublicDto.md)
  - [OpenAPI\Client\Model.SetRestrictedAiModelsRequestDto](docs/ModelSetRestrictedAiModelsRequestDto.md)
  - [OpenAPI\Client\Model.SetWalletTopUpSettingsRequest](docs/ModelSetWalletTopUpSettingsRequest.md)
@@ -5250,6 +5359,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.UpdateRoomRequest](docs/ModelUpdateRoomRequest.md)
  - [OpenAPI\Client\Model.UpdateRoomsQuotaRequestDto](docs/ModelUpdateRoomsQuotaRequestDto.md)
  - [OpenAPI\Client\Model.UpdateRoomsRoomIdsRequestDto](docs/ModelUpdateRoomsRoomIdsRequestDto.md)
+ - [OpenAPI\Client\Model.UpdateServiceLimitRequestDto](docs/ModelUpdateServiceLimitRequestDto.md)
  - [OpenAPI\Client\Model.UpdateTagRequestDto](docs/ModelUpdateTagRequestDto.md)
  - [OpenAPI\Client\Model.UpdateWebhooksConfigRequestDto](docs/ModelUpdateWebhooksConfigRequestDto.md)
  - [OpenAPI\Client\Model.UploadResultDto](docs/ModelUploadResultDto.md)
@@ -5263,6 +5373,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
  - [OpenAPI\Client\Model.UserExistsResponseWrapper](docs/ModelUserExistsResponseWrapper.md)
  - [OpenAPI\Client\Model.UserInvitation](docs/ModelUserInvitation.md)
  - [OpenAPI\Client\Model.UserInvitationRequestDto](docs/ModelUserInvitationRequestDto.md)
+ - [OpenAPI\Client\Model.UserServiceLimitDto](docs/ModelUserServiceLimitDto.md)
  - [OpenAPI\Client\Model.ValidationErrorResponse](docs/ModelValidationErrorResponse.md)
  - [OpenAPI\Client\Model.ValidationResult](docs/ModelValidationResult.md)
  - [OpenAPI\Client\Model.VectorizationStatus](docs/ModelVectorizationStatus.md)

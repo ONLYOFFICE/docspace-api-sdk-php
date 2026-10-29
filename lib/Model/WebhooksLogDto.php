@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * WebhooksLogDto Class Doc Comment
  *
  * @category Class
- * @description One delivery attempt of a webhook: what was sent where, and what came back.
+ * @description One delivery of a webhook event, updated in place by its automatic retries: what was sent where, and what came  back the last time. A manual retry is a delivery record of its own for the same event.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPITypes = [
         'id' => 'int',
+        'event_id' => 'int',
+        'retried_by' => '\OpenAPI\Client\Model\EmployeeDto',
         'config_name' => 'string',
         'trigger' => '\OpenAPI\Client\Model\WebhookTrigger',
         'creation_time' => '\DateTime',
@@ -69,7 +71,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => 'string',
         'response_payload' => 'string',
         'status' => 'int',
-        'delivery' => '\DateTime'
+        'delivery' => '\DateTime',
+        'attempts' => 'int',
+        'next_attempt_on' => '\DateTime'
     ];
 
     /**
@@ -81,6 +85,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $openAPIFormats = [
         'id' => 'int32',
+        'event_id' => 'int32',
+        'retried_by' => null,
         'config_name' => null,
         'trigger' => null,
         'creation_time' => 'date-time',
@@ -91,7 +97,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => null,
         'response_payload' => null,
         'status' => 'int32',
-        'delivery' => 'date-time'
+        'delivery' => 'date-time',
+        'attempts' => 'int32',
+        'next_attempt_on' => 'date-time'
     ];
 
     /**
@@ -101,6 +109,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static array $openAPINullables = [
         'id' => false,
+        'event_id' => false,
+        'retried_by' => false,
         'config_name' => true,
         'trigger' => false,
         'creation_time' => false,
@@ -111,7 +121,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => true,
         'response_payload' => true,
         'status' => false,
-        'delivery' => true
+        'delivery' => true,
+        'attempts' => false,
+        'next_attempt_on' => true
     ];
 
     /**
@@ -201,6 +213,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'event_id' => 'eventId',
+        'retried_by' => 'retriedBy',
         'config_name' => 'configName',
         'trigger' => 'trigger',
         'creation_time' => 'creationTime',
@@ -211,7 +225,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => 'responseHeaders',
         'response_payload' => 'responsePayload',
         'status' => 'status',
-        'delivery' => 'delivery'
+        'delivery' => 'delivery',
+        'attempts' => 'attempts',
+        'next_attempt_on' => 'nextAttemptOn'
     ];
 
     /**
@@ -221,6 +237,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'event_id' => 'setEventId',
+        'retried_by' => 'setRetriedBy',
         'config_name' => 'setConfigName',
         'trigger' => 'setTrigger',
         'creation_time' => 'setCreationTime',
@@ -231,7 +249,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => 'setResponseHeaders',
         'response_payload' => 'setResponsePayload',
         'status' => 'setStatus',
-        'delivery' => 'setDelivery'
+        'delivery' => 'setDelivery',
+        'attempts' => 'setAttempts',
+        'next_attempt_on' => 'setNextAttemptOn'
     ];
 
     /**
@@ -241,6 +261,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'event_id' => 'getEventId',
+        'retried_by' => 'getRetriedBy',
         'config_name' => 'getConfigName',
         'trigger' => 'getTrigger',
         'creation_time' => 'getCreationTime',
@@ -251,7 +273,9 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'response_headers' => 'getResponseHeaders',
         'response_payload' => 'getResponsePayload',
         'status' => 'getStatus',
-        'delivery' => 'getDelivery'
+        'delivery' => 'getDelivery',
+        'attempts' => 'getAttempts',
+        'next_attempt_on' => 'getNextAttemptOn'
     ];
 
     /**
@@ -312,6 +336,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('event_id', $data ?? [], null);
+        $this->setIfExists('retried_by', $data ?? [], null);
         $this->setIfExists('config_name', $data ?? [], null);
         $this->setIfExists('trigger', $data ?? [], null);
         $this->setIfExists('creation_time', $data ?? [], null);
@@ -323,6 +349,8 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('response_payload', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('delivery', $data ?? [], null);
+        $this->setIfExists('attempts', $data ?? [], null);
+        $this->setIfExists('next_attempt_on', $data ?? [], null);
     }
 
     /**
@@ -383,7 +411,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int $id The identifier of this attempt, which is what the `eventId` filter of  `GET api/2.0/settings/webhooks/log` picks one record by and what  `PUT api/2.0/settings/webhook/{id}/retry` re-sends. A retry produces a new record with a new identifier  and leaves this one as it is.
+     * @param int $id The identifier of this delivery record, which is what `PUT api/2.0/settings/webhook/{id}/retry` re-sends.  The automatic retries of the delivery update this same record, while a manual retry gets a record and an  identifier of its own.
      *
      * @return self
      */
@@ -393,6 +421,60 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_id
+     *
+     * @return int|null
+     */
+    public function getEventId()
+    {
+        return $this->container['event_id'];
+    }
+
+    /**
+     * Sets event_id
+     *
+     * @param int|null $event_id The identifier of the event the delivery is for, which the receiver sees as `event.id` and in the  `x-docspace-event-id` header. It is the `id` of the event's first delivery record, so it equals `id` there and  stays the same on every manual retry, which makes it the value to group the records of one event by.
+     *
+     * @return self
+     */
+    public function setEventId($event_id)
+    {
+        if (is_null($event_id)) {
+            throw new \InvalidArgumentException('non-nullable event_id cannot be null');
+        }
+        $this->container['event_id'] = $event_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets retried_by
+     *
+     * @return \OpenAPI\Client\Model\EmployeeDto|null
+     */
+    public function getRetriedBy()
+    {
+        return $this->container['retried_by'];
+    }
+
+    /**
+     * Sets retried_by
+     *
+     * @param \OpenAPI\Client\Model\EmployeeDto|null $retried_by The member who asked for this delivery with a manual retry. It is empty on the first delivery of an event,  which the portal sends by itself.
+     *
+     * @return self
+     */
+    public function setRetriedBy($retried_by)
+    {
+        if (is_null($retried_by)) {
+            throw new \InvalidArgumentException('non-nullable retried_by cannot be null');
+        }
+        $this->container['retried_by'] = $retried_by;
 
         return $this;
     }
@@ -410,7 +492,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets config_name
      *
-     * @param string|null $config_name The name of the subscription the attempt belongs to. It is the name as it stands now, so it follows a  later rename of the subscription rather than recording what it was called at the time.
+     * @param string|null $config_name The name of the subscription the delivery belongs to. It is the name as it stands now, so it follows a  later rename of the subscription rather than recording what it was called at the time.
      *
      * @return self
      */
@@ -444,7 +526,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets trigger
      *
-     * @param \OpenAPI\Client\Model\WebhookTrigger|null $trigger The event that caused the attempt, as a single bit rather than a mask - a delivery is always for one  event, even though a subscription covers several.
+     * @param \OpenAPI\Client\Model\WebhookTrigger|null $trigger The event that caused the delivery, as a single bit rather than a mask - a delivery is always for one  event, even though a subscription covers several.
      *
      * @return self
      */
@@ -471,7 +553,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creation_time
      *
-     * @param \DateTime|null $creation_time When the attempt was queued, as a UTC instant - unlike the dates of the subscription itself, which come  in the portal time zone. Records come back newest first by this moment.
+     * @param \DateTime|null $creation_time When this delivery record was queued, as a UTC instant ending in `Z`. For the first delivery that is when the  event happened; for a manual retry it is the  moment of the retry. Records come back newest first by this moment.
      *
      * @return self
      */
@@ -532,7 +614,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets route
      *
-     * @param string|null $route The address the delivery was sent to, which is the subscription's URL as it stood at the time - so an  older record can name an address the subscription no longer uses.
+     * @param string|null $route The address the delivery is sent to: the subscription's URL as it stands now. The journal does not keep the  address of each attempt, so after the subscription's URL changes, an older record names the new one too.
      *
      * @return self
      */
@@ -634,7 +716,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response_headers
      *
-     * @param string|null $response_headers The headers the target answered with, serialised the same way as `requestHeaders`. It is empty while the  attempt is still on its way and on an attempt that never reached the target.
+     * @param string|null $response_headers The headers the target answered with on the latest attempt, serialised the same way as `requestHeaders`. It  is empty until an attempt is answered, and when the target was not reached.
      *
      * @return self
      */
@@ -668,7 +750,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets response_payload
      *
-     * @param string|null $response_payload The body the target answered with, truncated for storage. Empty under the same conditions as  `responseHeaders`, and also for a target that answers with no body at all.
+     * @param string|null $response_payload The body the target answered with on the latest attempt, truncated for storage. Empty under the same  conditions as `responseHeaders`, and also for a target that answers with no body at all. A record the portal  stopped without sending holds the portal's own note here instead - a text that starts with `Not sent:` and  gives the reason - which is not an answer of the target: on a record that never went out `status` is then `0`  and `responseHeaders` is empty, while on one stopped after failed attempts they still describe the last of them.
      *
      * @return self
      */
@@ -702,7 +784,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param int|null $status The HTTP status code the target answered. It is `0` while the attempt is still on its way and on one that  never reached the target, so `0` is not a failure code - it is the absence of an answer.
+     * @param int|null $status The HTTP status code the target answered on the latest attempt. It is `0` while the first attempt is still  on its way and on one that never reached the target, so `0` is not a failure code - it is the absence of an  answer. While `nextAttemptOn` is set it is the status of the failed attempt that caused the retry.
      *
      * @return self
      */
@@ -729,7 +811,7 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets delivery
      *
-     * @param \DateTime|null $delivery When the answer came back, as a UTC instant like `creationTime`. It is empty while the attempt is still on  its way, which together with `status` is how a pending record is told from a finished one.
+     * @param \DateTime|null $delivery When the successful answer came back, as a UTC instant ending in `Z` like `creationTime`. It stays empty until an  attempt succeeds, and for good once the portal has given up retrying.
      *
      * @return self
      */
@@ -746,6 +828,67 @@ class WebhooksLogDto implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['delivery'] = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * Gets attempts
+     *
+     * @return int|null
+     */
+    public function getAttempts()
+    {
+        return $this->container['attempts'];
+    }
+
+    /**
+     * Sets attempts
+     *
+     * @param int|null $attempts How many times the portal has tried to deliver this record so far. A failed attempt is retried with  growing pauses - on the default schedule about 1 minute, 5 minutes, 30 minutes, 2, 5 and 10 hours, though  an installation may configure its own - all of them under the same record and the same  `x-docspace-event-id` header, so a receiver can drop a delivery it has already processed. The one exception  is a portal moved to another region while retries are pending: the moved records get new IDs, so the attempts  made there carry a new `x-docspace-event-id`.
+     *
+     * @return self
+     */
+    public function setAttempts($attempts)
+    {
+        if (is_null($attempts)) {
+            throw new \InvalidArgumentException('non-nullable attempts cannot be null');
+        }
+        $this->container['attempts'] = $attempts;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_attempt_on
+     *
+     * @return \DateTime|null
+     */
+    public function getNextAttemptOn()
+    {
+        return $this->container['next_attempt_on'];
+    }
+
+    /**
+     * Sets next_attempt_on
+     *
+     * @param \DateTime|null $next_attempt_on When the next attempt is due, as a UTC instant ending in `Z` like `creationTime`. While an attempt is being sent  right now it holds the moment that attempt's lease expires, a few minutes ahead, rather than a scheduled retry;  it changes again once the attempt ends. Empty means no attempt will follow: the record is delivered, its retries  ran out, a manual retry of the same event took over from it, or the portal stopped it - because the subscription  was disabled or removed or its address rejected, the subscription's creator may no longer receive the event,  the stored body cannot be read or is in the payload format of a previous version, the portal is removed, the  record waited longer than the retry schedule allows, the portal was restored from a backup taken before the  record was answered, or the portal was moved to another region while the record was being sent. A stopped  record that was never attempted says why in `responsePayload`; one that was keeps the target's last answer there.
+     *
+     * @return self
+     */
+    public function setNextAttemptOn($next_attempt_on)
+    {
+        if (is_null($next_attempt_on)) {
+            array_push($this->openAPINullablesSetToNull, 'next_attempt_on');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next_attempt_on', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next_attempt_on'] = $next_attempt_on;
 
         return $this;
     }

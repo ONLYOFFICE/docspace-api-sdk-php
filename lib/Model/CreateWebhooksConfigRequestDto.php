@@ -94,7 +94,7 @@ class CreateWebhooksConfigRequestDto implements ModelInterface, ArrayAccess, \Js
         'uri' => false,
         'secret_key' => true,
         'enabled' => false,
-        'ssl' => false,
+        'ssl' => true,
         'triggers' => false,
         'target_id' => true
     ];
@@ -513,14 +513,21 @@ class CreateWebhooksConfigRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets ssl
      *
-     * @param bool|null $ssl Whether the target certificate is verified. Setting it demands an `https` target with a valid certificate;  leaving it off delivers without checking the certificate at all.
+     * @param bool|null $ssl Whether the target certificate is verified. `true` demands an `https` address with a valid certificate; `false`  delivers without checking the certificate, and is what a plain `http` target needs.
      *
      * @return self
      */
     public function setSsl($ssl)
     {
         if (is_null($ssl)) {
-            throw new \InvalidArgumentException('non-nullable ssl cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ssl');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ssl', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ssl'] = $ssl;
 
@@ -540,7 +547,7 @@ class CreateWebhooksConfigRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets triggers
      *
-     * @param \OpenAPI\Client\Model\WebhookTrigger|null $triggers The events the subscription listens for, as a bitmask combining the flags; 0 subscribes to all of them. Take  the flags the caller role is allowed to use from `GET api/2.0/settings/webhook/triggers`, since a flag beyond  that set is refused with 400. A subscription still only fires for events its creator may see.
+     * @param \OpenAPI\Client\Model\WebhookTrigger|null $triggers The events the subscription listens for, as a bitmask adding together the `id` values of the entries of `GET  api/2.0/settings/webhook/triggers`. 0 is the catch-all, not none: it stands for every event the  subscription creator's role may receive, not for every event of the portal.
      *
      * @return self
      */
@@ -567,7 +574,7 @@ class CreateWebhooksConfigRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets target_id
      *
-     * @param string|null $target_id The single entity the subscription is narrowed to, by its identifier - a room or a file, for instance.  Leaving it out delivers events about every entity the subscribed triggers cover.
+     * @param string|null $target_id The single entity the subscription is narrowed to, by its identifier in the API that owns it. For user events  it is the GUID of a user (`id` of `GET api/2.0/people`), for group events the GUID of a group (`id` of `GET  api/2.0/group`), and either must be one the subscription's creator may see; for file, folder, room and form  events it is the entry ID from the Files API (`id` of `GET api/2.0/files/rooms` or of a folder listing), a  number for the portal's own storage and a string for third-party storage. Leaving it out delivers events  about every entity the subscribed triggers cover.
      *
      * @return self
      */

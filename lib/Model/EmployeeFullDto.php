@@ -96,6 +96,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => 'float',
         'shared' => 'bool',
         'is_custom_quota' => 'bool',
+        'ai_services_limit' => '\OpenAPI\Client\Model\UserServiceLimitDto',
         'login_event_id' => 'int',
         'auth_cookie_lifetime' => 'float',
         'created_by' => '\OpenAPI\Client\Model\EmployeeDto',
@@ -150,6 +151,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => 'double',
         'shared' => null,
         'is_custom_quota' => null,
+        'ai_services_limit' => null,
         'login_event_id' => 'int32',
         'auth_cookie_lifetime' => 'double',
         'created_by' => null,
@@ -202,6 +204,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => true,
         'shared' => true,
         'is_custom_quota' => true,
+        'ai_services_limit' => false,
         'login_event_id' => true,
         'auth_cookie_lifetime' => true,
         'created_by' => false,
@@ -334,6 +337,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => 'usedSpace',
         'shared' => 'shared',
         'is_custom_quota' => 'isCustomQuota',
+        'ai_services_limit' => 'aiServicesLimit',
         'login_event_id' => 'loginEventId',
         'auth_cookie_lifetime' => 'authCookieLifetime',
         'created_by' => 'createdBy',
@@ -386,6 +390,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => 'setUsedSpace',
         'shared' => 'setShared',
         'is_custom_quota' => 'setIsCustomQuota',
+        'ai_services_limit' => 'setAiServicesLimit',
         'login_event_id' => 'setLoginEventId',
         'auth_cookie_lifetime' => 'setAuthCookieLifetime',
         'created_by' => 'setCreatedBy',
@@ -438,6 +443,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'used_space' => 'getUsedSpace',
         'shared' => 'getShared',
         'is_custom_quota' => 'getIsCustomQuota',
+        'ai_services_limit' => 'getAiServicesLimit',
         'login_event_id' => 'getLoginEventId',
         'auth_cookie_lifetime' => 'getAuthCookieLifetime',
         'created_by' => 'getCreatedBy',
@@ -541,6 +547,7 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('used_space', $data ?? [], null);
         $this->setIfExists('shared', $data ?? [], null);
         $this->setIfExists('is_custom_quota', $data ?? [], null);
+        $this->setIfExists('ai_services_limit', $data ?? [], null);
         $this->setIfExists('login_event_id', $data ?? [], null);
         $this->setIfExists('auth_cookie_lifetime', $data ?? [], null);
         $this->setIfExists('created_by', $data ?? [], null);
@@ -1725,6 +1732,33 @@ class EmployeeFullDto implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['is_custom_quota'] = $is_custom_quota;
+
+        return $this;
+    }
+
+    /**
+     * Gets ai_services_limit
+     *
+     * @return \OpenAPI\Client\Model\UserServiceLimitDto|null
+     */
+    public function getAiServicesLimit()
+    {
+        return $this->container['ai_services_limit'];
+    }
+
+    /**
+     * Sets ai_services_limit
+     *
+     * @param \OpenAPI\Client\Model\UserServiceLimitDto|null $ai_services_limit The spending limit on the AI services in force for this user - the personal one, or else the limit for every  user - with what the user spent against it. Null when no such limit applies to the user, when the portal has no  billing service, or when the caller is neither a DocSpace administrator nor the user; the limit of the portal as  a whole is not reflected here. The value, and the spending in particular, can lag by a few minutes.
+     *
+     * @return self
+     */
+    public function setAiServicesLimit($ai_services_limit)
+    {
+        if (is_null($ai_services_limit)) {
+            throw new \InvalidArgumentException('non-nullable ai_services_limit cannot be null');
+        }
+        $this->container['ai_services_limit'] = $ai_services_limit;
 
         return $this;
     }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **thread_id** | **string** | Thread the assistant message belongs to. |
 **message_id** | **string** | Storage id of the assistant message holding the tool call. |
 **idx** | **float** | Index of the tool-call content part inside `message.content`. |
-**message** | [**\OpenAPI\Client\Model\AiThreadMessageLike**](AiThreadMessageLike.md) | Snapshot of the assistant message at the time the tool call surfaced. |
+**message** | [**\OpenAPI\Client\Model\AiThreadMessageLike**](AiThreadMessageLike.md) | Snapshot of the assistant message at the time the tool call surfaced. Optional and ignored: the engine resumes from the stored message, and the copy inflated the body past the parser limit (Bug 84608). | [optional]
 **action_args** | [**\OpenAPI\Client\Model\AiActionArgs**](AiActionArgs.md) | Per-request engine options: extra tools, reasoning, prompt override. | [optional]
 **entity_id** | **string** | Optional entity (room) scope for profile resolution. | [optional]
 **profile_id** | **string** | Session-level profile override for this request only. | [optional]

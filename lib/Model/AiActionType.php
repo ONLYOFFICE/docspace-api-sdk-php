@@ -63,6 +63,8 @@ class AiActionType
 
     public const FORM_ANALYSIS = 'FormAnalysis';
 
+    public const GENERATE_META = 'GenerateMeta';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -79,7 +81,8 @@ class AiActionType
             self::IMAGE_GENERATION,
             self::OCR,
             self::VISION,
-            self::FORM_ANALYSIS
+            self::FORM_ANALYSIS,
+            self::GENERATE_META
         ];
     }
 }

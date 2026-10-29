@@ -395,7 +395,7 @@ class MetadataValueRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets number_value
      *
-     * @param int|null $number_value The number value.
+     * @param int|null $number_value The number value: a whole number of at most 2^53-1 (9007199254740991) in magnitude, the largest integer a JSON  client reads exactly. A larger one is refused rather than stored and returned rounded.
      *
      * @return self
      */

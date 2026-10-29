@@ -342,9 +342,6 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['idx'] === null) {
             $invalidProperties[] = "'idx' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -505,7 +502,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets message
      *
-     * @return \OpenAPI\Client\Model\AiThreadMessageLike
+     * @return \OpenAPI\Client\Model\AiThreadMessageLike|null
      */
     public function getMessage()
     {
@@ -515,7 +512,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets message
      *
-     * @param \OpenAPI\Client\Model\AiThreadMessageLike $message Snapshot of the assistant message at the time the tool call surfaced.
+     * @param \OpenAPI\Client\Model\AiThreadMessageLike|null $message Snapshot of the assistant message at the time the tool call surfaced. Optional and ignored: the engine resumes from the stored message, and the copy inflated the body past the parser limit (Bug 84608).
      *
      * @return self
      */

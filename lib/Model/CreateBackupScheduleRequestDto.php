@@ -426,7 +426,7 @@ class CreateBackupScheduleRequestDto implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets cron_params
      *
-     * @param \OpenAPI\Client\Model\BackupCronRequest|null $cron_params When the backup runs. It is required: a request without it fails rather than falling back to a  default.
+     * @param \OpenAPI\Client\Model\BackupCronRequest|null $cron_params When the backup runs. It is required: a request without it is rejected rather than falling back to  a default.
      *
      * @return self
      */

@@ -1464,7 +1464,7 @@ class WebhooksApi
      * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
      * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
      * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
-     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  int|null $event_id One event, by the `eventId` of its delivery records, which is also the `event.id` the receiver got. (optional)
      * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
      * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
      * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
@@ -1494,7 +1494,7 @@ class WebhooksApi
      * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
      * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
      * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
-     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  int|null $event_id One event, by the `eventId` of its delivery records, which is also the `event.id` the receiver got. (optional)
      * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
      * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
      * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
@@ -1633,7 +1633,7 @@ class WebhooksApi
      * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
      * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
      * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
-     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  int|null $event_id One event, by the `eventId` of its delivery records, which is also the `event.id` the receiver got. (optional)
      * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
      * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
      * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
@@ -1666,7 +1666,7 @@ class WebhooksApi
      * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
      * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
      * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
-     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  int|null $event_id One event, by the `eventId` of its delivery records, which is also the `event.id` the receiver got. (optional)
      * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
      * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
      * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
@@ -1725,7 +1725,7 @@ class WebhooksApi
      * @param  \DateTime|null $delivery_to The latest delivery moment a record may carry. All the filters combine with AND, so it narrows whatever the  other ones already kept. (optional)
      * @param  string|null $hook_uri The subscription target address, matched in full rather than as a prefix. Filtering by `configId` is the  reliable way to pick one subscription, since several may share an address. (optional)
      * @param  int|null $config_id The subscription whose deliveries are kept, by the `id` that `GET api/2.0/settings/webhook` reports. (optional)
-     * @param  int|null $event_id A single delivery record, by its own identifier. It narrows the answer to that one record, which is how a  client follows up a retry it queued earlier. (optional)
+     * @param  int|null $event_id One event, by the `eventId` of its delivery records, which is also the `event.id` the receiver got. (optional)
      * @param  \OpenAPI\Client\Model\WebhookGroupStatus|null $group_status The classes of answered status to keep, as a bitmask; 0 keeps every record whatever the target answered. (optional)
      * @param  string|null $user_id The member whose subscriptions the records belong to, by portal user ID - who created the subscription, not  who caused the event. For a caller who is not a DocSpace administrator it is overwritten with the caller own  ID, so such a caller never sees another member deliveries whatever is sent here. (optional)
      * @param  \OpenAPI\Client\Model\WebhookTrigger|null $trigger The single event kind to keep; 0 keeps every kind. It names one trigger rather than a mask of several, unlike  the `triggers` a subscription is created with. (optional)
@@ -2649,7 +2649,7 @@ class WebhooksApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
+     * @return \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse
      */
     public function retryWebhooks($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
@@ -2670,7 +2670,7 @@ class WebhooksApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WebhooksLogArrayWrapper|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse|\OpenAPI\Client\Model\ErrorApiResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function retryWebhooksWithHttpInfo($webhook_retry_request_dto = null, string $contentType = self::contentTypes['retryWebhooks'][0])
     {
@@ -2719,12 +2719,6 @@ class WebhooksApi
                         $response,
                     );
                 case 500:
-                    return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -2779,14 +2773,6 @@ class WebhooksApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ErrorApiResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',

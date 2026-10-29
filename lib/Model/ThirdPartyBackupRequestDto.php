@@ -338,7 +338,7 @@ class ThirdPartyBackupRequestDto implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets url
      *
-     * @param string|null $url The address of the storage server to connect to. It is needed by the WebDAV presets whose server is not known  in advance (`WebDav`, `Nextcloud`, `ownCloud`), where it points at the WebDAV endpoint of that server, and by  `SharePoint`; the presets with a fixed address and the OAuth services ignore it.
+     * @param string|null $url The address of the storage server to connect to. It is needed by the WebDAV presets whose server is not known  in advance (`WebDav`, `Nextcloud`, `ownCloud`), where it points at the WebDAV endpoint of that server, and by  `SharePoint`. For `kDrive` it is the WebDAV address of the drive, `https://{kDrive ID}.connect.kdrive.infomaniak.com`,  optionally followed by a folder path; the kDrive ID is the number after `/drive/` in the URL of the kDrive web app.  The OAuth services ignore it.
      *
      * @return self
      */

@@ -12814,7 +12814,7 @@ class RoomsApi
                         $request,
                         $response,
                     );
-                case 400:
+                case 500:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\ErrorApiResponse',
                         $request,
@@ -12868,7 +12868,7 @@ class RoomsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
-                case 400:
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorApiResponse',
