@@ -394,8 +394,6 @@ docs/Model/CheckDestFolderResult.md
 docs/Model/CheckDestFolderWrapper.md
 docs/Model/CheckDocServiceUrlRequestDto.md
 docs/Model/CheckFillFormDraftRequest.md
-docs/Model/CheckMoveOrCopyBatchItemsDestFolderIdParameter.md
-docs/Model/CheckMoveOrCopyBatchItemsFolderIdsParameterInner.md
 docs/Model/CheckUploadRequest.md
 docs/Model/ChunkedUploadSessionDto.md
 docs/Model/ChunkedUploadSessionResultDto.md
@@ -1545,8 +1543,6 @@ lib/Model/CheckDestFolderResult.php
 lib/Model/CheckDestFolderWrapper.php
 lib/Model/CheckDocServiceUrlRequestDto.php
 lib/Model/CheckFillFormDraftRequest.php
-lib/Model/CheckMoveOrCopyBatchItemsDestFolderIdParameter.php
-lib/Model/CheckMoveOrCopyBatchItemsFolderIdsParameterInner.php
 lib/Model/CheckUploadRequest.php
 lib/Model/ChunkedUploadSessionDto.php
 lib/Model/ChunkedUploadSessionResultDto.php
