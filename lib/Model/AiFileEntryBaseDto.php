@@ -79,7 +79,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => 'int',
         'order' => 'string',
         'is_favorite' => 'bool',
-        'file_entry_type' => '\OpenAPI\Client\Model\AiFileEntryType'
+        'file_entry_type' => '\OpenAPI\Client\Model\AiFileEntryType',
+        'entry_kind' => 'string'
     ];
 
     /**
@@ -111,7 +112,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => 'int32',
         'order' => null,
         'is_favorite' => null,
-        'file_entry_type' => null
+        'file_entry_type' => null,
+        'entry_kind' => null
     ];
 
     /**
@@ -141,7 +143,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => true,
         'order' => true,
         'is_favorite' => true,
-        'file_entry_type' => false
+        'file_entry_type' => false,
+        'entry_kind' => false
     ];
 
     /**
@@ -251,7 +254,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => 'providerId',
         'order' => 'order',
         'is_favorite' => 'isFavorite',
-        'file_entry_type' => 'fileEntryType'
+        'file_entry_type' => 'fileEntryType',
+        'entry_kind' => 'entryKind'
     ];
 
     /**
@@ -281,7 +285,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => 'setProviderId',
         'order' => 'setOrder',
         'is_favorite' => 'setIsFavorite',
-        'file_entry_type' => 'setFileEntryType'
+        'file_entry_type' => 'setFileEntryType',
+        'entry_kind' => 'setEntryKind'
     ];
 
     /**
@@ -311,7 +316,8 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         'provider_id' => 'getProviderId',
         'order' => 'getOrder',
         'is_favorite' => 'getIsFavorite',
-        'file_entry_type' => 'getFileEntryType'
+        'file_entry_type' => 'getFileEntryType',
+        'entry_kind' => 'getEntryKind'
     ];
 
     /**
@@ -393,6 +399,7 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('is_favorite', $data ?? [], null);
         $this->setIfExists('file_entry_type', $data ?? [], null);
+        $this->setIfExists('entry_kind', $data ?? [], null);
     }
 
     /**
@@ -1076,6 +1083,33 @@ class AiFileEntryBaseDto implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable file_entry_type cannot be null');
         }
         $this->container['file_entry_type'] = $file_entry_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets entry_kind
+     *
+     * @return string|null
+     */
+    public function getEntryKind()
+    {
+        return $this->container['entry_kind'];
+    }
+
+    /**
+     * Sets entry_kind
+     *
+     * @param string|null $entry_kind Which concrete type the object is: `file`, `thirdPartyFile`, `folder`, `thirdPartyFolder`. It is what tells the types apart in a list that mixes several of them; a response limited by `fields` may leave it out.
+     *
+     * @return self
+     */
+    public function setEntryKind($entry_kind)
+    {
+        if (is_null($entry_kind)) {
+            throw new \InvalidArgumentException('non-nullable entry_kind cannot be null');
+        }
+        $this->container['entry_kind'] = $entry_kind;
 
         return $this;
     }

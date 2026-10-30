@@ -80,6 +80,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'string',
         'is_favorite' => 'bool',
         'file_entry_type' => '\OpenAPI\Client\Model\AiFileEntryType',
+        'entry_kind' => 'string',
         'id' => 'int',
         'root_folder_id' => 'int',
         'origin_id' => 'int',
@@ -128,6 +129,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => null,
         'is_favorite' => null,
         'file_entry_type' => null,
+        'entry_kind' => null,
         'id' => 'int32',
         'root_folder_id' => 'int32',
         'origin_id' => 'int32',
@@ -174,6 +176,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => false,
         'is_favorite' => false,
         'file_entry_type' => false,
+        'entry_kind' => false,
         'id' => false,
         'root_folder_id' => false,
         'origin_id' => false,
@@ -300,6 +303,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'order',
         'is_favorite' => 'isFavorite',
         'file_entry_type' => 'fileEntryType',
+        'entry_kind' => 'entryKind',
         'id' => 'id',
         'root_folder_id' => 'rootFolderId',
         'origin_id' => 'originId',
@@ -346,6 +350,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'setOrder',
         'is_favorite' => 'setIsFavorite',
         'file_entry_type' => 'setFileEntryType',
+        'entry_kind' => 'setEntryKind',
         'id' => 'setId',
         'root_folder_id' => 'setRootFolderId',
         'origin_id' => 'setOriginId',
@@ -392,6 +397,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         'order' => 'getOrder',
         'is_favorite' => 'getIsFavorite',
         'file_entry_type' => 'getFileEntryType',
+        'entry_kind' => 'getEntryKind',
         'id' => 'getId',
         'root_folder_id' => 'getRootFolderId',
         'origin_id' => 'getOriginId',
@@ -489,6 +495,7 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('order', $data ?? [], null);
         $this->setIfExists('is_favorite', $data ?? [], null);
         $this->setIfExists('file_entry_type', $data ?? [], null);
+        $this->setIfExists('entry_kind', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('root_folder_id', $data ?? [], null);
         $this->setIfExists('origin_id', $data ?? [], null);
@@ -1139,6 +1146,33 @@ class AiFileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable file_entry_type cannot be null');
         }
         $this->container['file_entry_type'] = $file_entry_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets entry_kind
+     *
+     * @return string|null
+     */
+    public function getEntryKind()
+    {
+        return $this->container['entry_kind'];
+    }
+
+    /**
+     * Sets entry_kind
+     *
+     * @param string|null $entry_kind Which concrete type the object is: `file`, `thirdPartyFile`, `folder`, `thirdPartyFolder`. It is what tells the types apart in a list that mixes several of them; a response limited by `fields` may leave it out.
+     *
+     * @return self
+     */
+    public function setEntryKind($entry_kind)
+    {
+        if (is_null($entry_kind)) {
+            throw new \InvalidArgumentException('non-nullable entry_kind cannot be null');
+        }
+        $this->container['entry_kind'] = $entry_kind;
 
         return $this;
     }

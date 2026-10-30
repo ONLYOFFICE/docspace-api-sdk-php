@@ -27,8 +27,6 @@
  */
 
 namespace OpenAPI\Client\Model;
-
-use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -41,7 +39,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
+class FileEntryDto extends FileEntryBaseDto
 {
     public const DISCRIMINATOR = null;
 
@@ -58,28 +56,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'title' => 'string',
-        'access' => '\OpenAPI\Client\Model\FileShare',
-        'shared_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'owned_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'shared' => 'bool',
-        'shared_for_user' => 'bool',
-        'shared_external' => 'bool',
-        'parent_shared' => 'bool',
-        'short_web_url' => 'string',
-        'created' => '\OpenAPI\Client\Model\ApiDateTime',
-        'created_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'updated' => '\OpenAPI\Client\Model\ApiDateTime',
-        'auto_delete' => '\OpenAPI\Client\Model\ApiDateTime',
-        'root_folder_type' => '\OpenAPI\Client\Model\FolderType',
-        'parent_room_type' => '\OpenAPI\Client\Model\FolderType',
-        'updated_by' => '\OpenAPI\Client\Model\EmployeeDto',
-        'provider_item' => 'bool',
-        'provider_key' => 'string',
-        'provider_id' => 'int',
-        'order' => 'string',
-        'is_favorite' => 'bool',
-        'file_entry_type' => '\OpenAPI\Client\Model\FileEntryType',
         'id' => 'int',
         'root_folder_id' => 'int',
         'origin_id' => 'int',
@@ -106,28 +82,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'title' => null,
-        'access' => null,
-        'shared_by' => null,
-        'owned_by' => null,
-        'shared' => null,
-        'shared_for_user' => null,
-        'shared_external' => null,
-        'parent_shared' => null,
-        'short_web_url' => 'uri',
-        'created' => null,
-        'created_by' => null,
-        'updated' => null,
-        'auto_delete' => null,
-        'root_folder_type' => null,
-        'parent_room_type' => null,
-        'updated_by' => null,
-        'provider_item' => null,
-        'provider_key' => null,
-        'provider_id' => 'int32',
-        'order' => null,
-        'is_favorite' => null,
-        'file_entry_type' => null,
         'id' => 'int32',
         'root_folder_id' => 'int32',
         'origin_id' => 'int32',
@@ -152,28 +106,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'title' => false,
-        'access' => false,
-        'shared_by' => false,
-        'owned_by' => false,
-        'shared' => false,
-        'shared_for_user' => false,
-        'shared_external' => false,
-        'parent_shared' => false,
-        'short_web_url' => false,
-        'created' => false,
-        'created_by' => false,
-        'updated' => false,
-        'auto_delete' => false,
-        'root_folder_type' => false,
-        'parent_room_type' => false,
-        'updated_by' => false,
-        'provider_item' => false,
-        'provider_key' => false,
-        'provider_id' => false,
-        'order' => false,
-        'is_favorite' => false,
-        'file_entry_type' => false,
         'id' => false,
         'root_folder_id' => false,
         'origin_id' => false,
@@ -206,7 +138,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -216,7 +148,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -226,7 +158,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -278,28 +210,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
-        'access' => 'access',
-        'shared_by' => 'sharedBy',
-        'owned_by' => 'ownedBy',
-        'shared' => 'shared',
-        'shared_for_user' => 'sharedForUser',
-        'shared_external' => 'sharedExternal',
-        'parent_shared' => 'parentShared',
-        'short_web_url' => 'shortWebUrl',
-        'created' => 'created',
-        'created_by' => 'createdBy',
-        'updated' => 'updated',
-        'auto_delete' => 'autoDelete',
-        'root_folder_type' => 'rootFolderType',
-        'parent_room_type' => 'parentRoomType',
-        'updated_by' => 'updatedBy',
-        'provider_item' => 'providerItem',
-        'provider_key' => 'providerKey',
-        'provider_id' => 'providerId',
-        'order' => 'order',
-        'is_favorite' => 'isFavorite',
-        'file_entry_type' => 'fileEntryType',
         'id' => 'id',
         'root_folder_id' => 'rootFolderId',
         'origin_id' => 'originId',
@@ -324,28 +234,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
-        'access' => 'setAccess',
-        'shared_by' => 'setSharedBy',
-        'owned_by' => 'setOwnedBy',
-        'shared' => 'setShared',
-        'shared_for_user' => 'setSharedForUser',
-        'shared_external' => 'setSharedExternal',
-        'parent_shared' => 'setParentShared',
-        'short_web_url' => 'setShortWebUrl',
-        'created' => 'setCreated',
-        'created_by' => 'setCreatedBy',
-        'updated' => 'setUpdated',
-        'auto_delete' => 'setAutoDelete',
-        'root_folder_type' => 'setRootFolderType',
-        'parent_room_type' => 'setParentRoomType',
-        'updated_by' => 'setUpdatedBy',
-        'provider_item' => 'setProviderItem',
-        'provider_key' => 'setProviderKey',
-        'provider_id' => 'setProviderId',
-        'order' => 'setOrder',
-        'is_favorite' => 'setIsFavorite',
-        'file_entry_type' => 'setFileEntryType',
         'id' => 'setId',
         'root_folder_id' => 'setRootFolderId',
         'origin_id' => 'setOriginId',
@@ -370,28 +258,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
-        'access' => 'getAccess',
-        'shared_by' => 'getSharedBy',
-        'owned_by' => 'getOwnedBy',
-        'shared' => 'getShared',
-        'shared_for_user' => 'getSharedForUser',
-        'shared_external' => 'getSharedExternal',
-        'parent_shared' => 'getParentShared',
-        'short_web_url' => 'getShortWebUrl',
-        'created' => 'getCreated',
-        'created_by' => 'getCreatedBy',
-        'updated' => 'getUpdated',
-        'auto_delete' => 'getAutoDelete',
-        'root_folder_type' => 'getRootFolderType',
-        'parent_room_type' => 'getParentRoomType',
-        'updated_by' => 'getUpdatedBy',
-        'provider_item' => 'getProviderItem',
-        'provider_key' => 'getProviderKey',
-        'provider_id' => 'getProviderId',
-        'order' => 'getOrder',
-        'is_favorite' => 'getIsFavorite',
-        'file_entry_type' => 'getFileEntryType',
         'id' => 'getId',
         'root_folder_id' => 'getRootFolderId',
         'origin_id' => 'getOriginId',
@@ -418,7 +284,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -428,7 +294,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -438,7 +304,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -452,12 +318,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -467,28 +327,8 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('access', $data ?? [], null);
-        $this->setIfExists('shared_by', $data ?? [], null);
-        $this->setIfExists('owned_by', $data ?? [], null);
-        $this->setIfExists('shared', $data ?? [], null);
-        $this->setIfExists('shared_for_user', $data ?? [], null);
-        $this->setIfExists('shared_external', $data ?? [], null);
-        $this->setIfExists('parent_shared', $data ?? [], null);
-        $this->setIfExists('short_web_url', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
-        $this->setIfExists('created_by', $data ?? [], null);
-        $this->setIfExists('updated', $data ?? [], null);
-        $this->setIfExists('auto_delete', $data ?? [], null);
-        $this->setIfExists('root_folder_type', $data ?? [], null);
-        $this->setIfExists('parent_room_type', $data ?? [], null);
-        $this->setIfExists('updated_by', $data ?? [], null);
-        $this->setIfExists('provider_item', $data ?? [], null);
-        $this->setIfExists('provider_key', $data ?? [], null);
-        $this->setIfExists('provider_id', $data ?? [], null);
-        $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('is_favorite', $data ?? [], null);
-        $this->setIfExists('file_entry_type', $data ?? [], null);
+        parent::__construct($data);
+
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('root_folder_id', $data ?? [], null);
         $this->setIfExists('origin_id', $data ?? [], null);
@@ -532,7 +372,7 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         return $invalidProperties;
     }
@@ -548,600 +388,6 @@ class FileEntryDto implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title The name shown for the entry. For a file it carries the extension, which is how the format is recognised, and  for a room it is the room name.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets access
-     *
-     * @return \OpenAPI\Client\Model\FileShare|null
-     */
-    public function getAccess()
-    {
-        return $this->container['access'];
-    }
-
-    /**
-     * Sets access
-     *
-     * @param \OpenAPI\Client\Model\FileShare|null $access The level the calling account holds on this entry, resolved from its own rights, the groups it belongs to and  any link it came in through. It is the level itself, not what the account may do with it - the action flags  below answer that.
-     *
-     * @return self
-     */
-    public function setAccess($access)
-    {
-        if (is_null($access)) {
-            throw new \InvalidArgumentException('non-nullable access cannot be null');
-        }
-        $this->container['access'] = $access;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared_by
-     *
-     * @return \OpenAPI\Client\Model\EmployeeDto|null
-     */
-    public function getSharedBy()
-    {
-        return $this->container['shared_by'];
-    }
-
-    /**
-     * Sets shared_by
-     *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $shared_by Who gave the calling account the access it is using. It is filled in only while the entry is being read  through a share, and never for a caller without an account.
-     *
-     * @return self
-     */
-    public function setSharedBy($shared_by)
-    {
-        if (is_null($shared_by)) {
-            throw new \InvalidArgumentException('non-nullable shared_by cannot be null');
-        }
-        $this->container['shared_by'] = $shared_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets owned_by
-     *
-     * @return \OpenAPI\Client\Model\EmployeeDto|null
-     */
-    public function getOwnedBy()
-    {
-        return $this->container['owned_by'];
-    }
-
-    /**
-     * Sets owned_by
-     *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $owned_by Who owns the place the entry is shared from - the creator of the room it lies in, or of the personal section  that holds it. It is filled in only while the entry is being read through a share, and never for a caller  without an account.
-     *
-     * @return self
-     */
-    public function setOwnedBy($owned_by)
-    {
-        if (is_null($owned_by)) {
-            throw new \InvalidArgumentException('non-nullable owned_by cannot be null');
-        }
-        $this->container['owned_by'] = $owned_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared
-     *
-     * @return bool|null
-     */
-    public function getShared()
-    {
-        return $this->container['shared'];
-    }
-
-    /**
-     * Sets shared
-     *
-     * @param bool|null $shared Whether at least one external link exists for the entry, whichever kind. It says nothing about accounts and  groups - those are counted by the flag for members below.
-     *
-     * @return self
-     */
-    public function setShared($shared)
-    {
-        if (is_null($shared)) {
-            throw new \InvalidArgumentException('non-nullable shared cannot be null');
-        }
-        $this->container['shared'] = $shared;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared_for_user
-     *
-     * @return bool|null
-     */
-    public function getSharedForUser()
-    {
-        return $this->container['shared_for_user'];
-    }
-
-    /**
-     * Sets shared_for_user
-     *
-     * @param bool|null $shared_for_user Whether at least one account or group has been given rights on the entry directly, as opposed to reaching it  through a link or through the room around it.
-     *
-     * @return self
-     */
-    public function setSharedForUser($shared_for_user)
-    {
-        if (is_null($shared_for_user)) {
-            throw new \InvalidArgumentException('non-nullable shared_for_user cannot be null');
-        }
-        $this->container['shared_for_user'] = $shared_for_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets shared_external
-     *
-     * @return bool|null
-     */
-    public function getSharedExternal()
-    {
-        return $this->container['shared_external'];
-    }
-
-    /**
-     * Sets shared_external
-     *
-     * @param bool|null $shared_external Whether one of the entry's links is open to people outside the portal, as opposed to a link that only its own  members can follow. This is the flag to watch when the concern is who can reach the content from outside.
-     *
-     * @return self
-     */
-    public function setSharedExternal($shared_external)
-    {
-        if (is_null($shared_external)) {
-            throw new \InvalidArgumentException('non-nullable shared_external cannot be null');
-        }
-        $this->container['shared_external'] = $shared_external;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_shared
-     *
-     * @return bool|null
-     */
-    public function getParentShared()
-    {
-        return $this->container['parent_shared'];
-    }
-
-    /**
-     * Sets parent_shared
-     *
-     * @param bool|null $parent_shared Whether the entry is reachable because the room or folder around it is shared, rather than through rights of  its own. A copy or a move takes the entry out of that scope.
-     *
-     * @return self
-     */
-    public function setParentShared($parent_shared)
-    {
-        if (is_null($parent_shared)) {
-            throw new \InvalidArgumentException('non-nullable parent_shared cannot be null');
-        }
-        $this->container['parent_shared'] = $parent_shared;
-
-        return $this;
-    }
-
-    /**
-     * Gets short_web_url
-     *
-     * @return string|null
-     */
-    public function getShortWebUrl()
-    {
-        return $this->container['short_web_url'];
-    }
-
-    /**
-     * Sets short_web_url
-     *
-     * @param string|null $short_web_url A shortened address that opens the entry through the link it is being read with. It is an empty string  whenever no link applies, which is the usual case for a member browsing their own rooms.
-     *
-     * @return self
-     */
-    public function setShortWebUrl($short_web_url)
-    {
-        if (is_null($short_web_url)) {
-            throw new \InvalidArgumentException('non-nullable short_web_url cannot be null');
-        }
-        $this->container['short_web_url'] = $short_web_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
-     *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $created When the entry was created, written with the offset of the portal's time zone. For a file restored from an  older version this is still the moment the file first appeared.
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
-        }
-        $this->container['created'] = $created;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by
-     *
-     * @return \OpenAPI\Client\Model\EmployeeDto|null
-     */
-    public function getCreatedBy()
-    {
-        return $this->container['created_by'];
-    }
-
-    /**
-     * Sets created_by
-     *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $created_by Who created the entry. It is null for a caller without an account, who is told nothing about the portal's  members.
-     *
-     * @return self
-     */
-    public function setCreatedBy($created_by)
-    {
-        if (is_null($created_by)) {
-            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
-        }
-        $this->container['created_by'] = $created_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated
-     *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
-     */
-    public function getUpdated()
-    {
-        return $this->container['updated'];
-    }
-
-    /**
-     * Sets updated
-     *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $updated When the entry last changed, written with the offset of the portal's time zone. It is never reported as  earlier than the creation moment, so the two can be compared safely.
-     *
-     * @return self
-     */
-    public function setUpdated($updated)
-    {
-        if (is_null($updated)) {
-            throw new \InvalidArgumentException('non-nullable updated cannot be null');
-        }
-        $this->container['updated'] = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets auto_delete
-     *
-     * @return \OpenAPI\Client\Model\ApiDateTime|null
-     */
-    public function getAutoDelete()
-    {
-        return $this->container['auto_delete'];
-    }
-
-    /**
-     * Sets auto_delete
-     *
-     * @param \OpenAPI\Client\Model\ApiDateTime|null $auto_delete When the entry will disappear on its own, written with the offset of the portal's time zone. It is filled in  only where a removal is actually scheduled - something in the trash while the portal cleans it up  automatically, or a guest's own documents - so a null means nothing is scheduled rather than that the entry is  permanent.
-     *
-     * @return self
-     */
-    public function setAutoDelete($auto_delete)
-    {
-        if (is_null($auto_delete)) {
-            throw new \InvalidArgumentException('non-nullable auto_delete cannot be null');
-        }
-        $this->container['auto_delete'] = $auto_delete;
-
-        return $this;
-    }
-
-    /**
-     * Gets root_folder_type
-     *
-     * @return \OpenAPI\Client\Model\FolderType|null
-     */
-    public function getRootFolderType()
-    {
-        return $this->container['root_folder_type'];
-    }
-
-    /**
-     * Sets root_folder_type
-     *
-     * @param \OpenAPI\Client\Model\FolderType|null $root_folder_type The section the entry ultimately belongs to, which is what tells a personal document from one inside a room,  from a template and from something in the trash or the archive.
-     *
-     * @return self
-     */
-    public function setRootFolderType($root_folder_type)
-    {
-        if (is_null($root_folder_type)) {
-            throw new \InvalidArgumentException('non-nullable root_folder_type cannot be null');
-        }
-        $this->container['root_folder_type'] = $root_folder_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_room_type
-     *
-     * @return \OpenAPI\Client\Model\FolderType|null
-     */
-    public function getParentRoomType()
-    {
-        return $this->container['parent_room_type'];
-    }
-
-    /**
-     * Sets parent_room_type
-     *
-     * @param \OpenAPI\Client\Model\FolderType|null $parent_room_type The kind of room the entry lies in, which decides what the room allows - filling forms, public links,  indexing. It is null for an entry that is not inside a room at all.
-     *
-     * @return self
-     */
-    public function setParentRoomType($parent_room_type)
-    {
-        if (is_null($parent_room_type)) {
-            throw new \InvalidArgumentException('non-nullable parent_room_type cannot be null');
-        }
-        $this->container['parent_room_type'] = $parent_room_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_by
-     *
-     * @return \OpenAPI\Client\Model\EmployeeDto|null
-     */
-    public function getUpdatedBy()
-    {
-        return $this->container['updated_by'];
-    }
-
-    /**
-     * Sets updated_by
-     *
-     * @param \OpenAPI\Client\Model\EmployeeDto|null $updated_by Who changed the entry last. It is null for a caller without an account.
-     *
-     * @return self
-     */
-    public function setUpdatedBy($updated_by)
-    {
-        if (is_null($updated_by)) {
-            throw new \InvalidArgumentException('non-nullable updated_by cannot be null');
-        }
-        $this->container['updated_by'] = $updated_by;
-
-        return $this;
-    }
-
-    /**
-     * Gets provider_item
-     *
-     * @return bool|null
-     */
-    public function getProviderItem()
-    {
-        return $this->container['provider_item'];
-    }
-
-    /**
-     * Sets provider_item
-     *
-     * @param bool|null $provider_item Set when the entry is stored on a connected third-party account rather than on the portal, and null when it is  stored on the portal. Such an entry is identified by a string rather than a number, and some operations skip  it.
-     *
-     * @return self
-     */
-    public function setProviderItem($provider_item)
-    {
-        if (is_null($provider_item)) {
-            throw new \InvalidArgumentException('non-nullable provider_item cannot be null');
-        }
-        $this->container['provider_item'] = $provider_item;
-
-        return $this;
-    }
-
-    /**
-     * Gets provider_key
-     *
-     * @return string|null
-     */
-    public function getProviderKey()
-    {
-        return $this->container['provider_key'];
-    }
-
-    /**
-     * Sets provider_key
-     *
-     * @param string|null $provider_key Which third-party service holds the entry, matching the keys accepted by the third-party operations. It is  null for an entry stored on the portal.
-     *
-     * @return self
-     */
-    public function setProviderKey($provider_key)
-    {
-        if (is_null($provider_key)) {
-            throw new \InvalidArgumentException('non-nullable provider_key cannot be null');
-        }
-        $this->container['provider_key'] = $provider_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets provider_id
-     *
-     * @return int|null
-     */
-    public function getProviderId()
-    {
-        return $this->container['provider_id'];
-    }
-
-    /**
-     * Sets provider_id
-     *
-     * @param int|null $provider_id The connected account the entry comes from, for telling apart two connections to the same service. It is null  for an entry stored on the portal.
-     *
-     * @return self
-     */
-    public function setProviderId($provider_id)
-    {
-        if (is_null($provider_id)) {
-            throw new \InvalidArgumentException('non-nullable provider_id cannot be null');
-        }
-        $this->container['provider_id'] = $provider_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets order
-     *
-     * @return string|null
-     */
-    public function getOrder()
-    {
-        return $this->container['order'];
-    }
-
-    /**
-     * Sets order
-     *
-     * @param string|null $order The place of the entry in a room where the members arrange the content themselves, given as the position of  the entry preceded by the positions of the folders leading to it, separated by dots. It is empty when nothing  has been arranged.
-     *
-     * @return self
-     */
-    public function setOrder($order)
-    {
-        if (is_null($order)) {
-            throw new \InvalidArgumentException('non-nullable order cannot be null');
-        }
-        $this->container['order'] = $order;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_favorite
-     *
-     * @return bool|null
-     */
-    public function getIsFavorite()
-    {
-        return $this->container['is_favorite'];
-    }
-
-    /**
-     * Sets is_favorite
-     *
-     * @param bool|null $is_favorite Set when the calling account has marked the entry as a favorite, which is what puts it into the favorites  listing. For a file that is not marked it is null rather than false.
-     *
-     * @return self
-     */
-    public function setIsFavorite($is_favorite)
-    {
-        if (is_null($is_favorite)) {
-            throw new \InvalidArgumentException('non-nullable is_favorite cannot be null');
-        }
-        $this->container['is_favorite'] = $is_favorite;
-
-        return $this;
-    }
-
-    /**
-     * Gets file_entry_type
-     *
-     * @return \OpenAPI\Client\Model\FileEntryType|null
-     */
-    public function getFileEntryType()
-    {
-        return $this->container['file_entry_type'];
-    }
-
-    /**
-     * Sets file_entry_type
-     *
-     * @param \OpenAPI\Client\Model\FileEntryType|null $file_entry_type Tells a folder from a file, and so which of the two shapes the rest of the object has. A room is reported as a  folder here.
-     *
-     * @return self
-     */
-    public function setFileEntryType($file_entry_type)
-    {
-        if (is_null($file_entry_type)) {
-            throw new \InvalidArgumentException('non-nullable file_entry_type cannot be null');
-        }
-        $this->container['file_entry_type'] = $file_entry_type;
-
-        return $this;
-    }
 
     /**
      * Gets id

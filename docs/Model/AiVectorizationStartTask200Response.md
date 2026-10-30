@@ -1,5 +1,7 @@
 # # AiVectorizationStartTask200Response
 
+Inherits from [array<String, mixed>](array<String, mixed>.md).
+
 ## Properties
 
 Name | Type | Description | Notes
