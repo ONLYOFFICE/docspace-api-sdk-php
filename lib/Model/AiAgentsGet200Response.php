@@ -59,6 +59,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'response' => '\OpenAPI\Client\Model\AiAgentsGet200ResponseAllOfResponse',
         'count' => 'int',
+        'total' => 'int',
         'links' => '\OpenAPI\Client\Model\GetPortalPrices200ResponseLinksInner[]',
         'status' => 'int',
         'status_code' => 'int'
@@ -74,6 +75,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPIFormats = [
         'response' => null,
         'count' => 'int32',
+        'total' => 'int64',
         'links' => null,
         'status' => 'int32',
         'status_code' => 'int32'
@@ -87,6 +89,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'response' => false,
         'count' => false,
+        'total' => false,
         'links' => false,
         'status' => false,
         'status_code' => false
@@ -180,6 +183,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $attributeMap = [
         'response' => 'response',
         'count' => 'count',
+        'total' => 'total',
         'links' => 'links',
         'status' => 'status',
         'status_code' => 'statusCode'
@@ -193,6 +197,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $setters = [
         'response' => 'setResponse',
         'count' => 'setCount',
+        'total' => 'setTotal',
         'links' => 'setLinks',
         'status' => 'setStatus',
         'status_code' => 'setStatusCode'
@@ -206,6 +211,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $getters = [
         'response' => 'getResponse',
         'count' => 'getCount',
+        'total' => 'getTotal',
         'links' => 'getLinks',
         'status' => 'getStatus',
         'status_code' => 'getStatusCode'
@@ -270,6 +276,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $this->setIfExists('response', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('status_code', $data ?? [], null);
@@ -357,7 +364,7 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets count
      *
-     * @param int|null $count The total number of items in the response
+     * @param int|null $count How many items this response carries: the length of the page for a list, 1 for a single object
      *
      * @return self
      */
@@ -367,6 +374,33 @@ class AiAgentsGet200Response implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
         $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return int|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param int|null $total How many items the whole list holds across all pages, for working out how many pages to request. Sent only by the operations that page their results, and left out of every other response
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
+        }
+        $this->container['total'] = $total;
 
         return $this;
     }
