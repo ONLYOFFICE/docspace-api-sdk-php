@@ -159,7 +159,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **entity_id** | **string**| The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room. | [optional] |
 
 ### Return type
 
@@ -190,7 +190,7 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room.
 
 try {
     $result = $apiInstance->aiWebSearchGetActiveConfig($entity_id);
@@ -224,7 +224,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **entity_id** | **string**| The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room. | [optional] |
 
 ### Return type
 
@@ -255,7 +255,7 @@ $apiInstance = new OpenAPI\Client\Api\WebSearchApi(
     new GuzzleHttp\Client(),
     $config
 );
-$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room.
 
 try {
     $result = $apiInstance->aiWebSearchIsConfigured($entity_id);

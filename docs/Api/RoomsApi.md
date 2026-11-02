@@ -20,7 +20,7 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 | [**getExternalDbSyncStatus()**](RoomsApi.md#getExternalDbSyncStatus) | **GET** /api/2.0/files/rooms/{id}/externaldbsync | Get external DB sync status |
 | [**getNewRoomItems()**](RoomsApi.md#getNewRoomItems) | **GET** /api/2.0/files/rooms/{id}/news | Get new items in a room |
 | [**getPublicSettings()**](RoomsApi.md#getPublicSettings) | **GET** /api/2.0/files/roomtemplate/{id}/public | Get room template public access |
-| [**getRoomAiFolder()**](RoomsApi.md#getRoomAiFolder) | **GET** /api/2.0/files/rooms/{id}/ai | Get the .ai folder of a room |
+| [**getRoomAiFolder()**](RoomsApi.md#getRoomAiFolder) | **GET** /api/2.0/files/rooms/{id}/ai | Get the skills folder of an Instructions room |
 | [**getRoomCovers()**](RoomsApi.md#getRoomCovers) | **GET** /api/2.0/files/rooms/covers | Get room cover gallery |
 | [**getRoomCreatingStatus()**](RoomsApi.md#getRoomCreatingStatus) | **GET** /api/2.0/files/rooms/fromtemplate/status | Get the room creation progress |
 | [**getRoomIndexExport()**](RoomsApi.md#getRoomIndexExport) | **GET** /api/2.0/files/rooms/indexexport | Get the room index export |
@@ -142,7 +142,7 @@ archiveRoom($id, $archive_room_request): \OpenAPI\Client\Model\FileOperationWrap
 ```
 
 Archive a room
-Queues a background job that moves one room from the Rooms section to the Archive section, and returns the  operation record of that job. An archived room stays readable to its members and becomes read only: files  cannot be created, renamed or edited in it, and its settings, tags, logo and links can no longer be changed,  which is why many other room operations answer an archived room with a refusal. The caller must be a manager  of the room; administrators of the portal cannot archive a room they were not invited to, and a room template  cannot be archived at all and is answered as missing. The room is not archived when the response arrives: poll  `GET api/2.0/files/fileops` until `finished` is true. Archiving an already archived room is harmless.  `deleteAfter` decides only how long the finished record survives, not what happens to the room. Use  `PUT api/2.0/files/rooms/{id}/unarchive` to bring the room back.  Raises the `room.archived` webhook once the queued operation moves the room to the archive, for an AI agent as well.
+Queues a background job that moves one room from the Rooms section to the Archive section, and returns the  operation record of that job. An archived room stays readable to its members and becomes read only: files  cannot be created, renamed or edited in it, and its settings, tags, logo and links can no longer be changed,  which is why many other room operations answer an archived room with a refusal. The caller must be a manager  of the room; administrators of the portal cannot archive a room they were not invited to, and a room template  cannot be archived at all and is answered as missing. Instructions and Knowledge rooms are never archived and  are refused with 403: delete them with `DELETE api/2.0/files/rooms/{id}` instead. The room is not archived when the response arrives: poll  `GET api/2.0/files/fileops` until `finished` is true. Archiving an already archived room is harmless.  `deleteAfter` decides only how long the finished record survives, not what happens to the room. Use  `PUT api/2.0/files/rooms/{id}/unarchive` to bring the room back.  Raises the `room.archived` webhook once the queued operation moves the room to the archive, for an AI agent as well.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/archive-room/).
 
@@ -1365,8 +1365,8 @@ try {
 getRoomAiFolder($id, $filter_type, $count, $start_index, $sort_by, $sort_order, $filter_value): \OpenAPI\Client\Model\FolderContentWrapper
 ```
 
-Get the .ai folder of a room
-Returns one page of the contents of the .ai folder that lies in the root of a room, in the same shape as  `GET api/2.0/files/{folderId}` returns for any other folder. The rooms that hold such a folder are listed with  `GET api/2.0/files/rooms?withAiFolder=true`. Any member who can read the room may call it; somebody who cannot  is refused, and a room that does not exist is answered as not found. A room that holds no .ai folder is  answered with an empty page: no files and folders, a zero `total`, no `current` folder and empty `pathParts`.
+Get the skills folder of an Instructions room
+Returns one page of the root contents of an Instructions room, whose Markdown files are the skills of the AI  chat, in the same shape as `GET api/2.0/files/{folderId}` returns for any other folder. The rooms that provide  skills are listed with `GET api/2.0/files/rooms?withAiFolder=true` (or `type=10`). Any member who can read the  room may call it; somebody who cannot is refused, and a room that does not exist or is not an Instructions room  is answered as not found.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/get-room-ai-folder/).
 
@@ -1374,7 +1374,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| The room whose .ai folder is listed, named by the identifier that `GET api/2.0/files/rooms` reports for it. | |
+| **id** | **int**| The Instructions room whose skills are listed, named by the identifier that `GET api/2.0/files/rooms` reports  for it. | |
 | **filter_type** | [**\OpenAPI\Client\Model\FilterType**](../Model/.md)| Narrows the listing to a single kind of entry, such as documents, spreadsheets or images. Omit it to list every  kind the folder holds. | [optional] |
 | **count** | **int**| The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read. | [optional] |
 | **start_index** | **int**| The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page. | [optional] |
@@ -1425,7 +1425,7 @@ $apiInstance = new OpenAPI\Client\Api\RoomsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 1; // int | The room whose .ai folder is listed, named by the identifier that `GET api/2.0/files/rooms` reports for it.
+$id = 1; // int | The Instructions room whose skills are listed, named by the identifier that `GET api/2.0/files/rooms` reports  for it.
 $filter_type = 1; // \OpenAPI\Client\Model\FilterType | Narrows the listing to a single kind of entry, such as documents, spreadsheets or images. Omit it to list every  kind the folder holds.
 $count = 25; // int | The size of one page of the listing. Pair it with `startIndex` to walk through the result, and compare the two  with `total` in the response to see when the last page has been read.
 $start_index = 0; // int | The number of matching entries to skip before the returned page begins; add `count` to it to ask for the next  page.
@@ -2122,7 +2122,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | **quota_filter** | [**\OpenAPI\Client\Model\QuotaFilter**](../Model/.md)| Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found. | [optional] |
 | **storage_filter** | [**\OpenAPI\Client\Model\StorageFilter**](../Model/.md)| Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter. | [optional] |
 | **privacy_filter** | [**\OpenAPI\Client\Model\RoomPrivacyFilter**](../Model/.md)| Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds. | [optional] |
-| **with_ai_folder** | **bool**| Keeps only the rooms that hold a .ai folder in their root. The content of that folder is read with  `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms with and without the folder. | [optional] |
+| **with_ai_folder** | **bool**| Keeps only the rooms that provide skills to the AI chat: Instructions rooms, whose Markdown files are read  with `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms of every type. | [optional] |
 | **count** | **int**| How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received. | [optional] |
 | **start_index** | **int**| How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports. | [optional] |
 | **sort_by** | **string**| The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order. | [optional] |
@@ -2187,7 +2187,7 @@ $provider = 1; // \OpenAPI\Client\Model\ProviderFilter | Keeps only the rooms wh
 $quota_filter = 1; // \OpenAPI\Client\Model\QuotaFilter | Splits the rooms by whether a storage quota was set on the room itself or it follows the portal default, which  is how rooms with a custom limit are found.
 $storage_filter = 1; // \OpenAPI\Client\Model\StorageFilter | Splits the rooms by where their content is stored, in the portal itself or in a connected third-party account.  It is the coarse form of the provider filter.
 $privacy_filter = 1; // \OpenAPI\Client\Model\RoomPrivacyFilter | Splits the rooms by whether they are private, that is encrypted rooms whose content the portal cannot read.  Omitting it returns both kinds.
-$with_ai_folder = true; // bool | Keeps only the rooms that hold a .ai folder in their root. The content of that folder is read with  `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms with and without the folder.
+$with_ai_folder = true; // bool | Keeps only the rooms that provide skills to the AI chat: Instructions rooms, whose Markdown files are read  with `GET api/2.0/files/rooms/{id}/ai`. Omitting it returns rooms of every type.
 $count = 25; // int | How many rooms one page may carry. Ask for the next page by raising the start index by the number of rooms  already received.
 $start_index = 0; // int | How many matching rooms to skip before the page begins. Page through the answer until the skip plus the rooms  received reaches the total it reports.
 $sort_by = DateAndTime; // string | The field to order the rooms by, named as in the file listings: `AZ` for the title, `DateAndTime` for the last  change, `DateAndTimeCreation`, `Author`, `Size`, `Type`, `RoomType`, `Tags`, `UsedSpace`, `LastOpened`. The  name is matched ignoring case, an unknown one is rejected rather than ignored, and the accepted one also  becomes this account's stored order.
@@ -2462,7 +2462,7 @@ pinRoom($id): \OpenAPI\Client\Model\FolderWrapper
 ```
 
 Pin a room
-Pins a room to the top of the room list of the calling account and returns the room with the pinned flag set.  Pinning is personal: it changes the order only for the caller, is invisible to the other members of the room,  and does not survive a trip through the Archive section, so an unarchived room has to be pinned again. Pinned  rooms stay above the unpinned ones whatever sorting or filter the listing uses, and their own order between  each other is stable. An account may keep only a limited number of pinned rooms at a time, ten on a portal  with the default configuration, and AI rooms are counted separately against their own allowance; a request  over the limit is refused until something is unpinned with `PUT api/2.0/files/rooms/{id}/unpin`. Pinning a  room that is already pinned changes nothing and is safe to repeat. Anybody who can read the room may pin it,  including guests and portal administrators who were never invited, while somebody who is not in the room is  refused, an archived room is rejected and an unknown room is answered as missing.
+Pins a room to the top of the room list of the calling account and returns the room with the pinned flag set.  Pinning is personal: it changes the order only for the caller, is invisible to the other members of the room,  and does not survive a trip through the Archive section, so an unarchived room has to be pinned again. Pinned  rooms stay above the unpinned ones whatever sorting or filter the listing uses, and their own order between  each other is stable. An account may keep only a limited number of pinned rooms at a time, ten on a portal  with the default configuration, and AI agents and AI rooms are counted separately; a request  over the limit is refused until something is unpinned with `PUT api/2.0/files/rooms/{id}/unpin`. Pinning a  room that is already pinned changes nothing and is safe to repeat. Anybody who can read the room may pin it,  including guests and portal administrators who were never invited, while somebody who is not in the room is  refused, an archived room is rejected and an unknown room is answered as missing.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/pin-room/).
 

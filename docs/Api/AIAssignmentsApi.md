@@ -21,7 +21,7 @@ aiAssignmentsAssign($ai_assignments_assign_request): \OpenAPI\Client\Model\AiAss
 ```
 
 Bind a profile to an action
-Binds a profile to one AI action portal-wide, creating the assignment or replacing it in place, and returns the result. Both `actionType` and `profileId` are required. The profile's declared capabilities are checked against the action, so a model that cannot generate images cannot be bound to `ImageGeneration` - the `Default` slot is exempt, because it stands in for every action. There is no room-scoped form of this write: a room's own binding is created by the agent that owns it, while reads accept an `entityId`.
+Binds a profile to one AI action portal-wide, creating the assignment or replacing it in place, and returns the result. Both `actionType` and `profileId` are required. The profile's declared capabilities are checked against the action, so a model that cannot generate images cannot be bound to `ImageGeneration` - the `Default` slot is exempt, because it stands in for every action. There is no room-scoped form of this write; the reads accept an `entityId` for compatibility and answer the same portal-wide bindings.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-assign/).
 
@@ -212,11 +212,11 @@ try {
 ## `aiAssignmentsGetAllAssignments()`
 
 ```php
-aiAssignmentsGetAllAssignments($entity_id): array<string,string>
+aiAssignmentsGetAllAssignments($entity_id, $expand): array<string,string>
 ```
 
 Get all assignments
-Returns every action-to-profile binding of a scope as one map, which is what a settings screen loads. `entityId` narrows it to a room and has to name one the caller can open; a room that is not an agent room degrades to the portal-wide set rather than answering empty, and omitting the parameter reads the portal-wide set directly. Actions with no binding are simply absent from the map. The `Default` slot is reported as an entry of its own rather than being folded into the others.
+Returns every action-to-profile binding of a scope as one map, which is what a settings screen loads. `entityId`, when sent, has to name a room the caller can open; the bindings are portal-wide, so the answer is the same set with or without it. Actions with no binding are simply absent from the map. The `Default` slot is reported as an entry of its own rather than being folded into the others. With `expand=profile` the answer is `{ assignments, profilesTotal, chatProfilesTotal }`: the assigned profiles themselves (as `GET api/2.0/ai/profiles/list` describes them) keyed by action, a binding whose profile no longer exists left out, plus how many profiles the portal has and how many of them can chat; this is the one read a chat needs to start.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-assignments-get-all-assignments/).
 
@@ -224,7 +224,8 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **entity_id** | **string**| The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room. | [optional] |
+| **expand** | **string**| Set to profile to answer the assigned profiles themselves instead of their IDs: `{ assignments, profilesTotal, chatProfilesTotal }`. Omit for the plain ID map. | [optional] |
 
 ### Return type
 
@@ -255,10 +256,11 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room.
+$expand = profile; // string | Set to profile to answer the assigned profiles themselves instead of their IDs: `{ assignments, profilesTotal, chatProfilesTotal }`. Omit for the plain ID map.
 
 try {
-    $result = $apiInstance->aiAssignmentsGetAllAssignments($entity_id);
+    $result = $apiInstance->aiAssignmentsGetAllAssignments($entity_id, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssignmentsApi->aiAssignmentsGetAllAssignments: ', $e->getMessage(), PHP_EOL;
@@ -355,7 +357,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. | |
-| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **entity_id** | **string**| The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room. | [optional] |
 
 ### Return type
 
@@ -387,7 +389,7 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     $config
 );
 $action_type = Chat; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis.
-$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room.
 
 try {
     $result = $apiInstance->aiAssignmentsResolveForAction($action_type, $entity_id);
@@ -422,7 +424,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **action_type** | **string**| The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis. | |
-| **entity_id** | **string**| The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope. | [optional] |
+| **entity_id** | **string**| The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room. | [optional] |
 
 ### Return type
 
@@ -454,7 +456,7 @@ $apiInstance = new OpenAPI\Client\Api\AssignmentsApi(
     $config
 );
 $action_type = Chat; // string | The AI action the request applies to - one of Default, Chat, Code, Summarization, Translation, TextAnalyze, ImageGeneration, OCR, Vision, FormAnalysis.
-$entity_id = 1234; // string | The DocSpace entity the request is scoped to - the room, folder or agent workspace the chat is invoked from. Omit for the portal-wide scope.
+$entity_id = 1234; // string | The DocSpace folder the request names. For a chat it is the AI project the chat runs in, and is omitted outside a project; the settings operations accept it for the room the client is in, which has to be one the caller can open, but their data is kept per user and portal, not per room.
 
 try {
     $result = $apiInstance->aiAssignmentsTryResolveForAction($action_type, $entity_id);
