@@ -462,7 +462,7 @@ class AiModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reasoning_support
      *
-     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support What the model can do with extended thinking, when the provider's catalogue says so (OpenRouter and the ONLYOFFICE route report a per-model `reasoning` object). Copied onto the profile at save time; absent, the widget falls back to the provider's id-based table.
+     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support What the model can do with extended thinking, when the provider's catalogue reports it (OpenRouter and the ONLYOFFICE route do). Copied onto the profile when it is saved; when absent, the abilities are taken from the model ID.
      *
      * @return self
      */

@@ -1560,12 +1560,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request ai_attachments_get_suggested_questions_request (required)
+     * @param  string $ai_attachments_get_suggested_questions_request The ID of the attachment the form was attached under, as a bare JSON string. `{ id: ... }` is accepted as well. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiSuggestedQuestionsResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAttachmentsGetSuggestedQuestions($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
@@ -1581,12 +1581,12 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
+     * @param  string $ai_attachments_get_suggested_questions_request The ID of the attachment the form was attached under, as a bare JSON string. `{ id: ... }` is accepted as well. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiSuggestedQuestionsResult|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAttachmentsGetSuggestedQuestionsWithHttpInfo($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
@@ -1618,7 +1618,13 @@ class AttachmentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiSuggestedQuestionsResult',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1664,7 +1670,7 @@ class AttachmentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiSuggestedQuestionsResult',
                 $request,
                 $response,
             );
@@ -1673,7 +1679,15 @@ class AttachmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiSuggestedQuestionsResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1725,7 +1739,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
+     * @param  string $ai_attachments_get_suggested_questions_request The ID of the attachment the form was attached under, as a bare JSON string. `{ id: ... }` is accepted as well. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1749,7 +1763,7 @@ class AttachmentsApi
      * REST API Reference for aiAttachmentsGetSuggestedQuestions Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-attachments-get-suggested-questions/
      *
-     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
+     * @param  string $ai_attachments_get_suggested_questions_request The ID of the attachment the form was attached under, as a bare JSON string. `{ id: ... }` is accepted as well. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1757,7 +1771,7 @@ class AttachmentsApi
      */
     public function aiAttachmentsGetSuggestedQuestionsAsyncWithHttpInfo($ai_attachments_get_suggested_questions_request, string $contentType = self::contentTypes['aiAttachmentsGetSuggestedQuestions'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiSuggestedQuestionsResult';
         $request = $this->aiAttachmentsGetSuggestedQuestionsRequest($ai_attachments_get_suggested_questions_request, $contentType);
 
         return $this->client
@@ -1799,7 +1813,7 @@ class AttachmentsApi
     /**
      * Create request for operation 'aiAttachmentsGetSuggestedQuestions'
      *
-     * @param  array<string,mixed> $ai_attachments_get_suggested_questions_request (required)
+     * @param  string $ai_attachments_get_suggested_questions_request The ID of the attachment the form was attached under, as a bare JSON string. `{ id: ... }` is accepted as well. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiAttachmentsGetSuggestedQuestions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

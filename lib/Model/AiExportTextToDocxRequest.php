@@ -59,7 +59,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'title' => 'string',
         'content' => 'string',
-        'folder_id' => '\OpenAPI\Client\Model\AiExportTextToDocxRequestFolderId'
+        'folder_id' => '\OpenAPI\Client\Model\AiExportTextToDocxRequestFolderId',
+        'format' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'title' => null,
         'content' => null,
-        'folder_id' => null
+        'folder_id' => null,
+        'format' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'title' => false,
         'content' => false,
-        'folder_id' => false
+        'folder_id' => false,
+        'format' => false
     ];
 
     /**
@@ -174,7 +177,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'title' => 'title',
         'content' => 'content',
-        'folder_id' => 'folderId'
+        'folder_id' => 'folderId',
+        'format' => 'format'
     ];
 
     /**
@@ -185,7 +189,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'title' => 'setTitle',
         'content' => 'setContent',
-        'folder_id' => 'setFolderId'
+        'folder_id' => 'setFolderId',
+        'format' => 'setFormat'
     ];
 
     /**
@@ -196,7 +201,8 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'title' => 'getTitle',
         'content' => 'getContent',
-        'folder_id' => 'getFolderId'
+        'folder_id' => 'getFolderId',
+        'format' => 'getFormat'
     ];
 
     /**
@@ -240,6 +246,23 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const FORMAT_DOCX = 'Docx';
+    public const FORMAT_PDF = 'Pdf';
+    public const FORMAT_MD = 'Md';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_DOCX,
+            self::FORMAT_PDF,
+            self::FORMAT_MD,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -259,6 +282,7 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('folder_id', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], null);
     }
 
     /**
@@ -297,6 +321,15 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['folder_id'] === null) {
             $invalidProperties[] = "'folder_id' can't be null";
         }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -389,6 +422,43 @@ class AiExportTextToDocxRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable folder_id cannot be null');
         }
         $this->container['folder_id'] = $folder_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Output format: `Docx` (the default when omitted), `Pdf`, or `Md`, which stores the markdown verbatim instead of converting it.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
 
         return $this;
     }

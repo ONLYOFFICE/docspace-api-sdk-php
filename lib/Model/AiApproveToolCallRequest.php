@@ -65,6 +65,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => '\OpenAPI\Client\Model\AiThreadMessageLike',
         'action_args' => '\OpenAPI\Client\Model\AiActionArgs',
         'entity_id' => 'string',
+        'context_entity_id' => 'string',
         'profile_id' => 'string'
     ];
 
@@ -84,6 +85,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => null,
         'action_args' => null,
         'entity_id' => null,
+        'context_entity_id' => null,
         'profile_id' => null
     ];
 
@@ -101,6 +103,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => false,
         'action_args' => false,
         'entity_id' => false,
+        'context_entity_id' => false,
         'profile_id' => false
     ];
 
@@ -198,6 +201,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => 'message',
         'action_args' => 'actionArgs',
         'entity_id' => 'entityId',
+        'context_entity_id' => 'contextEntityId',
         'profile_id' => 'profileId'
     ];
 
@@ -215,6 +219,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => 'setMessage',
         'action_args' => 'setActionArgs',
         'entity_id' => 'setEntityId',
+        'context_entity_id' => 'setContextEntityId',
         'profile_id' => 'setProfileId'
     ];
 
@@ -232,6 +237,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'message' => 'getMessage',
         'action_args' => 'getActionArgs',
         'entity_id' => 'getEntityId',
+        'context_entity_id' => 'getContextEntityId',
         'profile_id' => 'getProfileId'
     ];
 
@@ -300,6 +306,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('action_args', $data ?? [], null);
         $this->setIfExists('entity_id', $data ?? [], null);
+        $this->setIfExists('context_entity_id', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
     }
 
@@ -512,7 +519,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets message
      *
-     * @param \OpenAPI\Client\Model\AiThreadMessageLike|null $message Snapshot of the assistant message at the time the tool call surfaced. Optional and ignored: the engine resumes from the stored message, and the copy inflated the body past the parser limit (Bug 84608).
+     * @param \OpenAPI\Client\Model\AiThreadMessageLike|null $message A copy of the assistant message as it was when the tool call surfaced. Optional and ignored: the round resumes from the stored message. Leave it out - a long conversation's copy can push the body past the size limit.
      *
      * @return self
      */
@@ -539,7 +546,7 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
+     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request options of the round: extra tools, reasoning, a prompt override and the connected context.
      *
      * @return self
      */
@@ -576,6 +583,33 @@ class AiApproveToolCallRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
         }
         $this->container['entity_id'] = $entity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets context_entity_id
+     *
+     * @return string|null
+     */
+    public function getContextEntityId()
+    {
+        return $this->container['context_entity_id'];
+    }
+
+    /**
+     * Sets context_entity_id
+     *
+     * @param string|null $context_entity_id The folder or room the user is in. Tools run against it and the model is told it is the user's location; falls back to `entityId` when omitted.
+     *
+     * @return self
+     */
+    public function setContextEntityId($context_entity_id)
+    {
+        if (is_null($context_entity_id)) {
+            throw new \InvalidArgumentException('non-nullable context_entity_id cannot be null');
+        }
+        $this->container['context_entity_id'] = $context_entity_id;
 
         return $this;
     }

@@ -58,7 +58,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'version' => 'float',
+        'version' => 'int',
         'folders' => '\OpenAPI\Client\Model\AiPromptFolder[]',
         'prompts' => '\OpenAPI\Client\Model\AiPrompt[]'
     ];
@@ -241,19 +241,6 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const VERSION_NUMBER_1 = 1;
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getVersionAllowableValues()
-    {
-        return [
-            self::VERSION_NUMBER_1,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -305,13 +292,12 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['version'] === null) {
             $invalidProperties[] = "'version' can't be null";
         }
-        $allowedValues = $this->getVersionAllowableValues();
-        if (!is_null($this->container['version']) && !in_array($this->container['version'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'version', must be one of '%s'",
-                $this->container['version'],
-                implode("', '", $allowedValues)
-            );
+        if (($this->container['version'] > 1)) {
+            $invalidProperties[] = "invalid value for 'version', must be smaller than or equal to 1.";
+        }
+
+        if (($this->container['version'] < 1)) {
+            $invalidProperties[] = "invalid value for 'version', must be bigger than or equal to 1.";
         }
 
         if ($this->container['folders'] === null) {
@@ -338,7 +324,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets version
      *
-     * @return float
+     * @return int
      */
     public function getVersion()
     {
@@ -348,7 +334,7 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param float $version The bundle format version, so an import can migrate an older export.
+     * @param int $version The bundle format version, so an import can migrate an older export.
      *
      * @return self
      */
@@ -357,16 +343,13 @@ class AiPromptBundle implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($version)) {
             throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        $allowedValues = $this->getVersionAllowableValues();
-        if (!in_array($version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'version', must be one of '%s'",
-                    $version,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if (($version > 1)) {
+            throw new \InvalidArgumentException('invalid value for $version when calling AiPromptBundle., must be smaller than or equal to 1.');
         }
+        if (($version < 1)) {
+            throw new \InvalidArgumentException('invalid value for $version when calling AiPromptBundle., must be bigger than or equal to 1.');
+        }
+
         $this->container['version'] = $version;
 
         return $this;

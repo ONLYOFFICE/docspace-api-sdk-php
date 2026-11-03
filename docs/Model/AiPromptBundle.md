@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **float** | The bundle format version, so an import can migrate an older export. |
+**version** | **int** | The bundle format version, so an import can migrate an older export. |
 **folders** | [**\OpenAPI\Client\Model\AiPromptFolder[]**](AiPromptFolder.md) | Every exported prompt folder. |
 **prompts** | [**\OpenAPI\Client\Model\AiPrompt[]**](AiPrompt.md) | Every exported prompt. |
 

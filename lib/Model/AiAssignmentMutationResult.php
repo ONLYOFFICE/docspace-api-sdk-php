@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiAssignmentMutationResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of `AssignmentsEngine.assign` / `AssignmentsEngine.unassign`. Either a success or a field-scoped error suitable for displaying in the profile editor.
+ * @description The outcome of an assign or unassign: a success, or an error naming the field that was refused.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

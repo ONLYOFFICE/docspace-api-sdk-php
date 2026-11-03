@@ -60,7 +60,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => '\OpenAPI\Client\Model\AiActionType',
         'user_message' => '\OpenAPI\Client\Model\AiThreadMessageLike',
         'action_args' => '\OpenAPI\Client\Model\AiActionArgs',
-        'entity_id' => 'string'
+        'entity_id' => 'string',
+        'context_entity_id' => 'string'
     ];
 
     /**
@@ -74,7 +75,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => null,
         'user_message' => null,
         'action_args' => null,
-        'entity_id' => null
+        'entity_id' => null,
+        'context_entity_id' => null
     ];
 
     /**
@@ -86,7 +88,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => false,
         'user_message' => false,
         'action_args' => false,
-        'entity_id' => false
+        'entity_id' => false,
+        'context_entity_id' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => 'actionType',
         'user_message' => 'userMessage',
         'action_args' => 'actionArgs',
-        'entity_id' => 'entityId'
+        'entity_id' => 'entityId',
+        'context_entity_id' => 'contextEntityId'
     ];
 
     /**
@@ -190,7 +194,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => 'setActionType',
         'user_message' => 'setUserMessage',
         'action_args' => 'setActionArgs',
-        'entity_id' => 'setEntityId'
+        'entity_id' => 'setEntityId',
+        'context_entity_id' => 'setContextEntityId'
     ];
 
     /**
@@ -202,7 +207,8 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'action_type' => 'getActionType',
         'user_message' => 'getUserMessage',
         'action_args' => 'getActionArgs',
-        'entity_id' => 'getEntityId'
+        'entity_id' => 'getEntityId',
+        'context_entity_id' => 'getContextEntityId'
     ];
 
     /**
@@ -266,6 +272,7 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('user_message', $data ?? [], null);
         $this->setIfExists('action_args', $data ?? [], null);
         $this->setIfExists('entity_id', $data ?? [], null);
+        $this->setIfExists('context_entity_id', $data ?? [], null);
     }
 
     /**
@@ -383,7 +390,7 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
+     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request options of the round: extra tools, reasoning, a prompt override and the connected context.
      *
      * @return self
      */
@@ -420,6 +427,33 @@ class AiSendRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
         }
         $this->container['entity_id'] = $entity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets context_entity_id
+     *
+     * @return string|null
+     */
+    public function getContextEntityId()
+    {
+        return $this->container['context_entity_id'];
+    }
+
+    /**
+     * Sets context_entity_id
+     *
+     * @param string|null $context_entity_id The folder or room the user is in. Tools run against it and the model is told it is the user's location; falls back to `entityId` when omitted.
+     *
+     * @return self
+     */
+    public function setContextEntityId($context_entity_id)
+    {
+        if (is_null($context_entity_id)) {
+            throw new \InvalidArgumentException('non-nullable context_entity_id cannot be null');
+        }
+        $this->container['context_entity_id'] = $context_entity_id;
 
         return $this;
     }

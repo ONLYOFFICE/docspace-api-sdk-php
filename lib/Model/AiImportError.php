@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportError Class Doc Comment
  *
  * @category Class
- * @description Per-entry error reported by `PromptsEngine.importBundle`.
+ * @description One refused entry of a prompt bundle import.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

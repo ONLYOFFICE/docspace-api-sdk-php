@@ -477,7 +477,7 @@ class AiProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider_type
      *
-     * @param \OpenAPI\Client\Model\AiProviderType $provider_type Provider type for this profile. Use `external` to delegate all HTTP transport to `PlatformAdapter.externalFetch` while reusing an existing provider's response parser — see `Profile.basedOn` for the format selector.
+     * @param \OpenAPI\Client\Model\AiProviderType $provider_type The provider type of the profile. `external` sends every request through a transport the embedding application supplies while parsing the answers with the provider named in `basedOn`.
      *
      * @return self
      */
@@ -666,7 +666,7 @@ class AiProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reasoning_support
      *
-     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support Extended-thinking capabilities of the selected model as reported by the provider's catalogue at save time (see `Model.reasoningSupport`). When present the composer's Effort row follows it exactly; when absent the provider's id-based table answers. Hosts persist it with the rest of the profile.
+     * @param \OpenAPI\Client\Model\AiReasoningSupport|null $reasoning_support What the model can do with extended thinking, as the provider's catalogue reported it when the profile was saved; the effort choices in the chat follow it. When absent, the abilities are taken from the model ID.
      *
      * @return self
      */
@@ -801,7 +801,7 @@ class AiProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_proxy
      *
-     * @param bool|null $use_proxy Route every provider request through the host's `fetchProxy` instead of the global `fetch`. Useful when the host runs the widget in a sandbox without direct network access (CORS, custom auth, etc.). Has no effect when the `PlatformAdapter.fetchProxy` is not configured.
+     * @param bool|null $use_proxy Whether the chat client sends this profile's provider requests through the portal's proxy instead of directly. Has no effect when no proxy is configured.
      *
      * @return self
      */

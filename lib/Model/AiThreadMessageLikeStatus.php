@@ -58,7 +58,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $openAPITypes = [
-        'type' => 'string'
+        'type' => 'string',
+        'reason' => 'string',
+        'error' => '\OpenAPI\Client\Model\AiChatErrorPayload'
     ];
 
     /**
@@ -69,7 +71,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'type' => null
+        'type' => null,
+        'reason' => null,
+        'error' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'type' => false
+        'type' => false,
+        'reason' => false,
+        'error' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type'
+        'type' => 'type',
+        'reason' => 'reason',
+        'error' => 'error'
     ];
 
     /**
@@ -176,7 +184,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType'
+        'type' => 'setType',
+        'reason' => 'setReason',
+        'error' => 'setError'
     ];
 
     /**
@@ -185,7 +195,9 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType'
+        'type' => 'getType',
+        'reason' => 'getReason',
+        'error' => 'getError'
     ];
 
     /**
@@ -246,6 +258,8 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
     }
 
     /**
@@ -306,7 +320,7 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type `running`, `requires-action`, `complete` or `incomplete`.
      *
      * @return self
      */
@@ -316,6 +330,60 @@ class AiThreadMessageLikeStatus implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string|null
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string|null $reason Why the message is in that state: `tool-calls` or `interrupt` for `requires-action`; `stop` or `unknown` for `complete`; `cancelled`, `tool-calls`, `length`, `content-filter`, `other` or `error` for `incomplete`. An `incomplete` message the chat stored carries `cancelled` (the round was stopped) or `error`.
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     *
+     * @return \OpenAPI\Client\Model\AiChatErrorPayload|null
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     *
+     * @param \OpenAPI\Client\Model\AiChatErrorPayload|null $error What failed, on an `incomplete` message whose `reason` is `error`.
+     *
+     * @return self
+     */
+    public function setError($error)
+    {
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        }
+        $this->container['error'] = $error;
 
         return $this;
     }

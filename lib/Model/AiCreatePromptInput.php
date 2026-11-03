@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiCreatePromptInput Class Doc Comment
  *
  * @category Class
- * @description Input for creating a prompt — the engine generates `id`/`createdAt`/`updatedAt`.
+ * @description Input for creating a prompt; the service fills in `id`, `createdAt` and `updatedAt`.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

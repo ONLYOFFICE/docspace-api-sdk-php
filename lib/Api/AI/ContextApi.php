@@ -148,7 +148,7 @@ class ContextApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiContextFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiContextGetContextFolders(string $contentType = self::contentTypes['aiContextGetContextFolders'][0])
     {
@@ -168,7 +168,7 @@ class ContextApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiContextFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiContextGetContextFoldersWithHttpInfo(string $contentType = self::contentTypes['aiContextGetContextFolders'][0])
     {
@@ -200,7 +200,7 @@ class ContextApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiContextFolder[]',
                         $request,
                         $response,
                     );
@@ -240,7 +240,7 @@ class ContextApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiContextFolder[]',
                 $request,
                 $response,
             );
@@ -249,7 +249,7 @@ class ContextApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiContextFolder[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -323,7 +323,7 @@ class ContextApi
      */
     public function aiContextGetContextFoldersAsyncWithHttpInfo(string $contentType = self::contentTypes['aiContextGetContextFolders'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiContextFolder[]';
         $request = $this->aiContextGetContextFoldersRequest($contentType);
 
         return $this->client
@@ -459,7 +459,7 @@ class ContextApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiContextFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiContextGetKnowledgeFolders(string $contentType = self::contentTypes['aiContextGetKnowledgeFolders'][0])
     {
@@ -479,7 +479,7 @@ class ContextApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiContextFolder[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiContextGetKnowledgeFoldersWithHttpInfo(string $contentType = self::contentTypes['aiContextGetKnowledgeFolders'][0])
     {
@@ -511,7 +511,7 @@ class ContextApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiContextFolder[]',
                         $request,
                         $response,
                     );
@@ -551,7 +551,7 @@ class ContextApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiContextFolder[]',
                 $request,
                 $response,
             );
@@ -560,7 +560,7 @@ class ContextApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiContextFolder[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -634,7 +634,7 @@ class ContextApi
      */
     public function aiContextGetKnowledgeFoldersAsyncWithHttpInfo(string $contentType = self::contentTypes['aiContextGetKnowledgeFolders'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiContextFolder[]';
         $request = $this->aiContextGetKnowledgeFoldersRequest($contentType);
 
         return $this->client
@@ -766,18 +766,18 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkill Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skill/
      *
-     * @param  string $cloud cloud (required)
-     * @param  string $room_id room_id (required)
-     * @param  string $skill_id skill_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string $skill_id The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkill'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return string|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiContextGetRoomSkill($cloud, $room_id, $skill_id, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
+    public function aiContextGetRoomSkill($room_id, $skill_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
     {
-        list($response) = $this->aiContextGetRoomSkillWithHttpInfo($cloud, $room_id, $skill_id, $contentType);
+        list($response) = $this->aiContextGetRoomSkillWithHttpInfo($room_id, $skill_id, $cloud, $contentType);
         return $response;
     }
 
@@ -789,18 +789,18 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkill Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skill/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
-     * @param  string $skill_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string $skill_id The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkill'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiContextGetRoomSkillWithHttpInfo($cloud, $room_id, $skill_id, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
+    public function aiContextGetRoomSkillWithHttpInfo($room_id, $skill_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
     {
-        $request = $this->aiContextGetRoomSkillRequest($cloud, $room_id, $skill_id, $contentType);
+        $request = $this->aiContextGetRoomSkillRequest($room_id, $skill_id, $cloud, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -828,7 +828,13 @@ class ContextApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'string',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -839,6 +845,12 @@ class ContextApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -868,7 +880,7 @@ class ContextApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                'string',
                 $request,
                 $response,
             );
@@ -877,7 +889,15 @@ class ContextApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -891,6 +911,14 @@ class ContextApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -921,17 +949,17 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkill Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skill/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
-     * @param  string $skill_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string $skill_id The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkill'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiContextGetRoomSkillAsync($cloud, $room_id, $skill_id, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
+    public function aiContextGetRoomSkillAsync($room_id, $skill_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
     {
-        return $this->aiContextGetRoomSkillAsyncWithHttpInfo($cloud, $room_id, $skill_id, $contentType)
+        return $this->aiContextGetRoomSkillAsyncWithHttpInfo($room_id, $skill_id, $cloud, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -947,18 +975,18 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkill Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skill/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
-     * @param  string $skill_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string $skill_id The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkill'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiContextGetRoomSkillAsyncWithHttpInfo($cloud, $room_id, $skill_id, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
+    public function aiContextGetRoomSkillAsyncWithHttpInfo($room_id, $skill_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiContextGetRoomSkillRequest($cloud, $room_id, $skill_id, $contentType);
+        $returnType = 'string';
+        $request = $this->aiContextGetRoomSkillRequest($room_id, $skill_id, $cloud, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -999,23 +1027,16 @@ class ContextApi
     /**
      * Create request for operation 'aiContextGetRoomSkill'
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
-     * @param  string $skill_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string $skill_id The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkill'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiContextGetRoomSkillRequest($cloud, $room_id, $skill_id, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
+    public function aiContextGetRoomSkillRequest($room_id, $skill_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkill'][0])
     {
-
-        // verify the required parameter 'cloud' is set
-        if ($cloud === null || (is_array($cloud) && count($cloud) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $cloud when calling aiContextGetRoomSkill'
-            );
-        }
 
         // verify the required parameter 'room_id' is set
         if ($room_id === null || (is_array($room_id) && count($room_id) === 0)) {
@@ -1032,6 +1053,7 @@ class ContextApi
         }
 
 
+
         $resourcePath = '/api/2.0/ai/context/get-room-skill';
         $formParams = [];
         $queryParams = [];
@@ -1046,7 +1068,7 @@ class ContextApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -1140,17 +1162,17 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkills Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skills/
      *
-     * @param  string $cloud cloud (required)
-     * @param  string $room_id room_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkills'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiRoomSkill[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
-    public function aiContextGetRoomSkills($cloud, $room_id, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
+    public function aiContextGetRoomSkills($room_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
     {
-        list($response) = $this->aiContextGetRoomSkillsWithHttpInfo($cloud, $room_id, $contentType);
+        list($response) = $this->aiContextGetRoomSkillsWithHttpInfo($room_id, $cloud, $contentType);
         return $response;
     }
 
@@ -1162,17 +1184,17 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkills Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skills/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkills'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiRoomSkill[]|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function aiContextGetRoomSkillsWithHttpInfo($cloud, $room_id, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
+    public function aiContextGetRoomSkillsWithHttpInfo($room_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
     {
-        $request = $this->aiContextGetRoomSkillsRequest($cloud, $room_id, $contentType);
+        $request = $this->aiContextGetRoomSkillsRequest($room_id, $cloud, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1200,7 +1222,13 @@ class ContextApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiRoomSkill[]',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1211,6 +1239,12 @@ class ContextApi
                         $response,
                     );
                 case 403:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
                     return $this->handleResponseWithDataType(
                         '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
@@ -1240,7 +1274,7 @@ class ContextApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiRoomSkill[]',
                 $request,
                 $response,
             );
@@ -1249,7 +1283,15 @@ class ContextApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiRoomSkill[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1263,6 +1305,14 @@ class ContextApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\AiErrorResponse',
@@ -1293,16 +1343,16 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkills Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skills/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkills'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiContextGetRoomSkillsAsync($cloud, $room_id, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
+    public function aiContextGetRoomSkillsAsync($room_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
     {
-        return $this->aiContextGetRoomSkillsAsyncWithHttpInfo($cloud, $room_id, $contentType)
+        return $this->aiContextGetRoomSkillsAsyncWithHttpInfo($room_id, $cloud, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1318,17 +1368,17 @@ class ContextApi
      * REST API Reference for aiContextGetRoomSkills Operation
      * @see https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skills/
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkills'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function aiContextGetRoomSkillsAsyncWithHttpInfo($cloud, $room_id, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
+    public function aiContextGetRoomSkillsAsyncWithHttpInfo($room_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
-        $request = $this->aiContextGetRoomSkillsRequest($cloud, $room_id, $contentType);
+        $returnType = '\OpenAPI\Client\Model\AiRoomSkill[]';
+        $request = $this->aiContextGetRoomSkillsRequest($room_id, $cloud, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1369,22 +1419,15 @@ class ContextApi
     /**
      * Create request for operation 'aiContextGetRoomSkills'
      *
-     * @param  string $cloud (required)
-     * @param  string $room_id (required)
+     * @param  string $room_id The Instructions room identifier. (required)
+     * @param  string|null $cloud The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['aiContextGetRoomSkills'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function aiContextGetRoomSkillsRequest($cloud, $room_id, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
+    public function aiContextGetRoomSkillsRequest($room_id, $cloud = null, string $contentType = self::contentTypes['aiContextGetRoomSkills'][0])
     {
-
-        // verify the required parameter 'cloud' is set
-        if ($cloud === null || (is_array($cloud) && count($cloud) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $cloud when calling aiContextGetRoomSkills'
-            );
-        }
 
         // verify the required parameter 'room_id' is set
         if ($room_id === null || (is_array($room_id) && count($room_id) === 0)) {
@@ -1392,6 +1435,7 @@ class ContextApi
                 'Missing the required parameter $room_id when calling aiContextGetRoomSkills'
             );
         }
+
 
 
         $resourcePath = '/api/2.0/ai/context/get-room-skills';
@@ -1408,7 +1452,7 @@ class ContextApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

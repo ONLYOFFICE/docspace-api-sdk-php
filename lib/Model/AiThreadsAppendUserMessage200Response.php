@@ -57,7 +57,7 @@ class AiThreadsAppendUserMessage200Response implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $openAPITypes = [
-        'message_id' => 'string'
+        'message_id' => '\OpenAPI\Client\Model\AiThreadMessageLike'
     ];
 
     /**
@@ -295,7 +295,7 @@ class AiThreadsAppendUserMessage200Response implements ModelInterface, ArrayAcce
     /**
      * Gets message_id
      *
-     * @return string
+     * @return \OpenAPI\Client\Model\AiThreadMessageLike
      */
     public function getMessageId()
     {
@@ -305,7 +305,7 @@ class AiThreadsAppendUserMessage200Response implements ModelInterface, ArrayAcce
     /**
      * Sets message_id
      *
-     * @param string $message_id Identifier of the message that was appended to the thread.
+     * @param \OpenAPI\Client\Model\AiThreadMessageLike $message_id The stored message itself - with its storage-assigned `id` and `createdAt` - despite the field name, which is kept for the clients that already read it. The message ID is `messageId.id`.
      *
      * @return self
      */

@@ -60,7 +60,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => 'bool',
         'system_prompt' => 'string',
         'user_message' => '\OpenAPI\Client\Model\AiThreadMessageLike',
-        'action_args' => '\OpenAPI\Client\Model\AiActionArgs'
+        'action_args' => '\OpenAPI\Client\Model\AiActionArgs',
+        'profile_id' => 'string'
     ];
 
     /**
@@ -74,7 +75,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => null,
         'system_prompt' => null,
         'user_message' => null,
-        'action_args' => null
+        'action_args' => null,
+        'profile_id' => null
     ];
 
     /**
@@ -86,7 +88,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => false,
         'system_prompt' => false,
         'user_message' => false,
-        'action_args' => false
+        'action_args' => false,
+        'profile_id' => false
     ];
 
     /**
@@ -178,7 +181,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => 'isStream',
         'system_prompt' => 'systemPrompt',
         'user_message' => 'userMessage',
-        'action_args' => 'actionArgs'
+        'action_args' => 'actionArgs',
+        'profile_id' => 'profileId'
     ];
 
     /**
@@ -190,7 +194,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => 'setIsStream',
         'system_prompt' => 'setSystemPrompt',
         'user_message' => 'setUserMessage',
-        'action_args' => 'setActionArgs'
+        'action_args' => 'setActionArgs',
+        'profile_id' => 'setProfileId'
     ];
 
     /**
@@ -202,7 +207,8 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_stream' => 'getIsStream',
         'system_prompt' => 'getSystemPrompt',
         'user_message' => 'getUserMessage',
-        'action_args' => 'getActionArgs'
+        'action_args' => 'getActionArgs',
+        'profile_id' => 'getProfileId'
     ];
 
     /**
@@ -266,6 +272,7 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('system_prompt', $data ?? [], null);
         $this->setIfExists('user_message', $data ?? [], null);
         $this->setIfExists('action_args', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
     }
 
     /**
@@ -413,7 +420,7 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
+     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request options of the round: extra tools, reasoning, a prompt override and the connected context.
      *
      * @return self
      */
@@ -423,6 +430,33 @@ class AiSendCustomRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable action_args cannot be null');
         }
         $this->container['action_args'] = $action_args;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id Profile to run this call on. When omitted, or when no profile has this id, the `Default` assignment is used.
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }

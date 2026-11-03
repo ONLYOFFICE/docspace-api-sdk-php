@@ -35,6 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiActionArgs Class Doc Comment
  *
  * @category Class
+ * @description Per-request options of an AI round: extra tools, the depth of reasoning, a system prompt override and the rooms and folder connected as context.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +61,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => '\OpenAPI\Client\Model\AiMCPItem[]',
         'is_reasoning' => 'bool',
         'reasoning_level' => '\OpenAPI\Client\Model\AiReasoningLevel',
-        'prompt' => '\OpenAPI\Client\Model\AiActionArgsPrompt'
+        'prompt' => '\OpenAPI\Client\Model\AiActionArgsPrompt',
+        'tool_instructions' => 'array<string,string>',
+        'context_rooms' => '\OpenAPI\Client\Model\AiContextRoomRef[]',
+        'knowledge_rooms' => '\OpenAPI\Client\Model\AiKnowledgeRoomRef[]',
+        'knowledge_room' => '\OpenAPI\Client\Model\AiKnowledgeRoomRef',
+        'folder_context' => '\OpenAPI\Client\Model\AiFolderContextRef',
+        'entity_id' => 'string'
     ];
 
     /**
@@ -74,7 +81,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => null,
         'is_reasoning' => null,
         'reasoning_level' => null,
-        'prompt' => null
+        'prompt' => null,
+        'tool_instructions' => null,
+        'context_rooms' => null,
+        'knowledge_rooms' => null,
+        'knowledge_room' => null,
+        'folder_context' => null,
+        'entity_id' => null
     ];
 
     /**
@@ -86,7 +99,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => false,
         'is_reasoning' => false,
         'reasoning_level' => false,
-        'prompt' => false
+        'prompt' => false,
+        'tool_instructions' => false,
+        'context_rooms' => false,
+        'knowledge_rooms' => false,
+        'knowledge_room' => false,
+        'folder_context' => false,
+        'entity_id' => false
     ];
 
     /**
@@ -178,7 +197,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => 'tools',
         'is_reasoning' => 'isReasoning',
         'reasoning_level' => 'reasoningLevel',
-        'prompt' => 'prompt'
+        'prompt' => 'prompt',
+        'tool_instructions' => 'toolInstructions',
+        'context_rooms' => 'contextRooms',
+        'knowledge_rooms' => 'knowledgeRooms',
+        'knowledge_room' => 'knowledgeRoom',
+        'folder_context' => 'folderContext',
+        'entity_id' => 'entityId'
     ];
 
     /**
@@ -190,7 +215,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => 'setTools',
         'is_reasoning' => 'setIsReasoning',
         'reasoning_level' => 'setReasoningLevel',
-        'prompt' => 'setPrompt'
+        'prompt' => 'setPrompt',
+        'tool_instructions' => 'setToolInstructions',
+        'context_rooms' => 'setContextRooms',
+        'knowledge_rooms' => 'setKnowledgeRooms',
+        'knowledge_room' => 'setKnowledgeRoom',
+        'folder_context' => 'setFolderContext',
+        'entity_id' => 'setEntityId'
     ];
 
     /**
@@ -202,7 +233,13 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         'tools' => 'getTools',
         'is_reasoning' => 'getIsReasoning',
         'reasoning_level' => 'getReasoningLevel',
-        'prompt' => 'getPrompt'
+        'prompt' => 'getPrompt',
+        'tool_instructions' => 'getToolInstructions',
+        'context_rooms' => 'getContextRooms',
+        'knowledge_rooms' => 'getKnowledgeRooms',
+        'knowledge_room' => 'getKnowledgeRoom',
+        'folder_context' => 'getFolderContext',
+        'entity_id' => 'getEntityId'
     ];
 
     /**
@@ -266,6 +303,12 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_reasoning', $data ?? [], null);
         $this->setIfExists('reasoning_level', $data ?? [], null);
         $this->setIfExists('prompt', $data ?? [], null);
+        $this->setIfExists('tool_instructions', $data ?? [], null);
+        $this->setIfExists('context_rooms', $data ?? [], null);
+        $this->setIfExists('knowledge_rooms', $data ?? [], null);
+        $this->setIfExists('knowledge_room', $data ?? [], null);
+        $this->setIfExists('folder_context', $data ?? [], null);
+        $this->setIfExists('entity_id', $data ?? [], null);
     }
 
     /**
@@ -414,6 +457,170 @@ class AiActionArgs implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable prompt cannot be null');
         }
         $this->container['prompt'] = $prompt;
+
+        return $this;
+    }
+
+    /**
+     * Gets tool_instructions
+     *
+     * @return array<string,string>|null
+     */
+    public function getToolInstructions()
+    {
+        return $this->container['tool_instructions'];
+    }
+
+    /**
+     * Sets tool_instructions
+     *
+     * @param array<string,string>|null $tool_instructions Usage notes of the MCP servers the caller holds the connection to, keyed by server type; folded into the system prompt as advisory text.
+     *
+     * @return self
+     */
+    public function setToolInstructions($tool_instructions)
+    {
+        if (is_null($tool_instructions)) {
+            throw new \InvalidArgumentException('non-nullable tool_instructions cannot be null');
+        }
+        $this->container['tool_instructions'] = $tool_instructions;
+
+        return $this;
+    }
+
+    /**
+     * Gets context_rooms
+     *
+     * @return \OpenAPI\Client\Model\AiContextRoomRef[]|null
+     */
+    public function getContextRooms()
+    {
+        return $this->container['context_rooms'];
+    }
+
+    /**
+     * Sets context_rooms
+     *
+     * @param \OpenAPI\Client\Model\AiContextRoomRef[]|null $context_rooms Instructions rooms connected to the chat as context, each with the skills the round may use.
+     *
+     * @return self
+     */
+    public function setContextRooms($context_rooms)
+    {
+        if (is_null($context_rooms)) {
+            throw new \InvalidArgumentException('non-nullable context_rooms cannot be null');
+        }
+        $this->container['context_rooms'] = $context_rooms;
+
+        return $this;
+    }
+
+    /**
+     * Gets knowledge_rooms
+     *
+     * @return \OpenAPI\Client\Model\AiKnowledgeRoomRef[]|null
+     */
+    public function getKnowledgeRooms()
+    {
+        return $this->container['knowledge_rooms'];
+    }
+
+    /**
+     * Sets knowledge_rooms
+     *
+     * @param \OpenAPI\Client\Model\AiKnowledgeRoomRef[]|null $knowledge_rooms Knowledge rooms connected to the chat; the knowledge search tool of the round is limited to them. Each `id` has to be a DocSpace room id.
+     *
+     * @return self
+     */
+    public function setKnowledgeRooms($knowledge_rooms)
+    {
+        if (is_null($knowledge_rooms)) {
+            throw new \InvalidArgumentException('non-nullable knowledge_rooms cannot be null');
+        }
+        $this->container['knowledge_rooms'] = $knowledge_rooms;
+
+        return $this;
+    }
+
+    /**
+     * Gets knowledge_room
+     *
+     * @return \OpenAPI\Client\Model\AiKnowledgeRoomRef|null
+     * @deprecated
+     */
+    public function getKnowledgeRoom()
+    {
+        return $this->container['knowledge_room'];
+    }
+
+    /**
+     * Sets knowledge_room
+     *
+     * @param \OpenAPI\Client\Model\AiKnowledgeRoomRef|null $knowledge_room A single knowledge room, as an older client sends it. Read only when `knowledgeRooms` is absent; send `knowledgeRooms` instead.
+     *
+     * @return self
+     * @deprecated
+     */
+    public function setKnowledgeRoom($knowledge_room)
+    {
+        if (is_null($knowledge_room)) {
+            throw new \InvalidArgumentException('non-nullable knowledge_room cannot be null');
+        }
+        $this->container['knowledge_room'] = $knowledge_room;
+
+        return $this;
+    }
+
+    /**
+     * Gets folder_context
+     *
+     * @return \OpenAPI\Client\Model\AiFolderContextRef|null
+     */
+    public function getFolderContext()
+    {
+        return $this->container['folder_context'];
+    }
+
+    /**
+     * Sets folder_context
+     *
+     * @param \OpenAPI\Client\Model\AiFolderContextRef|null $folder_context The folder connected to the chat as the round's context. It becomes the location the model is told the user works in, and the entry the round is attributed to.
+     *
+     * @return self
+     */
+    public function setFolderContext($folder_context)
+    {
+        if (is_null($folder_context)) {
+            throw new \InvalidArgumentException('non-nullable folder_context cannot be null');
+        }
+        $this->container['folder_context'] = $folder_context;
+
+        return $this;
+    }
+
+    /**
+     * Gets entity_id
+     *
+     * @return string|null
+     */
+    public function getEntityId()
+    {
+        return $this->container['entity_id'];
+    }
+
+    /**
+     * Sets entity_id
+     *
+     * @param string|null $entity_id The entry the round is attributed to. A hint, resolved against the caller's own access.
+     *
+     * @return self
+     */
+    public function setEntityId($entity_id)
+    {
+        if (is_null($entity_id)) {
+            throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
+        }
+        $this->container['entity_id'] = $entity_id;
 
         return $this;
     }

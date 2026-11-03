@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiImportResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of `PromptsEngine.importBundle`. Either every entry persisted with counts, or no entries persisted plus a per-entry error report.
+ * @description The outcome of a prompt bundle import: either every entry was stored, with counts, or none was and the errors are reported per entry.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

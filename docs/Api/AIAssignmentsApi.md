@@ -212,7 +212,7 @@ try {
 ## `aiAssignmentsGetAllAssignments()`
 
 ```php
-aiAssignmentsGetAllAssignments($entity_id, $expand): array<string,string>
+aiAssignmentsGetAllAssignments($entity_id, $expand): \OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response
 ```
 
 Get all assignments
@@ -229,7 +229,7 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 ### Return type
 
-**array<string,string>**
+[**\OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response**](../Model/AiAssignmentsGetAllAssignments200Response.md)
 
 ### Authorization
 

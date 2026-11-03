@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiToolsBulkResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of `ToolsEngine.replaceAllCustomServers` — either every entry persisted, or no entries persisted plus a per-key error report.
+ * @description The outcome of replacing the custom MCP servers: either every entry was stored, or none was and the errors are reported per server.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

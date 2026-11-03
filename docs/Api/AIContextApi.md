@@ -13,10 +13,11 @@ All URIs are relative to *https://your-docspace.onlyoffice.com*
 ## `aiContextGetContextFolders()`
 
 ```php
-aiContextGetContextFolders(): \OpenAPI\Client\Model\AiSuccessResponse
+aiContextGetContextFolders(): \OpenAPI\Client\Model\AiContextFolder[]
 ```
 
 Get context folders
+Lists the Instructions rooms the caller can connect to a chat as context, grouped under the account they belong to (`docspace` for this portal). Only a room the caller can read that holds at least one skill is listed: one without skills would connect nothing. An empty list means there is nothing to connect. At most 1000 Instructions rooms are read; any beyond them are left out without a signal. Read the skills of one room with `GET api/2.0/ai/context/get-room-skills`. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-context-folders/).
 
@@ -26,7 +27,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+[**\OpenAPI\Client\Model\AiContextFolder[]**](../Model/AiContextFolder.md)
 
 ### Authorization
 
@@ -74,10 +75,11 @@ try {
 ## `aiContextGetKnowledgeFolders()`
 
 ```php
-aiContextGetKnowledgeFolders(): \OpenAPI\Client\Model\AiSuccessResponse
+aiContextGetKnowledgeFolders(): \OpenAPI\Client\Model\AiContextFolder[]
 ```
 
 Get knowledge folders
+Lists the Knowledge rooms the caller can connect to a chat as its knowledge base, grouped under the account they belong to (`docspace` for this portal). A connected Knowledge room limits the knowledge search of a round to it (`actionArgs.knowledgeRooms`). An empty list means there is none the caller can read. At most 1000 Knowledge rooms are listed; any beyond them are left out without a signal. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-knowledge-folders/).
 
@@ -87,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+[**\OpenAPI\Client\Model\AiContextFolder[]**](../Model/AiContextFolder.md)
 
 ### Authorization
 
@@ -135,10 +137,11 @@ try {
 ## `aiContextGetRoomSkill()`
 
 ```php
-aiContextGetRoomSkill($cloud, $room_id, $skill_id): \OpenAPI\Client\Model\AiSuccessResponse
+aiContextGetRoomSkill($room_id, $skill_id, $cloud): string
 ```
 
 Get room skill
+Returns the Markdown file of one skill of an Instructions room as a JSON string. `roomId` and `skillId` are required, and the skill has to be one of that room's skills: the ID of any other file, readable or not, answers 404, as does a room that is not an Instructions room the caller can read. Only the first 256 KiB of the file are read, which covers the 64 K characters a chat passes to the model; a longer file comes back cut there without a signal. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skill/).
 
@@ -146,13 +149,13 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud** | **string**|  | |
-| **room_id** | **string**|  | |
-| **skill_id** | **string**|  | |
+| **room_id** | **string**| The Instructions room identifier. | |
+| **skill_id** | **string**| The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it. | |
+| **cloud** | **string**| The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+**string**
 
 ### Authorization
 
@@ -179,12 +182,12 @@ $apiInstance = new OpenAPI\Client\Api\ContextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud = 'cloud_example'; // string
-$room_id = 'room_id_example'; // string
-$skill_id = 'skill_id_example'; // string
+$room_id = 'room_id_example'; // string | The Instructions room identifier.
+$skill_id = 'skill_id_example'; // string | The skill identifier, as `GET api/2.0/ai/context/get-room-skills` lists it.
+$cloud = 'cloud_example'; // string | The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it.
 
 try {
-    $result = $apiInstance->aiContextGetRoomSkill($cloud, $room_id, $skill_id);
+    $result = $apiInstance->aiContextGetRoomSkill($room_id, $skill_id, $cloud);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContextApi->aiContextGetRoomSkill: ', $e->getMessage(), PHP_EOL;
@@ -203,10 +206,11 @@ try {
 ## `aiContextGetRoomSkills()`
 
 ```php
-aiContextGetRoomSkills($cloud, $room_id): \OpenAPI\Client\Model\AiSuccessResponse
+aiContextGetRoomSkills($room_id, $cloud): \OpenAPI\Client\Model\AiRoomSkill[]
 ```
 
 Get room skills
+Lists the skills of one Instructions room: the ID, name and description from the frontmatter of each skill file, not its body. `roomId` is required; `cloud` is accepted and not read. A room that is not an Instructions room the caller can read answers 404. Read the body of one skill with `GET api/2.0/ai/context/get-room-skill`. This is a read-only operation.
 
 For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspace/api-backend/usage-api/ai-context-get-room-skills/).
 
@@ -214,12 +218,12 @@ For more information, see [api.onlyoffice.com](https://api.onlyoffice.com/docspa
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud** | **string**|  | |
-| **room_id** | **string**|  | |
+| **room_id** | **string**| The Instructions room identifier. | |
+| **cloud** | **string**| The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it. | [optional] |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\AiSuccessResponse**](../Model/AiSuccessResponse.md)
+[**\OpenAPI\Client\Model\AiRoomSkill[]**](../Model/AiRoomSkill.md)
 
 ### Authorization
 
@@ -246,11 +250,11 @@ $apiInstance = new OpenAPI\Client\Api\ContextApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud = 'cloud_example'; // string
-$room_id = 'room_id_example'; // string
+$room_id = 'room_id_example'; // string | The Instructions room identifier.
+$cloud = 'cloud_example'; // string | The account the room belongs to. Only `docspace`, this portal, exists, and the value is not read; omit it.
 
 try {
-    $result = $apiInstance->aiContextGetRoomSkills($cloud, $room_id);
+    $result = $apiInstance->aiContextGetRoomSkills($room_id, $cloud);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContextApi->aiContextGetRoomSkills: ', $e->getMessage(), PHP_EOL;

@@ -1236,7 +1236,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array<string,string>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiAssignmentsGetAllAssignments($entity_id = null, $expand = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
@@ -1258,7 +1258,7 @@ class AssignmentsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of array<string,string>|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiAssignmentsGetAllAssignmentsWithHttpInfo($entity_id = null, $expand = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
@@ -1290,7 +1290,7 @@ class AssignmentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        'array<string,string>',
+                        '\OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response',
                         $request,
                         $response,
                     );
@@ -1336,7 +1336,7 @@ class AssignmentsApi
             }
 
             return $this->handleResponseWithDataType(
-                'array<string,string>',
+                '\OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response',
                 $request,
                 $response,
             );
@@ -1345,7 +1345,7 @@ class AssignmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'array<string,string>',
+                        '\OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1431,7 +1431,7 @@ class AssignmentsApi
      */
     public function aiAssignmentsGetAllAssignmentsAsyncWithHttpInfo($entity_id = null, $expand = null, string $contentType = self::contentTypes['aiAssignmentsGetAllAssignments'][0])
     {
-        $returnType = 'array<string,string>';
+        $returnType = '\OpenAPI\Client\Model\AiAssignmentsGetAllAssignments200Response';
         $request = $this->aiAssignmentsGetAllAssignmentsRequest($entity_id, $expand, $contentType);
 
         return $this->client

@@ -58,7 +58,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static $openAPITypes = [
         'type' => 'string',
-        'text' => 'string'
+        'text' => 'string',
+        'parent_id' => 'string',
+        'source_type' => 'string',
+        'id' => 'string',
+        'url' => 'string',
+        'title' => 'string',
+        'image' => 'string',
+        'mime_type' => 'string',
+        'data' => 'string',
+        'filename' => 'string',
+        'name' => 'string',
+        'audio' => '\OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerAudio',
+        'tool_call_id' => 'string',
+        'tool_name' => 'string',
+        'args' => 'object',
+        'args_text' => 'string',
+        'result' => 'mixed',
+        'is_error' => 'bool',
+        'artifact' => 'mixed',
+        'interrupt' => '\OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerInterrupt',
+        'messages' => 'object[]',
+        'metadata' => 'object'
     ];
 
     /**
@@ -70,7 +91,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static $openAPIFormats = [
         'type' => null,
-        'text' => null
+        'text' => null,
+        'parent_id' => null,
+        'source_type' => null,
+        'id' => null,
+        'url' => null,
+        'title' => null,
+        'image' => null,
+        'mime_type' => null,
+        'data' => null,
+        'filename' => null,
+        'name' => null,
+        'audio' => null,
+        'tool_call_id' => null,
+        'tool_name' => null,
+        'args' => null,
+        'args_text' => null,
+        'result' => null,
+        'is_error' => null,
+        'artifact' => null,
+        'interrupt' => null,
+        'messages' => null,
+        'metadata' => null
     ];
 
     /**
@@ -80,7 +122,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static array $openAPINullables = [
         'type' => false,
-        'text' => false
+        'text' => false,
+        'parent_id' => false,
+        'source_type' => false,
+        'id' => false,
+        'url' => false,
+        'title' => false,
+        'image' => false,
+        'mime_type' => false,
+        'data' => false,
+        'filename' => false,
+        'name' => false,
+        'audio' => false,
+        'tool_call_id' => false,
+        'tool_name' => false,
+        'args' => false,
+        'args_text' => false,
+        'result' => true,
+        'is_error' => false,
+        'artifact' => true,
+        'interrupt' => false,
+        'messages' => false,
+        'metadata' => false
     ];
 
     /**
@@ -170,7 +233,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static $attributeMap = [
         'type' => 'type',
-        'text' => 'text'
+        'text' => 'text',
+        'parent_id' => 'parentId',
+        'source_type' => 'sourceType',
+        'id' => 'id',
+        'url' => 'url',
+        'title' => 'title',
+        'image' => 'image',
+        'mime_type' => 'mimeType',
+        'data' => 'data',
+        'filename' => 'filename',
+        'name' => 'name',
+        'audio' => 'audio',
+        'tool_call_id' => 'toolCallId',
+        'tool_name' => 'toolName',
+        'args' => 'args',
+        'args_text' => 'argsText',
+        'result' => 'result',
+        'is_error' => 'isError',
+        'artifact' => 'artifact',
+        'interrupt' => 'interrupt',
+        'messages' => 'messages',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -180,7 +264,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static $setters = [
         'type' => 'setType',
-        'text' => 'setText'
+        'text' => 'setText',
+        'parent_id' => 'setParentId',
+        'source_type' => 'setSourceType',
+        'id' => 'setId',
+        'url' => 'setUrl',
+        'title' => 'setTitle',
+        'image' => 'setImage',
+        'mime_type' => 'setMimeType',
+        'data' => 'setData',
+        'filename' => 'setFilename',
+        'name' => 'setName',
+        'audio' => 'setAudio',
+        'tool_call_id' => 'setToolCallId',
+        'tool_name' => 'setToolName',
+        'args' => 'setArgs',
+        'args_text' => 'setArgsText',
+        'result' => 'setResult',
+        'is_error' => 'setIsError',
+        'artifact' => 'setArtifact',
+        'interrupt' => 'setInterrupt',
+        'messages' => 'setMessages',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -190,7 +295,28 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
      */
     protected static $getters = [
         'type' => 'getType',
-        'text' => 'getText'
+        'text' => 'getText',
+        'parent_id' => 'getParentId',
+        'source_type' => 'getSourceType',
+        'id' => 'getId',
+        'url' => 'getUrl',
+        'title' => 'getTitle',
+        'image' => 'getImage',
+        'mime_type' => 'getMimeType',
+        'data' => 'getData',
+        'filename' => 'getFilename',
+        'name' => 'getName',
+        'audio' => 'getAudio',
+        'tool_call_id' => 'getToolCallId',
+        'tool_name' => 'getToolName',
+        'args' => 'getArgs',
+        'args_text' => 'getArgsText',
+        'result' => 'getResult',
+        'is_error' => 'getIsError',
+        'artifact' => 'getArtifact',
+        'interrupt' => 'getInterrupt',
+        'messages' => 'getMessages',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -252,6 +378,27 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
     {
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('source_type', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('image', $data ?? [], null);
+        $this->setIfExists('mime_type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('audio', $data ?? [], null);
+        $this->setIfExists('tool_call_id', $data ?? [], null);
+        $this->setIfExists('tool_name', $data ?? [], null);
+        $this->setIfExists('args', $data ?? [], null);
+        $this->setIfExists('args_text', $data ?? [], null);
+        $this->setIfExists('result', $data ?? [], null);
+        $this->setIfExists('is_error', $data ?? [], null);
+        $this->setIfExists('artifact', $data ?? [], null);
+        $this->setIfExists('interrupt', $data ?? [], null);
+        $this->setIfExists('messages', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -312,7 +459,7 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type Part kind: `text`, `reasoning`, `source`, `image`, `file`, `audio`, `data` or `tool-call`.
      *
      * @return self
      */
@@ -339,7 +486,7 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
     /**
      * Sets text
      *
-     * @param string|null $text text
+     * @param string|null $text The text of a `text` or `reasoning` part.
      *
      * @return self
      */
@@ -349,6 +496,587 @@ class AiThreadMessageLikeContentAnyOfInner implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return string|null
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param string|null $parent_id Id of the part this one belongs to, on `text`, `reasoning`, `source` and `tool-call` parts. On a `reasoning` part the chat library keeps the provider's thinking signature here.
+     *
+     * @return self
+     */
+    public function setParentId($parent_id)
+    {
+        if (is_null($parent_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        }
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_type
+     *
+     * @return string|null
+     */
+    public function getSourceType()
+    {
+        return $this->container['source_type'];
+    }
+
+    /**
+     * Sets source_type
+     *
+     * @param string|null $source_type A `source` part's source kind; always `url`.
+     *
+     * @return self
+     */
+    public function setSourceType($source_type)
+    {
+        if (is_null($source_type)) {
+            throw new \InvalidArgumentException('non-nullable source_type cannot be null');
+        }
+        $this->container['source_type'] = $source_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id A `source` part's id.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url A `source` part's URL.
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A `source` part's title.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets image
+     *
+     * @return string|null
+     */
+    public function getImage()
+    {
+        return $this->container['image'];
+    }
+
+    /**
+     * Sets image
+     *
+     * @param string|null $image An `image` part's picture, as a URL (usually a `data:` URL). For an image the user attached, a JSON string `{ ref, title, kind: image }` naming the stored attachment instead.
+     *
+     * @return self
+     */
+    public function setImage($image)
+    {
+        if (is_null($image)) {
+            throw new \InvalidArgumentException('non-nullable image cannot be null');
+        }
+        $this->container['image'] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Gets mime_type
+     *
+     * @return string|null
+     */
+    public function getMimeType()
+    {
+        return $this->container['mime_type'];
+    }
+
+    /**
+     * Sets mime_type
+     *
+     * @param string|null $mime_type A `file` part's media type. For a file the user attached, a JSON string `{ ref, title, kind: file, path, type }` naming the stored attachment instead - the chat library carries the reference here.
+     *
+     * @return self
+     */
+    public function setMimeType($mime_type)
+    {
+        if (is_null($mime_type)) {
+            throw new \InvalidArgumentException('non-nullable mime_type cannot be null');
+        }
+        $this->container['mime_type'] = $mime_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return string|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param string|null $data A `file` part's content; empty when the part references an attachment. (A `data` part would carry its payload here too, as any JSON value; neither the chat library nor this service writes one.)
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        }
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets filename
+     *
+     * @return string|null
+     */
+    public function getFilename()
+    {
+        return $this->container['filename'];
+    }
+
+    /**
+     * Sets filename
+     *
+     * @param string|null $filename The file name of a `file` or `image` part.
+     *
+     * @return self
+     */
+    public function setFilename($filename)
+    {
+        if (is_null($filename)) {
+            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        }
+        $this->container['filename'] = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name An `image` part's display name, or a `data` part's name.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets audio
+     *
+     * @return \OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerAudio|null
+     */
+    public function getAudio()
+    {
+        return $this->container['audio'];
+    }
+
+    /**
+     * Sets audio
+     *
+     * @param \OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerAudio|null $audio audio
+     *
+     * @return self
+     */
+    public function setAudio($audio)
+    {
+        if (is_null($audio)) {
+            throw new \InvalidArgumentException('non-nullable audio cannot be null');
+        }
+        $this->container['audio'] = $audio;
+
+        return $this;
+    }
+
+    /**
+     * Gets tool_call_id
+     *
+     * @return string|null
+     */
+    public function getToolCallId()
+    {
+        return $this->container['tool_call_id'];
+    }
+
+    /**
+     * Sets tool_call_id
+     *
+     * @param string|null $tool_call_id A `tool-call` part's call id.
+     *
+     * @return self
+     */
+    public function setToolCallId($tool_call_id)
+    {
+        if (is_null($tool_call_id)) {
+            throw new \InvalidArgumentException('non-nullable tool_call_id cannot be null');
+        }
+        $this->container['tool_call_id'] = $tool_call_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tool_name
+     *
+     * @return string|null
+     */
+    public function getToolName()
+    {
+        return $this->container['tool_name'];
+    }
+
+    /**
+     * Sets tool_name
+     *
+     * @param string|null $tool_name A `tool-call` part's tool name.
+     *
+     * @return self
+     */
+    public function setToolName($tool_name)
+    {
+        if (is_null($tool_name)) {
+            throw new \InvalidArgumentException('non-nullable tool_name cannot be null');
+        }
+        $this->container['tool_name'] = $tool_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets args
+     *
+     * @return object|null
+     */
+    public function getArgs()
+    {
+        return $this->container['args'];
+    }
+
+    /**
+     * Sets args
+     *
+     * @param object|null $args A `tool-call` part's arguments.
+     *
+     * @return self
+     */
+    public function setArgs($args)
+    {
+        if (is_null($args)) {
+            throw new \InvalidArgumentException('non-nullable args cannot be null');
+        }
+        $this->container['args'] = $args;
+
+        return $this;
+    }
+
+    /**
+     * Gets args_text
+     *
+     * @return string|null
+     */
+    public function getArgsText()
+    {
+        return $this->container['args_text'];
+    }
+
+    /**
+     * Sets args_text
+     *
+     * @param string|null $args_text A `tool-call` part's arguments as the model streamed them, JSON text.
+     *
+     * @return self
+     */
+    public function setArgsText($args_text)
+    {
+        if (is_null($args_text)) {
+            throw new \InvalidArgumentException('non-nullable args_text cannot be null');
+        }
+        $this->container['args_text'] = $args_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets result
+     *
+     * @return mixed|null
+     */
+    public function getResult()
+    {
+        return $this->container['result'];
+    }
+
+    /**
+     * Sets result
+     *
+     * @param mixed|null $result result
+     *
+     * @return self
+     */
+    public function setResult($result)
+    {
+        if (is_null($result)) {
+            array_push($this->openAPINullablesSetToNull, 'result');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('result', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['result'] = $result;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_error
+     *
+     * @return bool|null
+     */
+    public function getIsError()
+    {
+        return $this->container['is_error'];
+    }
+
+    /**
+     * Sets is_error
+     *
+     * @param bool|null $is_error Whether a `tool-call` part's result is an error.
+     *
+     * @return self
+     */
+    public function setIsError($is_error)
+    {
+        if (is_null($is_error)) {
+            throw new \InvalidArgumentException('non-nullable is_error cannot be null');
+        }
+        $this->container['is_error'] = $is_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets artifact
+     *
+     * @return mixed|null
+     */
+    public function getArtifact()
+    {
+        return $this->container['artifact'];
+    }
+
+    /**
+     * Sets artifact
+     *
+     * @param mixed|null $artifact artifact
+     *
+     * @return self
+     */
+    public function setArtifact($artifact)
+    {
+        if (is_null($artifact)) {
+            array_push($this->openAPINullablesSetToNull, 'artifact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('artifact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['artifact'] = $artifact;
+
+        return $this;
+    }
+
+    /**
+     * Gets interrupt
+     *
+     * @return \OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerInterrupt|null
+     */
+    public function getInterrupt()
+    {
+        return $this->container['interrupt'];
+    }
+
+    /**
+     * Sets interrupt
+     *
+     * @param \OpenAPI\Client\Model\AiThreadMessageLikeContentAnyOfInnerInterrupt|null $interrupt interrupt
+     *
+     * @return self
+     */
+    public function setInterrupt($interrupt)
+    {
+        if (is_null($interrupt)) {
+            throw new \InvalidArgumentException('non-nullable interrupt cannot be null');
+        }
+        $this->container['interrupt'] = $interrupt;
+
+        return $this;
+    }
+
+    /**
+     * Gets messages
+     *
+     * @return object[]|null
+     */
+    public function getMessages()
+    {
+        return $this->container['messages'];
+    }
+
+    /**
+     * Sets messages
+     *
+     * @param object[]|null $messages Messages of a sub-agent run inside a `tool-call` part.
+     *
+     * @return self
+     */
+    public function setMessages($messages)
+    {
+        if (is_null($messages)) {
+            throw new \InvalidArgumentException('non-nullable messages cannot be null');
+        }
+        $this->container['messages'] = $messages;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return object|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param object|null $metadata Provider-specific data of a `tool-call` part - for a Gemini call, `{ thoughtSignature }`, which has to be sent back with the call.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

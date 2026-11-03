@@ -58,8 +58,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPITypes = [
         'thread_id' => 'string',
+        'message_id' => 'string',
+        'keep_count' => 'int',
+        'expected_length' => 'int',
         'action_args' => '\OpenAPI\Client\Model\AiActionArgs',
         'entity_id' => 'string',
+        'context_entity_id' => 'string',
         'profile_id' => 'string'
     ];
 
@@ -72,8 +76,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $openAPIFormats = [
         'thread_id' => null,
+        'message_id' => null,
+        'keep_count' => null,
+        'expected_length' => null,
         'action_args' => null,
         'entity_id' => null,
+        'context_entity_id' => null,
         'profile_id' => null
     ];
 
@@ -84,8 +92,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static array $openAPINullables = [
         'thread_id' => false,
+        'message_id' => false,
+        'keep_count' => false,
+        'expected_length' => false,
         'action_args' => false,
         'entity_id' => false,
+        'context_entity_id' => false,
         'profile_id' => false
     ];
 
@@ -176,8 +188,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'thread_id' => 'threadId',
+        'message_id' => 'messageId',
+        'keep_count' => 'keepCount',
+        'expected_length' => 'expectedLength',
         'action_args' => 'actionArgs',
         'entity_id' => 'entityId',
+        'context_entity_id' => 'contextEntityId',
         'profile_id' => 'profileId'
     ];
 
@@ -188,8 +204,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'thread_id' => 'setThreadId',
+        'message_id' => 'setMessageId',
+        'keep_count' => 'setKeepCount',
+        'expected_length' => 'setExpectedLength',
         'action_args' => 'setActionArgs',
         'entity_id' => 'setEntityId',
+        'context_entity_id' => 'setContextEntityId',
         'profile_id' => 'setProfileId'
     ];
 
@@ -200,8 +220,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'thread_id' => 'getThreadId',
+        'message_id' => 'getMessageId',
+        'keep_count' => 'getKeepCount',
+        'expected_length' => 'getExpectedLength',
         'action_args' => 'getActionArgs',
         'entity_id' => 'getEntityId',
+        'context_entity_id' => 'getContextEntityId',
         'profile_id' => 'getProfileId'
     ];
 
@@ -263,8 +287,12 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('thread_id', $data ?? [], null);
+        $this->setIfExists('message_id', $data ?? [], null);
+        $this->setIfExists('keep_count', $data ?? [], null);
+        $this->setIfExists('expected_length', $data ?? [], null);
         $this->setIfExists('action_args', $data ?? [], null);
         $this->setIfExists('entity_id', $data ?? [], null);
+        $this->setIfExists('context_entity_id', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
     }
 
@@ -341,6 +369,87 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets message_id
+     *
+     * @return string|null
+     */
+    public function getMessageId()
+    {
+        return $this->container['message_id'];
+    }
+
+    /**
+     * Sets message_id
+     *
+     * @param string|null $message_id The user message to re-roll from: everything stored after it is deleted. When omitted, or no longer in the thread, the last user message is used.
+     *
+     * @return self
+     */
+    public function setMessageId($message_id)
+    {
+        if (is_null($message_id)) {
+            throw new \InvalidArgumentException('non-nullable message_id cannot be null');
+        }
+        $this->container['message_id'] = $message_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets keep_count
+     *
+     * @return int|null
+     */
+    public function getKeepCount()
+    {
+        return $this->container['keep_count'];
+    }
+
+    /**
+     * Sets keep_count
+     *
+     * @param int|null $keep_count How many messages from the start of the thread to keep, used when `messageId` does not resolve. The message at `keepCount - 1` has to be a user message; otherwise the value is ignored.
+     *
+     * @return self
+     */
+    public function setKeepCount($keep_count)
+    {
+        if (is_null($keep_count)) {
+            throw new \InvalidArgumentException('non-nullable keep_count cannot be null');
+        }
+        $this->container['keep_count'] = $keep_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets expected_length
+     *
+     * @return int|null
+     */
+    public function getExpectedLength()
+    {
+        return $this->container['expected_length'];
+    }
+
+    /**
+     * Sets expected_length
+     *
+     * @param int|null $expected_length The thread length the caller saw when it computed `keepCount`. When it differs from the stored length, `keepCount` is discarded and the last user message is used instead.
+     *
+     * @return self
+     */
+    public function setExpectedLength($expected_length)
+    {
+        if (is_null($expected_length)) {
+            throw new \InvalidArgumentException('non-nullable expected_length cannot be null');
+        }
+        $this->container['expected_length'] = $expected_length;
+
+        return $this;
+    }
+
+    /**
      * Gets action_args
      *
      * @return \OpenAPI\Client\Model\AiActionArgs|null
@@ -353,7 +462,7 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets action_args
      *
-     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request engine options: extra tools, reasoning, prompt override.
+     * @param \OpenAPI\Client\Model\AiActionArgs|null $action_args Per-request options of the round: extra tools, reasoning, a prompt override and the connected context.
      *
      * @return self
      */
@@ -390,6 +499,33 @@ class AiRegenerateStreamRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable entity_id cannot be null');
         }
         $this->container['entity_id'] = $entity_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets context_entity_id
+     *
+     * @return string|null
+     */
+    public function getContextEntityId()
+    {
+        return $this->container['context_entity_id'];
+    }
+
+    /**
+     * Sets context_entity_id
+     *
+     * @param string|null $context_entity_id The folder or room the user is in. Tools run against it and the model is told it is the user's location; falls back to `entityId` when omitted.
+     *
+     * @return self
+     */
+    public function setContextEntityId($context_entity_id)
+    {
+        if (is_null($context_entity_id)) {
+            throw new \InvalidArgumentException('non-nullable context_entity_id cannot be null');
+        }
+        $this->container['context_entity_id'] = $context_entity_id;
 
         return $this;
     }

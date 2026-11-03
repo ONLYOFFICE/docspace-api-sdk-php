@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiChatEvent Class Doc Comment
  *
  * @category Class
- * @description Discriminated event emitted by the streaming methods of `AIEngine`. The engine never invokes user-supplied middleware or callbacks directly — every observable side-effect is encoded as a `ChatEvent` so the same stream can be replayed over SSE, WebSocket, or in-process.  Pause point: `tool-call-pending` is the only stop. The UI must execute the tool itself (consulting `autoAllow` to decide between the silent path and the approve dialog) and resume via `AIEngine.approveToolCall` or `AIEngine.denyToolCall`.  Other variants are pure data:  - `message-start` / `message-delta` / `message-end` — assistant reply lifecycle. - `message-incomplete` — the provider returned an error or incomplete status. - `thread-title` — auto-generated title ready for a new thread.
+ * @description One event of a chat stream, told apart by `type`: `message-start`, `message-delta` and `message-end` frame the assistant reply, `message-incomplete` reports a provider error or an unfinished answer, `thread-title` carries a generated title, and `tool-call-pending` pauses the round until the call is approved (`POST api/2.0/ai/ai/approve-tool-call`) or denied (`POST api/2.0/ai/ai/deny-tool-call`).
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -541,7 +541,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets auto_allow
      *
-     * @param bool|null $auto_allow The consumer should execute the tool without prompting the user. Decided by the tool permission mode (`resolveAutoAllow`): under ask never; under auto a tool in the persisted always-allow list or one that opts in via `TMCPItem.requireApproval === false` (host tools default to this); under allow every tool. For a client-side tool with a server-side engine, this lets the engine return the pending call already flagged auto-allow so the client runs it and streams the result back without a dialog round-trip.
+     * @param bool|null $auto_allow The tool runs without asking the user, as the user's tool permission mode decides: under `ask` never - the always-allow list, `requireApproval` and the annotations are all ignored; under `auto` a tool on the always-allow list, one with `requireApproval: false`, or one annotated `readOnlyHint: true` or `destructiveHint: false`; under `allow` every tool.
      *
      * @return self
      */
@@ -568,7 +568,7 @@ class AiChatEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_executed
      *
-     * @param bool|null $server_executed Set when the tool is served by a server-side system source: the consumer must NOT execute it locally — only show the approval UI (unless `autoAllow`) and resume via `approveToolCall` (no `result` needed) / `denyToolCall`. The engine runs it in-engine.
+     * @param bool|null $server_executed The tool is run by the service itself: the client must not run it, only ask for approval (unless `autoAllow`) and approve or deny the call - an approval needs no `result`.
      *
      * @return self
      */

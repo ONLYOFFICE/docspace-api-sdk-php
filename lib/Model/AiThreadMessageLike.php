@@ -522,7 +522,7 @@ class AiThreadMessageLike implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets metadata
      *
-     * @param object|null $metadata Arbitrary per-message metadata.
+     * @param object|null $metadata Per-message metadata. The chat library writes `custom` (with the round's `contextEntityId`) and `steps` (token usage per provider request); `unstable_state`, `unstable_annotations`, `unstable_data` and `submittedFeedback` may appear as well. Read it as an open map.
      *
      * @return self
      */
@@ -549,7 +549,7 @@ class AiThreadMessageLike implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets attachments
      *
-     * @param object[]|null $attachments Attachments linked to the message.
+     * @param object[]|null $attachments Attachments linked to the message (`id`, `type`, `name`, `contentType`, `status`, `content`). Read them as open objects.
      *
      * @return self
      */

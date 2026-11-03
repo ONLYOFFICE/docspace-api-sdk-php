@@ -35,7 +35,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * AiWebSearchMutationResult Class Doc Comment
  *
  * @category Class
- * @description Outcome of `WebSearchEngine.configure` — either the persisted config or a field-scoped error suitable for the settings form.
+ * @description The outcome of storing a web-search configuration: the stored configuration, or an error naming the field that was refused.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

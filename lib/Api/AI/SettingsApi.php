@@ -468,7 +468,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolPermissionModeWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsGetToolMode(string $contentType = self::contentTypes['aiSettingsGetToolMode'][0])
     {
@@ -488,7 +488,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolPermissionModeWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsGetToolModeWithHttpInfo(string $contentType = self::contentTypes['aiSettingsGetToolMode'][0])
     {
@@ -520,7 +520,7 @@ class SettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
                         $request,
                         $response,
                     );
@@ -560,7 +560,7 @@ class SettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
                 $request,
                 $response,
             );
@@ -569,7 +569,7 @@ class SettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -643,7 +643,7 @@ class SettingsApi
      */
     public function aiSettingsGetToolModeAsyncWithHttpInfo(string $contentType = self::contentTypes['aiSettingsGetToolMode'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiToolPermissionModeWrapper';
         $request = $this->aiSettingsGetToolModeRequest($contentType);
 
         return $this->client
@@ -1402,7 +1402,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
+     * @return \OpenAPI\Client\Model\AiToolPermissionModeWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse
      */
     public function aiSettingsSetToolMode($ai_settings_set_tool_mode_request, string $contentType = self::contentTypes['aiSettingsSetToolMode'][0])
     {
@@ -1423,7 +1423,7 @@ class SettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AiSuccessResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\AiToolPermissionModeWrapper|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse|\OpenAPI\Client\Model\AiErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function aiSettingsSetToolModeWithHttpInfo($ai_settings_set_tool_mode_request, string $contentType = self::contentTypes['aiSettingsSetToolMode'][0])
     {
@@ -1455,7 +1455,13 @@ class SettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $request,
                         $response,
                     );
@@ -1501,7 +1507,7 @@ class SettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AiSuccessResponse',
+                '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
                 $request,
                 $response,
             );
@@ -1510,7 +1516,15 @@ class SettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AiSuccessResponse',
+                        '\OpenAPI\Client\Model\AiToolPermissionModeWrapper',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\AiErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1594,7 +1608,7 @@ class SettingsApi
      */
     public function aiSettingsSetToolModeAsyncWithHttpInfo($ai_settings_set_tool_mode_request, string $contentType = self::contentTypes['aiSettingsSetToolMode'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AiSuccessResponse';
+        $returnType = '\OpenAPI\Client\Model\AiToolPermissionModeWrapper';
         $request = $this->aiSettingsSetToolModeRequest($ai_settings_set_tool_mode_request, $contentType);
 
         return $this->client
